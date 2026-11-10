@@ -6,7 +6,7 @@ from pathlib import Path
 import pytest
 
 IGNORED = [
-    "data/raw/openrca/Telecom/telemetry/x.csv",
+    "data/raw/openrca/Bank/telemetry/x.csv",
     "data/interim/Telecom/day.parquet",
     "data/processed/windows.parquet",
     ".env",

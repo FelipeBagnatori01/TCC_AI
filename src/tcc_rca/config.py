@@ -22,6 +22,7 @@ class ExperimentConfig(_Strict):
 
 class PathsConfig(_Strict):
     data_root: Path
+    openrca_repo: Path
     interim_dir: Path
     processed_dir: Path
     experiments_dir: Path

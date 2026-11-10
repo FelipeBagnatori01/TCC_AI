@@ -10,7 +10,7 @@ The full spec lives **outside** this repo: `../instrucoes_implementacao_tcc.md` 
 
 **Workflow rule from the spec:** work one stage at a time, in order. At the start of a stage present the plan and open questions before writing code; at the end report summary, changed files, how to run, acceptance criteria with evidence, ADRs, blockers, and wait for approval. Never mark a criterion met without evidence; never skip/silence tests or relax lint. Do not assume OpenRCA file or column names — inventory them (E1). Missing data/access goes to `docs/BLOQUEIOS.md`, not invented.
 
-Status: E0 (bootstrap/infrastructure) is done and committed. `ingestion/`, `series/`, `dataset/`, `models/`, `explain/`, `agent/`, `evaluation/` are empty placeholder packages for E1–E8.
+Status: E0 (infrastructure) approved and committed; E1 (data acquisition/inventory) implemented, pending approval. `series/`, `dataset/`, `models/`, `explain/`, `agent/`, `evaluation/` are empty placeholder packages for E2–E8.
 
 ## Commands
 
@@ -25,6 +25,17 @@ uv run pytest tests/test_llm_client.py::test_budget_cap_stops_paid_calls_but_not
 uv run ruff format .            # apply formatting (lint only checks)
 ```
 
+Data pipeline (E1; all take `--config`, target system comes from config):
+
+```bash
+uv run tcc-rca manifest | verify [--quick]   # data/MANIFEST.csv + integrity check
+uv run tcc-rca inventory                      # reports/tables/inventory_<system>.json
+uv run tcc-rca convert [--days 2020_04_11]    # raw CSV -> data/interim parquet (UTC)
+uv run tcc-rca cases | quality | eda -n 10    # label mapping, quality report, figures
+```
+
+Official OpenRCA scorer: run from `external/OpenRCA` as `uv run --project ../.. python -m main.evaluate -p <pred.csv> -q <query.csv> -r <report.csv>`.
+
 `make e2e` accepts `CONFIG=...`; the CLI (`tcc-rca e2e --config a.yaml b.yaml`) merges multiple YAMLs left to right.
 
 ## Architecture (E0 infrastructure)
@@ -34,6 +45,13 @@ Everything experimental flows through three pieces that must be used together to
 - **Config** (`config.py`): pydantic v2 models, `extra="forbid"` and frozen. `load_config(*yamls, overrides=...)` deep-merges files then overrides; an unknown key at any depth is a hard error. Adding a config field means adding it to the model *and* `configs/base.yaml`. Tests redirect all output paths to `tmp_path` via the `config` fixture in `tests/conftest.py`.
 - **Run tracking** (`tracking.py`, `env.py`, `seed.py`): `Run(config)` is a context manager that creates `experiments/<timestamp>-<name>/` (config.resolved.yaml, provenance.json with commit/config/dataset hashes and hardware, run.log, metrics.json, artifacts/) and **seeds Python/NumPy/PyTorch and enables `torch.use_deterministic_algorithms(True)`**. Dataset hash comes from the versioned `data/MANIFEST.csv`. Metrics that must be reproducible across runs go in `metrics.json`; anything that depends on cache state or wall-clock (LLM cost/latency) goes in artifacts, so two same-seed runs produce byte-identical `metrics.json`.
 - **LLM client** (`llm/`): `LLMClient` wraps an `LLMProvider` (Protocol with `complete(request) -> ProviderResult`) chosen by name via a registry (`register_provider` / `build_provider`). Only the offline `fake` provider exists; real adapters are added when a provider is chosen (before E7) and swapping must stay a config change. Cache key = SHA-256 of canonical JSON of (provider, model, messages, temperature, max_tokens) — anything affecting output must be in `LLMRequest`. Cache hits cost 0, skip the provider and budget check, but are still logged to the JSONL call log. Budget cap is checked *before* each paid call (one call may overshoot).
+
+## Data layout (E1)
+
+- OpenRCA repo is a git submodule at `external/OpenRCA` (pinned commit in ADR 0003; excluded from ruff; never edit it — run ruff/format only via `make`, not on `external/`). Clone with `--recurse-submodules`.
+- Raw Telecom data lives outside the repo (`../Telecom`) and is symlinked at `data/raw/openrca/Telecom` (git refuses paths beyond that symlink, so gitignore tests use `Bank/`). Real Telecom facts (6 h/day 00:00–06:00 UTC+8, 15 days, 60 s metric step, near-duplicate days) are in `docs/DICIONARIO_DADOS.md`.
+- `ingestion/timeutil.py` is the only place that converts UTC+8 ↔ UTC (ADR 0002). `ingestion/cases.py` exposes agent-visible query data only; ground truth (`scoring_points`) is read solely via `ingestion/labels.py`, which `tcc_rca.agent` must never import (tested).
+- Telemetry readers enforce explicit schemas and fail on header drift; unit tests use the synthetic system in `tests/synthetic.py`, never real data.
 
 ## Conventions and constraints
 

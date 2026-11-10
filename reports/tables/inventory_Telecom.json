@@ -1,0 +1,1566 @@
+{
+  "days": {
+    "2020_04_11": {
+      "metric_app": {
+        "n_components": 1,
+        "rows": 381,
+        "schema": {
+          "avg_time": "Float64",
+          "num": "Int64",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "succee_num": "Int64",
+          "succee_rate": "Float64"
+        },
+        "size_bytes": 15952,
+        "t_max_ms": 1586556000000,
+        "t_min_ms": 1586534400000
+      },
+      "metric_container": {
+        "modal_step_ms": 60000,
+        "n_components": 8,
+        "n_kpis": 9,
+        "rows": 25587,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 2118854,
+        "t_max_ms": 1586555999000,
+        "t_min_ms": 1586534402000
+      },
+      "metric_middleware": {
+        "modal_step_ms": 60000,
+        "n_components": 12,
+        "n_kpis": 22,
+        "rows": 95036,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 7186364,
+        "t_max_ms": 1586555999000,
+        "t_min_ms": 1586534403000
+      },
+      "metric_node": {
+        "modal_step_ms": 60000,
+        "n_components": 22,
+        "n_kpis": 51,
+        "rows": 302464,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 21179793,
+        "t_max_ms": 1586555999000,
+        "t_min_ms": 1586534400000
+      },
+      "metric_service": {
+        "modal_step_ms": 60000,
+        "n_components": 13,
+        "n_kpis": 46,
+        "rows": 172246,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 11777056,
+        "t_max_ms": 1586555999000,
+        "t_min_ms": 1586534400000
+      },
+      "trace_span": {
+        "n_components": 10,
+        "rows": 9979287,
+        "schema": {
+          "callType": "String",
+          "cmdb_id": "String",
+          "dsName": "String",
+          "elapsedTime": "Float64",
+          "id": "String",
+          "pid": "String",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "success": "Boolean",
+          "traceId": "String"
+        },
+        "size_bytes": 1165827254,
+        "t_max_ms": 1586555972387,
+        "t_min_ms": 1586534400045
+      }
+    },
+    "2020_04_20": {
+      "metric_app": {
+        "n_components": 1,
+        "rows": 360,
+        "schema": {
+          "avg_time": "Float64",
+          "num": "Int64",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "succee_num": "Int64",
+          "succee_rate": "Float64"
+        },
+        "size_bytes": 15146,
+        "t_max_ms": 1587333540000,
+        "t_min_ms": 1587312000000
+      },
+      "metric_container": {
+        "modal_step_ms": 60000,
+        "n_components": 8,
+        "n_kpis": 9,
+        "rows": 22968,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 1902694,
+        "t_max_ms": 1587333598000,
+        "t_min_ms": 1587312001000
+      },
+      "metric_middleware": {
+        "modal_step_ms": 60000,
+        "n_components": 12,
+        "n_kpis": 22,
+        "rows": 95037,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 7188100,
+        "t_max_ms": 1587333599000,
+        "t_min_ms": 1587312000000
+      },
+      "metric_node": {
+        "modal_step_ms": 60000,
+        "n_components": 22,
+        "n_kpis": 51,
+        "rows": 302459,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 21177325,
+        "t_max_ms": 1587333599000,
+        "t_min_ms": 1587312000000
+      },
+      "metric_service": {
+        "modal_step_ms": 60000,
+        "n_components": 13,
+        "n_kpis": 46,
+        "rows": 172097,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 11769307,
+        "t_max_ms": 1587333599000,
+        "t_min_ms": 1587312000000
+      },
+      "trace_span": {
+        "n_components": 10,
+        "rows": 10604851,
+        "schema": {
+          "callType": "String",
+          "cmdb_id": "String",
+          "dsName": "String",
+          "elapsedTime": "Float64",
+          "id": "String",
+          "pid": "String",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "success": "Boolean",
+          "traceId": "String"
+        },
+        "size_bytes": 1238868697,
+        "t_max_ms": 1587333573110,
+        "t_min_ms": 1587312000025
+      }
+    },
+    "2020_04_21": {
+      "metric_app": {
+        "n_components": 1,
+        "rows": 382,
+        "schema": {
+          "avg_time": "Float64",
+          "num": "Int64",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "succee_num": "Int64",
+          "succee_rate": "Float64"
+        },
+        "size_bytes": 15976,
+        "t_max_ms": 1587419940000,
+        "t_min_ms": 1587398400000
+      },
+      "metric_container": {
+        "modal_step_ms": 60000,
+        "n_components": 8,
+        "n_kpis": 9,
+        "rows": 24687,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 2044646,
+        "t_max_ms": 1587419992000,
+        "t_min_ms": 1587398402000
+      },
+      "metric_middleware": {
+        "modal_step_ms": 60000,
+        "n_components": 12,
+        "n_kpis": 22,
+        "rows": 91704,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 6936259,
+        "t_max_ms": 1587419994000,
+        "t_min_ms": 1587398403000
+      },
+      "metric_node": {
+        "modal_step_ms": 60000,
+        "n_components": 22,
+        "n_kpis": 51,
+        "rows": 291728,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 20425419,
+        "t_max_ms": 1587419999000,
+        "t_min_ms": 1587398400000
+      },
+      "metric_service": {
+        "modal_step_ms": 60000,
+        "n_components": 13,
+        "n_kpis": 46,
+        "rows": 165987,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 11348806,
+        "t_max_ms": 1587419999000,
+        "t_min_ms": 1587398400000
+      },
+      "trace_span": {
+        "n_components": 10,
+        "rows": 9651433,
+        "schema": {
+          "callType": "String",
+          "cmdb_id": "String",
+          "dsName": "String",
+          "elapsedTime": "Float64",
+          "id": "String",
+          "pid": "String",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "success": "Boolean",
+          "traceId": "String"
+        },
+        "size_bytes": 1127455594,
+        "t_max_ms": 1587419969010,
+        "t_min_ms": 1587398400017
+      }
+    },
+    "2020_04_22": {
+      "metric_app": {
+        "n_components": 1,
+        "rows": 383,
+        "schema": {
+          "avg_time": "Float64",
+          "num": "Int64",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "succee_num": "Int64",
+          "succee_rate": "Float64"
+        },
+        "size_bytes": 16009,
+        "t_max_ms": 1587506340000,
+        "t_min_ms": 1587484800000
+      },
+      "metric_container": {
+        "modal_step_ms": 60000,
+        "n_components": 8,
+        "n_kpis": 9,
+        "rows": 23495,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 1946500,
+        "t_max_ms": 1587506384000,
+        "t_min_ms": 1587484803000
+      },
+      "metric_middleware": {
+        "modal_step_ms": 60000,
+        "n_components": 12,
+        "n_kpis": 22,
+        "rows": 95038,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 7188932,
+        "t_max_ms": 1587506399000,
+        "t_min_ms": 1587484801000
+      },
+      "metric_node": {
+        "modal_step_ms": 60000,
+        "n_components": 22,
+        "n_kpis": 51,
+        "rows": 301617,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 21115252,
+        "t_max_ms": 1587506399000,
+        "t_min_ms": 1587484800000
+      },
+      "metric_service": {
+        "modal_step_ms": 60000,
+        "n_components": 13,
+        "n_kpis": 46,
+        "rows": 171875,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 11753497,
+        "t_max_ms": 1587506399000,
+        "t_min_ms": 1587484800000
+      },
+      "trace_span": {
+        "n_components": 10,
+        "rows": 9784085,
+        "schema": {
+          "callType": "String",
+          "cmdb_id": "String",
+          "dsName": "String",
+          "elapsedTime": "Float64",
+          "id": "String",
+          "pid": "String",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "success": "Boolean",
+          "traceId": "String"
+        },
+        "size_bytes": 1143167239,
+        "t_max_ms": 1587506399942,
+        "t_min_ms": 1587484800024
+      }
+    },
+    "2020_04_23": {
+      "metric_app": {
+        "n_components": 1,
+        "rows": 371,
+        "schema": {
+          "avg_time": "Float64",
+          "num": "Int64",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "succee_num": "Int64",
+          "succee_rate": "Float64"
+        },
+        "size_bytes": 15636,
+        "t_max_ms": 1587592740000,
+        "t_min_ms": 1587571200000
+      },
+      "metric_container": {
+        "modal_step_ms": 60000,
+        "n_components": 8,
+        "n_kpis": 9,
+        "rows": 24957,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 2066982,
+        "t_max_ms": 1587592796000,
+        "t_min_ms": 1587571201000
+      },
+      "metric_middleware": {
+        "modal_step_ms": 60000,
+        "n_components": 12,
+        "n_kpis": 22,
+        "rows": 95040,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 7187621,
+        "t_max_ms": 1587592799000,
+        "t_min_ms": 1587571200000
+      },
+      "metric_node": {
+        "modal_step_ms": 60000,
+        "n_components": 22,
+        "n_kpis": 51,
+        "rows": 302065,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 21148618,
+        "t_max_ms": 1587592799000,
+        "t_min_ms": 1587571200000
+      },
+      "metric_service": {
+        "modal_step_ms": 60000,
+        "n_components": 13,
+        "n_kpis": 46,
+        "rows": 172136,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 11770998,
+        "t_max_ms": 1587592799000,
+        "t_min_ms": 1587571200000
+      },
+      "trace_span": {
+        "n_components": 10,
+        "rows": 10188986,
+        "schema": {
+          "callType": "String",
+          "cmdb_id": "String",
+          "dsName": "String",
+          "elapsedTime": "Float64",
+          "id": "String",
+          "pid": "String",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "success": "Boolean",
+          "traceId": "String"
+        },
+        "size_bytes": 1190797020,
+        "t_max_ms": 1587592774699,
+        "t_min_ms": 1587571200064
+      }
+    },
+    "2020_05_22": {
+      "metric_app": {
+        "n_components": 1,
+        "rows": 434,
+        "schema": {
+          "avg_time": "Float64",
+          "num": "Int64",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "succee_num": "Int64",
+          "succee_rate": "Float64"
+        },
+        "size_bytes": 17962,
+        "t_max_ms": 1590098340000,
+        "t_min_ms": 1590076800000
+      },
+      "metric_container": {
+        "modal_step_ms": 60000,
+        "n_components": 8,
+        "n_kpis": 9,
+        "rows": 19584,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 1622035,
+        "t_max_ms": 1590098380000,
+        "t_min_ms": 1590076800000
+      },
+      "metric_middleware": {
+        "modal_step_ms": 60000,
+        "n_components": 12,
+        "n_kpis": 22,
+        "rows": 88390,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 6686539,
+        "t_max_ms": 1590098395000,
+        "t_min_ms": 1590076805000
+      },
+      "metric_node": {
+        "modal_step_ms": 60000,
+        "n_components": 14,
+        "n_kpis": 51,
+        "rows": 184292,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 12937905,
+        "t_max_ms": 1590098399000,
+        "t_min_ms": 1590076800000
+      },
+      "metric_service": {
+        "modal_step_ms": 60000,
+        "n_components": 13,
+        "n_kpis": 46,
+        "rows": 160465,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 10976584,
+        "t_max_ms": 1590098399000,
+        "t_min_ms": 1590076800000
+      },
+      "trace_span": {
+        "n_components": 10,
+        "rows": 8889204,
+        "schema": {
+          "callType": "String",
+          "cmdb_id": "String",
+          "dsName": "String",
+          "elapsedTime": "Float64",
+          "id": "String",
+          "pid": "String",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "success": "Boolean",
+          "traceId": "String"
+        },
+        "size_bytes": 1038540562,
+        "t_max_ms": 1590098382150,
+        "t_min_ms": 1590076800133
+      }
+    },
+    "2020_05_23": {
+      "metric_app": {
+        "n_components": 1,
+        "rows": 383,
+        "schema": {
+          "avg_time": "Float64",
+          "num": "Int64",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "succee_num": "Int64",
+          "succee_rate": "Float64"
+        },
+        "size_bytes": 16009,
+        "t_max_ms": 1590184740000,
+        "t_min_ms": 1590163200000
+      },
+      "metric_container": {
+        "modal_step_ms": 60000,
+        "n_components": 8,
+        "n_kpis": 9,
+        "rows": 23495,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 1946498,
+        "t_max_ms": 1590184784000,
+        "t_min_ms": 1590163203000
+      },
+      "metric_middleware": {
+        "modal_step_ms": 60000,
+        "n_components": 12,
+        "n_kpis": 22,
+        "rows": 95038,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 7188932,
+        "t_max_ms": 1590184799000,
+        "t_min_ms": 1590163201000
+      },
+      "metric_node": {
+        "modal_step_ms": 60000,
+        "n_components": 22,
+        "n_kpis": 51,
+        "rows": 301617,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 21115243,
+        "t_max_ms": 1590184799000,
+        "t_min_ms": 1590163200000
+      },
+      "metric_service": {
+        "modal_step_ms": 60000,
+        "n_components": 13,
+        "n_kpis": 46,
+        "rows": 171875,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 11753490,
+        "t_max_ms": 1590184799000,
+        "t_min_ms": 1590163200000
+      },
+      "trace_span": {
+        "n_components": 10,
+        "rows": 9784085,
+        "schema": {
+          "callType": "String",
+          "cmdb_id": "String",
+          "dsName": "String",
+          "elapsedTime": "Float64",
+          "id": "String",
+          "pid": "String",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "success": "Boolean",
+          "traceId": "String"
+        },
+        "size_bytes": 1143167239,
+        "t_max_ms": 1590184799942,
+        "t_min_ms": 1590163200024
+      }
+    },
+    "2020_05_24": {
+      "metric_app": {
+        "n_components": 1,
+        "rows": 374,
+        "schema": {
+          "avg_time": "Float64",
+          "num": "Int64",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "succee_num": "Int64",
+          "succee_rate": "Float64"
+        },
+        "size_bytes": 15770,
+        "t_max_ms": 1590271140000,
+        "t_min_ms": 1590249600000
+      },
+      "metric_container": {
+        "modal_step_ms": 60000,
+        "n_components": 8,
+        "n_kpis": 9,
+        "rows": 25461,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 2108741,
+        "t_max_ms": 1590271194000,
+        "t_min_ms": 1590249601000
+      },
+      "metric_middleware": {
+        "modal_step_ms": 60000,
+        "n_components": 12,
+        "n_kpis": 22,
+        "rows": 95036,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 7187868,
+        "t_max_ms": 1590271199000,
+        "t_min_ms": 1590249603000
+      },
+      "metric_node": {
+        "modal_step_ms": 60000,
+        "n_components": 22,
+        "n_kpis": 51,
+        "rows": 301655,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 21117936,
+        "t_max_ms": 1590271199000,
+        "t_min_ms": 1590249600000
+      },
+      "metric_service": {
+        "modal_step_ms": 60000,
+        "n_components": 13,
+        "n_kpis": 47,
+        "rows": 171952,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 11757247,
+        "t_max_ms": 1590271198000,
+        "t_min_ms": 1590249600000
+      },
+      "trace_span": {
+        "n_components": 10,
+        "rows": 10189197,
+        "schema": {
+          "callType": "String",
+          "cmdb_id": "String",
+          "dsName": "String",
+          "elapsedTime": "Float64",
+          "id": "String",
+          "pid": "String",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "success": "Boolean",
+          "traceId": "String"
+        },
+        "size_bytes": 1190669846,
+        "t_max_ms": 1590271181859,
+        "t_min_ms": 1590249600016
+      }
+    },
+    "2020_05_25": {
+      "metric_app": {
+        "n_components": 1,
+        "rows": 371,
+        "schema": {
+          "avg_time": "Float64",
+          "num": "Int64",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "succee_num": "Int64",
+          "succee_rate": "Float64"
+        },
+        "size_bytes": 15636,
+        "t_max_ms": 1590357540000,
+        "t_min_ms": 1590336000000
+      },
+      "metric_container": {
+        "modal_step_ms": 60000,
+        "n_components": 8,
+        "n_kpis": 9,
+        "rows": 24957,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 2066982,
+        "t_max_ms": 1590357596000,
+        "t_min_ms": 1590336001000
+      },
+      "metric_middleware": {
+        "modal_step_ms": 60000,
+        "n_components": 12,
+        "n_kpis": 22,
+        "rows": 95040,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 7187621,
+        "t_max_ms": 1590357599000,
+        "t_min_ms": 1590336000000
+      },
+      "metric_node": {
+        "modal_step_ms": 60000,
+        "n_components": 22,
+        "n_kpis": 51,
+        "rows": 302065,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 21148616,
+        "t_max_ms": 1590357599000,
+        "t_min_ms": 1590336000000
+      },
+      "metric_service": {
+        "modal_step_ms": 60000,
+        "n_components": 13,
+        "n_kpis": 46,
+        "rows": 172136,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 11770978,
+        "t_max_ms": 1590357599000,
+        "t_min_ms": 1590336000000
+      },
+      "trace_span": {
+        "n_components": 10,
+        "rows": 10188986,
+        "schema": {
+          "callType": "String",
+          "cmdb_id": "String",
+          "dsName": "String",
+          "elapsedTime": "Float64",
+          "id": "String",
+          "pid": "String",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "success": "Boolean",
+          "traceId": "String"
+        },
+        "size_bytes": 1190797020,
+        "t_max_ms": 1590357574699,
+        "t_min_ms": 1590336000064
+      }
+    },
+    "2020_05_26": {
+      "metric_app": {
+        "n_components": 1,
+        "rows": 378,
+        "schema": {
+          "avg_time": "Float64",
+          "num": "Int64",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "succee_num": "Int64",
+          "succee_rate": "Float64"
+        },
+        "size_bytes": 15865,
+        "t_max_ms": 1590443940000,
+        "t_min_ms": 1590422400000
+      },
+      "metric_container": {
+        "modal_step_ms": 60000,
+        "n_components": 8,
+        "n_kpis": 9,
+        "rows": 24363,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 2017925,
+        "t_max_ms": 1590443991000,
+        "t_min_ms": 1590422401000
+      },
+      "metric_middleware": {
+        "modal_step_ms": 60000,
+        "n_components": 12,
+        "n_kpis": 22,
+        "rows": 95028,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 7186317,
+        "t_max_ms": 1590443997000,
+        "t_min_ms": 1590422402000
+      },
+      "metric_node": {
+        "modal_step_ms": 60000,
+        "n_components": 22,
+        "n_kpis": 51,
+        "rows": 303579,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 21262436,
+        "t_max_ms": 1590443999000,
+        "t_min_ms": 1590422400000
+      },
+      "metric_service": {
+        "modal_step_ms": 60000,
+        "n_components": 13,
+        "n_kpis": 46,
+        "rows": 172616,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 11806043,
+        "t_max_ms": 1590443999000,
+        "t_min_ms": 1590422400000
+      },
+      "trace_span": {
+        "n_components": 10,
+        "rows": 9616346,
+        "schema": {
+          "callType": "String",
+          "cmdb_id": "String",
+          "dsName": "String",
+          "elapsedTime": "Float64",
+          "id": "String",
+          "pid": "String",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "success": "Boolean",
+          "traceId": "String"
+        },
+        "size_bytes": 1123661161,
+        "t_max_ms": 1590443975948,
+        "t_min_ms": 1590422400034
+      }
+    },
+    "2020_05_27": {
+      "metric_app": {
+        "n_components": 1,
+        "rows": 379,
+        "schema": {
+          "avg_time": "Float64",
+          "num": "Int64",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "succee_num": "Int64",
+          "succee_rate": "Float64"
+        },
+        "size_bytes": 15877,
+        "t_max_ms": 1590530340000,
+        "t_min_ms": 1590508800000
+      },
+      "metric_container": {
+        "modal_step_ms": 60000,
+        "n_components": 8,
+        "n_kpis": 9,
+        "rows": 24165,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 2001204,
+        "t_max_ms": 1590530389000,
+        "t_min_ms": 1590508801000
+      },
+      "metric_middleware": {
+        "modal_step_ms": 60000,
+        "n_components": 12,
+        "n_kpis": 22,
+        "rows": 91833,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 6947537,
+        "t_max_ms": 1590530399000,
+        "t_min_ms": 1590508800000
+      },
+      "metric_node": {
+        "modal_step_ms": 60000,
+        "n_components": 22,
+        "n_kpis": 51,
+        "rows": 291575,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 20414523,
+        "t_max_ms": 1590530399000,
+        "t_min_ms": 1590508800000
+      },
+      "metric_service": {
+        "modal_step_ms": 60000,
+        "n_components": 13,
+        "n_kpis": 46,
+        "rows": 165939,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 11347923,
+        "t_max_ms": 1590530399000,
+        "t_min_ms": 1590508800000
+      },
+      "trace_span": {
+        "n_components": 11,
+        "rows": 9542495,
+        "schema": {
+          "callType": "String",
+          "cmdb_id": "String",
+          "dsName": "String",
+          "elapsedTime": "Float64",
+          "id": "String",
+          "pid": "String",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "success": "Boolean",
+          "traceId": "String"
+        },
+        "size_bytes": 1114918674,
+        "t_max_ms": 1590530378642,
+        "t_min_ms": 1590508800023
+      }
+    },
+    "2020_05_28": {
+      "metric_app": {
+        "n_components": 1,
+        "rows": 378,
+        "schema": {
+          "avg_time": "Float64",
+          "num": "Int64",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "succee_num": "Int64",
+          "succee_rate": "Float64"
+        },
+        "size_bytes": 15858,
+        "t_max_ms": 1590616740000,
+        "t_min_ms": 1590595200000
+      },
+      "metric_container": {
+        "modal_step_ms": 60000,
+        "n_components": 8,
+        "n_kpis": 9,
+        "rows": 24354,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 2017250,
+        "t_max_ms": 1590616775000,
+        "t_min_ms": 1590595202000
+      },
+      "metric_middleware": {
+        "modal_step_ms": 60000,
+        "n_components": 12,
+        "n_kpis": 22,
+        "rows": 95040,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 7188383,
+        "t_max_ms": 1590616798000,
+        "t_min_ms": 1590595200000
+      },
+      "metric_node": {
+        "modal_step_ms": 60000,
+        "n_components": 22,
+        "n_kpis": 51,
+        "rows": 301563,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 21111174,
+        "t_max_ms": 1590616799000,
+        "t_min_ms": 1590595200000
+      },
+      "metric_service": {
+        "modal_step_ms": 60000,
+        "n_components": 13,
+        "n_kpis": 47,
+        "rows": 172113,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 11768264,
+        "t_max_ms": 1590616799000,
+        "t_min_ms": 1590595200000
+      },
+      "trace_span": {
+        "n_components": 11,
+        "rows": 10492731,
+        "schema": {
+          "callType": "String",
+          "cmdb_id": "String",
+          "dsName": "String",
+          "elapsedTime": "Float64",
+          "id": "String",
+          "pid": "String",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "success": "Boolean",
+          "traceId": "String"
+        },
+        "size_bytes": 1226267013,
+        "t_max_ms": 1590616776548,
+        "t_min_ms": 1590595200021
+      }
+    },
+    "2020_05_29": {
+      "metric_app": {
+        "n_components": 1,
+        "rows": 589,
+        "schema": {
+          "avg_time": "Float64",
+          "num": "Int64",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "succee_num": "Int64",
+          "succee_rate": "Float64"
+        },
+        "size_bytes": 23979,
+        "t_max_ms": 1590703140000,
+        "t_min_ms": 1590681600000
+      },
+      "metric_container": {
+        "modal_step_ms": 60000,
+        "n_components": 7,
+        "n_kpis": 9,
+        "rows": 19821,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 1641978,
+        "t_max_ms": 1590703188000,
+        "t_min_ms": 1590681604000
+      },
+      "metric_middleware": {
+        "modal_step_ms": 60000,
+        "n_components": 12,
+        "n_kpis": 22,
+        "rows": 94622,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 7157702,
+        "t_max_ms": 1590703197000,
+        "t_min_ms": 1590681602000
+      },
+      "metric_node": {
+        "modal_step_ms": 60000,
+        "n_components": 22,
+        "n_kpis": 51,
+        "rows": 199887,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 14011423,
+        "t_max_ms": 1590703199000,
+        "t_min_ms": 1590681600000
+      },
+      "metric_service": {
+        "modal_step_ms": 60000,
+        "n_components": 13,
+        "n_kpis": 46,
+        "rows": 170168,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 11633424,
+        "t_max_ms": 1590703199000,
+        "t_min_ms": 1590681600000
+      },
+      "trace_span": {
+        "n_components": 9,
+        "rows": 7333364,
+        "schema": {
+          "callType": "String",
+          "cmdb_id": "String",
+          "dsName": "String",
+          "elapsedTime": "Float64",
+          "id": "String",
+          "pid": "String",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "success": "Boolean",
+          "traceId": "String"
+        },
+        "size_bytes": 856742763,
+        "t_max_ms": 1590703199174,
+        "t_min_ms": 1590681600032
+      }
+    },
+    "2020_05_30": {
+      "metric_app": {
+        "n_components": 1,
+        "rows": 381,
+        "schema": {
+          "avg_time": "Float64",
+          "num": "Int64",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "succee_num": "Int64",
+          "succee_rate": "Float64"
+        },
+        "size_bytes": 15978,
+        "t_max_ms": 1590789540000,
+        "t_min_ms": 1590768000000
+      },
+      "metric_container": {
+        "modal_step_ms": 60000,
+        "n_components": 8,
+        "n_kpis": 9,
+        "rows": 23679,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 1961345,
+        "t_max_ms": 1590789584000,
+        "t_min_ms": 1590768003000
+      },
+      "metric_middleware": {
+        "modal_step_ms": 60000,
+        "n_components": 12,
+        "n_kpis": 22,
+        "rows": 95036,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 7187000,
+        "t_max_ms": 1590789597000,
+        "t_min_ms": 1590768006000
+      },
+      "metric_node": {
+        "modal_step_ms": 60000,
+        "n_components": 22,
+        "n_kpis": 51,
+        "rows": 302683,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 21195609,
+        "t_max_ms": 1590789599000,
+        "t_min_ms": 1590768000000
+      },
+      "metric_service": {
+        "modal_step_ms": 60000,
+        "n_components": 13,
+        "n_kpis": 46,
+        "rows": 172404,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 11789828,
+        "t_max_ms": 1590789599000,
+        "t_min_ms": 1590768000000
+      },
+      "trace_span": {
+        "n_components": 10,
+        "rows": 10010567,
+        "schema": {
+          "callType": "String",
+          "cmdb_id": "String",
+          "dsName": "String",
+          "elapsedTime": "Float64",
+          "id": "String",
+          "pid": "String",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "success": "Boolean",
+          "traceId": "String"
+        },
+        "size_bytes": 1169704316,
+        "t_max_ms": 1590789577759,
+        "t_min_ms": 1590768000016
+      }
+    },
+    "2020_05_31": {
+      "metric_app": {
+        "n_components": 1,
+        "rows": 382,
+        "schema": {
+          "avg_time": "Float64",
+          "num": "Int64",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "succee_num": "Int64",
+          "succee_rate": "Float64"
+        },
+        "size_bytes": 15976,
+        "t_max_ms": 1590875940000,
+        "t_min_ms": 1590854400000
+      },
+      "metric_container": {
+        "modal_step_ms": 60000,
+        "n_components": 8,
+        "n_kpis": 9,
+        "rows": 24687,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 2044645,
+        "t_max_ms": 1590875992000,
+        "t_min_ms": 1590854402000
+      },
+      "metric_middleware": {
+        "modal_step_ms": 60000,
+        "n_components": 12,
+        "n_kpis": 22,
+        "rows": 91704,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 6936259,
+        "t_max_ms": 1590875994000,
+        "t_min_ms": 1590854403000
+      },
+      "metric_node": {
+        "modal_step_ms": 60000,
+        "n_components": 22,
+        "n_kpis": 51,
+        "rows": 291728,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 20425418,
+        "t_max_ms": 1590875999000,
+        "t_min_ms": 1590854400000
+      },
+      "metric_service": {
+        "modal_step_ms": 60000,
+        "n_components": 13,
+        "n_kpis": 46,
+        "rows": 165987,
+        "schema": {
+          "bomc_id": "String",
+          "cmdb_id": "String",
+          "itemid": "Int64",
+          "name": "String",
+          "timestamp": "Int64",
+          "value": "Float64"
+        },
+        "size_bytes": 11348801,
+        "t_max_ms": 1590875999000,
+        "t_min_ms": 1590854400000
+      },
+      "trace_span": {
+        "n_components": 10,
+        "rows": 9651433,
+        "schema": {
+          "callType": "String",
+          "cmdb_id": "String",
+          "dsName": "String",
+          "elapsedTime": "Float64",
+          "id": "String",
+          "pid": "String",
+          "serviceName": "String",
+          "startTime": "Int64",
+          "success": "Boolean",
+          "traceId": "String"
+        },
+        "size_bytes": 1127455594,
+        "t_max_ms": 1590875969010,
+        "t_min_ms": 1590854400017
+      }
+    }
+  },
+  "n_days": 15,
+  "system": "Telecom"
+}

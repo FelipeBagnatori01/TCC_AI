@@ -7,6 +7,7 @@ target_system: Telecom   # Telecom | Bank | Market
 
 paths:
   data_root: data/raw/openrca
+  openrca_repo: external/OpenRCA   # git submodule; commit pinned in ADR 0003
   interim_dir: data/interim
   processed_dir: data/processed
   experiments_dir: experiments

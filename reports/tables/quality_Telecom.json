@@ -1,0 +1,2887 @@
+{
+  "components_in_any_telemetry": [
+    "db_001",
+    "db_002",
+    "db_003",
+    "db_004",
+    "db_005",
+    "db_006",
+    "db_007",
+    "db_008",
+    "db_009",
+    "db_010",
+    "db_011",
+    "db_012",
+    "db_013",
+    "docker_001",
+    "docker_002",
+    "docker_003",
+    "docker_004",
+    "docker_005",
+    "docker_006",
+    "docker_007",
+    "docker_008",
+    "os_001",
+    "os_002",
+    "os_003",
+    "os_004",
+    "os_005",
+    "os_006",
+    "os_007",
+    "os_008",
+    "os_009",
+    "os_010",
+    "os_011",
+    "os_012",
+    "os_013",
+    "os_014",
+    "os_015",
+    "os_016",
+    "os_017",
+    "os_018",
+    "os_019",
+    "os_020",
+    "os_021",
+    "os_022",
+    "redis_001",
+    "redis_002",
+    "redis_003",
+    "redis_004",
+    "redis_005",
+    "redis_006",
+    "redis_007",
+    "redis_008",
+    "redis_009",
+    "redis_010",
+    "redis_011",
+    "redis_012"
+  ],
+  "failures_outside_any_query_window": 0,
+  "failures_without_metric_coverage": [],
+  "labeled_components_without_any_data": [],
+  "queries_without_failures": [],
+  "row_and_null_counts": {
+    "metric_app": {
+      "nulls": {
+        "avg_time": 0,
+        "num": 0,
+        "serviceName": 0,
+        "startTime": 0,
+        "succee_num": 0,
+        "succee_rate": 0
+      },
+      "rows": 5926
+    },
+    "metric_container": {
+      "nulls": {
+        "bomc_id": 0,
+        "cmdb_id": 0,
+        "itemid": 0,
+        "name": 0,
+        "timestamp": 0,
+        "value": 0
+      },
+      "rows": 356260
+    },
+    "metric_middleware": {
+      "nulls": {
+        "bomc_id": 0,
+        "cmdb_id": 0,
+        "itemid": 0,
+        "name": 0,
+        "timestamp": 0,
+        "value": 0
+      },
+      "rows": 1408622
+    },
+    "metric_node": {
+      "nulls": {
+        "bomc_id": 0,
+        "cmdb_id": 0,
+        "itemid": 0,
+        "name": 0,
+        "timestamp": 0,
+        "value": 0
+      },
+      "rows": 4280977
+    },
+    "metric_service": {
+      "nulls": {
+        "bomc_id": 34702,
+        "cmdb_id": 0,
+        "itemid": 0,
+        "name": 0,
+        "timestamp": 0,
+        "value": 0
+      },
+      "rows": 2549996
+    },
+    "trace_span": {
+      "nulls": {
+        "callType": 0,
+        "cmdb_id": 322,
+        "dsName": 30276568,
+        "elapsedTime": 0,
+        "id": 0,
+        "pid": 0,
+        "serviceName": 65355386,
+        "startTime": 0,
+        "success": 0,
+        "traceId": 0
+      },
+      "rows": 145907050
+    }
+  },
+  "series": {
+    "metric_container": {
+      "components": [
+        "docker_001",
+        "docker_002",
+        "docker_003",
+        "docker_004",
+        "docker_005",
+        "docker_006",
+        "docker_007",
+        "docker_008"
+      ],
+      "constant_series": [
+        {
+          "cmdb_id": "docker_001",
+          "name": "container_fgc"
+        },
+        {
+          "cmdb_id": "docker_001",
+          "name": "container_fgct"
+        },
+        {
+          "cmdb_id": "docker_001",
+          "name": "container_session_used"
+        },
+        {
+          "cmdb_id": "docker_001",
+          "name": "container_thread_idle"
+        },
+        {
+          "cmdb_id": "docker_001",
+          "name": "container_thread_running"
+        },
+        {
+          "cmdb_id": "docker_001",
+          "name": "container_thread_total"
+        },
+        {
+          "cmdb_id": "docker_001",
+          "name": "container_thread_used_pct"
+        },
+        {
+          "cmdb_id": "docker_002",
+          "name": "container_fgc"
+        },
+        {
+          "cmdb_id": "docker_002",
+          "name": "container_fgct"
+        },
+        {
+          "cmdb_id": "docker_002",
+          "name": "container_session_used"
+        },
+        {
+          "cmdb_id": "docker_002",
+          "name": "container_thread_idle"
+        },
+        {
+          "cmdb_id": "docker_002",
+          "name": "container_thread_running"
+        },
+        {
+          "cmdb_id": "docker_002",
+          "name": "container_thread_total"
+        },
+        {
+          "cmdb_id": "docker_002",
+          "name": "container_thread_used_pct"
+        },
+        {
+          "cmdb_id": "docker_003",
+          "name": "container_fgc"
+        },
+        {
+          "cmdb_id": "docker_003",
+          "name": "container_fgct"
+        },
+        {
+          "cmdb_id": "docker_003",
+          "name": "container_session_used"
+        },
+        {
+          "cmdb_id": "docker_003",
+          "name": "container_thread_idle"
+        },
+        {
+          "cmdb_id": "docker_003",
+          "name": "container_thread_running"
+        },
+        {
+          "cmdb_id": "docker_003",
+          "name": "container_thread_total"
+        },
+        {
+          "cmdb_id": "docker_003",
+          "name": "container_thread_used_pct"
+        },
+        {
+          "cmdb_id": "docker_004",
+          "name": "container_fgc"
+        },
+        {
+          "cmdb_id": "docker_004",
+          "name": "container_fgct"
+        },
+        {
+          "cmdb_id": "docker_004",
+          "name": "container_session_used"
+        },
+        {
+          "cmdb_id": "docker_004",
+          "name": "container_thread_idle"
+        },
+        {
+          "cmdb_id": "docker_004",
+          "name": "container_thread_running"
+        },
+        {
+          "cmdb_id": "docker_004",
+          "name": "container_thread_total"
+        },
+        {
+          "cmdb_id": "docker_004",
+          "name": "container_thread_used_pct"
+        },
+        {
+          "cmdb_id": "docker_005",
+          "name": "container_fgc"
+        },
+        {
+          "cmdb_id": "docker_005",
+          "name": "container_fgct"
+        },
+        {
+          "cmdb_id": "docker_005",
+          "name": "container_session_used"
+        },
+        {
+          "cmdb_id": "docker_005",
+          "name": "container_thread_idle"
+        },
+        {
+          "cmdb_id": "docker_005",
+          "name": "container_thread_running"
+        },
+        {
+          "cmdb_id": "docker_005",
+          "name": "container_thread_total"
+        },
+        {
+          "cmdb_id": "docker_005",
+          "name": "container_thread_used_pct"
+        },
+        {
+          "cmdb_id": "docker_006",
+          "name": "container_fgc"
+        },
+        {
+          "cmdb_id": "docker_006",
+          "name": "container_fgct"
+        },
+        {
+          "cmdb_id": "docker_006",
+          "name": "container_session_used"
+        },
+        {
+          "cmdb_id": "docker_006",
+          "name": "container_thread_idle"
+        },
+        {
+          "cmdb_id": "docker_006",
+          "name": "container_thread_running"
+        },
+        {
+          "cmdb_id": "docker_006",
+          "name": "container_thread_total"
+        },
+        {
+          "cmdb_id": "docker_006",
+          "name": "container_thread_used_pct"
+        },
+        {
+          "cmdb_id": "docker_007",
+          "name": "container_fgc"
+        },
+        {
+          "cmdb_id": "docker_007",
+          "name": "container_fgct"
+        },
+        {
+          "cmdb_id": "docker_007",
+          "name": "container_session_used"
+        },
+        {
+          "cmdb_id": "docker_007",
+          "name": "container_thread_idle"
+        },
+        {
+          "cmdb_id": "docker_007",
+          "name": "container_thread_running"
+        },
+        {
+          "cmdb_id": "docker_007",
+          "name": "container_thread_total"
+        },
+        {
+          "cmdb_id": "docker_007",
+          "name": "container_thread_used_pct"
+        },
+        {
+          "cmdb_id": "docker_008",
+          "name": "container_fgc"
+        },
+        {
+          "cmdb_id": "docker_008",
+          "name": "container_fgct"
+        },
+        {
+          "cmdb_id": "docker_008",
+          "name": "container_session_used"
+        },
+        {
+          "cmdb_id": "docker_008",
+          "name": "container_thread_idle"
+        },
+        {
+          "cmdb_id": "docker_008",
+          "name": "container_thread_running"
+        },
+        {
+          "cmdb_id": "docker_008",
+          "name": "container_thread_total"
+        },
+        {
+          "cmdb_id": "docker_008",
+          "name": "container_thread_used_pct"
+        }
+      ],
+      "series": 72
+    },
+    "metric_middleware": {
+      "components": [
+        "redis_001",
+        "redis_002",
+        "redis_003",
+        "redis_004",
+        "redis_005",
+        "redis_006",
+        "redis_007",
+        "redis_008",
+        "redis_009",
+        "redis_010",
+        "redis_011",
+        "redis_012"
+      ],
+      "constant_series": [
+        {
+          "cmdb_id": "redis_001",
+          "name": "blocked_clients"
+        },
+        {
+          "cmdb_id": "redis_001",
+          "name": "evicted_keys"
+        },
+        {
+          "cmdb_id": "redis_001",
+          "name": "expired_keys"
+        },
+        {
+          "cmdb_id": "redis_001",
+          "name": "maxmemory"
+        },
+        {
+          "cmdb_id": "redis_001",
+          "name": "redis_load"
+        },
+        {
+          "cmdb_id": "redis_001",
+          "name": "redis_ping"
+        },
+        {
+          "cmdb_id": "redis_001",
+          "name": "rejected_connections"
+        },
+        {
+          "cmdb_id": "redis_001",
+          "name": "used_memory_peak"
+        },
+        {
+          "cmdb_id": "redis_002",
+          "name": "blocked_clients"
+        },
+        {
+          "cmdb_id": "redis_002",
+          "name": "evicted_keys"
+        },
+        {
+          "cmdb_id": "redis_002",
+          "name": "expired_keys"
+        },
+        {
+          "cmdb_id": "redis_002",
+          "name": "maxmemory"
+        },
+        {
+          "cmdb_id": "redis_002",
+          "name": "redis_load"
+        },
+        {
+          "cmdb_id": "redis_002",
+          "name": "redis_ping"
+        },
+        {
+          "cmdb_id": "redis_002",
+          "name": "rejected_connections"
+        },
+        {
+          "cmdb_id": "redis_003",
+          "name": "blocked_clients"
+        },
+        {
+          "cmdb_id": "redis_003",
+          "name": "connected_clients"
+        },
+        {
+          "cmdb_id": "redis_003",
+          "name": "evicted_keys"
+        },
+        {
+          "cmdb_id": "redis_003",
+          "name": "expired_keys"
+        },
+        {
+          "cmdb_id": "redis_003",
+          "name": "keyspace_hits"
+        },
+        {
+          "cmdb_id": "redis_003",
+          "name": "keyspace_misses"
+        },
+        {
+          "cmdb_id": "redis_003",
+          "name": "maxmemory"
+        },
+        {
+          "cmdb_id": "redis_003",
+          "name": "redis_load"
+        },
+        {
+          "cmdb_id": "redis_003",
+          "name": "redis_ping"
+        },
+        {
+          "cmdb_id": "redis_003",
+          "name": "rejected_connections"
+        },
+        {
+          "cmdb_id": "redis_004",
+          "name": "blocked_clients"
+        },
+        {
+          "cmdb_id": "redis_004",
+          "name": "evicted_keys"
+        },
+        {
+          "cmdb_id": "redis_004",
+          "name": "maxmemory"
+        },
+        {
+          "cmdb_id": "redis_004",
+          "name": "redis_load"
+        },
+        {
+          "cmdb_id": "redis_004",
+          "name": "redis_ping"
+        },
+        {
+          "cmdb_id": "redis_004",
+          "name": "rejected_connections"
+        },
+        {
+          "cmdb_id": "redis_004",
+          "name": "used_memory_peak"
+        },
+        {
+          "cmdb_id": "redis_005",
+          "name": "blocked_clients"
+        },
+        {
+          "cmdb_id": "redis_005",
+          "name": "evicted_keys"
+        },
+        {
+          "cmdb_id": "redis_005",
+          "name": "expired_keys"
+        },
+        {
+          "cmdb_id": "redis_005",
+          "name": "keyspace_hits"
+        },
+        {
+          "cmdb_id": "redis_005",
+          "name": "keyspace_misses"
+        },
+        {
+          "cmdb_id": "redis_005",
+          "name": "maxmemory"
+        },
+        {
+          "cmdb_id": "redis_005",
+          "name": "redis_load"
+        },
+        {
+          "cmdb_id": "redis_005",
+          "name": "redis_ping"
+        },
+        {
+          "cmdb_id": "redis_005",
+          "name": "rejected_connections"
+        },
+        {
+          "cmdb_id": "redis_006",
+          "name": "blocked_clients"
+        },
+        {
+          "cmdb_id": "redis_006",
+          "name": "evicted_keys"
+        },
+        {
+          "cmdb_id": "redis_006",
+          "name": "expired_keys"
+        },
+        {
+          "cmdb_id": "redis_006",
+          "name": "keyspace_hits"
+        },
+        {
+          "cmdb_id": "redis_006",
+          "name": "keyspace_misses"
+        },
+        {
+          "cmdb_id": "redis_006",
+          "name": "maxmemory"
+        },
+        {
+          "cmdb_id": "redis_006",
+          "name": "redis_load"
+        },
+        {
+          "cmdb_id": "redis_006",
+          "name": "redis_ping"
+        },
+        {
+          "cmdb_id": "redis_006",
+          "name": "rejected_connections"
+        },
+        {
+          "cmdb_id": "redis_007",
+          "name": "blocked_clients"
+        },
+        {
+          "cmdb_id": "redis_007",
+          "name": "connected_clients"
+        },
+        {
+          "cmdb_id": "redis_007",
+          "name": "evicted_keys"
+        },
+        {
+          "cmdb_id": "redis_007",
+          "name": "expired_keys"
+        },
+        {
+          "cmdb_id": "redis_007",
+          "name": "keyspace_hits"
+        },
+        {
+          "cmdb_id": "redis_007",
+          "name": "keyspace_misses"
+        },
+        {
+          "cmdb_id": "redis_007",
+          "name": "maxmemory"
+        },
+        {
+          "cmdb_id": "redis_007",
+          "name": "redis_load"
+        },
+        {
+          "cmdb_id": "redis_007",
+          "name": "redis_ping"
+        },
+        {
+          "cmdb_id": "redis_007",
+          "name": "rejected_connections"
+        },
+        {
+          "cmdb_id": "redis_007",
+          "name": "used_memory_peak"
+        },
+        {
+          "cmdb_id": "redis_008",
+          "name": "blocked_clients"
+        },
+        {
+          "cmdb_id": "redis_008",
+          "name": "evicted_keys"
+        },
+        {
+          "cmdb_id": "redis_008",
+          "name": "maxmemory"
+        },
+        {
+          "cmdb_id": "redis_008",
+          "name": "redis_load"
+        },
+        {
+          "cmdb_id": "redis_008",
+          "name": "redis_ping"
+        },
+        {
+          "cmdb_id": "redis_008",
+          "name": "rejected_connections"
+        },
+        {
+          "cmdb_id": "redis_008",
+          "name": "used_memory_peak"
+        },
+        {
+          "cmdb_id": "redis_009",
+          "name": "blocked_clients"
+        },
+        {
+          "cmdb_id": "redis_009",
+          "name": "evicted_keys"
+        },
+        {
+          "cmdb_id": "redis_009",
+          "name": "expired_keys"
+        },
+        {
+          "cmdb_id": "redis_009",
+          "name": "maxmemory"
+        },
+        {
+          "cmdb_id": "redis_009",
+          "name": "redis_load"
+        },
+        {
+          "cmdb_id": "redis_009",
+          "name": "redis_ping"
+        },
+        {
+          "cmdb_id": "redis_009",
+          "name": "rejected_connections"
+        },
+        {
+          "cmdb_id": "redis_009",
+          "name": "used_memory_peak"
+        },
+        {
+          "cmdb_id": "redis_010",
+          "name": "blocked_clients"
+        },
+        {
+          "cmdb_id": "redis_010",
+          "name": "connected_clients"
+        },
+        {
+          "cmdb_id": "redis_010",
+          "name": "evicted_keys"
+        },
+        {
+          "cmdb_id": "redis_010",
+          "name": "expired_keys"
+        },
+        {
+          "cmdb_id": "redis_010",
+          "name": "keyspace_hits"
+        },
+        {
+          "cmdb_id": "redis_010",
+          "name": "keyspace_misses"
+        },
+        {
+          "cmdb_id": "redis_010",
+          "name": "maxmemory"
+        },
+        {
+          "cmdb_id": "redis_010",
+          "name": "redis_load"
+        },
+        {
+          "cmdb_id": "redis_010",
+          "name": "redis_ping"
+        },
+        {
+          "cmdb_id": "redis_010",
+          "name": "rejected_connections"
+        },
+        {
+          "cmdb_id": "redis_010",
+          "name": "used_memory_peak"
+        },
+        {
+          "cmdb_id": "redis_011",
+          "name": "blocked_clients"
+        },
+        {
+          "cmdb_id": "redis_011",
+          "name": "evicted_keys"
+        },
+        {
+          "cmdb_id": "redis_011",
+          "name": "expired_keys"
+        },
+        {
+          "cmdb_id": "redis_011",
+          "name": "keyspace_hits"
+        },
+        {
+          "cmdb_id": "redis_011",
+          "name": "keyspace_misses"
+        },
+        {
+          "cmdb_id": "redis_011",
+          "name": "maxmemory"
+        },
+        {
+          "cmdb_id": "redis_011",
+          "name": "redis_load"
+        },
+        {
+          "cmdb_id": "redis_011",
+          "name": "redis_ping"
+        },
+        {
+          "cmdb_id": "redis_011",
+          "name": "rejected_connections"
+        },
+        {
+          "cmdb_id": "redis_012",
+          "name": "blocked_clients"
+        },
+        {
+          "cmdb_id": "redis_012",
+          "name": "evicted_keys"
+        },
+        {
+          "cmdb_id": "redis_012",
+          "name": "maxmemory"
+        },
+        {
+          "cmdb_id": "redis_012",
+          "name": "redis_load"
+        },
+        {
+          "cmdb_id": "redis_012",
+          "name": "redis_ping"
+        },
+        {
+          "cmdb_id": "redis_012",
+          "name": "rejected_connections"
+        }
+      ],
+      "series": 264
+    },
+    "metric_node": {
+      "components": [
+        "os_001",
+        "os_002",
+        "os_003",
+        "os_004",
+        "os_005",
+        "os_006",
+        "os_007",
+        "os_008",
+        "os_009",
+        "os_010",
+        "os_011",
+        "os_012",
+        "os_013",
+        "os_014",
+        "os_015",
+        "os_016",
+        "os_017",
+        "os_018",
+        "os_019",
+        "os_020",
+        "os_021",
+        "os_022"
+      ],
+      "constant_series": [
+        {
+          "cmdb_id": "os_001",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_001",
+          "name": "Disk_rd_ios"
+        },
+        {
+          "cmdb_id": "os_001",
+          "name": "Disk_rd_kbs"
+        },
+        {
+          "cmdb_id": "os_001",
+          "name": "FS_max_util"
+        },
+        {
+          "cmdb_id": "os_001",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_001",
+          "name": "Memory_total"
+        },
+        {
+          "cmdb_id": "os_001",
+          "name": "Page_pi"
+        },
+        {
+          "cmdb_id": "os_001",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_001",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_001",
+          "name": "Shared_memory"
+        },
+        {
+          "cmdb_id": "os_001",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_001",
+          "name": "Zombie_Process"
+        },
+        {
+          "cmdb_id": "os_002",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_002",
+          "name": "Disk_rd_ios"
+        },
+        {
+          "cmdb_id": "os_002",
+          "name": "Disk_rd_kbs"
+        },
+        {
+          "cmdb_id": "os_002",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_002",
+          "name": "ICMP_ping"
+        },
+        {
+          "cmdb_id": "os_002",
+          "name": "Memory_total"
+        },
+        {
+          "cmdb_id": "os_002",
+          "name": "Page_pi"
+        },
+        {
+          "cmdb_id": "os_002",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_002",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_002",
+          "name": "Shared_memory"
+        },
+        {
+          "cmdb_id": "os_002",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_002",
+          "name": "Zombie_Process"
+        },
+        {
+          "cmdb_id": "os_003",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_003",
+          "name": "Disk_rd_ios"
+        },
+        {
+          "cmdb_id": "os_003",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_003",
+          "name": "ICMP_ping"
+        },
+        {
+          "cmdb_id": "os_003",
+          "name": "Memory_total"
+        },
+        {
+          "cmdb_id": "os_003",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_003",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_003",
+          "name": "Shared_memory"
+        },
+        {
+          "cmdb_id": "os_003",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_003",
+          "name": "Zombie_Process"
+        },
+        {
+          "cmdb_id": "os_004",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_004",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_004",
+          "name": "ICMP_ping"
+        },
+        {
+          "cmdb_id": "os_004",
+          "name": "Memory_total"
+        },
+        {
+          "cmdb_id": "os_004",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_004",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_004",
+          "name": "Shared_memory"
+        },
+        {
+          "cmdb_id": "os_004",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_004",
+          "name": "Zombie_Process"
+        },
+        {
+          "cmdb_id": "os_005",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_005",
+          "name": "Disk_rd_ios"
+        },
+        {
+          "cmdb_id": "os_005",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_005",
+          "name": "ICMP_ping"
+        },
+        {
+          "cmdb_id": "os_005",
+          "name": "Memory_total"
+        },
+        {
+          "cmdb_id": "os_005",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_005",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_005",
+          "name": "Shared_memory"
+        },
+        {
+          "cmdb_id": "os_005",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_006",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_006",
+          "name": "Disk_rd_ios"
+        },
+        {
+          "cmdb_id": "os_006",
+          "name": "Disk_rd_kbs"
+        },
+        {
+          "cmdb_id": "os_006",
+          "name": "FS_max_util"
+        },
+        {
+          "cmdb_id": "os_006",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_006",
+          "name": "ICMP_ping"
+        },
+        {
+          "cmdb_id": "os_006",
+          "name": "Memory_total"
+        },
+        {
+          "cmdb_id": "os_006",
+          "name": "Page_pi"
+        },
+        {
+          "cmdb_id": "os_006",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_006",
+          "name": "Received_queue"
+        },
+        {
+          "cmdb_id": "os_006",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_006",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_006",
+          "name": "System_block_queue_length"
+        },
+        {
+          "cmdb_id": "os_006",
+          "name": "Zombie_Process"
+        },
+        {
+          "cmdb_id": "os_007",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_007",
+          "name": "Disk_rd_ios"
+        },
+        {
+          "cmdb_id": "os_007",
+          "name": "Disk_rd_kbs"
+        },
+        {
+          "cmdb_id": "os_007",
+          "name": "FS_max_util"
+        },
+        {
+          "cmdb_id": "os_007",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_007",
+          "name": "ICMP_ping"
+        },
+        {
+          "cmdb_id": "os_007",
+          "name": "Memory_total"
+        },
+        {
+          "cmdb_id": "os_007",
+          "name": "Page_pi"
+        },
+        {
+          "cmdb_id": "os_007",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_007",
+          "name": "Received_queue"
+        },
+        {
+          "cmdb_id": "os_007",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_007",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_007",
+          "name": "System_block_queue_length"
+        },
+        {
+          "cmdb_id": "os_007",
+          "name": "Zombie_Process"
+        },
+        {
+          "cmdb_id": "os_008",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_008",
+          "name": "Disk_rd_ios"
+        },
+        {
+          "cmdb_id": "os_008",
+          "name": "Disk_rd_kbs"
+        },
+        {
+          "cmdb_id": "os_008",
+          "name": "FS_max_util"
+        },
+        {
+          "cmdb_id": "os_008",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_008",
+          "name": "ICMP_ping"
+        },
+        {
+          "cmdb_id": "os_008",
+          "name": "Memory_total"
+        },
+        {
+          "cmdb_id": "os_008",
+          "name": "Page_pi"
+        },
+        {
+          "cmdb_id": "os_008",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_008",
+          "name": "Received_queue"
+        },
+        {
+          "cmdb_id": "os_008",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_008",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_008",
+          "name": "System_block_queue_length"
+        },
+        {
+          "cmdb_id": "os_008",
+          "name": "Zombie_Process"
+        },
+        {
+          "cmdb_id": "os_009",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_009",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_009",
+          "name": "Memory_total"
+        },
+        {
+          "cmdb_id": "os_009",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_009",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_009",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_010",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_010",
+          "name": "Disk_rd_ios"
+        },
+        {
+          "cmdb_id": "os_010",
+          "name": "Disk_rd_kbs"
+        },
+        {
+          "cmdb_id": "os_010",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_010",
+          "name": "ICMP_ping"
+        },
+        {
+          "cmdb_id": "os_010",
+          "name": "Memory_total"
+        },
+        {
+          "cmdb_id": "os_010",
+          "name": "Page_pi"
+        },
+        {
+          "cmdb_id": "os_010",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_010",
+          "name": "Received_queue"
+        },
+        {
+          "cmdb_id": "os_010",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_010",
+          "name": "Shared_memory"
+        },
+        {
+          "cmdb_id": "os_010",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_010",
+          "name": "System_block_queue_length"
+        },
+        {
+          "cmdb_id": "os_010",
+          "name": "Zombie_Process"
+        },
+        {
+          "cmdb_id": "os_011",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_011",
+          "name": "Disk_rd_ios"
+        },
+        {
+          "cmdb_id": "os_011",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_011",
+          "name": "ICMP_ping"
+        },
+        {
+          "cmdb_id": "os_011",
+          "name": "Memory_total"
+        },
+        {
+          "cmdb_id": "os_011",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_011",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_011",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_011",
+          "name": "Zombie_Process"
+        },
+        {
+          "cmdb_id": "os_012",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_012",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_012",
+          "name": "ICMP_ping"
+        },
+        {
+          "cmdb_id": "os_012",
+          "name": "Memory_total"
+        },
+        {
+          "cmdb_id": "os_012",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_012",
+          "name": "Received_queue"
+        },
+        {
+          "cmdb_id": "os_012",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_012",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_012",
+          "name": "Zombie_Process"
+        },
+        {
+          "cmdb_id": "os_013",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_013",
+          "name": "Disk_rd_ios"
+        },
+        {
+          "cmdb_id": "os_013",
+          "name": "Disk_rd_kbs"
+        },
+        {
+          "cmdb_id": "os_013",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_013",
+          "name": "ICMP_ping"
+        },
+        {
+          "cmdb_id": "os_013",
+          "name": "Memory_total"
+        },
+        {
+          "cmdb_id": "os_013",
+          "name": "Page_pi"
+        },
+        {
+          "cmdb_id": "os_013",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_013",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_013",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_013",
+          "name": "Zombie_Process"
+        },
+        {
+          "cmdb_id": "os_014",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_014",
+          "name": "Disk_rd_ios"
+        },
+        {
+          "cmdb_id": "os_014",
+          "name": "Disk_rd_kbs"
+        },
+        {
+          "cmdb_id": "os_014",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_014",
+          "name": "ICMP_ping"
+        },
+        {
+          "cmdb_id": "os_014",
+          "name": "Memory_total"
+        },
+        {
+          "cmdb_id": "os_014",
+          "name": "Page_pi"
+        },
+        {
+          "cmdb_id": "os_014",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_014",
+          "name": "Received_queue"
+        },
+        {
+          "cmdb_id": "os_014",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_014",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_014",
+          "name": "Zombie_Process"
+        },
+        {
+          "cmdb_id": "os_015",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_015",
+          "name": "Disk_rd_ios"
+        },
+        {
+          "cmdb_id": "os_015",
+          "name": "Disk_rd_kbs"
+        },
+        {
+          "cmdb_id": "os_015",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_015",
+          "name": "ICMP_ping"
+        },
+        {
+          "cmdb_id": "os_015",
+          "name": "Memory_total"
+        },
+        {
+          "cmdb_id": "os_015",
+          "name": "Page_pi"
+        },
+        {
+          "cmdb_id": "os_015",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_015",
+          "name": "Received_queue"
+        },
+        {
+          "cmdb_id": "os_015",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_015",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_015",
+          "name": "Zombie_Process"
+        },
+        {
+          "cmdb_id": "os_016",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_016",
+          "name": "Disk_rd_ios"
+        },
+        {
+          "cmdb_id": "os_016",
+          "name": "Disk_rd_kbs"
+        },
+        {
+          "cmdb_id": "os_016",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_016",
+          "name": "ICMP_ping"
+        },
+        {
+          "cmdb_id": "os_016",
+          "name": "Memory_total"
+        },
+        {
+          "cmdb_id": "os_016",
+          "name": "Page_pi"
+        },
+        {
+          "cmdb_id": "os_016",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_016",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_016",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_016",
+          "name": "Zombie_Process"
+        },
+        {
+          "cmdb_id": "os_017",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_017",
+          "name": "Buffers_used"
+        },
+        {
+          "cmdb_id": "os_017",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_017",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_017",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_017",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_018",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_018",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_018",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_018",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_018",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_019",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_019",
+          "name": "Buffers_used"
+        },
+        {
+          "cmdb_id": "os_019",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_019",
+          "name": "ICMP_ping"
+        },
+        {
+          "cmdb_id": "os_019",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_019",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_019",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_020",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_020",
+          "name": "Buffers_used"
+        },
+        {
+          "cmdb_id": "os_020",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_020",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_020",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_020",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_020",
+          "name": "System_block_queue_length"
+        },
+        {
+          "cmdb_id": "os_021",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_021",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_021",
+          "name": "Memory_total"
+        },
+        {
+          "cmdb_id": "os_021",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_021",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_021",
+          "name": "Shared_memory"
+        },
+        {
+          "cmdb_id": "os_021",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_021",
+          "name": "Zombie_Process"
+        },
+        {
+          "cmdb_id": "os_022",
+          "name": "Agent_ping"
+        },
+        {
+          "cmdb_id": "os_022",
+          "name": "FS_total_space"
+        },
+        {
+          "cmdb_id": "os_022",
+          "name": "ICMP_ping"
+        },
+        {
+          "cmdb_id": "os_022",
+          "name": "Memory_total"
+        },
+        {
+          "cmdb_id": "os_022",
+          "name": "Received_errors_packets"
+        },
+        {
+          "cmdb_id": "os_022",
+          "name": "Sent_errors_packets"
+        },
+        {
+          "cmdb_id": "os_022",
+          "name": "Shared_memory"
+        },
+        {
+          "cmdb_id": "os_022",
+          "name": "Swap_used_pct"
+        },
+        {
+          "cmdb_id": "os_022",
+          "name": "Zombie_Process"
+        }
+      ],
+      "series": 1122
+    },
+    "metric_service": {
+      "components": [
+        "db_001",
+        "db_002",
+        "db_003",
+        "db_004",
+        "db_005",
+        "db_006",
+        "db_007",
+        "db_008",
+        "db_009",
+        "db_010",
+        "db_011",
+        "db_012",
+        "db_013"
+      ],
+      "constant_series": [
+        {
+          "cmdb_id": "db_001",
+          "name": "Asm_Free_Tb"
+        },
+        {
+          "cmdb_id": "db_001",
+          "name": "DbFile_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_001",
+          "name": "Hang"
+        },
+        {
+          "cmdb_id": "db_001",
+          "name": "MEM_Total"
+        },
+        {
+          "cmdb_id": "db_001",
+          "name": "On_Off_State"
+        },
+        {
+          "cmdb_id": "db_001",
+          "name": "PGA_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_001",
+          "name": "Row_Lock"
+        },
+        {
+          "cmdb_id": "db_001",
+          "name": "SEQ_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_001",
+          "name": "Sess_Used_Temp"
+        },
+        {
+          "cmdb_id": "db_001",
+          "name": "TempTbs_Pct"
+        },
+        {
+          "cmdb_id": "db_001",
+          "name": "Total_Tbs_Size"
+        },
+        {
+          "cmdb_id": "db_002",
+          "name": "Asm_Free_Tb"
+        },
+        {
+          "cmdb_id": "db_002",
+          "name": "DbFile_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_002",
+          "name": "Hang"
+        },
+        {
+          "cmdb_id": "db_002",
+          "name": "MEM_Total"
+        },
+        {
+          "cmdb_id": "db_002",
+          "name": "On_Off_State"
+        },
+        {
+          "cmdb_id": "db_002",
+          "name": "PGA_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_002",
+          "name": "PGA_used_total"
+        },
+        {
+          "cmdb_id": "db_002",
+          "name": "Row_Lock"
+        },
+        {
+          "cmdb_id": "db_002",
+          "name": "SEQ_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_002",
+          "name": "Sess_Used_Temp"
+        },
+        {
+          "cmdb_id": "db_002",
+          "name": "Total_Tbs_Size"
+        },
+        {
+          "cmdb_id": "db_003",
+          "name": "DbFile_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_003",
+          "name": "Hang"
+        },
+        {
+          "cmdb_id": "db_003",
+          "name": "MEM_Total"
+        },
+        {
+          "cmdb_id": "db_003",
+          "name": "PGA_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_003",
+          "name": "Row_Lock"
+        },
+        {
+          "cmdb_id": "db_003",
+          "name": "SEQ_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_003",
+          "name": "TempTbs_Pct"
+        },
+        {
+          "cmdb_id": "db_004",
+          "name": "Asm_Free_Tb"
+        },
+        {
+          "cmdb_id": "db_004",
+          "name": "DbFile_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_004",
+          "name": "Hang"
+        },
+        {
+          "cmdb_id": "db_004",
+          "name": "MEM_Total"
+        },
+        {
+          "cmdb_id": "db_004",
+          "name": "On_Off_State"
+        },
+        {
+          "cmdb_id": "db_004",
+          "name": "PGA_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_004",
+          "name": "Row_Lock"
+        },
+        {
+          "cmdb_id": "db_004",
+          "name": "SEQ_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_004",
+          "name": "SctRead_Per_Sec"
+        },
+        {
+          "cmdb_id": "db_004",
+          "name": "Sess_Used_Undo"
+        },
+        {
+          "cmdb_id": "db_004",
+          "name": "Tbs_Free_Gb"
+        },
+        {
+          "cmdb_id": "db_004",
+          "name": "Tbs_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_004",
+          "name": "TempTbs_Pct"
+        },
+        {
+          "cmdb_id": "db_004",
+          "name": "Total_Tbs_Size"
+        },
+        {
+          "cmdb_id": "db_005",
+          "name": "DbFile_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_005",
+          "name": "Hang"
+        },
+        {
+          "cmdb_id": "db_005",
+          "name": "MEM_Total"
+        },
+        {
+          "cmdb_id": "db_005",
+          "name": "On_Off_State"
+        },
+        {
+          "cmdb_id": "db_005",
+          "name": "PGA_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_005",
+          "name": "Row_Lock"
+        },
+        {
+          "cmdb_id": "db_005",
+          "name": "SEQ_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_005",
+          "name": "TempTbs_Pct"
+        },
+        {
+          "cmdb_id": "db_005",
+          "name": "Total_Tbs_Size"
+        },
+        {
+          "cmdb_id": "db_006",
+          "name": "Asm_Free_Tb"
+        },
+        {
+          "cmdb_id": "db_006",
+          "name": "DbFile_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_006",
+          "name": "Hang"
+        },
+        {
+          "cmdb_id": "db_006",
+          "name": "MEM_Total"
+        },
+        {
+          "cmdb_id": "db_006",
+          "name": "MEM_real_util"
+        },
+        {
+          "cmdb_id": "db_006",
+          "name": "On_Off_State"
+        },
+        {
+          "cmdb_id": "db_006",
+          "name": "PGA_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_006",
+          "name": "PGA_used_total"
+        },
+        {
+          "cmdb_id": "db_006",
+          "name": "Row_Lock"
+        },
+        {
+          "cmdb_id": "db_006",
+          "name": "SEQ_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_006",
+          "name": "SctRead_Per_Sec"
+        },
+        {
+          "cmdb_id": "db_006",
+          "name": "Sess_Used_Temp"
+        },
+        {
+          "cmdb_id": "db_006",
+          "name": "Tbs_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_006",
+          "name": "TempTbs_Pct"
+        },
+        {
+          "cmdb_id": "db_006",
+          "name": "Total_Tbs_Size"
+        },
+        {
+          "cmdb_id": "db_007",
+          "name": "DbFile_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_007",
+          "name": "Hang"
+        },
+        {
+          "cmdb_id": "db_007",
+          "name": "MEM_Total"
+        },
+        {
+          "cmdb_id": "db_007",
+          "name": "PGA_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_007",
+          "name": "Row_Lock"
+        },
+        {
+          "cmdb_id": "db_007",
+          "name": "SEQ_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_007",
+          "name": "TempTbs_Pct"
+        },
+        {
+          "cmdb_id": "db_008",
+          "name": "Asm_Free_Tb"
+        },
+        {
+          "cmdb_id": "db_008",
+          "name": "DbFile_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_008",
+          "name": "Hang"
+        },
+        {
+          "cmdb_id": "db_008",
+          "name": "MEM_Total"
+        },
+        {
+          "cmdb_id": "db_008",
+          "name": "On_Off_State"
+        },
+        {
+          "cmdb_id": "db_008",
+          "name": "PGA_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_008",
+          "name": "Row_Lock"
+        },
+        {
+          "cmdb_id": "db_008",
+          "name": "SEQ_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_008",
+          "name": "SctRead_Per_Sec"
+        },
+        {
+          "cmdb_id": "db_008",
+          "name": "Tbs_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_008",
+          "name": "TempTbs_Pct"
+        },
+        {
+          "cmdb_id": "db_008",
+          "name": "Total_Tbs_Size"
+        },
+        {
+          "cmdb_id": "db_009",
+          "name": "AIOS"
+        },
+        {
+          "cmdb_id": "db_009",
+          "name": "Asm_Free_Tb"
+        },
+        {
+          "cmdb_id": "db_009",
+          "name": "DFParaWrite_Per_Sec"
+        },
+        {
+          "cmdb_id": "db_009",
+          "name": "DbFile_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_009",
+          "name": "Hang"
+        },
+        {
+          "cmdb_id": "db_009",
+          "name": "MEM_Total"
+        },
+        {
+          "cmdb_id": "db_009",
+          "name": "On_Off_State"
+        },
+        {
+          "cmdb_id": "db_009",
+          "name": "PGA_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_009",
+          "name": "SEQ_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_009",
+          "name": "Total_Tbs_Size"
+        },
+        {
+          "cmdb_id": "db_010",
+          "name": "DbFile_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_010",
+          "name": "Hang"
+        },
+        {
+          "cmdb_id": "db_010",
+          "name": "MEM_Total"
+        },
+        {
+          "cmdb_id": "db_010",
+          "name": "On_Off_State"
+        },
+        {
+          "cmdb_id": "db_010",
+          "name": "PGA_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_010",
+          "name": "Row_Lock"
+        },
+        {
+          "cmdb_id": "db_010",
+          "name": "SEQ_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_010",
+          "name": "Total_Tbs_Size"
+        },
+        {
+          "cmdb_id": "db_011",
+          "name": "DbFile_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_011",
+          "name": "Hang"
+        },
+        {
+          "cmdb_id": "db_011",
+          "name": "MEM_Total"
+        },
+        {
+          "cmdb_id": "db_011",
+          "name": "On_Off_State"
+        },
+        {
+          "cmdb_id": "db_011",
+          "name": "PGA_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_011",
+          "name": "Row_Lock"
+        },
+        {
+          "cmdb_id": "db_011",
+          "name": "SEQ_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_011",
+          "name": "Total_Tbs_Size"
+        },
+        {
+          "cmdb_id": "db_012",
+          "name": "DbFile_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_012",
+          "name": "Hang"
+        },
+        {
+          "cmdb_id": "db_012",
+          "name": "MEM_Total"
+        },
+        {
+          "cmdb_id": "db_012",
+          "name": "On_Off_State"
+        },
+        {
+          "cmdb_id": "db_012",
+          "name": "PGA_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_012",
+          "name": "Row_Lock"
+        },
+        {
+          "cmdb_id": "db_012",
+          "name": "SEQ_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_012",
+          "name": "Sess_Used_Temp"
+        },
+        {
+          "cmdb_id": "db_012",
+          "name": "TempTbs_Pct"
+        },
+        {
+          "cmdb_id": "db_012",
+          "name": "Total_Tbs_Size"
+        },
+        {
+          "cmdb_id": "db_013",
+          "name": "AIOS"
+        },
+        {
+          "cmdb_id": "db_013",
+          "name": "DbFile_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_013",
+          "name": "Hang"
+        },
+        {
+          "cmdb_id": "db_013",
+          "name": "MEM_Total"
+        },
+        {
+          "cmdb_id": "db_013",
+          "name": "On_Off_State"
+        },
+        {
+          "cmdb_id": "db_013",
+          "name": "PGA_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_013",
+          "name": "Row_Lock"
+        },
+        {
+          "cmdb_id": "db_013",
+          "name": "SEQ_Used_Pct"
+        },
+        {
+          "cmdb_id": "db_013",
+          "name": "SctRead_Per_Sec"
+        },
+        {
+          "cmdb_id": "db_013",
+          "name": "Sess_Used_Temp"
+        },
+        {
+          "cmdb_id": "db_013",
+          "name": "Sess_Used_Undo"
+        },
+        {
+          "cmdb_id": "db_013",
+          "name": "TempTbs_Pct"
+        },
+        {
+          "cmdb_id": "db_013",
+          "name": "Total_Tbs_Size"
+        }
+      ],
+      "series": 611
+    }
+  },
+  "system": "Telecom",
+  "window_coverage": [
+    {
+      "component": "docker_003",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 252,
+      "metric_rows_before_30min": 45,
+      "query_row": 0,
+      "reason": "CPU fault",
+      "start_utc": "2020-04-10T16:05:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 109449,
+      "trace_rows_before_30min": 16822
+    },
+    {
+      "component": "docker_004",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 261,
+      "metric_rows_before_30min": 261,
+      "query_row": 1,
+      "reason": "CPU fault",
+      "start_utc": "2020-04-10T17:40:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 134666,
+      "trace_rows_before_30min": 156624
+    },
+    {
+      "component": "db_007",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1138,
+      "metric_rows_before_30min": 1135,
+      "query_row": 2,
+      "reason": "db connection limit",
+      "start_utc": "2020-04-10T18:15:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 41950,
+      "trace_rows_before_30min": 50304
+    },
+    {
+      "component": "docker_002",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 261,
+      "metric_rows_before_30min": 270,
+      "query_row": 3,
+      "reason": "CPU fault",
+      "start_utc": "2020-04-10T18:50:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 103950,
+      "trace_rows_before_30min": 134466
+    },
+    {
+      "component": "docker_008",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 270,
+      "metric_rows_before_30min": 270,
+      "query_row": 4,
+      "reason": "CPU fault",
+      "start_utc": "2020-04-10T20:40:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 69056,
+      "trace_rows_before_30min": 72470
+    },
+    {
+      "component": "db_003",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 460,
+      "metric_rows_before_30min": 1133,
+      "query_row": 5,
+      "reason": "db close",
+      "start_utc": "2020-04-10T21:45:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 89683,
+      "trace_rows_before_30min": 277075
+    },
+    {
+      "component": "db_003",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1050,
+      "metric_rows_before_30min": 245,
+      "query_row": 6,
+      "reason": "db close",
+      "start_utc": "2020-05-21T16:07:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 178051,
+      "trace_rows_before_30min": 38519
+    },
+    {
+      "component": "docker_001",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 135,
+      "metric_rows_before_30min": 270,
+      "query_row": 7,
+      "reason": "CPU fault",
+      "start_utc": "2020-05-21T16:48:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 119374,
+      "trace_rows_before_30min": 119662
+    },
+    {
+      "component": "os_018",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 717,
+      "metric_rows_before_30min": 835,
+      "query_row": 8,
+      "reason": "network delay",
+      "start_utc": "2020-05-21T17:48:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "docker_005",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 261,
+      "metric_rows_before_30min": 27,
+      "query_row": 9,
+      "reason": "CPU fault",
+      "start_utc": "2020-05-21T18:18:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 68896,
+      "trace_rows_before_30min": 37767
+    },
+    {
+      "component": "docker_004",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 261,
+      "metric_rows_before_30min": 45,
+      "query_row": 10,
+      "reason": "CPU fault",
+      "start_utc": "2020-05-22T16:05:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 106636,
+      "trace_rows_before_30min": 16422
+    },
+    {
+      "component": "db_003",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1101,
+      "metric_rows_before_30min": 1097,
+      "query_row": 11,
+      "reason": "db connection limit",
+      "start_utc": "2020-05-22T16:40:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 228086,
+      "trace_rows_before_30min": 218251
+    },
+    {
+      "component": "os_021",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1077,
+      "metric_rows_before_30min": 1076,
+      "query_row": 12,
+      "reason": "network loss",
+      "start_utc": "2020-05-22T17:16:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 15537,
+      "trace_rows_before_30min": 16674
+    },
+    {
+      "component": "os_009",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1050,
+      "metric_rows_before_30min": 1049,
+      "query_row": 13,
+      "reason": "network loss",
+      "start_utc": "2020-05-22T17:52:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "os_021",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1078,
+      "metric_rows_before_30min": 1080,
+      "query_row": 14,
+      "reason": "network delay",
+      "start_utc": "2020-05-22T19:36:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 10946,
+      "trace_rows_before_30min": 12652
+    },
+    {
+      "component": "docker_006",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 261,
+      "metric_rows_before_30min": 270,
+      "query_row": 15,
+      "reason": "CPU fault",
+      "start_utc": "2020-05-22T20:47:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 76728,
+      "trace_rows_before_30min": 74734
+    },
+    {
+      "component": "db_007",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 996,
+      "metric_rows_before_30min": 1147,
+      "query_row": 16,
+      "reason": "db close",
+      "start_utc": "2020-05-23T17:47:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 46981,
+      "trace_rows_before_30min": 52650
+    },
+    {
+      "component": "docker_003",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 261,
+      "metric_rows_before_30min": 279,
+      "query_row": 17,
+      "reason": "CPU fault",
+      "start_utc": "2020-05-23T19:17:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 97694,
+      "trace_rows_before_30min": 123965
+    },
+    {
+      "component": "docker_006",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 261,
+      "metric_rows_before_30min": 270,
+      "query_row": 18,
+      "reason": "CPU fault",
+      "start_utc": "2020-05-23T20:17:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 69293,
+      "trace_rows_before_30min": 69542
+    },
+    {
+      "component": "os_020",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1216,
+      "metric_rows_before_30min": 1218,
+      "query_row": 19,
+      "reason": "network delay",
+      "start_utc": "2020-05-24T17:47:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "os_017",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1219,
+      "metric_rows_before_30min": 1220,
+      "query_row": 20,
+      "reason": "network loss",
+      "start_utc": "2020-05-24T19:47:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "db_003",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1001,
+      "metric_rows_before_30min": 1108,
+      "query_row": 21,
+      "reason": "db close",
+      "start_utc": "2020-05-24T20:47:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 243757,
+      "trace_rows_before_30min": 236897
+    },
+    {
+      "component": "db_007",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1144,
+      "metric_rows_before_30min": 1147,
+      "query_row": 22,
+      "reason": "db connection limit",
+      "start_utc": "2020-05-25T18:09:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 45687,
+      "trace_rows_before_30min": 47751
+    },
+    {
+      "component": "docker_008",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 225,
+      "metric_rows_before_30min": 270,
+      "query_row": 23,
+      "reason": "CPU fault",
+      "start_utc": "2020-05-25T18:39:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 59098,
+      "trace_rows_before_30min": 75782
+    },
+    {
+      "component": "os_021",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1083,
+      "metric_rows_before_30min": 1082,
+      "query_row": 24,
+      "reason": "network delay",
+      "start_utc": "2020-05-25T19:09:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 10278,
+      "trace_rows_before_30min": 11686
+    },
+    {
+      "component": "os_018",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1225,
+      "metric_rows_before_30min": 1224,
+      "query_row": 25,
+      "reason": "network loss",
+      "start_utc": "2020-05-25T19:39:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "os_020",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1224,
+      "metric_rows_before_30min": 1224,
+      "query_row": 26,
+      "reason": "network delay",
+      "start_utc": "2020-05-25T20:15:00+00:00",
+      "task": "task_3",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "os_001",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1056,
+      "metric_rows_before_30min": 1055,
+      "query_row": 27,
+      "reason": "network delay",
+      "start_utc": "2020-05-25T20:45:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "docker_002",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 270,
+      "metric_rows_before_30min": 261,
+      "query_row": 28,
+      "reason": "CPU fault",
+      "start_utc": "2020-05-25T21:15:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 137067,
+      "trace_rows_before_30min": 126139
+    },
+    {
+      "component": "os_018",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1215,
+      "metric_rows_before_30min": 933,
+      "query_row": 29,
+      "reason": "network delay",
+      "start_utc": "2020-05-26T16:23:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "os_017",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1220,
+      "metric_rows_before_30min": 1218,
+      "query_row": 30,
+      "reason": "network delay",
+      "start_utc": "2020-05-26T16:53:00+00:00",
+      "task": "task_3",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "docker_006",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 180,
+      "metric_rows_before_30min": 270,
+      "query_row": 31,
+      "reason": "CPU fault",
+      "start_utc": "2020-05-26T17:23:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 73411,
+      "trace_rows_before_30min": 68384
+    },
+    {
+      "component": "db_003",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1031,
+      "metric_rows_before_30min": 706,
+      "query_row": 32,
+      "reason": "db connection limit",
+      "start_utc": "2020-05-26T17:53:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 252148,
+      "trace_rows_before_30min": 233075
+    },
+    {
+      "component": "db_007",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1072,
+      "metric_rows_before_30min": 1063,
+      "query_row": 33,
+      "reason": "db close",
+      "start_utc": "2020-05-26T18:23:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 37992,
+      "trace_rows_before_30min": 47259
+    },
+    {
+      "component": "db_007",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1165,
+      "metric_rows_before_30min": 1072,
+      "query_row": 34,
+      "reason": "db connection limit",
+      "start_utc": "2020-05-26T18:53:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 35989,
+      "trace_rows_before_30min": 37992
+    },
+    {
+      "component": "docker_001",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 252,
+      "metric_rows_before_30min": 261,
+      "query_row": 35,
+      "reason": "CPU fault",
+      "start_utc": "2020-05-26T21:09:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 138990,
+      "trace_rows_before_30min": 125166
+    },
+    {
+      "component": "os_021",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 752,
+      "metric_rows_before_30min": 1080,
+      "query_row": 36,
+      "reason": "network delay",
+      "start_utc": "2020-05-26T21:39:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 10534,
+      "trace_rows_before_30min": 15606
+    },
+    {
+      "component": "docker_001",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 189,
+      "metric_rows_before_30min": 270,
+      "query_row": 37,
+      "reason": "CPU fault",
+      "start_utc": "2020-05-27T16:47:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 135978,
+      "trace_rows_before_30min": 129824
+    },
+    {
+      "component": "os_018",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1221,
+      "metric_rows_before_30min": 1222,
+      "query_row": 38,
+      "reason": "network loss",
+      "start_utc": "2020-05-27T19:47:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "db_003",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1082,
+      "metric_rows_before_30min": 1056,
+      "query_row": 39,
+      "reason": "db connection limit",
+      "start_utc": "2020-05-28T18:11:00+00:00",
+      "task": "task_3",
+      "trace_rows_after_30min": 193544,
+      "trace_rows_before_30min": 177266
+    },
+    {
+      "component": "docker_008",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 252,
+      "metric_rows_before_30min": 261,
+      "query_row": 40,
+      "reason": "CPU fault",
+      "start_utc": "2020-05-28T18:41:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 53074,
+      "trace_rows_before_30min": 60326
+    },
+    {
+      "component": "docker_001",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 261,
+      "metric_rows_before_30min": 144,
+      "query_row": 41,
+      "reason": "CPU fault",
+      "start_utc": "2020-05-28T19:41:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 85515,
+      "trace_rows_before_30min": 69376
+    },
+    {
+      "component": "os_021",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1078,
+      "metric_rows_before_30min": 467,
+      "query_row": 42,
+      "reason": "network loss",
+      "start_utc": "2020-05-29T16:13:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 12916,
+      "trace_rows_before_30min": 5108
+    },
+    {
+      "component": "os_009",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1052,
+      "metric_rows_before_30min": 1052,
+      "query_row": 43,
+      "reason": "network delay",
+      "start_utc": "2020-05-29T18:43:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "os_020",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1218,
+      "metric_rows_before_30min": 1221,
+      "query_row": 44,
+      "reason": "network delay",
+      "start_utc": "2020-05-29T19:43:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "docker_002",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 261,
+      "metric_rows_before_30min": 270,
+      "query_row": 45,
+      "reason": "CPU fault",
+      "start_utc": "2020-05-29T20:13:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 114301,
+      "trace_rows_before_30min": 102381
+    },
+    {
+      "component": "os_018",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1220,
+      "metric_rows_before_30min": 1224,
+      "query_row": 46,
+      "reason": "network loss",
+      "start_utc": "2020-05-29T21:13:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "os_021",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1075,
+      "metric_rows_before_30min": 1078,
+      "query_row": 47,
+      "reason": "network delay",
+      "start_utc": "2020-05-30T18:47:00+00:00",
+      "task": "task_3",
+      "trace_rows_after_30min": 11788,
+      "trace_rows_before_30min": 13612
+    },
+    {
+      "component": "os_017",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1216,
+      "metric_rows_before_30min": 1223,
+      "query_row": 48,
+      "reason": "network delay",
+      "start_utc": "2020-05-30T19:17:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "db_003",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1099,
+      "metric_rows_before_30min": 1101,
+      "query_row": 49,
+      "reason": "db connection limit",
+      "start_utc": "2020-05-30T19:47:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 179860,
+      "trace_rows_before_30min": 171335
+    },
+    {
+      "component": "docker_004",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 261,
+      "metric_rows_before_30min": 270,
+      "query_row": 50,
+      "reason": "CPU fault",
+      "start_utc": "2020-05-30T20:17:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 115305,
+      "trace_rows_before_30min": 99517
+    }
+  ]
+}

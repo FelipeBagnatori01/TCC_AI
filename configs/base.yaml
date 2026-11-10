@@ -1,0 +1,23 @@
+# Base configuration. Unknown fields are rejected at load time.
+experiment:
+  name: e2e
+  seed: 42
+
+target_system: Telecom   # Telecom | Bank | Market
+
+paths:
+  data_root: data/raw/openrca
+  interim_dir: data/interim
+  processed_dir: data/processed
+  experiments_dir: experiments
+  manifest: data/MANIFEST.csv
+
+llm:
+  provider: fake              # swap provider = change this + model (no code change)
+  model: fake-model-v1        # pinned model version identifier (R6)
+  temperature: 0.0
+  max_tokens: 1024
+  budget_usd: 1.0             # hard cap per experiment (R7)
+  price_input_per_mtok: 1.0   # USD per million input tokens
+  price_output_per_mtok: 2.0  # USD per million output tokens
+  cache_dir: experiments/llm_cache

@@ -1,0 +1,39 @@
+# Data (R1): telemetry is never versioned (volume + CC BY-NC 4.0). data/MANIFEST.csv is versioned.
+data/raw/*
+data/interim/*
+data/processed/*
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# Model weights
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.joblib
+
+# Experiment outputs and LLM cache (regenerable; cache is shared out-of-band)
+experiments/*
+!experiments/.gitkeep
+
+# Python / tooling
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+mlruns/
+.DS_Store

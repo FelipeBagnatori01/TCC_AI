@@ -1,0 +1,56 @@
+"""Provider abstraction. Adapters implement ``LLMProvider``; selection is by config name."""
+
+from __future__ import annotations
+
+from collections.abc import Callable
+from typing import Protocol
+
+from tcc_rca.llm.types import LLMRequest, ProviderResult
+
+
+class LLMProvider(Protocol):
+    """Minimal contract every provider adapter must satisfy."""
+
+    def complete(self, request: LLMRequest) -> ProviderResult: ...
+
+
+class FakeProvider:
+    """Deterministic offline provider used by tests and the e2e smoke run."""
+
+    def __init__(self, responder: Callable[[LLMRequest], str] | None = None) -> None:
+        self.calls = 0
+        self._responder = responder or self._default_responder
+
+    @staticmethod
+    def _default_responder(request: LLMRequest) -> str:
+        return f"fake-response:{request.messages[-1].content}"
+
+    def complete(self, request: LLMRequest) -> ProviderResult:
+        self.calls += 1
+        text = self._responder(request)
+        prompt_chars = sum(len(m.content) for m in request.messages)
+        # Crude token estimate (4 chars/token): enough to exercise cost accounting.
+        return ProviderResult(
+            text=text,
+            input_tokens=max(1, prompt_chars // 4),
+            output_tokens=max(1, len(text) // 4),
+        )
+
+
+_REGISTRY: dict[str, Callable[[], LLMProvider]] = {"fake": FakeProvider}
+
+
+def register_provider(name: str, factory: Callable[[], LLMProvider]) -> None:
+    _REGISTRY[name] = factory
+
+
+def build_provider(name: str) -> LLMProvider:
+    try:
+        factory = _REGISTRY[name]
+    except KeyError:
+        known = ", ".join(sorted(_REGISTRY))
+        raise ValueError(
+            f"Unknown LLM provider {name!r}. Registered: {known}. "
+            "Add an adapter and register it with register_provider()."
+        ) from None
+    return factory()

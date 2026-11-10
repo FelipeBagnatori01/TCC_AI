@@ -1,7 +1,7 @@
 # TCC — Causa raiz de falhas em telecomunicações (OpenRCA)
 
 LSTM para detecção/predição de falhas, SHAP e LIME para explicabilidade e agente de LLM para explicar a causa raiz.
-Instruções completas: `instrucoes_implementacao_tcc.md` (fora deste repositório).
+
 
 ## Início rápido
 

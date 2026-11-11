@@ -56,12 +56,35 @@ class SeriesConfig(_Strict):
     report_train_days: int = Field(gt=0)
 
 
+class PrecursorConfig(_Strict):
+    # Minutes between the scored minute and the failure onset: positive = before the onset
+    # (precursor), zero = onset minute, negative = after the onset (detection).
+    leads_minutes: tuple[int, ...] = Field(min_length=1)
+    top_k: int = Field(gt=0)  # minute score = mean of the k largest |robust z|
+    bootstrap: int = Field(gt=0)
+
+
+class TasksConfig(_Strict):
+    """E3: windows, labels and the rolling-origin split (ADR 0007/0008)."""
+
+    excluded_days: tuple[str, ...] = ()  # removed from every split (ADR 0008)
+    first_test_day: str  # days before it form the initial train/validation block
+    val_days: int = Field(gt=0)  # last N days before each test day form validation
+    window_minutes: int = Field(gt=0)  # W
+    horizon_minutes: int = Field(ge=0)  # H: positive if an onset falls in [t, t + H]
+    detection_tolerance_minutes: int = Field(ge=0)  # D: ... or in [t - D, t]
+    normal_margin_before_minutes: int = Field(ge=0)
+    normal_margin_after_minutes: int = Field(ge=0)
+    precursor: PrecursorConfig
+
+
 class Config(_Strict):
     experiment: ExperimentConfig
     target_system: Literal["Telecom", "Bank", "Market"]
     paths: PathsConfig
     llm: LLMConfig
     series: SeriesConfig
+    tasks: TasksConfig
 
     def resolved(self) -> dict[str, Any]:
         """JSON-serializable view of the fully resolved configuration."""

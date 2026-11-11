@@ -78,9 +78,15 @@ def test_agent_visible_query_does_not_carry_ground_truth(tmp_path: Path) -> None
     assert read_scoring_points(system / "query.csv")[0].startswith("The only predicted")
 
 
-def test_agent_package_never_imports_label_module(repo_root: Path) -> None:
+# Ground truth lives in scoring_points (labels.py), record.csv (read_failures/build_cases) and
+# the E3 window labels (tcc_rca.dataset). Agent code may reach none of them (R3).
+_FORBIDDEN_IMPORTS = ("labels", "scoring_points", "read_failures", "build_cases", "dataset")
+_FORBIDDEN_LITERALS = ("record.csv", "windows.parquet", "scoring_points")
+
+
+def _ground_truth_offenders(package: Path) -> list[str]:
     offenders: list[str] = []
-    for path in (repo_root / "src/tcc_rca/agent").rglob("*.py"):
+    for path in package.rglob("*.py"):
         tree = ast.parse(path.read_text(encoding="utf-8"))
         for node in ast.walk(tree):
             names: list[str] = []
@@ -88,6 +94,30 @@ def test_agent_package_never_imports_label_module(repo_root: Path) -> None:
                 names = [node.module or ""] + [a.name for a in node.names]
             elif isinstance(node, ast.Import):
                 names = [a.name for a in node.names]
-            if any("labels" in n or "scoring_points" in n for n in names):
-                offenders.append(str(path))
-    assert offenders == []
+            elif (
+                isinstance(node, ast.Constant)
+                and isinstance(node.value, str)
+                and any(lit in node.value for lit in _FORBIDDEN_LITERALS)
+            ):
+                offenders.append(f"{path}: literal {node.value!r}")
+            if any(bad in n for n in names for bad in _FORBIDDEN_IMPORTS):
+                offenders.append(f"{path}: import {names}")
+    return offenders
+
+
+def test_agent_package_never_reaches_ground_truth(repo_root: Path) -> None:
+    assert _ground_truth_offenders(repo_root / "src/tcc_rca/agent") == []
+
+
+@pytest.mark.parametrize(
+    "source",
+    [
+        "from tcc_rca.ingestion.labels import read_scoring_points",
+        "from tcc_rca.ingestion.cases import read_failures",
+        "import tcc_rca.dataset.build",
+        "PATH = 'data/raw/openrca/Telecom/record.csv'",
+    ],
+)
+def test_ground_truth_guard_catches_violations(tmp_path: Path, source: str) -> None:
+    (tmp_path / "tool.py").write_text(source + "\n", encoding="utf-8")
+    assert _ground_truth_offenders(tmp_path)

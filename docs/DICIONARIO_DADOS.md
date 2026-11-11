@@ -112,6 +112,12 @@ Leitura e arestas: ADR 0006 e `reports/tables/dependency_edges_Telecom.csv`.
 - Regras de agregação e preenchimento: ADR 0005.
 - Seleção provisória (5 primeiros dias): `reports/tables/feature_drop_provisional_Telecom.csv` lista os 552 descartados com motivo. `reports/tables/feature_exempt_provisional_Telecom.csv` lista os 78 atributos de disponibilidade mantidos **só** pela isenção (`Agent_ping` 22, `ICMP_ping` 19, `Hang` 13, `On_Off_State` 12, `redis_ping` 12, todos constantes no treino); sem eles, obtém-se a seleção de controle (1.508).
 
+## Janelas, rótulos e divisão (E3)
+
+- `data/processed/Telecom/windows.parquet` (não versionado; contém rótulos, portanto é gabarito e proibido ao agente): uma linha por janela de 20 min com `row` (linha final na matriz), `day`, `start_utc`, `end_utc`, `minutes_to_next_onset`, `minutes_since_last_onset`, `normal` e `label` (1, 0 ou nulo, ADR 0007). São 4.093 janelas nos 12 dias utilizáveis.
+- Dias 2020_04_21, 04_22 e 04_23 excluídos: cópias sem rótulo de 05_31, 05_23 e 05_25 (ADR 0008).
+- Dobras, contagens e hash: `reports/tables/tasks_Telecom.json` e `split_characterization_Telecom.md`. Medição de precursor: `reports/tables/precursor_Telecom.csv`.
+
 ## Memória
 
 Converter um dia para parquet (leitura lazy e escrita em streaming) teve pico de **1.706 MB** de RSS no dia mais pesado (2020_04_20, 1,24 GB de trace) e 1.681 MB em 2020_04_11, medidos em processo isolado por `tcc-rca convert --days <dia>`, na máquina de 24 GB de RAM. Os 15 dias convertidos ocupam 2,7 GB em `data/interim/`.

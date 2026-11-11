@@ -35,3 +35,18 @@ series:
     # exemption: configs/experiment/sensitivity_sem_isencao.yaml (threat to validity, see ADR).
     constant_exempt_categories: [disponibilidade]
   report_train_days: 5             # provisional train block (first N days) for the E2 drop report only
+
+tasks:
+  # ADR 0008: unlabelled near-copies of 2020_05_31, 2020_05_23 and 2020_05_25 (leakage).
+  excluded_days: ["2020_04_21", "2020_04_22", "2020_04_23"]
+  first_test_day: "2020_05_22"      # 2020_04_11 + 2020_04_20 form the initial train/validation block
+  val_days: 1                      # the last day before each test day is that fold's validation
+  window_minutes: 20               # W (ADR 0007): below the 30 min minimum gap between onsets
+  horizon_minutes: 0               # H (ADR 0007): set from the precursor measurement
+  detection_tolerance_minutes: 5   # D (ADR 0007)
+  normal_margin_before_minutes: 5  # LSTM normal mask excludes windows touching
+  normal_margin_after_minutes: 30  # [onset - before, onset + after]; no failure end is labelled
+  precursor:
+    leads_minutes: [15, 10, 5, 2, 1, 0, -1, -2, -5]
+    top_k: 10
+    bootstrap: 2000

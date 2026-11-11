@@ -21,6 +21,7 @@ from tcc_rca.dataset.precursor import (
     LeadResult,
     bootstrap_auroc_ci,
     lead_samples,
+    local_abs_z,
     minute_scores,
 )
 from tcc_rca.dataset.split import (
@@ -76,6 +77,15 @@ def failure_days(failures: Sequence[Failure], index: pl.DataFrame) -> list[str]:
     return days
 
 
+def purged_count(windows: pl.DataFrame, fold: Fold, guard: int) -> int:
+    """Train/val windows removed by the guard purge in ``fold``."""
+
+    def n_train_val(frame: pl.DataFrame) -> int:
+        return frame.filter(pl.col("role").is_in(["train", "val"])).height
+
+    return n_train_val(with_roles(windows, fold, 0)) - n_train_val(with_roles(windows, fold, guard))
+
+
 def characterize(
     windows: pl.DataFrame,
     folds: Sequence[Fold],
@@ -83,10 +93,11 @@ def characterize(
     f_days: Sequence[str],
     cases: Sequence[Case],
     q_days: Sequence[str],
+    guard: int,
 ) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for fold in folds:
-        roled = with_roles(windows, fold)
+        roled = with_roles(windows, fold, guard)
 
         def count(role: str, expr: pl.Expr | None = None, frame: pl.DataFrame = roled) -> int:
             sel = frame.filter(pl.col("role") == role)
@@ -118,7 +129,8 @@ def characterize(
                 "test_reasons": dict(Counter(f.reason for f in tested)),
                 "test_components": dict(Counter(f.component for f in tested)),
                 "test_task_types": dict(Counter(c.query.task_index for c in queries)),
-                "min_gap_to_test_minutes": min_gap_to_test_minutes(windows, fold),
+                "min_gap_to_test_minutes": min_gap_to_test_minutes(windows, fold, guard),
+                "purged_guard_windows": purged_count(windows, fold, guard),
             }
         )
     return rows
@@ -162,14 +174,20 @@ def precursor_analysis(
 
     eval_rows = np.isin(day_arr, list(test_days))
     z = scaler.transform(values.filter(pl.Series(eval_rows)).select(selector.kept)).to_numpy()
-    scores = minute_scores(z.astype(np.float64), t.precursor.top_k)
+    p = t.precursor
+    local = local_abs_z(
+        values.select("day", *selector.kept), selector.kept, p.local_window_minutes, p.local_cap
+    )
+    method_scores = {
+        "global": minute_scores(z.astype(np.float64), p.top_k),
+        "local": minute_scores(local[eval_rows], p.top_k),
+    }
     minute_of_row = (
         values.filter(pl.Series(eval_rows))["time_utc"]
         .dt.replace_time_zone(None)
         .to_numpy()
         .astype("datetime64[m]")
     )
-    negatives = scores[normal_minute[eval_rows]]
 
     tested = [(f, d) for f, d in zip(failures, f_days, strict=True) if d in set(test_days)]
     groups: dict[str, list[Failure]] = {"all": [f for f, _ in tested]}
@@ -177,18 +195,22 @@ def precursor_analysis(
         groups.setdefault(f.reason, []).append(f)
 
     results: list[LeadResult] = []
-    for group, members in groups.items():
-        onsets = np.array(
-            [f.start_utc.replace(tzinfo=None) for f in members], dtype="datetime64[m]"
-        )
-        for b, lead in enumerate(t.precursor.leads_minutes):
-            pos = lead_samples(scores, minute_of_row, onsets, lead)
-            lo, hi = bootstrap_auroc_ci(
-                pos, negatives, t.precursor.bootstrap, seed=config.experiment.seed + b
+    for method, scores in method_scores.items():
+        negatives = scores[normal_minute[eval_rows]]
+        for group, members in groups.items():
+            onsets = np.array(
+                [f.start_utc.replace(tzinfo=None) for f in members], dtype="datetime64[m]"
             )
-            results.append(
-                LeadResult(lead, group, pos.size, negatives.size, auroc(pos, negatives), lo, hi)
-            )
+            for b, lead in enumerate(p.leads_minutes):
+                pos = lead_samples(scores, minute_of_row, onsets, lead)
+                lo, hi = bootstrap_auroc_ci(
+                    pos, negatives, p.bootstrap, seed=config.experiment.seed + b
+                )
+                results.append(
+                    LeadResult(
+                        method, lead, group, pos.size, negatives.size, auroc(pos, negatives), lo, hi
+                    )
+                )
     return results
 
 
@@ -211,7 +233,7 @@ def _write_markdown(path: Path, rows: list[dict[str, Any]], summary: dict[str, A
             f"| {r['test_positive_windows']} | {r['test_negative_windows']} "
             f"| {r['test_ignored_windows']} | {r['test_failures']} | {r['test_queries']} |"
         )
-    lines += ["", "## Falhas testadas (dobras de maio)", ""]
+    lines += ["", f"## Falhas testadas ({summary['failures_tested']} falhas nos dias de teste)", ""]
     lines += ["| Motivo | Falhas |", "|---|---|"]
     lines += [f"| {k} | {v} |" for k, v in summary["tested_reasons"].items()]
     lines += ["", "| Componente | Falhas |", "|---|---|"]
@@ -243,9 +265,15 @@ def run_tasks(config: Config, tables_dir: Path) -> dict[str, Any]:
     folds = rolling_origin_folds(days, t.excluded_days, t.first_test_day, t.val_days)
     test_fold = fold_of_test_day(folds)
     initial_days = [d for d in days if d < t.first_test_day and d not in t.excluded_days]
+    fitted_on = list(config.series.initial_block_days)
+    if fitted_on and fitted_on != initial_days:
+        raise ValueError(
+            f"E2 fitted log templates/sampling steps on {fitted_on}, but the E3 initial block is "
+            f"{initial_days}; they must be the same days (ADR 0012)"
+        )
 
-    fold_rows = characterize(windows, folds, failures, f_days, cases, q_days)
     guard = t.window_minutes + t.horizon_minutes
+    fold_rows = characterize(windows, folds, failures, f_days, cases, q_days, guard)
     short = [r["fold"] for r in fold_rows if r["min_gap_to_test_minutes"] <= guard]
     if short:
         raise ValueError(f"folds {short} have train/val windows within the {guard} min guard")

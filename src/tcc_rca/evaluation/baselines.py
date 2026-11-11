@@ -116,7 +116,8 @@ def run_folds(
         fit_rows = normal_min & np.isin(day_arr, list(fold.train_days))
         kept, z, robust = _fit_fold_transforms(values, features, fit_rows, config, categories)
 
-        roled = with_roles(windows, fold).filter(pl.col("role").is_not_null())
+        guard = t.window_minutes + t.horizon_minutes
+        roled = with_roles(windows, fold, guard).filter(pl.col("role").is_not_null())
         end_rows = roled["row"].to_numpy().astype(np.int64)
         role = roled["role"].to_numpy()
         label = roled["label"].to_numpy()  # float with NaN for ignored windows

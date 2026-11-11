@@ -11,3 +11,6 @@ series:
   log_top_templates: 10
   adaptive_ffill: true             # ADR 0012: sampling steps range from 1 to 60 min in the Bank
   max_ffill_steps: 60
+tasks:
+  excluded_days: []                # no duplicated days in the Bank (day_similarity_Bank.csv)
+  first_test_day: "2021_03_06"     # initial block = 2021_03_04 + 2021_03_05 = series.initial_block_days

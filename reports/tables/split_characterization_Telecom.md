@@ -15,7 +15,7 @@ Gerado por `tcc-rca tasks` (ADR 0007/0008). Janelas de 20 min; dias excluídos: 
 | 8 | 9 dias | 2020_05_29 | 2020_05_30 | 3070 (1480) | 341 (18) | 341 | 24 | 105 | 212 | 5 | 5 |
 | 9 | 10 dias | 2020_05_30 | 2020_05_31 | 3411 (1681) | 341 (24) | 341 | 24 | 196 | 121 | 4 | 4 |
 
-## Falhas testadas (dobras de maio)
+## Falhas testadas (45 falhas nos dias de teste)
 
 | Motivo | Falhas |
 |---|---|

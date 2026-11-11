@@ -70,6 +70,9 @@ class PrecursorConfig(_Strict):
     # (precursor), zero = onset minute, negative = after the onset (detection).
     leads_minutes: tuple[int, ...] = Field(min_length=1)
     top_k: int = Field(gt=0)  # minute score = mean of the k largest |robust z|
+    # "local" method (ADR 0013): causal baseline over the previous minutes of the same day
+    local_window_minutes: int = Field(gt=0)
+    local_cap: float = Field(gt=0.0)
     bootstrap: int = Field(gt=0)
 
 

@@ -97,7 +97,8 @@
         "task_5": 1,
         "task_1": 1
       },
-      "min_gap_to_test_minutes": 45721.0
+      "min_gap_to_test_minutes": 45721.0,
+      "purged_guard_windows": 0
     },
     {
       "fold": 1,
@@ -139,7 +140,8 @@
         "task_6": 1,
         "task_7": 2
       },
-      "min_gap_to_test_minutes": 1081.0
+      "min_gap_to_test_minutes": 1081.0,
+      "purged_guard_windows": 0
     },
     {
       "fold": 2,
@@ -177,7 +179,8 @@
         "task_7": 1,
         "task_2": 2
       },
-      "min_gap_to_test_minutes": 1081.0
+      "min_gap_to_test_minutes": 1081.0,
+      "purged_guard_windows": 0
     },
     {
       "fold": 3,
@@ -218,7 +221,8 @@
         "task_2": 1,
         "task_7": 1
       },
-      "min_gap_to_test_minutes": 1081.0
+      "min_gap_to_test_minutes": 1081.0,
+      "purged_guard_windows": 0
     },
     {
       "fold": 4,
@@ -267,7 +271,8 @@
         "task_3": 1,
         "task_7": 2
       },
-      "min_gap_to_test_minutes": 1081.0
+      "min_gap_to_test_minutes": 1081.0,
+      "purged_guard_windows": 0
     },
     {
       "fold": 5,
@@ -316,7 +321,8 @@
         "task_6": 3,
         "task_7": 1
       },
-      "min_gap_to_test_minutes": 1081.0
+      "min_gap_to_test_minutes": 1081.0,
+      "purged_guard_windows": 0
     },
     {
       "fold": 6,
@@ -356,7 +362,8 @@
       "test_task_types": {
         "task_2": 2
       },
-      "min_gap_to_test_minutes": 1081.0
+      "min_gap_to_test_minutes": 1081.0,
+      "purged_guard_windows": 0
     },
     {
       "fold": 7,
@@ -400,7 +407,8 @@
         "task_2": 1,
         "task_1": 1
       },
-      "min_gap_to_test_minutes": 1081.0
+      "min_gap_to_test_minutes": 1081.0,
+      "purged_guard_windows": 0
     },
     {
       "fold": 8,
@@ -448,7 +456,8 @@
         "task_6": 2,
         "task_1": 1
       },
-      "min_gap_to_test_minutes": 1081.0
+      "min_gap_to_test_minutes": 1081.0,
+      "purged_guard_windows": 0
     },
     {
       "fold": 9,
@@ -496,7 +505,8 @@
         "task_1": 2,
         "task_5": 1
       },
-      "min_gap_to_test_minutes": 1081.0
+      "min_gap_to_test_minutes": 1081.0,
+      "purged_guard_windows": 0
     }
   ]
 }

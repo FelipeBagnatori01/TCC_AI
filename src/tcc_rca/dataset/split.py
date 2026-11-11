@@ -49,20 +49,34 @@ def rolling_origin_folds(
     return folds
 
 
-def with_roles(windows: pl.DataFrame, fold: Fold) -> pl.DataFrame:
-    """``windows`` with a ``role`` column (train / val / test / null) for ``fold``."""
+def with_roles(windows: pl.DataFrame, fold: Fold, guard_minutes: int) -> pl.DataFrame:
+    """``windows`` with a ``role`` column (train / val / test / null) for ``fold``.
+
+    Guard by purging: a train/val window ending less than ``guard_minutes + 1`` minutes before
+    the first test window starts loses its role (null). This only matters when days are
+    contiguous (Bank: the validation day ends at 23:59 and the test day starts at 00:00); in
+    Telecom days are 18 h apart and nothing is purged. A train/val window that overlaps the test
+    period is NOT purged, so ``min_gap_to_test_minutes`` still exposes a real leak.
+    """
     mapping = {d: fold.role(d) for d in windows["day"].unique().to_list()}
-    return windows.with_columns(
+    roled = windows.with_columns(
         pl.col("day").replace_strict(mapping, return_dtype=pl.String).alias("role")
     )
+    test_start = roled.filter(pl.col("role") == "test")["start_utc"].min()
+    if test_start is None:
+        return roled
+    gap = (pl.lit(test_start) - pl.col("end_utc")).dt.total_minutes()
+    purge = pl.col("role").is_in(["train", "val"]) & (gap > 0) & (gap <= guard_minutes)
+    return roled.with_columns(pl.when(purge).then(None).otherwise(pl.col("role")).alias("role"))
 
 
-def min_gap_to_test_minutes(windows: pl.DataFrame, fold: Fold) -> float:
-    """Smallest time gap between any train/val window span and any test window span (minutes).
+def min_gap_to_test_minutes(windows: pl.DataFrame, fold: Fold, guard_minutes: int) -> float:
+    """Smallest time gap between any train/val window span and any test window span (minutes),
+    after the guard purge.
 
     Negative or zero means some train/val window overlaps or touches the test period.
     """
-    roled = with_roles(windows, fold)
+    roled = with_roles(windows, fold, guard_minutes)
     test = roled.filter(pl.col("role") == "test")
     other = roled.filter(pl.col("role").is_in(["train", "val"]))
     if test.is_empty() or other.is_empty():

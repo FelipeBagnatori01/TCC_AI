@@ -1,0 +1,145 @@
+method,lead_minutes,group,n_pos,n_neg,auroc,ci_low,ci_high
+global,15,all,119,7568,0.4859,0.4336,0.5379
+global,10,all,119,7568,0.4831,0.4345,0.5296
+global,5,all,119,7568,0.5066,0.4497,0.5606
+global,2,all,120,7568,0.4998,0.4452,0.5531
+global,1,all,120,7568,0.5001,0.4501,0.5491
+global,0,all,120,7568,0.5051,0.4534,0.5546
+global,-1,all,120,7568,0.5151,0.4624,0.569
+global,-2,all,120,7568,0.5025,0.4512,0.5538
+global,-5,all,120,7568,0.5065,0.4558,0.5553
+global,15,high memory usage,5,7568,0.4139,0.1844,0.6402
+global,10,high memory usage,5,7568,0.4077,0.2045,0.603
+global,5,high memory usage,5,7568,0.3842,0.1571,0.6266
+global,2,high memory usage,5,7568,0.4172,0.205,0.6111
+global,1,high memory usage,5,7568,0.4166,0.1755,0.6507
+global,0,high memory usage,5,7568,0.3841,0.1569,0.627
+global,-1,high memory usage,5,7568,0.3723,0.1617,0.5969
+global,-2,high memory usage,5,7568,0.3852,0.1705,0.6045
+global,-5,high memory usage,5,7568,0.409,0.168,0.6076
+global,15,network latency,26,7568,0.4339,0.3181,0.5512
+global,10,network latency,26,7568,0.4708,0.3593,0.5865
+global,5,network latency,26,7568,0.5185,0.379,0.6552
+global,2,network latency,26,7568,0.4922,0.366,0.6243
+global,1,network latency,26,7568,0.4788,0.3648,0.5812
+global,0,network latency,26,7568,0.4913,0.3846,0.6014
+global,-1,network latency,26,7568,0.488,0.3575,0.6228
+global,-2,network latency,26,7568,0.4473,0.3437,0.5486
+global,-5,network latency,26,7568,0.469,0.3583,0.5735
+global,15,network packet loss,32,7568,0.5677,0.4749,0.6571
+global,10,network packet loss,32,7568,0.5604,0.4679,0.6507
+global,5,network packet loss,32,7568,0.6052,0.5179,0.6908
+global,2,network packet loss,32,7568,0.5723,0.4766,0.672
+global,1,network packet loss,32,7568,0.5958,0.5088,0.6805
+global,0,network packet loss,32,7568,0.5817,0.4996,0.6668
+global,-1,network packet loss,32,7568,0.5862,0.5006,0.6709
+global,-2,network packet loss,32,7568,0.5799,0.4858,0.6748
+global,-5,network packet loss,32,7568,0.533,0.4438,0.6307
+global,15,high disk I/O read usage,18,7568,0.5066,0.3752,0.6335
+global,10,high disk I/O read usage,18,7568,0.5264,0.4009,0.6397
+global,5,high disk I/O read usage,18,7568,0.467,0.3389,0.6047
+global,2,high disk I/O read usage,18,7568,0.502,0.3647,0.6373
+global,1,high disk I/O read usage,18,7568,0.479,0.3478,0.6105
+global,0,high disk I/O read usage,18,7568,0.5475,0.411,0.6748
+global,-1,high disk I/O read usage,18,7568,0.5588,0.4453,0.6723
+global,-2,high disk I/O read usage,18,7568,0.5477,0.4248,0.6617
+global,-5,high disk I/O read usage,18,7568,0.6228,0.5453,0.7005
+global,15,high disk space usage,5,7568,0.3654,0.1186,0.6171
+global,10,high disk space usage,5,7568,0.3647,0.1298,0.6118
+global,5,high disk space usage,5,7568,0.4077,0.169,0.6501
+global,2,high disk space usage,5,7568,0.3425,0.1487,0.5345
+global,1,high disk space usage,5,7568,0.3968,0.1362,0.7226
+global,0,high disk space usage,5,7568,0.3358,0.1262,0.6404
+global,-1,high disk space usage,5,7568,0.3334,0.1689,0.532
+global,-2,high disk space usage,5,7568,0.3784,0.1693,0.671
+global,-5,high disk space usage,5,7568,0.3238,0.1157,0.6403
+global,15,high CPU usage,30,7568,0.4863,0.3797,0.5919
+global,10,high CPU usage,30,7568,0.4388,0.3423,0.5329
+global,5,high CPU usage,30,7568,0.4788,0.3747,0.5926
+global,2,high CPU usage,31,7568,0.4938,0.3854,0.608
+global,1,high CPU usage,31,7568,0.4866,0.3878,0.5924
+global,0,high CPU usage,31,7568,0.4854,0.3896,0.5795
+global,-1,high CPU usage,31,7568,0.5148,0.4139,0.6129
+global,-2,high CPU usage,31,7568,0.503,0.4077,0.5988
+global,-5,high CPU usage,31,7568,0.5118,0.4124,0.6151
+global,15,JVM Out of Memory (OOM) Heap,3,7568,0.2545,0.1243,0.4191
+global,10,JVM Out of Memory (OOM) Heap,3,7568,0.2695,0.1249,0.4318
+global,5,JVM Out of Memory (OOM) Heap,3,7568,0.2372,0.1233,0.4053
+global,2,JVM Out of Memory (OOM) Heap,3,7568,0.2404,0.1235,0.4173
+global,1,JVM Out of Memory (OOM) Heap,3,7568,0.2402,0.1234,0.4191
+global,0,JVM Out of Memory (OOM) Heap,3,7568,0.2419,0.1241,0.4168
+global,-1,JVM Out of Memory (OOM) Heap,3,7568,0.272,0.1267,0.4005
+global,-2,JVM Out of Memory (OOM) Heap,3,7568,0.2836,0.1261,0.4189
+global,-5,JVM Out of Memory (OOM) Heap,3,7568,0.2629,0.1247,0.4172
+local,15,all,119,7568,0.505,0.4521,0.5554
+local,10,all,119,7568,0.5345,0.4875,0.5833
+local,5,all,119,7568,0.5191,0.4679,0.5717
+local,2,all,120,7568,0.4662,0.4128,0.5201
+local,1,all,120,7568,0.5126,0.4612,0.5674
+local,0,all,120,7568,0.807,0.7603,0.8518
+local,-1,all,120,7568,0.7934,0.7527,0.8318
+local,-2,all,120,7568,0.7389,0.6971,0.7791
+local,-5,all,120,7568,0.5791,0.5285,0.6281
+local,15,high memory usage,5,7568,0.6727,0.4538,0.8774
+local,10,high memory usage,5,7568,0.4284,0.2076,0.6548
+local,5,high memory usage,5,7568,0.4438,0.1387,0.763
+local,2,high memory usage,5,7568,0.5341,0.346,0.718
+local,1,high memory usage,5,7568,0.4674,0.3056,0.635
+local,0,high memory usage,5,7568,0.725,0.3679,0.9644
+local,-1,high memory usage,5,7568,0.8173,0.6693,0.9373
+local,-2,high memory usage,5,7568,0.672,0.4162,0.9172
+local,-5,high memory usage,5,7568,0.7498,0.5804,0.9162
+local,15,network latency,26,7568,0.4894,0.3812,0.602
+local,10,network latency,26,7568,0.5736,0.4705,0.6798
+local,5,network latency,26,7568,0.5605,0.4571,0.6581
+local,2,network latency,26,7568,0.4541,0.3368,0.5805
+local,1,network latency,26,7568,0.5097,0.3978,0.6228
+local,0,network latency,26,7568,0.6964,0.5733,0.8151
+local,-1,network latency,26,7568,0.585,0.4865,0.6811
+local,-2,network latency,26,7568,0.6122,0.5009,0.7174
+local,-5,network latency,26,7568,0.5747,0.4699,0.673
+local,15,network packet loss,32,7568,0.5051,0.406,0.6054
+local,10,network packet loss,32,7568,0.5341,0.4481,0.6207
+local,5,network packet loss,32,7568,0.5624,0.4644,0.661
+local,2,network packet loss,32,7568,0.4533,0.3536,0.5557
+local,1,network packet loss,32,7568,0.5793,0.4883,0.6703
+local,0,network packet loss,32,7568,0.843,0.7671,0.9086
+local,-1,network packet loss,32,7568,0.7987,0.7358,0.8634
+local,-2,network packet loss,32,7568,0.6985,0.6299,0.7649
+local,-5,network packet loss,32,7568,0.5391,0.4387,0.6444
+local,15,high disk I/O read usage,18,7568,0.4571,0.3163,0.6014
+local,10,high disk I/O read usage,18,7568,0.6489,0.5011,0.7748
+local,5,high disk I/O read usage,18,7568,0.3549,0.2409,0.4886
+local,2,high disk I/O read usage,18,7568,0.5278,0.4199,0.6423
+local,1,high disk I/O read usage,18,7568,0.4918,0.3509,0.637
+local,0,high disk I/O read usage,18,7568,0.8697,0.7606,0.9438
+local,-1,high disk I/O read usage,18,7568,0.9384,0.8971,0.9742
+local,-2,high disk I/O read usage,18,7568,0.8935,0.8511,0.932
+local,-5,high disk I/O read usage,18,7568,0.7271,0.621,0.8236
+local,15,high disk space usage,5,7568,0.567,0.2618,0.8689
+local,10,high disk space usage,5,7568,0.3379,0.2236,0.4393
+local,5,high disk space usage,5,7568,0.6566,0.3554,0.8734
+local,2,high disk space usage,5,7568,0.5554,0.2665,0.846
+local,1,high disk space usage,5,7568,0.4951,0.3057,0.6748
+local,0,high disk space usage,5,7568,0.7844,0.5769,0.9755
+local,-1,high disk space usage,5,7568,0.8137,0.7041,0.9189
+local,-2,high disk space usage,5,7568,0.778,0.5726,0.9306
+local,-5,high disk space usage,5,7568,0.619,0.3403,0.8087
+local,15,high CPU usage,30,7568,0.5009,0.4034,0.5973
+local,10,high CPU usage,30,7568,0.4846,0.3903,0.5737
+local,5,high CPU usage,30,7568,0.555,0.4517,0.6525
+local,2,high CPU usage,31,7568,0.4198,0.3163,0.5213
+local,1,high CPU usage,31,7568,0.4907,0.3735,0.6037
+local,0,high CPU usage,31,7568,0.8265,0.7394,0.8929
+local,-1,high CPU usage,31,7568,0.8589,0.7826,0.9162
+local,-2,high CPU usage,31,7568,0.7843,0.7114,0.8513
+local,-5,high CPU usage,31,7568,0.5105,0.4133,0.609
+local,15,JVM Out of Memory (OOM) Heap,3,7568,0.5842,0.3774,0.76
+local,10,JVM Out of Memory (OOM) Heap,3,7568,0.5191,0.3742,0.7355
+local,5,JVM Out of Memory (OOM) Heap,3,7568,0.2207,0.1566,0.3033
+local,2,JVM Out of Memory (OOM) Heap,3,7568,0.5575,0.2183,0.8557
+local,1,JVM Out of Memory (OOM) Heap,3,7568,0.2837,0.1183,0.377
+local,0,JVM Out of Memory (OOM) Heap,3,7568,0.9767,0.9641,0.9912
+local,-1,JVM Out of Memory (OOM) Heap,3,7568,0.9225,0.8508,0.9962
+local,-2,JVM Out of Memory (OOM) Heap,3,7568,0.9183,0.7775,0.9919
+local,-5,JVM Out of Memory (OOM) Heap,3,7568,0.5141,0.4885,0.5342

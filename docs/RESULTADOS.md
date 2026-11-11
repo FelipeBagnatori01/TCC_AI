@@ -15,6 +15,17 @@ Análise visual completa, com gráficos e tabelas: `notebooks/analise_telecom_e1
 | Classes desbalanceadas | `CPU fault` 19/51; 15 componentes, vários com 1–2 falhas; cada motivo ocorre num único tipo de componente: `CPU fault` só em `docker_*`, `network delay/loss` só em `os_*`, `db close/connection limit` só em `db_*` | O tipo do componente restringe o motivo a no máximo duas opções (útil ao agente, E7); padrão deste conjunto, não regra geral |
 | O fim das falhas não é rotulado | Só o início em `record.csv` | Janelas "ignoradas" e margem de 30 min (ameaça nº 6) |
 
+## Achados sobre os dados do Bank (E1–E3, Plano B)
+
+| Achado | Evidência | Consequência |
+|---|---|---|
+| Sem dias duplicados | Par mais parecido com 53% de valores iguais (`day_similarity_Bank.csv`) | Nenhum dia excluído |
+| Unidade dos traces muda em 23/03 (ms → s) | Inventário; checagem de faixa de datas | Unidade detectada por arquivo (ADR 0011) |
+| Motivo não define o tipo de componente | `high CPU usage` em 6 tipos de componente | A pista do Telecom não generaliza (E7) |
+| Cadência de amostragem de 1 a 60 min | `fill_limits_Bank.csv` | Preenchimento adaptativo (ADR 0012) |
+| **Deriva entre dias** | Pontuação global nos minutos normais: de 85 (03/04) a 760 milhões (03/24) | Régua global satura; método local (ADR 0013) |
+| Não há precursor; o sinal surge no início | AUROC local: 0,81 [0,76; 0,85] no início; antes do início, todos os ICs incluem 0,5 | Tarefa A = detecção precoce também no Bank |
+
 ## E4 — Baselines (ADR 0010)
 
 Configuração principal (isenção de disponibilidade, ADR 0005). Tabelas completas, incluindo os resultados por tipo de tarefa e por motivo: `reports/tables/baselines_Telecom_baselines.md` e, para o controle sem isenção, `reports/tables/baselines_Telecom_baselines_sem_isencao.md`.

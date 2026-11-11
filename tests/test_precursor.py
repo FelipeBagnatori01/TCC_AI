@@ -42,3 +42,23 @@ def test_lead_samples_picks_minutes_before_onset() -> None:
     onsets = np.array(["2020-05-22T00:05", "2020-05-22T00:01"], dtype="datetime64[m]")
     assert lead_samples(scores, minutes, onsets, 2).tolist() == [3.0]  # 00:-01 not in grid
     assert lead_samples(scores, minutes, onsets, -1).tolist() == [6.0, 2.0]
+
+
+def test_local_abs_z_is_causal_hand_computed_and_floored() -> None:
+    import polars as pl
+
+    from tcc_rca.dataset.precursor import local_abs_z
+
+    base = [10.0, 12.0] * 10  # past median 11, past std ~1.026
+    frame = pl.DataFrame({"day": ["d"] * 22, "a::x": [*base, 20.0, 11.0], "b::c": [5.0] * 22})
+    z = local_abs_z(frame, ["a::x", "b::c"], window=20, cap=50.0)
+    past = np.array(base)
+    assert np.isnan(z[:10, 0]).all()  # fewer than 10 past samples: undefined
+    assert z[20, 0] == pytest.approx((20.0 - 11.0) / past.std(ddof=1))
+    # constant series: zero spread is floored at 0.1% of (|median| + 1), never a division by 0
+    assert z[21, 1] == 0.0
+    # causality: changing the last value never changes any earlier |z|
+    later = frame.with_columns(pl.Series("a::x", [*base, 20.0, 999.0]))
+    z2 = local_abs_z(later, ["a::x", "b::c"], window=20, cap=50.0)
+    np.testing.assert_array_equal(z[:21], z2[:21])
+    assert z2[21, 0] == 50.0  # capped

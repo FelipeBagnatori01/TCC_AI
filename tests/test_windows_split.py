@@ -122,7 +122,7 @@ def test_test_windows_never_overlap_train_or_val_windows() -> None:
     w = _windows()
     folds = rolling_origin_folds(DAYS, ["2020_04_21"], "2020_05_22", 1)
     for fold in folds:
-        roled = with_roles(w, fold)
+        roled = with_roles(w, fold, SPEC.window_minutes + SPEC.horizon_minutes)
         test = roled.filter(pl.col("role") == "test")
         other = roled.filter(pl.col("role").is_in(["train", "val"]))
         overlap = other.filter(
@@ -130,7 +130,10 @@ def test_test_windows_never_overlap_train_or_val_windows() -> None:
             & (pl.col("end_utc") >= test["start_utc"].min())
         )
         assert overlap.is_empty()
-        assert min_gap_to_test_minutes(w, fold) > SPEC.window_minutes + SPEC.horizon_minutes
+        assert (
+            min_gap_to_test_minutes(w, fold, SPEC.window_minutes + SPEC.horizon_minutes)
+            > SPEC.window_minutes + SPEC.horizon_minutes
+        )
         assert roled.filter(pl.col("day") == "2020_04_21")["role"].is_null().all()
 
 
@@ -144,7 +147,9 @@ def test_min_gap_detects_overlap() -> None:
         .otherwise(pl.col("day"))
         .alias("day")
     )
-    assert min_gap_to_test_minutes(leaked, fold) <= 0
+    assert (
+        min_gap_to_test_minutes(leaked, fold, SPEC.window_minutes + SPEC.horizon_minutes) <= 0
+    )  # overlap is never purged
 
 
 def test_each_failure_is_tested_exactly_once() -> None:
@@ -169,3 +174,26 @@ def test_onset_vector_order_does_not_matter() -> None:
     b = build_window_index(_index(), list(reversed(ONSETS)), SPEC)
     assert a.equals(b)
     assert np.isfinite(a["minutes_to_next_onset"].drop_nulls().to_numpy()).all()
+
+
+def test_guard_purges_the_end_of_a_contiguous_validation_day() -> None:
+    """Bank days are contiguous: validation ends 23:59, test starts 00:00 of the next day."""
+    a, b, c = "2021_03_04", "2021_03_05", "2021_03_06"
+    rows = (
+        [(a, _day_start(a) + timedelta(minutes=i)) for i in range(60)]
+        + [(b, _day_start(b) + timedelta(hours=23, minutes=i)) for i in range(60)]
+        + [(c, _day_start(c) + timedelta(minutes=i)) for i in range(60)]
+    )
+    index = pl.DataFrame(rows, schema=["day", "time_utc"], orient="row").with_columns(
+        pl.col("time_utc").dt.cast_time_unit("us")
+    )
+    w = build_window_index(index, [], SPEC)
+    fold = rolling_origin_folds([a, b, c], [], c, 1)[0]
+    assert fold.val_days == (b,)
+    guard = SPEC.window_minutes + SPEC.horizon_minutes  # 10
+    assert min_gap_to_test_minutes(w, fold, 0) == 1.0  # without the guard: 23:59 -> 00:00
+    roled = with_roles(w, fold, guard)
+    purged = roled.filter((pl.col("day") == b) & pl.col("role").is_null())
+    assert purged.height == guard  # validation windows ending 23:50 .. 23:59
+    assert min_gap_to_test_minutes(w, fold, guard) == guard + 1
+    assert roled.filter(pl.col("day") == a)["role"].to_list() == ["train"] * 51  # untouched

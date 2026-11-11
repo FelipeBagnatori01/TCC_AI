@@ -51,6 +51,8 @@ tasks:
   precursor:
     leads_minutes: [15, 10, 5, 2, 1, 0, -1, -2, -5]
     top_k: 10
+    local_window_minutes: 60         # ADR 0013: causal local baseline (robust to drift across days)
+    local_cap: 50.0
     bootstrap: 2000
 
 baselines:                         # E4 (ADR 0010)

@@ -9,10 +9,12 @@ only if the AUROC confidence interval lies above 0.5.
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from dataclasses import dataclass
 
 import numpy as np
 import numpy.typing as npt
+import polars as pl
 
 from tcc_rca.evaluation.metrics import auroc
 
@@ -34,6 +36,30 @@ def bootstrap_auroc_ci(
     return float(np.quantile(stats, alpha)), float(np.quantile(stats, 1.0 - alpha))
 
 
+def local_abs_z(
+    values: pl.DataFrame, features: Sequence[str], window: int, cap: float
+) -> FloatArray:
+    """|z| of each value against the PREVIOUS ``window`` minutes of the same day (causal).
+
+    Center: rolling median of the past; scale: rolling std of the past, floored at 0.1% of the
+    median's magnitude (+1) so near-constant series do not blow up; |z| capped at ``cap``.
+    Robust to slow drift across days, which breaks a scaler fitted on the initial block (Bank).
+    Uses no label and no future value.
+    """
+
+    def z(f: str) -> pl.Expr:
+        past = pl.col(f).shift(1)
+        center = past.rolling_median(window, min_samples=10).over("day")
+        spread = past.rolling_std(window, min_samples=10).over("day")
+        scale = pl.max_horizontal(spread, (center.abs() + 1.0) * 1e-3)
+        return ((pl.col(f) - center) / scale).alias(f)
+
+    out = values.select(*[z(f) for f in features]).to_numpy().astype(np.float64)
+    out = np.where(np.isfinite(out), np.abs(out), np.nan)
+    clipped: FloatArray = np.minimum(out, cap)
+    return clipped
+
+
 def minute_scores(z: FloatArray, top_k: int) -> FloatArray:
     """Mean of the ``top_k`` largest |z| per row; missing values count as 0 (no evidence)."""
     a = np.nan_to_num(np.abs(z), nan=0.0)
@@ -45,6 +71,7 @@ def minute_scores(z: FloatArray, top_k: int) -> FloatArray:
 
 @dataclass(frozen=True)
 class LeadResult:
+    method: str  # "global" (initial-block scaler) or "local" (causal rolling baseline)
     lead_minutes: int
     group: str  # "all" or a failure reason
     n_pos: int

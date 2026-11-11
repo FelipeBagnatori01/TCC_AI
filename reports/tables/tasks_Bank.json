@@ -1,0 +1,488 @@
+{
+  "system": "Bank",
+  "window_minutes": 20,
+  "horizon_minutes": 0,
+  "detection_tolerance_minutes": 5,
+  "normal_margin_minutes": [
+    5,
+    30
+  ],
+  "excluded_days": [],
+  "initial_block_days": [
+    "2021_03_04",
+    "2021_03_05"
+  ],
+  "folds": 8,
+  "windows": 14210,
+  "windows_sha256": "99aed7426e83b59dd13fc047bc162fd09c8d935d56bacd94fed978672d123504",
+  "failures_total": 136,
+  "failures_tested": 120,
+  "failures_initial_block_not_tested": 16,
+  "queries_tested": 120,
+  "tested_reasons": {
+    "network packet loss": 32,
+    "high CPU usage": 31,
+    "network latency": 26,
+    "high disk I/O read usage": 18,
+    "high memory usage": 5,
+    "high disk space usage": 5,
+    "JVM Out of Memory (OOM) Heap": 3
+  },
+  "tested_components": {
+    "Tomcat01": 19,
+    "MG01": 15,
+    "MG02": 13,
+    "Tomcat04": 12,
+    "IG02": 12,
+    "Tomcat03": 11,
+    "apache02": 10,
+    "Tomcat02": 8,
+    "apache01": 8,
+    "Redis02": 4,
+    "IG01": 3,
+    "Mysql01": 2,
+    "Mysql02": 2,
+    "Redis01": 1
+  },
+  "tested_task_types": {
+    "task_1": 20,
+    "task_2": 17,
+    "task_3": 14,
+    "task_4": 17,
+    "task_5": 16,
+    "task_6": 19,
+    "task_7": 17
+  },
+  "candidate_components": 29,
+  "gold_components_not_candidates": [],
+  "fold_details": [
+    {
+      "fold": 0,
+      "train_days": [
+        "2021_03_04"
+      ],
+      "val_days": [
+        "2021_03_05"
+      ],
+      "test_day": "2021_03_06",
+      "train_windows": 1421,
+      "train_normal_windows": 711,
+      "val_windows": 1401,
+      "val_positive_windows": 0,
+      "val_failures": 0,
+      "test_windows": 1421,
+      "test_positive_windows": 66,
+      "test_negative_windows": 901,
+      "test_ignored_windows": 454,
+      "test_positive_rate": 0.0464,
+      "test_failures": 11,
+      "test_queries": 11,
+      "test_reasons": {
+        "high memory usage": 1,
+        "network latency": 4,
+        "network packet loss": 1,
+        "high disk I/O read usage": 1,
+        "high disk space usage": 1,
+        "high CPU usage": 3
+      },
+      "test_components": {
+        "Tomcat01": 2,
+        "Tomcat04": 2,
+        "Tomcat03": 1,
+        "apache02": 1,
+        "MG01": 2,
+        "IG02": 1,
+        "Mysql01": 1,
+        "IG01": 1
+      },
+      "test_task_types": {
+        "task_6": 4,
+        "task_5": 1,
+        "task_7": 4,
+        "task_3": 1,
+        "task_1": 1
+      },
+      "min_gap_to_test_minutes": 21.0,
+      "purged_guard_windows": 20
+    },
+    {
+      "fold": 1,
+      "train_days": [
+        "2021_03_04",
+        "2021_03_05"
+      ],
+      "val_days": [
+        "2021_03_06"
+      ],
+      "test_day": "2021_03_07",
+      "train_windows": 2842,
+      "train_normal_windows": 2132,
+      "val_windows": 1401,
+      "val_positive_windows": 64,
+      "val_failures": 11,
+      "test_windows": 1421,
+      "test_positive_windows": 96,
+      "test_negative_windows": 636,
+      "test_ignored_windows": 689,
+      "test_positive_rate": 0.0676,
+      "test_failures": 16,
+      "test_queries": 16,
+      "test_reasons": {
+        "network packet loss": 3,
+        "network latency": 3,
+        "high disk I/O read usage": 2,
+        "high CPU usage": 6,
+        "high memory usage": 1,
+        "JVM Out of Memory (OOM) Heap": 1
+      },
+      "test_components": {
+        "MG02": 1,
+        "Tomcat02": 2,
+        "MG01": 1,
+        "Tomcat04": 2,
+        "apache02": 1,
+        "Tomcat01": 4,
+        "Redis02": 1,
+        "IG02": 2,
+        "Tomcat03": 1,
+        "IG01": 1
+      },
+      "test_task_types": {
+        "task_6": 3,
+        "task_3": 3,
+        "task_1": 1,
+        "task_4": 3,
+        "task_2": 4,
+        "task_5": 1,
+        "task_7": 1
+      },
+      "min_gap_to_test_minutes": 21.0,
+      "purged_guard_windows": 20
+    },
+    {
+      "fold": 2,
+      "train_days": [
+        "2021_03_04",
+        "2021_03_05",
+        "2021_03_06"
+      ],
+      "val_days": [
+        "2021_03_07"
+      ],
+      "test_day": "2021_03_09",
+      "train_windows": 4263,
+      "train_normal_windows": 3033,
+      "val_windows": 1421,
+      "val_positive_windows": 96,
+      "val_failures": 16,
+      "test_windows": 1421,
+      "test_positive_windows": 126,
+      "test_negative_windows": 528,
+      "test_ignored_windows": 767,
+      "test_positive_rate": 0.0887,
+      "test_failures": 21,
+      "test_queries": 21,
+      "test_reasons": {
+        "network packet loss": 5,
+        "network latency": 5,
+        "high disk I/O read usage": 2,
+        "high disk space usage": 2,
+        "high CPU usage": 5,
+        "high memory usage": 1,
+        "JVM Out of Memory (OOM) Heap": 1
+      },
+      "test_components": {
+        "apache02": 1,
+        "IG02": 4,
+        "Tomcat01": 3,
+        "MG02": 3,
+        "Tomcat02": 2,
+        "apache01": 4,
+        "Tomcat04": 2,
+        "Redis02": 1,
+        "Tomcat03": 1
+      },
+      "test_task_types": {
+        "task_4": 3,
+        "task_1": 5,
+        "task_6": 4,
+        "task_3": 1,
+        "task_5": 3,
+        "task_7": 1,
+        "task_2": 4
+      },
+      "min_gap_to_test_minutes": 1441.0,
+      "purged_guard_windows": 0
+    },
+    {
+      "fold": 3,
+      "train_days": [
+        "2021_03_04",
+        "2021_03_05",
+        "2021_03_06",
+        "2021_03_07"
+      ],
+      "val_days": [
+        "2021_03_09"
+      ],
+      "test_day": "2021_03_10",
+      "train_windows": 5684,
+      "train_normal_windows": 3669,
+      "val_windows": 1401,
+      "val_positive_windows": 120,
+      "val_failures": 21,
+      "test_windows": 1421,
+      "test_positive_windows": 96,
+      "test_negative_windows": 669,
+      "test_ignored_windows": 656,
+      "test_positive_rate": 0.0676,
+      "test_failures": 16,
+      "test_queries": 16,
+      "test_reasons": {
+        "network latency": 3,
+        "network packet loss": 3,
+        "high disk I/O read usage": 5,
+        "high disk space usage": 1,
+        "high CPU usage": 3,
+        "JVM Out of Memory (OOM) Heap": 1
+      },
+      "test_components": {
+        "apache02": 4,
+        "Tomcat01": 4,
+        "Tomcat03": 1,
+        "Tomcat04": 1,
+        "Tomcat02": 2,
+        "IG02": 1,
+        "MG02": 1,
+        "IG01": 1,
+        "apache01": 1
+      },
+      "test_task_types": {
+        "task_3": 3,
+        "task_7": 2,
+        "task_6": 1,
+        "task_5": 5,
+        "task_2": 2,
+        "task_1": 3
+      },
+      "min_gap_to_test_minutes": 21.0,
+      "purged_guard_windows": 20
+    },
+    {
+      "fold": 4,
+      "train_days": [
+        "2021_03_04",
+        "2021_03_05",
+        "2021_03_06",
+        "2021_03_07",
+        "2021_03_09"
+      ],
+      "val_days": [
+        "2021_03_10"
+      ],
+      "test_day": "2021_03_12",
+      "train_windows": 7105,
+      "train_normal_windows": 4197,
+      "val_windows": 1421,
+      "val_positive_windows": 96,
+      "val_failures": 16,
+      "test_windows": 1421,
+      "test_positive_windows": 78,
+      "test_negative_windows": 893,
+      "test_ignored_windows": 450,
+      "test_positive_rate": 0.0549,
+      "test_failures": 13,
+      "test_queries": 13,
+      "test_reasons": {
+        "network packet loss": 7,
+        "high disk I/O read usage": 1,
+        "high CPU usage": 4,
+        "high memory usage": 1
+      },
+      "test_components": {
+        "MG01": 3,
+        "Tomcat01": 1,
+        "MG02": 1,
+        "apache02": 2,
+        "Tomcat03": 1,
+        "IG02": 2,
+        "Redis02": 1,
+        "Redis01": 1,
+        "Mysql01": 1
+      },
+      "test_task_types": {
+        "task_2": 3,
+        "task_3": 1,
+        "task_7": 2,
+        "task_5": 4,
+        "task_1": 2,
+        "task_4": 1
+      },
+      "min_gap_to_test_minutes": 1441.0,
+      "purged_guard_windows": 0
+    },
+    {
+      "fold": 5,
+      "train_days": [
+        "2021_03_04",
+        "2021_03_05",
+        "2021_03_06",
+        "2021_03_07",
+        "2021_03_09",
+        "2021_03_10"
+      ],
+      "val_days": [
+        "2021_03_12"
+      ],
+      "test_day": "2021_03_23",
+      "train_windows": 8526,
+      "train_normal_windows": 4866,
+      "val_windows": 1421,
+      "val_positive_windows": 78,
+      "val_failures": 13,
+      "test_windows": 1421,
+      "test_positive_windows": 78,
+      "test_negative_windows": 814,
+      "test_ignored_windows": 529,
+      "test_positive_rate": 0.0549,
+      "test_failures": 14,
+      "test_queries": 14,
+      "test_reasons": {
+        "network packet loss": 5,
+        "network latency": 3,
+        "high memory usage": 1,
+        "high disk I/O read usage": 3,
+        "high CPU usage": 2
+      },
+      "test_components": {
+        "MG01": 5,
+        "Tomcat04": 3,
+        "MG02": 2,
+        "Tomcat01": 1,
+        "Tomcat02": 1,
+        "Tomcat03": 2
+      },
+      "test_task_types": {
+        "task_5": 1,
+        "task_3": 2,
+        "task_4": 2,
+        "task_1": 4,
+        "task_7": 2,
+        "task_6": 3
+      },
+      "min_gap_to_test_minutes": 14401.0,
+      "purged_guard_windows": 0
+    },
+    {
+      "fold": 6,
+      "train_days": [
+        "2021_03_04",
+        "2021_03_05",
+        "2021_03_06",
+        "2021_03_07",
+        "2021_03_09",
+        "2021_03_10",
+        "2021_03_12"
+      ],
+      "val_days": [
+        "2021_03_23"
+      ],
+      "test_day": "2021_03_24",
+      "train_windows": 9947,
+      "train_normal_windows": 5759,
+      "val_windows": 1401,
+      "val_positive_windows": 78,
+      "val_failures": 14,
+      "test_windows": 1421,
+      "test_positive_windows": 60,
+      "test_negative_windows": 992,
+      "test_ignored_windows": 369,
+      "test_positive_rate": 0.0422,
+      "test_failures": 10,
+      "test_queries": 10,
+      "test_reasons": {
+        "network packet loss": 3,
+        "network latency": 4,
+        "high disk I/O read usage": 1,
+        "high disk space usage": 1,
+        "high CPU usage": 1
+      },
+      "test_components": {
+        "Tomcat03": 2,
+        "Tomcat01": 2,
+        "Tomcat02": 1,
+        "MG01": 2,
+        "MG02": 2,
+        "apache01": 1
+      },
+      "test_task_types": {
+        "task_7": 1,
+        "task_3": 2,
+        "task_2": 2,
+        "task_6": 1,
+        "task_4": 3,
+        "task_1": 1
+      },
+      "min_gap_to_test_minutes": 21.0,
+      "purged_guard_windows": 20
+    },
+    {
+      "fold": 7,
+      "train_days": [
+        "2021_03_04",
+        "2021_03_05",
+        "2021_03_06",
+        "2021_03_07",
+        "2021_03_09",
+        "2021_03_10",
+        "2021_03_12",
+        "2021_03_23"
+      ],
+      "val_days": [
+        "2021_03_24"
+      ],
+      "test_day": "2021_03_25",
+      "train_windows": 11368,
+      "train_normal_windows": 6573,
+      "val_windows": 1401,
+      "val_positive_windows": 60,
+      "val_failures": 10,
+      "test_windows": 1421,
+      "test_positive_windows": 108,
+      "test_negative_windows": 592,
+      "test_ignored_windows": 721,
+      "test_positive_rate": 0.076,
+      "test_failures": 19,
+      "test_queries": 19,
+      "test_reasons": {
+        "network latency": 4,
+        "network packet loss": 5,
+        "high disk I/O read usage": 3,
+        "high CPU usage": 7
+      },
+      "test_components": {
+        "MG02": 3,
+        "Tomcat03": 2,
+        "Tomcat01": 2,
+        "IG02": 2,
+        "Tomcat04": 2,
+        "MG01": 2,
+        "apache01": 2,
+        "apache02": 1,
+        "Mysql02": 2,
+        "Redis02": 1
+      },
+      "test_task_types": {
+        "task_5": 1,
+        "task_2": 2,
+        "task_6": 3,
+        "task_4": 5,
+        "task_7": 4,
+        "task_1": 3,
+        "task_3": 1
+      },
+      "min_gap_to_test_minutes": 21.0,
+      "purged_guard_windows": 20
+    }
+  ]
+}

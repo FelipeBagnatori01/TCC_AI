@@ -47,6 +47,28 @@ Registro incremental das ameaças identificadas ao longo das etapas, para a seç
 - **Efeito esperado:** a junção pode subestimar a separabilidade dentro de cada dobra. Baselines sem busca podem ficar abaixo do seu melhor possível, o que favoreceria a LSTM.
 - **Mitigação:** os limiares são escolhidos por dobra, na validação. A E5 fará a busca da LSTM com orçamento registrado; se a LSTM for comparada a um baseline ajustado, este terá o mesmo orçamento.
 
+### 8. Método local de precursor acrescentado depois de ver o Bank (E3 do Bank)
+
+- **O que:** a pontuação global, fixada antes de medir, saturou no Bank por causa da deriva entre dias. O método local (referência causal nos 60 min anteriores) foi acrescentado depois desse resultado (ADR 0013).
+- **Efeito esperado:** escolher a régua depois de ver o resultado pode favorecer a conclusão "as falhas são visíveis".
+- **Mitigação:**
+  - os dois métodos são reportados;
+  - o método local foi validado no Telecom, onde reproduz o sinal já conhecido;
+  - a decisão sobre precursor (nenhum nas antecedências positivas) é a mesma nos dois métodos;
+  - nenhum hiperparâmetro de modelo vem dessa medição.
+
+### 9. Janela de 20 min com falhas próximas no Bank (E3 do Bank)
+
+- **O que:** 10 pares de falhas do Bank estão a menos de 20 min um do outro (mínimo de 11 min), e 9 janelas de consulta têm duas falhas. Com W = 20, mantido para comparar sistemas, uma janela positiva pode conter também a falha anterior.
+- **Efeito esperado:** atribuição ambígua em poucos casos na detecção, e evidências misturadas na localização e no agente.
+- **Mitigação:** rótulos e máscara usam todos os inícios; os casos de duas falhas serão analisados à parte na análise de erros (E8).
+
+### 10. Deriva da distribuição no Bank (E3 do Bank)
+
+- **O que:** ao longo das três semanas, KPIs de capacidade e contadores acumulados derivam. Um escalonamento ajustado no início fica cada vez menos representativo.
+- **Efeito esperado:** desempenho que cai com a distância entre treino e teste; baselines com normalização fixa penalizados.
+- **Mitigação:** origem móvel (o treino cresce até o dia anterior ao teste); método local na medição de precursor; a E5 deve tratar a normalização de forma causal.
+
 ## Previstas pelo plano (a detalhar na E9)
 
 - Tamanho amostral: 51 casos no Telecom (45 testados; ver item 4).

@@ -20,16 +20,11 @@ BoolArray = npt.NDArray[np.bool_]
 
 # ---------------------------------------------------------------- threshold-free ranking metrics
 def _average_ranks(values: FloatArray) -> FloatArray:
-    order = np.argsort(values, kind="mergesort")
-    ranks = np.empty(values.size, dtype=np.float64)
-    sorted_vals = values[order]
-    i = 0
-    while i < values.size:  # ties share the mean of their 1-based ranks
-        j = i
-        while j + 1 < values.size and sorted_vals[j + 1] == sorted_vals[i]:
-            j += 1
-        ranks[order[i : j + 1]] = (i + j) / 2.0 + 1.0
-        i = j + 1
+    """1-based ranks; tied values share the mean of their ranks (vectorized)."""
+    _, inverse, counts = np.unique(values, return_inverse=True, return_counts=True)
+    ends = np.cumsum(counts).astype(np.float64)
+    mean_rank: FloatArray = (ends - counts + 1 + ends) / 2.0
+    ranks: FloatArray = mean_rank[inverse]
     return ranks
 
 

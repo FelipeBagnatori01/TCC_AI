@@ -5,6 +5,7 @@ description = "Predição e explicação automática de causas raiz de falhas em
 readme = "README.md"
 requires-python = ">=3.11,<3.12"
 dependencies = [
+    "lightgbm>=4.7.0",
     "matplotlib>=3.11.2",
     "numpy>=1.26",
     "openpyxl>=3.1.5",
@@ -13,6 +14,7 @@ dependencies = [
     "pyarrow>=26.0.1",
     "pydantic>=2.7",
     "pyyaml>=6.0",
+    "scikit-learn>=1.9.1",
     "torch>=2.3",
 ]
 
@@ -21,7 +23,10 @@ tcc-rca = "tcc_rca.cli:main"
 
 [dependency-groups]
 dev = [
+    "ipykernel>=7.4.0",
     "mypy>=1.10",
+    "nbconvert>=7.17.2",
+    "nbformat>=5.11.1",
     "pandas-stubs>=3.1.0.261029",
     "pre-commit>=3.7",
     "pytest>=8.2",
@@ -51,6 +56,11 @@ python_version = "3.11"
 strict = true
 files = ["src"]
 plugins = ["pydantic.mypy"]
+
+# scikit-learn ships no type information; only its import is exempted, strict mode stays on.
+[[tool.mypy.overrides]]
+module = ["sklearn", "sklearn.*"]
+ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

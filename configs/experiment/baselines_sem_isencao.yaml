@@ -1,0 +1,7 @@
+# E4 sensitivity control (ADR 0005): baselines without the availability exemption.
+#   uv run tcc-rca baselines --config configs/base.yaml configs/experiment/baselines_sem_isencao.yaml
+experiment:
+  name: baselines_sem_isencao
+series:
+  selection:
+    constant_exempt_categories: []

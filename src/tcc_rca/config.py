@@ -78,6 +78,29 @@ class TasksConfig(_Strict):
     precursor: PrecursorConfig
 
 
+class LightGBMConfig(_Strict):
+    n_estimators: int = Field(gt=0)
+    learning_rate: float = Field(gt=0.0)
+    num_leaves: int = Field(gt=1)
+    min_child_samples: int = Field(gt=0)
+    colsample_bytree: float = Field(gt=0.0, le=1.0)
+
+
+class BaselinesConfig(_Strict):
+    """E4 baselines and evaluation protocol (ADR 0010)."""
+
+    zscore_threshold: float = Field(gt=0.0)  # fixed 3-sigma rule
+    isolation_forest_estimators: int = Field(gt=0)
+    lightgbm: LightGBMConfig
+    # Threshold = best F1 on validation; without validation failures, this quantile of the
+    # validation normal-window scores.
+    val_fallback_quantile: float = Field(gt=0.0, lt=1.0)
+    event_lookback_minutes: int = Field(ge=0)  # alarms this early still detect the failure
+    event_max_delay_minutes: int = Field(gt=0)
+    bootstrap: int = Field(gt=0)
+    bootstrap_block_minutes: int = Field(gt=0)  # window-level CIs resample blocks of this size
+
+
 class Config(_Strict):
     experiment: ExperimentConfig
     target_system: Literal["Telecom", "Bank", "Market"]
@@ -85,6 +108,7 @@ class Config(_Strict):
     llm: LLMConfig
     series: SeriesConfig
     tasks: TasksConfig
+    baselines: BaselinesConfig
 
     def resolved(self) -> dict[str, Any]:
         """JSON-serializable view of the fully resolved configuration."""

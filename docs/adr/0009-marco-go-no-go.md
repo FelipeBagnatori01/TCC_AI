@@ -30,3 +30,12 @@ Os dados do Telecom sustentam as tarefas A, B e C com avaliação minimamente de
 
 - A E4 implementa a avaliação completa sobre as 10 dobras, com IC por bootstrap sobre as 45 falhas.
 - A dobra 0 é tratada à parte (ADR 0008).
+
+## Adendo (2026-11-11, fim da E4): Plano B acionado
+
+- **Critério atingido.** A reavaliação prevista para o fim da E4 confirmou as duas condições:
+  - a detecção por evento dos baselines está no nível do acaso, e a localização acerta 0/7 em `network loss`;
+  - o IC do HR@1 vai de 0,04 a 0,24 (`docs/RESULTADOS.md`).
+- **Decisão do autor: acionar o Plano B.** O Bank (136 casos, com métricas, traces e logs) entra como segundo sistema, com modelo próprio e resultados reportados por sistema. As etapas E1 a E4 serão refeitas para ele, incluindo os logs desde já.
+- **Expectativa.** Os dados do Bank não treinam os modelos do Telecom, porque há um modelo por sistema. O ganho esperado é amostral (ICs mais estreitos) e de generalização (as conclusões valem nos dois sistemas?).
+- **Market fora do escopo.** O autor decidiu não usar o Market (2 dias por *cloudbed*, o que inviabiliza a divisão cronológica por dias) e removê-lo do disco. Se for necessário, será baixado de novo.

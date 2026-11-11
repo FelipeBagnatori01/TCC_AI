@@ -50,3 +50,18 @@ tasks:
     leads_minutes: [15, 10, 5, 2, 1, 0, -1, -2, -5]
     top_k: 10
     bootstrap: 2000
+
+baselines:                         # E4 (ADR 0010)
+  zscore_threshold: 3.0            # fixed 3-sigma rule; a validation-tuned variant is also reported
+  isolation_forest_estimators: 200
+  lightgbm:                        # fixed, small: fold 0 has no validation failure to tune on
+    n_estimators: 300
+    learning_rate: 0.05
+    num_leaves: 15
+    min_child_samples: 5
+    colsample_bytree: 0.2
+  val_fallback_quantile: 0.99      # threshold when the validation day has no failure (fold 0)
+  event_lookback_minutes: 5        # = normal margin before the onset
+  event_max_delay_minutes: 30      # = normal margin after the onset
+  bootstrap: 2000
+  bootstrap_block_minutes: 30

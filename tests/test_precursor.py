@@ -3,7 +3,8 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
-from tcc_rca.dataset.precursor import auroc, bootstrap_auroc_ci, lead_samples, minute_scores
+from tcc_rca.dataset.precursor import bootstrap_auroc_ci, lead_samples, minute_scores
+from tcc_rca.evaluation.metrics import auroc
 
 
 def test_auroc_hand_computed() -> None:

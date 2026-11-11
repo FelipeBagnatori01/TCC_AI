@@ -9,7 +9,7 @@ Registro incremental das ameaças identificadas ao longo das etapas, para a seç
 - **O que:** a categoria "disponibilidade" (`ICMP_ping`, `Agent_ping`, `On_Off_State`, `Hang`, `redis_ping`) é isenta do descarte por constância. A isenção foi proposta depois de constatar, com todos os dias e os rótulos, que esses KPIs mudam em até 17 das 51 falhas (`db close`, `db connection limit`, `network delay/loss`).
 - **Tipo:** *data snooping* (grau de liberdade do pesquisador). O código não vaza dados: o seletor é ajustado só no treino. O vazamento está na decisão humana.
 - **Efeito esperado:** otimismo nas métricas de detecção e de causa raiz dessas falhas, e menor garantia de generalização para um sistema novo e sem rótulos.
-- **Mitigação:** regra aplicada à categoria inteira, com justificativa de domínio (indicadores de disponibilidade são constantes por definição em operação normal); análise de sensibilidade obrigatória com `configs/experiment/sensitivity_sem_isencao.yaml`, reportada ao lado de cada métrica principal; cronologia e auditoria dos 78 atributos afetados no ADR 0005.
+- **Mitigação:** regra aplicada à categoria inteira, com justificativa de domínio (indicadores de disponibilidade são constantes por definição em operação normal); análise de sensibilidade obrigatória com `configs/experiment/sensitivity_sem_isencao.yaml`, reportada ao lado de cada métrica principal (na E4, nenhuma conclusão muda: `docs/RESULTADOS.md`); cronologia e auditoria dos 78 atributos afetados no ADR 0005.
 
 ### 2. Dias quase duplicados no Telecom (E1, resolvido na E3)
 
@@ -40,6 +40,12 @@ Registro incremental das ameaças identificadas ao longo das etapas, para a seç
 - **O que:** o OpenRCA rotula só o início. A margem de 30 min após o início, usada na máscara normal e nas janelas ignoradas, é uma suposição baseada na duração da janela de consulta.
 - **Efeito esperado:** falhas mais longas que 30 min contaminariam o treino normal com comportamento de falha. Falhas mais curtas só reduzem os dados normais.
 - **Mitigação:** a margem é configurável; a sensibilidade à margem pode ser medida na E5.
+
+### 7. Métricas de janela somadas entre dobras e baselines sem busca de hiperparâmetros (E4)
+
+- **O que:** AUC-PR e AUC-ROC juntam (*pooled*) pontuações de modelos diferentes, um por dobra, cujas escalas podem diferir. Os hiperparâmetros do LightGBM e do Isolation Forest foram fixados sem busca (ADR 0010).
+- **Efeito esperado:** a junção pode subestimar a separabilidade dentro de cada dobra. Baselines sem busca podem ficar abaixo do seu melhor possível, o que favoreceria a LSTM.
+- **Mitigação:** os limiares são escolhidos por dobra, na validação. A E5 fará a busca da LSTM com orçamento registrado; se a LSTM for comparada a um baseline ajustado, este terá o mesmo orçamento.
 
 ## Previstas pelo plano (a detalhar na E9)
 

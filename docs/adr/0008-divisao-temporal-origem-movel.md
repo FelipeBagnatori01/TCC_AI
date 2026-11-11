@@ -18,7 +18,7 @@ Na comparação célula a célula das métricas da matriz da E2:
 | 2020_04_22 | 2020_05_23 (6 falhas) | 99,995% |
 | 2020_04_23 | 2020_05_25 (3 falhas) | 99,999% |
 
-- Entre os outros pares de dias, a coincidência fica entre 42% e 48%, e vem quase toda de séries constantes.
+- Entre os outros pares de dias, a coincidência fica entre 40% e 48%, e vem quase toda de séries constantes.
 - As poucas diferenças dentro de cada par caem logo após os inícios das falhas do gêmeo: 00:40, 01:18 e 04:52 contra falhas às 00:40, 01:16 e 04:47 em 05_23.
 - Ou seja, os dias de abril contêm as mesmas falhas, sem rótulo.
 - Mantê-los como normais teria dois efeitos:

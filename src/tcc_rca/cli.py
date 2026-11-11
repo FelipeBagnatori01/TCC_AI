@@ -12,6 +12,7 @@ from pathlib import Path
 from tcc_rca.config import Config, load_config
 from tcc_rca.dataset.build import run_tasks
 from tcc_rca.e2e import run_e2e
+from tcc_rca.evaluation.baselines import run_baselines
 from tcc_rca.ingestion.cases import Case, Failure, build_cases, read_failures, read_queries
 from tcc_rca.ingestion.eda import plot_failure
 from tcc_rca.ingestion.inventory import build_inventory, write_inventory
@@ -150,6 +151,15 @@ def cmd_tasks(config: Config, _: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_baselines(config: Config, _: argparse.Namespace) -> int:
+    start = time.perf_counter()
+    summary = run_baselines(config, TABLES_DIR)
+    for key, value in summary.items():
+        print(f"{key}: {value}")
+    print(f"elapsed_s={time.perf_counter() - start:.1f} peak_rss_mb={_peak_rss_mb():.0f}")
+    return 0
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="tcc-rca")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -171,6 +181,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     add("quality", "write the data-quality report")
     add("series", "build the multivariate KPI matrix, catalog and dependency edges (E2)")
     add("tasks", "windows, labels, rolling-origin folds and precursor check (E3)")
+    add("baselines", "run and evaluate every E4 baseline over the folds (tracked run)")
     eda = add("eda", "plot KPIs around failures")
     eda.add_argument("-n", type=int, default=10, help="number of failures to plot")
 
@@ -187,6 +198,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         "eda": cmd_eda,
         "series": cmd_series,
         "tasks": cmd_tasks,
+        "baselines": cmd_baselines,
     }
     return int(handlers[args.command](config, args))
 

@@ -13,12 +13,12 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
+import numpy.typing as npt
 import polars as pl
 
 from tcc_rca.config import Config
 from tcc_rca.dataset.precursor import (
     LeadResult,
-    auroc,
     bootstrap_auroc_ci,
     lead_samples,
     minute_scores,
@@ -32,6 +32,7 @@ from tcc_rca.dataset.split import (
     with_roles,
 )
 from tcc_rca.dataset.windows import WindowSpec, build_window_index, label_windows
+from tcc_rca.evaluation.metrics import auroc
 from tcc_rca.ingestion.cases import Case, Failure, build_cases, read_failures, read_queries
 from tcc_rca.series.build import exempt_features
 from tcc_rca.series.catalog import split_feature
@@ -123,6 +124,18 @@ def characterize(
     return rows
 
 
+def normal_minute_mask(
+    index: pl.DataFrame, failures: Sequence[Failure], config: Config
+) -> npt.NDArray[np.bool_]:
+    """Matrix rows outside every failure margin (the minute-level LSTM normal mask)."""
+    t = config.tasks
+    spec = WindowSpec(1, t.normal_margin_before_minutes, t.normal_margin_after_minutes)
+    minutes = build_window_index(index, [f.start_utc for f in failures], spec)
+    mask = np.zeros(index.height, dtype=np.bool_)
+    mask[minutes.filter(pl.col("normal"))["row"].to_numpy()] = True
+    return mask
+
+
 def precursor_analysis(
     values: pl.DataFrame,
     config: Config,
@@ -134,11 +147,7 @@ def precursor_analysis(
 ) -> list[LeadResult]:
     """Fit selector + scaler on normal minutes of the initial block; score the test days."""
     t = config.tasks
-    index = values.select("day", "time_utc")
-    minute_spec = WindowSpec(1, t.normal_margin_before_minutes, t.normal_margin_after_minutes)
-    minutes = build_window_index(index, [f.start_utc for f in failures], minute_spec)
-    normal_minute = np.zeros(values.height, dtype=np.bool_)
-    normal_minute[minutes.filter(pl.col("normal"))["row"].to_numpy()] = True
+    normal_minute = normal_minute_mask(values.select("day", "time_utc"), failures, config)
     day_arr = values["day"].to_numpy()
 
     fit_rows = normal_minute & np.isin(day_arr, list(initial_days))

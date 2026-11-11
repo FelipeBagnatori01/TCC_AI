@@ -9,41 +9,14 @@ only if the AUROC confidence interval lies above 0.5.
 
 from __future__ import annotations
 
-from collections.abc import Sequence
 from dataclasses import dataclass
 
 import numpy as np
 import numpy.typing as npt
 
+from tcc_rca.evaluation.metrics import auroc
+
 FloatArray = npt.NDArray[np.float64]
-
-
-def _average_ranks(values: FloatArray) -> FloatArray:
-    order = np.argsort(values, kind="mergesort")
-    ranks = np.empty(values.size, dtype=np.float64)
-    sorted_vals = values[order]
-    i = 0
-    while i < values.size:  # ties share the mean of their 1-based ranks
-        j = i
-        while j + 1 < values.size and sorted_vals[j + 1] == sorted_vals[i]:
-            j += 1
-        ranks[order[i : j + 1]] = (i + j) / 2.0 + 1.0
-        i = j + 1
-    return ranks
-
-
-def auroc(
-    positives: Sequence[float] | FloatArray, negatives: Sequence[float] | FloatArray
-) -> float:
-    """P(score_pos > score_neg) + 0.5 P(tie), via the Mann-Whitney U statistic."""
-    pos, neg = np.asarray(positives, dtype=np.float64), np.asarray(negatives, dtype=np.float64)
-    if pos.size == 0 or neg.size == 0:
-        raise ValueError("AUROC needs at least one positive and one negative")
-    if np.isnan(pos).any() or np.isnan(neg).any():
-        raise ValueError("AUROC scores must not contain NaN")
-    ranks = _average_ranks(np.concatenate([pos, neg]))
-    u = ranks[: pos.size].sum() - pos.size * (pos.size + 1) / 2.0
-    return float(u / (pos.size * neg.size))
 
 
 def bootstrap_auroc_ci(

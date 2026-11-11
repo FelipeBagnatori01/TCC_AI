@@ -1,0 +1,106 @@
+# Catálogo de KPIs do OpenRCA Bank (Plano B, E2). ADR 0012.
+#
+# O dataset não documenta os KPIs. Categoria, unidade e descrição foram INFERIDAS do nome do KPI
+# e das faixas de valores do inventário; "desconhecida" significa que não foi possível inferir com
+# segurança (vários contadores do MySQL e do Redis podem ser acumulados ou taxas).
+#
+# Formato: entradas explícitas (fonte -> KPI -> info) e, em `rules`, regras por expressão regular
+# avaliadas em ordem (a primeira que casar com o nome inteiro vence). Grupos nomeados podem ser
+# usados na descrição. Todo KPI observado precisa de uma entrada ou regra, senão o build falha.
+#
+# item_agg: como combinar, no mesmo minuto, várias instâncias do mesmo KPI num componente. No
+# Bank isso só ocorre nos KPIs de contêiner, quando o contêiner antigo e o novo coexistem num
+# reinício (o hash no nome do KPI muda; ver ADR 0012).
+#
+# Categorias: CPU, memória, disco, rede, banco de dados, latência, erro, carga, disponibilidade, outro.
+
+metric_container:
+  Container_CpuPercent: {category: CPU, unit: "%", item_agg: sum, description: "Uso de CPU do contêiner do pod (soma entre contêineres simultâneos)"}
+  Container_MemUsage: {category: memória, unit: bytes, item_agg: sum, description: "Memória usada pelo contêiner do pod"}
+  Container_MemLimit: {category: memória, unit: bytes, item_agg: max, description: "Limite de memória do contêiner do pod"}
+  Container_MemPercent: {category: memória, unit: "%", item_agg: max, description: "Percentual do limite de memória usado pelo contêiner do pod"}
+  Container_NetworkRxBytes: {category: rede, unit: bytes, item_agg: sum, description: "Bytes recebidos pelo contêiner do pod"}
+  Container_NetworkTxBytes: {category: rede, unit: bytes, item_agg: sum, description: "Bytes enviados pelo contêiner do pod"}
+
+metric_app:
+  app_calls: {category: carga, unit: contagem, description: "Chamadas ao serviço no minuto (soma de cnt)"}
+  app_mrt: {category: latência, unit: "ms (inferida)", description: "Tempo médio de resposta do serviço (mrt), ponderado pelas chamadas"}
+  app_sr: {category: erro, unit: "%", description: "Taxa de sucesso do serviço (sr), ponderada pelas chamadas"}
+  app_rr: {category: erro, unit: "%", description: "Taxa de resposta do serviço (rr, significado inferido), ponderada pelas chamadas"}
+
+trace:
+  trace_calls: {category: carga, unit: contagem, description: "Spans executados pelo componente no minuto"}
+  trace_latency_mean: {category: latência, unit: "ms (inferida)", description: "Duração média dos spans do componente"}
+  trace_latency_p95: {category: latência, unit: "ms (inferida)", description: "Percentil 95 da duração dos spans do componente"}
+  trace_latency_p99: {category: latência, unit: "ms (inferida)", description: "Percentil 99 da duração dos spans do componente"}
+
+log:
+  access_requests: {category: carga, unit: contagem, description: "Requisições HTTP registradas no log de acesso"}
+  access_errors: {category: erro, unit: contagem, description: "Requisições HTTP com status >= 400 no log de acesso"}
+  access_rt_mean_ms: {category: latência, unit: "ms (inferida)", description: "Tempo médio de resposta das requisições no log de acesso"}
+  gc_events: {category: memória, unit: contagem, description: "Eventos de coleta de lixo no log gc da JVM"}
+  gc_full: {category: memória, unit: contagem, description: "Coletas de lixo completas (Full GC) no log gc"}
+  gc_pause_s: {category: memória, unit: s, description: "Soma das pausas reais (real=) das coletas de lixo"}
+  slow_queries: {category: banco de dados, unit: contagem, description: "Consultas registradas no slow log do MySQL"}
+  slow_query_time_mean_s: {category: latência, unit: s, description: "Tempo médio (Query_time) das consultas do slow log"}
+  slow_rows_examined_mean: {category: banco de dados, unit: linhas, description: "Média de linhas examinadas (Rows_examined) no slow log"}
+  mysql_error_count: {category: erro, unit: contagem, description: "Linhas do log de erro do MySQL"}
+
+rules:
+  log:
+    - {pattern: 'log_(?P<log>catalina|localhost)_count', category: carga, unit: contagem, description: "Linhas do log {log} do Tomcat"}
+    - {pattern: 'log_(?P<log>catalina|localhost)_level_(?P<level>[A-Z]+)', category: erro, unit: contagem, description: "Linhas de nível {level} no log {log} do Tomcat"}
+    - {pattern: 'log_(?P<log>catalina|localhost)_tpl_(?P<k>\d+)', category: outro, unit: contagem, description: "Ocorrências do template {k} do log {log} (drain3; texto em data/processed/Bank/log_templates.csv)"}
+    - {pattern: 'log_(?P<log>catalina|localhost)_tpl_other', category: outro, unit: contagem, description: "Linhas do log {log} que não casam com nenhum template frequente do bloco inicial"}
+
+  metric_container:
+    # ---- JVM (IG, MG)
+    - {pattern: 'JVM-Memory_(?P<port>\d+)_JVM_Memory_HeapMemoryUsage', category: memória, unit: "%", description: "Uso do heap da JVM (porta {port})"}
+    - {pattern: 'JVM-Memory_(?P<port>\d+)_JVM_Memory_(?P<m>\w+)', category: memória, unit: bytes, description: "Memória da JVM (porta {port}): {m}"}
+    - {pattern: 'JVM-Operating System_(?P<port>\d+)_JVM_JVM_CPULoad', category: CPU, unit: "%", description: "Carga de CPU do processo da JVM (porta {port})"}
+    - {pattern: 'JVM-Runtime_(?P<port>\d+)_JVM_JVM_Uptime', category: disponibilidade, unit: "desconhecida", description: "Tempo desde o início da JVM (porta {port}); cai a zero em reinícios"}
+    - {pattern: 'JVM-Threads_(?P<port>\d+)_JVM_ThreadCount_Threads', category: carga, unit: contagem, description: "Threads da JVM (porta {port})"}
+    # ---- MySQL
+    - {pattern: 'Mysql-MySQL_3306_GetConnectedStateOfMysqld', category: disponibilidade, unit: estado, description: "Estado de conexão do mysqld (1 = conectado)"}
+    - {pattern: 'Mysql-MySQL_3306_GetResponseTimeOfMysqld', category: latência, unit: desconhecida, description: "Tempo de resposta do mysqld à sonda de monitoramento"}
+    - {pattern: 'Mysql-MySQL_3306_(?P<m>SlowQueries|CurrentSQLMaxRunningTime|LongestTrxActiveTime|Innodb row lock time (avg|max)|Innodb Row Lock Time)', category: latência, unit: desconhecida, description: "MySQL: {m}"}
+    - {pattern: 'Mysql-MySQL_3306_(?P<m>Connections|Max Used Connections|MaxConnections|ThreadsConnected|ThreadsRunning|Threads Cached|Threads Created|Questions|MySQL  Queries)', category: carga, unit: desconhecida, description: "MySQL: {m}"}
+    - {pattern: 'Mysql-MySQL_3306_(?P<m>Aborted Clients|Aborted Connects)', category: erro, unit: desconhecida, description: "MySQL: {m}"}
+    - {pattern: 'Mysql-MySQL_3306_(?P<m>Bytes Received|Bytes Sent)', category: rede, unit: desconhecida, description: "MySQL: {m}"}
+    - {pattern: 'Mysql-MySQL_3306_(?P<m>.+)', category: banco de dados, unit: desconhecida, description: "Indicador do MySQL: {m}"}
+    # ---- Tomcat
+    - {pattern: 'Tomcat-MEMORY_7441-MEMORY_JVMMemoryUsedPercent', category: memória, unit: "%", description: "Percentual da memória máxima da JVM do Tomcat em uso"}
+    - {pattern: 'Tomcat-MEMORY_7441-MEMORY_(?P<m>\w+)', category: memória, unit: bytes, description: "Memória da JVM do Tomcat: {m}"}
+    - {pattern: 'Tomcat-Requests_7441-"http-nio-8003"_ErrorCountRequestInfo', category: erro, unit: contagem, description: "Erros de requisição do conector HTTP do Tomcat"}
+    - {pattern: 'Tomcat-Requests_7441-"http-nio-8003"_(?P<m>MaxTime|ProcessingTime)RequestInfo', category: latência, unit: ms, description: "Conector HTTP do Tomcat: {m}"}
+    - {pattern: 'Tomcat-Requests_7441-"http-nio-8003"_RequestCountRequestInfo', category: carga, unit: contagem, description: "Requisições do conector HTTP do Tomcat"}
+    - {pattern: 'Tomcat-Sessions_7441-(?P<ctx>.*)_SESSION(?P<m>\w+)', category: carga, unit: contagem, description: "Sessões do Tomcat (contexto '{ctx}'): {m}"}
+    - {pattern: 'Tomcat-Threads_7441-"http-nio-8003"_(?P<m>\w+)ThreadInfo', category: carga, unit: contagem, description: "Threads do conector HTTP do Tomcat: {m}"}
+    # ---- Redis
+    - {pattern: 'redis-Redis_6379_redis server', category: disponibilidade, unit: estado, description: "Servidor Redis ativo (1 = sim)"}
+    - {pattern: 'redis-Redis_6379_Redis  \((?P<m>used_memory\w*|mem_fragmentation_ratio|maxmemory)\)', category: memória, unit: desconhecida, description: "Redis: {m}"}
+    - {pattern: 'redis-Redis_6379_Redis  \((?P<m>used_cpu\w*)\)', category: CPU, unit: s, description: "Redis: {m} (tempo de CPU acumulado)"}
+    - {pattern: 'redis-Redis_6379_Redis  \((?P<m>connected_clients|blocked_clients|instantaneous_ops_per_sec|total_commands_processed|total_connections_received|connected_slaves|pubsub_channels)\)', category: carga, unit: desconhecida, description: "Redis: {m}"}
+    - {pattern: 'redis-Redis_6379_Redis  \((?P<m>rejected_connections)\)', category: erro, unit: contagem, description: "Redis: {m}"}
+    - {pattern: 'redis-Redis_6379_Redis  \((?P<m>uptime_in_seconds|loading)\)', category: disponibilidade, unit: desconhecida, description: "Redis: {m}"}
+    - {pattern: 'redis-Redis_6379_Redis  \((?P<m>\w+)\)', category: banco de dados, unit: desconhecida, description: "Redis: {m}"}
+    # ---- Sistema operacional (OSLinux)
+    - {pattern: 'OSLinux-CPU_CPU-(?P<cpu>\d+)_SingleCpuUtil', category: CPU, unit: "%", description: "Utilização do núcleo de CPU {cpu}"}
+    - {pattern: 'OSLinux-CPU_CPU-(?P<cpu>\d+)_SingleCpuidle', category: CPU, unit: "%", description: "Ociosidade do núcleo de CPU {cpu}"}
+    - {pattern: 'OSLinux-CPU_CPU_CPULoad', category: CPU, unit: carga, description: "Carga média de CPU do host"}
+    - {pattern: 'OSLinux-CPU_CPU_CPU(?P<m>\w+)', category: CPU, unit: "%", description: "CPU do host: {m}"}
+    - {pattern: 'OSLinux-NTP_(?P<srv>[\d.]+)_NtpServerTimeOffset', category: outro, unit: s, description: "Desvio do relógio do host em relação ao servidor NTP {srv}"}
+    - {pattern: 'OSLinux-OSLinux_FILESYSTEM_(?P<fs>.*)_FS(?P<m>Capacity|InodeUsedPercent)', category: disco, unit: "%", description: "Sistema de arquivos '{fs}': {m}"}
+    - {pattern: 'OSLinux-OSLinux_FILESYSTEM_(?P<fs>.*)_FS(?P<m>AvailableSpace|UsedSpace)', category: disco, unit: "MB (inferida)", description: "Sistema de arquivos '{fs}': {m}"}
+    - {pattern: 'OSLinux-OSLinux_FILE_(?P<path>.+)_(?P<m>DirSizeMB|FileSizeMB)', category: disco, unit: MB, description: "Tamanho de '{path}' ({m})"}
+    - {pattern: 'OSLinux-OSLinux_LOCALDISK_LOCALDISK-(?P<dev>\w+)_DSKPercentBusy', category: disco, unit: "%", description: "Ocupação do disco {dev}"}
+    - {pattern: 'OSLinux-OSLinux_LOCALDISK_LOCALDISK-(?P<dev>\w+)_DSK(?P<m>\w+)', category: disco, unit: desconhecida, description: "Disco {dev}: {m}"}
+    - {pattern: 'OSLinux-OSLinux_MEMORY_MEMORY_(?P<m>\w+Perc)', category: memória, unit: "%", description: "Memória do host: {m}"}
+    - {pattern: 'OSLinux-OSLinux_MEMORY_MEMORY_(?P<m>\w+)', category: memória, unit: "MB (inferida)", description: "Memória do host: {m}"}
+    - {pattern: 'OSLinux-OSLinux_NETWORK_(?P<ifc>\w+)_NET(?P<m>InErr\w*|OutErr\w*)', category: erro, unit: desconhecida, description: "Erros de rede na interface {ifc}: {m}"}
+    - {pattern: 'OSLinux-OSLinux_NETWORK_NETWORK_(?P<m>[\w-]+)', category: rede, unit: contagem, description: "Conexões TCP do host: {m}"}
+    - {pattern: 'OSLinux-OSLinux_NETWORK_(?P<ifc>\w+)_NET(?P<m>\w+)', category: rede, unit: desconhecida, description: "Interface de rede {ifc}: {m}"}
+    - {pattern: 'OSLinux-OSLinux_PROCESS_(?P<proc>.+)_PROC(?P<m>\w+)', category: carga, unit: desconhecida, description: "Processo '{proc}': {m}"}
+    - {pattern: 'OSLinux-OSLinux_SWAP_SWAP_(?P<m>\w+)', category: memória, unit: desconhecida, description: "Swap do host: {m}"}
+    - {pattern: 'OSLinux-OSLinux_SYSTEM_SYSTEM_(?P<m>[\w-]+)', category: disponibilidade, unit: estado, description: "Verificação do sistema: {m} (1 = ok)"}
+    - {pattern: 'OSLinux-OSLinux_ZABBIX_Host_Uptime', category: disponibilidade, unit: s, description: "Tempo desde o boot do host (agente Zabbix)"}

@@ -1,0 +1,35 @@
+feature,source,category,reason_without_exemption
+IG01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,metric_container,disponibilidade,constante no treino
+IG01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,metric_container,disponibilidade,constante no treino
+IG02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,metric_container,disponibilidade,constante no treino
+IG02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,metric_container,disponibilidade,constante no treino
+MG01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,metric_container,disponibilidade,constante no treino
+MG01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,metric_container,disponibilidade,constante no treino
+MG02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,metric_container,disponibilidade,constante no treino
+MG02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,metric_container,disponibilidade,constante no treino
+Mysql01::Mysql-MySQL_3306_GetConnectedStateOfMysqld,metric_container,disponibilidade,constante no treino
+Mysql01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,metric_container,disponibilidade,constante no treino
+Mysql01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,metric_container,disponibilidade,constante no treino
+Mysql02::Mysql-MySQL_3306_GetConnectedStateOfMysqld,metric_container,disponibilidade,constante no treino
+Mysql02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,metric_container,disponibilidade,constante no treino
+Mysql02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,metric_container,disponibilidade,constante no treino
+Redis01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,metric_container,disponibilidade,constante no treino
+Redis01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,metric_container,disponibilidade,constante no treino
+Redis01::redis-Redis_6379_Redis  (loading),metric_container,disponibilidade,constante no treino
+Redis01::redis-Redis_6379_redis server,metric_container,disponibilidade,constante no treino
+Redis02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,metric_container,disponibilidade,constante no treino
+Redis02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,metric_container,disponibilidade,constante no treino
+Redis02::redis-Redis_6379_Redis  (loading),metric_container,disponibilidade,constante no treino
+Redis02::redis-Redis_6379_redis server,metric_container,disponibilidade,constante no treino
+Tomcat01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,metric_container,disponibilidade,constante no treino
+Tomcat01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,metric_container,disponibilidade,constante no treino
+Tomcat02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,metric_container,disponibilidade,constante no treino
+Tomcat02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,metric_container,disponibilidade,constante no treino
+Tomcat03::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,metric_container,disponibilidade,constante no treino
+Tomcat03::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,metric_container,disponibilidade,constante no treino
+Tomcat04::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,metric_container,disponibilidade,constante no treino
+Tomcat04::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,metric_container,disponibilidade,constante no treino
+apache01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,metric_container,disponibilidade,constante no treino
+apache01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,metric_container,disponibilidade,constante no treino
+apache02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,metric_container,disponibilidade,constante no treino
+apache02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,metric_container,disponibilidade,constante no treino

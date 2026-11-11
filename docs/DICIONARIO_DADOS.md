@@ -154,3 +154,18 @@ Inventário em `reports/tables/inventory_Bank.json` (`tcc-rca inventory --config
 - Nenhuma coluna com nulos; 515 das 1.889 séries de métricas são constantes.
 - Todas as 154 falhas têm métricas do componente rotulado antes e depois do início. 38 não têm spans do componente (Redis, Mysql e apache não emitem traces).
 - **Sem dias duplicados:** o par de dias mais parecido coincide em 53% dos valores (o Telecom tinha três pares acima de 99,99%).
+
+## Séries multivariadas do Bank (E2)
+
+- Matriz em `data/processed/Bank/series.parquet` e `observed.parquet` (não versionadas): 14.400 minutos (10 dias × 1.440) × 1.942 atributos `componente::kpi`. Construção e decisões: ADR 0012.
+- **Passo de amostragem heterogêneo:**
+  - 60 s: JVM, Tomcat, Redis;
+  - 120 s: CPU do SO e MySQL, na mediana;
+  - 300 s: memória do Tomcat e NTP;
+  - 6 a 38 min: contêineres;
+  - 60 min: sistemas de arquivos.
+  
+  Por isso, o limite de preenchimento é ajustado por atributo (`reports/tables/fill_limits_Bank.csv`).
+- Catálogo por atributo em `reports/tables/feature_catalog_Bank.csv`, gerado a partir das regras de `configs/data/kpi_catalog_bank.yaml`.
+- Atributos de log: `access_*` (Tomcat, apache), `gc_*` (Tomcat), `slow_*` e `mysql_error_count` (MySQL), `log_<catalina|localhost>_{count,level_*,tpl_*}` (Tomcat). O texto dos templates fica em `data/processed/Bank/log_templates.csv` (não versionado).
+- Dependências: `reports/tables/dependency_edges_Bank.csv`. São 32 arestas observadas nos traces, IG01-02 → Tomcat01-04 → MG01-02 ↔ dockerA1-2/dockerB1-2; Redis, MySQL e apache não emitem spans.

@@ -1,3 +1,13 @@
-# Plan B second system (ADR 0009 addendum). Merge after base.yaml:
+# Plan B second system (ADR 0009 addendum, ADR 0011/0012). Merge after base.yaml:
 #   uv run tcc-rca <command> --config configs/base.yaml configs/system/bank.yaml
 target_system: Bank
+series:
+  deployment_list: null            # Bank has no deployment list; dependencies come from traces only
+  kpi_catalog: configs/data/kpi_catalog_bank.yaml
+  report_train_days: 2             # provisional drop report fitted on the initial block
+  # Initial block (approved 2026-11-11): 2021_03_04 is the first day and cannot be tested in
+  # chronological order; 2021_03_05 has no failures. drain3 templates are fitted on these days only.
+  initial_block_days: ["2021_03_04", "2021_03_05"]
+  log_top_templates: 10
+  adaptive_ffill: true             # ADR 0012: sampling steps range from 1 to 60 min in the Bank
+  max_ffill_steps: 60

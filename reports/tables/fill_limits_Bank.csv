@@ -1,0 +1,1840 @@
+feature,ffill_limit_steps
+IG01::JVM-Memory_7778_JVM_Memory_HeapMemoryMax,5
+IG01::JVM-Memory_7778_JVM_Memory_HeapMemoryUsage,5
+IG01::JVM-Memory_7778_JVM_Memory_HeapMemoryUsed,5
+IG01::JVM-Memory_7778_JVM_Memory_NoHeapMemoryUsed,5
+IG01::JVM-Operating System_7778_JVM_JVM_CPULoad,5
+IG01::JVM-Runtime_7778_JVM_JVM_Uptime,5
+IG01::JVM-Threads_7778_JVM_ThreadCount_Threads,5
+IG01::OSLinux-CPU_CPU-0_SingleCpuUtil,5
+IG01::OSLinux-CPU_CPU-0_SingleCpuidle,5
+IG01::OSLinux-CPU_CPU-2_SingleCpuUtil,5
+IG01::OSLinux-CPU_CPU-2_SingleCpuidle,5
+IG01::OSLinux-CPU_CPU_CPUCpuUtil,5
+IG01::OSLinux-CPU_CPU_CPULoad,5
+IG01::OSLinux-CPU_CPU_CPUSysTime,5
+IG01::OSLinux-CPU_CPU_CPUUserTime,5
+IG01::OSLinux-CPU_CPU_CPUWio,5
+IG01::OSLinux-CPU_CPU_CPUidleutil,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-_FSAvailableSpace,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-_FSCapacity,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-_FSInodeUsedPercent,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-_FSUsedSpace,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-home_FSAvailableSpace,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-home_FSCapacity,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-home_FSInodeUsedPercent,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-home_FSUsedSpace,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSCapacity,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSInodeUsedPercent,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSAvailableSpace,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSCapacity,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSInodeUsedPercent,5
+IG01::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSUsedSpace,5
+IG01::OSLinux-OSLinux_FILE_-home-zabbix_DirSizeMB,10
+IG01::OSLinux-OSLinux_FILE_-tmp-zabbix_agentd.log_FileSizeMB,5
+IG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKAvgServ,5
+IG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKBps,5
+IG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKPercentBusy,5
+IG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRTps,5
+IG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRead,5
+IG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKReadWrite,5
+IG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKTps,5
+IG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWTps,5
+IG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWrite,5
+IG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ,5
+IG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKBps,5
+IG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKPercentBusy,5
+IG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRTps,5
+IG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRead,5
+IG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKReadWrite,5
+IG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKTps,5
+IG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWTps,5
+IG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWrite,5
+IG01::OSLinux-OSLinux_MEMORY_MEMORY_CacheMem,5
+IG01::OSLinux-OSLinux_MEMORY_MEMORY_MEMFreeMem,5
+IG01::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,60
+IG01::OSLinux-OSLinux_MEMORY_MEMORY_MEMUsedMemPerc,5
+IG01::OSLinux-OSLinux_MEMORY_MEMORY_NoCacheMemPerc,5
+IG01::OSLinux-OSLinux_MEMORY_MEMORY_UserMem,5
+IG01::OSLinux-OSLinux_NETWORK_NETWORK_TCP-CLOSE-WAIT,5
+IG01::OSLinux-OSLinux_NETWORK_NETWORK_TCP-FIN-WAIT,5
+IG01::OSLinux-OSLinux_NETWORK_NETWORK_TotalTcpConnNum,5
+IG01::OSLinux-OSLinux_NETWORK_ens160_NETBandwidthUtil,5
+IG01::OSLinux-OSLinux_NETWORK_ens160_NETInErr,5
+IG01::OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc,5
+IG01::OSLinux-OSLinux_NETWORK_ens160_NETKBTotalPerSec,5
+IG01::OSLinux-OSLinux_NETWORK_ens160_NETOutErr,5
+IG01::OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc,5
+IG01::OSLinux-OSLinux_NETWORK_ens160_NETPacketsIn,5
+IG01::OSLinux-OSLinux_NETWORK_ens160_NETPacketsOut,5
+IG01::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,5
+IG01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,5
+IG01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,5
+IG01::OSLinux-OSLinux_PROCESS_zabbix-zabbix_agentd_PROCPPCPUPerc,5
+IG01::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,5
+IG01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,60
+IG01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,5
+IG01::OSLinux-OSLinux_SWAP_SWAP_Si,5
+IG01::OSLinux-OSLinux_SWAP_SWAP_So,5
+IG01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,10
+IG01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,10
+IG01::OSLinux-OSLinux_ZABBIX_Host_Uptime,5
+IG01::trace_latency_mean,5
+IG01::trace_latency_p95,5
+IG01::trace_latency_p99,5
+IG02::JVM-Memory_7778_JVM_Memory_HeapMemoryMax,5
+IG02::JVM-Memory_7778_JVM_Memory_HeapMemoryUsage,5
+IG02::JVM-Memory_7778_JVM_Memory_HeapMemoryUsed,5
+IG02::JVM-Memory_7778_JVM_Memory_NoHeapMemoryUsed,5
+IG02::JVM-Operating System_7778_JVM_JVM_CPULoad,5
+IG02::JVM-Runtime_7778_JVM_JVM_Uptime,5
+IG02::JVM-Threads_7778_JVM_ThreadCount_Threads,5
+IG02::OSLinux-CPU_CPU-0_SingleCpuUtil,5
+IG02::OSLinux-CPU_CPU-0_SingleCpuidle,5
+IG02::OSLinux-CPU_CPU-2_SingleCpuUtil,5
+IG02::OSLinux-CPU_CPU-2_SingleCpuidle,5
+IG02::OSLinux-CPU_CPU_CPUCpuUtil,5
+IG02::OSLinux-CPU_CPU_CPULoad,5
+IG02::OSLinux-CPU_CPU_CPUSysTime,5
+IG02::OSLinux-CPU_CPU_CPUUserTime,5
+IG02::OSLinux-CPU_CPU_CPUWio,5
+IG02::OSLinux-CPU_CPU_CPUidleutil,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-_FSAvailableSpace,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-_FSCapacity,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-_FSInodeUsedPercent,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-_FSUsedSpace,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-home_FSAvailableSpace,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-home_FSCapacity,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-home_FSInodeUsedPercent,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-home_FSUsedSpace,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSCapacity,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSInodeUsedPercent,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSAvailableSpace,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSCapacity,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSInodeUsedPercent,5
+IG02::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSUsedSpace,5
+IG02::OSLinux-OSLinux_FILE_-home-zabbix_DirSizeMB,10
+IG02::OSLinux-OSLinux_FILE_-tmp-zabbix_agentd.log_FileSizeMB,5
+IG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKAvgServ,5
+IG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKBps,5
+IG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKPercentBusy,5
+IG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRTps,5
+IG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRead,5
+IG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKReadWrite,5
+IG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKTps,5
+IG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWTps,5
+IG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWrite,5
+IG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ,5
+IG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKBps,5
+IG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKPercentBusy,5
+IG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRTps,5
+IG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRead,5
+IG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKReadWrite,5
+IG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKTps,5
+IG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWTps,5
+IG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWrite,5
+IG02::OSLinux-OSLinux_MEMORY_MEMORY_CacheMem,5
+IG02::OSLinux-OSLinux_MEMORY_MEMORY_MEMFreeMem,5
+IG02::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,60
+IG02::OSLinux-OSLinux_MEMORY_MEMORY_MEMUsedMemPerc,5
+IG02::OSLinux-OSLinux_MEMORY_MEMORY_NoCacheMemPerc,5
+IG02::OSLinux-OSLinux_MEMORY_MEMORY_UserMem,5
+IG02::OSLinux-OSLinux_NETWORK_NETWORK_TCP-CLOSE-WAIT,5
+IG02::OSLinux-OSLinux_NETWORK_NETWORK_TCP-FIN-WAIT,5
+IG02::OSLinux-OSLinux_NETWORK_NETWORK_TotalTcpConnNum,5
+IG02::OSLinux-OSLinux_NETWORK_ens160_NETBandwidthUtil,5
+IG02::OSLinux-OSLinux_NETWORK_ens160_NETInErr,5
+IG02::OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc,5
+IG02::OSLinux-OSLinux_NETWORK_ens160_NETKBTotalPerSec,5
+IG02::OSLinux-OSLinux_NETWORK_ens160_NETOutErr,5
+IG02::OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc,5
+IG02::OSLinux-OSLinux_NETWORK_ens160_NETPacketsIn,5
+IG02::OSLinux-OSLinux_NETWORK_ens160_NETPacketsOut,5
+IG02::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,5
+IG02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,5
+IG02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,5
+IG02::OSLinux-OSLinux_PROCESS_zabbix-zabbix_agentd_PROCPPCPUPerc,5
+IG02::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,5
+IG02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,60
+IG02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,5
+IG02::OSLinux-OSLinux_SWAP_SWAP_Si,5
+IG02::OSLinux-OSLinux_SWAP_SWAP_So,5
+IG02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,10
+IG02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,10
+IG02::OSLinux-OSLinux_ZABBIX_Host_Uptime,5
+IG02::trace_latency_mean,5
+IG02::trace_latency_p95,5
+IG02::trace_latency_p99,5
+MG01::JVM-Memory_7779_JVM_Memory_HeapMemoryMax,5
+MG01::JVM-Memory_7779_JVM_Memory_HeapMemoryUsage,5
+MG01::JVM-Memory_7779_JVM_Memory_HeapMemoryUsed,5
+MG01::JVM-Memory_7779_JVM_Memory_NoHeapMemoryUsed,5
+MG01::JVM-Operating System_7779_JVM_JVM_CPULoad,5
+MG01::JVM-Runtime_7779_JVM_JVM_Uptime,5
+MG01::JVM-Threads_7779_JVM_ThreadCount_Threads,5
+MG01::OSLinux-CPU_CPU-0_SingleCpuUtil,5
+MG01::OSLinux-CPU_CPU-0_SingleCpuidle,5
+MG01::OSLinux-CPU_CPU-1_SingleCpuUtil,5
+MG01::OSLinux-CPU_CPU-1_SingleCpuidle,5
+MG01::OSLinux-CPU_CPU-2_SingleCpuUtil,5
+MG01::OSLinux-CPU_CPU-2_SingleCpuidle,5
+MG01::OSLinux-CPU_CPU-3_SingleCpuUtil,5
+MG01::OSLinux-CPU_CPU-3_SingleCpuidle,5
+MG01::OSLinux-CPU_CPU_CPUCpuUtil,5
+MG01::OSLinux-CPU_CPU_CPULoad,5
+MG01::OSLinux-CPU_CPU_CPUSysTime,5
+MG01::OSLinux-CPU_CPU_CPUUserTime,5
+MG01::OSLinux-CPU_CPU_CPUWio,5
+MG01::OSLinux-CPU_CPU_CPUidleutil,5
+MG01::OSLinux-OSLinux_FILESYSTEM_----_FSCapacity,5
+MG01::OSLinux-OSLinux_FILESYSTEM_----_FSInodeUsedPercent,5
+MG01::OSLinux-OSLinux_FILESYSTEM_----boot_FSCapacity,5
+MG01::OSLinux-OSLinux_FILESYSTEM_----boot_FSInodeUsedPercent,5
+MG01::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSCapacity,5
+MG01::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSInodeUsedPercent,5
+MG01::OSLinux-OSLinux_FILESYSTEM_----home_FSCapacity,5
+MG01::OSLinux-OSLinux_FILESYSTEM_----home_FSInodeUsedPercent,5
+MG01::OSLinux-OSLinux_FILESYSTEM_----tmp_FSCapacity,5
+MG01::OSLinux-OSLinux_FILESYSTEM_----tmp_FSInodeUsedPercent,5
+MG01::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSCapacity,5
+MG01::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSInodeUsedPercent,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-_FSAvailableSpace,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-_FSCapacity,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-_FSInodeUsedPercent,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-_FSUsedSpace,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-home_FSAvailableSpace,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-home_FSCapacity,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-home_FSInodeUsedPercent,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-home_FSUsedSpace,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSCapacity,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSInodeUsedPercent,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSAvailableSpace,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSCapacity,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSInodeUsedPercent,5
+MG01::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSUsedSpace,5
+MG01::OSLinux-OSLinux_FILE_-home-zabbix_DirSizeMB,10
+MG01::OSLinux-OSLinux_FILE_-tmp-zabbix_agentd.log_FileSizeMB,5
+MG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKAvgServ,5
+MG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKBps,5
+MG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKPercentBusy,5
+MG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRTps,5
+MG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRead,5
+MG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKReadWrite,5
+MG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKTps,5
+MG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWTps,5
+MG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWrite,5
+MG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ,5
+MG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKBps,5
+MG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKPercentBusy,5
+MG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRTps,5
+MG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRead,5
+MG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKReadWrite,5
+MG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKTps,5
+MG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWTps,5
+MG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWrite,5
+MG01::OSLinux-OSLinux_MEMORY_MEMORY_CacheMem,5
+MG01::OSLinux-OSLinux_MEMORY_MEMORY_MEMFreeMem,5
+MG01::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,60
+MG01::OSLinux-OSLinux_MEMORY_MEMORY_MEMUsedMemPerc,5
+MG01::OSLinux-OSLinux_MEMORY_MEMORY_NoCacheMemPerc,5
+MG01::OSLinux-OSLinux_MEMORY_MEMORY_UserMem,5
+MG01::OSLinux-OSLinux_NETWORK_NETWORK_TCP-CLOSE-WAIT,5
+MG01::OSLinux-OSLinux_NETWORK_NETWORK_TCP-FIN-WAIT,5
+MG01::OSLinux-OSLinux_NETWORK_NETWORK_TotalTcpConnNum,5
+MG01::OSLinux-OSLinux_NETWORK_ens160_NETBandwidthUtil,5
+MG01::OSLinux-OSLinux_NETWORK_ens160_NETInErr,5
+MG01::OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc,5
+MG01::OSLinux-OSLinux_NETWORK_ens160_NETKBTotalPerSec,5
+MG01::OSLinux-OSLinux_NETWORK_ens160_NETOutErr,5
+MG01::OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc,5
+MG01::OSLinux-OSLinux_NETWORK_ens160_NETPacketsIn,5
+MG01::OSLinux-OSLinux_NETWORK_ens160_NETPacketsOut,5
+MG01::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,5
+MG01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,5
+MG01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,5
+MG01::OSLinux-OSLinux_PROCESS_zabbix-zabbix_agentd_PROCPPCPUPerc,5
+MG01::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,5
+MG01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,60
+MG01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,5
+MG01::OSLinux-OSLinux_SWAP_SWAP_Si,5
+MG01::OSLinux-OSLinux_SWAP_SWAP_So,5
+MG01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,10
+MG01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,10
+MG01::OSLinux-OSLinux_ZABBIX_Host_Uptime,5
+MG01::trace_latency_mean,5
+MG01::trace_latency_p95,5
+MG01::trace_latency_p99,5
+MG02::JVM-Memory_7779_JVM_Memory_HeapMemoryMax,5
+MG02::JVM-Memory_7779_JVM_Memory_HeapMemoryUsage,5
+MG02::JVM-Memory_7779_JVM_Memory_HeapMemoryUsed,5
+MG02::JVM-Memory_7779_JVM_Memory_NoHeapMemoryUsed,5
+MG02::JVM-Operating System_7779_JVM_JVM_CPULoad,5
+MG02::JVM-Runtime_7779_JVM_JVM_Uptime,5
+MG02::JVM-Threads_7779_JVM_ThreadCount_Threads,5
+MG02::OSLinux-CPU_CPU-0_SingleCpuUtil,5
+MG02::OSLinux-CPU_CPU-0_SingleCpuidle,5
+MG02::OSLinux-CPU_CPU-1_SingleCpuUtil,5
+MG02::OSLinux-CPU_CPU-1_SingleCpuidle,5
+MG02::OSLinux-CPU_CPU-2_SingleCpuUtil,5
+MG02::OSLinux-CPU_CPU-2_SingleCpuidle,5
+MG02::OSLinux-CPU_CPU-3_SingleCpuUtil,5
+MG02::OSLinux-CPU_CPU-3_SingleCpuidle,5
+MG02::OSLinux-CPU_CPU_CPUCpuUtil,5
+MG02::OSLinux-CPU_CPU_CPULoad,5
+MG02::OSLinux-CPU_CPU_CPUSysTime,5
+MG02::OSLinux-CPU_CPU_CPUUserTime,5
+MG02::OSLinux-CPU_CPU_CPUWio,5
+MG02::OSLinux-CPU_CPU_CPUidleutil,5
+MG02::OSLinux-OSLinux_FILESYSTEM_----_FSCapacity,5
+MG02::OSLinux-OSLinux_FILESYSTEM_----_FSInodeUsedPercent,5
+MG02::OSLinux-OSLinux_FILESYSTEM_----boot_FSCapacity,5
+MG02::OSLinux-OSLinux_FILESYSTEM_----boot_FSInodeUsedPercent,5
+MG02::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSCapacity,5
+MG02::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSInodeUsedPercent,5
+MG02::OSLinux-OSLinux_FILESYSTEM_----home_FSCapacity,5
+MG02::OSLinux-OSLinux_FILESYSTEM_----home_FSInodeUsedPercent,5
+MG02::OSLinux-OSLinux_FILESYSTEM_----tmp_FSCapacity,5
+MG02::OSLinux-OSLinux_FILESYSTEM_----tmp_FSInodeUsedPercent,5
+MG02::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSCapacity,5
+MG02::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSInodeUsedPercent,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-_FSAvailableSpace,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-_FSCapacity,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-_FSInodeUsedPercent,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-_FSUsedSpace,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-home_FSAvailableSpace,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-home_FSCapacity,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-home_FSInodeUsedPercent,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-home_FSUsedSpace,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSCapacity,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSInodeUsedPercent,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSAvailableSpace,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSCapacity,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSInodeUsedPercent,5
+MG02::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSUsedSpace,5
+MG02::OSLinux-OSLinux_FILE_-home-zabbix_DirSizeMB,10
+MG02::OSLinux-OSLinux_FILE_-tmp-zabbix_agentd.log_FileSizeMB,5
+MG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKAvgServ,5
+MG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKBps,5
+MG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKPercentBusy,5
+MG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRTps,5
+MG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRead,5
+MG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKReadWrite,5
+MG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKTps,5
+MG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWTps,5
+MG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWrite,5
+MG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ,5
+MG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKBps,5
+MG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKPercentBusy,5
+MG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRTps,5
+MG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRead,5
+MG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKReadWrite,5
+MG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKTps,5
+MG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWTps,5
+MG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWrite,5
+MG02::OSLinux-OSLinux_MEMORY_MEMORY_CacheMem,5
+MG02::OSLinux-OSLinux_MEMORY_MEMORY_MEMFreeMem,5
+MG02::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,60
+MG02::OSLinux-OSLinux_MEMORY_MEMORY_MEMUsedMemPerc,5
+MG02::OSLinux-OSLinux_MEMORY_MEMORY_NoCacheMemPerc,5
+MG02::OSLinux-OSLinux_MEMORY_MEMORY_UserMem,5
+MG02::OSLinux-OSLinux_NETWORK_NETWORK_TCP-CLOSE-WAIT,5
+MG02::OSLinux-OSLinux_NETWORK_NETWORK_TCP-FIN-WAIT,5
+MG02::OSLinux-OSLinux_NETWORK_NETWORK_TotalTcpConnNum,5
+MG02::OSLinux-OSLinux_NETWORK_ens160_NETBandwidthUtil,5
+MG02::OSLinux-OSLinux_NETWORK_ens160_NETInErr,5
+MG02::OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc,5
+MG02::OSLinux-OSLinux_NETWORK_ens160_NETKBTotalPerSec,5
+MG02::OSLinux-OSLinux_NETWORK_ens160_NETOutErr,5
+MG02::OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc,5
+MG02::OSLinux-OSLinux_NETWORK_ens160_NETPacketsIn,5
+MG02::OSLinux-OSLinux_NETWORK_ens160_NETPacketsOut,5
+MG02::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,5
+MG02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,5
+MG02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,5
+MG02::OSLinux-OSLinux_PROCESS_zabbix-zabbix_agentd_PROCPPCPUPerc,5
+MG02::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,5
+MG02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,60
+MG02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,5
+MG02::OSLinux-OSLinux_SWAP_SWAP_Si,5
+MG02::OSLinux-OSLinux_SWAP_SWAP_So,5
+MG02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,10
+MG02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,10
+MG02::OSLinux-OSLinux_ZABBIX_Host_Uptime,5
+MG02::trace_latency_mean,5
+MG02::trace_latency_p95,5
+MG02::trace_latency_p99,5
+Mysql01::Mysql-MySQL_3306_Aborted Clients,5
+Mysql01::Mysql-MySQL_3306_Aborted Connects,5
+Mysql01::Mysql-MySQL_3306_Binlog Cache Disk Use,5
+Mysql01::Mysql-MySQL_3306_Binlog Cache Use,5
+Mysql01::Mysql-MySQL_3306_Binlog stmt cache disk use,5
+Mysql01::Mysql-MySQL_3306_Binlog stmt cache use,5
+Mysql01::Mysql-MySQL_3306_Bytes Received,5
+Mysql01::Mysql-MySQL_3306_Bytes Sent,5
+Mysql01::Mysql-MySQL_3306_Com Delete,5
+Mysql01::Mysql-MySQL_3306_Com Delete Multi,5
+Mysql01::Mysql-MySQL_3306_Com Insert,5
+Mysql01::Mysql-MySQL_3306_Com Insert Select,5
+Mysql01::Mysql-MySQL_3306_Com Load,5
+Mysql01::Mysql-MySQL_3306_Com Replace,5
+Mysql01::Mysql-MySQL_3306_Com Replace Select,5
+Mysql01::Mysql-MySQL_3306_Com Select,5
+Mysql01::Mysql-MySQL_3306_Com Update,5
+Mysql01::Mysql-MySQL_3306_Com Update Multi,5
+Mysql01::Mysql-MySQL_3306_Connections,5
+Mysql01::Mysql-MySQL_3306_Created Tmp Disk Tables,5
+Mysql01::Mysql-MySQL_3306_Created Tmp Files,5
+Mysql01::Mysql-MySQL_3306_Created Tmp Tables,5
+Mysql01::Mysql-MySQL_3306_CurrentSQLMaxRunningTime,5
+Mysql01::Mysql-MySQL_3306_GetConnectedStateOfMysqld,5
+Mysql01::Mysql-MySQL_3306_GetResponseTimeOfMysqld,5
+Mysql01::Mysql-MySQL_3306_Handler Commit,5
+Mysql01::Mysql-MySQL_3306_Handler Delete,5
+Mysql01::Mysql-MySQL_3306_Handler Read First,5
+Mysql01::Mysql-MySQL_3306_Handler Read Key,5
+Mysql01::Mysql-MySQL_3306_Handler Read Next,5
+Mysql01::Mysql-MySQL_3306_Handler Read Prev,5
+Mysql01::Mysql-MySQL_3306_Handler Read Rnd,5
+Mysql01::Mysql-MySQL_3306_Handler Read Rnd Next,5
+Mysql01::Mysql-MySQL_3306_Handler Rollback,5
+Mysql01::Mysql-MySQL_3306_Handler Savepoint,5
+Mysql01::Mysql-MySQL_3306_Handler Savepoint Rollback,5
+Mysql01::Mysql-MySQL_3306_Handler Update,5
+Mysql01::Mysql-MySQL_3306_Handler Write,5
+Mysql01::Mysql-MySQL_3306_Innodb Row Lock Time,5
+Mysql01::Mysql-MySQL_3306_Innodb Row Lock Waits,5
+Mysql01::Mysql-MySQL_3306_Innodb buffer pool pages dirty,5
+Mysql01::Mysql-MySQL_3306_Innodb buffer pool pages flushed,5
+Mysql01::Mysql-MySQL_3306_Innodb buffer pool pages free,5
+Mysql01::Mysql-MySQL_3306_Innodb buffer pool pages misc,5
+Mysql01::Mysql-MySQL_3306_Innodb buffer pool pages total,5
+Mysql01::Mysql-MySQL_3306_Innodb buffer pool read ahead,5
+Mysql01::Mysql-MySQL_3306_Innodb buffer pool read ahead evicted,5
+Mysql01::Mysql-MySQL_3306_Innodb buffer pool read ahead rnd,5
+Mysql01::Mysql-MySQL_3306_Innodb buffer pool read requests,5
+Mysql01::Mysql-MySQL_3306_Innodb buffer pool reads,5
+Mysql01::Mysql-MySQL_3306_Innodb buffer pool wait free,5
+Mysql01::Mysql-MySQL_3306_Innodb buffer pool write requests,5
+Mysql01::Mysql-MySQL_3306_Innodb data fsyncs,5
+Mysql01::Mysql-MySQL_3306_Innodb data pending fsyncs,5
+Mysql01::Mysql-MySQL_3306_Innodb data pending reads,5
+Mysql01::Mysql-MySQL_3306_Innodb data pending writes,5
+Mysql01::Mysql-MySQL_3306_Innodb data read,5
+Mysql01::Mysql-MySQL_3306_Innodb data reads,5
+Mysql01::Mysql-MySQL_3306_Innodb data writes,5
+Mysql01::Mysql-MySQL_3306_Innodb data written,5
+Mysql01::Mysql-MySQL_3306_Innodb dblwr pages written,5
+Mysql01::Mysql-MySQL_3306_Innodb dblwr writes,5
+Mysql01::Mysql-MySQL_3306_Innodb log waits,5
+Mysql01::Mysql-MySQL_3306_Innodb log write requests,5
+Mysql01::Mysql-MySQL_3306_Innodb log writes,5
+Mysql01::Mysql-MySQL_3306_Innodb open files  num,5
+Mysql01::Mysql-MySQL_3306_Innodb os log fsyncs,5
+Mysql01::Mysql-MySQL_3306_Innodb os log pending fsyncs,5
+Mysql01::Mysql-MySQL_3306_Innodb os log pending writes,5
+Mysql01::Mysql-MySQL_3306_Innodb os log written,5
+Mysql01::Mysql-MySQL_3306_Innodb pages created,5
+Mysql01::Mysql-MySQL_3306_Innodb pages read,5
+Mysql01::Mysql-MySQL_3306_Innodb pages written,5
+Mysql01::Mysql-MySQL_3306_Innodb row lock current waits,5
+Mysql01::Mysql-MySQL_3306_Innodb row lock time avg,5
+Mysql01::Mysql-MySQL_3306_Innodb row lock time max,5
+Mysql01::Mysql-MySQL_3306_Key Read Requests,5
+Mysql01::Mysql-MySQL_3306_Key Reads,5
+Mysql01::Mysql-MySQL_3306_Key Write Requests,5
+Mysql01::Mysql-MySQL_3306_Key Writes,5
+Mysql01::Mysql-MySQL_3306_LongestTrxActiveTime,5
+Mysql01::Mysql-MySQL_3306_Max Used Connections,5
+Mysql01::Mysql-MySQL_3306_Max trx rows locked,5
+Mysql01::Mysql-MySQL_3306_MaxConnections,5
+Mysql01::Mysql-MySQL_3306_MaxTrxRowsModified,5
+Mysql01::Mysql-MySQL_3306_MySQL  Queries,5
+Mysql01::Mysql-MySQL_3306_Open Files,5
+Mysql01::Mysql-MySQL_3306_Open Tables,5
+Mysql01::Mysql-MySQL_3306_Opened Tables,5
+Mysql01::Mysql-MySQL_3306_Opened table definitions,5
+Mysql01::Mysql-MySQL_3306_Qcache Free Blocks,5
+Mysql01::Mysql-MySQL_3306_Qcache Free Memory,5
+Mysql01::Mysql-MySQL_3306_Qcache Hits,5
+Mysql01::Mysql-MySQL_3306_Qcache Inserts,5
+Mysql01::Mysql-MySQL_3306_Qcache Lowmem Prunes,5
+Mysql01::Mysql-MySQL_3306_Qcache Not Cached,5
+Mysql01::Mysql-MySQL_3306_Qcache Queries In Cache,5
+Mysql01::Mysql-MySQL_3306_Qcache Total Blocks,5
+Mysql01::Mysql-MySQL_3306_Questions,5
+Mysql01::Mysql-MySQL_3306_Rows Read,5
+Mysql01::Mysql-MySQL_3306_Select Full Join,5
+Mysql01::Mysql-MySQL_3306_Select Full Range Join,5
+Mysql01::Mysql-MySQL_3306_Select Range,5
+Mysql01::Mysql-MySQL_3306_Select Range Check,5
+Mysql01::Mysql-MySQL_3306_Select Scan,5
+Mysql01::Mysql-MySQL_3306_Slave Open Temp Tables,5
+Mysql01::Mysql-MySQL_3306_Slow launch threads,5
+Mysql01::Mysql-MySQL_3306_SlowQueries,5
+Mysql01::Mysql-MySQL_3306_Sort Merge Passes,5
+Mysql01::Mysql-MySQL_3306_Sort Range,5
+Mysql01::Mysql-MySQL_3306_Sort Rows,5
+Mysql01::Mysql-MySQL_3306_Sort Scan,5
+Mysql01::Mysql-MySQL_3306_Table Locks Immediate,5
+Mysql01::Mysql-MySQL_3306_Table Locks Waited,5
+Mysql01::Mysql-MySQL_3306_Table open cache hits,5
+Mysql01::Mysql-MySQL_3306_Table open cache misses,5
+Mysql01::Mysql-MySQL_3306_Table open cache overflows,5
+Mysql01::Mysql-MySQL_3306_Tc log max pages used,5
+Mysql01::Mysql-MySQL_3306_Tc log page waits,5
+Mysql01::Mysql-MySQL_3306_Threads Cached,5
+Mysql01::Mysql-MySQL_3306_Threads Created,5
+Mysql01::Mysql-MySQL_3306_ThreadsConnected,5
+Mysql01::Mysql-MySQL_3306_ThreadsRunning,5
+Mysql01::Mysql-MySQL_3306_max trx lock memory bytes,5
+Mysql01::OSLinux-CPU_CPU-0_SingleCpuUtil,5
+Mysql01::OSLinux-CPU_CPU-0_SingleCpuidle,5
+Mysql01::OSLinux-CPU_CPU-1_SingleCpuUtil,5
+Mysql01::OSLinux-CPU_CPU-1_SingleCpuidle,5
+Mysql01::OSLinux-CPU_CPU-2_SingleCpuUtil,5
+Mysql01::OSLinux-CPU_CPU-2_SingleCpuidle,5
+Mysql01::OSLinux-CPU_CPU-3_SingleCpuUtil,5
+Mysql01::OSLinux-CPU_CPU-3_SingleCpuidle,5
+Mysql01::OSLinux-CPU_CPU_CPUCpuUtil,5
+Mysql01::OSLinux-CPU_CPU_CPULoad,5
+Mysql01::OSLinux-CPU_CPU_CPUSysTime,5
+Mysql01::OSLinux-CPU_CPU_CPUUserTime,5
+Mysql01::OSLinux-CPU_CPU_CPUWio,5
+Mysql01::OSLinux-CPU_CPU_CPUidleutil,5
+Mysql01::OSLinux-NTP_197.30.1.67_NtpServerTimeOffset,5
+Mysql01::OSLinux-NTP_197.30.1.68_NtpServerTimeOffset,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-_FSAvailableSpace,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-_FSCapacity,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-_FSInodeUsedPercent,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-_FSUsedSpace,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-home_FSAvailableSpace,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-home_FSCapacity,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-home_FSInodeUsedPercent,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-home_FSUsedSpace,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-mysql_FSAvailableSpace,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-mysql_FSCapacity,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-mysql_FSInodeUsedPercent,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-mysql_FSUsedSpace,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-mysqlbak_FSAvailableSpace,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-mysqlbak_FSCapacity,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-mysqlbak_FSInodeUsedPercent,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-mysqlbak_FSUsedSpace,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-mysqldata_FSAvailableSpace,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-mysqldata_FSCapacity,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-mysqldata_FSInodeUsedPercent,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-mysqldata_FSUsedSpace,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSCapacity,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSInodeUsedPercent,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-usr-openv_FSAvailableSpace,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-usr-openv_FSCapacity,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-usr-openv_FSInodeUsedPercent,5
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-usr-openv_FSUsedSpace,5
+Mysql01::OSLinux-OSLinux_FILE_-home-zabbix_DirSizeMB,10
+Mysql01::OSLinux-OSLinux_FILE_-tmp-zabbix_agentd.log_FileSizeMB,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKAvgServ,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKBps,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKPercentBusy,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRTps,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRead,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKReadWrite,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKTps,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWTps,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWrite,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKBps,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKPercentBusy,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRTps,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRead,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKReadWrite,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKTps,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWTps,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWrite,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdc_DSKAvgServ,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdc_DSKBps,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdc_DSKPercentBusy,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdc_DSKRTps,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdc_DSKRead,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdc_DSKReadWrite,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdc_DSKTps,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdc_DSKWTps,5
+Mysql01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdc_DSKWrite,5
+Mysql01::OSLinux-OSLinux_MEMORY_MEMORY_CacheMem,5
+Mysql01::OSLinux-OSLinux_MEMORY_MEMORY_MEMFreeMem,5
+Mysql01::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,60
+Mysql01::OSLinux-OSLinux_MEMORY_MEMORY_MEMUsedMemPerc,5
+Mysql01::OSLinux-OSLinux_MEMORY_MEMORY_NoCacheMemPerc,5
+Mysql01::OSLinux-OSLinux_MEMORY_MEMORY_UserMem,5
+Mysql01::OSLinux-OSLinux_NETWORK_NETWORK_TCP-CLOSE-WAIT,5
+Mysql01::OSLinux-OSLinux_NETWORK_NETWORK_TCP-FIN-WAIT,5
+Mysql01::OSLinux-OSLinux_NETWORK_NETWORK_TotalTcpConnNum,5
+Mysql01::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,5
+Mysql01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,5
+Mysql01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,5
+Mysql01::OSLinux-OSLinux_PROCESS_zabbix-zabbix_agentd_PROCPPCPUPerc,5
+Mysql01::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,5
+Mysql01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,60
+Mysql01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,5
+Mysql01::OSLinux-OSLinux_SWAP_SWAP_Si,5
+Mysql01::OSLinux-OSLinux_SWAP_SWAP_So,5
+Mysql01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,10
+Mysql01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,10
+Mysql01::OSLinux-OSLinux_ZABBIX_Host_Uptime,5
+Mysql01::slow_query_time_mean_s,5
+Mysql01::slow_rows_examined_mean,5
+Mysql02::Mysql-MySQL_3306_Aborted Clients,5
+Mysql02::Mysql-MySQL_3306_Aborted Connects,5
+Mysql02::Mysql-MySQL_3306_Binlog Cache Disk Use,5
+Mysql02::Mysql-MySQL_3306_Binlog Cache Use,5
+Mysql02::Mysql-MySQL_3306_Binlog stmt cache disk use,5
+Mysql02::Mysql-MySQL_3306_Binlog stmt cache use,5
+Mysql02::Mysql-MySQL_3306_Bytes Received,5
+Mysql02::Mysql-MySQL_3306_Bytes Sent,5
+Mysql02::Mysql-MySQL_3306_Com Delete,5
+Mysql02::Mysql-MySQL_3306_Com Delete Multi,5
+Mysql02::Mysql-MySQL_3306_Com Insert,5
+Mysql02::Mysql-MySQL_3306_Com Insert Select,5
+Mysql02::Mysql-MySQL_3306_Com Load,5
+Mysql02::Mysql-MySQL_3306_Com Replace,5
+Mysql02::Mysql-MySQL_3306_Com Replace Select,5
+Mysql02::Mysql-MySQL_3306_Com Select,5
+Mysql02::Mysql-MySQL_3306_Com Update,5
+Mysql02::Mysql-MySQL_3306_Com Update Multi,5
+Mysql02::Mysql-MySQL_3306_Connections,5
+Mysql02::Mysql-MySQL_3306_Created Tmp Disk Tables,5
+Mysql02::Mysql-MySQL_3306_Created Tmp Files,5
+Mysql02::Mysql-MySQL_3306_Created Tmp Tables,5
+Mysql02::Mysql-MySQL_3306_CurrentSQLMaxRunningTime,5
+Mysql02::Mysql-MySQL_3306_GetConnectedStateOfMysqld,5
+Mysql02::Mysql-MySQL_3306_GetResponseTimeOfMysqld,5
+Mysql02::Mysql-MySQL_3306_Handler Commit,5
+Mysql02::Mysql-MySQL_3306_Handler Delete,5
+Mysql02::Mysql-MySQL_3306_Handler Read First,5
+Mysql02::Mysql-MySQL_3306_Handler Read Key,5
+Mysql02::Mysql-MySQL_3306_Handler Read Next,5
+Mysql02::Mysql-MySQL_3306_Handler Read Prev,5
+Mysql02::Mysql-MySQL_3306_Handler Read Rnd,5
+Mysql02::Mysql-MySQL_3306_Handler Read Rnd Next,5
+Mysql02::Mysql-MySQL_3306_Handler Rollback,5
+Mysql02::Mysql-MySQL_3306_Handler Savepoint,5
+Mysql02::Mysql-MySQL_3306_Handler Savepoint Rollback,5
+Mysql02::Mysql-MySQL_3306_Handler Update,5
+Mysql02::Mysql-MySQL_3306_Handler Write,5
+Mysql02::Mysql-MySQL_3306_Innodb Row Lock Time,5
+Mysql02::Mysql-MySQL_3306_Innodb Row Lock Waits,5
+Mysql02::Mysql-MySQL_3306_Innodb buffer pool pages dirty,5
+Mysql02::Mysql-MySQL_3306_Innodb buffer pool pages flushed,5
+Mysql02::Mysql-MySQL_3306_Innodb buffer pool pages free,5
+Mysql02::Mysql-MySQL_3306_Innodb buffer pool pages misc,5
+Mysql02::Mysql-MySQL_3306_Innodb buffer pool pages total,5
+Mysql02::Mysql-MySQL_3306_Innodb buffer pool read ahead,5
+Mysql02::Mysql-MySQL_3306_Innodb buffer pool read ahead evicted,5
+Mysql02::Mysql-MySQL_3306_Innodb buffer pool read ahead rnd,5
+Mysql02::Mysql-MySQL_3306_Innodb buffer pool read requests,5
+Mysql02::Mysql-MySQL_3306_Innodb buffer pool reads,5
+Mysql02::Mysql-MySQL_3306_Innodb buffer pool wait free,5
+Mysql02::Mysql-MySQL_3306_Innodb buffer pool write requests,5
+Mysql02::Mysql-MySQL_3306_Innodb data fsyncs,5
+Mysql02::Mysql-MySQL_3306_Innodb data pending fsyncs,5
+Mysql02::Mysql-MySQL_3306_Innodb data pending reads,5
+Mysql02::Mysql-MySQL_3306_Innodb data pending writes,5
+Mysql02::Mysql-MySQL_3306_Innodb data read,5
+Mysql02::Mysql-MySQL_3306_Innodb data reads,5
+Mysql02::Mysql-MySQL_3306_Innodb data writes,5
+Mysql02::Mysql-MySQL_3306_Innodb data written,5
+Mysql02::Mysql-MySQL_3306_Innodb dblwr pages written,5
+Mysql02::Mysql-MySQL_3306_Innodb dblwr writes,5
+Mysql02::Mysql-MySQL_3306_Innodb log waits,5
+Mysql02::Mysql-MySQL_3306_Innodb log write requests,5
+Mysql02::Mysql-MySQL_3306_Innodb log writes,5
+Mysql02::Mysql-MySQL_3306_Innodb open files  num,5
+Mysql02::Mysql-MySQL_3306_Innodb os log fsyncs,5
+Mysql02::Mysql-MySQL_3306_Innodb os log pending fsyncs,5
+Mysql02::Mysql-MySQL_3306_Innodb os log pending writes,5
+Mysql02::Mysql-MySQL_3306_Innodb os log written,5
+Mysql02::Mysql-MySQL_3306_Innodb pages created,5
+Mysql02::Mysql-MySQL_3306_Innodb pages read,5
+Mysql02::Mysql-MySQL_3306_Innodb pages written,5
+Mysql02::Mysql-MySQL_3306_Innodb row lock current waits,5
+Mysql02::Mysql-MySQL_3306_Innodb row lock time avg,5
+Mysql02::Mysql-MySQL_3306_Innodb row lock time max,5
+Mysql02::Mysql-MySQL_3306_Key Read Requests,5
+Mysql02::Mysql-MySQL_3306_Key Reads,5
+Mysql02::Mysql-MySQL_3306_Key Write Requests,5
+Mysql02::Mysql-MySQL_3306_Key Writes,5
+Mysql02::Mysql-MySQL_3306_LongestTrxActiveTime,5
+Mysql02::Mysql-MySQL_3306_Max Used Connections,5
+Mysql02::Mysql-MySQL_3306_Max trx rows locked,5
+Mysql02::Mysql-MySQL_3306_MaxConnections,5
+Mysql02::Mysql-MySQL_3306_MaxTrxRowsModified,5
+Mysql02::Mysql-MySQL_3306_MySQL  Queries,5
+Mysql02::Mysql-MySQL_3306_Open Files,5
+Mysql02::Mysql-MySQL_3306_Open Tables,5
+Mysql02::Mysql-MySQL_3306_Opened Tables,5
+Mysql02::Mysql-MySQL_3306_Opened table definitions,5
+Mysql02::Mysql-MySQL_3306_Qcache Free Blocks,5
+Mysql02::Mysql-MySQL_3306_Qcache Free Memory,5
+Mysql02::Mysql-MySQL_3306_Qcache Hits,5
+Mysql02::Mysql-MySQL_3306_Qcache Inserts,5
+Mysql02::Mysql-MySQL_3306_Qcache Lowmem Prunes,5
+Mysql02::Mysql-MySQL_3306_Qcache Not Cached,5
+Mysql02::Mysql-MySQL_3306_Qcache Queries In Cache,5
+Mysql02::Mysql-MySQL_3306_Qcache Total Blocks,5
+Mysql02::Mysql-MySQL_3306_Questions,5
+Mysql02::Mysql-MySQL_3306_Rows Read,5
+Mysql02::Mysql-MySQL_3306_Select Full Join,5
+Mysql02::Mysql-MySQL_3306_Select Full Range Join,5
+Mysql02::Mysql-MySQL_3306_Select Range,5
+Mysql02::Mysql-MySQL_3306_Select Range Check,5
+Mysql02::Mysql-MySQL_3306_Select Scan,5
+Mysql02::Mysql-MySQL_3306_Slave Open Temp Tables,5
+Mysql02::Mysql-MySQL_3306_Slow launch threads,5
+Mysql02::Mysql-MySQL_3306_SlowQueries,5
+Mysql02::Mysql-MySQL_3306_Sort Merge Passes,5
+Mysql02::Mysql-MySQL_3306_Sort Range,5
+Mysql02::Mysql-MySQL_3306_Sort Rows,5
+Mysql02::Mysql-MySQL_3306_Sort Scan,5
+Mysql02::Mysql-MySQL_3306_Table Locks Immediate,5
+Mysql02::Mysql-MySQL_3306_Table Locks Waited,5
+Mysql02::Mysql-MySQL_3306_Table open cache hits,5
+Mysql02::Mysql-MySQL_3306_Table open cache misses,5
+Mysql02::Mysql-MySQL_3306_Table open cache overflows,5
+Mysql02::Mysql-MySQL_3306_Tc log max pages used,5
+Mysql02::Mysql-MySQL_3306_Tc log page waits,5
+Mysql02::Mysql-MySQL_3306_Threads Cached,5
+Mysql02::Mysql-MySQL_3306_Threads Created,5
+Mysql02::Mysql-MySQL_3306_ThreadsConnected,5
+Mysql02::Mysql-MySQL_3306_ThreadsRunning,5
+Mysql02::Mysql-MySQL_3306_max trx lock memory bytes,5
+Mysql02::OSLinux-CPU_CPU-0_SingleCpuUtil,5
+Mysql02::OSLinux-CPU_CPU-0_SingleCpuidle,5
+Mysql02::OSLinux-CPU_CPU-1_SingleCpuUtil,5
+Mysql02::OSLinux-CPU_CPU-1_SingleCpuidle,5
+Mysql02::OSLinux-CPU_CPU-2_SingleCpuUtil,5
+Mysql02::OSLinux-CPU_CPU-2_SingleCpuidle,5
+Mysql02::OSLinux-CPU_CPU-3_SingleCpuUtil,5
+Mysql02::OSLinux-CPU_CPU-3_SingleCpuidle,5
+Mysql02::OSLinux-CPU_CPU_CPUCpuUtil,5
+Mysql02::OSLinux-CPU_CPU_CPULoad,5
+Mysql02::OSLinux-CPU_CPU_CPUSysTime,5
+Mysql02::OSLinux-CPU_CPU_CPUUserTime,5
+Mysql02::OSLinux-CPU_CPU_CPUWio,5
+Mysql02::OSLinux-CPU_CPU_CPUidleutil,5
+Mysql02::OSLinux-NTP_197.30.1.67_NtpServerTimeOffset,5
+Mysql02::OSLinux-NTP_197.30.1.68_NtpServerTimeOffset,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-_FSAvailableSpace,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-_FSCapacity,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-_FSInodeUsedPercent,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-_FSUsedSpace,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-home_FSAvailableSpace,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-home_FSCapacity,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-home_FSInodeUsedPercent,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-home_FSUsedSpace,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-mysql_FSAvailableSpace,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-mysql_FSCapacity,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-mysql_FSInodeUsedPercent,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-mysql_FSUsedSpace,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-mysqlbak_FSAvailableSpace,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-mysqlbak_FSCapacity,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-mysqlbak_FSInodeUsedPercent,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-mysqlbak_FSUsedSpace,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-mysqldata_FSAvailableSpace,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-mysqldata_FSCapacity,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-mysqldata_FSInodeUsedPercent,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-mysqldata_FSUsedSpace,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSCapacity,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSInodeUsedPercent,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-usr-openv_FSAvailableSpace,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-usr-openv_FSCapacity,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-usr-openv_FSInodeUsedPercent,5
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-usr-openv_FSUsedSpace,5
+Mysql02::OSLinux-OSLinux_FILE_-home-zabbix_DirSizeMB,10
+Mysql02::OSLinux-OSLinux_FILE_-tmp-zabbix_agentd.log_FileSizeMB,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKAvgServ,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKBps,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKPercentBusy,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRTps,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRead,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKReadWrite,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKTps,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWTps,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWrite,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKBps,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKPercentBusy,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRTps,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRead,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKReadWrite,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKTps,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWTps,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWrite,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdc_DSKAvgServ,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdc_DSKBps,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdc_DSKPercentBusy,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdc_DSKRTps,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdc_DSKRead,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdc_DSKReadWrite,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdc_DSKTps,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdc_DSKWTps,5
+Mysql02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdc_DSKWrite,5
+Mysql02::OSLinux-OSLinux_MEMORY_MEMORY_CacheMem,5
+Mysql02::OSLinux-OSLinux_MEMORY_MEMORY_MEMFreeMem,5
+Mysql02::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,60
+Mysql02::OSLinux-OSLinux_MEMORY_MEMORY_MEMUsedMemPerc,5
+Mysql02::OSLinux-OSLinux_MEMORY_MEMORY_NoCacheMemPerc,5
+Mysql02::OSLinux-OSLinux_MEMORY_MEMORY_UserMem,5
+Mysql02::OSLinux-OSLinux_NETWORK_NETWORK_TCP-CLOSE-WAIT,5
+Mysql02::OSLinux-OSLinux_NETWORK_NETWORK_TCP-FIN-WAIT,5
+Mysql02::OSLinux-OSLinux_NETWORK_NETWORK_TotalTcpConnNum,5
+Mysql02::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,5
+Mysql02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,5
+Mysql02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,5
+Mysql02::OSLinux-OSLinux_PROCESS_zabbix-zabbix_agentd_PROCPPCPUPerc,5
+Mysql02::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,5
+Mysql02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,60
+Mysql02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,5
+Mysql02::OSLinux-OSLinux_SWAP_SWAP_Si,5
+Mysql02::OSLinux-OSLinux_SWAP_SWAP_So,5
+Mysql02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,10
+Mysql02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,10
+Mysql02::OSLinux-OSLinux_ZABBIX_Host_Uptime,5
+Mysql02::slow_query_time_mean_s,5
+Mysql02::slow_rows_examined_mean,5
+Redis01::OSLinux-CPU_CPU-0_SingleCpuUtil,5
+Redis01::OSLinux-CPU_CPU-0_SingleCpuidle,5
+Redis01::OSLinux-CPU_CPU-2_SingleCpuUtil,5
+Redis01::OSLinux-CPU_CPU-2_SingleCpuidle,5
+Redis01::OSLinux-CPU_CPU_CPUCpuUtil,5
+Redis01::OSLinux-CPU_CPU_CPULoad,5
+Redis01::OSLinux-CPU_CPU_CPUSysTime,5
+Redis01::OSLinux-CPU_CPU_CPUUserTime,5
+Redis01::OSLinux-CPU_CPU_CPUWio,5
+Redis01::OSLinux-CPU_CPU_CPUidleutil,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-_FSAvailableSpace,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-_FSCapacity,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-_FSInodeUsedPercent,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-_FSUsedSpace,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-home_FSAvailableSpace,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-home_FSCapacity,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-home_FSInodeUsedPercent,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-home_FSUsedSpace,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSCapacity,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSInodeUsedPercent,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSAvailableSpace,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSCapacity,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSInodeUsedPercent,5
+Redis01::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSUsedSpace,5
+Redis01::OSLinux-OSLinux_FILE_-home-zabbix_DirSizeMB,10
+Redis01::OSLinux-OSLinux_FILE_-tmp-zabbix_agentd.log_FileSizeMB,5
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKAvgServ,5
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKBps,5
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKPercentBusy,5
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRTps,5
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRead,5
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKReadWrite,5
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKTps,5
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWTps,5
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWrite,5
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ,5
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKBps,5
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKPercentBusy,5
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRTps,5
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRead,5
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKReadWrite,5
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKTps,5
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWTps,5
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWrite,5
+Redis01::OSLinux-OSLinux_MEMORY_MEMORY_CacheMem,5
+Redis01::OSLinux-OSLinux_MEMORY_MEMORY_MEMFreeMem,5
+Redis01::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,60
+Redis01::OSLinux-OSLinux_MEMORY_MEMORY_MEMUsedMemPerc,5
+Redis01::OSLinux-OSLinux_MEMORY_MEMORY_NoCacheMemPerc,5
+Redis01::OSLinux-OSLinux_MEMORY_MEMORY_UserMem,5
+Redis01::OSLinux-OSLinux_NETWORK_NETWORK_TCP-CLOSE-WAIT,5
+Redis01::OSLinux-OSLinux_NETWORK_NETWORK_TCP-FIN-WAIT,5
+Redis01::OSLinux-OSLinux_NETWORK_NETWORK_TotalTcpConnNum,5
+Redis01::OSLinux-OSLinux_NETWORK_ens160_NETBandwidthUtil,5
+Redis01::OSLinux-OSLinux_NETWORK_ens160_NETInErr,5
+Redis01::OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc,5
+Redis01::OSLinux-OSLinux_NETWORK_ens160_NETKBTotalPerSec,5
+Redis01::OSLinux-OSLinux_NETWORK_ens160_NETOutErr,5
+Redis01::OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc,5
+Redis01::OSLinux-OSLinux_NETWORK_ens160_NETPacketsIn,5
+Redis01::OSLinux-OSLinux_NETWORK_ens160_NETPacketsOut,5
+Redis01::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,5
+Redis01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,5
+Redis01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,5
+Redis01::OSLinux-OSLinux_PROCESS_zabbix-zabbix_agentd_PROCPPCPUPerc,5
+Redis01::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,5
+Redis01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,60
+Redis01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,5
+Redis01::OSLinux-OSLinux_SWAP_SWAP_Si,5
+Redis01::OSLinux-OSLinux_SWAP_SWAP_So,5
+Redis01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,10
+Redis01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,10
+Redis01::OSLinux-OSLinux_ZABBIX_Host_Uptime,5
+Redis01::redis-Redis_6379_Redis  (aof_enabled),5
+Redis01::redis-Redis_6379_Redis  (aof_rewrite_in_progress),5
+Redis01::redis-Redis_6379_Redis  (aof_rewrite_scheduled),5
+Redis01::redis-Redis_6379_Redis  (blocked_clients),5
+Redis01::redis-Redis_6379_Redis  (connected_clients),5
+Redis01::redis-Redis_6379_Redis  (connected_slaves),5
+Redis01::redis-Redis_6379_Redis  (evicted_keys),5
+Redis01::redis-Redis_6379_Redis  (expired_keys),5
+Redis01::redis-Redis_6379_Redis  (instantaneous_ops_per_sec),5
+Redis01::redis-Redis_6379_Redis  (keyspace_hits),5
+Redis01::redis-Redis_6379_Redis  (keyspace_misses),5
+Redis01::redis-Redis_6379_Redis  (latest_fork_usec),5
+Redis01::redis-Redis_6379_Redis  (loading),5
+Redis01::redis-Redis_6379_Redis  (lru_clock),5
+Redis01::redis-Redis_6379_Redis  (maxmemory),5
+Redis01::redis-Redis_6379_Redis  (mem_fragmentation_ratio),5
+Redis01::redis-Redis_6379_Redis  (pubsub_channels),5
+Redis01::redis-Redis_6379_Redis  (rdb_bgsave_in_progress),5
+Redis01::redis-Redis_6379_Redis  (rdb_changes_since_last_save),5
+Redis01::redis-Redis_6379_Redis  (redis_git_dirty),5
+Redis01::redis-Redis_6379_Redis  (rejected_connections),5
+Redis01::redis-Redis_6379_Redis  (total_commands_processed),5
+Redis01::redis-Redis_6379_Redis  (total_connections_received),5
+Redis01::redis-Redis_6379_Redis  (uptime_in_seconds),5
+Redis01::redis-Redis_6379_Redis  (used_cpu_sys),5
+Redis01::redis-Redis_6379_Redis  (used_cpu_sys_children),5
+Redis01::redis-Redis_6379_Redis  (used_cpu_user),5
+Redis01::redis-Redis_6379_Redis  (used_cpu_user_children),5
+Redis01::redis-Redis_6379_Redis  (used_memory),5
+Redis01::redis-Redis_6379_Redis  (used_memory_peak),5
+Redis01::redis-Redis_6379_Redis  (used_memory_rss),5
+Redis01::redis-Redis_6379_redis server,5
+Redis02::OSLinux-CPU_CPU-0_SingleCpuUtil,5
+Redis02::OSLinux-CPU_CPU-0_SingleCpuidle,5
+Redis02::OSLinux-CPU_CPU-2_SingleCpuUtil,5
+Redis02::OSLinux-CPU_CPU-2_SingleCpuidle,5
+Redis02::OSLinux-CPU_CPU_CPUCpuUtil,5
+Redis02::OSLinux-CPU_CPU_CPULoad,5
+Redis02::OSLinux-CPU_CPU_CPUSysTime,5
+Redis02::OSLinux-CPU_CPU_CPUUserTime,5
+Redis02::OSLinux-CPU_CPU_CPUWio,5
+Redis02::OSLinux-CPU_CPU_CPUidleutil,5
+Redis02::OSLinux-NTP_197.30.1.67_NtpServerTimeOffset,5
+Redis02::OSLinux-NTP_197.30.1.68_NtpServerTimeOffset,5
+Redis02::OSLinux-NTP_40.2.208.64_NtpServerTimeOffset,5
+Redis02::OSLinux-NTP_40.2.208.65_NtpServerTimeOffset,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-_FSAvailableSpace,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-_FSCapacity,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-_FSInodeUsedPercent,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-_FSUsedSpace,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-app_FSAvailableSpace,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-app_FSCapacity,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-app_FSInodeUsedPercent,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-app_FSUsedSpace,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-home_FSAvailableSpace,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-home_FSCapacity,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-home_FSInodeUsedPercent,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-home_FSUsedSpace,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSCapacity,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSInodeUsedPercent,5
+Redis02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,5
+Redis02::OSLinux-OSLinux_FILE_-home-zabbix_DirSizeMB,10
+Redis02::OSLinux-OSLinux_FILE_-tmp-zabbix_agentd.log_FileSizeMB,5
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKAvgServ,5
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKBps,5
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKPercentBusy,5
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRTps,5
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRead,5
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKReadWrite,5
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKTps,5
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWTps,5
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWrite,5
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ,5
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKBps,5
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKPercentBusy,5
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRTps,5
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRead,5
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKReadWrite,5
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKTps,5
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWTps,5
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWrite,5
+Redis02::OSLinux-OSLinux_MEMORY_MEMORY_CacheMem,5
+Redis02::OSLinux-OSLinux_MEMORY_MEMORY_MEMFreeMem,5
+Redis02::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,60
+Redis02::OSLinux-OSLinux_MEMORY_MEMORY_MEMUsedMemPerc,5
+Redis02::OSLinux-OSLinux_MEMORY_MEMORY_NoCacheMemPerc,5
+Redis02::OSLinux-OSLinux_MEMORY_MEMORY_UserMem,5
+Redis02::OSLinux-OSLinux_NETWORK_NETWORK_TCP-CLOSE-WAIT,5
+Redis02::OSLinux-OSLinux_NETWORK_NETWORK_TCP-FIN-WAIT,5
+Redis02::OSLinux-OSLinux_NETWORK_NETWORK_TotalTcpConnNum,5
+Redis02::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,5
+Redis02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,5
+Redis02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,5
+Redis02::OSLinux-OSLinux_PROCESS_zabbix-zabbix_agentd_PROCPPCPUPerc,5
+Redis02::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,5
+Redis02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,60
+Redis02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,5
+Redis02::OSLinux-OSLinux_SWAP_SWAP_Si,5
+Redis02::OSLinux-OSLinux_SWAP_SWAP_So,5
+Redis02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,10
+Redis02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,10
+Redis02::OSLinux-OSLinux_ZABBIX_Host_Uptime,5
+Redis02::redis-Redis_6379_Redis  (aof_enabled),5
+Redis02::redis-Redis_6379_Redis  (aof_rewrite_in_progress),5
+Redis02::redis-Redis_6379_Redis  (aof_rewrite_scheduled),5
+Redis02::redis-Redis_6379_Redis  (blocked_clients),5
+Redis02::redis-Redis_6379_Redis  (client_biggest_input_buf),5
+Redis02::redis-Redis_6379_Redis  (client_longest_output_list),5
+Redis02::redis-Redis_6379_Redis  (connected_clients),5
+Redis02::redis-Redis_6379_Redis  (connected_slaves),5
+Redis02::redis-Redis_6379_Redis  (evicted_keys),5
+Redis02::redis-Redis_6379_Redis  (expired_keys),5
+Redis02::redis-Redis_6379_Redis  (instantaneous_ops_per_sec),5
+Redis02::redis-Redis_6379_Redis  (keyspace_hits),5
+Redis02::redis-Redis_6379_Redis  (keyspace_misses),5
+Redis02::redis-Redis_6379_Redis  (latest_fork_usec),5
+Redis02::redis-Redis_6379_Redis  (loading),5
+Redis02::redis-Redis_6379_Redis  (lru_clock),5
+Redis02::redis-Redis_6379_Redis  (maxmemory),5
+Redis02::redis-Redis_6379_Redis  (mem_fragmentation_ratio),5
+Redis02::redis-Redis_6379_Redis  (pubsub_channels),5
+Redis02::redis-Redis_6379_Redis  (rdb_bgsave_in_progress),5
+Redis02::redis-Redis_6379_Redis  (rdb_changes_since_last_save),5
+Redis02::redis-Redis_6379_Redis  (redis_git_dirty),5
+Redis02::redis-Redis_6379_Redis  (rejected_connections),5
+Redis02::redis-Redis_6379_Redis  (total_commands_processed),5
+Redis02::redis-Redis_6379_Redis  (total_connections_received),5
+Redis02::redis-Redis_6379_Redis  (uptime_in_seconds),5
+Redis02::redis-Redis_6379_Redis  (used_cpu_sys),5
+Redis02::redis-Redis_6379_Redis  (used_cpu_sys_children),5
+Redis02::redis-Redis_6379_Redis  (used_cpu_user),5
+Redis02::redis-Redis_6379_Redis  (used_cpu_user_children),5
+Redis02::redis-Redis_6379_Redis  (used_memory),5
+Redis02::redis-Redis_6379_Redis  (used_memory_peak),5
+Redis02::redis-Redis_6379_Redis  (used_memory_rss),5
+Redis02::redis-Redis_6379_redis server,5
+ServiceTest10::app_calls,5
+ServiceTest10::app_mrt,5
+ServiceTest10::app_rr,5
+ServiceTest10::app_sr,5
+ServiceTest11::app_calls,5
+ServiceTest11::app_mrt,5
+ServiceTest11::app_rr,5
+ServiceTest11::app_sr,5
+ServiceTest1::app_calls,5
+ServiceTest1::app_mrt,5
+ServiceTest1::app_rr,5
+ServiceTest1::app_sr,5
+ServiceTest2::app_calls,5
+ServiceTest2::app_mrt,5
+ServiceTest2::app_rr,5
+ServiceTest2::app_sr,5
+ServiceTest3::app_calls,5
+ServiceTest3::app_mrt,5
+ServiceTest3::app_rr,5
+ServiceTest3::app_sr,5
+ServiceTest4::app_calls,5
+ServiceTest4::app_mrt,5
+ServiceTest4::app_rr,5
+ServiceTest4::app_sr,5
+ServiceTest5::app_calls,5
+ServiceTest5::app_mrt,5
+ServiceTest5::app_rr,5
+ServiceTest5::app_sr,5
+ServiceTest6::app_calls,5
+ServiceTest6::app_mrt,5
+ServiceTest6::app_rr,5
+ServiceTest6::app_sr,5
+ServiceTest7::app_calls,5
+ServiceTest7::app_mrt,5
+ServiceTest7::app_rr,5
+ServiceTest7::app_sr,5
+ServiceTest8::app_calls,5
+ServiceTest8::app_mrt,5
+ServiceTest8::app_rr,5
+ServiceTest8::app_sr,5
+ServiceTest9::app_calls,5
+ServiceTest9::app_mrt,5
+ServiceTest9::app_rr,5
+ServiceTest9::app_sr,5
+Tomcat01::OSLinux-CPU_CPU-0_SingleCpuUtil,5
+Tomcat01::OSLinux-CPU_CPU-0_SingleCpuidle,5
+Tomcat01::OSLinux-CPU_CPU-1_SingleCpuUtil,5
+Tomcat01::OSLinux-CPU_CPU-1_SingleCpuidle,5
+Tomcat01::OSLinux-CPU_CPU-2_SingleCpuUtil,5
+Tomcat01::OSLinux-CPU_CPU-2_SingleCpuidle,5
+Tomcat01::OSLinux-CPU_CPU-3_SingleCpuUtil,5
+Tomcat01::OSLinux-CPU_CPU-3_SingleCpuidle,5
+Tomcat01::OSLinux-CPU_CPU_CPUCpuUtil,5
+Tomcat01::OSLinux-CPU_CPU_CPULoad,5
+Tomcat01::OSLinux-CPU_CPU_CPUSysTime,5
+Tomcat01::OSLinux-CPU_CPU_CPUUserTime,5
+Tomcat01::OSLinux-CPU_CPU_CPUWio,5
+Tomcat01::OSLinux-CPU_CPU_CPUidleutil,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----_FSCapacity,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----_FSInodeUsedPercent,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----boot_FSCapacity,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----boot_FSInodeUsedPercent,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSCapacity,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSInodeUsedPercent,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----home_FSCapacity,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----home_FSInodeUsedPercent,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----tmp_FSCapacity,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----tmp_FSInodeUsedPercent,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSCapacity,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSInodeUsedPercent,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-_FSAvailableSpace,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-_FSCapacity,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-_FSInodeUsedPercent,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-_FSUsedSpace,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-home_FSAvailableSpace,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-home_FSCapacity,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-home_FSInodeUsedPercent,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-home_FSUsedSpace,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSCapacity,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSInodeUsedPercent,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSAvailableSpace,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSCapacity,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSInodeUsedPercent,5
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSUsedSpace,5
+Tomcat01::OSLinux-OSLinux_FILE_-home-zabbix_DirSizeMB,10
+Tomcat01::OSLinux-OSLinux_FILE_-tmp-zabbix_agentd.log_FileSizeMB,5
+Tomcat01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKAvgServ,5
+Tomcat01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKBps,5
+Tomcat01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKPercentBusy,5
+Tomcat01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRTps,5
+Tomcat01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRead,5
+Tomcat01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKReadWrite,5
+Tomcat01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKTps,5
+Tomcat01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWTps,5
+Tomcat01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWrite,5
+Tomcat01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ,5
+Tomcat01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKBps,5
+Tomcat01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKPercentBusy,5
+Tomcat01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRTps,5
+Tomcat01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRead,5
+Tomcat01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKReadWrite,5
+Tomcat01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKTps,5
+Tomcat01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWTps,5
+Tomcat01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWrite,5
+Tomcat01::OSLinux-OSLinux_MEMORY_MEMORY_CacheMem,5
+Tomcat01::OSLinux-OSLinux_MEMORY_MEMORY_MEMFreeMem,5
+Tomcat01::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,60
+Tomcat01::OSLinux-OSLinux_MEMORY_MEMORY_MEMUsedMemPerc,5
+Tomcat01::OSLinux-OSLinux_MEMORY_MEMORY_NoCacheMemPerc,5
+Tomcat01::OSLinux-OSLinux_MEMORY_MEMORY_UserMem,5
+Tomcat01::OSLinux-OSLinux_NETWORK_NETWORK_TCP-CLOSE-WAIT,5
+Tomcat01::OSLinux-OSLinux_NETWORK_NETWORK_TCP-FIN-WAIT,5
+Tomcat01::OSLinux-OSLinux_NETWORK_NETWORK_TotalTcpConnNum,5
+Tomcat01::OSLinux-OSLinux_NETWORK_ens160_NETBandwidthUtil,5
+Tomcat01::OSLinux-OSLinux_NETWORK_ens160_NETInErr,5
+Tomcat01::OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc,5
+Tomcat01::OSLinux-OSLinux_NETWORK_ens160_NETKBTotalPerSec,5
+Tomcat01::OSLinux-OSLinux_NETWORK_ens160_NETOutErr,5
+Tomcat01::OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc,5
+Tomcat01::OSLinux-OSLinux_NETWORK_ens160_NETPacketsIn,5
+Tomcat01::OSLinux-OSLinux_NETWORK_ens160_NETPacketsOut,5
+Tomcat01::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,5
+Tomcat01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,5
+Tomcat01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,5
+Tomcat01::OSLinux-OSLinux_PROCESS_zabbix-zabbix_agentd_PROCPPCPUPerc,5
+Tomcat01::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,5
+Tomcat01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,60
+Tomcat01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,5
+Tomcat01::OSLinux-OSLinux_SWAP_SWAP_Si,5
+Tomcat01::OSLinux-OSLinux_SWAP_SWAP_So,5
+Tomcat01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,10
+Tomcat01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,10
+Tomcat01::OSLinux-OSLinux_ZABBIX_Host_Uptime,5
+Tomcat01::Tomcat-MEMORY_7441-MEMORY_JVMFreeMemory,5
+Tomcat01::Tomcat-MEMORY_7441-MEMORY_JVMMaxMemory,5
+Tomcat01::Tomcat-MEMORY_7441-MEMORY_JVMMemoryUsedPercent,5
+Tomcat01::Tomcat-MEMORY_7441-MEMORY_JVMTotalMemory,5
+Tomcat01::Tomcat-MEMORY_7441-MEMORY_JVMUsedMemory,5
+"Tomcat01::Tomcat-Requests_7441-""http-nio-8003""_ErrorCountRequestInfo",5
+"Tomcat01::Tomcat-Requests_7441-""http-nio-8003""_MaxTimeRequestInfo",5
+"Tomcat01::Tomcat-Requests_7441-""http-nio-8003""_ProcessingTimeRequestInfo",5
+"Tomcat01::Tomcat-Requests_7441-""http-nio-8003""_RequestCountRequestInfo",5
+Tomcat01::Tomcat-Sessions_7441--UOCP_SESSIONActiveCounter,5
+Tomcat01::Tomcat-Sessions_7441--UOCP_SESSIONKeepaliveCounter,5
+Tomcat01::Tomcat-Sessions_7441--UOCP_SESSIONRejectedSessions,5
+Tomcat01::Tomcat-Sessions_7441--_SESSIONActiveCounter,5
+Tomcat01::Tomcat-Sessions_7441--_SESSIONKeepaliveCounter,5
+Tomcat01::Tomcat-Sessions_7441--_SESSIONRejectedSessions,5
+Tomcat01::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONActiveCounter,5
+Tomcat01::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONKeepaliveCounter,5
+Tomcat01::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONRejectedSessions,5
+"Tomcat01::Tomcat-Threads_7441-""http-nio-8003""_CurrentThreadCountThreadInfo",5
+"Tomcat01::Tomcat-Threads_7441-""http-nio-8003""_CurrentThreadsBusyThreadInfo",5
+"Tomcat01::Tomcat-Threads_7441-""http-nio-8003""_MaxThreadsThreadInfo",5
+Tomcat01::access_rt_mean_ms,5
+Tomcat01::trace_latency_mean,5
+Tomcat01::trace_latency_p95,5
+Tomcat01::trace_latency_p99,5
+Tomcat02::OSLinux-CPU_CPU-0_SingleCpuUtil,5
+Tomcat02::OSLinux-CPU_CPU-0_SingleCpuidle,5
+Tomcat02::OSLinux-CPU_CPU-1_SingleCpuUtil,5
+Tomcat02::OSLinux-CPU_CPU-1_SingleCpuidle,5
+Tomcat02::OSLinux-CPU_CPU-2_SingleCpuUtil,5
+Tomcat02::OSLinux-CPU_CPU-2_SingleCpuidle,5
+Tomcat02::OSLinux-CPU_CPU-3_SingleCpuUtil,5
+Tomcat02::OSLinux-CPU_CPU-3_SingleCpuidle,5
+Tomcat02::OSLinux-CPU_CPU_CPUCpuUtil,5
+Tomcat02::OSLinux-CPU_CPU_CPULoad,5
+Tomcat02::OSLinux-CPU_CPU_CPUSysTime,5
+Tomcat02::OSLinux-CPU_CPU_CPUUserTime,5
+Tomcat02::OSLinux-CPU_CPU_CPUWio,5
+Tomcat02::OSLinux-CPU_CPU_CPUidleutil,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----_FSCapacity,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----_FSInodeUsedPercent,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----boot_FSCapacity,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----boot_FSInodeUsedPercent,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSCapacity,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSInodeUsedPercent,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----home_FSCapacity,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----home_FSInodeUsedPercent,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----tmp_FSCapacity,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----tmp_FSInodeUsedPercent,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSCapacity,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSInodeUsedPercent,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-_FSAvailableSpace,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-_FSCapacity,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-_FSInodeUsedPercent,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-_FSUsedSpace,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-home_FSAvailableSpace,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-home_FSCapacity,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-home_FSInodeUsedPercent,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-home_FSUsedSpace,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSCapacity,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSInodeUsedPercent,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSAvailableSpace,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSCapacity,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSInodeUsedPercent,5
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSUsedSpace,5
+Tomcat02::OSLinux-OSLinux_FILE_-home-zabbix_DirSizeMB,10
+Tomcat02::OSLinux-OSLinux_FILE_-tmp-zabbix_agentd.log_FileSizeMB,5
+Tomcat02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKAvgServ,5
+Tomcat02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKBps,5
+Tomcat02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKPercentBusy,5
+Tomcat02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRTps,5
+Tomcat02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRead,5
+Tomcat02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKReadWrite,5
+Tomcat02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKTps,5
+Tomcat02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWTps,5
+Tomcat02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWrite,5
+Tomcat02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ,5
+Tomcat02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKBps,5
+Tomcat02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKPercentBusy,5
+Tomcat02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRTps,5
+Tomcat02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRead,5
+Tomcat02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKReadWrite,5
+Tomcat02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKTps,5
+Tomcat02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWTps,5
+Tomcat02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWrite,5
+Tomcat02::OSLinux-OSLinux_MEMORY_MEMORY_CacheMem,5
+Tomcat02::OSLinux-OSLinux_MEMORY_MEMORY_MEMFreeMem,5
+Tomcat02::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,60
+Tomcat02::OSLinux-OSLinux_MEMORY_MEMORY_MEMUsedMemPerc,5
+Tomcat02::OSLinux-OSLinux_MEMORY_MEMORY_NoCacheMemPerc,5
+Tomcat02::OSLinux-OSLinux_MEMORY_MEMORY_UserMem,5
+Tomcat02::OSLinux-OSLinux_NETWORK_NETWORK_TCP-CLOSE-WAIT,5
+Tomcat02::OSLinux-OSLinux_NETWORK_NETWORK_TCP-FIN-WAIT,5
+Tomcat02::OSLinux-OSLinux_NETWORK_NETWORK_TotalTcpConnNum,5
+Tomcat02::OSLinux-OSLinux_NETWORK_ens160_NETBandwidthUtil,5
+Tomcat02::OSLinux-OSLinux_NETWORK_ens160_NETInErr,5
+Tomcat02::OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc,5
+Tomcat02::OSLinux-OSLinux_NETWORK_ens160_NETKBTotalPerSec,5
+Tomcat02::OSLinux-OSLinux_NETWORK_ens160_NETOutErr,5
+Tomcat02::OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc,5
+Tomcat02::OSLinux-OSLinux_NETWORK_ens160_NETPacketsIn,5
+Tomcat02::OSLinux-OSLinux_NETWORK_ens160_NETPacketsOut,5
+Tomcat02::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,5
+Tomcat02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,5
+Tomcat02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,5
+Tomcat02::OSLinux-OSLinux_PROCESS_zabbix-zabbix_agentd_PROCPPCPUPerc,5
+Tomcat02::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,5
+Tomcat02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,60
+Tomcat02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,5
+Tomcat02::OSLinux-OSLinux_SWAP_SWAP_Si,5
+Tomcat02::OSLinux-OSLinux_SWAP_SWAP_So,5
+Tomcat02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,10
+Tomcat02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,10
+Tomcat02::OSLinux-OSLinux_ZABBIX_Host_Uptime,5
+Tomcat02::Tomcat-MEMORY_7441-MEMORY_JVMFreeMemory,5
+Tomcat02::Tomcat-MEMORY_7441-MEMORY_JVMMaxMemory,5
+Tomcat02::Tomcat-MEMORY_7441-MEMORY_JVMMemoryUsedPercent,5
+Tomcat02::Tomcat-MEMORY_7441-MEMORY_JVMTotalMemory,5
+Tomcat02::Tomcat-MEMORY_7441-MEMORY_JVMUsedMemory,5
+"Tomcat02::Tomcat-Requests_7441-""http-nio-8003""_ErrorCountRequestInfo",5
+"Tomcat02::Tomcat-Requests_7441-""http-nio-8003""_MaxTimeRequestInfo",5
+"Tomcat02::Tomcat-Requests_7441-""http-nio-8003""_ProcessingTimeRequestInfo",5
+"Tomcat02::Tomcat-Requests_7441-""http-nio-8003""_RequestCountRequestInfo",5
+Tomcat02::Tomcat-Sessions_7441--UOCP_SESSIONActiveCounter,5
+Tomcat02::Tomcat-Sessions_7441--UOCP_SESSIONKeepaliveCounter,5
+Tomcat02::Tomcat-Sessions_7441--UOCP_SESSIONRejectedSessions,5
+Tomcat02::Tomcat-Sessions_7441--_SESSIONActiveCounter,5
+Tomcat02::Tomcat-Sessions_7441--_SESSIONKeepaliveCounter,5
+Tomcat02::Tomcat-Sessions_7441--_SESSIONRejectedSessions,5
+Tomcat02::Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONActiveCounter,5
+Tomcat02::Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONKeepaliveCounter,5
+Tomcat02::Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONRejectedSessions,5
+Tomcat02::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONActiveCounter,5
+Tomcat02::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONKeepaliveCounter,5
+Tomcat02::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONRejectedSessions,5
+"Tomcat02::Tomcat-Threads_7441-""http-nio-8003""_CurrentThreadCountThreadInfo",5
+"Tomcat02::Tomcat-Threads_7441-""http-nio-8003""_CurrentThreadsBusyThreadInfo",5
+"Tomcat02::Tomcat-Threads_7441-""http-nio-8003""_MaxThreadsThreadInfo",5
+Tomcat02::access_rt_mean_ms,5
+Tomcat02::trace_latency_mean,5
+Tomcat02::trace_latency_p95,5
+Tomcat02::trace_latency_p99,5
+Tomcat03::OSLinux-CPU_CPU-0_SingleCpuUtil,5
+Tomcat03::OSLinux-CPU_CPU-0_SingleCpuidle,5
+Tomcat03::OSLinux-CPU_CPU-1_SingleCpuUtil,5
+Tomcat03::OSLinux-CPU_CPU-1_SingleCpuidle,5
+Tomcat03::OSLinux-CPU_CPU-2_SingleCpuUtil,5
+Tomcat03::OSLinux-CPU_CPU-2_SingleCpuidle,5
+Tomcat03::OSLinux-CPU_CPU-3_SingleCpuUtil,5
+Tomcat03::OSLinux-CPU_CPU-3_SingleCpuidle,5
+Tomcat03::OSLinux-CPU_CPU_CPUCpuUtil,5
+Tomcat03::OSLinux-CPU_CPU_CPULoad,5
+Tomcat03::OSLinux-CPU_CPU_CPUSysTime,5
+Tomcat03::OSLinux-CPU_CPU_CPUUserTime,5
+Tomcat03::OSLinux-CPU_CPU_CPUWio,5
+Tomcat03::OSLinux-CPU_CPU_CPUidleutil,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----_FSCapacity,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----_FSInodeUsedPercent,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----boot_FSCapacity,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----boot_FSInodeUsedPercent,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSCapacity,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSInodeUsedPercent,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----home_FSCapacity,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----home_FSInodeUsedPercent,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----tmp_FSCapacity,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----tmp_FSInodeUsedPercent,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSCapacity,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSInodeUsedPercent,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-_FSAvailableSpace,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-_FSCapacity,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-_FSInodeUsedPercent,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-_FSUsedSpace,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-home_FSAvailableSpace,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-home_FSCapacity,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-home_FSInodeUsedPercent,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-home_FSUsedSpace,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-tmp_FSCapacity,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-tmp_FSInodeUsedPercent,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSAvailableSpace,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSCapacity,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSInodeUsedPercent,5
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSUsedSpace,5
+Tomcat03::OSLinux-OSLinux_FILE_-home-zabbix_DirSizeMB,10
+Tomcat03::OSLinux-OSLinux_FILE_-tmp-zabbix_agentd.log_FileSizeMB,5
+Tomcat03::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKAvgServ,5
+Tomcat03::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKBps,5
+Tomcat03::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKPercentBusy,5
+Tomcat03::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRTps,5
+Tomcat03::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRead,5
+Tomcat03::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKReadWrite,5
+Tomcat03::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKTps,5
+Tomcat03::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWTps,5
+Tomcat03::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWrite,5
+Tomcat03::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ,5
+Tomcat03::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKBps,5
+Tomcat03::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKPercentBusy,5
+Tomcat03::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRTps,5
+Tomcat03::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRead,5
+Tomcat03::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKReadWrite,5
+Tomcat03::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKTps,5
+Tomcat03::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWTps,5
+Tomcat03::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWrite,5
+Tomcat03::OSLinux-OSLinux_MEMORY_MEMORY_CacheMem,5
+Tomcat03::OSLinux-OSLinux_MEMORY_MEMORY_MEMFreeMem,5
+Tomcat03::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,60
+Tomcat03::OSLinux-OSLinux_MEMORY_MEMORY_MEMUsedMemPerc,5
+Tomcat03::OSLinux-OSLinux_MEMORY_MEMORY_NoCacheMemPerc,5
+Tomcat03::OSLinux-OSLinux_MEMORY_MEMORY_UserMem,5
+Tomcat03::OSLinux-OSLinux_NETWORK_NETWORK_TCP-CLOSE-WAIT,5
+Tomcat03::OSLinux-OSLinux_NETWORK_NETWORK_TCP-FIN-WAIT,5
+Tomcat03::OSLinux-OSLinux_NETWORK_NETWORK_TotalTcpConnNum,5
+Tomcat03::OSLinux-OSLinux_NETWORK_ens160_NETBandwidthUtil,5
+Tomcat03::OSLinux-OSLinux_NETWORK_ens160_NETInErr,5
+Tomcat03::OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc,5
+Tomcat03::OSLinux-OSLinux_NETWORK_ens160_NETKBTotalPerSec,5
+Tomcat03::OSLinux-OSLinux_NETWORK_ens160_NETOutErr,5
+Tomcat03::OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc,5
+Tomcat03::OSLinux-OSLinux_NETWORK_ens160_NETPacketsIn,5
+Tomcat03::OSLinux-OSLinux_NETWORK_ens160_NETPacketsOut,5
+Tomcat03::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,5
+Tomcat03::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,5
+Tomcat03::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,5
+Tomcat03::OSLinux-OSLinux_PROCESS_zabbix-zabbix_agentd_PROCPPCPUPerc,5
+Tomcat03::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,5
+Tomcat03::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,60
+Tomcat03::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,5
+Tomcat03::OSLinux-OSLinux_SWAP_SWAP_Si,5
+Tomcat03::OSLinux-OSLinux_SWAP_SWAP_So,5
+Tomcat03::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,10
+Tomcat03::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,10
+Tomcat03::OSLinux-OSLinux_ZABBIX_Host_Uptime,5
+Tomcat03::Tomcat-MEMORY_7441-MEMORY_JVMFreeMemory,5
+Tomcat03::Tomcat-MEMORY_7441-MEMORY_JVMMaxMemory,5
+Tomcat03::Tomcat-MEMORY_7441-MEMORY_JVMMemoryUsedPercent,5
+Tomcat03::Tomcat-MEMORY_7441-MEMORY_JVMTotalMemory,5
+Tomcat03::Tomcat-MEMORY_7441-MEMORY_JVMUsedMemory,5
+"Tomcat03::Tomcat-Requests_7441-""http-nio-8003""_ErrorCountRequestInfo",5
+"Tomcat03::Tomcat-Requests_7441-""http-nio-8003""_MaxTimeRequestInfo",5
+"Tomcat03::Tomcat-Requests_7441-""http-nio-8003""_ProcessingTimeRequestInfo",5
+"Tomcat03::Tomcat-Requests_7441-""http-nio-8003""_RequestCountRequestInfo",5
+Tomcat03::Tomcat-Sessions_7441--UOCP_SESSIONActiveCounter,5
+Tomcat03::Tomcat-Sessions_7441--UOCP_SESSIONKeepaliveCounter,5
+Tomcat03::Tomcat-Sessions_7441--UOCP_SESSIONRejectedSessions,5
+Tomcat03::Tomcat-Sessions_7441--_SESSIONActiveCounter,5
+Tomcat03::Tomcat-Sessions_7441--_SESSIONKeepaliveCounter,5
+Tomcat03::Tomcat-Sessions_7441--_SESSIONRejectedSessions,5
+Tomcat03::Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONActiveCounter,5
+Tomcat03::Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONKeepaliveCounter,5
+Tomcat03::Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONRejectedSessions,5
+Tomcat03::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONActiveCounter,5
+Tomcat03::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONKeepaliveCounter,5
+Tomcat03::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONRejectedSessions,5
+"Tomcat03::Tomcat-Threads_7441-""http-nio-8003""_CurrentThreadCountThreadInfo",5
+"Tomcat03::Tomcat-Threads_7441-""http-nio-8003""_CurrentThreadsBusyThreadInfo",5
+"Tomcat03::Tomcat-Threads_7441-""http-nio-8003""_MaxThreadsThreadInfo",5
+Tomcat03::access_rt_mean_ms,5
+Tomcat03::trace_latency_mean,5
+Tomcat03::trace_latency_p95,5
+Tomcat03::trace_latency_p99,5
+Tomcat04::OSLinux-CPU_CPU-0_SingleCpuUtil,5
+Tomcat04::OSLinux-CPU_CPU-0_SingleCpuidle,5
+Tomcat04::OSLinux-CPU_CPU-1_SingleCpuUtil,5
+Tomcat04::OSLinux-CPU_CPU-1_SingleCpuidle,5
+Tomcat04::OSLinux-CPU_CPU-2_SingleCpuUtil,5
+Tomcat04::OSLinux-CPU_CPU-2_SingleCpuidle,5
+Tomcat04::OSLinux-CPU_CPU-3_SingleCpuUtil,5
+Tomcat04::OSLinux-CPU_CPU-3_SingleCpuidle,5
+Tomcat04::OSLinux-CPU_CPU_CPUCpuUtil,5
+Tomcat04::OSLinux-CPU_CPU_CPULoad,5
+Tomcat04::OSLinux-CPU_CPU_CPUSysTime,5
+Tomcat04::OSLinux-CPU_CPU_CPUUserTime,5
+Tomcat04::OSLinux-CPU_CPU_CPUWio,5
+Tomcat04::OSLinux-CPU_CPU_CPUidleutil,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----_FSCapacity,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----_FSInodeUsedPercent,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----boot_FSCapacity,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----boot_FSInodeUsedPercent,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSCapacity,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSInodeUsedPercent,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----home_FSCapacity,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----home_FSInodeUsedPercent,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----tmp_FSCapacity,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----tmp_FSInodeUsedPercent,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSCapacity,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSInodeUsedPercent,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-_FSAvailableSpace,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-_FSCapacity,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-_FSInodeUsedPercent,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-_FSUsedSpace,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-home_FSAvailableSpace,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-home_FSCapacity,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-home_FSInodeUsedPercent,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-home_FSUsedSpace,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-tmp_FSCapacity,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-tmp_FSInodeUsedPercent,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSAvailableSpace,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSCapacity,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSInodeUsedPercent,5
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSUsedSpace,5
+Tomcat04::OSLinux-OSLinux_FILE_-home-zabbix_DirSizeMB,10
+Tomcat04::OSLinux-OSLinux_FILE_-tmp-zabbix_agentd.log_FileSizeMB,5
+Tomcat04::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKAvgServ,5
+Tomcat04::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKBps,5
+Tomcat04::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKPercentBusy,5
+Tomcat04::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRTps,5
+Tomcat04::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRead,5
+Tomcat04::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKReadWrite,5
+Tomcat04::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKTps,5
+Tomcat04::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWTps,5
+Tomcat04::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWrite,5
+Tomcat04::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ,5
+Tomcat04::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKBps,5
+Tomcat04::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKPercentBusy,5
+Tomcat04::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRTps,5
+Tomcat04::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRead,5
+Tomcat04::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKReadWrite,5
+Tomcat04::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKTps,5
+Tomcat04::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWTps,5
+Tomcat04::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWrite,5
+Tomcat04::OSLinux-OSLinux_MEMORY_MEMORY_CacheMem,5
+Tomcat04::OSLinux-OSLinux_MEMORY_MEMORY_MEMFreeMem,5
+Tomcat04::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,60
+Tomcat04::OSLinux-OSLinux_MEMORY_MEMORY_MEMUsedMemPerc,5
+Tomcat04::OSLinux-OSLinux_MEMORY_MEMORY_NoCacheMemPerc,5
+Tomcat04::OSLinux-OSLinux_MEMORY_MEMORY_UserMem,5
+Tomcat04::OSLinux-OSLinux_NETWORK_NETWORK_TCP-CLOSE-WAIT,5
+Tomcat04::OSLinux-OSLinux_NETWORK_NETWORK_TCP-FIN-WAIT,5
+Tomcat04::OSLinux-OSLinux_NETWORK_NETWORK_TotalTcpConnNum,5
+Tomcat04::OSLinux-OSLinux_NETWORK_ens160_NETBandwidthUtil,5
+Tomcat04::OSLinux-OSLinux_NETWORK_ens160_NETInErr,5
+Tomcat04::OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc,5
+Tomcat04::OSLinux-OSLinux_NETWORK_ens160_NETKBTotalPerSec,5
+Tomcat04::OSLinux-OSLinux_NETWORK_ens160_NETOutErr,5
+Tomcat04::OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc,5
+Tomcat04::OSLinux-OSLinux_NETWORK_ens160_NETPacketsIn,5
+Tomcat04::OSLinux-OSLinux_NETWORK_ens160_NETPacketsOut,5
+Tomcat04::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,5
+Tomcat04::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,5
+Tomcat04::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,5
+Tomcat04::OSLinux-OSLinux_PROCESS_zabbix-zabbix_agentd_PROCPPCPUPerc,5
+Tomcat04::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,5
+Tomcat04::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,60
+Tomcat04::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,5
+Tomcat04::OSLinux-OSLinux_SWAP_SWAP_Si,5
+Tomcat04::OSLinux-OSLinux_SWAP_SWAP_So,5
+Tomcat04::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,10
+Tomcat04::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,10
+Tomcat04::OSLinux-OSLinux_ZABBIX_Host_Uptime,5
+Tomcat04::Tomcat-MEMORY_7441-MEMORY_JVMFreeMemory,5
+Tomcat04::Tomcat-MEMORY_7441-MEMORY_JVMMaxMemory,5
+Tomcat04::Tomcat-MEMORY_7441-MEMORY_JVMMemoryUsedPercent,5
+Tomcat04::Tomcat-MEMORY_7441-MEMORY_JVMTotalMemory,5
+Tomcat04::Tomcat-MEMORY_7441-MEMORY_JVMUsedMemory,5
+"Tomcat04::Tomcat-Requests_7441-""http-nio-8003""_ErrorCountRequestInfo",5
+"Tomcat04::Tomcat-Requests_7441-""http-nio-8003""_MaxTimeRequestInfo",5
+"Tomcat04::Tomcat-Requests_7441-""http-nio-8003""_ProcessingTimeRequestInfo",5
+"Tomcat04::Tomcat-Requests_7441-""http-nio-8003""_RequestCountRequestInfo",5
+Tomcat04::Tomcat-Sessions_7441--UOCP_SESSIONActiveCounter,5
+Tomcat04::Tomcat-Sessions_7441--UOCP_SESSIONKeepaliveCounter,5
+Tomcat04::Tomcat-Sessions_7441--UOCP_SESSIONRejectedSessions,5
+Tomcat04::Tomcat-Sessions_7441--_SESSIONActiveCounter,5
+Tomcat04::Tomcat-Sessions_7441--_SESSIONKeepaliveCounter,5
+Tomcat04::Tomcat-Sessions_7441--_SESSIONRejectedSessions,5
+Tomcat04::Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONActiveCounter,5
+Tomcat04::Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONKeepaliveCounter,5
+Tomcat04::Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONRejectedSessions,5
+Tomcat04::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONActiveCounter,5
+Tomcat04::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONKeepaliveCounter,5
+Tomcat04::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONRejectedSessions,5
+"Tomcat04::Tomcat-Threads_7441-""http-nio-8003""_CurrentThreadCountThreadInfo",5
+"Tomcat04::Tomcat-Threads_7441-""http-nio-8003""_CurrentThreadsBusyThreadInfo",5
+"Tomcat04::Tomcat-Threads_7441-""http-nio-8003""_MaxThreadsThreadInfo",5
+Tomcat04::access_rt_mean_ms,5
+Tomcat04::trace_latency_mean,5
+Tomcat04::trace_latency_p95,5
+Tomcat04::trace_latency_p99,5
+apache01::OSLinux-CPU_CPU-0_SingleCpuUtil,5
+apache01::OSLinux-CPU_CPU-0_SingleCpuidle,5
+apache01::OSLinux-CPU_CPU-1_SingleCpuUtil,5
+apache01::OSLinux-CPU_CPU-1_SingleCpuidle,5
+apache01::OSLinux-CPU_CPU-2_SingleCpuUtil,5
+apache01::OSLinux-CPU_CPU-2_SingleCpuidle,5
+apache01::OSLinux-CPU_CPU-3_SingleCpuUtil,5
+apache01::OSLinux-CPU_CPU-3_SingleCpuidle,5
+apache01::OSLinux-CPU_CPU_CPUCpuUtil,5
+apache01::OSLinux-CPU_CPU_CPULoad,5
+apache01::OSLinux-CPU_CPU_CPUSysTime,5
+apache01::OSLinux-CPU_CPU_CPUUserTime,5
+apache01::OSLinux-CPU_CPU_CPUWio,5
+apache01::OSLinux-CPU_CPU_CPUidleutil,5
+apache01::OSLinux-NTP_197.30.1.67_NtpServerTimeOffset,5
+apache01::OSLinux-NTP_197.30.1.68_NtpServerTimeOffset,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-_FSAvailableSpace,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-_FSCapacity,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-_FSInodeUsedPercent,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-_FSUsedSpace,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-apache_FSAvailableSpace,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-apache_FSCapacity,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-apache_FSInodeUsedPercent,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-apache_FSUsedSpace,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-home_FSAvailableSpace,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-home_FSCapacity,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-home_FSInodeUsedPercent,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-home_FSUsedSpace,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSCapacity,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSInodeUsedPercent,5
+apache01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,5
+apache01::OSLinux-OSLinux_FILE_-home-zabbix_DirSizeMB,10
+apache01::OSLinux-OSLinux_FILE_-tmp-zabbix_agentd.log_FileSizeMB,5
+apache01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKAvgServ,5
+apache01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKBps,5
+apache01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKPercentBusy,5
+apache01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRTps,5
+apache01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRead,5
+apache01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKReadWrite,5
+apache01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKTps,5
+apache01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWTps,5
+apache01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWrite,5
+apache01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ,5
+apache01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKBps,5
+apache01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKPercentBusy,5
+apache01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRTps,5
+apache01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRead,5
+apache01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKReadWrite,5
+apache01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKTps,5
+apache01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWTps,5
+apache01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWrite,5
+apache01::OSLinux-OSLinux_MEMORY_MEMORY_CacheMem,5
+apache01::OSLinux-OSLinux_MEMORY_MEMORY_MEMFreeMem,5
+apache01::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,60
+apache01::OSLinux-OSLinux_MEMORY_MEMORY_MEMUsedMemPerc,5
+apache01::OSLinux-OSLinux_MEMORY_MEMORY_NoCacheMemPerc,5
+apache01::OSLinux-OSLinux_MEMORY_MEMORY_UserMem,5
+apache01::OSLinux-OSLinux_NETWORK_NETWORK_TCP-CLOSE-WAIT,5
+apache01::OSLinux-OSLinux_NETWORK_NETWORK_TCP-FIN-WAIT,5
+apache01::OSLinux-OSLinux_NETWORK_NETWORK_TotalTcpConnNum,5
+apache01::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,5
+apache01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,5
+apache01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,5
+apache01::OSLinux-OSLinux_PROCESS_apache_10001_PROCPPCount,5
+apache01::OSLinux-OSLinux_PROCESS_zabbix-zabbix_agentd_PROCPPCPUPerc,5
+apache01::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,5
+apache01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,60
+apache01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,5
+apache01::OSLinux-OSLinux_SWAP_SWAP_Si,5
+apache01::OSLinux-OSLinux_SWAP_SWAP_So,5
+apache01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,10
+apache01::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,10
+apache01::OSLinux-OSLinux_ZABBIX_Host_Uptime,5
+apache01::access_rt_mean_ms,5
+apache02::OSLinux-CPU_CPU-0_SingleCpuUtil,5
+apache02::OSLinux-CPU_CPU-0_SingleCpuidle,5
+apache02::OSLinux-CPU_CPU-1_SingleCpuUtil,5
+apache02::OSLinux-CPU_CPU-1_SingleCpuidle,5
+apache02::OSLinux-CPU_CPU-2_SingleCpuUtil,5
+apache02::OSLinux-CPU_CPU-2_SingleCpuidle,5
+apache02::OSLinux-CPU_CPU-3_SingleCpuUtil,5
+apache02::OSLinux-CPU_CPU-3_SingleCpuidle,5
+apache02::OSLinux-CPU_CPU_CPUCpuUtil,5
+apache02::OSLinux-CPU_CPU_CPULoad,5
+apache02::OSLinux-CPU_CPU_CPUSysTime,5
+apache02::OSLinux-CPU_CPU_CPUUserTime,5
+apache02::OSLinux-CPU_CPU_CPUWio,5
+apache02::OSLinux-CPU_CPU_CPUidleutil,5
+apache02::OSLinux-NTP_197.30.1.67_NtpServerTimeOffset,5
+apache02::OSLinux-NTP_197.30.1.68_NtpServerTimeOffset,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-_FSAvailableSpace,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-_FSCapacity,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-_FSInodeUsedPercent,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-_FSUsedSpace,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-apache_FSAvailableSpace,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-apache_FSCapacity,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-apache_FSInodeUsedPercent,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-apache_FSUsedSpace,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-home_FSAvailableSpace,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-home_FSCapacity,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-home_FSInodeUsedPercent,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-home_FSUsedSpace,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSCapacity,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSInodeUsedPercent,5
+apache02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,5
+apache02::OSLinux-OSLinux_FILE_-home-zabbix_DirSizeMB,10
+apache02::OSLinux-OSLinux_FILE_-tmp-zabbix_agentd.log_FileSizeMB,5
+apache02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKAvgServ,5
+apache02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKBps,5
+apache02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKPercentBusy,5
+apache02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRTps,5
+apache02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKRead,5
+apache02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKReadWrite,5
+apache02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKTps,5
+apache02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWTps,5
+apache02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKWrite,5
+apache02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ,5
+apache02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKBps,5
+apache02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKPercentBusy,5
+apache02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRTps,5
+apache02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRead,5
+apache02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKReadWrite,5
+apache02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKTps,5
+apache02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWTps,5
+apache02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWrite,5
+apache02::OSLinux-OSLinux_MEMORY_MEMORY_CacheMem,5
+apache02::OSLinux-OSLinux_MEMORY_MEMORY_MEMFreeMem,5
+apache02::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,60
+apache02::OSLinux-OSLinux_MEMORY_MEMORY_MEMUsedMemPerc,5
+apache02::OSLinux-OSLinux_MEMORY_MEMORY_NoCacheMemPerc,5
+apache02::OSLinux-OSLinux_MEMORY_MEMORY_UserMem,5
+apache02::OSLinux-OSLinux_NETWORK_NETWORK_TCP-CLOSE-WAIT,5
+apache02::OSLinux-OSLinux_NETWORK_NETWORK_TCP-FIN-WAIT,5
+apache02::OSLinux-OSLinux_NETWORK_NETWORK_TotalTcpConnNum,5
+apache02::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,5
+apache02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,5
+apache02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,5
+apache02::OSLinux-OSLinux_PROCESS_apache_10001_PROCPPCount,5
+apache02::OSLinux-OSLinux_PROCESS_zabbix-zabbix_agentd_PROCPPCPUPerc,5
+apache02::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,5
+apache02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,60
+apache02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,5
+apache02::OSLinux-OSLinux_SWAP_SWAP_Si,5
+apache02::OSLinux-OSLinux_SWAP_SWAP_So,5
+apache02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute,10
+apache02::OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname,10
+apache02::OSLinux-OSLinux_ZABBIX_Host_Uptime,5
+apache02::access_rt_mean_ms,5
+dockerA1::Container_CpuPercent,7
+dockerA1::Container_MemLimit,19
+dockerA1::Container_MemPercent,7
+dockerA1::Container_MemUsage,6
+dockerA1::Container_NetworkRxBytes,13
+dockerA1::Container_NetworkTxBytes,6
+dockerA1::trace_latency_mean,5
+dockerA1::trace_latency_p95,5
+dockerA1::trace_latency_p99,5
+dockerA2::Container_CpuPercent,12
+dockerA2::Container_MemLimit,18
+dockerA2::Container_MemPercent,12
+dockerA2::Container_MemUsage,12
+dockerA2::Container_NetworkRxBytes,13
+dockerA2::Container_NetworkTxBytes,12
+dockerA2::trace_latency_mean,5
+dockerA2::trace_latency_p95,5
+dockerA2::trace_latency_p99,5
+dockerB1::Container_CpuPercent,6
+dockerB1::Container_MemLimit,14
+dockerB1::Container_MemPercent,6
+dockerB1::Container_MemUsage,6
+dockerB1::Container_NetworkRxBytes,7
+dockerB1::Container_NetworkTxBytes,6
+dockerB1::trace_latency_mean,5
+dockerB1::trace_latency_p95,5
+dockerB1::trace_latency_p99,5
+dockerB2::Container_CpuPercent,13
+dockerB2::Container_MemLimit,22
+dockerB2::Container_MemPercent,13
+dockerB2::Container_MemUsage,13
+dockerB2::Container_NetworkRxBytes,23
+dockerB2::Container_NetworkTxBytes,14
+dockerB2::trace_latency_mean,5
+dockerB2::trace_latency_p95,5
+dockerB2::trace_latency_p99,5

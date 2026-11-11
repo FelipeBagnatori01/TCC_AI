@@ -5,6 +5,7 @@ description = "Predição e explicação automática de causas raiz de falhas em
 readme = "README.md"
 requires-python = ">=3.11,<3.12"
 dependencies = [
+    "drain3>=0.9.11",
     "lightgbm>=4.7.0",
     "matplotlib>=3.11.2",
     "numpy>=1.26",
@@ -57,9 +58,10 @@ strict = true
 files = ["src"]
 plugins = ["pydantic.mypy"]
 
-# scikit-learn ships no type information; only its import is exempted, strict mode stays on.
+# scikit-learn and drain3 ship no type information; only their imports are exempted, strict mode
+# stays on.
 [[tool.mypy.overrides]]
-module = ["sklearn", "sklearn.*"]
+module = ["sklearn", "sklearn.*", "drain3", "drain3.*"]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]

@@ -50,7 +50,7 @@ def cmd_manifest(config: Config, _: argparse.Namespace) -> int:
     entries = build_manifest(
         config.paths.data_root,
         list(config.data_systems),
-        extra_files=[config.series.deployment_list],
+        extra_files=list(config.manifest_extra_files),
     )
     write_manifest(entries, config.paths.manifest)
     gigabytes = sum(e.size_bytes for e in entries) / 1e9

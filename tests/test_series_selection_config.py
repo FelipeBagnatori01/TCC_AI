@@ -26,8 +26,7 @@ def test_base_exempts_availability_and_it_exists_in_the_catalog(repo_root: Path)
     exempt = config.series.selection.constant_exempt_categories
     assert exempt == ("disponibilidade",)
     catalog = load_kpi_catalog(repo_root / config.series.kpi_catalog)
-    categories = {info.category for kpis in catalog.values() for info in kpis.values()}
-    assert set(exempt) <= categories
+    assert set(exempt) <= catalog.categories()
 
 
 def test_control_config_disables_the_exemption_and_nothing_else(repo_root: Path) -> None:

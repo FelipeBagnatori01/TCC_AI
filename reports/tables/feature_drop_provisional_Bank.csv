@@ -1,0 +1,674 @@
+feature,source,category,reason
+IG01::JVM-Memory_7778_JVM_Memory_HeapMemoryMax,metric_container,memória,constante no treino
+IG01::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,metric_container,disco,constante no treino
+IG01::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,metric_container,disco,constante no treino
+IG01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,metric_container,disco,constante no treino
+IG01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,metric_container,disco,constante no treino
+IG01::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,metric_container,memória,constante no treino
+IG01::OSLinux-OSLinux_NETWORK_ens160_NETInErr,metric_container,erro,constante no treino
+IG01::OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc,metric_container,erro,constante no treino
+IG01::OSLinux-OSLinux_NETWORK_ens160_NETOutErr,metric_container,erro,constante no treino
+IG01::OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc,metric_container,erro,constante no treino
+IG01::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,metric_container,carga,constante no treino
+IG01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,metric_container,carga,constante no treino
+IG01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,metric_container,carga,constante no treino
+IG01::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,metric_container,carga,constante no treino
+IG01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,metric_container,memória,constante no treino
+IG01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,metric_container,memória,constante no treino
+IG01::OSLinux-OSLinux_SWAP_SWAP_Si,metric_container,memória,constante no treino
+IG01::OSLinux-OSLinux_SWAP_SWAP_So,metric_container,memória,constante no treino
+IG02::JVM-Memory_7778_JVM_Memory_HeapMemoryMax,metric_container,memória,constante no treino
+IG02::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,metric_container,disco,constante no treino
+IG02::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,metric_container,disco,constante no treino
+IG02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,metric_container,disco,constante no treino
+IG02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,metric_container,disco,constante no treino
+IG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ,metric_container,disco,constante no treino
+IG02::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,metric_container,memória,constante no treino
+IG02::OSLinux-OSLinux_NETWORK_NETWORK_TCP-CLOSE-WAIT,metric_container,rede,quase constante no treino (moda em 99.93%)
+IG02::OSLinux-OSLinux_NETWORK_ens160_NETInErr,metric_container,erro,constante no treino
+IG02::OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc,metric_container,erro,constante no treino
+IG02::OSLinux-OSLinux_NETWORK_ens160_NETOutErr,metric_container,erro,constante no treino
+IG02::OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc,metric_container,erro,constante no treino
+IG02::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,metric_container,carga,constante no treino
+IG02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,metric_container,carga,constante no treino
+IG02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,metric_container,carga,constante no treino
+IG02::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,metric_container,carga,constante no treino
+IG02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,metric_container,memória,constante no treino
+IG02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,metric_container,memória,constante no treino
+IG02::OSLinux-OSLinux_SWAP_SWAP_Si,metric_container,memória,constante no treino
+IG02::OSLinux-OSLinux_SWAP_SWAP_So,metric_container,memória,constante no treino
+MG01::JVM-Memory_7779_JVM_Memory_HeapMemoryMax,metric_container,memória,constante no treino
+MG01::OSLinux-OSLinux_FILESYSTEM_----_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+MG01::OSLinux-OSLinux_FILESYSTEM_----_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+MG01::OSLinux-OSLinux_FILESYSTEM_----boot_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+MG01::OSLinux-OSLinux_FILESYSTEM_----boot_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+MG01::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+MG01::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+MG01::OSLinux-OSLinux_FILESYSTEM_----home_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+MG01::OSLinux-OSLinux_FILESYSTEM_----home_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+MG01::OSLinux-OSLinux_FILESYSTEM_----tmp_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+MG01::OSLinux-OSLinux_FILESYSTEM_----tmp_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+MG01::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+MG01::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+MG01::OSLinux-OSLinux_FILESYSTEM_-_FSInodeUsedPercent,metric_container,disco,constante no treino
+MG01::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,metric_container,disco,constante no treino
+MG01::OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity,metric_container,disco,constante no treino
+MG01::OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent,metric_container,disco,constante no treino
+MG01::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,metric_container,disco,constante no treino
+MG01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,metric_container,disco,constante no treino
+MG01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity,metric_container,disco,constante no treino
+MG01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent,metric_container,disco,constante no treino
+MG01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,metric_container,disco,constante no treino
+MG01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKAvgServ,metric_container,disco,constante no treino
+MG01::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,metric_container,memória,constante no treino
+MG01::OSLinux-OSLinux_NETWORK_ens160_NETInErr,metric_container,erro,constante no treino
+MG01::OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc,metric_container,erro,constante no treino
+MG01::OSLinux-OSLinux_NETWORK_ens160_NETOutErr,metric_container,erro,constante no treino
+MG01::OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc,metric_container,erro,constante no treino
+MG01::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,metric_container,carga,constante no treino
+MG01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,metric_container,carga,constante no treino
+MG01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,metric_container,carga,constante no treino
+MG01::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,metric_container,carga,constante no treino
+MG01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,metric_container,memória,constante no treino
+MG01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,metric_container,memória,constante no treino
+MG01::OSLinux-OSLinux_SWAP_SWAP_Si,metric_container,memória,constante no treino
+MG01::OSLinux-OSLinux_SWAP_SWAP_So,metric_container,memória,constante no treino
+MG02::JVM-Memory_7779_JVM_Memory_HeapMemoryMax,metric_container,memória,constante no treino
+MG02::OSLinux-OSLinux_FILESYSTEM_----_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+MG02::OSLinux-OSLinux_FILESYSTEM_----_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+MG02::OSLinux-OSLinux_FILESYSTEM_----boot_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+MG02::OSLinux-OSLinux_FILESYSTEM_----boot_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+MG02::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+MG02::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+MG02::OSLinux-OSLinux_FILESYSTEM_----home_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+MG02::OSLinux-OSLinux_FILESYSTEM_----home_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+MG02::OSLinux-OSLinux_FILESYSTEM_----tmp_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+MG02::OSLinux-OSLinux_FILESYSTEM_----tmp_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+MG02::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+MG02::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+MG02::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,metric_container,disco,constante no treino
+MG02::OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity,metric_container,disco,constante no treino
+MG02::OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent,metric_container,disco,constante no treino
+MG02::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,metric_container,disco,constante no treino
+MG02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,metric_container,disco,constante no treino
+MG02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity,metric_container,disco,constante no treino
+MG02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent,metric_container,disco,constante no treino
+MG02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,metric_container,disco,constante no treino
+MG02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKAvgServ,metric_container,disco,constante no treino
+MG02::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,metric_container,memória,constante no treino
+MG02::OSLinux-OSLinux_NETWORK_ens160_NETInErr,metric_container,erro,constante no treino
+MG02::OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc,metric_container,erro,constante no treino
+MG02::OSLinux-OSLinux_NETWORK_ens160_NETOutErr,metric_container,erro,constante no treino
+MG02::OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc,metric_container,erro,constante no treino
+MG02::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,metric_container,carga,quase constante no treino (moda em 99.93%)
+MG02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,metric_container,carga,constante no treino
+MG02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,metric_container,carga,constante no treino
+MG02::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,metric_container,carga,quase constante no treino (moda em 99.93%)
+MG02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,metric_container,memória,constante no treino
+MG02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,metric_container,memória,constante no treino
+MG02::OSLinux-OSLinux_SWAP_SWAP_Si,metric_container,memória,constante no treino
+MG02::OSLinux-OSLinux_SWAP_SWAP_So,metric_container,memória,constante no treino
+Mysql01::Mysql-MySQL_3306_Binlog Cache Disk Use,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Binlog stmt cache disk use,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Com Delete,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Com Delete Multi,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Com Insert Select,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Com Load,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Com Replace,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Com Replace Select,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Com Update Multi,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Created Tmp Files,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_CurrentSQLMaxRunningTime,metric_container,latência,quase constante no treino (moda em 99.93%)
+Mysql01::Mysql-MySQL_3306_GetResponseTimeOfMysqld,metric_container,latência,quase constante no treino (moda em 99.93%)
+Mysql01::Mysql-MySQL_3306_Handler Delete,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Handler Read Prev,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Handler Rollback,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Handler Savepoint,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Handler Savepoint Rollback,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Innodb buffer pool pages misc,metric_container,banco de dados,quase constante no treino (moda em 99.93%)
+Mysql01::Mysql-MySQL_3306_Innodb buffer pool pages total,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Innodb buffer pool read ahead,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Innodb buffer pool read ahead evicted,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Innodb buffer pool read ahead rnd,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Innodb buffer pool reads,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Innodb buffer pool wait free,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Innodb data pending reads,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Innodb data read,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Innodb data reads,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Innodb log waits,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Innodb open files  num,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Innodb os log pending writes,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Innodb pages read,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Innodb row lock time max,metric_container,latência,constante no treino
+Mysql01::Mysql-MySQL_3306_Key Reads,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Key Write Requests,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Key Writes,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Max Used Connections,metric_container,carga,constante no treino
+Mysql01::Mysql-MySQL_3306_MaxConnections,metric_container,carga,constante no treino
+Mysql01::Mysql-MySQL_3306_Open Files,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Opened table definitions,metric_container,banco de dados,quase constante no treino (moda em 99.97%)
+Mysql01::Mysql-MySQL_3306_Qcache Free Blocks,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Qcache Free Memory,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Qcache Hits,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Qcache Inserts,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Qcache Lowmem Prunes,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Qcache Queries In Cache,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Qcache Total Blocks,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Select Full Join,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Select Full Range Join,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Select Range,metric_container,banco de dados,quase constante no treino (moda em 99.97%)
+Mysql01::Mysql-MySQL_3306_Select Range Check,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Slave Open Temp Tables,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Slow launch threads,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Sort Merge Passes,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Sort Range,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Table Locks Waited,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Table open cache overflows,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Tc log max pages used,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Tc log page waits,metric_container,banco de dados,constante no treino
+Mysql01::Mysql-MySQL_3306_Threads Created,metric_container,carga,constante no treino
+Mysql01::OSLinux-NTP_197.30.1.67_NtpServerTimeOffset,metric_container,outro,ausente em 82.0% das linhas de treino
+Mysql01::OSLinux-NTP_197.30.1.68_NtpServerTimeOffset,metric_container,outro,ausente em 81.9% das linhas de treino
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,metric_container,disco,constante no treino
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,metric_container,disco,constante no treino
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,metric_container,disco,constante no treino
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,metric_container,disco,constante no treino
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-mysqlbak_FSAvailableSpace,metric_container,disco,constante no treino
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-mysqlbak_FSUsedSpace,metric_container,disco,constante no treino
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,metric_container,disco,constante no treino
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,metric_container,disco,constante no treino
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-usr-openv_FSAvailableSpace,metric_container,disco,constante no treino
+Mysql01::OSLinux-OSLinux_FILESYSTEM_-usr-openv_FSUsedSpace,metric_container,disco,constante no treino
+Mysql01::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,metric_container,memória,constante no treino
+Mysql01::OSLinux-OSLinux_NETWORK_NETWORK_TCP-CLOSE-WAIT,metric_container,rede,constante no treino
+Mysql01::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,metric_container,carga,constante no treino
+Mysql01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,metric_container,carga,constante no treino
+Mysql01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,metric_container,carga,constante no treino
+Mysql01::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,metric_container,carga,constante no treino
+Mysql01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,metric_container,memória,constante no treino
+Mysql01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,metric_container,memória,constante no treino
+Mysql01::OSLinux-OSLinux_SWAP_SWAP_Si,metric_container,memória,constante no treino
+Mysql01::OSLinux-OSLinux_SWAP_SWAP_So,metric_container,memória,constante no treino
+Mysql01::slow_query_time_mean_s,log,latência,ausente em 86.2% das linhas de treino
+Mysql01::slow_rows_examined_mean,log,banco de dados,ausente em 86.2% das linhas de treino
+Mysql02::Mysql-MySQL_3306_Binlog Cache Disk Use,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Binlog stmt cache disk use,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Com Delete,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Com Delete Multi,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Com Insert Select,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Com Load,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Com Replace,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Com Replace Select,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Com Update Multi,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Created Tmp Files,metric_container,banco de dados,quase constante no treino (moda em 99.93%)
+Mysql02::Mysql-MySQL_3306_GetResponseTimeOfMysqld,metric_container,latência,quase constante no treino (moda em 99.93%)
+Mysql02::Mysql-MySQL_3306_Handler Delete,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Handler Savepoint,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Handler Savepoint Rollback,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Innodb buffer pool pages total,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Innodb buffer pool read ahead,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Innodb buffer pool read ahead evicted,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Innodb buffer pool read ahead rnd,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Innodb buffer pool wait free,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Innodb data pending reads,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Innodb log waits,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Innodb row lock time max,metric_container,latência,constante no treino
+Mysql02::Mysql-MySQL_3306_Key Read Requests,metric_container,banco de dados,quase constante no treino (moda em 99.93%)
+Mysql02::Mysql-MySQL_3306_Key Reads,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Key Write Requests,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Key Writes,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Max Used Connections,metric_container,carga,constante no treino
+Mysql02::Mysql-MySQL_3306_MaxConnections,metric_container,carga,constante no treino
+Mysql02::Mysql-MySQL_3306_Open Files,metric_container,banco de dados,quase constante no treino (moda em 99.93%)
+Mysql02::Mysql-MySQL_3306_Qcache Free Blocks,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Qcache Free Memory,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Qcache Hits,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Qcache Inserts,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Qcache Lowmem Prunes,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Qcache Queries In Cache,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Qcache Total Blocks,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Select Full Join,metric_container,banco de dados,quase constante no treino (moda em 99.93%)
+Mysql02::Mysql-MySQL_3306_Select Full Range Join,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Select Range,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Select Range Check,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Slave Open Temp Tables,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Slow launch threads,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Sort Merge Passes,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Table Locks Waited,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Table open cache overflows,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Tc log max pages used,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Tc log page waits,metric_container,banco de dados,constante no treino
+Mysql02::Mysql-MySQL_3306_Threads Created,metric_container,carga,constante no treino
+Mysql02::OSLinux-NTP_197.30.1.67_NtpServerTimeOffset,metric_container,outro,ausente em 82.2% das linhas de treino
+Mysql02::OSLinux-NTP_197.30.1.68_NtpServerTimeOffset,metric_container,outro,ausente em 82.2% das linhas de treino
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,metric_container,disco,constante no treino
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,metric_container,disco,constante no treino
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,metric_container,disco,constante no treino
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,metric_container,disco,constante no treino
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-mysqlbak_FSAvailableSpace,metric_container,disco,constante no treino
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-mysqlbak_FSCapacity,metric_container,disco,constante no treino
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-mysqlbak_FSUsedSpace,metric_container,disco,constante no treino
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,metric_container,disco,constante no treino
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,metric_container,disco,constante no treino
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-usr-openv_FSAvailableSpace,metric_container,disco,constante no treino
+Mysql02::OSLinux-OSLinux_FILESYSTEM_-usr-openv_FSUsedSpace,metric_container,disco,constante no treino
+Mysql02::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,metric_container,memória,constante no treino
+Mysql02::OSLinux-OSLinux_NETWORK_NETWORK_TCP-CLOSE-WAIT,metric_container,rede,constante no treino
+Mysql02::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,metric_container,carga,constante no treino
+Mysql02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,metric_container,carga,constante no treino
+Mysql02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,metric_container,carga,constante no treino
+Mysql02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,metric_container,memória,constante no treino
+Mysql02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,metric_container,memória,constante no treino
+Mysql02::OSLinux-OSLinux_SWAP_SWAP_Si,metric_container,memória,constante no treino
+Mysql02::OSLinux-OSLinux_SWAP_SWAP_So,metric_container,memória,constante no treino
+Mysql02::mysql_error_count,log,erro,constante no treino
+Mysql02::slow_query_time_mean_s,log,latência,ausente em 97.7% das linhas de treino
+Mysql02::slow_rows_examined_mean,log,banco de dados,ausente em 97.7% das linhas de treino
+Redis01::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,metric_container,disco,constante no treino
+Redis01::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,metric_container,disco,constante no treino
+Redis01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,metric_container,disco,constante no treino
+Redis01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,metric_container,disco,constante no treino
+Redis01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,metric_container,disco,constante no treino
+Redis01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,metric_container,disco,constante no treino
+Redis01::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSAvailableSpace,metric_container,disco,constante no treino
+Redis01::OSLinux-OSLinux_FILESYSTEM_-tomcat_FSUsedSpace,metric_container,disco,constante no treino
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKAvgServ,metric_container,disco,constante no treino
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ,metric_container,disco,constante no treino
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKBps,metric_container,disco,constante no treino
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKPercentBusy,metric_container,disco,constante no treino
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRTps,metric_container,disco,quase constante no treino (moda em 99.93%)
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRead,metric_container,disco,quase constante no treino (moda em 99.93%)
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKReadWrite,metric_container,disco,quase constante no treino (moda em 99.93%)
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKTps,metric_container,disco,constante no treino
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWTps,metric_container,disco,constante no treino
+Redis01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWrite,metric_container,disco,constante no treino
+Redis01::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,metric_container,memória,constante no treino
+Redis01::OSLinux-OSLinux_NETWORK_NETWORK_TCP-CLOSE-WAIT,metric_container,rede,constante no treino
+Redis01::OSLinux-OSLinux_NETWORK_ens160_NETInErr,metric_container,erro,constante no treino
+Redis01::OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc,metric_container,erro,constante no treino
+Redis01::OSLinux-OSLinux_NETWORK_ens160_NETOutErr,metric_container,erro,constante no treino
+Redis01::OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc,metric_container,erro,constante no treino
+Redis01::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,metric_container,carga,quase constante no treino (moda em 99.97%)
+Redis01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,metric_container,carga,constante no treino
+Redis01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,metric_container,carga,constante no treino
+Redis01::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,metric_container,carga,constante no treino
+Redis01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,metric_container,memória,constante no treino
+Redis01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,metric_container,memória,constante no treino
+Redis01::OSLinux-OSLinux_SWAP_SWAP_Si,metric_container,memória,constante no treino
+Redis01::OSLinux-OSLinux_SWAP_SWAP_So,metric_container,memória,constante no treino
+Redis01::redis-Redis_6379_Redis  (aof_enabled),metric_container,banco de dados,constante no treino
+Redis01::redis-Redis_6379_Redis  (aof_rewrite_in_progress),metric_container,banco de dados,constante no treino
+Redis01::redis-Redis_6379_Redis  (aof_rewrite_scheduled),metric_container,banco de dados,constante no treino
+Redis01::redis-Redis_6379_Redis  (blocked_clients),metric_container,carga,constante no treino
+Redis01::redis-Redis_6379_Redis  (connected_slaves),metric_container,carga,constante no treino
+Redis01::redis-Redis_6379_Redis  (evicted_keys),metric_container,banco de dados,constante no treino
+Redis01::redis-Redis_6379_Redis  (expired_keys),metric_container,banco de dados,constante no treino
+Redis01::redis-Redis_6379_Redis  (keyspace_misses),metric_container,banco de dados,constante no treino
+Redis01::redis-Redis_6379_Redis  (latest_fork_usec),metric_container,banco de dados,constante no treino
+Redis01::redis-Redis_6379_Redis  (maxmemory),metric_container,memória,constante no treino
+Redis01::redis-Redis_6379_Redis  (pubsub_channels),metric_container,carga,constante no treino
+Redis01::redis-Redis_6379_Redis  (rdb_bgsave_in_progress),metric_container,banco de dados,constante no treino
+Redis01::redis-Redis_6379_Redis  (redis_git_dirty),metric_container,banco de dados,constante no treino
+Redis01::redis-Redis_6379_Redis  (rejected_connections),metric_container,erro,constante no treino
+Redis01::redis-Redis_6379_Redis  (used_cpu_sys_children),metric_container,CPU,constante no treino
+Redis01::redis-Redis_6379_Redis  (used_cpu_user_children),metric_container,CPU,constante no treino
+Redis02::OSLinux-NTP_197.30.1.67_NtpServerTimeOffset,metric_container,outro,ausente em 81.5% das linhas de treino
+Redis02::OSLinux-NTP_197.30.1.68_NtpServerTimeOffset,metric_container,outro,ausente em 82.4% das linhas de treino
+Redis02::OSLinux-NTP_40.2.208.64_NtpServerTimeOffset,metric_container,outro,ausente em 51.2% das linhas de treino
+Redis02::OSLinux-NTP_40.2.208.65_NtpServerTimeOffset,metric_container,outro,ausente em 51.2% das linhas de treino
+Redis02::OSLinux-OSLinux_FILESYSTEM_-app_FSAvailableSpace,metric_container,disco,constante no treino
+Redis02::OSLinux-OSLinux_FILESYSTEM_-app_FSUsedSpace,metric_container,disco,constante no treino
+Redis02::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,metric_container,disco,constante no treino
+Redis02::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,metric_container,disco,constante no treino
+Redis02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,metric_container,disco,constante no treino
+Redis02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,metric_container,disco,constante no treino
+Redis02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,metric_container,disco,constante no treino
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ,metric_container,disco,constante no treino
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKBps,metric_container,disco,constante no treino
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKPercentBusy,metric_container,disco,constante no treino
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRTps,metric_container,disco,constante no treino
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRead,metric_container,disco,constante no treino
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKReadWrite,metric_container,disco,constante no treino
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKTps,metric_container,disco,constante no treino
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWTps,metric_container,disco,constante no treino
+Redis02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWrite,metric_container,disco,constante no treino
+Redis02::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,metric_container,memória,constante no treino
+Redis02::OSLinux-OSLinux_NETWORK_NETWORK_TCP-CLOSE-WAIT,metric_container,rede,constante no treino
+Redis02::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,metric_container,carga,constante no treino
+Redis02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,metric_container,carga,constante no treino
+Redis02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,metric_container,carga,constante no treino
+Redis02::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,metric_container,carga,quase constante no treino (moda em 99.97%)
+Redis02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,metric_container,memória,constante no treino
+Redis02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,metric_container,memória,constante no treino
+Redis02::OSLinux-OSLinux_SWAP_SWAP_Si,metric_container,memória,constante no treino
+Redis02::OSLinux-OSLinux_SWAP_SWAP_So,metric_container,memória,constante no treino
+Redis02::redis-Redis_6379_Redis  (aof_enabled),metric_container,banco de dados,constante no treino
+Redis02::redis-Redis_6379_Redis  (aof_rewrite_in_progress),metric_container,banco de dados,constante no treino
+Redis02::redis-Redis_6379_Redis  (aof_rewrite_scheduled),metric_container,banco de dados,constante no treino
+Redis02::redis-Redis_6379_Redis  (blocked_clients),metric_container,carga,constante no treino
+Redis02::redis-Redis_6379_Redis  (client_biggest_input_buf),metric_container,banco de dados,constante no treino
+Redis02::redis-Redis_6379_Redis  (client_longest_output_list),metric_container,banco de dados,constante no treino
+Redis02::redis-Redis_6379_Redis  (connected_slaves),metric_container,carga,constante no treino
+Redis02::redis-Redis_6379_Redis  (evicted_keys),metric_container,banco de dados,constante no treino
+Redis02::redis-Redis_6379_Redis  (expired_keys),metric_container,banco de dados,constante no treino
+Redis02::redis-Redis_6379_Redis  (latest_fork_usec),metric_container,banco de dados,constante no treino
+Redis02::redis-Redis_6379_Redis  (maxmemory),metric_container,memória,constante no treino
+Redis02::redis-Redis_6379_Redis  (pubsub_channels),metric_container,carga,constante no treino
+Redis02::redis-Redis_6379_Redis  (rdb_bgsave_in_progress),metric_container,banco de dados,constante no treino
+Redis02::redis-Redis_6379_Redis  (redis_git_dirty),metric_container,banco de dados,constante no treino
+Redis02::redis-Redis_6379_Redis  (rejected_connections),metric_container,erro,constante no treino
+Redis02::redis-Redis_6379_Redis  (used_cpu_sys_children),metric_container,CPU,constante no treino
+Redis02::redis-Redis_6379_Redis  (used_cpu_user_children),metric_container,CPU,constante no treino
+Redis02::redis-Redis_6379_Redis  (used_memory_peak),metric_container,memória,constante no treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----boot_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----boot_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----home_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----home_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----tmp_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----tmp_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,metric_container,disco,constante no treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity,metric_container,disco,constante no treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent,metric_container,disco,constante no treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,metric_container,disco,constante no treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,metric_container,disco,constante no treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity,metric_container,disco,constante no treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent,metric_container,disco,constante no treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,metric_container,disco,constante no treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,metric_container,disco,constante no treino
+Tomcat01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,metric_container,disco,constante no treino
+Tomcat01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKAvgServ,metric_container,disco,constante no treino
+Tomcat01::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ,metric_container,disco,constante no treino
+Tomcat01::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,metric_container,memória,constante no treino
+Tomcat01::OSLinux-OSLinux_NETWORK_ens160_NETInErr,metric_container,erro,constante no treino
+Tomcat01::OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc,metric_container,erro,constante no treino
+Tomcat01::OSLinux-OSLinux_NETWORK_ens160_NETOutErr,metric_container,erro,constante no treino
+Tomcat01::OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc,metric_container,erro,constante no treino
+Tomcat01::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,metric_container,carga,quase constante no treino (moda em 99.97%)
+Tomcat01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,metric_container,carga,constante no treino
+Tomcat01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,metric_container,carga,constante no treino
+Tomcat01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,metric_container,memória,constante no treino
+Tomcat01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,metric_container,memória,constante no treino
+Tomcat01::OSLinux-OSLinux_SWAP_SWAP_Si,metric_container,memória,constante no treino
+Tomcat01::OSLinux-OSLinux_SWAP_SWAP_So,metric_container,memória,constante no treino
+Tomcat01::Tomcat-MEMORY_7441-MEMORY_JVMMaxMemory,metric_container,memória,constante no treino
+Tomcat01::Tomcat-MEMORY_7441-MEMORY_JVMTotalMemory,metric_container,memória,constante no treino
+Tomcat01::Tomcat-Sessions_7441--UOCP_SESSIONActiveCounter,metric_container,carga,constante no treino
+Tomcat01::Tomcat-Sessions_7441--UOCP_SESSIONKeepaliveCounter,metric_container,carga,constante no treino
+Tomcat01::Tomcat-Sessions_7441--UOCP_SESSIONRejectedSessions,metric_container,carga,constante no treino
+Tomcat01::Tomcat-Sessions_7441--_SESSIONActiveCounter,metric_container,carga,constante no treino
+Tomcat01::Tomcat-Sessions_7441--_SESSIONKeepaliveCounter,metric_container,carga,constante no treino
+Tomcat01::Tomcat-Sessions_7441--_SESSIONRejectedSessions,metric_container,carga,constante no treino
+Tomcat01::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONActiveCounter,metric_container,carga,constante no treino
+Tomcat01::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONKeepaliveCounter,metric_container,carga,constante no treino
+Tomcat01::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONRejectedSessions,metric_container,carga,constante no treino
+"Tomcat01::Tomcat-Threads_7441-""http-nio-8003""_MaxThreadsThreadInfo",metric_container,carga,constante no treino
+Tomcat01::access_errors,log,erro,quase constante no treino (moda em 99.97%)
+Tomcat01::log_catalina_count,log,carga,quase constante no treino (moda em 99.93%)
+Tomcat01::log_catalina_level_INFO,log,erro,quase constante no treino (moda em 99.93%)
+Tomcat01::log_catalina_level_SEVERE,log,erro,quase constante no treino (moda em 99.97%)
+Tomcat01::log_catalina_level_WARNING,log,erro,quase constante no treino (moda em 99.93%)
+Tomcat01::log_catalina_tpl_8,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat01::log_catalina_tpl_9,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat01::log_catalina_tpl_other,log,outro,quase constante no treino (moda em 99.93%)
+Tomcat01::log_localhost_count,log,carga,quase constante no treino (moda em 99.93%)
+Tomcat01::log_localhost_level_INFO,log,erro,quase constante no treino (moda em 99.93%)
+Tomcat01::log_localhost_tpl_2,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat01::log_localhost_tpl_3,log,outro,quase constante no treino (moda em 99.93%)
+Tomcat01::log_localhost_tpl_4,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat01::log_localhost_tpl_5,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----boot_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----boot_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----home_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----home_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----tmp_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----tmp_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,metric_container,disco,constante no treino
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity,metric_container,disco,constante no treino
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent,metric_container,disco,constante no treino
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,metric_container,disco,constante no treino
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,metric_container,disco,constante no treino
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity,metric_container,disco,constante no treino
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent,metric_container,disco,constante no treino
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,metric_container,disco,constante no treino
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,metric_container,disco,constante no treino
+Tomcat02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,metric_container,disco,constante no treino
+Tomcat02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKAvgServ,metric_container,disco,constante no treino
+Tomcat02::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ,metric_container,disco,constante no treino
+Tomcat02::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,metric_container,memória,constante no treino
+Tomcat02::OSLinux-OSLinux_NETWORK_ens160_NETInErr,metric_container,erro,constante no treino
+Tomcat02::OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc,metric_container,erro,constante no treino
+Tomcat02::OSLinux-OSLinux_NETWORK_ens160_NETOutErr,metric_container,erro,constante no treino
+Tomcat02::OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc,metric_container,erro,constante no treino
+Tomcat02::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,metric_container,carga,quase constante no treino (moda em 99.97%)
+Tomcat02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,metric_container,carga,constante no treino
+Tomcat02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,metric_container,carga,constante no treino
+Tomcat02::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,metric_container,carga,quase constante no treino (moda em 99.97%)
+Tomcat02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,metric_container,memória,constante no treino
+Tomcat02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,metric_container,memória,constante no treino
+Tomcat02::OSLinux-OSLinux_SWAP_SWAP_Si,metric_container,memória,constante no treino
+Tomcat02::OSLinux-OSLinux_SWAP_SWAP_So,metric_container,memória,constante no treino
+Tomcat02::Tomcat-MEMORY_7441-MEMORY_JVMMaxMemory,metric_container,memória,constante no treino
+Tomcat02::Tomcat-MEMORY_7441-MEMORY_JVMTotalMemory,metric_container,memória,constante no treino
+Tomcat02::Tomcat-Sessions_7441--UOCP_SESSIONActiveCounter,metric_container,carga,constante no treino
+Tomcat02::Tomcat-Sessions_7441--UOCP_SESSIONKeepaliveCounter,metric_container,carga,constante no treino
+Tomcat02::Tomcat-Sessions_7441--UOCP_SESSIONRejectedSessions,metric_container,carga,constante no treino
+Tomcat02::Tomcat-Sessions_7441--_SESSIONActiveCounter,metric_container,carga,constante no treino
+Tomcat02::Tomcat-Sessions_7441--_SESSIONKeepaliveCounter,metric_container,carga,constante no treino
+Tomcat02::Tomcat-Sessions_7441--_SESSIONRejectedSessions,metric_container,carga,constante no treino
+Tomcat02::Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONActiveCounter,metric_container,carga,constante no treino
+Tomcat02::Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONKeepaliveCounter,metric_container,carga,constante no treino
+Tomcat02::Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONRejectedSessions,metric_container,carga,constante no treino
+Tomcat02::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONActiveCounter,metric_container,carga,constante no treino
+Tomcat02::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONKeepaliveCounter,metric_container,carga,constante no treino
+Tomcat02::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONRejectedSessions,metric_container,carga,constante no treino
+"Tomcat02::Tomcat-Threads_7441-""http-nio-8003""_MaxThreadsThreadInfo",metric_container,carga,constante no treino
+Tomcat02::log_catalina_count,log,carga,quase constante no treino (moda em 99.93%)
+Tomcat02::log_catalina_level_INFO,log,erro,quase constante no treino (moda em 99.93%)
+Tomcat02::log_catalina_level_SEVERE,log,erro,quase constante no treino (moda em 99.97%)
+Tomcat02::log_catalina_level_WARNING,log,erro,quase constante no treino (moda em 99.93%)
+Tomcat02::log_catalina_tpl_1,log,outro,constante no treino
+Tomcat02::log_catalina_tpl_8,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat02::log_catalina_tpl_9,log,outro,quase constante no treino (moda em 99.93%)
+Tomcat02::log_catalina_tpl_other,log,outro,quase constante no treino (moda em 99.93%)
+Tomcat02::log_localhost_count,log,carga,quase constante no treino (moda em 99.93%)
+Tomcat02::log_localhost_level_INFO,log,erro,quase constante no treino (moda em 99.93%)
+Tomcat02::log_localhost_tpl_2,log,outro,quase constante no treino (moda em 99.93%)
+Tomcat02::log_localhost_tpl_3,log,outro,quase constante no treino (moda em 99.93%)
+Tomcat02::log_localhost_tpl_4,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat02::log_localhost_tpl_5,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----boot_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----boot_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----home_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----home_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----tmp_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----tmp_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-_FSInodeUsedPercent,metric_container,disco,quase constante no treino (moda em 99.93%)
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,metric_container,disco,constante no treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity,metric_container,disco,constante no treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent,metric_container,disco,constante no treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,metric_container,disco,constante no treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,metric_container,disco,constante no treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity,metric_container,disco,constante no treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent,metric_container,disco,constante no treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,metric_container,disco,constante no treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,metric_container,disco,constante no treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-tmp_FSInodeUsedPercent,metric_container,disco,constante no treino
+Tomcat03::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,metric_container,disco,constante no treino
+Tomcat03::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sda_DSKAvgServ,metric_container,disco,constante no treino
+Tomcat03::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ,metric_container,disco,constante no treino
+Tomcat03::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,metric_container,memória,constante no treino
+Tomcat03::OSLinux-OSLinux_NETWORK_ens160_NETInErr,metric_container,erro,constante no treino
+Tomcat03::OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc,metric_container,erro,constante no treino
+Tomcat03::OSLinux-OSLinux_NETWORK_ens160_NETOutErr,metric_container,erro,constante no treino
+Tomcat03::OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc,metric_container,erro,constante no treino
+Tomcat03::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,metric_container,carga,constante no treino
+Tomcat03::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,metric_container,carga,constante no treino
+Tomcat03::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,metric_container,carga,constante no treino
+Tomcat03::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,metric_container,carga,constante no treino
+Tomcat03::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,metric_container,memória,constante no treino
+Tomcat03::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,metric_container,memória,constante no treino
+Tomcat03::OSLinux-OSLinux_SWAP_SWAP_Si,metric_container,memória,constante no treino
+Tomcat03::OSLinux-OSLinux_SWAP_SWAP_So,metric_container,memória,constante no treino
+Tomcat03::Tomcat-MEMORY_7441-MEMORY_JVMMaxMemory,metric_container,memória,constante no treino
+Tomcat03::Tomcat-MEMORY_7441-MEMORY_JVMTotalMemory,metric_container,memória,constante no treino
+Tomcat03::Tomcat-Sessions_7441--UOCP_SESSIONActiveCounter,metric_container,carga,constante no treino
+Tomcat03::Tomcat-Sessions_7441--UOCP_SESSIONKeepaliveCounter,metric_container,carga,constante no treino
+Tomcat03::Tomcat-Sessions_7441--UOCP_SESSIONRejectedSessions,metric_container,carga,constante no treino
+Tomcat03::Tomcat-Sessions_7441--_SESSIONActiveCounter,metric_container,carga,constante no treino
+Tomcat03::Tomcat-Sessions_7441--_SESSIONKeepaliveCounter,metric_container,carga,constante no treino
+Tomcat03::Tomcat-Sessions_7441--_SESSIONRejectedSessions,metric_container,carga,constante no treino
+Tomcat03::Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONActiveCounter,metric_container,carga,constante no treino
+Tomcat03::Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONKeepaliveCounter,metric_container,carga,constante no treino
+Tomcat03::Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONRejectedSessions,metric_container,carga,constante no treino
+Tomcat03::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONActiveCounter,metric_container,carga,constante no treino
+Tomcat03::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONKeepaliveCounter,metric_container,carga,constante no treino
+Tomcat03::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONRejectedSessions,metric_container,carga,constante no treino
+"Tomcat03::Tomcat-Threads_7441-""http-nio-8003""_MaxThreadsThreadInfo",metric_container,carga,constante no treino
+Tomcat03::access_errors,log,erro,quase constante no treino (moda em 99.97%)
+Tomcat03::gc_full,log,memória,constante no treino
+Tomcat03::log_catalina_count,log,carga,quase constante no treino (moda em 99.93%)
+Tomcat03::log_catalina_level_INFO,log,erro,quase constante no treino (moda em 99.93%)
+Tomcat03::log_catalina_level_SEVERE,log,erro,quase constante no treino (moda em 99.97%)
+Tomcat03::log_catalina_level_WARNING,log,erro,quase constante no treino (moda em 99.93%)
+Tomcat03::log_catalina_tpl_1,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat03::log_catalina_tpl_10,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat03::log_catalina_tpl_2,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat03::log_catalina_tpl_3,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat03::log_catalina_tpl_4,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat03::log_catalina_tpl_5,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat03::log_catalina_tpl_6,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat03::log_catalina_tpl_7,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat03::log_catalina_tpl_8,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat03::log_catalina_tpl_9,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat03::log_catalina_tpl_other,log,outro,quase constante no treino (moda em 99.93%)
+Tomcat03::log_localhost_count,log,carga,quase constante no treino (moda em 99.93%)
+Tomcat03::log_localhost_level_INFO,log,erro,quase constante no treino (moda em 99.93%)
+Tomcat03::log_localhost_level_SEVERE,log,erro,quase constante no treino (moda em 99.97%)
+Tomcat03::log_localhost_tpl_1,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat03::log_localhost_tpl_2,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat03::log_localhost_tpl_3,log,outro,quase constante no treino (moda em 99.93%)
+Tomcat03::log_localhost_tpl_4,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat03::log_localhost_tpl_5,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----boot_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----boot_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----home_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----home_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----tmp_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----tmp_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSCapacity,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_----tomcat_FSInodeUsedPercent,metric_container,disco,ausente em 100.0% das linhas de treino
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-_FSInodeUsedPercent,metric_container,disco,constante no treino
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,metric_container,disco,constante no treino
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity,metric_container,disco,constante no treino
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent,metric_container,disco,constante no treino
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,metric_container,disco,constante no treino
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,metric_container,disco,constante no treino
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity,metric_container,disco,constante no treino
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent,metric_container,disco,constante no treino
+Tomcat04::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,metric_container,disco,constante no treino
+Tomcat04::OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ,metric_container,disco,constante no treino
+Tomcat04::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,metric_container,memória,constante no treino
+Tomcat04::OSLinux-OSLinux_NETWORK_ens160_NETInErr,metric_container,erro,constante no treino
+Tomcat04::OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc,metric_container,erro,constante no treino
+Tomcat04::OSLinux-OSLinux_NETWORK_ens160_NETOutErr,metric_container,erro,constante no treino
+Tomcat04::OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc,metric_container,erro,constante no treino
+Tomcat04::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,metric_container,carga,constante no treino
+Tomcat04::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,metric_container,carga,constante no treino
+Tomcat04::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,metric_container,carga,constante no treino
+Tomcat04::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,metric_container,carga,constante no treino
+Tomcat04::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,metric_container,memória,constante no treino
+Tomcat04::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,metric_container,memória,constante no treino
+Tomcat04::OSLinux-OSLinux_SWAP_SWAP_Si,metric_container,memória,constante no treino
+Tomcat04::OSLinux-OSLinux_SWAP_SWAP_So,metric_container,memória,constante no treino
+Tomcat04::Tomcat-MEMORY_7441-MEMORY_JVMMaxMemory,metric_container,memória,constante no treino
+Tomcat04::Tomcat-MEMORY_7441-MEMORY_JVMTotalMemory,metric_container,memória,constante no treino
+Tomcat04::Tomcat-Sessions_7441--UOCP_SESSIONActiveCounter,metric_container,carga,constante no treino
+Tomcat04::Tomcat-Sessions_7441--UOCP_SESSIONKeepaliveCounter,metric_container,carga,constante no treino
+Tomcat04::Tomcat-Sessions_7441--UOCP_SESSIONRejectedSessions,metric_container,carga,constante no treino
+Tomcat04::Tomcat-Sessions_7441--_SESSIONActiveCounter,metric_container,carga,constante no treino
+Tomcat04::Tomcat-Sessions_7441--_SESSIONKeepaliveCounter,metric_container,carga,constante no treino
+Tomcat04::Tomcat-Sessions_7441--_SESSIONRejectedSessions,metric_container,carga,constante no treino
+Tomcat04::Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONActiveCounter,metric_container,carga,constante no treino
+Tomcat04::Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONKeepaliveCounter,metric_container,carga,constante no treino
+Tomcat04::Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONRejectedSessions,metric_container,carga,constante no treino
+Tomcat04::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONActiveCounter,metric_container,carga,constante no treino
+Tomcat04::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONKeepaliveCounter,metric_container,carga,constante no treino
+Tomcat04::Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONRejectedSessions,metric_container,carga,constante no treino
+"Tomcat04::Tomcat-Threads_7441-""http-nio-8003""_MaxThreadsThreadInfo",metric_container,carga,constante no treino
+Tomcat04::access_errors,log,erro,quase constante no treino (moda em 99.93%)
+Tomcat04::gc_full,log,memória,constante no treino
+Tomcat04::log_catalina_count,log,carga,quase constante no treino (moda em 99.93%)
+Tomcat04::log_catalina_level_INFO,log,erro,quase constante no treino (moda em 99.93%)
+Tomcat04::log_catalina_level_SEVERE,log,erro,quase constante no treino (moda em 99.97%)
+Tomcat04::log_catalina_level_WARNING,log,erro,quase constante no treino (moda em 99.97%)
+Tomcat04::log_catalina_tpl_8,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat04::log_catalina_tpl_9,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat04::log_catalina_tpl_other,log,outro,quase constante no treino (moda em 99.93%)
+Tomcat04::log_localhost_count,log,carga,quase constante no treino (moda em 99.93%)
+Tomcat04::log_localhost_level_INFO,log,erro,quase constante no treino (moda em 99.93%)
+Tomcat04::log_localhost_tpl_2,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat04::log_localhost_tpl_3,log,outro,quase constante no treino (moda em 99.93%)
+Tomcat04::log_localhost_tpl_4,log,outro,quase constante no treino (moda em 99.97%)
+Tomcat04::log_localhost_tpl_5,log,outro,quase constante no treino (moda em 99.97%)
+apache01::OSLinux-NTP_197.30.1.67_NtpServerTimeOffset,metric_container,outro,ausente em 83.1% das linhas de treino
+apache01::OSLinux-NTP_197.30.1.68_NtpServerTimeOffset,metric_container,outro,ausente em 83.6% das linhas de treino
+apache01::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,metric_container,disco,constante no treino
+apache01::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,metric_container,disco,constante no treino
+apache01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,metric_container,disco,constante no treino
+apache01::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,metric_container,disco,constante no treino
+apache01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,metric_container,disco,constante no treino
+apache01::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,metric_container,disco,constante no treino
+apache01::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,metric_container,memória,constante no treino
+apache01::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,metric_container,carga,constante no treino
+apache01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,metric_container,carga,constante no treino
+apache01::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,metric_container,carga,constante no treino
+apache01::OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount,metric_container,carga,constante no treino
+apache01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,metric_container,memória,constante no treino
+apache01::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,metric_container,memória,constante no treino
+apache01::OSLinux-OSLinux_SWAP_SWAP_Si,metric_container,memória,constante no treino
+apache01::OSLinux-OSLinux_SWAP_SWAP_So,metric_container,memória,constante no treino
+apache02::OSLinux-NTP_197.30.1.67_NtpServerTimeOffset,metric_container,outro,ausente em 81.5% das linhas de treino
+apache02::OSLinux-NTP_197.30.1.68_NtpServerTimeOffset,metric_container,outro,ausente em 81.3% das linhas de treino
+apache02::OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace,metric_container,disco,constante no treino
+apache02::OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace,metric_container,disco,constante no treino
+apache02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace,metric_container,disco,constante no treino
+apache02::OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace,metric_container,disco,constante no treino
+apache02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSAvailableSpace,metric_container,disco,constante no treino
+apache02::OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace,metric_container,disco,constante no treino
+apache02::OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem,metric_container,memória,constante no treino
+apache02::OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies,metric_container,carga,constante no treino
+apache02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem,metric_container,carga,constante no treino
+apache02::OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc,metric_container,carga,constante no treino
+apache02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize,metric_container,memória,constante no treino
+apache02::OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent,metric_container,memória,constante no treino
+apache02::OSLinux-OSLinux_SWAP_SWAP_Si,metric_container,memória,constante no treino
+apache02::OSLinux-OSLinux_SWAP_SWAP_So,metric_container,memória,constante no treino
+dockerA2::Container_NetworkRxBytes,metric_container,rede,constante no treino
+dockerA2::Container_NetworkTxBytes,metric_container,rede,constante no treino
+dockerB2::Container_CpuPercent,metric_container,CPU,ausente em 52.6% das linhas de treino
+dockerB2::Container_MemPercent,metric_container,memória,ausente em 52.6% das linhas de treino
+dockerB2::Container_MemUsage,metric_container,memória,ausente em 52.6% das linhas de treino
+dockerB2::Container_NetworkRxBytes,metric_container,rede,ausente em 60.1% das linhas de treino
+dockerB2::Container_NetworkTxBytes,metric_container,rede,ausente em 51.0% das linhas de treino

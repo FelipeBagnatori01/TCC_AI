@@ -68,6 +68,5 @@ def test_real_catalog_covers_categories(repo_root: Path) -> None:
     from tcc_rca.series.catalog import CATEGORIES, load_kpi_catalog
 
     catalog = load_kpi_catalog(repo_root / "configs/data/kpi_catalog_telecom.yaml")
-    used = {info.category for kpis in catalog.values() for info in kpis.values()}
-    assert used <= set(CATEGORIES)
-    assert sum(len(k) for k in catalog.values()) == 138
+    assert catalog.categories() <= set(CATEGORIES)
+    assert sum(len(k) for k in catalog.explicit.values()) == 138

@@ -50,10 +50,19 @@ class SelectionConfig(_Strict):
 class SeriesConfig(_Strict):
     step_seconds: int = Field(gt=0)
     ffill_limit_steps: int = Field(ge=0)
-    deployment_list: Path  # relative to paths.data_root
+    deployment_list: Path | None  # relative to paths.data_root; None when the system has none
     kpi_catalog: Path
     selection: SelectionConfig
     report_train_days: int = Field(gt=0)
+    # Initial block (ADR 0012): training in every fold. Bank drain3 templates and native sampling
+    # steps are measured on these days only; the ``log_top_templates`` most frequent are kept.
+    initial_block_days: tuple[str, ...] = ()
+    log_top_templates: int = Field(default=10, gt=0)
+    # ADR 0012: per-feature forward-fill limit = native sampling step measured on the initial
+    # block (initial_block_days), bounded by [ffill_limit_steps, max_ffill_steps]. Off for
+    # Telecom (uniform 60 s sampling; ADR 0005).
+    adaptive_ffill: bool = False
+    max_ffill_steps: int = Field(default=60, gt=0)
 
 
 class PrecursorConfig(_Strict):
@@ -106,6 +115,7 @@ class Config(_Strict):
     target_system: Literal["Telecom", "Bank"]
     # Every system whose raw files are listed (and verified) in the versioned data manifest.
     data_systems: tuple[Literal["Telecom", "Bank"], ...] = Field(min_length=1)
+    manifest_extra_files: tuple[Path, ...] = ()  # data-root files outside system folders
     paths: PathsConfig
     llm: LLMConfig
     series: SeriesConfig

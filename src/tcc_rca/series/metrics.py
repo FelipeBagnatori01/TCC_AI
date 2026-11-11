@@ -37,7 +37,7 @@ def metric_long(
             .collect()
         )
         for agg_name, agg_expr in _ITEM_AGG.items():
-            kpis = [k for k, info in catalog.get(name, {}).items() if info.item_agg == agg_name]
+            kpis = [k for k, info in catalog.kpis(name).items() if info.item_agg == agg_name]
             part = per_item.filter(pl.col("name").is_in(kpis))
             if part.is_empty():
                 continue
@@ -51,7 +51,7 @@ def metric_long(
                     pl.col("value"),
                 )
             )
-        unknown = per_item.filter(~pl.col("name").is_in(list(catalog.get(name, {}))))
+        unknown = per_item.filter(~pl.col("name").is_in(list(catalog.kpis(name))))
         if not unknown.is_empty():
             raise KeyError(
                 f"{name}: KPIs without catalog entry: {unknown['name'].unique().to_list()}"

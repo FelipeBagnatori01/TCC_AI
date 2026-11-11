@@ -33,7 +33,7 @@ def _metric_rows(component: str, kpi: str, values: list[float]) -> str:
     )
 
 
-def make_system(root: Path, system: str = "Sys") -> Path:
+def make_system(root: Path, system: str = "Telecom") -> Path:
     """Create ``root/system`` with one day of telemetry and return the system directory."""
     system_dir = root / system
     metric_dir = system_dir / "telemetry" / DAY / "metric"
@@ -98,3 +98,60 @@ def write_metric(system_dir: Path, name: str, rows: list[tuple[int, str, int, fl
     body = "".join(f"{i},{k},B-1,{t},{v},{c}\n" for i, k, t, v, c in rows)
     path = system_dir / "telemetry" / DAY / "metric" / f"{name}.csv"
     path.write_text(METRIC_HEADER + "\n" + body, encoding="utf-8")
+
+
+# ------------------------------------------------------------------ Bank-shaped synthetic system
+BANK_DAY = "2021_03_04"
+BANK_START_S = 1614787200  # 2021-03-04 00:00:00 UTC+8
+BANK_RECORD = (
+    "level,component,timestamp,datetime,reason\n"
+    "pod,Tomcat01,1614787500.0,2021-03-04 00:05:00,high CPU usage\n"
+)
+BANK_QUERY = (
+    "task_index,instruction,scoring_points\n"
+    '"task_3","On March 4, 2021, within the time range of 00:00 to 00:30, a single failure was '
+    'detected.","The only predicted root cause component is Tomcat01\n"\n'
+)
+
+
+def make_bank_system(root: Path) -> Path:
+    """One Bank-shaped day: second-resolution metrics/logs, millisecond traces, multi-line logs."""
+    system_dir = root / "Bank"
+    day = system_dir / "telemetry" / BANK_DAY
+    for sub in ("metric", "trace", "log"):
+        (day / sub).mkdir(parents=True)
+    (system_dir / "record.csv").write_text(BANK_RECORD, encoding="utf-8")
+    (system_dir / "query.csv").write_text(BANK_QUERY, encoding="utf-8")
+    n = 20
+
+    def cpu(i: int) -> float:
+        return 90.0 if 5 <= i < 8 else 10.0
+
+    rows = "".join(
+        f"{BANK_START_S + 60 * i},Tomcat01,OSLinux-CPU_CPU_CPUCpuUtil,{cpu(i)}\n"
+        f"{BANK_START_S + 60 * i},Mysql01,Mysql-MySQL_3306_Uptime,1.0\n"
+        for i in range(n)
+    )
+    (day / "metric" / "metric_container.csv").write_text(
+        "timestamp,cmdb_id,kpi_name,value\n" + rows, encoding="utf-8"
+    )
+    (day / "metric" / "metric_app.csv").write_text(
+        "timestamp,rr,sr,cnt,mrt,tc\n"
+        + "".join(f"{BANK_START_S + 60 * i},100.0,100.0,5,50.0,ServiceTest1\n" for i in range(n)),
+        encoding="utf-8",
+    )
+    (day / "trace" / "trace_span.csv").write_text(
+        "timestamp,cmdb_id,parent_id,span_id,trace_id,duration\n"
+        + "".join(
+            f"{(BANK_START_S + 60 * i) * 1000 + 5},Tomcat01,p{i},s{i},t{i},{12 + i}\n"
+            for i in range(n)
+        ),
+        encoding="utf-8",
+    )
+    (day / "log" / "log_service.csv").write_text(
+        "log_id,timestamp,cmdb_id,log_name,value\n"
+        f'a1,{BANK_START_S + 1},Tomcat01,gc,"[GC (Allocation Failure)\nline two, with comma]"\n'
+        f"a2,{BANK_START_S + 400},Tomcat01,gc,plain line\n",
+        encoding="utf-8",
+    )
+    return system_dir

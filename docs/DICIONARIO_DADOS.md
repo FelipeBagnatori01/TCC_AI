@@ -121,3 +121,36 @@ Leitura e arestas: ADR 0006 e `reports/tables/dependency_edges_Telecom.csv`.
 ## Memória
 
 Converter um dia para parquet (leitura lazy e escrita em streaming) teve pico de **1.706 MB** de RSS no dia mais pesado (2020_04_20, 1,24 GB de trace) e 1.681 MB em 2020_04_11, medidos em processo isolado por `tcc-rca convert --days <dia>`, na máquina de 24 GB de RAM. Os 15 dias convertidos ocupam 2,7 GB em `data/interim/`.
+
+# Bank (Plano B)
+
+Inventário em `reports/tables/inventory_Bank.json` (`tcc-rca inventory --config configs/base.yaml configs/system/bank.yaml`); qualidade em `reports/tables/quality_Bank.{md,json}`; similaridade entre dias em `reports/tables/day_similarity_Bank.csv`. O layout de arquivos é próprio do Bank (ADR 0011): nada foi herdado do Telecom.
+
+## Estrutura
+
+- 10 dias (2021_03_04, 05, 06, 07, 09, 10, 12, 23, 24, 25), cada um com **o dia inteiro** (00:00–23:59 UTC+8), ao contrário das 6 h do Telecom. 25 GB de CSV, 3,2 GB em parquet.
+- Arquivos por dia: `metric/metric_container.csv`, `metric/metric_app.csv`, `trace/trace_span.csv`, `log/log_service.csv`. Os cabeçalhos são iguais nos 10 dias.
+
+| Arquivo | Colunas | Época | Conteúdo |
+|---|---|---|---|
+| `metric_container` | `timestamp, cmdb_id, kpi_name, value` | segundos | 18 componentes, 348–374 KPIs por dia, passo modal de 60 s. Famílias pelo prefixo do KPI: `OSLinux`, `Mysql`, `Tomcat`, `redis`, `JVM`, `Container` |
+| `metric_app` | `timestamp, rr, sr, cnt, mrt, tc` | segundos | 11 serviços `ServiceTest1..11` (`tc`); `cnt` chamadas, `mrt` tempo médio de resposta, `rr`/`sr` taxas em % (significados inferidos dos nomes) |
+| `trace_span` | `timestamp, cmdb_id, parent_id, span_id, trace_id, duration` | **ms até 2021_03_12; segundos de 2021_03_23 em diante** | 12 componentes emitem spans (IG, MG, Tomcat, dockerA/B); Redis, Mysql e apache não. Sem `dsName` nem indicador de sucesso |
+| `log_service` | `log_id, timestamp, cmdb_id, log_name, value` | segundos | 7 tipos de log: `gc`, `catalina`, `localhost`, `localhost_access_log` (Tomcat), `apache_access_log` (apache), `error` e `slow` (Mysql). `value` é texto livre e pode ocupar várias linhas |
+
+- **Mudança de unidade nos traces.** Em 23, 24 e 25/03 o `timestamp` do trace tem 10 dígitos (segundos), contra 13 nos outros dias. Lido como milissegundos, cairia em 20/01/1970. A unidade é detectada por arquivo, e a conversão falha se um arquivo misturar as duas (ADR 0011). Nesses três dias o instante dos spans tem só resolução de segundo.
+- Componentes com telemetria: `IG01-02`, `MG01-02`, `Mysql01-02`, `Redis01-02`, `Tomcat01-04`, `apache01-02`, `dockerA1-2`, `dockerB1-2`.
+
+## Rótulos e consultas
+
+- 136 falhas em `record.csv` (`timestamp` em segundos escrito como `1614841020.0`) e 136 consultas.
+- 14 componentes e 8 motivos: `high CPU usage` 33, `network packet loss` 32, `network latency` 27, `high disk I/O read usage` 19, `high memory usage` 10, `JVM Out of Memory (OOM) Heap` 7, `high disk space usage` 5, `high JVM CPU load` 3.
+- **Consultas com duas falhas.** 9 janelas de 30 min contêm duas falhas e cada uma é usada por duas consultas de tipos diferentes; essas 18 consultas pedem 2 falhas no gabarito (conferido: 0 divergências). Por isso o mapeamento tem 154 pares consulta–falha.
+- Falhas por dia: 2021_03_05 não tem nenhuma; os outros 9 dias têm de 10 a 21.
+- **Motivo e tipo de componente não estão ligados** (diferente do Telecom): `high CPU usage`, por exemplo, ocorre em Redis, Mysql, IG, Tomcat, apache e MG.
+
+## Qualidade
+
+- Nenhuma coluna com nulos; 515 das 1.889 séries de métricas são constantes.
+- Todas as 154 falhas têm métricas do componente rotulado antes e depois do início. 38 não têm spans do componente (Redis, Mysql e apache não emitem traces).
+- **Sem dias duplicados:** o par de dias mais parecido coincide em 53% dos valores (o Telecom tinha três pares acima de 99,99%).

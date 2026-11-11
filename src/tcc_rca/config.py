@@ -103,7 +103,9 @@ class BaselinesConfig(_Strict):
 
 class Config(_Strict):
     experiment: ExperimentConfig
-    target_system: Literal["Telecom", "Bank", "Market"]
+    target_system: Literal["Telecom", "Bank"]
+    # Every system whose raw files are listed (and verified) in the versioned data manifest.
+    data_systems: tuple[Literal["Telecom", "Bank"], ...] = Field(min_length=1)
     paths: PathsConfig
     llm: LLMConfig
     series: SeriesConfig

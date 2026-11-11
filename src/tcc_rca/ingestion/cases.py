@@ -100,7 +100,10 @@ def read_failures(record_csv: Path) -> list[Failure]:
     failures: list[Failure] = []
     with record_csv.open(encoding="utf-8", newline="") as handle:
         for line_no, row in enumerate(csv.DictReader(handle), start=2):
-            from_epoch = epoch_s_to_utc(int(row["timestamp"]))
+            raw_ts = float(row["timestamp"])  # Bank writes whole seconds as "1614841020.0"
+            if not raw_ts.is_integer():
+                raise ValueError(f"{record_csv}:{line_no}: non-integral timestamp {raw_ts}")
+            from_epoch = epoch_s_to_utc(int(raw_ts))
             from_text = parse_local(row["datetime"])
             if from_epoch != from_text.astimezone(UTC):
                 raise ValueError(

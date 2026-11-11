@@ -1,0 +1,3 @@
+# Plan B second system (ADR 0009 addendum). Merge after base.yaml:
+#   uv run tcc-rca <command> --config configs/base.yaml configs/system/bank.yaml
+target_system: Bank

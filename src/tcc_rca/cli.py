@@ -22,7 +22,7 @@ from tcc_rca.ingestion.manifest import (
     verify_manifest,
     write_manifest,
 )
-from tcc_rca.ingestion.quality import build_quality_report, write_quality_report
+from tcc_rca.ingestion.quality import build_quality_report, day_similarity, write_quality_report
 from tcc_rca.ingestion.telemetry import convert_day, list_days
 from tcc_rca.series.build import run_series
 
@@ -49,7 +49,7 @@ def _cases(config: Config) -> tuple[list[Case], list[Failure]]:
 def cmd_manifest(config: Config, _: argparse.Namespace) -> int:
     entries = build_manifest(
         config.paths.data_root,
-        [config.target_system],
+        list(config.data_systems),
         extra_files=[config.series.deployment_list],
     )
     write_manifest(entries, config.paths.manifest)
@@ -118,6 +118,16 @@ def cmd_quality(config: Config, _: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_similarity(config: Config, _: argparse.Namespace) -> int:
+    days = list_days(_system_dir(config))
+    table = day_similarity(config.paths.interim_dir, config.target_system, days)
+    out = TABLES_DIR / f"day_similarity_{config.target_system}.csv"
+    table.write_csv(out)
+    print(table.head(8))
+    print(f"-> {out}")
+    return 0
+
+
 def cmd_eda(config: Config, args: argparse.Namespace) -> int:
     cases, _orphans = _cases(config)
     failures = [f for c in cases for f in c.failures]
@@ -179,6 +189,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     convert.add_argument("--overwrite", action="store_true")
     add("cases", "parse record.csv/query.csv and report the failure-to-query mapping")
     add("quality", "write the data-quality report")
+    add("similarity", "share of equal metric values between every pair of days (duplicate check)")
     add("series", "build the multivariate KPI matrix, catalog and dependency edges (E2)")
     add("tasks", "windows, labels, rolling-origin folds and precursor check (E3)")
     add("baselines", "run and evaluate every E4 baseline over the folds (tracked run)")
@@ -195,6 +206,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         "convert": cmd_convert,
         "cases": cmd_cases,
         "quality": cmd_quality,
+        "similarity": cmd_similarity,
         "eda": cmd_eda,
         "series": cmd_series,
         "tasks": cmd_tasks,

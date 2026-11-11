@@ -1,0 +1,4007 @@
+{
+  "components_in_any_telemetry": [
+    "IG01",
+    "IG02",
+    "MG01",
+    "MG02",
+    "Mysql01",
+    "Mysql02",
+    "Redis01",
+    "Redis02",
+    "Tomcat01",
+    "Tomcat02",
+    "Tomcat03",
+    "Tomcat04",
+    "apache01",
+    "apache02",
+    "dockerA1",
+    "dockerA2",
+    "dockerB1",
+    "dockerB2"
+  ],
+  "failures_outside_any_query_window": 0,
+  "failures_without_metric_coverage": [],
+  "labeled_components_without_any_data": [],
+  "queries_without_failures": [],
+  "row_and_null_counts": {
+    "log_service": {
+      "nulls": {
+        "cmdb_id": 0,
+        "log_id": 0,
+        "log_name": 0,
+        "timestamp": 0,
+        "value": 0
+      },
+      "rows": 21356870
+    },
+    "metric_app": {
+      "nulls": {
+        "cnt": 0,
+        "mrt": 0,
+        "rr": 0,
+        "sr": 0,
+        "tc": 0,
+        "timestamp": 0
+      },
+      "rows": 130743
+    },
+    "metric_container": {
+      "nulls": {
+        "cmdb_id": 0,
+        "kpi_name": 0,
+        "timestamp": 0,
+        "value": 0
+      },
+      "rows": 12218094
+    },
+    "trace_span": {
+      "nulls": {
+        "cmdb_id": 0,
+        "duration": 0,
+        "parent_id": 0,
+        "span_id": 0,
+        "timestamp": 0,
+        "trace_id": 0
+      },
+      "rows": 214337882
+    }
+  },
+  "series": {
+    "metric_container": {
+      "components": [
+        "IG01",
+        "IG02",
+        "MG01",
+        "MG02",
+        "Mysql01",
+        "Mysql02",
+        "Redis01",
+        "Redis02",
+        "Tomcat01",
+        "Tomcat02",
+        "Tomcat03",
+        "Tomcat04",
+        "apache01",
+        "apache02",
+        "dockerA1",
+        "dockerA2",
+        "dockerB1",
+        "dockerB2"
+      ],
+      "constant_series": [
+        {
+          "component": "IG01",
+          "kpi": "JVM-Memory_7778_JVM_Memory_HeapMemoryMax"
+        },
+        {
+          "component": "IG01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace"
+        },
+        {
+          "component": "IG01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace"
+        },
+        {
+          "component": "IG01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace"
+        },
+        {
+          "component": "IG01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace"
+        },
+        {
+          "component": "IG01",
+          "kpi": "OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem"
+        },
+        {
+          "component": "IG01",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETInErr"
+        },
+        {
+          "component": "IG01",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc"
+        },
+        {
+          "component": "IG01",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETOutErr"
+        },
+        {
+          "component": "IG01",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc"
+        },
+        {
+          "component": "IG01",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies"
+        },
+        {
+          "component": "IG01",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem"
+        },
+        {
+          "component": "IG01",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc"
+        },
+        {
+          "component": "IG01",
+          "kpi": "OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount"
+        },
+        {
+          "component": "IG01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize"
+        },
+        {
+          "component": "IG01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent"
+        },
+        {
+          "component": "IG01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_Si"
+        },
+        {
+          "component": "IG01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_So"
+        },
+        {
+          "component": "IG01",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute"
+        },
+        {
+          "component": "IG01",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname"
+        },
+        {
+          "component": "IG02",
+          "kpi": "JVM-Memory_7778_JVM_Memory_HeapMemoryMax"
+        },
+        {
+          "component": "IG02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace"
+        },
+        {
+          "component": "IG02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace"
+        },
+        {
+          "component": "IG02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace"
+        },
+        {
+          "component": "IG02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace"
+        },
+        {
+          "component": "IG02",
+          "kpi": "OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem"
+        },
+        {
+          "component": "IG02",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETInErr"
+        },
+        {
+          "component": "IG02",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc"
+        },
+        {
+          "component": "IG02",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETOutErr"
+        },
+        {
+          "component": "IG02",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc"
+        },
+        {
+          "component": "IG02",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies"
+        },
+        {
+          "component": "IG02",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem"
+        },
+        {
+          "component": "IG02",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc"
+        },
+        {
+          "component": "IG02",
+          "kpi": "OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount"
+        },
+        {
+          "component": "IG02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize"
+        },
+        {
+          "component": "IG02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent"
+        },
+        {
+          "component": "IG02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_Si"
+        },
+        {
+          "component": "IG02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_So"
+        },
+        {
+          "component": "IG02",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute"
+        },
+        {
+          "component": "IG02",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname"
+        },
+        {
+          "component": "MG01",
+          "kpi": "JVM-Memory_7779_JVM_Memory_HeapMemoryMax"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----boot_FSCapacity"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----boot_FSInodeUsedPercent"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSCapacity"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSInodeUsedPercent"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----tmp_FSInodeUsedPercent"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETInErr"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETOutErr"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_Si"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_So"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute"
+        },
+        {
+          "component": "MG01",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname"
+        },
+        {
+          "component": "MG02",
+          "kpi": "JVM-Memory_7779_JVM_Memory_HeapMemoryMax"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----boot_FSCapacity"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----boot_FSInodeUsedPercent"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSCapacity"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSInodeUsedPercent"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETInErr"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETOutErr"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_Si"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_So"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute"
+        },
+        {
+          "component": "MG02",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Binlog stmt cache disk use"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Com Delete Multi"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Com Insert Select"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Com Load"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Com Replace"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Com Replace Select"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Com Update Multi"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_GetConnectedStateOfMysqld"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Handler Savepoint"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Handler Savepoint Rollback"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Innodb buffer pool read ahead"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Innodb buffer pool read ahead evicted"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Innodb buffer pool read ahead rnd"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Innodb buffer pool wait free"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Innodb data pending reads"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Innodb log waits"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Innodb open files  num"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Innodb row lock time max"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Key Write Requests"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Key Writes"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Max Used Connections"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_MaxConnections"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Open Files"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Qcache Free Blocks"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Qcache Free Memory"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Qcache Hits"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Qcache Inserts"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Qcache Lowmem Prunes"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Qcache Queries In Cache"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Qcache Total Blocks"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Select Full Join"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Select Range Check"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Slave Open Temp Tables"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Slow launch threads"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Table Locks Waited"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Table open cache overflows"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Tc log max pages used"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "Mysql-MySQL_3306_Tc log page waits"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-tmp_FSUsedSpace"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-usr-openv_FSAvailableSpace"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-usr-openv_FSUsedSpace"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "OSLinux-OSLinux_NETWORK_NETWORK_TCP-CLOSE-WAIT"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_Si"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_So"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute"
+        },
+        {
+          "component": "Mysql01",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Binlog stmt cache disk use"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Com Delete Multi"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Com Insert Select"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Com Load"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Com Replace"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Com Replace Select"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Com Update Multi"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_GetConnectedStateOfMysqld"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Handler Savepoint"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Handler Savepoint Rollback"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Innodb buffer pool read ahead evicted"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Innodb buffer pool read ahead rnd"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Innodb buffer pool wait free"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Innodb data pending reads"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Innodb log waits"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Innodb row lock time max"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Key Write Requests"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Key Writes"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Max Used Connections"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_MaxConnections"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Qcache Free Blocks"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Qcache Free Memory"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Qcache Hits"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Qcache Inserts"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Qcache Lowmem Prunes"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Qcache Queries In Cache"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Qcache Total Blocks"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Select Full Range Join"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Select Range Check"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Slave Open Temp Tables"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Slow launch threads"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Table Locks Waited"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Table open cache overflows"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Tc log max pages used"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "Mysql-MySQL_3306_Tc log page waits"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-mysqlbak_FSAvailableSpace"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-mysqlbak_FSCapacity"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-mysqlbak_FSUsedSpace"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-usr-openv_FSAvailableSpace"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-usr-openv_FSUsedSpace"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_Si"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_So"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute"
+        },
+        {
+          "component": "Mysql02",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-tomcat_FSAvailableSpace"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-tomcat_FSUsedSpace"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKBps"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKPercentBusy"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKTps"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWTps"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWrite"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETInErr"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETOutErr"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_Si"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_So"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "redis-Redis_6379_Redis  (aof_enabled)"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "redis-Redis_6379_Redis  (aof_rewrite_in_progress)"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "redis-Redis_6379_Redis  (aof_rewrite_scheduled)"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "redis-Redis_6379_Redis  (blocked_clients)"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "redis-Redis_6379_Redis  (connected_slaves)"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "redis-Redis_6379_Redis  (evicted_keys)"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "redis-Redis_6379_Redis  (expired_keys)"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "redis-Redis_6379_Redis  (latest_fork_usec)"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "redis-Redis_6379_Redis  (loading)"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "redis-Redis_6379_Redis  (maxmemory)"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "redis-Redis_6379_Redis  (pubsub_channels)"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "redis-Redis_6379_Redis  (rdb_bgsave_in_progress)"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "redis-Redis_6379_Redis  (redis_git_dirty)"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "redis-Redis_6379_Redis  (rejected_connections)"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "redis-Redis_6379_Redis  (used_cpu_sys_children)"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "redis-Redis_6379_Redis  (used_cpu_user_children)"
+        },
+        {
+          "component": "Redis01",
+          "kpi": "redis-Redis_6379_redis server"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-app_FSAvailableSpace"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-app_FSUsedSpace"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKBps"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKPercentBusy"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRTps"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKRead"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKReadWrite"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKTps"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWTps"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKWrite"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_Si"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_So"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "redis-Redis_6379_Redis  (aof_enabled)"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "redis-Redis_6379_Redis  (aof_rewrite_in_progress)"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "redis-Redis_6379_Redis  (aof_rewrite_scheduled)"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "redis-Redis_6379_Redis  (blocked_clients)"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "redis-Redis_6379_Redis  (client_biggest_input_buf)"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "redis-Redis_6379_Redis  (client_longest_output_list)"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "redis-Redis_6379_Redis  (connected_slaves)"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "redis-Redis_6379_Redis  (evicted_keys)"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "redis-Redis_6379_Redis  (latest_fork_usec)"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "redis-Redis_6379_Redis  (loading)"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "redis-Redis_6379_Redis  (maxmemory)"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "redis-Redis_6379_Redis  (pubsub_channels)"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "redis-Redis_6379_Redis  (rdb_bgsave_in_progress)"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "redis-Redis_6379_Redis  (redis_git_dirty)"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "redis-Redis_6379_Redis  (rejected_connections)"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "redis-Redis_6379_Redis  (used_cpu_sys_children)"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "redis-Redis_6379_Redis  (used_cpu_user_children)"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "redis-Redis_6379_Redis  (used_memory_peak)"
+        },
+        {
+          "component": "Redis02",
+          "kpi": "redis-Redis_6379_redis server"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----_FSInodeUsedPercent"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----boot_FSCapacity"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----boot_FSInodeUsedPercent"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSCapacity"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSInodeUsedPercent"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETInErr"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETOutErr"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_Si"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_So"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "Tomcat-MEMORY_7441-MEMORY_JVMMaxMemory"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "Tomcat-MEMORY_7441-MEMORY_JVMTotalMemory"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "Tomcat-Sessions_7441--UOCP_SESSIONActiveCounter"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "Tomcat-Sessions_7441--UOCP_SESSIONKeepaliveCounter"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "Tomcat-Sessions_7441--UOCP_SESSIONRejectedSessions"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "Tomcat-Sessions_7441--_SESSIONActiveCounter"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "Tomcat-Sessions_7441--_SESSIONKeepaliveCounter"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "Tomcat-Sessions_7441--_SESSIONRejectedSessions"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONActiveCounter"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONKeepaliveCounter"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONRejectedSessions"
+        },
+        {
+          "component": "Tomcat01",
+          "kpi": "Tomcat-Threads_7441-\"http-nio-8003\"_MaxThreadsThreadInfo"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----boot_FSCapacity"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----boot_FSInodeUsedPercent"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSCapacity"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSInodeUsedPercent"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETInErr"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETOutErr"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_Si"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_So"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "Tomcat-MEMORY_7441-MEMORY_JVMMaxMemory"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "Tomcat-MEMORY_7441-MEMORY_JVMTotalMemory"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "Tomcat-Sessions_7441--UOCP_SESSIONActiveCounter"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "Tomcat-Sessions_7441--UOCP_SESSIONKeepaliveCounter"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "Tomcat-Sessions_7441--UOCP_SESSIONRejectedSessions"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "Tomcat-Sessions_7441--_SESSIONActiveCounter"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "Tomcat-Sessions_7441--_SESSIONKeepaliveCounter"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "Tomcat-Sessions_7441--_SESSIONRejectedSessions"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONActiveCounter"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONKeepaliveCounter"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONRejectedSessions"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONActiveCounter"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONKeepaliveCounter"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONRejectedSessions"
+        },
+        {
+          "component": "Tomcat02",
+          "kpi": "Tomcat-Threads_7441-\"http-nio-8003\"_MaxThreadsThreadInfo"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----boot_FSCapacity"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----boot_FSInodeUsedPercent"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSCapacity"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSInodeUsedPercent"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----tmp_FSInodeUsedPercent"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETInErr"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETOutErr"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_Si"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_So"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "Tomcat-MEMORY_7441-MEMORY_JVMMaxMemory"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "Tomcat-MEMORY_7441-MEMORY_JVMTotalMemory"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "Tomcat-Sessions_7441--UOCP_SESSIONActiveCounter"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "Tomcat-Sessions_7441--UOCP_SESSIONKeepaliveCounter"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "Tomcat-Sessions_7441--UOCP_SESSIONRejectedSessions"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "Tomcat-Sessions_7441--_SESSIONActiveCounter"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "Tomcat-Sessions_7441--_SESSIONKeepaliveCounter"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "Tomcat-Sessions_7441--_SESSIONRejectedSessions"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONActiveCounter"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONKeepaliveCounter"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONRejectedSessions"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONActiveCounter"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONKeepaliveCounter"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONRejectedSessions"
+        },
+        {
+          "component": "Tomcat03",
+          "kpi": "Tomcat-Threads_7441-\"http-nio-8003\"_MaxThreadsThreadInfo"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----boot_FSCapacity"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----boot_FSInodeUsedPercent"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSCapacity"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_----cmbc_admin_FSInodeUsedPercent"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSCapacity"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSInodeUsedPercent"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSCapacity"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSInodeUsedPercent"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_LOCALDISK_LOCALDISK-sdb_DSKAvgServ"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETInErr"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETInErrPrc"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETOutErr"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_NETWORK_ens160_NETOutErrPrcc"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_PROCESS_zabbix_PROCPPCount"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_Si"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_So"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "Tomcat-MEMORY_7441-MEMORY_JVMMaxMemory"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "Tomcat-MEMORY_7441-MEMORY_JVMTotalMemory"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "Tomcat-Sessions_7441--UOCP_SESSIONActiveCounter"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "Tomcat-Sessions_7441--UOCP_SESSIONKeepaliveCounter"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "Tomcat-Sessions_7441--UOCP_SESSIONRejectedSessions"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "Tomcat-Sessions_7441--_SESSIONActiveCounter"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "Tomcat-Sessions_7441--_SESSIONKeepaliveCounter"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "Tomcat-Sessions_7441--_SESSIONRejectedSessions"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONActiveCounter"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONKeepaliveCounter"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "Tomcat-Sessions_7441--log.Home_IS_UNDEFINED_SESSIONRejectedSessions"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONActiveCounter"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONKeepaliveCounter"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "Tomcat-Sessions_7441--logHome_IS_UNDEFINED_SESSIONRejectedSessions"
+        },
+        {
+          "component": "Tomcat04",
+          "kpi": "Tomcat-Threads_7441-\"http-nio-8003\"_MaxThreadsThreadInfo"
+        },
+        {
+          "component": "apache01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace"
+        },
+        {
+          "component": "apache01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace"
+        },
+        {
+          "component": "apache01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace"
+        },
+        {
+          "component": "apache01",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace"
+        },
+        {
+          "component": "apache01",
+          "kpi": "OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem"
+        },
+        {
+          "component": "apache01",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem"
+        },
+        {
+          "component": "apache01",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc"
+        },
+        {
+          "component": "apache01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize"
+        },
+        {
+          "component": "apache01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent"
+        },
+        {
+          "component": "apache01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_Si"
+        },
+        {
+          "component": "apache01",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_So"
+        },
+        {
+          "component": "apache01",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute"
+        },
+        {
+          "component": "apache01",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname"
+        },
+        {
+          "component": "apache02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSAvailableSpace"
+        },
+        {
+          "component": "apache02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-boot_FSUsedSpace"
+        },
+        {
+          "component": "apache02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSAvailableSpace"
+        },
+        {
+          "component": "apache02",
+          "kpi": "OSLinux-OSLinux_FILESYSTEM_-cmbc_admin_FSUsedSpace"
+        },
+        {
+          "component": "apache02",
+          "kpi": "OSLinux-OSLinux_MEMORY_MEMORY_MEMTotalMem"
+        },
+        {
+          "component": "apache02",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCNoZombies"
+        },
+        {
+          "component": "apache02",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMem"
+        },
+        {
+          "component": "apache02",
+          "kpi": "OSLinux-OSLinux_PROCESS_PROCESS_PROCPPMemPerc"
+        },
+        {
+          "component": "apache02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapSize"
+        },
+        {
+          "component": "apache02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_SWPTotSwapUsedPercent"
+        },
+        {
+          "component": "apache02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_Si"
+        },
+        {
+          "component": "apache02",
+          "kpi": "OSLinux-OSLinux_SWAP_SWAP_So"
+        },
+        {
+          "component": "apache02",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-DefaultRoute"
+        },
+        {
+          "component": "apache02",
+          "kpi": "OSLinux-OSLinux_SYSTEM_SYSTEM_Check-Hostname"
+        },
+        {
+          "component": "dockerA1",
+          "kpi": "Container-DOCKER_CONTAINER_0f6f3aa7920c--bcou-role-st-uat-statefulset-0--bcou--UATWKR18_NetworkRxBytes"
+        },
+        {
+          "component": "dockerA1",
+          "kpi": "Container-DOCKER_CONTAINER_0f6f3aa7920c--bcou-role-st-uat-statefulset-0--bcou--UATWKR18_NetworkTxBytes"
+        },
+        {
+          "component": "dockerA1",
+          "kpi": "Container-DOCKER_CONTAINER_23bdcf67c7e3--bcou-role-st-uat-statefulset-0--bcou--UATWKR18_MemLimit"
+        },
+        {
+          "component": "dockerA1",
+          "kpi": "Container-DOCKER_CONTAINER_23bdcf67c7e3--bcou-role-st-uat-statefulset-0--bcou--UATWKR18_NetworkRxBytes"
+        },
+        {
+          "component": "dockerA1",
+          "kpi": "Container-DOCKER_CONTAINER_23bdcf67c7e3--bcou-role-st-uat-statefulset-0--bcou--UATWKR18_NetworkTxBytes"
+        },
+        {
+          "component": "dockerA1",
+          "kpi": "Container-DOCKER_CONTAINER_6d83a96887c3--bcou-role-st-uat-statefulset-0--bcou--UATWKR18_NetworkRxBytes"
+        },
+        {
+          "component": "dockerA1",
+          "kpi": "Container-DOCKER_CONTAINER_6d83a96887c3--bcou-role-st-uat-statefulset-0--bcou--UATWKR18_NetworkTxBytes"
+        },
+        {
+          "component": "dockerA1",
+          "kpi": "Container-DOCKER_CONTAINER_bbc780df1fce--bcou-role-st-uat-statefulset-0--bcou--UATWKR18_NetworkRxBytes"
+        },
+        {
+          "component": "dockerA1",
+          "kpi": "Container-DOCKER_CONTAINER_bbc780df1fce--bcou-role-st-uat-statefulset-0--bcou--UATWKR18_NetworkTxBytes"
+        },
+        {
+          "component": "dockerA1",
+          "kpi": "Container-DOCKER_CONTAINER_f861998c398e--bcou-role-st-uat-statefulset-0--bcou--UATWKR18_CpuPercent"
+        },
+        {
+          "component": "dockerA1",
+          "kpi": "Container-DOCKER_CONTAINER_f861998c398e--bcou-role-st-uat-statefulset-0--bcou--UATWKR18_MemLimit"
+        },
+        {
+          "component": "dockerA1",
+          "kpi": "Container-DOCKER_CONTAINER_f861998c398e--bcou-role-st-uat-statefulset-0--bcou--UATWKR18_MemPercent"
+        },
+        {
+          "component": "dockerA1",
+          "kpi": "Container-DOCKER_CONTAINER_f861998c398e--bcou-role-st-uat-statefulset-0--bcou--UATWKR18_MemUsage"
+        },
+        {
+          "component": "dockerA1",
+          "kpi": "Container-DOCKER_CONTAINER_f861998c398e--bcou-role-st-uat-statefulset-0--bcou--UATWKR18_NetworkRxBytes"
+        },
+        {
+          "component": "dockerA1",
+          "kpi": "Container-DOCKER_CONTAINER_f861998c398e--bcou-role-st-uat-statefulset-0--bcou--UATWKR18_NetworkTxBytes"
+        },
+        {
+          "component": "dockerA2",
+          "kpi": "Container-DOCKER_CONTAINER_2c2336e2994f--bcou-role-st-uat-statefulset-1--bcou--UATWKR06_MemLimit"
+        },
+        {
+          "component": "dockerA2",
+          "kpi": "Container-DOCKER_CONTAINER_2fa7eaebac26--bcou-role-st-uat-statefulset-1--bcou--UATWKR02_NetworkRxBytes"
+        },
+        {
+          "component": "dockerA2",
+          "kpi": "Container-DOCKER_CONTAINER_2fa7eaebac26--bcou-role-st-uat-statefulset-1--bcou--UATWKR02_NetworkTxBytes"
+        },
+        {
+          "component": "dockerA2",
+          "kpi": "Container-DOCKER_CONTAINER_69b53a78b2eb--bcou-role-st-uat-statefulset-1--bcou--UATWKR06_CpuPercent"
+        },
+        {
+          "component": "dockerA2",
+          "kpi": "Container-DOCKER_CONTAINER_69b53a78b2eb--bcou-role-st-uat-statefulset-1--bcou--UATWKR06_MemLimit"
+        },
+        {
+          "component": "dockerA2",
+          "kpi": "Container-DOCKER_CONTAINER_69b53a78b2eb--bcou-role-st-uat-statefulset-1--bcou--UATWKR06_MemPercent"
+        },
+        {
+          "component": "dockerA2",
+          "kpi": "Container-DOCKER_CONTAINER_69b53a78b2eb--bcou-role-st-uat-statefulset-1--bcou--UATWKR06_MemUsage"
+        },
+        {
+          "component": "dockerA2",
+          "kpi": "Container-DOCKER_CONTAINER_69b53a78b2eb--bcou-role-st-uat-statefulset-1--bcou--UATWKR06_NetworkTxBytes"
+        },
+        {
+          "component": "dockerA2",
+          "kpi": "Container-DOCKER_CONTAINER_76d31070b844--bcou-role-st-uat-statefulset-1--bcou--UATWKR06_MemLimit"
+        },
+        {
+          "component": "dockerA2",
+          "kpi": "Container-DOCKER_CONTAINER_76d31070b844--bcou-role-st-uat-statefulset-1--bcou--UATWKR06_NetworkRxBytes"
+        },
+        {
+          "component": "dockerA2",
+          "kpi": "Container-DOCKER_CONTAINER_c67422614c81--bcou-role-st-uat-statefulset-1--bcou--UATWKR02_NetworkRxBytes"
+        },
+        {
+          "component": "dockerA2",
+          "kpi": "Container-DOCKER_CONTAINER_c67422614c81--bcou-role-st-uat-statefulset-1--bcou--UATWKR02_NetworkTxBytes"
+        },
+        {
+          "component": "dockerA2",
+          "kpi": "Container-DOCKER_CONTAINER_cb2bbb5e3f90--bcou-role-st-uat-statefulset-1--bcou--UATWKR02_NetworkRxBytes"
+        },
+        {
+          "component": "dockerA2",
+          "kpi": "Container-DOCKER_CONTAINER_cb2bbb5e3f90--bcou-role-st-uat-statefulset-1--bcou--UATWKR02_NetworkTxBytes"
+        },
+        {
+          "component": "dockerB2",
+          "kpi": "Container-DOCKER_CONTAINER_b2fc383d2438--bcou-trace-st-uat-statefulset-1--bcou--UATWKR18_CpuPercent"
+        },
+        {
+          "component": "dockerB2",
+          "kpi": "Container-DOCKER_CONTAINER_b2fc383d2438--bcou-trace-st-uat-statefulset-1--bcou--UATWKR18_MemLimit"
+        },
+        {
+          "component": "dockerB2",
+          "kpi": "Container-DOCKER_CONTAINER_b2fc383d2438--bcou-trace-st-uat-statefulset-1--bcou--UATWKR18_MemPercent"
+        },
+        {
+          "component": "dockerB2",
+          "kpi": "Container-DOCKER_CONTAINER_b2fc383d2438--bcou-trace-st-uat-statefulset-1--bcou--UATWKR18_MemUsage"
+        },
+        {
+          "component": "dockerB2",
+          "kpi": "Container-DOCKER_CONTAINER_b2fc383d2438--bcou-trace-st-uat-statefulset-1--bcou--UATWKR18_NetworkTxBytes"
+        },
+        {
+          "component": "dockerB2",
+          "kpi": "Container-DOCKER_CONTAINER_d27123361435--bcou-trace-st-uat-statefulset-1--bcou--UATWKR18_MemLimit"
+        }
+      ],
+      "series": 1889
+    }
+  },
+  "system": "Bank",
+  "window_coverage": [
+    {
+      "component": "Mysql02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 3819,
+      "metric_rows_before_30min": 3899,
+      "query_row": 0,
+      "reason": "high memory usage",
+      "start_utc": "2021-03-04T06:57:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "Redis02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 2174,
+      "metric_rows_before_30min": 2134,
+      "query_row": 1,
+      "reason": "high memory usage",
+      "start_utc": "2021-03-04T10:09:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "Tomcat01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1505,
+      "metric_rows_before_30min": 1511,
+      "query_row": 2,
+      "reason": "high memory usage",
+      "start_utc": "2021-03-05T22:20:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 7825,
+      "trace_rows_before_30min": 3318
+    },
+    {
+      "component": "Tomcat02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1638,
+      "metric_rows_before_30min": 1635,
+      "query_row": 3,
+      "reason": "network latency",
+      "start_utc": "2021-03-04T11:22:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 25682,
+      "trace_rows_before_30min": 25782
+    },
+    {
+      "component": "Tomcat04",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1613,
+      "metric_rows_before_30min": 1550,
+      "query_row": 4,
+      "reason": "network latency",
+      "start_utc": "2021-03-05T16:53:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 7683,
+      "trace_rows_before_30min": 14457
+    },
+    {
+      "component": "Tomcat03",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1585,
+      "metric_rows_before_30min": 1549,
+      "query_row": 5,
+      "reason": "network latency",
+      "start_utc": "2021-03-06T06:46:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 94748,
+      "trace_rows_before_30min": 113903
+    },
+    {
+      "component": "apache02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1201,
+      "metric_rows_before_30min": 1236,
+      "query_row": 6,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-06T10:52:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "Tomcat01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1503,
+      "metric_rows_before_30min": 1477,
+      "query_row": 7,
+      "reason": "network latency",
+      "start_utc": "2021-03-06T15:18:00+00:00",
+      "task": "task_3",
+      "trace_rows_after_30min": 15820,
+      "trace_rows_before_30min": 21854
+    },
+    {
+      "component": "MG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1094,
+      "metric_rows_before_30min": 1190,
+      "query_row": 8,
+      "reason": "network latency",
+      "start_utc": "2021-03-06T15:36:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 14934,
+      "trace_rows_before_30min": 13560
+    },
+    {
+      "component": "MG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1200,
+      "metric_rows_before_30min": 1142,
+      "query_row": 9,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-06T16:32:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 5620,
+      "trace_rows_before_30min": 18000
+    },
+    {
+      "component": "Tomcat02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1506,
+      "metric_rows_before_30min": 1595,
+      "query_row": 10,
+      "reason": "network latency",
+      "start_utc": "2021-03-06T23:32:00+00:00",
+      "task": "task_3",
+      "trace_rows_after_30min": 14863,
+      "trace_rows_before_30min": 12674
+    },
+    {
+      "component": "MG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1161,
+      "metric_rows_before_30min": 1124,
+      "query_row": 11,
+      "reason": "network latency",
+      "start_utc": "2021-03-07T08:08:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 51329,
+      "trace_rows_before_30min": 74090
+    },
+    {
+      "component": "Tomcat04",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1543,
+      "metric_rows_before_30min": 1576,
+      "query_row": 11,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-07T08:29:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 80857,
+      "trace_rows_before_30min": 97123
+    },
+    {
+      "component": "MG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1161,
+      "metric_rows_before_30min": 1124,
+      "query_row": 12,
+      "reason": "network latency",
+      "start_utc": "2021-03-07T08:08:00+00:00",
+      "task": "task_3",
+      "trace_rows_after_30min": 51329,
+      "trace_rows_before_30min": 74090
+    },
+    {
+      "component": "Tomcat04",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1543,
+      "metric_rows_before_30min": 1576,
+      "query_row": 12,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-07T08:29:00+00:00",
+      "task": "task_3",
+      "trace_rows_after_30min": 80857,
+      "trace_rows_before_30min": 97123
+    },
+    {
+      "component": "apache02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1231,
+      "metric_rows_before_30min": 1231,
+      "query_row": 13,
+      "reason": "network latency",
+      "start_utc": "2021-03-07T10:59:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "Tomcat01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1500,
+      "metric_rows_before_30min": 1409,
+      "query_row": 14,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-07T13:36:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 33522,
+      "trace_rows_before_30min": 45542
+    },
+    {
+      "component": "apache02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1249,
+      "metric_rows_before_30min": 1213,
+      "query_row": 15,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-09T00:13:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "IG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1434,
+      "metric_rows_before_30min": 1421,
+      "query_row": 16,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-09T01:18:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 50532,
+      "trace_rows_before_30min": 33798
+    },
+    {
+      "component": "Tomcat01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1504,
+      "metric_rows_before_30min": 1503,
+      "query_row": 17,
+      "reason": "network latency",
+      "start_utc": "2021-03-09T03:20:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 88599,
+      "trace_rows_before_30min": 118482
+    },
+    {
+      "component": "MG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1164,
+      "metric_rows_before_30min": 1183,
+      "query_row": 18,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-09T05:10:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 50518,
+      "trace_rows_before_30min": 60410
+    },
+    {
+      "component": "MG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1114,
+      "metric_rows_before_30min": 1173,
+      "query_row": 19,
+      "reason": "network latency",
+      "start_utc": "2021-03-09T06:14:00+00:00",
+      "task": "task_3",
+      "trace_rows_after_30min": 73241,
+      "trace_rows_before_30min": 64162
+    },
+    {
+      "component": "Tomcat01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1369,
+      "metric_rows_before_30min": 1496,
+      "query_row": 20,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-09T07:25:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 106906,
+      "trace_rows_before_30min": 117250
+    },
+    {
+      "component": "MG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1155,
+      "metric_rows_before_30min": 1102,
+      "query_row": 21,
+      "reason": "network latency",
+      "start_utc": "2021-03-09T08:56:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 60715,
+      "trace_rows_before_30min": 74449
+    },
+    {
+      "component": "Tomcat02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1445,
+      "metric_rows_before_30min": 1518,
+      "query_row": 22,
+      "reason": "network latency",
+      "start_utc": "2021-03-09T11:14:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 45937,
+      "trace_rows_before_30min": 52991
+    },
+    {
+      "component": "apache01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1224,
+      "metric_rows_before_30min": 1196,
+      "query_row": 23,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-09T12:25:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "apache01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1242,
+      "metric_rows_before_30min": 1220,
+      "query_row": 24,
+      "reason": "network latency",
+      "start_utc": "2021-03-09T13:07:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "apache02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1196,
+      "metric_rows_before_30min": 1242,
+      "query_row": 25,
+      "reason": "network latency",
+      "start_utc": "2021-03-09T23:19:00+00:00",
+      "task": "task_3",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "Tomcat01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1472,
+      "metric_rows_before_30min": 1415,
+      "query_row": 26,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-10T02:43:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 112377,
+      "trace_rows_before_30min": 129483
+    },
+    {
+      "component": "apache02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1221,
+      "metric_rows_before_30min": 1238,
+      "query_row": 27,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-10T07:02:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "apache02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1182,
+      "metric_rows_before_30min": 1235,
+      "query_row": 27,
+      "reason": "network latency",
+      "start_utc": "2021-03-10T07:19:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "apache02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1221,
+      "metric_rows_before_30min": 1238,
+      "query_row": 28,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-10T07:02:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "apache02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1182,
+      "metric_rows_before_30min": 1235,
+      "query_row": 28,
+      "reason": "network latency",
+      "start_utc": "2021-03-10T07:19:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "Tomcat01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1495,
+      "metric_rows_before_30min": 1429,
+      "query_row": 29,
+      "reason": "network latency",
+      "start_utc": "2021-03-10T08:42:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 86710,
+      "trace_rows_before_30min": 100545
+    },
+    {
+      "component": "Tomcat03",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1506,
+      "metric_rows_before_30min": 1513,
+      "query_row": 30,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-10T10:57:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 50154,
+      "trace_rows_before_30min": 55604
+    },
+    {
+      "component": "MG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1075,
+      "metric_rows_before_30min": 1143,
+      "query_row": 31,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-12T02:54:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 66833,
+      "trace_rows_before_30min": 85498
+    },
+    {
+      "component": "Tomcat01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1476,
+      "metric_rows_before_30min": 1410,
+      "query_row": 32,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-12T04:13:00+00:00",
+      "task": "task_3",
+      "trace_rows_after_30min": 81036,
+      "trace_rows_before_30min": 81592
+    },
+    {
+      "component": "MG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1135,
+      "metric_rows_before_30min": 1101,
+      "query_row": 33,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-12T06:03:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 69410,
+      "trace_rows_before_30min": 62370
+    },
+    {
+      "component": "MG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1071,
+      "metric_rows_before_30min": 1091,
+      "query_row": 34,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-12T07:38:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 70113,
+      "trace_rows_before_30min": 88406
+    },
+    {
+      "component": "apache02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1236,
+      "metric_rows_before_30min": 1164,
+      "query_row": 35,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-12T08:26:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "IG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1399,
+      "metric_rows_before_30min": 1388,
+      "query_row": 35,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-12T08:15:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 50993,
+      "trace_rows_before_30min": 52679
+    },
+    {
+      "component": "Tomcat03",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1517,
+      "metric_rows_before_30min": 1523,
+      "query_row": 36,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-12T14:35:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 21172,
+      "trace_rows_before_30min": 27826
+    },
+    {
+      "component": "apache02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1092,
+      "metric_rows_before_30min": 1228,
+      "query_row": 37,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-12T15:33:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "MG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1619,
+      "metric_rows_before_30min": 1688,
+      "query_row": 38,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-22T22:42:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 6843,
+      "trace_rows_before_30min": 5560
+    },
+    {
+      "component": "Tomcat04",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1962,
+      "metric_rows_before_30min": 1852,
+      "query_row": 39,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-23T06:24:00+00:00",
+      "task": "task_3",
+      "trace_rows_after_30min": 113740,
+      "trace_rows_before_30min": 103357
+    },
+    {
+      "component": "MG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1638,
+      "metric_rows_before_30min": 1548,
+      "query_row": 40,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-23T06:50:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 71363,
+      "trace_rows_before_30min": 89180
+    },
+    {
+      "component": "Tomcat04",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1942,
+      "metric_rows_before_30min": 1965,
+      "query_row": 41,
+      "reason": "network latency",
+      "start_utc": "2021-03-23T08:54:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 97531,
+      "trace_rows_before_30min": 98064
+    },
+    {
+      "component": "MG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1434,
+      "metric_rows_before_30min": 1460,
+      "query_row": 42,
+      "reason": "network latency",
+      "start_utc": "2021-03-23T09:42:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 50359,
+      "trace_rows_before_30min": 65351
+    },
+    {
+      "component": "MG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1454,
+      "metric_rows_before_30min": 1469,
+      "query_row": 43,
+      "reason": "network latency",
+      "start_utc": "2021-03-23T10:03:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 39955,
+      "trace_rows_before_30min": 58411
+    },
+    {
+      "component": "Tomcat04",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1923,
+      "metric_rows_before_30min": 1860,
+      "query_row": 44,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-23T13:07:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 38678,
+      "trace_rows_before_30min": 46910
+    },
+    {
+      "component": "MG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1158,
+      "metric_rows_before_30min": 1193,
+      "query_row": 45,
+      "reason": "high JVM CPU load",
+      "start_utc": "2021-03-03T17:26:00+00:00",
+      "task": "task_3",
+      "trace_rows_after_30min": 2040,
+      "trace_rows_before_30min": 3302
+    },
+    {
+      "component": "MG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1176,
+      "metric_rows_before_30min": 1179,
+      "query_row": 46,
+      "reason": "high JVM CPU load",
+      "start_utc": "2021-03-04T05:46:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 37412,
+      "trace_rows_before_30min": 29748
+    },
+    {
+      "component": "IG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1446,
+      "metric_rows_before_30min": 1440,
+      "query_row": 47,
+      "reason": "high JVM CPU load",
+      "start_utc": "2021-03-04T13:06:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 11662,
+      "trace_rows_before_30min": 12648
+    },
+    {
+      "component": "MG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1215,
+      "metric_rows_before_30min": 1180,
+      "query_row": 48,
+      "reason": "JVM Out of Memory (OOM) Heap",
+      "start_utc": "2021-03-03T22:20:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 2911,
+      "trace_rows_before_30min": 864
+    },
+    {
+      "component": "MG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1186,
+      "metric_rows_before_30min": 1133,
+      "query_row": 49,
+      "reason": "JVM Out of Memory (OOM) Heap",
+      "start_utc": "2021-03-04T11:36:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 19151,
+      "trace_rows_before_30min": 21065
+    },
+    {
+      "component": "Tomcat03",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1512,
+      "metric_rows_before_30min": 1618,
+      "query_row": 49,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-04T11:49:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 25779,
+      "trace_rows_before_30min": 24932
+    },
+    {
+      "component": "MG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1185,
+      "metric_rows_before_30min": 1214,
+      "query_row": 50,
+      "reason": "JVM Out of Memory (OOM) Heap",
+      "start_utc": "2021-03-04T14:00:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 11483,
+      "trace_rows_before_30min": 17522
+    },
+    {
+      "component": "IG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1421,
+      "metric_rows_before_30min": 1444,
+      "query_row": 50,
+      "reason": "JVM Out of Memory (OOM) Heap",
+      "start_utc": "2021-03-04T14:25:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 6714,
+      "trace_rows_before_30min": 8422
+    },
+    {
+      "component": "MG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1185,
+      "metric_rows_before_30min": 1214,
+      "query_row": 51,
+      "reason": "JVM Out of Memory (OOM) Heap",
+      "start_utc": "2021-03-04T14:00:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 11483,
+      "trace_rows_before_30min": 17522
+    },
+    {
+      "component": "IG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1421,
+      "metric_rows_before_30min": 1444,
+      "query_row": 51,
+      "reason": "JVM Out of Memory (OOM) Heap",
+      "start_utc": "2021-03-04T14:25:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 6714,
+      "trace_rows_before_30min": 8422
+    },
+    {
+      "component": "MG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1186,
+      "metric_rows_before_30min": 1133,
+      "query_row": 52,
+      "reason": "JVM Out of Memory (OOM) Heap",
+      "start_utc": "2021-03-04T11:36:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 19151,
+      "trace_rows_before_30min": 21065
+    },
+    {
+      "component": "Tomcat03",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1512,
+      "metric_rows_before_30min": 1618,
+      "query_row": 52,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-04T11:49:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 25779,
+      "trace_rows_before_30min": 24932
+    },
+    {
+      "component": "MG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1171,
+      "metric_rows_before_30min": 1170,
+      "query_row": 53,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-05T20:56:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 822,
+      "trace_rows_before_30min": 630
+    },
+    {
+      "component": "IG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1412,
+      "metric_rows_before_30min": 1373,
+      "query_row": 54,
+      "reason": "high disk space usage",
+      "start_utc": "2021-03-06T07:19:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 62164,
+      "trace_rows_before_30min": 58536
+    },
+    {
+      "component": "Tomcat01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1486,
+      "metric_rows_before_30min": 1426,
+      "query_row": 55,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-06T19:21:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 562,
+      "trace_rows_before_30min": 417
+    },
+    {
+      "component": "Tomcat01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1461,
+      "metric_rows_before_30min": 1452,
+      "query_row": 56,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-07T07:41:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 93913,
+      "trace_rows_before_30min": 105585
+    },
+    {
+      "component": "apache01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1212,
+      "metric_rows_before_30min": 1224,
+      "query_row": 57,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-08T17:20:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "IG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1420,
+      "metric_rows_before_30min": 1415,
+      "query_row": 58,
+      "reason": "high disk space usage",
+      "start_utc": "2021-03-08T21:11:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 420,
+      "trace_rows_before_30min": 304
+    },
+    {
+      "component": "Tomcat01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1397,
+      "metric_rows_before_30min": 1513,
+      "query_row": 59,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-09T07:45:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 103429,
+      "trace_rows_before_30min": 114275
+    },
+    {
+      "component": "apache01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1218,
+      "metric_rows_before_30min": 1227,
+      "query_row": 60,
+      "reason": "high disk space usage",
+      "start_utc": "2021-03-09T09:39:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "Tomcat01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1449,
+      "metric_rows_before_30min": 1473,
+      "query_row": 61,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-09T18:44:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 736,
+      "trace_rows_before_30min": 1624
+    },
+    {
+      "component": "Tomcat04",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1615,
+      "metric_rows_before_30min": 1581,
+      "query_row": 62,
+      "reason": "high disk space usage",
+      "start_utc": "2021-03-09T19:44:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 508,
+      "trace_rows_before_30min": 608
+    },
+    {
+      "component": "Tomcat02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1590,
+      "metric_rows_before_30min": 1513,
+      "query_row": 63,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-10T06:21:00+00:00",
+      "task": "task_3",
+      "trace_rows_after_30min": 105092,
+      "trace_rows_before_30min": 95300
+    },
+    {
+      "component": "apache02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1207,
+      "metric_rows_before_30min": 1183,
+      "query_row": 64,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-10T07:43:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "IG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1415,
+      "metric_rows_before_30min": 1407,
+      "query_row": 65,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-10T14:03:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 14710,
+      "trace_rows_before_30min": 21018
+    },
+    {
+      "component": "MG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1052,
+      "metric_rows_before_30min": 1114,
+      "query_row": 65,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-10T14:19:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 20092,
+      "trace_rows_before_30min": 24854
+    },
+    {
+      "component": "IG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1415,
+      "metric_rows_before_30min": 1407,
+      "query_row": 66,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-10T14:03:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 14710,
+      "trace_rows_before_30min": 21018
+    },
+    {
+      "component": "MG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1052,
+      "metric_rows_before_30min": 1114,
+      "query_row": 66,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-10T14:19:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 20092,
+      "trace_rows_before_30min": 24854
+    },
+    {
+      "component": "apache02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1236,
+      "metric_rows_before_30min": 1164,
+      "query_row": 67,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-12T08:26:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "IG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1399,
+      "metric_rows_before_30min": 1388,
+      "query_row": 67,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-12T08:15:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 50993,
+      "trace_rows_before_30min": 52679
+    },
+    {
+      "component": "Redis02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 2154,
+      "metric_rows_before_30min": 2142,
+      "query_row": 68,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-03T23:01:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "Redis02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 2157,
+      "metric_rows_before_30min": 2184,
+      "query_row": 69,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-04T12:14:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "Mysql01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 3913,
+      "metric_rows_before_30min": 3951,
+      "query_row": 70,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-05T18:00:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "IG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1447,
+      "metric_rows_before_30min": 1389,
+      "query_row": 71,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-05T19:36:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 256,
+      "trace_rows_before_30min": 282
+    },
+    {
+      "component": "Tomcat04",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1532,
+      "metric_rows_before_30min": 1453,
+      "query_row": 72,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-06T12:44:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 44942,
+      "trace_rows_before_30min": 50715
+    },
+    {
+      "component": "Redis02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 2139,
+      "metric_rows_before_30min": 2147,
+      "query_row": 73,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-06T17:52:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "IG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1395,
+      "metric_rows_before_30min": 1437,
+      "query_row": 74,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-06T22:35:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 4542,
+      "trace_rows_before_30min": 3006
+    },
+    {
+      "component": "Tomcat03",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1527,
+      "metric_rows_before_30min": 1523,
+      "query_row": 75,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-07T00:11:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 38566,
+      "trace_rows_before_30min": 20546
+    },
+    {
+      "component": "IG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1426,
+      "metric_rows_before_30min": 1416,
+      "query_row": 76,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-07T03:09:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 44256,
+      "trace_rows_before_30min": 55547
+    },
+    {
+      "component": "IG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1418,
+      "metric_rows_before_30min": 1440,
+      "query_row": 77,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-07T05:24:00+00:00",
+      "task": "task_3",
+      "trace_rows_after_30min": 42481,
+      "trace_rows_before_30min": 41880
+    },
+    {
+      "component": "Tomcat01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1353,
+      "metric_rows_before_30min": 1453,
+      "query_row": 78,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-07T09:52:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 65480,
+      "trace_rows_before_30min": 77699
+    },
+    {
+      "component": "Tomcat04",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1559,
+      "metric_rows_before_30min": 1556,
+      "query_row": 79,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-09T01:57:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 110395,
+      "trace_rows_before_30min": 105068
+    },
+    {
+      "component": "Redis02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 2136,
+      "metric_rows_before_30min": 2138,
+      "query_row": 80,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-09T06:42:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "IG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1403,
+      "metric_rows_before_30min": 1391,
+      "query_row": 81,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-09T10:08:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 30309,
+      "trace_rows_before_30min": 35124
+    },
+    {
+      "component": "Tomcat03",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1511,
+      "metric_rows_before_30min": 1553,
+      "query_row": 82,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-09T11:42:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 49149,
+      "trace_rows_before_30min": 45664
+    },
+    {
+      "component": "IG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1407,
+      "metric_rows_before_30min": 1364,
+      "query_row": 83,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-09T14:32:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 12380,
+      "trace_rows_before_30min": 14762
+    },
+    {
+      "component": "IG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1424,
+      "metric_rows_before_30min": 1410,
+      "query_row": 84,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-09T16:19:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 8024,
+      "trace_rows_before_30min": 13376
+    },
+    {
+      "component": "Tomcat01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1362,
+      "metric_rows_before_30min": 1438,
+      "query_row": 85,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-09T20:38:00+00:00",
+      "task": "task_3",
+      "trace_rows_after_30min": 968,
+      "trace_rows_before_30min": 531
+    },
+    {
+      "component": "apache01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1243,
+      "metric_rows_before_30min": 1223,
+      "query_row": 86,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-10T00:30:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "IG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1420,
+      "metric_rows_before_30min": 1385,
+      "query_row": 87,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-12T02:24:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 62040,
+      "trace_rows_before_30min": 69231
+    },
+    {
+      "component": "Mysql01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 3615,
+      "metric_rows_before_30min": 3835,
+      "query_row": 87,
+      "reason": "high memory usage",
+      "start_utc": "2021-03-12T02:12:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "MG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1049,
+      "metric_rows_before_30min": 1139,
+      "query_row": 88,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-12T07:10:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 85140,
+      "trace_rows_before_30min": 89153
+    },
+    {
+      "component": "Redis02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 2166,
+      "metric_rows_before_30min": 2162,
+      "query_row": 89,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-12T09:14:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "Redis01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 2172,
+      "metric_rows_before_30min": 2140,
+      "query_row": 90,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-12T12:46:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "Tomcat04",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1554,
+      "metric_rows_before_30min": 1559,
+      "query_row": 91,
+      "reason": "high memory usage",
+      "start_utc": "2021-03-07T04:36:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 79788,
+      "trace_rows_before_30min": 84380
+    },
+    {
+      "component": "Tomcat04",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1533,
+      "metric_rows_before_30min": 1516,
+      "query_row": 92,
+      "reason": "high memory usage",
+      "start_utc": "2021-03-09T15:53:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 26011,
+      "trace_rows_before_30min": 15625
+    },
+    {
+      "component": "IG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1420,
+      "metric_rows_before_30min": 1385,
+      "query_row": 93,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-12T02:24:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 62040,
+      "trace_rows_before_30min": 69231
+    },
+    {
+      "component": "Mysql01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 3615,
+      "metric_rows_before_30min": 3835,
+      "query_row": 93,
+      "reason": "high memory usage",
+      "start_utc": "2021-03-12T02:12:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "Tomcat01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1929,
+      "metric_rows_before_30min": 1887,
+      "query_row": 94,
+      "reason": "high memory usage",
+      "start_utc": "2021-03-22T18:36:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 1262,
+      "trace_rows_before_30min": 1804
+    },
+    {
+      "component": "MG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1507,
+      "metric_rows_before_30min": 1515,
+      "query_row": 95,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-23T15:04:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 12902,
+      "trace_rows_before_30min": 18232
+    },
+    {
+      "component": "Tomcat03",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1608,
+      "metric_rows_before_30min": 1627,
+      "query_row": 96,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-24T03:08:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 94490,
+      "trace_rows_before_30min": 126713
+    },
+    {
+      "component": "Tomcat01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1535,
+      "metric_rows_before_30min": 1493,
+      "query_row": 97,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-24T03:31:00+00:00",
+      "task": "task_3",
+      "trace_rows_after_30min": 89781,
+      "trace_rows_before_30min": 111851
+    },
+    {
+      "component": "Tomcat02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1961,
+      "metric_rows_before_30min": 1931,
+      "query_row": 98,
+      "reason": "network latency",
+      "start_utc": "2021-03-24T06:30:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 73775,
+      "trace_rows_before_30min": 78067
+    },
+    {
+      "component": "MG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1525,
+      "metric_rows_before_30min": 1509,
+      "query_row": 99,
+      "reason": "network latency",
+      "start_utc": "2021-03-24T07:06:00+00:00",
+      "task": "task_3",
+      "trace_rows_after_30min": 74867,
+      "trace_rows_before_30min": 88442
+    },
+    {
+      "component": "MG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1545,
+      "metric_rows_before_30min": 1526,
+      "query_row": 100,
+      "reason": "network latency",
+      "start_utc": "2021-03-24T11:24:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 36098,
+      "trace_rows_before_30min": 41656
+    },
+    {
+      "component": "MG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1548,
+      "metric_rows_before_30min": 1541,
+      "query_row": 101,
+      "reason": "network latency",
+      "start_utc": "2021-03-24T11:50:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 34744,
+      "trace_rows_before_30min": 45683
+    },
+    {
+      "component": "Tomcat03",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1977,
+      "metric_rows_before_30min": 1986,
+      "query_row": 102,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-24T12:34:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 38027,
+      "trace_rows_before_30min": 52313
+    },
+    {
+      "component": "MG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1521,
+      "metric_rows_before_30min": 1512,
+      "query_row": 103,
+      "reason": "network latency",
+      "start_utc": "2021-03-24T16:07:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 13850,
+      "trace_rows_before_30min": 17313
+    },
+    {
+      "component": "apache01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 664,
+      "metric_rows_before_30min": 810,
+      "query_row": 103,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-24T16:19:00+00:00",
+      "task": "task_5",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "Tomcat03",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 2004,
+      "metric_rows_before_30min": 1903,
+      "query_row": 104,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-24T23:40:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 19363,
+      "trace_rows_before_30min": 13088
+    },
+    {
+      "component": "Tomcat03",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1965,
+      "metric_rows_before_30min": 2003,
+      "query_row": 105,
+      "reason": "network latency",
+      "start_utc": "2021-03-25T06:54:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 118336,
+      "trace_rows_before_30min": 113873
+    },
+    {
+      "component": "Tomcat01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1814,
+      "metric_rows_before_30min": 1889,
+      "query_row": 106,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-25T09:22:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 69015,
+      "trace_rows_before_30min": 98343
+    },
+    {
+      "component": "IG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1094,
+      "metric_rows_before_30min": 1044,
+      "query_row": 107,
+      "reason": "network latency",
+      "start_utc": "2021-03-25T10:13:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 29956,
+      "trace_rows_before_30min": 34825
+    },
+    {
+      "component": "Tomcat04",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1992,
+      "metric_rows_before_30min": 1974,
+      "query_row": 108,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-25T11:15:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 45841,
+      "trace_rows_before_30min": 52507
+    },
+    {
+      "component": "IG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1050,
+      "metric_rows_before_30min": 1056,
+      "query_row": 108,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-25T11:00:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 24965,
+      "trace_rows_before_30min": 28916
+    },
+    {
+      "component": "MG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1562,
+      "metric_rows_before_30min": 1565,
+      "query_row": 109,
+      "reason": "network latency",
+      "start_utc": "2021-03-25T12:25:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 32022,
+      "trace_rows_before_30min": 39594
+    },
+    {
+      "component": "apache01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 861,
+      "metric_rows_before_30min": 860,
+      "query_row": 110,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-25T12:50:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "MG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1548,
+      "metric_rows_before_30min": 1513,
+      "query_row": 111,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-25T14:01:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 17504,
+      "trace_rows_before_30min": 30634
+    },
+    {
+      "component": "Tomcat02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1595,
+      "metric_rows_before_30min": 1580,
+      "query_row": 112,
+      "reason": "JVM Out of Memory (OOM) Heap",
+      "start_utc": "2021-03-06T19:59:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 513,
+      "trace_rows_before_30min": 557
+    },
+    {
+      "component": "Tomcat02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1517,
+      "metric_rows_before_30min": 1528,
+      "query_row": 113,
+      "reason": "JVM Out of Memory (OOM) Heap",
+      "start_utc": "2021-03-09T08:23:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 97833,
+      "trace_rows_before_30min": 101870
+    },
+    {
+      "component": "Tomcat02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1510,
+      "metric_rows_before_30min": 1553,
+      "query_row": 114,
+      "reason": "JVM Out of Memory (OOM) Heap",
+      "start_utc": "2021-03-10T09:51:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 60653,
+      "trace_rows_before_30min": 65119
+    },
+    {
+      "component": "MG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1636,
+      "metric_rows_before_30min": 1599,
+      "query_row": 115,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-22T17:01:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 6088,
+      "trace_rows_before_30min": 9122
+    },
+    {
+      "component": "MG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1582,
+      "metric_rows_before_30min": 1638,
+      "query_row": 116,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-22T17:47:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 2680,
+      "trace_rows_before_30min": 4544
+    },
+    {
+      "component": "Tomcat02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1940,
+      "metric_rows_before_30min": 1946,
+      "query_row": 117,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-23T07:03:00+00:00",
+      "task": "task_3",
+      "trace_rows_after_30min": 120763,
+      "trace_rows_before_30min": 113923
+    },
+    {
+      "component": "MG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1171,
+      "metric_rows_before_30min": 1200,
+      "query_row": 118,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-24T04:36:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 61843,
+      "trace_rows_before_30min": 65964
+    },
+    {
+      "component": "apache01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 810,
+      "metric_rows_before_30min": 605,
+      "query_row": 119,
+      "reason": "high disk space usage",
+      "start_utc": "2021-03-24T06:05:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "MG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1521,
+      "metric_rows_before_30min": 1512,
+      "query_row": 120,
+      "reason": "network latency",
+      "start_utc": "2021-03-24T16:07:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 13850,
+      "trace_rows_before_30min": 17313
+    },
+    {
+      "component": "apache01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 664,
+      "metric_rows_before_30min": 810,
+      "query_row": 120,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-24T16:19:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "MG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1528,
+      "metric_rows_before_30min": 1502,
+      "query_row": 121,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-24T18:43:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 648,
+      "trace_rows_before_30min": 1264
+    },
+    {
+      "component": "Tomcat01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1883,
+      "metric_rows_before_30min": 1878,
+      "query_row": 122,
+      "reason": "high disk I/O read usage",
+      "start_utc": "2021-03-25T01:04:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 112093,
+      "trace_rows_before_30min": 62137
+    },
+    {
+      "component": "Tomcat03",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 2073,
+      "metric_rows_before_30min": 161,
+      "query_row": 123,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-22T16:03:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 23670,
+      "trace_rows_before_30min": 3366
+    },
+    {
+      "component": "Tomcat03",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1599,
+      "metric_rows_before_30min": 1946,
+      "query_row": 124,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-23T10:43:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 51683,
+      "trace_rows_before_30min": 58005
+    },
+    {
+      "component": "Tomcat01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1818,
+      "metric_rows_before_30min": 1811,
+      "query_row": 125,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-24T08:47:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 99038,
+      "trace_rows_before_30min": 104828
+    },
+    {
+      "component": "apache02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 863,
+      "metric_rows_before_30min": 895,
+      "query_row": 126,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-24T22:40:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "MG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1561,
+      "metric_rows_before_30min": 1572,
+      "query_row": 127,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-25T01:38:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 103156,
+      "trace_rows_before_30min": 86606
+    },
+    {
+      "component": "Mysql02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 4640,
+      "metric_rows_before_30min": 4674,
+      "query_row": 128,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-25T03:53:00+00:00",
+      "task": "task_6",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "Mysql02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 4658,
+      "metric_rows_before_30min": 4785,
+      "query_row": 129,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-25T07:42:00+00:00",
+      "task": "task_3",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "Tomcat04",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1992,
+      "metric_rows_before_30min": 1974,
+      "query_row": 130,
+      "reason": "network packet loss",
+      "start_utc": "2021-03-25T11:15:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 45841,
+      "trace_rows_before_30min": 52507
+    },
+    {
+      "component": "IG02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1050,
+      "metric_rows_before_30min": 1056,
+      "query_row": 130,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-25T11:00:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 24965,
+      "trace_rows_before_30min": 28916
+    },
+    {
+      "component": "Tomcat04",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1991,
+      "metric_rows_before_30min": 1987,
+      "query_row": 131,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-25T11:40:00+00:00",
+      "task": "task_7",
+      "trace_rows_after_30min": 50560,
+      "trace_rows_before_30min": 45724
+    },
+    {
+      "component": "Redis02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1802,
+      "metric_rows_before_30min": 1781,
+      "query_row": 132,
+      "reason": "high CPU usage",
+      "start_utc": "2021-03-25T15:16:00+00:00",
+      "task": "task_1",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "MG01",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 1202,
+      "metric_rows_before_30min": 1201,
+      "query_row": 133,
+      "reason": "high memory usage",
+      "start_utc": "2021-03-03T16:34:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 4782,
+      "trace_rows_before_30min": 9256
+    },
+    {
+      "component": "Mysql02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 3797,
+      "metric_rows_before_30min": 3964,
+      "query_row": 134,
+      "reason": "high memory usage",
+      "start_utc": "2021-03-03T18:45:00+00:00",
+      "task": "task_2",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    },
+    {
+      "component": "Redis02",
+      "has_metric_data": true,
+      "metric_rows_after_30min": 2176,
+      "metric_rows_before_30min": 2163,
+      "query_row": 135,
+      "reason": "high memory usage",
+      "start_utc": "2021-03-03T21:31:00+00:00",
+      "task": "task_4",
+      "trace_rows_after_30min": 0,
+      "trace_rows_before_30min": 0
+    }
+  ]
+}

@@ -146,228 +146,228 @@
       ],
       "constant_series": [
         {
-          "cmdb_id": "docker_001",
-          "name": "container_fgc"
+          "component": "docker_001",
+          "kpi": "container_fgc"
         },
         {
-          "cmdb_id": "docker_001",
-          "name": "container_fgct"
+          "component": "docker_001",
+          "kpi": "container_fgct"
         },
         {
-          "cmdb_id": "docker_001",
-          "name": "container_session_used"
+          "component": "docker_001",
+          "kpi": "container_session_used"
         },
         {
-          "cmdb_id": "docker_001",
-          "name": "container_thread_idle"
+          "component": "docker_001",
+          "kpi": "container_thread_idle"
         },
         {
-          "cmdb_id": "docker_001",
-          "name": "container_thread_running"
+          "component": "docker_001",
+          "kpi": "container_thread_running"
         },
         {
-          "cmdb_id": "docker_001",
-          "name": "container_thread_total"
+          "component": "docker_001",
+          "kpi": "container_thread_total"
         },
         {
-          "cmdb_id": "docker_001",
-          "name": "container_thread_used_pct"
+          "component": "docker_001",
+          "kpi": "container_thread_used_pct"
         },
         {
-          "cmdb_id": "docker_002",
-          "name": "container_fgc"
+          "component": "docker_002",
+          "kpi": "container_fgc"
         },
         {
-          "cmdb_id": "docker_002",
-          "name": "container_fgct"
+          "component": "docker_002",
+          "kpi": "container_fgct"
         },
         {
-          "cmdb_id": "docker_002",
-          "name": "container_session_used"
+          "component": "docker_002",
+          "kpi": "container_session_used"
         },
         {
-          "cmdb_id": "docker_002",
-          "name": "container_thread_idle"
+          "component": "docker_002",
+          "kpi": "container_thread_idle"
         },
         {
-          "cmdb_id": "docker_002",
-          "name": "container_thread_running"
+          "component": "docker_002",
+          "kpi": "container_thread_running"
         },
         {
-          "cmdb_id": "docker_002",
-          "name": "container_thread_total"
+          "component": "docker_002",
+          "kpi": "container_thread_total"
         },
         {
-          "cmdb_id": "docker_002",
-          "name": "container_thread_used_pct"
+          "component": "docker_002",
+          "kpi": "container_thread_used_pct"
         },
         {
-          "cmdb_id": "docker_003",
-          "name": "container_fgc"
+          "component": "docker_003",
+          "kpi": "container_fgc"
         },
         {
-          "cmdb_id": "docker_003",
-          "name": "container_fgct"
+          "component": "docker_003",
+          "kpi": "container_fgct"
         },
         {
-          "cmdb_id": "docker_003",
-          "name": "container_session_used"
+          "component": "docker_003",
+          "kpi": "container_session_used"
         },
         {
-          "cmdb_id": "docker_003",
-          "name": "container_thread_idle"
+          "component": "docker_003",
+          "kpi": "container_thread_idle"
         },
         {
-          "cmdb_id": "docker_003",
-          "name": "container_thread_running"
+          "component": "docker_003",
+          "kpi": "container_thread_running"
         },
         {
-          "cmdb_id": "docker_003",
-          "name": "container_thread_total"
+          "component": "docker_003",
+          "kpi": "container_thread_total"
         },
         {
-          "cmdb_id": "docker_003",
-          "name": "container_thread_used_pct"
+          "component": "docker_003",
+          "kpi": "container_thread_used_pct"
         },
         {
-          "cmdb_id": "docker_004",
-          "name": "container_fgc"
+          "component": "docker_004",
+          "kpi": "container_fgc"
         },
         {
-          "cmdb_id": "docker_004",
-          "name": "container_fgct"
+          "component": "docker_004",
+          "kpi": "container_fgct"
         },
         {
-          "cmdb_id": "docker_004",
-          "name": "container_session_used"
+          "component": "docker_004",
+          "kpi": "container_session_used"
         },
         {
-          "cmdb_id": "docker_004",
-          "name": "container_thread_idle"
+          "component": "docker_004",
+          "kpi": "container_thread_idle"
         },
         {
-          "cmdb_id": "docker_004",
-          "name": "container_thread_running"
+          "component": "docker_004",
+          "kpi": "container_thread_running"
         },
         {
-          "cmdb_id": "docker_004",
-          "name": "container_thread_total"
+          "component": "docker_004",
+          "kpi": "container_thread_total"
         },
         {
-          "cmdb_id": "docker_004",
-          "name": "container_thread_used_pct"
+          "component": "docker_004",
+          "kpi": "container_thread_used_pct"
         },
         {
-          "cmdb_id": "docker_005",
-          "name": "container_fgc"
+          "component": "docker_005",
+          "kpi": "container_fgc"
         },
         {
-          "cmdb_id": "docker_005",
-          "name": "container_fgct"
+          "component": "docker_005",
+          "kpi": "container_fgct"
         },
         {
-          "cmdb_id": "docker_005",
-          "name": "container_session_used"
+          "component": "docker_005",
+          "kpi": "container_session_used"
         },
         {
-          "cmdb_id": "docker_005",
-          "name": "container_thread_idle"
+          "component": "docker_005",
+          "kpi": "container_thread_idle"
         },
         {
-          "cmdb_id": "docker_005",
-          "name": "container_thread_running"
+          "component": "docker_005",
+          "kpi": "container_thread_running"
         },
         {
-          "cmdb_id": "docker_005",
-          "name": "container_thread_total"
+          "component": "docker_005",
+          "kpi": "container_thread_total"
         },
         {
-          "cmdb_id": "docker_005",
-          "name": "container_thread_used_pct"
+          "component": "docker_005",
+          "kpi": "container_thread_used_pct"
         },
         {
-          "cmdb_id": "docker_006",
-          "name": "container_fgc"
+          "component": "docker_006",
+          "kpi": "container_fgc"
         },
         {
-          "cmdb_id": "docker_006",
-          "name": "container_fgct"
+          "component": "docker_006",
+          "kpi": "container_fgct"
         },
         {
-          "cmdb_id": "docker_006",
-          "name": "container_session_used"
+          "component": "docker_006",
+          "kpi": "container_session_used"
         },
         {
-          "cmdb_id": "docker_006",
-          "name": "container_thread_idle"
+          "component": "docker_006",
+          "kpi": "container_thread_idle"
         },
         {
-          "cmdb_id": "docker_006",
-          "name": "container_thread_running"
+          "component": "docker_006",
+          "kpi": "container_thread_running"
         },
         {
-          "cmdb_id": "docker_006",
-          "name": "container_thread_total"
+          "component": "docker_006",
+          "kpi": "container_thread_total"
         },
         {
-          "cmdb_id": "docker_006",
-          "name": "container_thread_used_pct"
+          "component": "docker_006",
+          "kpi": "container_thread_used_pct"
         },
         {
-          "cmdb_id": "docker_007",
-          "name": "container_fgc"
+          "component": "docker_007",
+          "kpi": "container_fgc"
         },
         {
-          "cmdb_id": "docker_007",
-          "name": "container_fgct"
+          "component": "docker_007",
+          "kpi": "container_fgct"
         },
         {
-          "cmdb_id": "docker_007",
-          "name": "container_session_used"
+          "component": "docker_007",
+          "kpi": "container_session_used"
         },
         {
-          "cmdb_id": "docker_007",
-          "name": "container_thread_idle"
+          "component": "docker_007",
+          "kpi": "container_thread_idle"
         },
         {
-          "cmdb_id": "docker_007",
-          "name": "container_thread_running"
+          "component": "docker_007",
+          "kpi": "container_thread_running"
         },
         {
-          "cmdb_id": "docker_007",
-          "name": "container_thread_total"
+          "component": "docker_007",
+          "kpi": "container_thread_total"
         },
         {
-          "cmdb_id": "docker_007",
-          "name": "container_thread_used_pct"
+          "component": "docker_007",
+          "kpi": "container_thread_used_pct"
         },
         {
-          "cmdb_id": "docker_008",
-          "name": "container_fgc"
+          "component": "docker_008",
+          "kpi": "container_fgc"
         },
         {
-          "cmdb_id": "docker_008",
-          "name": "container_fgct"
+          "component": "docker_008",
+          "kpi": "container_fgct"
         },
         {
-          "cmdb_id": "docker_008",
-          "name": "container_session_used"
+          "component": "docker_008",
+          "kpi": "container_session_used"
         },
         {
-          "cmdb_id": "docker_008",
-          "name": "container_thread_idle"
+          "component": "docker_008",
+          "kpi": "container_thread_idle"
         },
         {
-          "cmdb_id": "docker_008",
-          "name": "container_thread_running"
+          "component": "docker_008",
+          "kpi": "container_thread_running"
         },
         {
-          "cmdb_id": "docker_008",
-          "name": "container_thread_total"
+          "component": "docker_008",
+          "kpi": "container_thread_total"
         },
         {
-          "cmdb_id": "docker_008",
-          "name": "container_thread_used_pct"
+          "component": "docker_008",
+          "kpi": "container_thread_used_pct"
         }
       ],
       "series": 72
@@ -389,412 +389,412 @@
       ],
       "constant_series": [
         {
-          "cmdb_id": "redis_001",
-          "name": "blocked_clients"
+          "component": "redis_001",
+          "kpi": "blocked_clients"
         },
         {
-          "cmdb_id": "redis_001",
-          "name": "evicted_keys"
+          "component": "redis_001",
+          "kpi": "evicted_keys"
         },
         {
-          "cmdb_id": "redis_001",
-          "name": "expired_keys"
+          "component": "redis_001",
+          "kpi": "expired_keys"
         },
         {
-          "cmdb_id": "redis_001",
-          "name": "maxmemory"
+          "component": "redis_001",
+          "kpi": "maxmemory"
         },
         {
-          "cmdb_id": "redis_001",
-          "name": "redis_load"
+          "component": "redis_001",
+          "kpi": "redis_load"
         },
         {
-          "cmdb_id": "redis_001",
-          "name": "redis_ping"
+          "component": "redis_001",
+          "kpi": "redis_ping"
         },
         {
-          "cmdb_id": "redis_001",
-          "name": "rejected_connections"
+          "component": "redis_001",
+          "kpi": "rejected_connections"
         },
         {
-          "cmdb_id": "redis_001",
-          "name": "used_memory_peak"
+          "component": "redis_001",
+          "kpi": "used_memory_peak"
         },
         {
-          "cmdb_id": "redis_002",
-          "name": "blocked_clients"
+          "component": "redis_002",
+          "kpi": "blocked_clients"
         },
         {
-          "cmdb_id": "redis_002",
-          "name": "evicted_keys"
+          "component": "redis_002",
+          "kpi": "evicted_keys"
         },
         {
-          "cmdb_id": "redis_002",
-          "name": "expired_keys"
+          "component": "redis_002",
+          "kpi": "expired_keys"
         },
         {
-          "cmdb_id": "redis_002",
-          "name": "maxmemory"
+          "component": "redis_002",
+          "kpi": "maxmemory"
         },
         {
-          "cmdb_id": "redis_002",
-          "name": "redis_load"
+          "component": "redis_002",
+          "kpi": "redis_load"
         },
         {
-          "cmdb_id": "redis_002",
-          "name": "redis_ping"
+          "component": "redis_002",
+          "kpi": "redis_ping"
         },
         {
-          "cmdb_id": "redis_002",
-          "name": "rejected_connections"
+          "component": "redis_002",
+          "kpi": "rejected_connections"
         },
         {
-          "cmdb_id": "redis_003",
-          "name": "blocked_clients"
+          "component": "redis_003",
+          "kpi": "blocked_clients"
         },
         {
-          "cmdb_id": "redis_003",
-          "name": "connected_clients"
+          "component": "redis_003",
+          "kpi": "connected_clients"
         },
         {
-          "cmdb_id": "redis_003",
-          "name": "evicted_keys"
+          "component": "redis_003",
+          "kpi": "evicted_keys"
         },
         {
-          "cmdb_id": "redis_003",
-          "name": "expired_keys"
+          "component": "redis_003",
+          "kpi": "expired_keys"
         },
         {
-          "cmdb_id": "redis_003",
-          "name": "keyspace_hits"
+          "component": "redis_003",
+          "kpi": "keyspace_hits"
         },
         {
-          "cmdb_id": "redis_003",
-          "name": "keyspace_misses"
+          "component": "redis_003",
+          "kpi": "keyspace_misses"
         },
         {
-          "cmdb_id": "redis_003",
-          "name": "maxmemory"
+          "component": "redis_003",
+          "kpi": "maxmemory"
         },
         {
-          "cmdb_id": "redis_003",
-          "name": "redis_load"
+          "component": "redis_003",
+          "kpi": "redis_load"
         },
         {
-          "cmdb_id": "redis_003",
-          "name": "redis_ping"
+          "component": "redis_003",
+          "kpi": "redis_ping"
         },
         {
-          "cmdb_id": "redis_003",
-          "name": "rejected_connections"
+          "component": "redis_003",
+          "kpi": "rejected_connections"
         },
         {
-          "cmdb_id": "redis_004",
-          "name": "blocked_clients"
+          "component": "redis_004",
+          "kpi": "blocked_clients"
         },
         {
-          "cmdb_id": "redis_004",
-          "name": "evicted_keys"
+          "component": "redis_004",
+          "kpi": "evicted_keys"
         },
         {
-          "cmdb_id": "redis_004",
-          "name": "maxmemory"
+          "component": "redis_004",
+          "kpi": "maxmemory"
         },
         {
-          "cmdb_id": "redis_004",
-          "name": "redis_load"
+          "component": "redis_004",
+          "kpi": "redis_load"
         },
         {
-          "cmdb_id": "redis_004",
-          "name": "redis_ping"
+          "component": "redis_004",
+          "kpi": "redis_ping"
         },
         {
-          "cmdb_id": "redis_004",
-          "name": "rejected_connections"
+          "component": "redis_004",
+          "kpi": "rejected_connections"
         },
         {
-          "cmdb_id": "redis_004",
-          "name": "used_memory_peak"
+          "component": "redis_004",
+          "kpi": "used_memory_peak"
         },
         {
-          "cmdb_id": "redis_005",
-          "name": "blocked_clients"
+          "component": "redis_005",
+          "kpi": "blocked_clients"
         },
         {
-          "cmdb_id": "redis_005",
-          "name": "evicted_keys"
+          "component": "redis_005",
+          "kpi": "evicted_keys"
         },
         {
-          "cmdb_id": "redis_005",
-          "name": "expired_keys"
+          "component": "redis_005",
+          "kpi": "expired_keys"
         },
         {
-          "cmdb_id": "redis_005",
-          "name": "keyspace_hits"
+          "component": "redis_005",
+          "kpi": "keyspace_hits"
         },
         {
-          "cmdb_id": "redis_005",
-          "name": "keyspace_misses"
+          "component": "redis_005",
+          "kpi": "keyspace_misses"
         },
         {
-          "cmdb_id": "redis_005",
-          "name": "maxmemory"
+          "component": "redis_005",
+          "kpi": "maxmemory"
         },
         {
-          "cmdb_id": "redis_005",
-          "name": "redis_load"
+          "component": "redis_005",
+          "kpi": "redis_load"
         },
         {
-          "cmdb_id": "redis_005",
-          "name": "redis_ping"
+          "component": "redis_005",
+          "kpi": "redis_ping"
         },
         {
-          "cmdb_id": "redis_005",
-          "name": "rejected_connections"
+          "component": "redis_005",
+          "kpi": "rejected_connections"
         },
         {
-          "cmdb_id": "redis_006",
-          "name": "blocked_clients"
+          "component": "redis_006",
+          "kpi": "blocked_clients"
         },
         {
-          "cmdb_id": "redis_006",
-          "name": "evicted_keys"
+          "component": "redis_006",
+          "kpi": "evicted_keys"
         },
         {
-          "cmdb_id": "redis_006",
-          "name": "expired_keys"
+          "component": "redis_006",
+          "kpi": "expired_keys"
         },
         {
-          "cmdb_id": "redis_006",
-          "name": "keyspace_hits"
+          "component": "redis_006",
+          "kpi": "keyspace_hits"
         },
         {
-          "cmdb_id": "redis_006",
-          "name": "keyspace_misses"
+          "component": "redis_006",
+          "kpi": "keyspace_misses"
         },
         {
-          "cmdb_id": "redis_006",
-          "name": "maxmemory"
+          "component": "redis_006",
+          "kpi": "maxmemory"
         },
         {
-          "cmdb_id": "redis_006",
-          "name": "redis_load"
+          "component": "redis_006",
+          "kpi": "redis_load"
         },
         {
-          "cmdb_id": "redis_006",
-          "name": "redis_ping"
+          "component": "redis_006",
+          "kpi": "redis_ping"
         },
         {
-          "cmdb_id": "redis_006",
-          "name": "rejected_connections"
+          "component": "redis_006",
+          "kpi": "rejected_connections"
         },
         {
-          "cmdb_id": "redis_007",
-          "name": "blocked_clients"
+          "component": "redis_007",
+          "kpi": "blocked_clients"
         },
         {
-          "cmdb_id": "redis_007",
-          "name": "connected_clients"
+          "component": "redis_007",
+          "kpi": "connected_clients"
         },
         {
-          "cmdb_id": "redis_007",
-          "name": "evicted_keys"
+          "component": "redis_007",
+          "kpi": "evicted_keys"
         },
         {
-          "cmdb_id": "redis_007",
-          "name": "expired_keys"
+          "component": "redis_007",
+          "kpi": "expired_keys"
         },
         {
-          "cmdb_id": "redis_007",
-          "name": "keyspace_hits"
+          "component": "redis_007",
+          "kpi": "keyspace_hits"
         },
         {
-          "cmdb_id": "redis_007",
-          "name": "keyspace_misses"
+          "component": "redis_007",
+          "kpi": "keyspace_misses"
         },
         {
-          "cmdb_id": "redis_007",
-          "name": "maxmemory"
+          "component": "redis_007",
+          "kpi": "maxmemory"
         },
         {
-          "cmdb_id": "redis_007",
-          "name": "redis_load"
+          "component": "redis_007",
+          "kpi": "redis_load"
         },
         {
-          "cmdb_id": "redis_007",
-          "name": "redis_ping"
+          "component": "redis_007",
+          "kpi": "redis_ping"
         },
         {
-          "cmdb_id": "redis_007",
-          "name": "rejected_connections"
+          "component": "redis_007",
+          "kpi": "rejected_connections"
         },
         {
-          "cmdb_id": "redis_007",
-          "name": "used_memory_peak"
+          "component": "redis_007",
+          "kpi": "used_memory_peak"
         },
         {
-          "cmdb_id": "redis_008",
-          "name": "blocked_clients"
+          "component": "redis_008",
+          "kpi": "blocked_clients"
         },
         {
-          "cmdb_id": "redis_008",
-          "name": "evicted_keys"
+          "component": "redis_008",
+          "kpi": "evicted_keys"
         },
         {
-          "cmdb_id": "redis_008",
-          "name": "maxmemory"
+          "component": "redis_008",
+          "kpi": "maxmemory"
         },
         {
-          "cmdb_id": "redis_008",
-          "name": "redis_load"
+          "component": "redis_008",
+          "kpi": "redis_load"
         },
         {
-          "cmdb_id": "redis_008",
-          "name": "redis_ping"
+          "component": "redis_008",
+          "kpi": "redis_ping"
         },
         {
-          "cmdb_id": "redis_008",
-          "name": "rejected_connections"
+          "component": "redis_008",
+          "kpi": "rejected_connections"
         },
         {
-          "cmdb_id": "redis_008",
-          "name": "used_memory_peak"
+          "component": "redis_008",
+          "kpi": "used_memory_peak"
         },
         {
-          "cmdb_id": "redis_009",
-          "name": "blocked_clients"
+          "component": "redis_009",
+          "kpi": "blocked_clients"
         },
         {
-          "cmdb_id": "redis_009",
-          "name": "evicted_keys"
+          "component": "redis_009",
+          "kpi": "evicted_keys"
         },
         {
-          "cmdb_id": "redis_009",
-          "name": "expired_keys"
+          "component": "redis_009",
+          "kpi": "expired_keys"
         },
         {
-          "cmdb_id": "redis_009",
-          "name": "maxmemory"
+          "component": "redis_009",
+          "kpi": "maxmemory"
         },
         {
-          "cmdb_id": "redis_009",
-          "name": "redis_load"
+          "component": "redis_009",
+          "kpi": "redis_load"
         },
         {
-          "cmdb_id": "redis_009",
-          "name": "redis_ping"
+          "component": "redis_009",
+          "kpi": "redis_ping"
         },
         {
-          "cmdb_id": "redis_009",
-          "name": "rejected_connections"
+          "component": "redis_009",
+          "kpi": "rejected_connections"
         },
         {
-          "cmdb_id": "redis_009",
-          "name": "used_memory_peak"
+          "component": "redis_009",
+          "kpi": "used_memory_peak"
         },
         {
-          "cmdb_id": "redis_010",
-          "name": "blocked_clients"
+          "component": "redis_010",
+          "kpi": "blocked_clients"
         },
         {
-          "cmdb_id": "redis_010",
-          "name": "connected_clients"
+          "component": "redis_010",
+          "kpi": "connected_clients"
         },
         {
-          "cmdb_id": "redis_010",
-          "name": "evicted_keys"
+          "component": "redis_010",
+          "kpi": "evicted_keys"
         },
         {
-          "cmdb_id": "redis_010",
-          "name": "expired_keys"
+          "component": "redis_010",
+          "kpi": "expired_keys"
         },
         {
-          "cmdb_id": "redis_010",
-          "name": "keyspace_hits"
+          "component": "redis_010",
+          "kpi": "keyspace_hits"
         },
         {
-          "cmdb_id": "redis_010",
-          "name": "keyspace_misses"
+          "component": "redis_010",
+          "kpi": "keyspace_misses"
         },
         {
-          "cmdb_id": "redis_010",
-          "name": "maxmemory"
+          "component": "redis_010",
+          "kpi": "maxmemory"
         },
         {
-          "cmdb_id": "redis_010",
-          "name": "redis_load"
+          "component": "redis_010",
+          "kpi": "redis_load"
         },
         {
-          "cmdb_id": "redis_010",
-          "name": "redis_ping"
+          "component": "redis_010",
+          "kpi": "redis_ping"
         },
         {
-          "cmdb_id": "redis_010",
-          "name": "rejected_connections"
+          "component": "redis_010",
+          "kpi": "rejected_connections"
         },
         {
-          "cmdb_id": "redis_010",
-          "name": "used_memory_peak"
+          "component": "redis_010",
+          "kpi": "used_memory_peak"
         },
         {
-          "cmdb_id": "redis_011",
-          "name": "blocked_clients"
+          "component": "redis_011",
+          "kpi": "blocked_clients"
         },
         {
-          "cmdb_id": "redis_011",
-          "name": "evicted_keys"
+          "component": "redis_011",
+          "kpi": "evicted_keys"
         },
         {
-          "cmdb_id": "redis_011",
-          "name": "expired_keys"
+          "component": "redis_011",
+          "kpi": "expired_keys"
         },
         {
-          "cmdb_id": "redis_011",
-          "name": "keyspace_hits"
+          "component": "redis_011",
+          "kpi": "keyspace_hits"
         },
         {
-          "cmdb_id": "redis_011",
-          "name": "keyspace_misses"
+          "component": "redis_011",
+          "kpi": "keyspace_misses"
         },
         {
-          "cmdb_id": "redis_011",
-          "name": "maxmemory"
+          "component": "redis_011",
+          "kpi": "maxmemory"
         },
         {
-          "cmdb_id": "redis_011",
-          "name": "redis_load"
+          "component": "redis_011",
+          "kpi": "redis_load"
         },
         {
-          "cmdb_id": "redis_011",
-          "name": "redis_ping"
+          "component": "redis_011",
+          "kpi": "redis_ping"
         },
         {
-          "cmdb_id": "redis_011",
-          "name": "rejected_connections"
+          "component": "redis_011",
+          "kpi": "rejected_connections"
         },
         {
-          "cmdb_id": "redis_012",
-          "name": "blocked_clients"
+          "component": "redis_012",
+          "kpi": "blocked_clients"
         },
         {
-          "cmdb_id": "redis_012",
-          "name": "evicted_keys"
+          "component": "redis_012",
+          "kpi": "evicted_keys"
         },
         {
-          "cmdb_id": "redis_012",
-          "name": "maxmemory"
+          "component": "redis_012",
+          "kpi": "maxmemory"
         },
         {
-          "cmdb_id": "redis_012",
-          "name": "redis_load"
+          "component": "redis_012",
+          "kpi": "redis_load"
         },
         {
-          "cmdb_id": "redis_012",
-          "name": "redis_ping"
+          "component": "redis_012",
+          "kpi": "redis_ping"
         },
         {
-          "cmdb_id": "redis_012",
-          "name": "rejected_connections"
+          "component": "redis_012",
+          "kpi": "rejected_connections"
         }
       ],
       "series": 264
@@ -826,884 +826,884 @@
       ],
       "constant_series": [
         {
-          "cmdb_id": "os_001",
-          "name": "Agent_ping"
+          "component": "os_001",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_001",
-          "name": "Disk_rd_ios"
+          "component": "os_001",
+          "kpi": "Disk_rd_ios"
         },
         {
-          "cmdb_id": "os_001",
-          "name": "Disk_rd_kbs"
+          "component": "os_001",
+          "kpi": "Disk_rd_kbs"
         },
         {
-          "cmdb_id": "os_001",
-          "name": "FS_max_util"
+          "component": "os_001",
+          "kpi": "FS_max_util"
         },
         {
-          "cmdb_id": "os_001",
-          "name": "FS_total_space"
+          "component": "os_001",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_001",
-          "name": "Memory_total"
+          "component": "os_001",
+          "kpi": "Memory_total"
         },
         {
-          "cmdb_id": "os_001",
-          "name": "Page_pi"
+          "component": "os_001",
+          "kpi": "Page_pi"
         },
         {
-          "cmdb_id": "os_001",
-          "name": "Received_errors_packets"
+          "component": "os_001",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_001",
-          "name": "Sent_errors_packets"
+          "component": "os_001",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_001",
-          "name": "Shared_memory"
+          "component": "os_001",
+          "kpi": "Shared_memory"
         },
         {
-          "cmdb_id": "os_001",
-          "name": "Swap_used_pct"
+          "component": "os_001",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_001",
-          "name": "Zombie_Process"
+          "component": "os_001",
+          "kpi": "Zombie_Process"
         },
         {
-          "cmdb_id": "os_002",
-          "name": "Agent_ping"
+          "component": "os_002",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_002",
-          "name": "Disk_rd_ios"
+          "component": "os_002",
+          "kpi": "Disk_rd_ios"
         },
         {
-          "cmdb_id": "os_002",
-          "name": "Disk_rd_kbs"
+          "component": "os_002",
+          "kpi": "Disk_rd_kbs"
         },
         {
-          "cmdb_id": "os_002",
-          "name": "FS_total_space"
+          "component": "os_002",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_002",
-          "name": "ICMP_ping"
+          "component": "os_002",
+          "kpi": "ICMP_ping"
         },
         {
-          "cmdb_id": "os_002",
-          "name": "Memory_total"
+          "component": "os_002",
+          "kpi": "Memory_total"
         },
         {
-          "cmdb_id": "os_002",
-          "name": "Page_pi"
+          "component": "os_002",
+          "kpi": "Page_pi"
         },
         {
-          "cmdb_id": "os_002",
-          "name": "Received_errors_packets"
+          "component": "os_002",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_002",
-          "name": "Sent_errors_packets"
+          "component": "os_002",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_002",
-          "name": "Shared_memory"
+          "component": "os_002",
+          "kpi": "Shared_memory"
         },
         {
-          "cmdb_id": "os_002",
-          "name": "Swap_used_pct"
+          "component": "os_002",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_002",
-          "name": "Zombie_Process"
+          "component": "os_002",
+          "kpi": "Zombie_Process"
         },
         {
-          "cmdb_id": "os_003",
-          "name": "Agent_ping"
+          "component": "os_003",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_003",
-          "name": "Disk_rd_ios"
+          "component": "os_003",
+          "kpi": "Disk_rd_ios"
         },
         {
-          "cmdb_id": "os_003",
-          "name": "FS_total_space"
+          "component": "os_003",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_003",
-          "name": "ICMP_ping"
+          "component": "os_003",
+          "kpi": "ICMP_ping"
         },
         {
-          "cmdb_id": "os_003",
-          "name": "Memory_total"
+          "component": "os_003",
+          "kpi": "Memory_total"
         },
         {
-          "cmdb_id": "os_003",
-          "name": "Received_errors_packets"
+          "component": "os_003",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_003",
-          "name": "Sent_errors_packets"
+          "component": "os_003",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_003",
-          "name": "Shared_memory"
+          "component": "os_003",
+          "kpi": "Shared_memory"
         },
         {
-          "cmdb_id": "os_003",
-          "name": "Swap_used_pct"
+          "component": "os_003",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_003",
-          "name": "Zombie_Process"
+          "component": "os_003",
+          "kpi": "Zombie_Process"
         },
         {
-          "cmdb_id": "os_004",
-          "name": "Agent_ping"
+          "component": "os_004",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_004",
-          "name": "FS_total_space"
+          "component": "os_004",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_004",
-          "name": "ICMP_ping"
+          "component": "os_004",
+          "kpi": "ICMP_ping"
         },
         {
-          "cmdb_id": "os_004",
-          "name": "Memory_total"
+          "component": "os_004",
+          "kpi": "Memory_total"
         },
         {
-          "cmdb_id": "os_004",
-          "name": "Received_errors_packets"
+          "component": "os_004",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_004",
-          "name": "Sent_errors_packets"
+          "component": "os_004",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_004",
-          "name": "Shared_memory"
+          "component": "os_004",
+          "kpi": "Shared_memory"
         },
         {
-          "cmdb_id": "os_004",
-          "name": "Swap_used_pct"
+          "component": "os_004",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_004",
-          "name": "Zombie_Process"
+          "component": "os_004",
+          "kpi": "Zombie_Process"
         },
         {
-          "cmdb_id": "os_005",
-          "name": "Agent_ping"
+          "component": "os_005",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_005",
-          "name": "Disk_rd_ios"
+          "component": "os_005",
+          "kpi": "Disk_rd_ios"
         },
         {
-          "cmdb_id": "os_005",
-          "name": "FS_total_space"
+          "component": "os_005",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_005",
-          "name": "ICMP_ping"
+          "component": "os_005",
+          "kpi": "ICMP_ping"
         },
         {
-          "cmdb_id": "os_005",
-          "name": "Memory_total"
+          "component": "os_005",
+          "kpi": "Memory_total"
         },
         {
-          "cmdb_id": "os_005",
-          "name": "Received_errors_packets"
+          "component": "os_005",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_005",
-          "name": "Sent_errors_packets"
+          "component": "os_005",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_005",
-          "name": "Shared_memory"
+          "component": "os_005",
+          "kpi": "Shared_memory"
         },
         {
-          "cmdb_id": "os_005",
-          "name": "Swap_used_pct"
+          "component": "os_005",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_006",
-          "name": "Agent_ping"
+          "component": "os_006",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_006",
-          "name": "Disk_rd_ios"
+          "component": "os_006",
+          "kpi": "Disk_rd_ios"
         },
         {
-          "cmdb_id": "os_006",
-          "name": "Disk_rd_kbs"
+          "component": "os_006",
+          "kpi": "Disk_rd_kbs"
         },
         {
-          "cmdb_id": "os_006",
-          "name": "FS_max_util"
+          "component": "os_006",
+          "kpi": "FS_max_util"
         },
         {
-          "cmdb_id": "os_006",
-          "name": "FS_total_space"
+          "component": "os_006",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_006",
-          "name": "ICMP_ping"
+          "component": "os_006",
+          "kpi": "ICMP_ping"
         },
         {
-          "cmdb_id": "os_006",
-          "name": "Memory_total"
+          "component": "os_006",
+          "kpi": "Memory_total"
         },
         {
-          "cmdb_id": "os_006",
-          "name": "Page_pi"
+          "component": "os_006",
+          "kpi": "Page_pi"
         },
         {
-          "cmdb_id": "os_006",
-          "name": "Received_errors_packets"
+          "component": "os_006",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_006",
-          "name": "Received_queue"
+          "component": "os_006",
+          "kpi": "Received_queue"
         },
         {
-          "cmdb_id": "os_006",
-          "name": "Sent_errors_packets"
+          "component": "os_006",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_006",
-          "name": "Swap_used_pct"
+          "component": "os_006",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_006",
-          "name": "System_block_queue_length"
+          "component": "os_006",
+          "kpi": "System_block_queue_length"
         },
         {
-          "cmdb_id": "os_006",
-          "name": "Zombie_Process"
+          "component": "os_006",
+          "kpi": "Zombie_Process"
         },
         {
-          "cmdb_id": "os_007",
-          "name": "Agent_ping"
+          "component": "os_007",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_007",
-          "name": "Disk_rd_ios"
+          "component": "os_007",
+          "kpi": "Disk_rd_ios"
         },
         {
-          "cmdb_id": "os_007",
-          "name": "Disk_rd_kbs"
+          "component": "os_007",
+          "kpi": "Disk_rd_kbs"
         },
         {
-          "cmdb_id": "os_007",
-          "name": "FS_max_util"
+          "component": "os_007",
+          "kpi": "FS_max_util"
         },
         {
-          "cmdb_id": "os_007",
-          "name": "FS_total_space"
+          "component": "os_007",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_007",
-          "name": "ICMP_ping"
+          "component": "os_007",
+          "kpi": "ICMP_ping"
         },
         {
-          "cmdb_id": "os_007",
-          "name": "Memory_total"
+          "component": "os_007",
+          "kpi": "Memory_total"
         },
         {
-          "cmdb_id": "os_007",
-          "name": "Page_pi"
+          "component": "os_007",
+          "kpi": "Page_pi"
         },
         {
-          "cmdb_id": "os_007",
-          "name": "Received_errors_packets"
+          "component": "os_007",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_007",
-          "name": "Received_queue"
+          "component": "os_007",
+          "kpi": "Received_queue"
         },
         {
-          "cmdb_id": "os_007",
-          "name": "Sent_errors_packets"
+          "component": "os_007",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_007",
-          "name": "Swap_used_pct"
+          "component": "os_007",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_007",
-          "name": "System_block_queue_length"
+          "component": "os_007",
+          "kpi": "System_block_queue_length"
         },
         {
-          "cmdb_id": "os_007",
-          "name": "Zombie_Process"
+          "component": "os_007",
+          "kpi": "Zombie_Process"
         },
         {
-          "cmdb_id": "os_008",
-          "name": "Agent_ping"
+          "component": "os_008",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_008",
-          "name": "Disk_rd_ios"
+          "component": "os_008",
+          "kpi": "Disk_rd_ios"
         },
         {
-          "cmdb_id": "os_008",
-          "name": "Disk_rd_kbs"
+          "component": "os_008",
+          "kpi": "Disk_rd_kbs"
         },
         {
-          "cmdb_id": "os_008",
-          "name": "FS_max_util"
+          "component": "os_008",
+          "kpi": "FS_max_util"
         },
         {
-          "cmdb_id": "os_008",
-          "name": "FS_total_space"
+          "component": "os_008",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_008",
-          "name": "ICMP_ping"
+          "component": "os_008",
+          "kpi": "ICMP_ping"
         },
         {
-          "cmdb_id": "os_008",
-          "name": "Memory_total"
+          "component": "os_008",
+          "kpi": "Memory_total"
         },
         {
-          "cmdb_id": "os_008",
-          "name": "Page_pi"
+          "component": "os_008",
+          "kpi": "Page_pi"
         },
         {
-          "cmdb_id": "os_008",
-          "name": "Received_errors_packets"
+          "component": "os_008",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_008",
-          "name": "Received_queue"
+          "component": "os_008",
+          "kpi": "Received_queue"
         },
         {
-          "cmdb_id": "os_008",
-          "name": "Sent_errors_packets"
+          "component": "os_008",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_008",
-          "name": "Swap_used_pct"
+          "component": "os_008",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_008",
-          "name": "System_block_queue_length"
+          "component": "os_008",
+          "kpi": "System_block_queue_length"
         },
         {
-          "cmdb_id": "os_008",
-          "name": "Zombie_Process"
+          "component": "os_008",
+          "kpi": "Zombie_Process"
         },
         {
-          "cmdb_id": "os_009",
-          "name": "Agent_ping"
+          "component": "os_009",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_009",
-          "name": "FS_total_space"
+          "component": "os_009",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_009",
-          "name": "Memory_total"
+          "component": "os_009",
+          "kpi": "Memory_total"
         },
         {
-          "cmdb_id": "os_009",
-          "name": "Received_errors_packets"
+          "component": "os_009",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_009",
-          "name": "Sent_errors_packets"
+          "component": "os_009",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_009",
-          "name": "Swap_used_pct"
+          "component": "os_009",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_010",
-          "name": "Agent_ping"
+          "component": "os_010",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_010",
-          "name": "Disk_rd_ios"
+          "component": "os_010",
+          "kpi": "Disk_rd_ios"
         },
         {
-          "cmdb_id": "os_010",
-          "name": "Disk_rd_kbs"
+          "component": "os_010",
+          "kpi": "Disk_rd_kbs"
         },
         {
-          "cmdb_id": "os_010",
-          "name": "FS_total_space"
+          "component": "os_010",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_010",
-          "name": "ICMP_ping"
+          "component": "os_010",
+          "kpi": "ICMP_ping"
         },
         {
-          "cmdb_id": "os_010",
-          "name": "Memory_total"
+          "component": "os_010",
+          "kpi": "Memory_total"
         },
         {
-          "cmdb_id": "os_010",
-          "name": "Page_pi"
+          "component": "os_010",
+          "kpi": "Page_pi"
         },
         {
-          "cmdb_id": "os_010",
-          "name": "Received_errors_packets"
+          "component": "os_010",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_010",
-          "name": "Received_queue"
+          "component": "os_010",
+          "kpi": "Received_queue"
         },
         {
-          "cmdb_id": "os_010",
-          "name": "Sent_errors_packets"
+          "component": "os_010",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_010",
-          "name": "Shared_memory"
+          "component": "os_010",
+          "kpi": "Shared_memory"
         },
         {
-          "cmdb_id": "os_010",
-          "name": "Swap_used_pct"
+          "component": "os_010",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_010",
-          "name": "System_block_queue_length"
+          "component": "os_010",
+          "kpi": "System_block_queue_length"
         },
         {
-          "cmdb_id": "os_010",
-          "name": "Zombie_Process"
+          "component": "os_010",
+          "kpi": "Zombie_Process"
         },
         {
-          "cmdb_id": "os_011",
-          "name": "Agent_ping"
+          "component": "os_011",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_011",
-          "name": "Disk_rd_ios"
+          "component": "os_011",
+          "kpi": "Disk_rd_ios"
         },
         {
-          "cmdb_id": "os_011",
-          "name": "FS_total_space"
+          "component": "os_011",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_011",
-          "name": "ICMP_ping"
+          "component": "os_011",
+          "kpi": "ICMP_ping"
         },
         {
-          "cmdb_id": "os_011",
-          "name": "Memory_total"
+          "component": "os_011",
+          "kpi": "Memory_total"
         },
         {
-          "cmdb_id": "os_011",
-          "name": "Received_errors_packets"
+          "component": "os_011",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_011",
-          "name": "Sent_errors_packets"
+          "component": "os_011",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_011",
-          "name": "Swap_used_pct"
+          "component": "os_011",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_011",
-          "name": "Zombie_Process"
+          "component": "os_011",
+          "kpi": "Zombie_Process"
         },
         {
-          "cmdb_id": "os_012",
-          "name": "Agent_ping"
+          "component": "os_012",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_012",
-          "name": "FS_total_space"
+          "component": "os_012",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_012",
-          "name": "ICMP_ping"
+          "component": "os_012",
+          "kpi": "ICMP_ping"
         },
         {
-          "cmdb_id": "os_012",
-          "name": "Memory_total"
+          "component": "os_012",
+          "kpi": "Memory_total"
         },
         {
-          "cmdb_id": "os_012",
-          "name": "Received_errors_packets"
+          "component": "os_012",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_012",
-          "name": "Received_queue"
+          "component": "os_012",
+          "kpi": "Received_queue"
         },
         {
-          "cmdb_id": "os_012",
-          "name": "Sent_errors_packets"
+          "component": "os_012",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_012",
-          "name": "Swap_used_pct"
+          "component": "os_012",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_012",
-          "name": "Zombie_Process"
+          "component": "os_012",
+          "kpi": "Zombie_Process"
         },
         {
-          "cmdb_id": "os_013",
-          "name": "Agent_ping"
+          "component": "os_013",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_013",
-          "name": "Disk_rd_ios"
+          "component": "os_013",
+          "kpi": "Disk_rd_ios"
         },
         {
-          "cmdb_id": "os_013",
-          "name": "Disk_rd_kbs"
+          "component": "os_013",
+          "kpi": "Disk_rd_kbs"
         },
         {
-          "cmdb_id": "os_013",
-          "name": "FS_total_space"
+          "component": "os_013",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_013",
-          "name": "ICMP_ping"
+          "component": "os_013",
+          "kpi": "ICMP_ping"
         },
         {
-          "cmdb_id": "os_013",
-          "name": "Memory_total"
+          "component": "os_013",
+          "kpi": "Memory_total"
         },
         {
-          "cmdb_id": "os_013",
-          "name": "Page_pi"
+          "component": "os_013",
+          "kpi": "Page_pi"
         },
         {
-          "cmdb_id": "os_013",
-          "name": "Received_errors_packets"
+          "component": "os_013",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_013",
-          "name": "Sent_errors_packets"
+          "component": "os_013",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_013",
-          "name": "Swap_used_pct"
+          "component": "os_013",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_013",
-          "name": "Zombie_Process"
+          "component": "os_013",
+          "kpi": "Zombie_Process"
         },
         {
-          "cmdb_id": "os_014",
-          "name": "Agent_ping"
+          "component": "os_014",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_014",
-          "name": "Disk_rd_ios"
+          "component": "os_014",
+          "kpi": "Disk_rd_ios"
         },
         {
-          "cmdb_id": "os_014",
-          "name": "Disk_rd_kbs"
+          "component": "os_014",
+          "kpi": "Disk_rd_kbs"
         },
         {
-          "cmdb_id": "os_014",
-          "name": "FS_total_space"
+          "component": "os_014",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_014",
-          "name": "ICMP_ping"
+          "component": "os_014",
+          "kpi": "ICMP_ping"
         },
         {
-          "cmdb_id": "os_014",
-          "name": "Memory_total"
+          "component": "os_014",
+          "kpi": "Memory_total"
         },
         {
-          "cmdb_id": "os_014",
-          "name": "Page_pi"
+          "component": "os_014",
+          "kpi": "Page_pi"
         },
         {
-          "cmdb_id": "os_014",
-          "name": "Received_errors_packets"
+          "component": "os_014",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_014",
-          "name": "Received_queue"
+          "component": "os_014",
+          "kpi": "Received_queue"
         },
         {
-          "cmdb_id": "os_014",
-          "name": "Sent_errors_packets"
+          "component": "os_014",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_014",
-          "name": "Swap_used_pct"
+          "component": "os_014",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_014",
-          "name": "Zombie_Process"
+          "component": "os_014",
+          "kpi": "Zombie_Process"
         },
         {
-          "cmdb_id": "os_015",
-          "name": "Agent_ping"
+          "component": "os_015",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_015",
-          "name": "Disk_rd_ios"
+          "component": "os_015",
+          "kpi": "Disk_rd_ios"
         },
         {
-          "cmdb_id": "os_015",
-          "name": "Disk_rd_kbs"
+          "component": "os_015",
+          "kpi": "Disk_rd_kbs"
         },
         {
-          "cmdb_id": "os_015",
-          "name": "FS_total_space"
+          "component": "os_015",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_015",
-          "name": "ICMP_ping"
+          "component": "os_015",
+          "kpi": "ICMP_ping"
         },
         {
-          "cmdb_id": "os_015",
-          "name": "Memory_total"
+          "component": "os_015",
+          "kpi": "Memory_total"
         },
         {
-          "cmdb_id": "os_015",
-          "name": "Page_pi"
+          "component": "os_015",
+          "kpi": "Page_pi"
         },
         {
-          "cmdb_id": "os_015",
-          "name": "Received_errors_packets"
+          "component": "os_015",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_015",
-          "name": "Received_queue"
+          "component": "os_015",
+          "kpi": "Received_queue"
         },
         {
-          "cmdb_id": "os_015",
-          "name": "Sent_errors_packets"
+          "component": "os_015",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_015",
-          "name": "Swap_used_pct"
+          "component": "os_015",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_015",
-          "name": "Zombie_Process"
+          "component": "os_015",
+          "kpi": "Zombie_Process"
         },
         {
-          "cmdb_id": "os_016",
-          "name": "Agent_ping"
+          "component": "os_016",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_016",
-          "name": "Disk_rd_ios"
+          "component": "os_016",
+          "kpi": "Disk_rd_ios"
         },
         {
-          "cmdb_id": "os_016",
-          "name": "Disk_rd_kbs"
+          "component": "os_016",
+          "kpi": "Disk_rd_kbs"
         },
         {
-          "cmdb_id": "os_016",
-          "name": "FS_total_space"
+          "component": "os_016",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_016",
-          "name": "ICMP_ping"
+          "component": "os_016",
+          "kpi": "ICMP_ping"
         },
         {
-          "cmdb_id": "os_016",
-          "name": "Memory_total"
+          "component": "os_016",
+          "kpi": "Memory_total"
         },
         {
-          "cmdb_id": "os_016",
-          "name": "Page_pi"
+          "component": "os_016",
+          "kpi": "Page_pi"
         },
         {
-          "cmdb_id": "os_016",
-          "name": "Received_errors_packets"
+          "component": "os_016",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_016",
-          "name": "Sent_errors_packets"
+          "component": "os_016",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_016",
-          "name": "Swap_used_pct"
+          "component": "os_016",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_016",
-          "name": "Zombie_Process"
+          "component": "os_016",
+          "kpi": "Zombie_Process"
         },
         {
-          "cmdb_id": "os_017",
-          "name": "Agent_ping"
+          "component": "os_017",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_017",
-          "name": "Buffers_used"
+          "component": "os_017",
+          "kpi": "Buffers_used"
         },
         {
-          "cmdb_id": "os_017",
-          "name": "FS_total_space"
+          "component": "os_017",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_017",
-          "name": "Received_errors_packets"
+          "component": "os_017",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_017",
-          "name": "Sent_errors_packets"
+          "component": "os_017",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_017",
-          "name": "Swap_used_pct"
+          "component": "os_017",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_018",
-          "name": "Agent_ping"
+          "component": "os_018",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_018",
-          "name": "FS_total_space"
+          "component": "os_018",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_018",
-          "name": "Received_errors_packets"
+          "component": "os_018",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_018",
-          "name": "Sent_errors_packets"
+          "component": "os_018",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_018",
-          "name": "Swap_used_pct"
+          "component": "os_018",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_019",
-          "name": "Agent_ping"
+          "component": "os_019",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_019",
-          "name": "Buffers_used"
+          "component": "os_019",
+          "kpi": "Buffers_used"
         },
         {
-          "cmdb_id": "os_019",
-          "name": "FS_total_space"
+          "component": "os_019",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_019",
-          "name": "ICMP_ping"
+          "component": "os_019",
+          "kpi": "ICMP_ping"
         },
         {
-          "cmdb_id": "os_019",
-          "name": "Received_errors_packets"
+          "component": "os_019",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_019",
-          "name": "Sent_errors_packets"
+          "component": "os_019",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_019",
-          "name": "Swap_used_pct"
+          "component": "os_019",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_020",
-          "name": "Agent_ping"
+          "component": "os_020",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_020",
-          "name": "Buffers_used"
+          "component": "os_020",
+          "kpi": "Buffers_used"
         },
         {
-          "cmdb_id": "os_020",
-          "name": "FS_total_space"
+          "component": "os_020",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_020",
-          "name": "Received_errors_packets"
+          "component": "os_020",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_020",
-          "name": "Sent_errors_packets"
+          "component": "os_020",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_020",
-          "name": "Swap_used_pct"
+          "component": "os_020",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_020",
-          "name": "System_block_queue_length"
+          "component": "os_020",
+          "kpi": "System_block_queue_length"
         },
         {
-          "cmdb_id": "os_021",
-          "name": "Agent_ping"
+          "component": "os_021",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_021",
-          "name": "FS_total_space"
+          "component": "os_021",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_021",
-          "name": "Memory_total"
+          "component": "os_021",
+          "kpi": "Memory_total"
         },
         {
-          "cmdb_id": "os_021",
-          "name": "Received_errors_packets"
+          "component": "os_021",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_021",
-          "name": "Sent_errors_packets"
+          "component": "os_021",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_021",
-          "name": "Shared_memory"
+          "component": "os_021",
+          "kpi": "Shared_memory"
         },
         {
-          "cmdb_id": "os_021",
-          "name": "Swap_used_pct"
+          "component": "os_021",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_021",
-          "name": "Zombie_Process"
+          "component": "os_021",
+          "kpi": "Zombie_Process"
         },
         {
-          "cmdb_id": "os_022",
-          "name": "Agent_ping"
+          "component": "os_022",
+          "kpi": "Agent_ping"
         },
         {
-          "cmdb_id": "os_022",
-          "name": "FS_total_space"
+          "component": "os_022",
+          "kpi": "FS_total_space"
         },
         {
-          "cmdb_id": "os_022",
-          "name": "ICMP_ping"
+          "component": "os_022",
+          "kpi": "ICMP_ping"
         },
         {
-          "cmdb_id": "os_022",
-          "name": "Memory_total"
+          "component": "os_022",
+          "kpi": "Memory_total"
         },
         {
-          "cmdb_id": "os_022",
-          "name": "Received_errors_packets"
+          "component": "os_022",
+          "kpi": "Received_errors_packets"
         },
         {
-          "cmdb_id": "os_022",
-          "name": "Sent_errors_packets"
+          "component": "os_022",
+          "kpi": "Sent_errors_packets"
         },
         {
-          "cmdb_id": "os_022",
-          "name": "Shared_memory"
+          "component": "os_022",
+          "kpi": "Shared_memory"
         },
         {
-          "cmdb_id": "os_022",
-          "name": "Swap_used_pct"
+          "component": "os_022",
+          "kpi": "Swap_used_pct"
         },
         {
-          "cmdb_id": "os_022",
-          "name": "Zombie_Process"
+          "component": "os_022",
+          "kpi": "Zombie_Process"
         }
       ],
       "series": 1122
@@ -1726,544 +1726,544 @@
       ],
       "constant_series": [
         {
-          "cmdb_id": "db_001",
-          "name": "Asm_Free_Tb"
+          "component": "db_001",
+          "kpi": "Asm_Free_Tb"
         },
         {
-          "cmdb_id": "db_001",
-          "name": "DbFile_Used_Pct"
+          "component": "db_001",
+          "kpi": "DbFile_Used_Pct"
         },
         {
-          "cmdb_id": "db_001",
-          "name": "Hang"
+          "component": "db_001",
+          "kpi": "Hang"
         },
         {
-          "cmdb_id": "db_001",
-          "name": "MEM_Total"
+          "component": "db_001",
+          "kpi": "MEM_Total"
         },
         {
-          "cmdb_id": "db_001",
-          "name": "On_Off_State"
+          "component": "db_001",
+          "kpi": "On_Off_State"
         },
         {
-          "cmdb_id": "db_001",
-          "name": "PGA_Used_Pct"
+          "component": "db_001",
+          "kpi": "PGA_Used_Pct"
         },
         {
-          "cmdb_id": "db_001",
-          "name": "Row_Lock"
+          "component": "db_001",
+          "kpi": "Row_Lock"
         },
         {
-          "cmdb_id": "db_001",
-          "name": "SEQ_Used_Pct"
+          "component": "db_001",
+          "kpi": "SEQ_Used_Pct"
         },
         {
-          "cmdb_id": "db_001",
-          "name": "Sess_Used_Temp"
+          "component": "db_001",
+          "kpi": "Sess_Used_Temp"
         },
         {
-          "cmdb_id": "db_001",
-          "name": "TempTbs_Pct"
+          "component": "db_001",
+          "kpi": "TempTbs_Pct"
         },
         {
-          "cmdb_id": "db_001",
-          "name": "Total_Tbs_Size"
+          "component": "db_001",
+          "kpi": "Total_Tbs_Size"
         },
         {
-          "cmdb_id": "db_002",
-          "name": "Asm_Free_Tb"
+          "component": "db_002",
+          "kpi": "Asm_Free_Tb"
         },
         {
-          "cmdb_id": "db_002",
-          "name": "DbFile_Used_Pct"
+          "component": "db_002",
+          "kpi": "DbFile_Used_Pct"
         },
         {
-          "cmdb_id": "db_002",
-          "name": "Hang"
+          "component": "db_002",
+          "kpi": "Hang"
         },
         {
-          "cmdb_id": "db_002",
-          "name": "MEM_Total"
+          "component": "db_002",
+          "kpi": "MEM_Total"
         },
         {
-          "cmdb_id": "db_002",
-          "name": "On_Off_State"
+          "component": "db_002",
+          "kpi": "On_Off_State"
         },
         {
-          "cmdb_id": "db_002",
-          "name": "PGA_Used_Pct"
+          "component": "db_002",
+          "kpi": "PGA_Used_Pct"
         },
         {
-          "cmdb_id": "db_002",
-          "name": "PGA_used_total"
+          "component": "db_002",
+          "kpi": "PGA_used_total"
         },
         {
-          "cmdb_id": "db_002",
-          "name": "Row_Lock"
+          "component": "db_002",
+          "kpi": "Row_Lock"
         },
         {
-          "cmdb_id": "db_002",
-          "name": "SEQ_Used_Pct"
+          "component": "db_002",
+          "kpi": "SEQ_Used_Pct"
         },
         {
-          "cmdb_id": "db_002",
-          "name": "Sess_Used_Temp"
+          "component": "db_002",
+          "kpi": "Sess_Used_Temp"
         },
         {
-          "cmdb_id": "db_002",
-          "name": "Total_Tbs_Size"
+          "component": "db_002",
+          "kpi": "Total_Tbs_Size"
         },
         {
-          "cmdb_id": "db_003",
-          "name": "DbFile_Used_Pct"
+          "component": "db_003",
+          "kpi": "DbFile_Used_Pct"
         },
         {
-          "cmdb_id": "db_003",
-          "name": "Hang"
+          "component": "db_003",
+          "kpi": "Hang"
         },
         {
-          "cmdb_id": "db_003",
-          "name": "MEM_Total"
+          "component": "db_003",
+          "kpi": "MEM_Total"
         },
         {
-          "cmdb_id": "db_003",
-          "name": "PGA_Used_Pct"
+          "component": "db_003",
+          "kpi": "PGA_Used_Pct"
         },
         {
-          "cmdb_id": "db_003",
-          "name": "Row_Lock"
+          "component": "db_003",
+          "kpi": "Row_Lock"
         },
         {
-          "cmdb_id": "db_003",
-          "name": "SEQ_Used_Pct"
+          "component": "db_003",
+          "kpi": "SEQ_Used_Pct"
         },
         {
-          "cmdb_id": "db_003",
-          "name": "TempTbs_Pct"
+          "component": "db_003",
+          "kpi": "TempTbs_Pct"
         },
         {
-          "cmdb_id": "db_004",
-          "name": "Asm_Free_Tb"
+          "component": "db_004",
+          "kpi": "Asm_Free_Tb"
         },
         {
-          "cmdb_id": "db_004",
-          "name": "DbFile_Used_Pct"
+          "component": "db_004",
+          "kpi": "DbFile_Used_Pct"
         },
         {
-          "cmdb_id": "db_004",
-          "name": "Hang"
+          "component": "db_004",
+          "kpi": "Hang"
         },
         {
-          "cmdb_id": "db_004",
-          "name": "MEM_Total"
+          "component": "db_004",
+          "kpi": "MEM_Total"
         },
         {
-          "cmdb_id": "db_004",
-          "name": "On_Off_State"
+          "component": "db_004",
+          "kpi": "On_Off_State"
         },
         {
-          "cmdb_id": "db_004",
-          "name": "PGA_Used_Pct"
+          "component": "db_004",
+          "kpi": "PGA_Used_Pct"
         },
         {
-          "cmdb_id": "db_004",
-          "name": "Row_Lock"
+          "component": "db_004",
+          "kpi": "Row_Lock"
         },
         {
-          "cmdb_id": "db_004",
-          "name": "SEQ_Used_Pct"
+          "component": "db_004",
+          "kpi": "SEQ_Used_Pct"
         },
         {
-          "cmdb_id": "db_004",
-          "name": "SctRead_Per_Sec"
+          "component": "db_004",
+          "kpi": "SctRead_Per_Sec"
         },
         {
-          "cmdb_id": "db_004",
-          "name": "Sess_Used_Undo"
+          "component": "db_004",
+          "kpi": "Sess_Used_Undo"
         },
         {
-          "cmdb_id": "db_004",
-          "name": "Tbs_Free_Gb"
+          "component": "db_004",
+          "kpi": "Tbs_Free_Gb"
         },
         {
-          "cmdb_id": "db_004",
-          "name": "Tbs_Used_Pct"
+          "component": "db_004",
+          "kpi": "Tbs_Used_Pct"
         },
         {
-          "cmdb_id": "db_004",
-          "name": "TempTbs_Pct"
+          "component": "db_004",
+          "kpi": "TempTbs_Pct"
         },
         {
-          "cmdb_id": "db_004",
-          "name": "Total_Tbs_Size"
+          "component": "db_004",
+          "kpi": "Total_Tbs_Size"
         },
         {
-          "cmdb_id": "db_005",
-          "name": "DbFile_Used_Pct"
+          "component": "db_005",
+          "kpi": "DbFile_Used_Pct"
         },
         {
-          "cmdb_id": "db_005",
-          "name": "Hang"
+          "component": "db_005",
+          "kpi": "Hang"
         },
         {
-          "cmdb_id": "db_005",
-          "name": "MEM_Total"
+          "component": "db_005",
+          "kpi": "MEM_Total"
         },
         {
-          "cmdb_id": "db_005",
-          "name": "On_Off_State"
+          "component": "db_005",
+          "kpi": "On_Off_State"
         },
         {
-          "cmdb_id": "db_005",
-          "name": "PGA_Used_Pct"
+          "component": "db_005",
+          "kpi": "PGA_Used_Pct"
         },
         {
-          "cmdb_id": "db_005",
-          "name": "Row_Lock"
+          "component": "db_005",
+          "kpi": "Row_Lock"
         },
         {
-          "cmdb_id": "db_005",
-          "name": "SEQ_Used_Pct"
+          "component": "db_005",
+          "kpi": "SEQ_Used_Pct"
         },
         {
-          "cmdb_id": "db_005",
-          "name": "TempTbs_Pct"
+          "component": "db_005",
+          "kpi": "TempTbs_Pct"
         },
         {
-          "cmdb_id": "db_005",
-          "name": "Total_Tbs_Size"
+          "component": "db_005",
+          "kpi": "Total_Tbs_Size"
         },
         {
-          "cmdb_id": "db_006",
-          "name": "Asm_Free_Tb"
+          "component": "db_006",
+          "kpi": "Asm_Free_Tb"
         },
         {
-          "cmdb_id": "db_006",
-          "name": "DbFile_Used_Pct"
+          "component": "db_006",
+          "kpi": "DbFile_Used_Pct"
         },
         {
-          "cmdb_id": "db_006",
-          "name": "Hang"
+          "component": "db_006",
+          "kpi": "Hang"
         },
         {
-          "cmdb_id": "db_006",
-          "name": "MEM_Total"
+          "component": "db_006",
+          "kpi": "MEM_Total"
         },
         {
-          "cmdb_id": "db_006",
-          "name": "MEM_real_util"
+          "component": "db_006",
+          "kpi": "MEM_real_util"
         },
         {
-          "cmdb_id": "db_006",
-          "name": "On_Off_State"
+          "component": "db_006",
+          "kpi": "On_Off_State"
         },
         {
-          "cmdb_id": "db_006",
-          "name": "PGA_Used_Pct"
+          "component": "db_006",
+          "kpi": "PGA_Used_Pct"
         },
         {
-          "cmdb_id": "db_006",
-          "name": "PGA_used_total"
+          "component": "db_006",
+          "kpi": "PGA_used_total"
         },
         {
-          "cmdb_id": "db_006",
-          "name": "Row_Lock"
+          "component": "db_006",
+          "kpi": "Row_Lock"
         },
         {
-          "cmdb_id": "db_006",
-          "name": "SEQ_Used_Pct"
+          "component": "db_006",
+          "kpi": "SEQ_Used_Pct"
         },
         {
-          "cmdb_id": "db_006",
-          "name": "SctRead_Per_Sec"
+          "component": "db_006",
+          "kpi": "SctRead_Per_Sec"
         },
         {
-          "cmdb_id": "db_006",
-          "name": "Sess_Used_Temp"
+          "component": "db_006",
+          "kpi": "Sess_Used_Temp"
         },
         {
-          "cmdb_id": "db_006",
-          "name": "Tbs_Used_Pct"
+          "component": "db_006",
+          "kpi": "Tbs_Used_Pct"
         },
         {
-          "cmdb_id": "db_006",
-          "name": "TempTbs_Pct"
+          "component": "db_006",
+          "kpi": "TempTbs_Pct"
         },
         {
-          "cmdb_id": "db_006",
-          "name": "Total_Tbs_Size"
+          "component": "db_006",
+          "kpi": "Total_Tbs_Size"
         },
         {
-          "cmdb_id": "db_007",
-          "name": "DbFile_Used_Pct"
+          "component": "db_007",
+          "kpi": "DbFile_Used_Pct"
         },
         {
-          "cmdb_id": "db_007",
-          "name": "Hang"
+          "component": "db_007",
+          "kpi": "Hang"
         },
         {
-          "cmdb_id": "db_007",
-          "name": "MEM_Total"
+          "component": "db_007",
+          "kpi": "MEM_Total"
         },
         {
-          "cmdb_id": "db_007",
-          "name": "PGA_Used_Pct"
+          "component": "db_007",
+          "kpi": "PGA_Used_Pct"
         },
         {
-          "cmdb_id": "db_007",
-          "name": "Row_Lock"
+          "component": "db_007",
+          "kpi": "Row_Lock"
         },
         {
-          "cmdb_id": "db_007",
-          "name": "SEQ_Used_Pct"
+          "component": "db_007",
+          "kpi": "SEQ_Used_Pct"
         },
         {
-          "cmdb_id": "db_007",
-          "name": "TempTbs_Pct"
+          "component": "db_007",
+          "kpi": "TempTbs_Pct"
         },
         {
-          "cmdb_id": "db_008",
-          "name": "Asm_Free_Tb"
+          "component": "db_008",
+          "kpi": "Asm_Free_Tb"
         },
         {
-          "cmdb_id": "db_008",
-          "name": "DbFile_Used_Pct"
+          "component": "db_008",
+          "kpi": "DbFile_Used_Pct"
         },
         {
-          "cmdb_id": "db_008",
-          "name": "Hang"
+          "component": "db_008",
+          "kpi": "Hang"
         },
         {
-          "cmdb_id": "db_008",
-          "name": "MEM_Total"
+          "component": "db_008",
+          "kpi": "MEM_Total"
         },
         {
-          "cmdb_id": "db_008",
-          "name": "On_Off_State"
+          "component": "db_008",
+          "kpi": "On_Off_State"
         },
         {
-          "cmdb_id": "db_008",
-          "name": "PGA_Used_Pct"
+          "component": "db_008",
+          "kpi": "PGA_Used_Pct"
         },
         {
-          "cmdb_id": "db_008",
-          "name": "Row_Lock"
+          "component": "db_008",
+          "kpi": "Row_Lock"
         },
         {
-          "cmdb_id": "db_008",
-          "name": "SEQ_Used_Pct"
+          "component": "db_008",
+          "kpi": "SEQ_Used_Pct"
         },
         {
-          "cmdb_id": "db_008",
-          "name": "SctRead_Per_Sec"
+          "component": "db_008",
+          "kpi": "SctRead_Per_Sec"
         },
         {
-          "cmdb_id": "db_008",
-          "name": "Tbs_Used_Pct"
+          "component": "db_008",
+          "kpi": "Tbs_Used_Pct"
         },
         {
-          "cmdb_id": "db_008",
-          "name": "TempTbs_Pct"
+          "component": "db_008",
+          "kpi": "TempTbs_Pct"
         },
         {
-          "cmdb_id": "db_008",
-          "name": "Total_Tbs_Size"
+          "component": "db_008",
+          "kpi": "Total_Tbs_Size"
         },
         {
-          "cmdb_id": "db_009",
-          "name": "AIOS"
+          "component": "db_009",
+          "kpi": "AIOS"
         },
         {
-          "cmdb_id": "db_009",
-          "name": "Asm_Free_Tb"
+          "component": "db_009",
+          "kpi": "Asm_Free_Tb"
         },
         {
-          "cmdb_id": "db_009",
-          "name": "DFParaWrite_Per_Sec"
+          "component": "db_009",
+          "kpi": "DFParaWrite_Per_Sec"
         },
         {
-          "cmdb_id": "db_009",
-          "name": "DbFile_Used_Pct"
+          "component": "db_009",
+          "kpi": "DbFile_Used_Pct"
         },
         {
-          "cmdb_id": "db_009",
-          "name": "Hang"
+          "component": "db_009",
+          "kpi": "Hang"
         },
         {
-          "cmdb_id": "db_009",
-          "name": "MEM_Total"
+          "component": "db_009",
+          "kpi": "MEM_Total"
         },
         {
-          "cmdb_id": "db_009",
-          "name": "On_Off_State"
+          "component": "db_009",
+          "kpi": "On_Off_State"
         },
         {
-          "cmdb_id": "db_009",
-          "name": "PGA_Used_Pct"
+          "component": "db_009",
+          "kpi": "PGA_Used_Pct"
         },
         {
-          "cmdb_id": "db_009",
-          "name": "SEQ_Used_Pct"
+          "component": "db_009",
+          "kpi": "SEQ_Used_Pct"
         },
         {
-          "cmdb_id": "db_009",
-          "name": "Total_Tbs_Size"
+          "component": "db_009",
+          "kpi": "Total_Tbs_Size"
         },
         {
-          "cmdb_id": "db_010",
-          "name": "DbFile_Used_Pct"
+          "component": "db_010",
+          "kpi": "DbFile_Used_Pct"
         },
         {
-          "cmdb_id": "db_010",
-          "name": "Hang"
+          "component": "db_010",
+          "kpi": "Hang"
         },
         {
-          "cmdb_id": "db_010",
-          "name": "MEM_Total"
+          "component": "db_010",
+          "kpi": "MEM_Total"
         },
         {
-          "cmdb_id": "db_010",
-          "name": "On_Off_State"
+          "component": "db_010",
+          "kpi": "On_Off_State"
         },
         {
-          "cmdb_id": "db_010",
-          "name": "PGA_Used_Pct"
+          "component": "db_010",
+          "kpi": "PGA_Used_Pct"
         },
         {
-          "cmdb_id": "db_010",
-          "name": "Row_Lock"
+          "component": "db_010",
+          "kpi": "Row_Lock"
         },
         {
-          "cmdb_id": "db_010",
-          "name": "SEQ_Used_Pct"
+          "component": "db_010",
+          "kpi": "SEQ_Used_Pct"
         },
         {
-          "cmdb_id": "db_010",
-          "name": "Total_Tbs_Size"
+          "component": "db_010",
+          "kpi": "Total_Tbs_Size"
         },
         {
-          "cmdb_id": "db_011",
-          "name": "DbFile_Used_Pct"
+          "component": "db_011",
+          "kpi": "DbFile_Used_Pct"
         },
         {
-          "cmdb_id": "db_011",
-          "name": "Hang"
+          "component": "db_011",
+          "kpi": "Hang"
         },
         {
-          "cmdb_id": "db_011",
-          "name": "MEM_Total"
+          "component": "db_011",
+          "kpi": "MEM_Total"
         },
         {
-          "cmdb_id": "db_011",
-          "name": "On_Off_State"
+          "component": "db_011",
+          "kpi": "On_Off_State"
         },
         {
-          "cmdb_id": "db_011",
-          "name": "PGA_Used_Pct"
+          "component": "db_011",
+          "kpi": "PGA_Used_Pct"
         },
         {
-          "cmdb_id": "db_011",
-          "name": "Row_Lock"
+          "component": "db_011",
+          "kpi": "Row_Lock"
         },
         {
-          "cmdb_id": "db_011",
-          "name": "SEQ_Used_Pct"
+          "component": "db_011",
+          "kpi": "SEQ_Used_Pct"
         },
         {
-          "cmdb_id": "db_011",
-          "name": "Total_Tbs_Size"
+          "component": "db_011",
+          "kpi": "Total_Tbs_Size"
         },
         {
-          "cmdb_id": "db_012",
-          "name": "DbFile_Used_Pct"
+          "component": "db_012",
+          "kpi": "DbFile_Used_Pct"
         },
         {
-          "cmdb_id": "db_012",
-          "name": "Hang"
+          "component": "db_012",
+          "kpi": "Hang"
         },
         {
-          "cmdb_id": "db_012",
-          "name": "MEM_Total"
+          "component": "db_012",
+          "kpi": "MEM_Total"
         },
         {
-          "cmdb_id": "db_012",
-          "name": "On_Off_State"
+          "component": "db_012",
+          "kpi": "On_Off_State"
         },
         {
-          "cmdb_id": "db_012",
-          "name": "PGA_Used_Pct"
+          "component": "db_012",
+          "kpi": "PGA_Used_Pct"
         },
         {
-          "cmdb_id": "db_012",
-          "name": "Row_Lock"
+          "component": "db_012",
+          "kpi": "Row_Lock"
         },
         {
-          "cmdb_id": "db_012",
-          "name": "SEQ_Used_Pct"
+          "component": "db_012",
+          "kpi": "SEQ_Used_Pct"
         },
         {
-          "cmdb_id": "db_012",
-          "name": "Sess_Used_Temp"
+          "component": "db_012",
+          "kpi": "Sess_Used_Temp"
         },
         {
-          "cmdb_id": "db_012",
-          "name": "TempTbs_Pct"
+          "component": "db_012",
+          "kpi": "TempTbs_Pct"
         },
         {
-          "cmdb_id": "db_012",
-          "name": "Total_Tbs_Size"
+          "component": "db_012",
+          "kpi": "Total_Tbs_Size"
         },
         {
-          "cmdb_id": "db_013",
-          "name": "AIOS"
+          "component": "db_013",
+          "kpi": "AIOS"
         },
         {
-          "cmdb_id": "db_013",
-          "name": "DbFile_Used_Pct"
+          "component": "db_013",
+          "kpi": "DbFile_Used_Pct"
         },
         {
-          "cmdb_id": "db_013",
-          "name": "Hang"
+          "component": "db_013",
+          "kpi": "Hang"
         },
         {
-          "cmdb_id": "db_013",
-          "name": "MEM_Total"
+          "component": "db_013",
+          "kpi": "MEM_Total"
         },
         {
-          "cmdb_id": "db_013",
-          "name": "On_Off_State"
+          "component": "db_013",
+          "kpi": "On_Off_State"
         },
         {
-          "cmdb_id": "db_013",
-          "name": "PGA_Used_Pct"
+          "component": "db_013",
+          "kpi": "PGA_Used_Pct"
         },
         {
-          "cmdb_id": "db_013",
-          "name": "Row_Lock"
+          "component": "db_013",
+          "kpi": "Row_Lock"
         },
         {
-          "cmdb_id": "db_013",
-          "name": "SEQ_Used_Pct"
+          "component": "db_013",
+          "kpi": "SEQ_Used_Pct"
         },
         {
-          "cmdb_id": "db_013",
-          "name": "SctRead_Per_Sec"
+          "component": "db_013",
+          "kpi": "SctRead_Per_Sec"
         },
         {
-          "cmdb_id": "db_013",
-          "name": "Sess_Used_Temp"
+          "component": "db_013",
+          "kpi": "Sess_Used_Temp"
         },
         {
-          "cmdb_id": "db_013",
-          "name": "Sess_Used_Undo"
+          "component": "db_013",
+          "kpi": "Sess_Used_Undo"
         },
         {
-          "cmdb_id": "db_013",
-          "name": "TempTbs_Pct"
+          "component": "db_013",
+          "kpi": "TempTbs_Pct"
         },
         {
-          "cmdb_id": "db_013",
-          "name": "Total_Tbs_Size"
+          "component": "db_013",
+          "kpi": "Total_Tbs_Size"
         }
       ],
       "series": 611

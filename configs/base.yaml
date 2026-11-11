@@ -3,7 +3,8 @@ experiment:
   name: e2e
   seed: 42
 
-target_system: Telecom   # Telecom | Bank | Market
+target_system: Telecom   # Telecom | Bank (Market is out of scope, ADR 0009 addendum)
+data_systems: [Telecom, Bank]   # listed in data/MANIFEST.csv
 
 paths:
   data_root: data/raw/openrca

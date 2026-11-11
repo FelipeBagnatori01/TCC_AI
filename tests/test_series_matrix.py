@@ -29,11 +29,11 @@ def kpi_catalog(repo_root: Path):  # type: ignore[no-untyped-def]
 
 
 def _build(tmp_path: Path, kpi_catalog, days=(DAY,), limit: int = 5) -> SeriesMatrix:  # type: ignore[no-untyped-def]
-    system = tmp_path / "Sys"
+    system = tmp_path / "Telecom"
     interim = tmp_path / "interim"
     for day in days:
-        convert_day(system, "Sys", day, interim, overwrite=True)
-    return build_matrix(interim, "Sys", list(days), kpi_catalog, 60, limit)
+        convert_day(system, "Telecom", day, interim, overwrite=True)
+    return build_matrix(interim, "Telecom", list(days), kpi_catalog, 60, limit)
 
 
 def _at(matrix: SeriesMatrix, feature: str, minute: int, day_offset_ms: int = 0) -> float | None:
@@ -156,6 +156,6 @@ def test_trace_edges_follow_parent_span_and_database(tmp_path: Path) -> None:
         + f"JDBC,{START_MS + 2},1.0,True,t1,db,child,docker_001,db_001,\n",
         encoding="utf-8",
     )
-    convert_day(system, "Sys", DAY, tmp_path / "interim")
-    edges = {(s, d): w for s, d, w in trace_edges(tmp_path / "interim", "Sys", DAY).iter_rows()}
+    convert_day(system, "Telecom", DAY, tmp_path / "interim")
+    edges = {(s, d): w for s, d, w in trace_edges(tmp_path / "interim", "Telecom", DAY).iter_rows()}
     assert edges == {("os_021", "docker_001"): 1, ("docker_001", "db_001"): 1}

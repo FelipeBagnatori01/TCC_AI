@@ -12,8 +12,7 @@ import matplotlib.pyplot as plt
 import polars as pl
 
 from tcc_rca.ingestion.cases import Failure
-from tcc_rca.ingestion.quality import SERIES_METRIC_FILES
-from tcc_rca.ingestion.telemetry import FILES_BY_NAME
+from tcc_rca.ingestion.telemetry import files_of_kind
 
 _MARGIN = timedelta(minutes=30)
 
@@ -22,15 +21,16 @@ def failure_kpis(interim_dir: Path, system: str, failure: Failure) -> pl.DataFra
     """All metric samples of the labeled component within +-30 min of the failure start."""
     frames = []
     lo, hi = failure.start_utc - _MARGIN, failure.start_utc + _MARGIN
-    for name in SERIES_METRIC_FILES:
-        pattern = str(interim_dir / system / "*" / f"{FILES_BY_NAME[name].name}.parquet")
+    for file in files_of_kind(system, "metric"):
+        if file.kpi_column is None:
+            raise ValueError(f"{file.name} is not a long-format metric file")
+        pattern = str(interim_dir / system / "*" / f"{file.name}.parquet")
+        comp = file.component_columns[0]
         frames.append(
             pl.scan_parquet(pattern)
-            .filter(
-                (pl.col("cmdb_id") == failure.component) & pl.col("time_utc").is_between(lo, hi)
-            )
-            .select("time_utc", "name", "value")
-            .with_columns(pl.lit(name).alias("source"))
+            .filter((pl.col(comp) == failure.component) & pl.col("time_utc").is_between(lo, hi))
+            .select("time_utc", pl.col(file.kpi_column).alias("name"), "value")
+            .with_columns(pl.lit(file.name).alias("source"))
             .collect()
         )
     return pl.concat(frames)

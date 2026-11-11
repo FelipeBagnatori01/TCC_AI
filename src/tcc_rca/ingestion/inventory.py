@@ -8,7 +8,13 @@ from typing import Any
 
 import polars as pl
 
-from tcc_rca.ingestion.telemetry import TELEMETRY_FILES, TelemetryFile, list_days, raw_path
+from tcc_rca.ingestion.telemetry import (
+    TelemetryFile,
+    detect_epoch_unit,
+    files_for,
+    list_days,
+    raw_path,
+)
 
 
 def _infer_schema(path: Path) -> dict[str, str]:
@@ -22,27 +28,29 @@ def _file_stats(path: Path, file: TelemetryFile) -> dict[str, Any]:
     t = pl.col(file.time_column)
     aggs: list[pl.Expr] = [
         pl.len().alias("rows"),
-        t.min().alias("t_min_ms"),
-        t.max().alias("t_max_ms"),
+        t.min().alias("t_min_raw"),
+        t.max().alias("t_max_raw"),
+        pl.col(file.component_columns[0]).n_unique().alias("n_components"),
     ]
-    if file.subdir == "metric" and file.name != "metric_app":
-        aggs += [
-            pl.col("cmdb_id").n_unique().alias("n_components"),
-            pl.col("name").n_unique().alias("n_kpis"),
-        ]
-    elif file.name == "metric_app":
-        aggs += [pl.col("serviceName").n_unique().alias("n_components")]
-    else:
-        aggs += [pl.col("cmdb_id").n_unique().alias("n_components")]
+    if file.kpi_column is not None:
+        aggs.append(pl.col(file.kpi_column).n_unique().alias("n_kpis"))
+    if file.kind == "log":
+        aggs.append(pl.col("log_name").n_unique().alias("n_log_names"))
     stats: dict[str, Any] = lf.select(aggs).collect().to_dicts()[0]
-    # Dominant spacing between consecutive samples of one series -> granularity.
-    if file.name in {"metric_container", "metric_middleware", "metric_node", "metric_service"}:
+    stats["time_unit"] = (
+        detect_epoch_unit(lf, file.time_column, str(path))
+        if file.time_unit == "auto"
+        else file.time_unit
+    )
+    # Dominant spacing between consecutive samples of one series -> granularity (in ms).
+    if file.kind == "metric" and file.kpi_column is not None:
+        to_ms = 1000 if stats["time_unit"] == "s" else 1
         step = (
-            lf.group_by(["cmdb_id", "name"])
+            lf.group_by([file.component_columns[0], file.kpi_column])
             .agg(t.sort().diff().alias("d"))
             .explode("d")
             .drop_nulls("d")
-            .select(pl.col("d").mode().first().alias("modal_step_ms"))
+            .select((pl.col("d").mode().first() * to_ms).alias("modal_step_ms"))
             .collect()
         )
         stats["modal_step_ms"] = step.item() if step.height else None
@@ -50,11 +58,14 @@ def _file_stats(path: Path, file: TelemetryFile) -> dict[str, Any]:
 
 
 def build_inventory(system_dir: Path) -> dict[str, Any]:
-    """Inventory of every day and file of one system. Reads one file at a time, lazily."""
+    """Inventory of every day and file of one system. Reads one file at a time, lazily.
+
+    The system's layout is chosen by the directory name (``Telecom``, ``Bank``).
+    """
     days: dict[str, Any] = {}
     for day in list_days(system_dir):
         entry: dict[str, Any] = {}
-        for file in TELEMETRY_FILES:
+        for file in files_for(system_dir.name):
             path = raw_path(system_dir, day, file)
             if not path.is_file():
                 entry[file.name] = {"missing": True}

@@ -159,3 +159,31 @@ def test_official_wrapper_rejects_duplicates(tmp_path: Path, repo_root: Path) ->
     p = Prediction(0, None, "os_1", None)
     with pytest.raises(ValueError, match="duplicate"):
         score_with_official_script([p, p], query_csv, repo_root / "external/OpenRCA", tmp_path)
+
+
+def test_local_component_scores_average_top3_window_max() -> None:
+    from tcc_rca.models.baselines.localization import local_component_scores
+
+    feats = ["os_1::a", "os_1::b", "os_1::c", "os_1::d", "db_1::a"]
+    cols = component_columns(feats)
+    local = np.array(
+        [
+            [50.0, 1.0, 2.0, 3.0, 4.0],
+            [0.0, 9.0, np.nan, 3.0, 50.0],
+            [99.0, 99.0, 99.0, 99.0, 99.0],  # outside the window
+        ]
+    )
+    scores = local_component_scores(local, np.array([0, 1]), cols, ["os_1", "db_1", "x_9"])
+    # os_1 window maxima: a=50, b=9, c=2, d=3 -> top3 mean (50 + 9 + 3) / 3; db_1: 50
+    assert scores == {"os_1": pytest.approx(62 / 3), "db_1": 50.0, "x_9": 0.0}
+
+
+def test_prior_component_scores_count_training_root_causes() -> None:
+    from tcc_rca.evaluation.metrics import pessimistic_rank
+    from tcc_rca.models.baselines.localization import prior_component_scores
+
+    train = [_failure("os_1", "r"), _failure("os_1", "r"), _failure("db_1", "r")]
+    scores = prior_component_scores(train, ["db_1", "os_1", "x_9"])
+    assert scores == {"db_1": 1.0, "os_1": 2.0, "x_9": 0.0}
+    assert pessimistic_rank("os_1", scores) == 1
+    assert pessimistic_rank("x_9", scores) == 3  # never seen: last

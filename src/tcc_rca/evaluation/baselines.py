@@ -16,6 +16,7 @@ import polars as pl
 
 from tcc_rca.config import Config
 from tcc_rca.dataset.build import failure_days, feature_categories, normal_minute_mask, windows_hash
+from tcc_rca.dataset.precursor import local_abs_z, minute_scores
 from tcc_rca.dataset.split import Fold, day_of, rolling_origin_folds, with_roles
 from tcc_rca.evaluation.bootstrap import cluster_bootstrap, clusters_from_labels
 from tcc_rca.evaluation.metrics import (
@@ -38,7 +39,12 @@ from tcc_rca.models.baselines.detection import (
     lightgbm_scores,
 )
 from tcc_rca.models.baselines.features import ZScore, window_max_abs, window_rows, window_statistics
-from tcc_rca.models.baselines.localization import component_columns, zscore_component_scores
+from tcc_rca.models.baselines.localization import (
+    component_columns,
+    local_component_scores,
+    prior_component_scores,
+    zscore_component_scores,
+)
 from tcc_rca.series.build import exempt_features
 from tcc_rca.series.catalog import split_feature
 from tcc_rca.series.transforms import FeatureSelector, RobustScaler
@@ -46,7 +52,8 @@ from tcc_rca.tracking import Run
 
 FloatArray = npt.NDArray[np.float64]
 IntArray = npt.NDArray[np.int64]
-DETECTORS = ("zscore_3sigma", "zscore_val", "isolation_forest", "lightgbm")
+DETECTORS = ("zscore_3sigma", "zscore_val", "zscore_local", "isolation_forest", "lightgbm")
+LOCALIZERS = ("zscore_global", "zscore_local", "prior")
 
 
 def _epoch_minutes(col: str) -> pl.Expr:
@@ -108,6 +115,12 @@ def run_folds(
         m: i for i, m in enumerate(values.select(_epoch_minutes("time_utc"))["time_utc"].to_list())
     }
     candidates = sorted({split_feature(f)[0] for f in features})
+    # Causal local |z| (ADR 0013/0014): no fitting, so it is computed once for every feature.
+    p = t.precursor
+    local_all = local_abs_z(
+        values.select("day", *features), features, p.local_window_minutes, p.local_cap
+    )
+    column_of = {f: j for j, f in enumerate(features)}
 
     score_parts: list[pl.DataFrame] = []
     rank_rows: list[dict[str, Any]] = []
@@ -128,8 +141,11 @@ def run_folds(
         val_lab = (role == "val") & labelled
 
         stats = window_statistics(robust, end_rows, t.window_minutes)
+        local = local_all[:, [column_of[f] for f in kept]]
+        local_minute = minute_scores(local, p.top_k)
         scores: dict[str, FloatArray] = {
             "zscore_3sigma": window_max_abs(z, end_rows, t.window_minutes),
+            "zscore_local": local_minute[window_rows(end_rows, t.window_minutes)].max(axis=1),
             "isolation_forest": isolation_forest_scores(
                 stats[train_norm], stats, b.isolation_forest_estimators, seed + fold.index
             ),
@@ -171,24 +187,34 @@ def run_folds(
 
         columns = component_columns(kept)
         onset_offset = t.detection_tolerance_minutes
+        known_days = set(fold.train_days) | set(fold.val_days)
+        prior = prior_component_scores(
+            [f for f, d in zip(failures, f_days, strict=True) if d in known_days], candidates
+        )
         for f, d in zip(failures, f_days, strict=True):
             if d != fold.test_day:
                 continue
             end_minute = f.start_utc.timestamp() / 60.0 + onset_offset
             end_row = _row_of(minute_to_row, end_minute)
             rows = window_rows(np.array([end_row], dtype=np.int64), t.window_minutes)[0]
-            comp_scores = zscore_component_scores(z, rows, columns, candidates)
-            ranking = sorted(comp_scores, key=lambda c: (-comp_scores[c], c))
-            rank_rows.append(
-                {
-                    "fold": fold.index,
-                    "onset_utc": f.start_utc,
-                    "component": f.component,
-                    "reason": f.reason,
-                    "rank": pessimistic_rank(f.component, comp_scores),
-                    "top3": ",".join(ranking[:3]),
-                }
-            )
+            per_method = {
+                "zscore_global": zscore_component_scores(z, rows, columns, candidates),
+                "zscore_local": local_component_scores(local, rows, columns, candidates),
+                "prior": prior,
+            }
+            for method, comp_scores in per_method.items():
+                ranking = sorted(comp_scores, key=lambda c: (-comp_scores[c], c))
+                rank_rows.append(
+                    {
+                        "method": method,
+                        "fold": fold.index,
+                        "onset_utc": f.start_utc,
+                        "component": f.component,
+                        "reason": f.reason,
+                        "rank": pessimistic_rank(f.component, comp_scores),
+                        "top3": ",".join(ranking[:3]),
+                    }
+                )
         meta.append(fold_meta)
         log(f"fold {fold.index} ({fold.test_day}): kept={len(kept)} thresholds done")
     return pl.concat(score_parts), pl.DataFrame(rank_rows), meta
@@ -395,16 +421,32 @@ def write_markdown(path: Path, metrics: dict[str, Any], name: str) -> None:
         f"Taxa de positivos nas janelas rotuladas de teste: {pos_rate:.4f} (AUC-PR de um "
         "classificador aleatório).",
         "",
-        "## Localização (Tarefa B): heurística |z|",
+        "## Localização (Tarefa B): heurísticas de z-score",
         "",
-        "| HR@1 | HR@3 | HR@5 | MRR |",
-        "|---|---|---|---|",
-        f"| {_fmt(loc['hr@1'])} | {_fmt(loc['hr@3'])} | {_fmt(loc['hr@5'])} | {_fmt(loc['mrr'])} |",
-        "",
-        "| Motivo | Falhas | HR@1 |",
-        "|---|---|---|",
+        "| Heurística | HR@1 | HR@3 | HR@5 | MRR |",
+        "|---|---|---|---|---|",
     ]
-    lines += [f"| {k} | {v['n']} | {v['hr@1']:.2f} |" for k, v in loc["hr@1_by_reason"].items()]
+    loc_local = metrics["localization_local"]
+    loc_prior = metrics["localization_prior"]
+    for name, res in (
+        ("referência: frequência no treino", loc_prior),
+        ("z-score global (máximo)", loc),
+        ("z-score local (média dos 3 maiores)", loc_local),
+    ):
+        lines.append(
+            f"| {name} | {_fmt(res['hr@1'])} | {_fmt(res['hr@3'])} | {_fmt(res['hr@5'])} "
+            f"| {_fmt(res['mrr'])} |"
+        )
+    lines += [
+        "",
+        "| Motivo | Falhas | HR@1 referência | HR@1 global | HR@1 local |",
+        "|---|---|---|---|---|",
+    ]
+    lines += [
+        f"| {k} | {v['n']} | {loc_prior['hr@1_by_reason'][k]['hr@1']:.2f} | {v['hr@1']:.2f} "
+        f"| {loc_local['hr@1_by_reason'][k]['hr@1']:.2f} |"
+        for k, v in loc["hr@1_by_reason"].items()
+    ]
     lines += [
         "",
         "## Diagnóstico (Tarefa C): baseline constante, script oficial do OpenRCA",
@@ -454,7 +496,15 @@ def run_baselines(config: Config, tables_dir: Path) -> dict[str, Any]:
             "bootstrap_block_minutes": config.baselines.bootstrap_block_minutes,
             "constant_exempt_categories": list(config.series.selection.constant_exempt_categories),
             "detection": evaluate_detection(scores, tested, config),
-            "localization": evaluate_localization(ranks, config),
+            "localization": evaluate_localization(
+                ranks.filter(pl.col("method") == "zscore_global"), config
+            ),
+            "localization_local": evaluate_localization(
+                ranks.filter(pl.col("method") == "zscore_local"), config
+            ),
+            "localization_prior": evaluate_localization(
+                ranks.filter(pl.col("method") == "prior"), config
+            ),
             "diagnosis_constant": constant,
         }
         run.log_metrics(metrics)

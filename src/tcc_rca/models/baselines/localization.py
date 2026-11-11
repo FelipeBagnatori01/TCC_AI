@@ -2,11 +2,13 @@
 
 from __future__ import annotations
 
+from collections import Counter
 from collections.abc import Sequence
 
 import numpy as np
 import numpy.typing as npt
 
+from tcc_rca.ingestion.cases import Failure
 from tcc_rca.series.catalog import split_feature
 
 FloatArray = npt.NDArray[np.float64]
@@ -31,3 +33,35 @@ def zscore_component_scores(
     block = np.nan_to_num(np.abs(z[rows]), nan=0.0)
     per_feature = block.max(axis=0)
     return {c: float(per_feature[columns[c]].max()) if c in columns else 0.0 for c in candidates}
+
+
+def local_component_scores(
+    local_z: FloatArray,
+    rows: IntArray,
+    columns: dict[str, IntArray],
+    candidates: Sequence[str],
+    top: int = 3,
+) -> dict[str, float]:
+    """Mean of the component's ``top`` largest window-max causal local |z| (ADR 0014).
+
+    Local |z| is capped, so a plain maximum would tie many components at the cap; averaging
+    the top three features keeps the ranking informative. Missing values count as 0.
+    """
+    per_feature = np.nan_to_num(local_z[rows], nan=0.0).max(axis=0)
+    out: dict[str, float] = {}
+    for c in candidates:
+        if c not in columns:
+            out[c] = 0.0
+            continue
+        vals = np.sort(per_feature[columns[c]])[::-1][:top]
+        out[c] = float(vals.mean())
+    return out
+
+
+def prior_component_scores(
+    training_failures: Sequence[Failure], candidates: Sequence[str]
+) -> dict[str, float]:
+    """Reference ranking without telemetry: how often each candidate was the root cause in the
+    fold's training/validation failures (the localization analogue of the constant baseline)."""
+    counts = Counter(f.component for f in training_failures)
+    return {c: float(counts.get(c, 0)) for c in candidates}

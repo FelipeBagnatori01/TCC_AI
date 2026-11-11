@@ -70,3 +70,31 @@ def make_system(root: Path, system: str = "Sys") -> Path:
     )
     (trace_dir / "trace_span.csv").write_text(TRACE_HEADER + "\n" + spans, encoding="utf-8")
     return system_dir
+
+
+DAY2 = "2020_04_12"
+DAY_MS = 86_400_000
+
+
+def add_shifted_day(system_dir: Path, day: str = DAY2, shift_ms: int = DAY_MS) -> None:
+    """Copy the synthetic day to ``day`` with every epoch-ms timestamp shifted by ``shift_ms``."""
+    src = system_dir / "telemetry" / DAY
+    for path in src.rglob("*.csv"):
+        lines = path.read_text(encoding="utf-8").splitlines()
+        header = lines[0].split(",")
+        time_col = header.index("timestamp" if "timestamp" in header else "startTime")
+        out_lines = [lines[0]]
+        for line in lines[1:]:
+            cells = line.split(",")
+            cells[time_col] = str(int(cells[time_col]) + shift_ms)
+            out_lines.append(",".join(cells))
+        target = system_dir / "telemetry" / day / path.relative_to(src)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text("\n".join(out_lines) + "\n", encoding="utf-8")
+
+
+def write_metric(system_dir: Path, name: str, rows: list[tuple[int, str, int, float, str]]) -> None:
+    """Overwrite a metric file of ``DAY`` with rows ``(itemid, kpi, timestamp_ms, value, cmdb)``."""
+    body = "".join(f"{i},{k},B-1,{t},{v},{c}\n" for i, k, t, v, c in rows)
+    path = system_dir / "telemetry" / DAY / "metric" / f"{name}.csv"
+    path.write_text(METRIC_HEADER + "\n" + body, encoding="utf-8")

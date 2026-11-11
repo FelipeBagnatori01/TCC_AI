@@ -40,11 +40,28 @@ class LLMConfig(_Strict):
     cache_dir: Path
 
 
+class SelectionConfig(_Strict):
+    max_missing_frac: float = Field(gt=0.0, le=1.0)
+    near_constant_mode_share: float = Field(gt=0.0, le=1.0)
+    # KPI categories never dropped for being (near-)constant in training; chosen a priori.
+    constant_exempt_categories: tuple[str, ...] = ()
+
+
+class SeriesConfig(_Strict):
+    step_seconds: int = Field(gt=0)
+    ffill_limit_steps: int = Field(ge=0)
+    deployment_list: Path  # relative to paths.data_root
+    kpi_catalog: Path
+    selection: SelectionConfig
+    report_train_days: int = Field(gt=0)
+
+
 class Config(_Strict):
     experiment: ExperimentConfig
     target_system: Literal["Telecom", "Bank", "Market"]
     paths: PathsConfig
     llm: LLMConfig
+    series: SeriesConfig
 
     def resolved(self) -> dict[str, Any]:
         """JSON-serializable view of the fully resolved configuration."""

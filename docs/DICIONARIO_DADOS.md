@@ -94,6 +94,24 @@ Em `reports/tables/quality_Telecom.{md,json}`:
 - Muitos KPIs são constantes (cerca de 20% das séries); a seleção de atributos da E2 deve usar só o treino.
 - O sinal da falha é visível em alguns KPIs, mas na amostra inspecionada (`docker_003`, CPU fault) o `container_cpu_used` sobe depois do instante rotulado, e não antes. A análise de sinal precursor é da E3.
 
+## Lista de implantação (`AppTelecomDeploymentList.xlsx`)
+
+Planilha do Drive oficial do OpenRCA, com colunas `Type, Number, Host, Name, From (containers)`. Ela lista 61 componentes em grupos:
+- `OSB` (`osb_001`) e `CSF` (`csf_001..005`, dos quais `csf_001` e `csf_002` vêm dos grupos de contêineres `container_001` e `container_002`);
+- `oracle_11G` (`db_001..013`);
+- `redis` (`redis_001..012`, hospedados em `os_003..005`);
+- `container_001` (`docker_001..004`) e `container_002` (`docker_005..008`), hospedados em `os_017..020`;
+- `Virtual Machine` (`os_001..022`).
+
+Leitura e arestas: ADR 0006 e `reports/tables/dependency_edges_Telecom.csv`.
+
+## Séries multivariadas (E2)
+
+- Matriz em `data/processed/Telecom/series.parquet` (não versionada): 5.401 minutos × 2.138 atributos `componente::kpi`, mais `observed.parquet` com a máscara de amostras reais.
+- Catálogo por atributo: `reports/tables/feature_catalog_Telecom.csv`, gerado a partir do catálogo de KPIs versionado `configs/data/kpi_catalog_telecom.yaml`. Categoria, unidade e descrição são **inferidas do nome**; as siglas `ACS`, `AIOS` e `AWS` não estão documentadas.
+- Regras de agregação e preenchimento: ADR 0005.
+- Seleção provisória (5 primeiros dias): `reports/tables/feature_drop_provisional_Telecom.csv` lista os 552 descartados com motivo. `reports/tables/feature_exempt_provisional_Telecom.csv` lista os 78 atributos de disponibilidade mantidos **só** pela isenção (`Agent_ping` 22, `ICMP_ping` 19, `Hang` 13, `On_Off_State` 12, `redis_ping` 12, todos constantes no treino); sem eles, obtém-se a seleção de controle (1.508).
+
 ## Memória
 
 Converter um dia para parquet (leitura lazy e escrita em streaming) teve pico de **1.706 MB** de RSS no dia mais pesado (2020_04_20, 1,24 GB de trace) e 1.681 MB em 2020_04_11, medidos em processo isolado por `tcc-rca convert --days <dia>`, na máquina de 24 GB de RAM. Os 15 dias convertidos ocupam 2,7 GB em `data/interim/`.

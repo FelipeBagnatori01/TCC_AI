@@ -1,0 +1,62 @@
+name,group,host
+osb_001,OSB,
+csf_001,CSF,
+csf_002,CSF,
+csf_003,CSF,
+csf_004,CSF,
+csf_005,CSF,
+db_001,oracle_11G,
+db_002,oracle_11G,
+db_003,oracle_11G,
+db_004,oracle_11G,
+db_005,oracle_11G,
+db_006,oracle_11G,
+db_007,oracle_11G,
+db_008,oracle_11G,
+db_009,oracle_11G,
+db_010,oracle_11G,
+db_011,oracle_11G,
+db_012,oracle_11G,
+db_013,oracle_11G,
+redis_001,redis,os_003
+redis_002,redis,os_003
+redis_003,redis,os_003
+redis_004,redis,os_003
+redis_005,redis,os_004
+redis_006,redis,os_004
+redis_007,redis,os_004
+redis_008,redis,os_004
+redis_009,redis,os_005
+redis_010,redis,os_005
+redis_011,redis,os_005
+redis_012,redis,os_005
+docker_001,container_001,os_017
+docker_002,container_001,os_018
+docker_003,container_001,os_019
+docker_004,container_001,os_020
+docker_005,container_002,os_017
+docker_006,container_002,os_018
+docker_007,container_002,os_019
+docker_008,container_002,os_020
+os_001,Virtual Machine,
+os_002,Virtual Machine,
+os_006,Virtual Machine,
+os_007,Virtual Machine,
+os_008,Virtual Machine,
+os_009,Virtual Machine,
+os_010,Virtual Machine,
+os_003,Virtual Machine,
+os_004,Virtual Machine,
+os_005,Virtual Machine,
+os_011,Virtual Machine,
+os_012,Virtual Machine,
+os_013,Virtual Machine,
+os_014,Virtual Machine,
+os_015,Virtual Machine,
+os_016,Virtual Machine,
+os_017,Virtual Machine,
+os_018,Virtual Machine,
+os_019,Virtual Machine,
+os_020,Virtual Machine,
+os_021,Virtual Machine,
+os_022,Virtual Machine,

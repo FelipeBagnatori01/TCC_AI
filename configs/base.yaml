@@ -22,3 +22,16 @@ llm:
   price_input_per_mtok: 1.0   # USD per million input tokens
   price_output_per_mtok: 2.0  # USD per million output tokens
   cache_dir: experiments/llm_cache
+
+series:
+  step_seconds: 60                 # ADR 0005: modal sampling step of every metric series
+  ffill_limit_steps: 5             # forward-fill at most 5 steps inside a day; never across days
+  deployment_list: AppTelecomDeploymentList.xlsx   # relative to paths.data_root (OpenRCA Drive)
+  kpi_catalog: configs/data/kpi_catalog_telecom.yaml
+  selection:
+    max_missing_frac: 0.5          # drop features missing in >50% of training rows
+    near_constant_mode_share: 0.999  # drop features whose modal value covers >=99.9% of training rows
+    # ADR 0005: availability KPIs are constant in normal operation by definition. Control without
+    # exemption: configs/experiment/sensitivity_sem_isencao.yaml (threat to validity, see ADR).
+    constant_exempt_categories: [disponibilidade]
+  report_train_days: 5             # provisional train block (first N days) for the E2 drop report only

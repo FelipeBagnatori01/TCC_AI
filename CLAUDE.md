@@ -10,7 +10,7 @@ The full spec lives **outside** this repo: `../instrucoes_implementacao_tcc.md` 
 
 **Workflow rule from the spec:** work one stage at a time, in order. At the start of a stage present the plan and open questions before writing code; at the end report summary, changed files, how to run, acceptance criteria with evidence, ADRs, blockers, and wait for approval. Never mark a criterion met without evidence; never skip/silence tests or relax lint. Do not assume OpenRCA file or column names — inventory them (E1). Missing data/access goes to `docs/BLOQUEIOS.md`, not invented.
 
-Status: E0 (infrastructure) approved and committed; E1 (data acquisition/inventory) implemented, pending approval. `series/`, `dataset/`, `models/`, `explain/`, `agent/`, `evaluation/` are empty placeholder packages for E2–E8.
+Status: E0 (infrastructure) approved and committed; E1 committed; E2 (multivariate series) implemented, pending approval. `dataset/`, `models/`, `explain/`, `agent/`, `evaluation/` are empty placeholder packages for E2–E8.
 
 ## Commands
 
@@ -32,6 +32,7 @@ uv run tcc-rca manifest | verify [--quick]   # data/MANIFEST.csv + integrity che
 uv run tcc-rca inventory                      # reports/tables/inventory_<system>.json
 uv run tcc-rca convert [--days 2020_04_11]    # raw CSV -> data/interim parquet (UTC)
 uv run tcc-rca cases | quality | eda -n 10    # label mapping, quality report, figures
+uv run tcc-rca series                         # E2: matrix -> data/processed, catalog/edges -> reports/tables
 ```
 
 Official OpenRCA scorer: run from `external/OpenRCA` as `uv run --project ../.. python -m main.evaluate -p <pred.csv> -q <query.csv> -r <report.csv>`.
@@ -51,6 +52,7 @@ Everything experimental flows through three pieces that must be used together to
 - OpenRCA repo is a git submodule at `external/OpenRCA` (pinned commit in ADR 0003; excluded from ruff; never edit it — run ruff/format only via `make`, not on `external/`). Clone with `--recurse-submodules`.
 - Raw Telecom data lives outside the repo (`../Telecom`) and is symlinked at `data/raw/openrca/Telecom` (git refuses paths beyond that symlink, so gitignore tests use `Bank/`). Real Telecom facts (6 h/day 00:00–06:00 UTC+8, 15 days, 60 s metric step, near-duplicate days) are in `docs/DICIONARIO_DADOS.md`.
 - `ingestion/timeutil.py` is the only place that converts UTC+8 ↔ UTC (ADR 0002). `ingestion/cases.py` exposes agent-visible query data only; ground truth (`scoring_points`) is read solely via `ingestion/labels.py`, which `tcc_rca.agent` must never import (tested).
+- E2 series (ADR 0005/0006): features are named `component::kpi`; every KPI must have an entry in `configs/data/kpi_catalog_telecom.yaml` (including `item_agg` for multi-item KPIs) or the build fails. `FeatureSelector`/`RobustScaler` take a boolean `train_rows` mask and must only ever be fitted on training rows (leakage test in `tests/test_series_transforms.py`). The `disponibilidade` KPI category is exempt from constancy dropping; that choice was made after seeing labels, so every headline metric from E3 on must also be reported with the control `configs/experiment/sensitivity_sem_isencao.yaml` (threat log: `docs/AMEACAS_VALIDADE.md`). Dependency edges merge trace calls with `AppTelecomDeploymentList.xlsx` (symlinked under `data/raw/openrca/`).
 - Telemetry readers enforce explicit schemas and fail on header drift; unit tests use the synthetic system in `tests/synthetic.py`, never real data.
 
 ## Conventions and constraints

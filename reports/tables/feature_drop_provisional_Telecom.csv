@@ -1,0 +1,553 @@
+feature,source,category,reason
+db_001::Asm_Free_Tb,metric_service,disco,constante no treino
+db_001::DbFile_Used_Pct,metric_service,disco,ausente em 100.0% das linhas de treino
+db_001::MEM_Total,metric_service,memória,constante no treino
+db_001::New_Tbs_Used_Pct,metric_service,disco,constante no treino
+db_001::PGA_Used_Pct,metric_service,memória,constante no treino
+db_001::PGA_used_total,metric_service,memória,constante no treino
+db_001::Row_Lock,metric_service,banco de dados,constante no treino
+db_001::SEQ_Used_Pct,metric_service,banco de dados,ausente em 97.0% das linhas de treino
+db_001::Sess_Used_Temp,metric_service,banco de dados,constante no treino
+db_001::Tbs_Free_Gb,metric_service,disco,ausente em 81.1% das linhas de treino
+db_001::Tbs_Used_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_001::TempTbs_Pct,metric_service,disco,constante no treino
+db_001::Total_Tbs_Size,metric_service,disco,ausente em 90.3% das linhas de treino
+db_001::UndoTbs_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_001::Used_Tbs_Size,metric_service,disco,ausente em 90.3% das linhas de treino
+db_002::Asm_Free_Tb,metric_service,disco,constante no treino
+db_002::DbFile_Used_Pct,metric_service,disco,ausente em 100.0% das linhas de treino
+db_002::MEM_Total,metric_service,memória,constante no treino
+db_002::PGA_Used_Pct,metric_service,memória,constante no treino
+db_002::PGA_used_total,metric_service,memória,constante no treino
+db_002::Row_Lock,metric_service,banco de dados,constante no treino
+db_002::SEQ_Used_Pct,metric_service,banco de dados,ausente em 97.0% das linhas de treino
+db_002::Sess_Used_Temp,metric_service,banco de dados,constante no treino
+db_002::Sess_Used_Undo,metric_service,banco de dados,constante no treino
+db_002::Tbs_Free_Gb,metric_service,disco,ausente em 81.1% das linhas de treino
+db_002::Tbs_Used_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_002::TempTbs_Pct,metric_service,disco,constante no treino
+db_002::Total_Tbs_Size,metric_service,disco,ausente em 90.3% das linhas de treino
+db_002::UndoTbs_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_002::Used_Tbs_Size,metric_service,disco,ausente em 90.3% das linhas de treino
+db_003::DbFile_Used_Pct,metric_service,disco,ausente em 100.0% das linhas de treino
+db_003::MEM_Total,metric_service,memória,constante no treino
+db_003::PGA_Used_Pct,metric_service,memória,constante no treino
+db_003::Row_Lock,metric_service,banco de dados,constante no treino
+db_003::SEQ_Used_Pct,metric_service,banco de dados,ausente em 87.3% das linhas de treino
+db_003::Tbs_Free_Gb,metric_service,disco,ausente em 81.1% das linhas de treino
+db_003::Tbs_Used_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_003::TempTbs_Pct,metric_service,disco,constante no treino
+db_003::Total_Tbs_Size,metric_service,disco,ausente em 84.2% das linhas de treino
+db_003::UndoTbs_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_003::Used_Tbs_Size,metric_service,disco,ausente em 80.1% das linhas de treino
+db_004::Asm_Free_Tb,metric_service,disco,constante no treino
+db_004::DbFile_Used_Pct,metric_service,disco,ausente em 100.0% das linhas de treino
+db_004::MEM_Total,metric_service,memória,constante no treino
+db_004::New_Tbs_Used_Pct,metric_service,disco,constante no treino
+db_004::PGA_Used_Pct,metric_service,memória,constante no treino
+db_004::Row_Lock,metric_service,banco de dados,constante no treino
+db_004::SEQ_Used_Pct,metric_service,banco de dados,ausente em 97.0% das linhas de treino
+db_004::SctRead_Per_Sec,metric_service,disco,constante no treino
+db_004::Sess_Used_Temp,metric_service,banco de dados,constante no treino
+db_004::Sess_Used_Undo,metric_service,banco de dados,constante no treino
+db_004::Tbs_Free_Gb,metric_service,disco,ausente em 81.1% das linhas de treino
+db_004::Tbs_Used_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_004::TempTbs_Pct,metric_service,disco,constante no treino
+db_004::Total_Tbs_Size,metric_service,disco,ausente em 90.3% das linhas de treino
+db_004::UndoTbs_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_004::Used_Tbs_Size,metric_service,disco,ausente em 90.3% das linhas de treino
+db_005::DbFile_Used_Pct,metric_service,disco,ausente em 100.0% das linhas de treino
+db_005::MEM_Total,metric_service,memória,constante no treino
+db_005::PGA_Used_Pct,metric_service,memória,constante no treino
+db_005::Row_Lock,metric_service,banco de dados,constante no treino
+db_005::SEQ_Used_Pct,metric_service,banco de dados,ausente em 97.0% das linhas de treino
+db_005::SctRead_Per_Sec,metric_service,disco,constante no treino
+db_005::Tbs_Free_Gb,metric_service,disco,ausente em 81.1% das linhas de treino
+db_005::Tbs_Used_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_005::TempTbs_Pct,metric_service,disco,constante no treino
+db_005::Total_Tbs_Size,metric_service,disco,ausente em 90.3% das linhas de treino
+db_005::UndoTbs_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_005::Used_Tbs_Size,metric_service,disco,ausente em 90.3% das linhas de treino
+db_006::Asm_Free_Tb,metric_service,disco,constante no treino
+db_006::DbFile_Used_Pct,metric_service,disco,ausente em 100.0% das linhas de treino
+db_006::MEM_Total,metric_service,memória,constante no treino
+db_006::MEM_real_util,metric_service,memória,constante no treino
+db_006::New_Tbs_Used_Pct,metric_service,disco,constante no treino
+db_006::PGA_Used_Pct,metric_service,memória,constante no treino
+db_006::PGA_used_total,metric_service,memória,constante no treino
+db_006::Row_Lock,metric_service,banco de dados,constante no treino
+db_006::SEQ_Used_Pct,metric_service,banco de dados,ausente em 97.0% das linhas de treino
+db_006::SctRead_Per_Sec,metric_service,disco,constante no treino
+db_006::Sess_Used_Temp,metric_service,banco de dados,constante no treino
+db_006::Sess_Used_Undo,metric_service,banco de dados,constante no treino
+db_006::Tbs_Free_Gb,metric_service,disco,ausente em 81.1% das linhas de treino
+db_006::Tbs_Used_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_006::TempTbs_Pct,metric_service,disco,constante no treino
+db_006::Total_Tbs_Size,metric_service,disco,ausente em 90.3% das linhas de treino
+db_006::UndoTbs_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_006::Used_Tbs_Size,metric_service,disco,ausente em 90.3% das linhas de treino
+db_007::DbFile_Used_Pct,metric_service,disco,ausente em 100.0% das linhas de treino
+db_007::MEM_Total,metric_service,memória,constante no treino
+db_007::New_Tbs_Free_Gb,metric_service,disco,constante no treino
+db_007::PGA_Used_Pct,metric_service,memória,constante no treino
+db_007::Row_Lock,metric_service,banco de dados,constante no treino
+db_007::SEQ_Used_Pct,metric_service,banco de dados,ausente em 89.1% das linhas de treino
+db_007::Tbs_Free_Gb,metric_service,disco,ausente em 81.1% das linhas de treino
+db_007::Tbs_Used_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_007::TempTbs_Pct,metric_service,disco,constante no treino
+db_007::Total_Tbs_Size,metric_service,disco,ausente em 82.6% das linhas de treino
+db_007::UndoTbs_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_007::Used_Tbs_Size,metric_service,disco,ausente em 82.5% das linhas de treino
+db_008::Asm_Free_Tb,metric_service,disco,constante no treino
+db_008::DbFile_Used_Pct,metric_service,disco,ausente em 100.0% das linhas de treino
+db_008::MEM_Total,metric_service,memória,constante no treino
+db_008::New_Tbs_Used_Pct,metric_service,disco,constante no treino
+db_008::PGA_Used_Pct,metric_service,memória,constante no treino
+db_008::Row_Lock,metric_service,banco de dados,constante no treino
+db_008::SEQ_Used_Pct,metric_service,banco de dados,ausente em 97.0% das linhas de treino
+db_008::SctRead_Per_Sec,metric_service,disco,constante no treino
+db_008::Tbs_Free_Gb,metric_service,disco,ausente em 81.1% das linhas de treino
+db_008::Tbs_Used_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_008::TempTbs_Pct,metric_service,disco,constante no treino
+db_008::Total_Tbs_Size,metric_service,disco,ausente em 90.3% das linhas de treino
+db_008::UndoTbs_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_008::Used_Tbs_Size,metric_service,disco,ausente em 90.3% das linhas de treino
+db_009::AIOS,metric_service,banco de dados,constante no treino
+db_009::Asm_Free_Tb,metric_service,disco,constante no treino
+db_009::DFParaWrite_Per_Sec,metric_service,disco,constante no treino
+db_009::DbFile_Used_Pct,metric_service,disco,ausente em 100.0% das linhas de treino
+db_009::MEM_Total,metric_service,memória,constante no treino
+db_009::New_Tbs_Used_Pct,metric_service,disco,constante no treino
+db_009::PGA_Used_Pct,metric_service,memória,constante no treino
+db_009::Row_Lock,metric_service,banco de dados,constante no treino
+db_009::SEQ_Used_Pct,metric_service,banco de dados,ausente em 97.0% das linhas de treino
+db_009::Tbs_Free_Gb,metric_service,disco,ausente em 81.1% das linhas de treino
+db_009::Tbs_Used_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_009::Total_Tbs_Size,metric_service,disco,ausente em 90.3% das linhas de treino
+db_009::UndoTbs_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_009::Used_Tbs_Size,metric_service,disco,ausente em 90.3% das linhas de treino
+db_009::trace_error_rate,trace,erro,constante no treino
+db_010::AIOS,metric_service,banco de dados,constante no treino
+db_010::DbFile_Used_Pct,metric_service,disco,ausente em 100.0% das linhas de treino
+db_010::MEM_Total,metric_service,memória,constante no treino
+db_010::New_Tbs_Free_Gb,metric_service,disco,constante no treino
+db_010::New_Tbs_Used_Pct,metric_service,disco,constante no treino
+db_010::PGA_Used_Pct,metric_service,memória,constante no treino
+db_010::Row_Lock,metric_service,banco de dados,constante no treino
+db_010::SEQ_Used_Pct,metric_service,banco de dados,ausente em 97.0% das linhas de treino
+db_010::SctRead_Per_Sec,metric_service,disco,quase constante no treino (moda em 99.94%)
+db_010::Tbs_Free_Gb,metric_service,disco,ausente em 81.1% das linhas de treino
+db_010::Tbs_Used_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_010::Total_Tbs_Size,metric_service,disco,ausente em 70.7% das linhas de treino
+db_010::UndoTbs_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_010::Used_Tbs_Size,metric_service,disco,ausente em 70.7% das linhas de treino
+db_011::DbFile_Used_Pct,metric_service,disco,ausente em 100.0% das linhas de treino
+db_011::MEM_Total,metric_service,memória,constante no treino
+db_011::New_Tbs_Free_Gb,metric_service,disco,constante no treino
+db_011::New_Tbs_Used_Pct,metric_service,disco,constante no treino
+db_011::PGA_Used_Pct,metric_service,memória,constante no treino
+db_011::Row_Lock,metric_service,banco de dados,constante no treino
+db_011::SEQ_Used_Pct,metric_service,banco de dados,ausente em 97.0% das linhas de treino
+db_011::Tbs_Free_Gb,metric_service,disco,ausente em 81.1% das linhas de treino
+db_011::Tbs_Used_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_011::Total_Tbs_Size,metric_service,disco,ausente em 52.0% das linhas de treino
+db_011::UndoTbs_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_011::Used_Tbs_Size,metric_service,disco,ausente em 52.0% das linhas de treino
+db_012::AIOS,metric_service,banco de dados,quase constante no treino (moda em 99.94%)
+db_012::DbFile_Used_Pct,metric_service,disco,ausente em 100.0% das linhas de treino
+db_012::MEM_Total,metric_service,memória,constante no treino
+db_012::New_Tbs_Free_Gb,metric_service,disco,constante no treino
+db_012::PGA_Used_Pct,metric_service,memória,constante no treino
+db_012::Row_Lock,metric_service,banco de dados,constante no treino
+db_012::SEQ_Used_Pct,metric_service,banco de dados,ausente em 97.0% das linhas de treino
+db_012::SctRead_Per_Sec,metric_service,disco,constante no treino
+db_012::Sess_Used_Temp,metric_service,banco de dados,constante no treino
+db_012::Tbs_Free_Gb,metric_service,disco,ausente em 81.5% das linhas de treino
+db_012::Tbs_Used_Pct,metric_service,disco,ausente em 81.5% das linhas de treino
+db_012::TempTbs_Pct,metric_service,disco,constante no treino
+db_012::Total_Tbs_Size,metric_service,disco,ausente em 68.4% das linhas de treino
+db_012::UndoTbs_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_012::Used_Tbs_Size,metric_service,disco,ausente em 66.4% das linhas de treino
+db_013::AIOS,metric_service,banco de dados,constante no treino
+db_013::DbFile_Used_Pct,metric_service,disco,ausente em 100.0% das linhas de treino
+db_013::MEM_Total,metric_service,memória,constante no treino
+db_013::New_Tbs_Free_Gb,metric_service,disco,constante no treino
+db_013::PGA_Used_Pct,metric_service,memória,constante no treino
+db_013::Row_Lock,metric_service,banco de dados,constante no treino
+db_013::SEQ_Used_Pct,metric_service,banco de dados,ausente em 97.0% das linhas de treino
+db_013::SctRead_Per_Sec,metric_service,disco,constante no treino
+db_013::Sess_Used_Temp,metric_service,banco de dados,constante no treino
+db_013::Sess_Used_Undo,metric_service,banco de dados,constante no treino
+db_013::Tbs_Free_Gb,metric_service,disco,ausente em 81.1% das linhas de treino
+db_013::Tbs_Used_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_013::TempTbs_Pct,metric_service,disco,constante no treino
+db_013::Total_Tbs_Size,metric_service,disco,ausente em 68.4% das linhas de treino
+db_013::UndoTbs_Pct,metric_service,disco,ausente em 81.1% das linhas de treino
+db_013::Used_Tbs_Size,metric_service,disco,ausente em 68.4% das linhas de treino
+docker_001::container_fgc,metric_container,memória,constante no treino
+docker_001::container_fgct,metric_container,memória,constante no treino
+docker_001::container_session_used,metric_container,carga,constante no treino
+docker_001::container_thread_idle,metric_container,carga,constante no treino
+docker_001::container_thread_running,metric_container,carga,constante no treino
+docker_001::container_thread_total,metric_container,carga,constante no treino
+docker_001::container_thread_used_pct,metric_container,carga,constante no treino
+docker_002::container_fgc,metric_container,memória,constante no treino
+docker_002::container_fgct,metric_container,memória,constante no treino
+docker_002::container_session_used,metric_container,carga,constante no treino
+docker_002::container_thread_idle,metric_container,carga,constante no treino
+docker_002::container_thread_running,metric_container,carga,constante no treino
+docker_002::container_thread_total,metric_container,carga,constante no treino
+docker_002::container_thread_used_pct,metric_container,carga,constante no treino
+docker_003::container_fgc,metric_container,memória,constante no treino
+docker_003::container_fgct,metric_container,memória,constante no treino
+docker_003::container_session_used,metric_container,carga,constante no treino
+docker_003::container_thread_idle,metric_container,carga,constante no treino
+docker_003::container_thread_running,metric_container,carga,constante no treino
+docker_003::container_thread_total,metric_container,carga,constante no treino
+docker_003::container_thread_used_pct,metric_container,carga,constante no treino
+docker_004::container_fgc,metric_container,memória,constante no treino
+docker_004::container_fgct,metric_container,memória,constante no treino
+docker_004::container_session_used,metric_container,carga,constante no treino
+docker_004::container_thread_idle,metric_container,carga,constante no treino
+docker_004::container_thread_running,metric_container,carga,constante no treino
+docker_004::container_thread_total,metric_container,carga,constante no treino
+docker_004::container_thread_used_pct,metric_container,carga,constante no treino
+docker_005::container_fgc,metric_container,memória,constante no treino
+docker_005::container_fgct,metric_container,memória,constante no treino
+docker_005::container_session_used,metric_container,carga,constante no treino
+docker_005::container_thread_idle,metric_container,carga,constante no treino
+docker_005::container_thread_running,metric_container,carga,constante no treino
+docker_005::container_thread_total,metric_container,carga,constante no treino
+docker_005::container_thread_used_pct,metric_container,carga,constante no treino
+docker_006::container_fgc,metric_container,memória,constante no treino
+docker_006::container_fgct,metric_container,memória,constante no treino
+docker_006::container_session_used,metric_container,carga,constante no treino
+docker_006::container_thread_idle,metric_container,carga,constante no treino
+docker_006::container_thread_running,metric_container,carga,constante no treino
+docker_006::container_thread_total,metric_container,carga,constante no treino
+docker_006::container_thread_used_pct,metric_container,carga,constante no treino
+docker_007::container_fgc,metric_container,memória,constante no treino
+docker_007::container_fgct,metric_container,memória,constante no treino
+docker_007::container_session_used,metric_container,carga,constante no treino
+docker_007::container_thread_idle,metric_container,carga,constante no treino
+docker_007::container_thread_running,metric_container,carga,constante no treino
+docker_007::container_thread_total,metric_container,carga,constante no treino
+docker_007::container_thread_used_pct,metric_container,carga,constante no treino
+docker_008::container_fgc,metric_container,memória,constante no treino
+docker_008::container_fgct,metric_container,memória,constante no treino
+docker_008::container_session_used,metric_container,carga,constante no treino
+docker_008::container_thread_idle,metric_container,carga,constante no treino
+docker_008::container_thread_running,metric_container,carga,constante no treino
+docker_008::container_thread_total,metric_container,carga,constante no treino
+docker_008::container_thread_used_pct,metric_container,carga,constante no treino
+os_001::Disk_rd_ios,metric_node,disco,constante no treino
+os_001::Disk_rd_kbs,metric_node,disco,constante no treino
+os_001::FS_max_util,metric_node,disco,constante no treino
+os_001::FS_total_space,metric_node,disco,constante no treino
+os_001::Memory_total,metric_node,memória,ausente em 90.0% das linhas de treino
+os_001::Page_pi,metric_node,memória,constante no treino
+os_001::Received_errors_packets,metric_node,erro,constante no treino
+os_001::Received_queue,metric_node,rede,constante no treino
+os_001::Sent_errors_packets,metric_node,erro,constante no treino
+os_001::Shared_memory,metric_node,memória,constante no treino
+os_001::Swap_used_pct,metric_node,memória,constante no treino
+os_001::Zombie_Process,metric_node,outro,constante no treino
+os_002::Disk_rd_ios,metric_node,disco,constante no treino
+os_002::Disk_rd_kbs,metric_node,disco,constante no treino
+os_002::FS_total_space,metric_node,disco,constante no treino
+os_002::Memory_total,metric_node,memória,ausente em 90.0% das linhas de treino
+os_002::Page_pi,metric_node,memória,constante no treino
+os_002::Received_errors_packets,metric_node,erro,constante no treino
+os_002::Received_queue,metric_node,rede,constante no treino
+os_002::Sent_errors_packets,metric_node,erro,constante no treino
+os_002::Shared_memory,metric_node,memória,constante no treino
+os_002::Swap_used_pct,metric_node,memória,constante no treino
+os_002::Zombie_Process,metric_node,outro,constante no treino
+os_003::Disk_rd_ios,metric_node,disco,constante no treino
+os_003::FS_total_space,metric_node,disco,constante no treino
+os_003::Memory_total,metric_node,memória,ausente em 90.0% das linhas de treino
+os_003::Received_errors_packets,metric_node,erro,constante no treino
+os_003::Sent_errors_packets,metric_node,erro,constante no treino
+os_003::Shared_memory,metric_node,memória,constante no treino
+os_003::Swap_used_pct,metric_node,memória,constante no treino
+os_003::Zombie_Process,metric_node,outro,constante no treino
+os_004::Disk_rd_ios,metric_node,disco,quase constante no treino (moda em 99.94%)
+os_004::FS_total_space,metric_node,disco,constante no treino
+os_004::Memory_total,metric_node,memória,ausente em 90.0% das linhas de treino
+os_004::Received_errors_packets,metric_node,erro,constante no treino
+os_004::Sent_errors_packets,metric_node,erro,constante no treino
+os_004::Shared_memory,metric_node,memória,constante no treino
+os_004::Swap_used_pct,metric_node,memória,constante no treino
+os_004::Zombie_Process,metric_node,outro,constante no treino
+os_005::Disk_rd_ios,metric_node,disco,constante no treino
+os_005::FS_total_space,metric_node,disco,constante no treino
+os_005::Memory_total,metric_node,memória,ausente em 90.0% das linhas de treino
+os_005::Received_errors_packets,metric_node,erro,constante no treino
+os_005::Sent_errors_packets,metric_node,erro,constante no treino
+os_005::Shared_memory,metric_node,memória,constante no treino
+os_005::Swap_used_pct,metric_node,memória,constante no treino
+os_006::Disk_io_util,metric_node,disco,quase constante no treino (moda em 99.94%)
+os_006::Disk_rd_ios,metric_node,disco,constante no treino
+os_006::Disk_rd_kbs,metric_node,disco,constante no treino
+os_006::FS_max_util,metric_node,disco,constante no treino
+os_006::FS_total_space,metric_node,disco,constante no treino
+os_006::Memory_total,metric_node,memória,ausente em 90.3% das linhas de treino
+os_006::Page_pi,metric_node,memória,constante no treino
+os_006::Received_errors_packets,metric_node,erro,constante no treino
+os_006::Received_queue,metric_node,rede,constante no treino
+os_006::Sent_errors_packets,metric_node,erro,constante no treino
+os_006::Swap_used_pct,metric_node,memória,constante no treino
+os_006::System_block_queue_length,metric_node,carga,constante no treino
+os_006::Zombie_Process,metric_node,outro,constante no treino
+os_007::Disk_rd_ios,metric_node,disco,constante no treino
+os_007::Disk_rd_kbs,metric_node,disco,constante no treino
+os_007::FS_max_util,metric_node,disco,constante no treino
+os_007::FS_total_space,metric_node,disco,constante no treino
+os_007::Memory_total,metric_node,memória,ausente em 90.0% das linhas de treino
+os_007::Page_pi,metric_node,memória,constante no treino
+os_007::Received_errors_packets,metric_node,erro,constante no treino
+os_007::Received_queue,metric_node,rede,constante no treino
+os_007::Sent_errors_packets,metric_node,erro,constante no treino
+os_007::Sent_packets,metric_node,rede,constante no treino
+os_007::Swap_used_pct,metric_node,memória,constante no treino
+os_007::System_block_queue_length,metric_node,carga,constante no treino
+os_007::Zombie_Process,metric_node,outro,constante no treino
+os_008::Disk_io_util,metric_node,disco,quase constante no treino (moda em 99.94%)
+os_008::Disk_rd_ios,metric_node,disco,constante no treino
+os_008::Disk_rd_kbs,metric_node,disco,constante no treino
+os_008::FS_max_util,metric_node,disco,constante no treino
+os_008::FS_total_space,metric_node,disco,constante no treino
+os_008::Memory_total,metric_node,memória,ausente em 90.0% das linhas de treino
+os_008::Page_pi,metric_node,memória,constante no treino
+os_008::Received_errors_packets,metric_node,erro,constante no treino
+os_008::Received_queue,metric_node,rede,constante no treino
+os_008::Sent_errors_packets,metric_node,erro,constante no treino
+os_008::Swap_used_pct,metric_node,memória,constante no treino
+os_008::System_block_queue_length,metric_node,carga,constante no treino
+os_008::Zombie_Process,metric_node,outro,constante no treino
+os_009::Disk_rd_ios,metric_node,disco,quase constante no treino (moda em 99.94%)
+os_009::FS_max_util,metric_node,disco,constante no treino
+os_009::FS_total_space,metric_node,disco,constante no treino
+os_009::Memory_total,metric_node,memória,ausente em 90.0% das linhas de treino
+os_009::Received_errors_packets,metric_node,erro,constante no treino
+os_009::Sent_errors_packets,metric_node,erro,constante no treino
+os_009::Swap_used_pct,metric_node,memória,constante no treino
+os_009::System_block_queue_length,metric_node,carga,constante no treino
+os_009::Zombie_Process,metric_node,outro,constante no treino
+os_010::Disk_io_util,metric_node,disco,quase constante no treino (moda em 99.94%)
+os_010::Disk_rd_ios,metric_node,disco,constante no treino
+os_010::Disk_rd_kbs,metric_node,disco,constante no treino
+os_010::FS_total_space,metric_node,disco,constante no treino
+os_010::Memory_total,metric_node,memória,ausente em 90.3% das linhas de treino
+os_010::Page_pi,metric_node,memória,constante no treino
+os_010::Received_errors_packets,metric_node,erro,constante no treino
+os_010::Received_queue,metric_node,rede,constante no treino
+os_010::Sent_errors_packets,metric_node,erro,constante no treino
+os_010::Shared_memory,metric_node,memória,constante no treino
+os_010::Swap_used_pct,metric_node,memória,constante no treino
+os_010::System_block_queue_length,metric_node,carga,constante no treino
+os_010::Zombie_Process,metric_node,outro,constante no treino
+os_011::Disk_rd_ios,metric_node,disco,constante no treino
+os_011::Disk_rd_kbs,metric_node,disco,quase constante no treino (moda em 99.94%)
+os_011::FS_total_space,metric_node,disco,constante no treino
+os_011::Memory_total,metric_node,memória,ausente em 90.0% das linhas de treino
+os_011::Page_pi,metric_node,memória,quase constante no treino (moda em 99.94%)
+os_011::Received_errors_packets,metric_node,erro,constante no treino
+os_011::Received_queue,metric_node,rede,constante no treino
+os_011::Sent_errors_packets,metric_node,erro,constante no treino
+os_011::Swap_used_pct,metric_node,memória,constante no treino
+os_011::Zombie_Process,metric_node,outro,constante no treino
+os_012::Disk_rd_ios,metric_node,disco,constante no treino
+os_012::FS_max_util,metric_node,disco,constante no treino
+os_012::FS_total_space,metric_node,disco,constante no treino
+os_012::Memory_total,metric_node,memória,ausente em 90.0% das linhas de treino
+os_012::Received_errors_packets,metric_node,erro,constante no treino
+os_012::Received_queue,metric_node,rede,constante no treino
+os_012::Sent_errors_packets,metric_node,erro,constante no treino
+os_012::Swap_used_pct,metric_node,memória,constante no treino
+os_012::Zombie_Process,metric_node,outro,constante no treino
+os_013::Disk_rd_ios,metric_node,disco,constante no treino
+os_013::Disk_rd_kbs,metric_node,disco,constante no treino
+os_013::FS_max_util,metric_node,disco,constante no treino
+os_013::FS_total_space,metric_node,disco,constante no treino
+os_013::Memory_total,metric_node,memória,ausente em 90.3% das linhas de treino
+os_013::Page_pi,metric_node,memória,constante no treino
+os_013::Received_errors_packets,metric_node,erro,constante no treino
+os_013::Received_queue,metric_node,rede,constante no treino
+os_013::Sent_errors_packets,metric_node,erro,constante no treino
+os_013::Swap_used_pct,metric_node,memória,constante no treino
+os_013::Zombie_Process,metric_node,outro,constante no treino
+os_014::Disk_rd_ios,metric_node,disco,constante no treino
+os_014::Disk_rd_kbs,metric_node,disco,constante no treino
+os_014::FS_max_util,metric_node,disco,constante no treino
+os_014::FS_total_space,metric_node,disco,constante no treino
+os_014::Memory_total,metric_node,memória,ausente em 90.3% das linhas de treino
+os_014::Page_pi,metric_node,memória,constante no treino
+os_014::Received_errors_packets,metric_node,erro,constante no treino
+os_014::Received_queue,metric_node,rede,constante no treino
+os_014::Sent_errors_packets,metric_node,erro,constante no treino
+os_014::Swap_used_pct,metric_node,memória,constante no treino
+os_014::Zombie_Process,metric_node,outro,constante no treino
+os_015::Disk_rd_ios,metric_node,disco,constante no treino
+os_015::Disk_rd_kbs,metric_node,disco,constante no treino
+os_015::FS_total_space,metric_node,disco,constante no treino
+os_015::Memory_total,metric_node,memória,ausente em 90.3% das linhas de treino
+os_015::Page_pi,metric_node,memória,constante no treino
+os_015::Received_errors_packets,metric_node,erro,constante no treino
+os_015::Received_queue,metric_node,rede,constante no treino
+os_015::Sent_errors_packets,metric_node,erro,constante no treino
+os_015::Swap_used_pct,metric_node,memória,constante no treino
+os_015::Zombie_Process,metric_node,outro,constante no treino
+os_016::Disk_rd_ios,metric_node,disco,constante no treino
+os_016::Disk_rd_kbs,metric_node,disco,constante no treino
+os_016::FS_max_util,metric_node,disco,constante no treino
+os_016::FS_total_space,metric_node,disco,constante no treino
+os_016::Memory_total,metric_node,memória,ausente em 90.3% das linhas de treino
+os_016::Page_pi,metric_node,memória,constante no treino
+os_016::Received_errors_packets,metric_node,erro,constante no treino
+os_016::Sent_errors_packets,metric_node,erro,constante no treino
+os_016::Swap_used_pct,metric_node,memória,constante no treino
+os_016::Zombie_Process,metric_node,outro,constante no treino
+os_017::Buffers_used,metric_node,memória,constante no treino
+os_017::FS_total_space,metric_node,disco,constante no treino
+os_017::Memory_total,metric_node,memória,ausente em 90.0% das linhas de treino
+os_017::Received_errors_packets,metric_node,erro,constante no treino
+os_017::Sent_errors_packets,metric_node,erro,constante no treino
+os_017::Swap_used_pct,metric_node,memória,constante no treino
+os_018::FS_total_space,metric_node,disco,constante no treino
+os_018::Memory_total,metric_node,memória,ausente em 90.0% das linhas de treino
+os_018::Received_errors_packets,metric_node,erro,constante no treino
+os_018::Received_queue,metric_node,rede,constante no treino
+os_018::Sent_errors_packets,metric_node,erro,constante no treino
+os_018::Swap_used_pct,metric_node,memória,constante no treino
+os_018::System_block_queue_length,metric_node,carga,constante no treino
+os_019::Buffers_used,metric_node,memória,constante no treino
+os_019::FS_total_space,metric_node,disco,constante no treino
+os_019::Memory_total,metric_node,memória,ausente em 90.3% das linhas de treino
+os_019::Received_errors_packets,metric_node,erro,constante no treino
+os_019::Sent_errors_packets,metric_node,erro,constante no treino
+os_019::Swap_used_pct,metric_node,memória,constante no treino
+os_019::System_block_queue_length,metric_node,carga,constante no treino
+os_020::Buffers_used,metric_node,memória,constante no treino
+os_020::FS_total_space,metric_node,disco,constante no treino
+os_020::Memory_total,metric_node,memória,ausente em 90.0% das linhas de treino
+os_020::Received_errors_packets,metric_node,erro,constante no treino
+os_020::Sent_errors_packets,metric_node,erro,constante no treino
+os_020::Swap_used_pct,metric_node,memória,constante no treino
+os_020::System_block_queue_length,metric_node,carga,constante no treino
+os_021::Disk_rd_ios,metric_node,disco,constante no treino
+os_021::FS_total_space,metric_node,disco,constante no treino
+os_021::Memory_total,metric_node,memória,ausente em 90.0% das linhas de treino
+os_021::Received_errors_packets,metric_node,erro,constante no treino
+os_021::Sent_errors_packets,metric_node,erro,constante no treino
+os_021::Shared_memory,metric_node,memória,constante no treino
+os_021::Swap_used_pct,metric_node,memória,constante no treino
+os_021::Zombie_Process,metric_node,outro,constante no treino
+os_022::Disk_rd_ios,metric_node,disco,quase constante no treino (moda em 99.94%)
+os_022::FS_total_space,metric_node,disco,constante no treino
+os_022::Memory_total,metric_node,memória,ausente em 90.0% das linhas de treino
+os_022::Received_errors_packets,metric_node,erro,constante no treino
+os_022::Sent_errors_packets,metric_node,erro,constante no treino
+os_022::Shared_memory,metric_node,memória,constante no treino
+os_022::Swap_used_pct,metric_node,memória,constante no treino
+os_022::Zombie_Process,metric_node,outro,constante no treino
+redis_001::blocked_clients,metric_middleware,banco de dados,constante no treino
+redis_001::evicted_keys,metric_middleware,banco de dados,constante no treino
+redis_001::expired_keys,metric_middleware,banco de dados,constante no treino
+redis_001::maxmemory,metric_middleware,memória,constante no treino
+redis_001::redis_load,metric_middleware,carga,constante no treino
+redis_001::rejected_connections,metric_middleware,erro,constante no treino
+redis_001::used_memory_peak,metric_middleware,memória,constante no treino
+redis_002::blocked_clients,metric_middleware,banco de dados,constante no treino
+redis_002::evicted_keys,metric_middleware,banco de dados,constante no treino
+redis_002::expired_keys,metric_middleware,banco de dados,constante no treino
+redis_002::maxmemory,metric_middleware,memória,constante no treino
+redis_002::redis_load,metric_middleware,carga,constante no treino
+redis_002::rejected_connections,metric_middleware,erro,constante no treino
+redis_003::blocked_clients,metric_middleware,banco de dados,constante no treino
+redis_003::connected_clients,metric_middleware,carga,constante no treino
+redis_003::evicted_keys,metric_middleware,banco de dados,constante no treino
+redis_003::expired_keys,metric_middleware,banco de dados,constante no treino
+redis_003::keyspace_hits,metric_middleware,banco de dados,constante no treino
+redis_003::keyspace_misses,metric_middleware,banco de dados,constante no treino
+redis_003::maxmemory,metric_middleware,memória,constante no treino
+redis_003::redis_load,metric_middleware,carga,constante no treino
+redis_003::rejected_connections,metric_middleware,erro,constante no treino
+redis_003::used_memory_peak,metric_middleware,memória,constante no treino
+redis_004::blocked_clients,metric_middleware,banco de dados,constante no treino
+redis_004::evicted_keys,metric_middleware,banco de dados,constante no treino
+redis_004::maxmemory,metric_middleware,memória,constante no treino
+redis_004::mem_fragmentation_ratio,metric_middleware,memória,constante no treino
+redis_004::redis_load,metric_middleware,carga,constante no treino
+redis_004::rejected_connections,metric_middleware,erro,constante no treino
+redis_004::used_memory_peak,metric_middleware,memória,constante no treino
+redis_005::blocked_clients,metric_middleware,banco de dados,constante no treino
+redis_005::connected_clients,metric_middleware,carga,quase constante no treino (moda em 99.94%)
+redis_005::evicted_keys,metric_middleware,banco de dados,constante no treino
+redis_005::expired_keys,metric_middleware,banco de dados,constante no treino
+redis_005::keyspace_hits,metric_middleware,banco de dados,constante no treino
+redis_005::keyspace_misses,metric_middleware,banco de dados,constante no treino
+redis_005::maxmemory,metric_middleware,memória,constante no treino
+redis_005::redis_load,metric_middleware,carga,constante no treino
+redis_005::rejected_connections,metric_middleware,erro,constante no treino
+redis_005::used_memory_peak,metric_middleware,memória,constante no treino
+redis_006::blocked_clients,metric_middleware,banco de dados,constante no treino
+redis_006::connected_clients,metric_middleware,carga,constante no treino
+redis_006::evicted_keys,metric_middleware,banco de dados,constante no treino
+redis_006::expired_keys,metric_middleware,banco de dados,constante no treino
+redis_006::keyspace_hits,metric_middleware,banco de dados,constante no treino
+redis_006::keyspace_misses,metric_middleware,banco de dados,constante no treino
+redis_006::maxmemory,metric_middleware,memória,constante no treino
+redis_006::redis_load,metric_middleware,carga,constante no treino
+redis_006::rejected_connections,metric_middleware,erro,constante no treino
+redis_007::blocked_clients,metric_middleware,banco de dados,constante no treino
+redis_007::connected_clients,metric_middleware,carga,constante no treino
+redis_007::evicted_keys,metric_middleware,banco de dados,constante no treino
+redis_007::expired_keys,metric_middleware,banco de dados,constante no treino
+redis_007::keyspace_hits,metric_middleware,banco de dados,constante no treino
+redis_007::keyspace_misses,metric_middleware,banco de dados,constante no treino
+redis_007::maxmemory,metric_middleware,memória,constante no treino
+redis_007::redis_load,metric_middleware,carga,constante no treino
+redis_007::rejected_connections,metric_middleware,erro,constante no treino
+redis_007::used_memory_peak,metric_middleware,memória,constante no treino
+redis_008::blocked_clients,metric_middleware,banco de dados,constante no treino
+redis_008::evicted_keys,metric_middleware,banco de dados,constante no treino
+redis_008::maxmemory,metric_middleware,memória,constante no treino
+redis_008::mem_fragmentation_ratio,metric_middleware,memória,constante no treino
+redis_008::redis_load,metric_middleware,carga,constante no treino
+redis_008::rejected_connections,metric_middleware,erro,constante no treino
+redis_008::used_memory_peak,metric_middleware,memória,constante no treino
+redis_009::blocked_clients,metric_middleware,banco de dados,constante no treino
+redis_009::evicted_keys,metric_middleware,banco de dados,constante no treino
+redis_009::expired_keys,metric_middleware,banco de dados,constante no treino
+redis_009::maxmemory,metric_middleware,memória,constante no treino
+redis_009::redis_load,metric_middleware,carga,constante no treino
+redis_009::rejected_connections,metric_middleware,erro,constante no treino
+redis_009::used_memory_peak,metric_middleware,memória,constante no treino
+redis_010::blocked_clients,metric_middleware,banco de dados,constante no treino
+redis_010::connected_clients,metric_middleware,carga,constante no treino
+redis_010::evicted_keys,metric_middleware,banco de dados,constante no treino
+redis_010::expired_keys,metric_middleware,banco de dados,constante no treino
+redis_010::keyspace_hits,metric_middleware,banco de dados,constante no treino
+redis_010::keyspace_misses,metric_middleware,banco de dados,constante no treino
+redis_010::maxmemory,metric_middleware,memória,constante no treino
+redis_010::redis_load,metric_middleware,carga,constante no treino
+redis_010::rejected_connections,metric_middleware,erro,constante no treino
+redis_010::used_memory_peak,metric_middleware,memória,constante no treino
+redis_011::blocked_clients,metric_middleware,banco de dados,constante no treino
+redis_011::connected_clients,metric_middleware,carga,constante no treino
+redis_011::evicted_keys,metric_middleware,banco de dados,constante no treino
+redis_011::expired_keys,metric_middleware,banco de dados,constante no treino
+redis_011::keyspace_hits,metric_middleware,banco de dados,constante no treino
+redis_011::keyspace_misses,metric_middleware,banco de dados,constante no treino
+redis_011::maxmemory,metric_middleware,memória,constante no treino
+redis_011::redis_load,metric_middleware,carga,constante no treino
+redis_011::rejected_connections,metric_middleware,erro,constante no treino
+redis_011::used_memory_peak,metric_middleware,memória,constante no treino
+redis_012::blocked_clients,metric_middleware,banco de dados,constante no treino
+redis_012::evicted_keys,metric_middleware,banco de dados,constante no treino
+redis_012::maxmemory,metric_middleware,memória,constante no treino
+redis_012::mem_fragmentation_ratio,metric_middleware,memória,constante no treino
+redis_012::redis_load,metric_middleware,carga,constante no treino
+redis_012::rejected_connections,metric_middleware,erro,constante no treino
+redis_012::used_memory_peak,metric_middleware,memória,constante no treino

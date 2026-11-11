@@ -22,6 +22,7 @@ from tcc_rca.ingestion.manifest import (
 )
 from tcc_rca.ingestion.quality import build_quality_report, write_quality_report
 from tcc_rca.ingestion.telemetry import convert_day, list_days
+from tcc_rca.series.build import run_series
 
 TABLES_DIR = Path("reports/tables")
 FIGURES_DIR = Path("reports/figures")
@@ -44,7 +45,11 @@ def _cases(config: Config) -> tuple[list[Case], list[Failure]]:
 
 
 def cmd_manifest(config: Config, _: argparse.Namespace) -> int:
-    entries = build_manifest(config.paths.data_root, [config.target_system])
+    entries = build_manifest(
+        config.paths.data_root,
+        [config.target_system],
+        extra_files=[config.series.deployment_list],
+    )
     write_manifest(entries, config.paths.manifest)
     gigabytes = sum(e.size_bytes for e in entries) / 1e9
     print(f"{len(entries)} files, {gigabytes:.2f} GB -> {config.paths.manifest}")
@@ -126,6 +131,15 @@ def cmd_eda(config: Config, args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_series(config: Config, _: argparse.Namespace) -> int:
+    start = time.perf_counter()
+    summary = run_series(config, TABLES_DIR)
+    for key, value in summary.items():
+        print(f"{key}: {value}")
+    print(f"elapsed_s={time.perf_counter() - start:.1f} peak_rss_mb={_peak_rss_mb():.0f}")
+    return 0
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="tcc-rca")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -145,6 +159,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     convert.add_argument("--overwrite", action="store_true")
     add("cases", "parse record.csv/query.csv and report the failure-to-query mapping")
     add("quality", "write the data-quality report")
+    add("series", "build the multivariate KPI matrix, catalog and dependency edges (E2)")
     eda = add("eda", "plot KPIs around failures")
     eda.add_argument("-n", type=int, default=10, help="number of failures to plot")
 
@@ -159,6 +174,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         "cases": cmd_cases,
         "quality": cmd_quality,
         "eda": cmd_eda,
+        "series": cmd_series,
     }
     return int(handlers[args.command](config, args))
 

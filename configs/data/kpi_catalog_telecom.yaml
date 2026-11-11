@@ -1,0 +1,160 @@
+# Catálogo de KPIs do OpenRCA Telecom (etapa E2).
+#
+# O dataset não documenta os KPIs. Categoria, unidade e descrição foram INFERIDAS do nome do KPI
+# e das faixas de valores observadas no inventário da E1; "desconhecida" significa que não foi
+# possível inferir com segurança. Siglas não documentadas estão marcadas como tal.
+#
+# item_agg: como combinar, no mesmo minuto, várias instâncias (itemid) do mesmo KPI num
+# componente (ex.: vários discos ou interfaces). Padrão: mean. Ver ADR 0005.
+#
+# Categorias: CPU, memória, disco, rede, banco de dados, latência, erro, carga, disponibilidade, outro.
+
+metric_container:
+  container_cpu_used: {category: CPU, unit: "%", description: "Uso de CPU do contêiner"}
+  container_mem_used: {category: memória, unit: "%", description: "Uso de memória do contêiner"}
+  container_fgc: {category: memória, unit: contagem, description: "Coletas de lixo completas (full GC) da JVM do contêiner"}
+  container_fgct: {category: memória, unit: desconhecida, description: "Tempo gasto em coletas de lixo completas (full GC) da JVM"}
+  container_session_used: {category: carga, unit: contagem, description: "Sessões em uso no contêiner"}
+  container_thread_idle: {category: carga, unit: contagem, description: "Threads ociosas no contêiner"}
+  container_thread_running: {category: carga, unit: contagem, description: "Threads em execução no contêiner"}
+  container_thread_total: {category: carga, unit: contagem, description: "Total de threads do contêiner"}
+  container_thread_used_pct: {category: carga, unit: "%", description: "Percentual de threads em uso no contêiner"}
+
+metric_middleware:
+  Redis_key_count: {category: banco de dados, unit: contagem, description: "Número de chaves armazenadas no Redis"}
+  blocked_clients: {category: banco de dados, unit: contagem, description: "Clientes Redis bloqueados em operações de espera"}
+  connected_clients: {category: carga, unit: contagem, description: "Clientes conectados ao Redis"}
+  evicted_keys: {category: banco de dados, unit: contagem, description: "Chaves removidas do Redis por limite de memória"}
+  expired_keys: {category: banco de dados, unit: contagem, description: "Chaves expiradas no Redis"}
+  instantaneous_input_kbps: {category: rede, unit: kbps, description: "Tráfego de entrada instantâneo do Redis"}
+  instantaneous_output_kbps: {category: rede, unit: kbps, description: "Tráfego de saída instantâneo do Redis"}
+  instantaneous_ops_per_sec: {category: carga, unit: ops/s, description: "Operações por segundo no Redis"}
+  keyspace_hits: {category: banco de dados, unit: contagem, description: "Acertos de leitura de chaves no Redis"}
+  keyspace_misses: {category: banco de dados, unit: contagem, description: "Falhas de leitura de chaves (chave inexistente) no Redis"}
+  maxmemory: {category: memória, unit: bytes, description: "Limite de memória configurado no Redis"}
+  mem_fragmentation_ratio: {category: memória, unit: razão, description: "Razão de fragmentação de memória do Redis"}
+  redis_load: {category: carga, unit: desconhecida, description: "Carga do Redis (métrica não documentada)"}
+  redis_ping: {category: disponibilidade, unit: desconhecida, description: "Resultado do ping ao Redis"}
+  rejected_connections: {category: erro, unit: contagem, description: "Conexões rejeitadas pelo Redis"}
+  total_commands_processed: {category: carga, unit: contagem, description: "Total de comandos processados pelo Redis"}
+  total_connections_received: {category: carga, unit: contagem, description: "Total de conexões recebidas pelo Redis"}
+  used_cpu_sys: {category: CPU, unit: desconhecida, description: "CPU de sistema consumida pelo Redis"}
+  used_cpu_user: {category: CPU, unit: desconhecida, description: "CPU de usuário consumida pelo Redis"}
+  used_memory: {category: memória, unit: bytes, description: "Memória usada pelo Redis"}
+  used_memory_peak: {category: memória, unit: bytes, description: "Pico de memória usada pelo Redis"}
+  used_memory_rss: {category: memória, unit: bytes, description: "Memória residente (RSS) do processo Redis"}
+
+metric_node:
+  Agent_ping: {category: disponibilidade, unit: desconhecida, description: "Resultado do ping ao agente de monitoramento do host"}
+  Buffers_used: {category: memória, unit: desconhecida, description: "Memória usada em buffers no host"}
+  CPU_idle_pct: {category: CPU, unit: "%", description: "Percentual de CPU ociosa no host"}
+  CPU_iowait_time: {category: CPU, unit: desconhecida, description: "Tempo de CPU em espera por E/S no host"}
+  CPU_system_time: {category: CPU, unit: desconhecida, description: "Tempo de CPU em modo sistema no host"}
+  CPU_user_time: {category: CPU, unit: desconhecida, description: "Tempo de CPU em modo usuário no host"}
+  CPU_util_pct: {category: CPU, unit: "%", description: "Utilização de CPU do host"}
+  Cache_used: {category: memória, unit: desconhecida, description: "Memória usada como cache no host"}
+  Disk_avgqu_sz: {category: disco, unit: requisições, description: "Tamanho médio da fila de requisições de disco"}
+  Disk_await: {category: disco, unit: desconhecida, description: "Tempo médio de espera das requisições de disco"}
+  Disk_io_util: {category: disco, unit: "%", description: "Utilização de E/S de disco (pior disco do host no minuto)", item_agg: max}
+  Disk_rd_ios: {category: disco, unit: desconhecida, description: "Operações de leitura em disco"}
+  Disk_rd_kbs: {category: disco, unit: KB/s, description: "Taxa de leitura em disco"}
+  Disk_svctm: {category: disco, unit: desconhecida, description: "Tempo médio de serviço das requisições de disco"}
+  Disk_wr_ios: {category: disco, unit: desconhecida, description: "Operações de escrita em disco"}
+  Disk_wr_kbs: {category: disco, unit: KB/s, description: "Taxa de escrita em disco"}
+  FS_max_avail: {category: disco, unit: desconhecida, description: "Maior espaço disponível entre os sistemas de arquivos"}
+  FS_max_util: {category: disco, unit: "%", description: "Maior utilização entre os sistemas de arquivos"}
+  FS_total_space: {category: disco, unit: desconhecida, description: "Espaço total dos sistemas de arquivos"}
+  FS_used_pct: {category: disco, unit: "%", description: "Percentual usado dos sistemas de arquivos"}
+  FS_used_space: {category: disco, unit: desconhecida, description: "Espaço usado dos sistemas de arquivos"}
+  ICMP_ping: {category: disponibilidade, unit: desconhecida, description: "Resultado do ping ICMP ao host"}
+  Incoming_network_traffic: {category: rede, unit: desconhecida, description: "Tráfego de rede de entrada (soma das interfaces)", item_agg: sum}
+  Outgoing_network_traffic: {category: rede, unit: desconhecida, description: "Tráfego de rede de saída (soma das interfaces)", item_agg: sum}
+  Received_errors_packets: {category: erro, unit: contagem, description: "Pacotes recebidos com erro (soma das interfaces)", item_agg: sum}
+  Sent_errors_packets: {category: erro, unit: contagem, description: "Pacotes enviados com erro (soma das interfaces)", item_agg: sum}
+  Received_packets: {category: rede, unit: contagem, description: "Pacotes recebidos (soma das interfaces)", item_agg: sum}
+  Sent_packets: {category: rede, unit: contagem, description: "Pacotes enviados (soma das interfaces)", item_agg: sum}
+  Received_queue: {category: rede, unit: desconhecida, description: "Fila de recepção de rede"}
+  Sent_queue: {category: rede, unit: desconhecida, description: "Fila de envio de rede"}
+  Recv_total: {category: rede, unit: desconhecida, description: "Total recebido pela rede"}
+  Send_total: {category: rede, unit: desconhecida, description: "Total enviado pela rede"}
+  ss_total: {category: rede, unit: contagem, description: "Total de sockets (saída do comando ss)"}
+  Memory_available: {category: memória, unit: desconhecida, description: "Memória disponível no host"}
+  Memory_available_pct: {category: memória, unit: "%", description: "Percentual de memória disponível no host"}
+  Memory_free: {category: memória, unit: desconhecida, description: "Memória livre no host"}
+  Memory_total: {category: memória, unit: desconhecida, description: "Memória total do host"}
+  Memory_used: {category: memória, unit: desconhecida, description: "Memória usada no host"}
+  Memory_used_pct: {category: memória, unit: "%", description: "Percentual de memória usada no host"}
+  Shared_memory: {category: memória, unit: desconhecida, description: "Memória compartilhada no host"}
+  Swap_used_pct: {category: memória, unit: "%", description: "Percentual de swap usado no host"}
+  Page_pi: {category: memória, unit: desconhecida, description: "Páginas lidas do disco (page-in)"}
+  Page_po: {category: memória, unit: desconhecida, description: "Páginas gravadas em disco (page-out)"}
+  Num_of_processes: {category: carga, unit: contagem, description: "Número de processos no host"}
+  Num_of_running_processes: {category: carga, unit: contagem, description: "Número de processos em execução no host"}
+  Processor_load_1_min: {category: CPU, unit: desconhecida, description: "Carga média do processador em 1 minuto"}
+  Processor_load_5_min: {category: CPU, unit: desconhecida, description: "Carga média do processador em 5 minutos"}
+  Processor_load_15_min: {category: CPU, unit: desconhecida, description: "Carga média do processador em 15 minutos"}
+  System_block_queue_length: {category: carga, unit: contagem, description: "Processos bloqueados na fila do sistema"}
+  System_wait_queue_length: {category: carga, unit: contagem, description: "Processos na fila de espera do sistema"}
+  Zombie_Process: {category: outro, unit: contagem, description: "Processos zumbis no host"}
+
+metric_service:
+  ACS: {category: banco de dados, unit: desconhecida, description: "Sigla não documentada (KPI do banco Oracle)"}
+  AIOS: {category: banco de dados, unit: desconhecida, description: "Sigla não documentada (KPI do banco Oracle)"}
+  AWS: {category: banco de dados, unit: desconhecida, description: "Sigla não documentada (KPI do banco Oracle)"}
+  Asm_Free_Tb: {category: disco, unit: TB, description: "Espaço livre no ASM do banco"}
+  CPU_Used_Pct: {category: CPU, unit: "%", description: "Uso de CPU do banco"}
+  CPU_free_pct: {category: CPU, unit: "%", description: "CPU livre no servidor do banco"}
+  Call_Per_Sec: {category: carga, unit: chamadas/s, description: "Chamadas por segundo ao banco"}
+  DFParaWrite_Per_Sec: {category: disco, unit: desconhecida, description: "Escritas paralelas em arquivos de dados por segundo"}
+  DbFile_Used_Pct: {category: disco, unit: "%", description: "Percentual usado dos arquivos de dados do banco"}
+  DbTime: {category: latência, unit: desconhecida, description: "Tempo de banco (DB time) acumulado pelas sessões"}
+  Exec_Per_Sec: {category: carga, unit: execuções/s, description: "Execuções de comandos SQL por segundo"}
+  Hang: {category: disponibilidade, unit: desconhecida, description: "Indicador de travamento do banco"}
+  LFParaWrite_Per_Sec: {category: disco, unit: desconhecida, description: "Escritas paralelas em arquivos de log por segundo"}
+  LFSync_Per_Sec: {category: disco, unit: desconhecida, description: "Sincronizações de arquivo de log (log file sync) por segundo"}
+  Logic_Read_Per_Sec: {category: carga, unit: leituras/s, description: "Leituras lógicas por segundo"}
+  Login_Per_Sec: {category: carga, unit: logins/s, description: "Logins por segundo no banco"}
+  MEM_Total: {category: memória, unit: desconhecida, description: "Memória total do servidor do banco"}
+  MEM_Used: {category: memória, unit: desconhecida, description: "Memória usada no servidor do banco"}
+  MEM_Used_Pct: {category: memória, unit: "%", description: "Percentual de memória usada no servidor do banco"}
+  MEM_real_util: {category: memória, unit: "%", description: "Utilização real de memória do servidor do banco"}
+  New_Tbs_Free_Gb: {category: disco, unit: GB, description: "Espaço livre do tablespace (menor entre os tablespaces no minuto)", item_agg: min}
+  New_Tbs_Used_Pct: {category: disco, unit: "%", description: "Uso do tablespace (maior entre os tablespaces no minuto)", item_agg: max}
+  On_Off_State: {category: disponibilidade, unit: desconhecida, description: "Estado ligado/desligado do banco"}
+  PGA_Used_Pct: {category: memória, unit: "%", description: "Percentual usado da PGA (memória de processos do Oracle)"}
+  PGA_used_total: {category: memória, unit: desconhecida, description: "Total usado da PGA"}
+  Physical_Read_Per_Sec: {category: disco, unit: leituras/s, description: "Leituras físicas por segundo"}
+  Proc_Used_Pct: {category: banco de dados, unit: "%", description: "Percentual usado do limite de processos do banco"}
+  Proc_User_Used_Pct: {category: banco de dados, unit: "%", description: "Percentual usado do limite de processos de usuário"}
+  Redo_Per_Sec: {category: banco de dados, unit: desconhecida, description: "Geração de redo por segundo"}
+  Row_Lock: {category: banco de dados, unit: desconhecida, description: "Bloqueios de linha (row lock)"}
+  SEQ_Used_Pct: {category: banco de dados, unit: "%", description: "Percentual usado de sequências do banco"}
+  SctRead_Per_Sec: {category: disco, unit: leituras/s, description: "Leituras dispersas (scattered read) por segundo"}
+  SeqRead_Per_Sec: {category: disco, unit: leituras/s, description: "Leituras sequenciais (sequential read) por segundo"}
+  Sess_Active: {category: banco de dados, unit: contagem, description: "Sessões ativas no banco"}
+  Sess_Connect: {category: banco de dados, unit: contagem, description: "Sessões conectadas ao banco"}
+  Sess_Used_Temp: {category: banco de dados, unit: desconhecida, description: "Uso de espaço temporário pelas sessões"}
+  Sess_Used_Undo: {category: banco de dados, unit: desconhecida, description: "Uso de undo pelas sessões"}
+  Session_pct: {category: banco de dados, unit: "%", description: "Percentual usado do limite de sessões do banco"}
+  TPS_Per_Sec: {category: carga, unit: transações/s, description: "Transações por segundo"}
+  Tbs_Free_Gb: {category: disco, unit: GB, description: "Espaço livre nos tablespaces"}
+  Tbs_Used_Pct: {category: disco, unit: "%", description: "Percentual usado dos tablespaces"}
+  TempTbs_Pct: {category: disco, unit: "%", description: "Percentual usado do tablespace temporário"}
+  Total_Tbs_Size: {category: disco, unit: desconhecida, description: "Tamanho total dos tablespaces"}
+  UndoTbs_Pct: {category: disco, unit: "%", description: "Percentual usado do tablespace de undo"}
+  Used_Tbs_Size: {category: disco, unit: desconhecida, description: "Tamanho usado dos tablespaces"}
+  User_Commit: {category: carga, unit: desconhecida, description: "Commits de usuário"}
+  tnsping_result_time: {category: latência, unit: desconhecida, description: "Tempo de resposta do tnsping ao banco"}
+
+metric_app:
+  avg_time: {category: latência, unit: desconhecida, description: "Tempo médio de resposta do serviço (ponderado pelo número de chamadas no minuto)"}
+  num: {category: carga, unit: chamadas/min, description: "Número de chamadas ao serviço no minuto"}
+  succee_num: {category: carga, unit: chamadas/min, description: "Número de chamadas bem-sucedidas no minuto"}
+  succee_rate: {category: erro, unit: fração, description: "Taxa de sucesso das chamadas no minuto"}
+
+trace:
+  trace_calls: {category: carga, unit: chamadas/min, description: "Spans no minuto (executados pelo componente, ou chamadas JDBC recebidas pelo banco)"}
+  trace_latency_mean: {category: latência, unit: desconhecida, description: "Duração média dos spans no minuto (unidade de elapsedTime não documentada)"}
+  trace_latency_p95: {category: latência, unit: desconhecida, description: "Percentil 95 da duração dos spans no minuto"}
+  trace_latency_p99: {category: latência, unit: desconhecida, description: "Percentil 99 da duração dos spans no minuto"}
+  trace_error_rate: {category: erro, unit: fração, description: "Fração de spans sem sucesso no minuto"}

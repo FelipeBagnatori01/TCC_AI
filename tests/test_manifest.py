@@ -67,3 +67,14 @@ def test_empty_manifest_is_an_error(root: Path) -> None:
 def test_missing_system_directory_is_an_error(root: Path) -> None:
     with pytest.raises(FileNotFoundError):
         build_manifest(root, ["Nope"])
+
+
+def test_extra_root_level_file_is_listed_and_verified(root: Path) -> None:
+    (root / "deploy.xlsx").write_bytes(b"sheet")
+    entries = build_manifest(root, ["Sys"], extra_files=[Path("deploy.xlsx")])
+    assert any(e.path == "deploy.xlsx" for e in entries)
+    assert verify_manifest(root, entries).ok
+    (root / "deploy.xlsx").write_bytes(b"sheeT")
+    assert verify_manifest(root, entries).checksum_mismatch == ["deploy.xlsx"]
+    with pytest.raises(FileNotFoundError):
+        build_manifest(root, ["Sys"], extra_files=[Path("nope.xlsx")])

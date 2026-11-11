@@ -1,1 +1,1 @@
-"""Placeholder package; implemented in a later stage."""
+"""Multivariate KPI series (time x component::kpi), feature catalog and dependency edges."""

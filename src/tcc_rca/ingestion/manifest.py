@@ -49,9 +49,17 @@ def list_data_files(data_root: Path, systems: Iterable[str]) -> list[Path]:
 
 
 def build_manifest(
-    data_root: Path, systems: Iterable[str], workers: int = 4
+    data_root: Path,
+    systems: Iterable[str],
+    workers: int = 4,
+    extra_files: Iterable[Path] = (),
 ) -> list[ManifestEntry]:
+    """Entries for every file of ``systems`` plus ``extra_files`` (paths relative to the root)."""
     files = list_data_files(data_root, systems)
+    for extra in extra_files:
+        if not (data_root / extra).is_file():
+            raise FileNotFoundError(f"extra data file not found: {data_root / extra}")
+        files.append(extra)
 
     def entry(rel: Path) -> ManifestEntry:
         full = data_root / rel
@@ -99,7 +107,7 @@ def verify_manifest(
         report.checksum_mismatch = [
             e.path for e, d in zip(to_hash, digests, strict=True) if d != e.sha256
         ]
-    systems = {e.path.split("/", 1)[0] for e in entries}
+    systems = {e.path.split("/", 1)[0] for e in entries if "/" in e.path}
     listed = {e.path for e in entries}
     report.unlisted = [
         p.as_posix() for p in list_data_files(data_root, systems) if p.as_posix() not in listed

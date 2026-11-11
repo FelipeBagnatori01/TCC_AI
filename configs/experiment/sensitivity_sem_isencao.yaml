@@ -1,0 +1,8 @@
+# Control for the sensitivity analysis of ADR 0005: the plan's original selection rule, with no
+# KPI category exempt from constancy dropping. Merge after base.yaml:
+#   uv run tcc-rca <command> --config configs/base.yaml configs/experiment/sensitivity_sem_isencao.yaml
+experiment:
+  name: sensitivity_sem_isencao
+series:
+  selection:
+    constant_exempt_categories: []

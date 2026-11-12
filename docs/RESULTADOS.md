@@ -99,3 +99,50 @@ Nenhuma conclusão muda em nenhum dos dois sistemas: as diferenças ficam dentro
 ### Reavaliação do Plano B (ADR 0009)
 
 Com 120 falhas, os ICs do Bank são cerca de metade da largura dos do Telecom. Exemplos: AUC-PR do melhor baseline com largura de 0,09 contra 0,22–0,26; HR@1 de 0,17 contra 0,20. A comparação da LSTM com os baselines (RQ1 e RQ2) passa a ter poder estatístico razoável no Bank; no Telecom, só diferenças grandes serão significativas.
+
+## E5 — LSTM (ADR 0015)
+
+Configurações escolhidas na validação; 5 seeds por dobra; média ± desvio-padrão entre seeds. A comparação com os baselines é **pareada**: diferença na mesma janela ou falha, com IC por bootstrap em cada seed. "Superior" significa IC da diferença inteiro acima de 0. Tabelas completas: `reports/tables/lstm_<sistema>_<nome>.md` e `lstm_vs_baselines_<sistema>_<nome>.md`; curvas de treino em `reports/figures/lstm_curves_<sistema>_<nome>.png`.
+
+### Detecção (RQ1)
+
+| Sistema | Modelo | AUC-PR | AUC-ROC | Alarmes falsos/h | Vs. z-score local (E4) | Vs. LightGBM (E4) |
+|---|---|---|---|---|---|---|
+| Telecom | LSTM previsora | 0,40 ± 0,02 | 0,74 ± 0,01 | 18,0 ± 3,6 | +0,16, superior 5/5 | +0,15, empate 4/5 |
+| Telecom | **LSTM classificadora** | **0,48 ± 0,02** | **0,83 ± 0,01** | **9,2 ± 1,3** | **+0,24, superior 5/5** | **+0,24, superior 5/5** |
+| Bank | LSTM previsora | 0,20 ± 0,00 | 0,70 ± 0,00 | 10,5 ± 1,7 | +0,01, empate 5/5 | +0,01, empate 5/5 |
+| Bank | LSTM classificadora | 0,22 ± 0,01 | 0,66 ± 0,01 | 14,3 ± 0,6 | +0,03, empate 5/5 | +0,03, empate 5/5 |
+
+AUC-PR ao acaso: 0,14 (Telecom), 0,105 (Bank). Melhores baselines da E4: 0,25 (Telecom, LightGBM) e 0,19 (Bank, z-score local).
+
+### Localização (RQ2): ranqueamento nativo da LSTM
+
+| Sistema | Ranqueamento | HR@1 | HR@3 | HR@5 | MRR | HR@1 vs. melhor heurística da E4 |
+|---|---|---|---|---|---|---|
+| Telecom | soma dos erros | **0,44 ± 0,03** | 0,67 ± 0,02 | 0,73 ± 0,01 | 0,57 ± 0,02 | +0,31 sobre o z global, superior 5/5 |
+| Telecom | média dos 3 maiores | 0,36 ± 0,03 | 0,72 ± 0,02 | 0,80 ± 0,00 | 0,56 ± 0,01 | +0,23, superior 5/5 |
+| Bank | soma dos erros | 0,33 ± 0,01 | 0,60 ± 0,01 | 0,79 ± 0,01 | 0,51 ± 0,00 | +0,01 sobre o z global, empate 5/5 |
+| Bank | média dos 3 maiores | 0,33 ± 0,02 | 0,58 ± 0,01 | 0,72 ± 0,01 | 0,49 ± 0,01 | +0,01, empate 5/5 |
+
+No Bank, a LSTM supera o z-score local e a referência de frequência em todas as seeds (HR@1 +0,22), e empata com o z-score global.
+
+### Sensibilidade à isenção de disponibilidade
+
+| Sistema | Métrica | Com isenção | Sem isenção |
+|---|---|---|---|
+| Telecom | Previsora, AUC-PR | 0,40 ± 0,02 | 0,31 ± 0,02 (empate com os baselines) |
+| Telecom | Classificadora, AUC-PR | 0,48 ± 0,02 | 0,49 ± 0,02 (continua superior 5/5) |
+| Telecom | Localização (soma), HR@1 | 0,44 ± 0,03 | **0,22 ± 0,02** (empate com as heurísticas) |
+| Bank | Previsora / classificadora, AUC-PR | 0,20 / 0,22 | 0,20 / 0,21 |
+| Bank | Localização (soma), HR@1 | 0,33 | 0,32 |
+
+**No Telecom, a isenção muda conclusões da LSTM** (ameaça nº 1). A vantagem da classificadora na detecção se mantém sem ela. Já a vantagem da previsora e a da localização dependem dos KPIs de disponibilidade (`On_Off_State`, `ICMP_ping`), que a isenção mantém: sem eles, o HR@1 cai pela metade e vira empate. No Bank, a isenção não faz diferença.
+
+### Leitura
+
+- **Telecom:** a LSTM é claramente melhor que os baselines. A classificadora supervisionada é o melhor detector, com AUC-PR 0,48 e metade dos alarmes falsos do melhor baseline. A localização nativa triplica o HR@1, mas esse ganho depende da isenção.
+- **Bank:** a LSTM empata com o melhor baseline na detecção e na localização (HR@1), e só ganha em profundidade (HR@5 0,79 contra 0,68). A deriva entre dias e a maior heterogeneidade limitam o ganho. Note que a normalização local venceu com folga na busca do Bank (0,28 contra 0,19 na validação).
+- **Variância entre seeds:** pequena (dp ≤ 0,04).
+- **Custo:**
+  - previsora com cerca de 1 milhão de parâmetros, 2,4 s (Telecom) a 8,4 s (Bank) de treino por dobra e seed, 0,26 ms de inferência por janela;
+  - execução completa (busca + 5 seeds): 9,5 min no Telecom e 24 min no Bank, em CPU.

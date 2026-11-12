@@ -36,15 +36,13 @@ def bootstrap_auroc_ci(
     return float(np.quantile(stats, alpha)), float(np.quantile(stats, 1.0 - alpha))
 
 
-def local_abs_z(
-    values: pl.DataFrame, features: Sequence[str], window: int, cap: float
-) -> FloatArray:
-    """|z| of each value against the PREVIOUS ``window`` minutes of the same day (causal).
+def local_z(values: pl.DataFrame, features: Sequence[str], window: int, cap: float) -> FloatArray:
+    """Signed z of each value against the PREVIOUS ``window`` minutes of the same day (causal).
 
     Center: rolling median of the past; scale: rolling std of the past, floored at 0.1% of the
-    median's magnitude (+1) so near-constant series do not blow up; |z| capped at ``cap``.
+    median's magnitude (+1) so near-constant series do not blow up; clipped to ``[-cap, cap]``.
     Robust to slow drift across days, which breaks a scaler fitted on the initial block (Bank).
-    Uses no label and no future value.
+    Uses no label and no future value. Undefined values (too little past) are NaN.
     """
 
     def z(f: str) -> pl.Expr:
@@ -55,9 +53,17 @@ def local_abs_z(
         return ((pl.col(f) - center) / scale).alias(f)
 
     out = values.select(*[z(f) for f in features]).to_numpy().astype(np.float64)
-    out = np.where(np.isfinite(out), np.abs(out), np.nan)
-    clipped: FloatArray = np.minimum(out, cap)
+    out = np.where(np.isfinite(out), out, np.nan)
+    clipped: FloatArray = np.clip(out, -cap, cap)
     return clipped
+
+
+def local_abs_z(
+    values: pl.DataFrame, features: Sequence[str], window: int, cap: float
+) -> FloatArray:
+    """|local_z|: the drift-robust anomaly magnitude used by the E3 precursor check and E4."""
+    out: FloatArray = np.abs(local_z(values, features, window, cap))
+    return out
 
 
 def minute_scores(z: FloatArray, top_k: int) -> FloatArray:

@@ -113,6 +113,33 @@ class BaselinesConfig(_Strict):
     bootstrap_block_minutes: int = Field(gt=0)  # window-level CIs resample blocks of this size
 
 
+class LstmGridConfig(_Strict):
+    hidden: tuple[int, ...] = Field(min_length=1)
+    layers: tuple[int, ...] = Field(min_length=1)
+    normalization: tuple[Literal["global", "local"], ...] = Field(min_length=1)
+
+
+class LstmConfig(_Strict):
+    """E5 (ADR 0015). Hyperparameters are searched on validation only, with this budget."""
+
+    seeds: tuple[int, ...] = Field(min_length=1)  # offsets added to experiment.seed (finals)
+    forecaster_grid: LstmGridConfig
+    # The classifier reuses the normalization chosen for the forecaster; only its size is searched.
+    classifier_hidden: tuple[int, ...] = Field(min_length=1)
+    classifier_layers: tuple[int, ...] = Field(min_length=1)
+    dropout: float = Field(ge=0.0, lt=1.0)
+    learning_rate: float = Field(gt=0.0)
+    batch_size: int = Field(gt=0)
+    max_epochs: int = Field(gt=0)
+    patience: int = Field(gt=0)
+    global_clip: float = Field(gt=0.0)  # |robust z| cap for the "global" normalization
+    score_top_k: int = Field(gt=0)  # minute score = mean of the k largest normalized errors
+    # Control runs (e.g. without the availability exemption) reuse the main run's selection
+    # instead of searching again: path to reports/tables/lstm_<system>_<name>.json (``{system}``
+    # is replaced by the target system).
+    reuse_selection_from: Path | None = None
+
+
 class Config(_Strict):
     experiment: ExperimentConfig
     target_system: Literal["Telecom", "Bank"]
@@ -124,6 +151,7 @@ class Config(_Strict):
     series: SeriesConfig
     tasks: TasksConfig
     baselines: BaselinesConfig
+    lstm: LstmConfig
 
     def resolved(self) -> dict[str, Any]:
         """JSON-serializable view of the fully resolved configuration."""

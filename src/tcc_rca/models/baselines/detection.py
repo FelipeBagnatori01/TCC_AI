@@ -5,7 +5,6 @@ The z-score baseline needs no model: its window score is ``features.window_max_a
 
 from __future__ import annotations
 
-import lightgbm as lgb
 import numpy as np
 import numpy.typing as npt
 from sklearn.ensemble import IsolationForest
@@ -35,6 +34,11 @@ def lightgbm_scores(
     seed: int,
 ) -> FloatArray:
     """Supervised window classifier with class balancing; returns P(failure window)."""
+    # Imported here, not at module level: once LightGBM has trained, its OpenMP runtime makes
+    # multithreaded PyTorch crash in the same process (macOS). Keeping the import local means the
+    # LSTM command never loads it (ADR 0015).
+    import lightgbm as lgb
+
     pos = int(y_train.sum())
     if pos == 0 or pos == y_train.size:
         raise ValueError("LightGBM needs both positive and negative training windows")

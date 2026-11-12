@@ -1,0 +1,1479 @@
+{
+  "detection": {
+    "lstm_forecast": {
+      "seeds": [
+        {
+          "auc_pr": {
+            "value": 0.3953,
+            "ci_low": 0.2669,
+            "ci_high": 0.5432,
+            "n_valid_resamples": 2000
+          },
+          "auc_roc": {
+            "value": 0.7247,
+            "ci_low": 0.6299,
+            "ci_high": 0.8107,
+            "n_valid_resamples": 2000
+          },
+          "precision": {
+            "value": 0.1751,
+            "ci_low": 0.1007,
+            "ci_high": 0.2809,
+            "n_valid_resamples": 2000
+          },
+          "recall": {
+            "value": 0.3968,
+            "ci_low": 0.2567,
+            "ci_high": 0.5374,
+            "n_valid_resamples": 2000
+          },
+          "f1": {
+            "value": 0.243,
+            "ci_low": 0.148,
+            "ci_high": 0.3537,
+            "n_valid_resamples": 2000
+          },
+          "positive_rate": 0.1409,
+          "n_windows": 1788,
+          "false_alarms_per_hour": {
+            "value": 18.3984,
+            "ci_low": 12.3305,
+            "ci_high": 24.6041,
+            "n_valid_resamples": 2000
+          },
+          "event_recall": {
+            "value": 0.5333,
+            "ci_low": 0.4,
+            "ci_high": 0.6889,
+            "n_valid_resamples": 2000
+          },
+          "median_delay_minutes": {
+            "value": 0.5,
+            "ci_low": -2.0,
+            "ci_high": 1.0,
+            "n_valid_resamples": 2000
+          },
+          "failures_detected": 24,
+          "event_recall_by_chance": 1.0,
+          "event_recall_by_reason": {
+            "CPU fault": {
+              "n": 15,
+              "detected": 9
+            },
+            "db close": {
+              "n": 4,
+              "detected": 2
+            },
+            "db connection limit": {
+              "n": 6,
+              "detected": 2
+            },
+            "network delay": {
+              "n": 13,
+              "detected": 7
+            },
+            "network loss": {
+              "n": 7,
+              "detected": 4
+            }
+          }
+        },
+        {
+          "auc_pr": {
+            "value": 0.3854,
+            "ci_low": 0.2554,
+            "ci_high": 0.5413,
+            "n_valid_resamples": 2000
+          },
+          "auc_roc": {
+            "value": 0.7313,
+            "ci_low": 0.6387,
+            "ci_high": 0.8173,
+            "n_valid_resamples": 2000
+          },
+          "precision": {
+            "value": 0.1837,
+            "ci_low": 0.1107,
+            "ci_high": 0.2917,
+            "n_valid_resamples": 2000
+          },
+          "recall": {
+            "value": 0.4484,
+            "ci_low": 0.308,
+            "ci_high": 0.5947,
+            "n_valid_resamples": 2000
+          },
+          "f1": {
+            "value": 0.2607,
+            "ci_low": 0.1694,
+            "ci_high": 0.3717,
+            "n_valid_resamples": 2000
+          },
+          "positive_rate": 0.1409,
+          "n_windows": 1788,
+          "false_alarms_per_hour": {
+            "value": 19.6094,
+            "ci_low": 13.6579,
+            "ci_high": 25.9309,
+            "n_valid_resamples": 2000
+          },
+          "event_recall": {
+            "value": 0.6,
+            "ci_low": 0.4444,
+            "ci_high": 0.7333,
+            "n_valid_resamples": 2000
+          },
+          "median_delay_minutes": {
+            "value": 0.0,
+            "ci_low": -2.0,
+            "ci_high": 1.0,
+            "n_valid_resamples": 2000
+          },
+          "failures_detected": 27,
+          "event_recall_by_chance": 1.0,
+          "event_recall_by_reason": {
+            "CPU fault": {
+              "n": 15,
+              "detected": 10
+            },
+            "db close": {
+              "n": 4,
+              "detected": 3
+            },
+            "db connection limit": {
+              "n": 6,
+              "detected": 2
+            },
+            "network delay": {
+              "n": 13,
+              "detected": 8
+            },
+            "network loss": {
+              "n": 7,
+              "detected": 4
+            }
+          }
+        },
+        {
+          "auc_pr": {
+            "value": 0.4243,
+            "ci_low": 0.282,
+            "ci_high": 0.6068,
+            "n_valid_resamples": 2000
+          },
+          "auc_roc": {
+            "value": 0.7534,
+            "ci_low": 0.6593,
+            "ci_high": 0.8348,
+            "n_valid_resamples": 2000
+          },
+          "precision": {
+            "value": 0.2406,
+            "ci_low": 0.1371,
+            "ci_high": 0.3833,
+            "n_valid_resamples": 2000
+          },
+          "recall": {
+            "value": 0.381,
+            "ci_low": 0.2393,
+            "ci_high": 0.5257,
+            "n_valid_resamples": 2000
+          },
+          "f1": {
+            "value": 0.2949,
+            "ci_low": 0.1874,
+            "ci_high": 0.4201,
+            "n_valid_resamples": 2000
+          },
+          "positive_rate": 0.1409,
+          "n_windows": 1788,
+          "false_alarms_per_hour": {
+            "value": 11.8359,
+            "ci_low": 7.5772,
+            "ci_high": 16.4667,
+            "n_valid_resamples": 2000
+          },
+          "event_recall": {
+            "value": 0.5556,
+            "ci_low": 0.4222,
+            "ci_high": 0.6889,
+            "n_valid_resamples": 2000
+          },
+          "median_delay_minutes": {
+            "value": 0.0,
+            "ci_low": -1.0,
+            "ci_high": 1.0,
+            "n_valid_resamples": 2000
+          },
+          "failures_detected": 25,
+          "event_recall_by_chance": 0.9996,
+          "event_recall_by_reason": {
+            "CPU fault": {
+              "n": 15,
+              "detected": 9
+            },
+            "db close": {
+              "n": 4,
+              "detected": 2
+            },
+            "db connection limit": {
+              "n": 6,
+              "detected": 3
+            },
+            "network delay": {
+              "n": 13,
+              "detected": 7
+            },
+            "network loss": {
+              "n": 7,
+              "detected": 4
+            }
+          }
+        },
+        {
+          "auc_pr": {
+            "value": 0.4118,
+            "ci_low": 0.2713,
+            "ci_high": 0.5793,
+            "n_valid_resamples": 2000
+          },
+          "auc_roc": {
+            "value": 0.7477,
+            "ci_low": 0.6575,
+            "ci_high": 0.8308,
+            "n_valid_resamples": 2000
+          },
+          "precision": {
+            "value": 0.181,
+            "ci_low": 0.1075,
+            "ci_high": 0.2818,
+            "n_valid_resamples": 2000
+          },
+          "recall": {
+            "value": 0.4762,
+            "ci_low": 0.3333,
+            "ci_high": 0.6126,
+            "n_valid_resamples": 2000
+          },
+          "f1": {
+            "value": 0.2623,
+            "ci_low": 0.1689,
+            "ci_high": 0.3676,
+            "n_valid_resamples": 2000
+          },
+          "positive_rate": 0.1409,
+          "n_windows": 1788,
+          "false_alarms_per_hour": {
+            "value": 21.2109,
+            "ci_low": 15.0907,
+            "ci_high": 27.4139,
+            "n_valid_resamples": 2000
+          },
+          "event_recall": {
+            "value": 0.6222,
+            "ci_low": 0.4889,
+            "ci_high": 0.7556,
+            "n_valid_resamples": 2000
+          },
+          "median_delay_minutes": {
+            "value": 0.0,
+            "ci_low": -4.0,
+            "ci_high": 1.0,
+            "n_valid_resamples": 2000
+          },
+          "failures_detected": 28,
+          "event_recall_by_chance": 1.0,
+          "event_recall_by_reason": {
+            "CPU fault": {
+              "n": 15,
+              "detected": 9
+            },
+            "db close": {
+              "n": 4,
+              "detected": 2
+            },
+            "db connection limit": {
+              "n": 6,
+              "detected": 4
+            },
+            "network delay": {
+              "n": 13,
+              "detected": 9
+            },
+            "network loss": {
+              "n": 7,
+              "detected": 4
+            }
+          }
+        },
+        {
+          "auc_pr": {
+            "value": 0.3661,
+            "ci_low": 0.2401,
+            "ci_high": 0.5484,
+            "n_valid_resamples": 2000
+          },
+          "auc_roc": {
+            "value": 0.7403,
+            "ci_low": 0.6458,
+            "ci_high": 0.8253,
+            "n_valid_resamples": 2000
+          },
+          "precision": {
+            "value": 0.1795,
+            "ci_low": 0.1045,
+            "ci_high": 0.2886,
+            "n_valid_resamples": 2000
+          },
+          "recall": {
+            "value": 0.4246,
+            "ci_low": 0.2851,
+            "ci_high": 0.5641,
+            "n_valid_resamples": 2000
+          },
+          "f1": {
+            "value": 0.2524,
+            "ci_low": 0.157,
+            "ci_high": 0.363,
+            "n_valid_resamples": 2000
+          },
+          "positive_rate": 0.1409,
+          "n_windows": 1788,
+          "false_alarms_per_hour": {
+            "value": 19.1016,
+            "ci_low": 12.9973,
+            "ci_high": 25.4135,
+            "n_valid_resamples": 2000
+          },
+          "event_recall": {
+            "value": 0.5556,
+            "ci_low": 0.4222,
+            "ci_high": 0.6889,
+            "n_valid_resamples": 2000
+          },
+          "median_delay_minutes": {
+            "value": 0.0,
+            "ci_low": -5.0,
+            "ci_high": 1.0,
+            "n_valid_resamples": 2000
+          },
+          "failures_detected": 25,
+          "event_recall_by_chance": 1.0,
+          "event_recall_by_reason": {
+            "CPU fault": {
+              "n": 15,
+              "detected": 9
+            },
+            "db close": {
+              "n": 4,
+              "detected": 2
+            },
+            "db connection limit": {
+              "n": 6,
+              "detected": 3
+            },
+            "network delay": {
+              "n": 13,
+              "detected": 7
+            },
+            "network loss": {
+              "n": 7,
+              "detected": 4
+            }
+          }
+        }
+      ],
+      "summary": {
+        "auc_pr": {
+          "mean": 0.3966,
+          "sd": 0.0227,
+          "min": 0.3661,
+          "max": 0.4243
+        },
+        "auc_roc": {
+          "mean": 0.7395,
+          "sd": 0.0117,
+          "min": 0.7247,
+          "max": 0.7534
+        },
+        "precision": {
+          "mean": 0.192,
+          "sd": 0.0274,
+          "min": 0.1751,
+          "max": 0.2406
+        },
+        "recall": {
+          "mean": 0.4254,
+          "sd": 0.0384,
+          "min": 0.381,
+          "max": 0.4762
+        },
+        "f1": {
+          "mean": 0.2627,
+          "sd": 0.0196,
+          "min": 0.243,
+          "max": 0.2949
+        },
+        "false_alarms_per_hour": {
+          "mean": 18.0312,
+          "sd": 3.6147,
+          "min": 11.8359,
+          "max": 21.2109
+        },
+        "event_recall": {
+          "mean": 0.5733,
+          "sd": 0.0365,
+          "min": 0.5333,
+          "max": 0.6222
+        }
+      }
+    },
+    "lstm_classifier": {
+      "seeds": [
+        {
+          "auc_pr": {
+            "value": 0.4545,
+            "ci_low": 0.322,
+            "ci_high": 0.6237,
+            "n_valid_resamples": 2000
+          },
+          "auc_roc": {
+            "value": 0.8346,
+            "ci_low": 0.79,
+            "ci_high": 0.8766,
+            "n_valid_resamples": 2000
+          },
+          "precision": {
+            "value": 0.3547,
+            "ci_low": 0.2375,
+            "ci_high": 0.4971,
+            "n_valid_resamples": 2000
+          },
+          "recall": {
+            "value": 0.5278,
+            "ci_low": 0.4115,
+            "ci_high": 0.6487,
+            "n_valid_resamples": 2000
+          },
+          "f1": {
+            "value": 0.4242,
+            "ci_low": 0.3118,
+            "ci_high": 0.531,
+            "n_valid_resamples": 2000
+          },
+          "positive_rate": 0.1409,
+          "n_windows": 1788,
+          "false_alarms_per_hour": {
+            "value": 9.4531,
+            "ci_low": 6.1598,
+            "ci_high": 13.0925,
+            "n_valid_resamples": 2000
+          },
+          "event_recall": {
+            "value": 0.7778,
+            "ci_low": 0.6444,
+            "ci_high": 0.8889,
+            "n_valid_resamples": 2000
+          },
+          "median_delay_minutes": {
+            "value": 1.0,
+            "ci_low": 0.0,
+            "ci_high": 2.0,
+            "n_valid_resamples": 2000
+          },
+          "failures_detected": 35,
+          "event_recall_by_chance": 0.9979,
+          "event_recall_by_reason": {
+            "CPU fault": {
+              "n": 15,
+              "detected": 12
+            },
+            "db close": {
+              "n": 4,
+              "detected": 3
+            },
+            "db connection limit": {
+              "n": 6,
+              "detected": 5
+            },
+            "network delay": {
+              "n": 13,
+              "detected": 10
+            },
+            "network loss": {
+              "n": 7,
+              "detected": 5
+            }
+          }
+        },
+        {
+          "auc_pr": {
+            "value": 0.4788,
+            "ci_low": 0.3407,
+            "ci_high": 0.6238,
+            "n_valid_resamples": 2000
+          },
+          "auc_roc": {
+            "value": 0.8217,
+            "ci_low": 0.7696,
+            "ci_high": 0.8687,
+            "n_valid_resamples": 2000
+          },
+          "precision": {
+            "value": 0.3721,
+            "ci_low": 0.2534,
+            "ci_high": 0.524,
+            "n_valid_resamples": 2000
+          },
+          "recall": {
+            "value": 0.5714,
+            "ci_low": 0.453,
+            "ci_high": 0.6875,
+            "n_valid_resamples": 2000
+          },
+          "f1": {
+            "value": 0.4507,
+            "ci_low": 0.3374,
+            "ci_high": 0.5608,
+            "n_valid_resamples": 2000
+          },
+          "positive_rate": 0.1409,
+          "n_windows": 1788,
+          "false_alarms_per_hour": {
+            "value": 9.4922,
+            "ci_low": 6.1424,
+            "ci_high": 13.4108,
+            "n_valid_resamples": 2000
+          },
+          "event_recall": {
+            "value": 0.8667,
+            "ci_low": 0.7556,
+            "ci_high": 0.9556,
+            "n_valid_resamples": 2000
+          },
+          "median_delay_minutes": {
+            "value": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 2.0,
+            "n_valid_resamples": 2000
+          },
+          "failures_detected": 39,
+          "event_recall_by_chance": 0.998,
+          "event_recall_by_reason": {
+            "CPU fault": {
+              "n": 15,
+              "detected": 13
+            },
+            "db close": {
+              "n": 4,
+              "detected": 2
+            },
+            "db connection limit": {
+              "n": 6,
+              "detected": 5
+            },
+            "network delay": {
+              "n": 13,
+              "detected": 12
+            },
+            "network loss": {
+              "n": 7,
+              "detected": 7
+            }
+          }
+        },
+        {
+          "auc_pr": {
+            "value": 0.5156,
+            "ci_low": 0.3814,
+            "ci_high": 0.6593,
+            "n_valid_resamples": 2000
+          },
+          "auc_roc": {
+            "value": 0.8458,
+            "ci_low": 0.8027,
+            "ci_high": 0.8846,
+            "n_valid_resamples": 2000
+          },
+          "precision": {
+            "value": 0.4367,
+            "ci_low": 0.3075,
+            "ci_high": 0.579,
+            "n_valid_resamples": 2000
+          },
+          "recall": {
+            "value": 0.5476,
+            "ci_low": 0.428,
+            "ci_high": 0.6667,
+            "n_valid_resamples": 2000
+          },
+          "f1": {
+            "value": 0.4859,
+            "ci_low": 0.3817,
+            "ci_high": 0.5879,
+            "n_valid_resamples": 2000
+          },
+          "positive_rate": 0.1409,
+          "n_windows": 1788,
+          "false_alarms_per_hour": {
+            "value": 6.9531,
+            "ci_low": 4.409,
+            "ci_high": 9.6454,
+            "n_valid_resamples": 2000
+          },
+          "event_recall": {
+            "value": 0.7778,
+            "ci_low": 0.6444,
+            "ci_high": 0.8889,
+            "n_valid_resamples": 2000
+          },
+          "median_delay_minutes": {
+            "value": 1.0,
+            "ci_low": 0.0,
+            "ci_high": 2.0,
+            "n_valid_resamples": 2000
+          },
+          "failures_detected": 35,
+          "event_recall_by_chance": 0.9881,
+          "event_recall_by_reason": {
+            "CPU fault": {
+              "n": 15,
+              "detected": 13
+            },
+            "db close": {
+              "n": 4,
+              "detected": 3
+            },
+            "db connection limit": {
+              "n": 6,
+              "detected": 3
+            },
+            "network delay": {
+              "n": 13,
+              "detected": 11
+            },
+            "network loss": {
+              "n": 7,
+              "detected": 5
+            }
+          }
+        },
+        {
+          "auc_pr": {
+            "value": 0.4695,
+            "ci_low": 0.3358,
+            "ci_high": 0.6165,
+            "n_valid_resamples": 2000
+          },
+          "auc_roc": {
+            "value": 0.818,
+            "ci_low": 0.7634,
+            "ci_high": 0.8699,
+            "n_valid_resamples": 2000
+          },
+          "precision": {
+            "value": 0.358,
+            "ci_low": 0.2466,
+            "ci_high": 0.4897,
+            "n_valid_resamples": 2000
+          },
+          "recall": {
+            "value": 0.5754,
+            "ci_low": 0.4704,
+            "ci_high": 0.6838,
+            "n_valid_resamples": 2000
+          },
+          "f1": {
+            "value": 0.4414,
+            "ci_low": 0.3426,
+            "ci_high": 0.5405,
+            "n_valid_resamples": 2000
+          },
+          "positive_rate": 0.1409,
+          "n_windows": 1788,
+          "false_alarms_per_hour": {
+            "value": 10.1562,
+            "ci_low": 7.0067,
+            "ci_high": 13.8082,
+            "n_valid_resamples": 2000
+          },
+          "event_recall": {
+            "value": 0.8,
+            "ci_low": 0.6667,
+            "ci_high": 0.9111,
+            "n_valid_resamples": 2000
+          },
+          "median_delay_minutes": {
+            "value": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 2.0,
+            "n_valid_resamples": 2000
+          },
+          "failures_detected": 36,
+          "event_recall_by_chance": 0.9987,
+          "event_recall_by_reason": {
+            "CPU fault": {
+              "n": 15,
+              "detected": 11
+            },
+            "db close": {
+              "n": 4,
+              "detected": 3
+            },
+            "db connection limit": {
+              "n": 6,
+              "detected": 4
+            },
+            "network delay": {
+              "n": 13,
+              "detected": 13
+            },
+            "network loss": {
+              "n": 7,
+              "detected": 5
+            }
+          }
+        },
+        {
+          "auc_pr": {
+            "value": 0.4949,
+            "ci_low": 0.355,
+            "ci_high": 0.6524,
+            "n_valid_resamples": 2000
+          },
+          "auc_roc": {
+            "value": 0.8239,
+            "ci_low": 0.7729,
+            "ci_high": 0.8697,
+            "n_valid_resamples": 2000
+          },
+          "precision": {
+            "value": 0.352,
+            "ci_low": 0.2288,
+            "ci_high": 0.5054,
+            "n_valid_resamples": 2000
+          },
+          "recall": {
+            "value": 0.5476,
+            "ci_low": 0.4355,
+            "ci_high": 0.6627,
+            "n_valid_resamples": 2000
+          },
+          "f1": {
+            "value": 0.4286,
+            "ci_low": 0.3205,
+            "ci_high": 0.5467,
+            "n_valid_resamples": 2000
+          },
+          "positive_rate": 0.1409,
+          "n_windows": 1788,
+          "false_alarms_per_hour": {
+            "value": 9.9219,
+            "ci_low": 5.9395,
+            "ci_high": 14.4579,
+            "n_valid_resamples": 2000
+          },
+          "event_recall": {
+            "value": 0.7333,
+            "ci_low": 0.6,
+            "ci_high": 0.8444,
+            "n_valid_resamples": 2000
+          },
+          "median_delay_minutes": {
+            "value": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 2.0,
+            "n_valid_resamples": 2000
+          },
+          "failures_detected": 33,
+          "event_recall_by_chance": 0.9985,
+          "event_recall_by_reason": {
+            "CPU fault": {
+              "n": 15,
+              "detected": 12
+            },
+            "db close": {
+              "n": 4,
+              "detected": 2
+            },
+            "db connection limit": {
+              "n": 6,
+              "detected": 3
+            },
+            "network delay": {
+              "n": 13,
+              "detected": 12
+            },
+            "network loss": {
+              "n": 7,
+              "detected": 4
+            }
+          }
+        }
+      ],
+      "summary": {
+        "auc_pr": {
+          "mean": 0.4827,
+          "sd": 0.0235,
+          "min": 0.4545,
+          "max": 0.5156
+        },
+        "auc_roc": {
+          "mean": 0.8288,
+          "sd": 0.0113,
+          "min": 0.818,
+          "max": 0.8458
+        },
+        "precision": {
+          "mean": 0.3747,
+          "sd": 0.0355,
+          "min": 0.352,
+          "max": 0.4367
+        },
+        "recall": {
+          "mean": 0.554,
+          "sd": 0.0196,
+          "min": 0.5278,
+          "max": 0.5754
+        },
+        "f1": {
+          "mean": 0.4462,
+          "sd": 0.0246,
+          "min": 0.4242,
+          "max": 0.4859
+        },
+        "false_alarms_per_hour": {
+          "mean": 9.1953,
+          "sd": 1.2878,
+          "min": 6.9531,
+          "max": 10.1562
+        },
+        "event_recall": {
+          "mean": 0.7911,
+          "sd": 0.0487,
+          "min": 0.7333,
+          "max": 0.8667
+        }
+      }
+    }
+  },
+  "localization": {
+    "lstm_sum": {
+      "seeds": [
+        {
+          "n_failures": 45,
+          "hr@1": {
+            "value": 0.4444,
+            "ci_low": 0.3111,
+            "ci_high": 0.6,
+            "n_valid_resamples": 2000
+          },
+          "hr@3": {
+            "value": 0.6889,
+            "ci_low": 0.5556,
+            "ci_high": 0.8222,
+            "n_valid_resamples": 2000
+          },
+          "hr@5": {
+            "value": 0.7333,
+            "ci_low": 0.6,
+            "ci_high": 0.8444,
+            "n_valid_resamples": 2000
+          },
+          "mrr": {
+            "value": 0.5754,
+            "ci_low": 0.455,
+            "ci_high": 0.6867,
+            "n_valid_resamples": 2000
+          },
+          "hr@1_by_reason": {
+            "CPU fault": {
+              "n": 15,
+              "hr@1": 0.0
+            },
+            "db close": {
+              "n": 4,
+              "hr@1": 1.0
+            },
+            "db connection limit": {
+              "n": 6,
+              "hr@1": 0.1667
+            },
+            "network delay": {
+              "n": 13,
+              "hr@1": 0.8462
+            },
+            "network loss": {
+              "n": 7,
+              "hr@1": 0.5714
+            }
+          }
+        },
+        {
+          "n_failures": 45,
+          "hr@1": {
+            "value": 0.4,
+            "ci_low": 0.2667,
+            "ci_high": 0.5556,
+            "n_valid_resamples": 2000
+          },
+          "hr@3": {
+            "value": 0.6667,
+            "ci_low": 0.5333,
+            "ci_high": 0.8,
+            "n_valid_resamples": 2000
+          },
+          "hr@5": {
+            "value": 0.7333,
+            "ci_low": 0.6,
+            "ci_high": 0.8444,
+            "n_valid_resamples": 2000
+          },
+          "mrr": {
+            "value": 0.5468,
+            "ci_low": 0.4339,
+            "ci_high": 0.6622,
+            "n_valid_resamples": 2000
+          },
+          "hr@1_by_reason": {
+            "CPU fault": {
+              "n": 15,
+              "hr@1": 0.0
+            },
+            "db close": {
+              "n": 4,
+              "hr@1": 1.0
+            },
+            "db connection limit": {
+              "n": 6,
+              "hr@1": 0.1667
+            },
+            "network delay": {
+              "n": 13,
+              "hr@1": 0.7692
+            },
+            "network loss": {
+              "n": 7,
+              "hr@1": 0.4286
+            }
+          }
+        },
+        {
+          "n_failures": 45,
+          "hr@1": {
+            "value": 0.4444,
+            "ci_low": 0.3111,
+            "ci_high": 0.6,
+            "n_valid_resamples": 2000
+          },
+          "hr@3": {
+            "value": 0.6667,
+            "ci_low": 0.5111,
+            "ci_high": 0.8,
+            "n_valid_resamples": 2000
+          },
+          "hr@5": {
+            "value": 0.7333,
+            "ci_low": 0.6,
+            "ci_high": 0.8444,
+            "n_valid_resamples": 2000
+          },
+          "mrr": {
+            "value": 0.5726,
+            "ci_low": 0.4501,
+            "ci_high": 0.6903,
+            "n_valid_resamples": 2000
+          },
+          "hr@1_by_reason": {
+            "CPU fault": {
+              "n": 15,
+              "hr@1": 0.0
+            },
+            "db close": {
+              "n": 4,
+              "hr@1": 1.0
+            },
+            "db connection limit": {
+              "n": 6,
+              "hr@1": 0.3333
+            },
+            "network delay": {
+              "n": 13,
+              "hr@1": 0.8462
+            },
+            "network loss": {
+              "n": 7,
+              "hr@1": 0.4286
+            }
+          }
+        },
+        {
+          "n_failures": 45,
+          "hr@1": {
+            "value": 0.4889,
+            "ci_low": 0.3333,
+            "ci_high": 0.6444,
+            "n_valid_resamples": 2000
+          },
+          "hr@3": {
+            "value": 0.6667,
+            "ci_low": 0.5333,
+            "ci_high": 0.8,
+            "n_valid_resamples": 2000
+          },
+          "hr@5": {
+            "value": 0.7333,
+            "ci_low": 0.6,
+            "ci_high": 0.8444,
+            "n_valid_resamples": 2000
+          },
+          "mrr": {
+            "value": 0.5947,
+            "ci_low": 0.472,
+            "ci_high": 0.7142,
+            "n_valid_resamples": 2000
+          },
+          "hr@1_by_reason": {
+            "CPU fault": {
+              "n": 15,
+              "hr@1": 0.0
+            },
+            "db close": {
+              "n": 4,
+              "hr@1": 1.0
+            },
+            "db connection limit": {
+              "n": 6,
+              "hr@1": 0.5
+            },
+            "network delay": {
+              "n": 13,
+              "hr@1": 0.8462
+            },
+            "network loss": {
+              "n": 7,
+              "hr@1": 0.5714
+            }
+          }
+        },
+        {
+          "n_failures": 45,
+          "hr@1": {
+            "value": 0.4222,
+            "ci_low": 0.2889,
+            "ci_high": 0.5778,
+            "n_valid_resamples": 2000
+          },
+          "hr@3": {
+            "value": 0.6444,
+            "ci_low": 0.5111,
+            "ci_high": 0.7778,
+            "n_valid_resamples": 2000
+          },
+          "hr@5": {
+            "value": 0.7111,
+            "ci_low": 0.5778,
+            "ci_high": 0.8222,
+            "n_valid_resamples": 2000
+          },
+          "mrr": {
+            "value": 0.5599,
+            "ci_low": 0.4395,
+            "ci_high": 0.6726,
+            "n_valid_resamples": 2000
+          },
+          "hr@1_by_reason": {
+            "CPU fault": {
+              "n": 15,
+              "hr@1": 0.0
+            },
+            "db close": {
+              "n": 4,
+              "hr@1": 1.0
+            },
+            "db connection limit": {
+              "n": 6,
+              "hr@1": 0.0
+            },
+            "network delay": {
+              "n": 13,
+              "hr@1": 0.8462
+            },
+            "network loss": {
+              "n": 7,
+              "hr@1": 0.5714
+            }
+          }
+        }
+      ],
+      "summary": {
+        "hr@1": {
+          "mean": 0.44,
+          "sd": 0.033,
+          "min": 0.4,
+          "max": 0.4889
+        },
+        "hr@3": {
+          "mean": 0.6667,
+          "sd": 0.0157,
+          "min": 0.6444,
+          "max": 0.6889
+        },
+        "hr@5": {
+          "mean": 0.7289,
+          "sd": 0.0099,
+          "min": 0.7111,
+          "max": 0.7333
+        },
+        "mrr": {
+          "mean": 0.5699,
+          "sd": 0.0179,
+          "min": 0.5468,
+          "max": 0.5947
+        }
+      }
+    },
+    "lstm_top3": {
+      "seeds": [
+        {
+          "n_failures": 45,
+          "hr@1": {
+            "value": 0.4,
+            "ci_low": 0.2667,
+            "ci_high": 0.5556,
+            "n_valid_resamples": 2000
+          },
+          "hr@3": {
+            "value": 0.7111,
+            "ci_low": 0.5778,
+            "ci_high": 0.8444,
+            "n_valid_resamples": 2000
+          },
+          "hr@5": {
+            "value": 0.8,
+            "ci_low": 0.6889,
+            "ci_high": 0.9111,
+            "n_valid_resamples": 2000
+          },
+          "mrr": {
+            "value": 0.573,
+            "ci_low": 0.4614,
+            "ci_high": 0.678,
+            "n_valid_resamples": 2000
+          },
+          "hr@1_by_reason": {
+            "CPU fault": {
+              "n": 15,
+              "hr@1": 0.0
+            },
+            "db close": {
+              "n": 4,
+              "hr@1": 0.75
+            },
+            "db connection limit": {
+              "n": 6,
+              "hr@1": 0.0
+            },
+            "network delay": {
+              "n": 13,
+              "hr@1": 0.9231
+            },
+            "network loss": {
+              "n": 7,
+              "hr@1": 0.4286
+            }
+          }
+        },
+        {
+          "n_failures": 45,
+          "hr@1": {
+            "value": 0.3556,
+            "ci_low": 0.2222,
+            "ci_high": 0.5111,
+            "n_valid_resamples": 2000
+          },
+          "hr@3": {
+            "value": 0.7333,
+            "ci_low": 0.6,
+            "ci_high": 0.8667,
+            "n_valid_resamples": 2000
+          },
+          "hr@5": {
+            "value": 0.8,
+            "ci_low": 0.6889,
+            "ci_high": 0.9111,
+            "n_valid_resamples": 2000
+          },
+          "mrr": {
+            "value": 0.5534,
+            "ci_low": 0.4472,
+            "ci_high": 0.6589,
+            "n_valid_resamples": 2000
+          },
+          "hr@1_by_reason": {
+            "CPU fault": {
+              "n": 15,
+              "hr@1": 0.0
+            },
+            "db close": {
+              "n": 4,
+              "hr@1": 1.0
+            },
+            "db connection limit": {
+              "n": 6,
+              "hr@1": 0.0
+            },
+            "network delay": {
+              "n": 13,
+              "hr@1": 0.6923
+            },
+            "network loss": {
+              "n": 7,
+              "hr@1": 0.4286
+            }
+          }
+        },
+        {
+          "n_failures": 45,
+          "hr@1": {
+            "value": 0.3556,
+            "ci_low": 0.2222,
+            "ci_high": 0.4889,
+            "n_valid_resamples": 2000
+          },
+          "hr@3": {
+            "value": 0.7111,
+            "ci_low": 0.5778,
+            "ci_high": 0.8444,
+            "n_valid_resamples": 2000
+          },
+          "hr@5": {
+            "value": 0.8,
+            "ci_low": 0.6889,
+            "ci_high": 0.9111,
+            "n_valid_resamples": 2000
+          },
+          "mrr": {
+            "value": 0.551,
+            "ci_low": 0.4425,
+            "ci_high": 0.6576,
+            "n_valid_resamples": 2000
+          },
+          "hr@1_by_reason": {
+            "CPU fault": {
+              "n": 15,
+              "hr@1": 0.0
+            },
+            "db close": {
+              "n": 4,
+              "hr@1": 0.5
+            },
+            "db connection limit": {
+              "n": 6,
+              "hr@1": 0.3333
+            },
+            "network delay": {
+              "n": 13,
+              "hr@1": 0.6923
+            },
+            "network loss": {
+              "n": 7,
+              "hr@1": 0.4286
+            }
+          }
+        },
+        {
+          "n_failures": 45,
+          "hr@1": {
+            "value": 0.3778,
+            "ci_low": 0.2444,
+            "ci_high": 0.5333,
+            "n_valid_resamples": 2000
+          },
+          "hr@3": {
+            "value": 0.6889,
+            "ci_low": 0.5556,
+            "ci_high": 0.8222,
+            "n_valid_resamples": 2000
+          },
+          "hr@5": {
+            "value": 0.8,
+            "ci_low": 0.6889,
+            "ci_high": 0.9111,
+            "n_valid_resamples": 2000
+          },
+          "mrr": {
+            "value": 0.5633,
+            "ci_low": 0.4532,
+            "ci_high": 0.6715,
+            "n_valid_resamples": 2000
+          },
+          "hr@1_by_reason": {
+            "CPU fault": {
+              "n": 15,
+              "hr@1": 0.0
+            },
+            "db close": {
+              "n": 4,
+              "hr@1": 0.5
+            },
+            "db connection limit": {
+              "n": 6,
+              "hr@1": 0.3333
+            },
+            "network delay": {
+              "n": 13,
+              "hr@1": 0.7692
+            },
+            "network loss": {
+              "n": 7,
+              "hr@1": 0.4286
+            }
+          }
+        },
+        {
+          "n_failures": 45,
+          "hr@1": {
+            "value": 0.3333,
+            "ci_low": 0.2,
+            "ci_high": 0.4667,
+            "n_valid_resamples": 2000
+          },
+          "hr@3": {
+            "value": 0.7333,
+            "ci_low": 0.6,
+            "ci_high": 0.8444,
+            "n_valid_resamples": 2000
+          },
+          "hr@5": {
+            "value": 0.8,
+            "ci_low": 0.6889,
+            "ci_high": 0.9111,
+            "n_valid_resamples": 2000
+          },
+          "mrr": {
+            "value": 0.5423,
+            "ci_low": 0.438,
+            "ci_high": 0.6417,
+            "n_valid_resamples": 2000
+          },
+          "hr@1_by_reason": {
+            "CPU fault": {
+              "n": 15,
+              "hr@1": 0.0
+            },
+            "db close": {
+              "n": 4,
+              "hr@1": 0.5
+            },
+            "db connection limit": {
+              "n": 6,
+              "hr@1": 0.0
+            },
+            "network delay": {
+              "n": 13,
+              "hr@1": 0.7692
+            },
+            "network loss": {
+              "n": 7,
+              "hr@1": 0.4286
+            }
+          }
+        }
+      ],
+      "summary": {
+        "hr@1": {
+          "mean": 0.3645,
+          "sd": 0.0253,
+          "min": 0.3333,
+          "max": 0.4
+        },
+        "hr@3": {
+          "mean": 0.7155,
+          "sd": 0.0186,
+          "min": 0.6889,
+          "max": 0.7333
+        },
+        "hr@5": {
+          "mean": 0.8,
+          "sd": 0.0,
+          "min": 0.8,
+          "max": 0.8
+        },
+        "mrr": {
+          "mean": 0.5566,
+          "sd": 0.0118,
+          "min": 0.5423,
+          "max": 0.573
+        }
+      }
+    }
+  },
+  "system": "Telecom",
+  "folds": 10,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "selection": {
+    "forecaster": {
+      "hidden": 128,
+      "layers": 1,
+      "normalization": "local"
+    },
+    "classifier": {
+      "normalization": "local",
+      "hidden": 128,
+      "layers": 1
+    }
+  },
+  "cost": {
+    "lstm_forecast": {
+      "params": 989600,
+      "train_seconds_mean": 2.38,
+      "train_seconds_total": 119.0,
+      "epochs_mean": 16.0,
+      "inference_ms_per_window": 0.2693
+    },
+    "lstm_classifier": {
+      "params": 803969,
+      "train_seconds_mean": 1.21,
+      "train_seconds_total": 60.6,
+      "epochs_mean": 8.3
+    }
+  },
+  "run_dir": "20261111T230624-lstm",
+  "search": {
+    "forecaster": {
+      "hidden": 128,
+      "layers": 1,
+      "normalization": "local"
+    },
+    "classifier": {
+      "normalization": "local",
+      "hidden": 128,
+      "layers": 1
+    },
+    "forecaster_val_auc_pr": {
+      "global/h64/l1": 0.4224,
+      "global/h64/l2": 0.3912,
+      "global/h128/l1": 0.3966,
+      "global/h128/l2": 0.3392,
+      "local/h64/l1": 0.3606,
+      "local/h64/l2": 0.391,
+      "local/h128/l1": 0.4465,
+      "local/h128/l2": 0.3755
+    },
+    "classifier_val_auc_pr": {
+      "global/h64/l1": 0.6328,
+      "global/h128/l1": 0.6472,
+      "local/h64/l1": 0.5693,
+      "local/h128/l1": 0.7049
+    },
+    "trainings": 108,
+    "search_seconds": 343.3
+  }
+}

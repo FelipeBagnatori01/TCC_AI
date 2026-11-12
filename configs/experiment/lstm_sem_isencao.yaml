@@ -1,0 +1,10 @@
+# E5 sensitivity control (ADR 0005): final LSTM configuration without the availability exemption,
+# reusing the hyperparameters selected on validation by the main run of the same system.
+#   uv run tcc-rca lstm --config configs/base.yaml [configs/system/bank.yaml] configs/experiment/lstm_sem_isencao.yaml
+experiment:
+  name: lstm_sem_isencao
+series:
+  selection:
+    constant_exempt_categories: []
+lstm:
+  reuse_selection_from: "reports/tables/lstm_{system}_lstm.json"

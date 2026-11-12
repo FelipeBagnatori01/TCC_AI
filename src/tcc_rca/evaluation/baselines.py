@@ -56,11 +56,11 @@ DETECTORS = ("zscore_3sigma", "zscore_val", "zscore_local", "isolation_forest", 
 LOCALIZERS = ("zscore_global", "zscore_local", "prior")
 
 
-def _epoch_minutes(col: str) -> pl.Expr:
+def epoch_minutes(col: str) -> pl.Expr:
     return pl.col(col).dt.epoch("s").cast(pl.Float64) / 60.0
 
 
-def _load_windows(config: Config, tables_dir: Path) -> pl.DataFrame:
+def load_windows(config: Config, tables_dir: Path) -> pl.DataFrame:
     system = config.target_system
     windows = pl.read_parquet(config.paths.processed_dir / system / "windows.parquet")
     expected = json.loads((tables_dir / f"tasks_{system}.json").read_text(encoding="utf-8"))
@@ -90,7 +90,7 @@ def _fit_fold_transforms(
     return kept, z, robust
 
 
-def _row_of(values_minutes: dict[float, int], instant_minute: float) -> int:
+def row_of(values_minutes: dict[float, int], instant_minute: float) -> int:
     if instant_minute not in values_minutes:
         raise ValueError(f"minute {instant_minute} not in the matrix")
     return values_minutes[instant_minute]
@@ -112,7 +112,7 @@ def run_folds(
     day_arr = values["day"].to_numpy()
     normal_min = normal_minute_mask(values.select("day", "time_utc"), failures, config)
     minute_to_row = {
-        m: i for i, m in enumerate(values.select(_epoch_minutes("time_utc"))["time_utc"].to_list())
+        m: i for i, m in enumerate(values.select(epoch_minutes("time_utc"))["time_utc"].to_list())
     }
     candidates = sorted({split_feature(f)[0] for f in features})
     # Causal local |z| (ADR 0013/0014): no fitting, so it is computed once for every feature.
@@ -195,7 +195,7 @@ def run_folds(
             if d != fold.test_day:
                 continue
             end_minute = f.start_utc.timestamp() / 60.0 + onset_offset
-            end_row = _row_of(minute_to_row, end_minute)
+            end_row = row_of(minute_to_row, end_minute)
             rows = window_rows(np.array([end_row], dtype=np.int64), t.window_minutes)[0]
             per_method = {
                 "zscore_global": zscore_component_scores(z, rows, columns, candidates),
@@ -231,7 +231,7 @@ def _block_labels(frame: pl.DataFrame, block_minutes: int) -> list[str]:
     return [str(v) for v in blocks.to_list()]
 
 
-def _method_metrics(
+def detection_metrics(
     m: pl.DataFrame, onsets: FloatArray, reasons: Sequence[str], config: Config
 ) -> dict[str, Any]:
     """Window-level and event-level detection metrics of one method's test scores."""
@@ -261,7 +261,7 @@ def _method_metrics(
         lambda i: false_alarms_per_hour(neg_alarm[i]), neg_clusters, b.bootstrap, seed + 6
     ).as_dict()
 
-    alarms = m.filter(pl.col("alarm")).select(_epoch_minutes("end_utc"))["end_utc"].to_numpy()
+    alarms = m.filter(pl.col("alarm")).select(epoch_minutes("end_utc"))["end_utc"].to_numpy()
     events = [
         event_detection(o, alarms, b.event_lookback_minutes, b.event_max_delay_minutes)
         for o in onsets
@@ -301,7 +301,9 @@ def evaluate_detection(
     onsets = np.array([f.start_utc.timestamp() / 60.0 for f in tested])
     reasons = [f.reason for f in tested]
     return {
-        method: _method_metrics(scores.filter(pl.col("method") == method), onsets, reasons, config)
+        method: detection_metrics(
+            scores.filter(pl.col("method") == method), onsets, reasons, config
+        )
         for method in DETECTORS
     }
 
@@ -469,7 +471,7 @@ def run_baselines(config: Config, tables_dir: Path) -> dict[str, Any]:
     t = config.tasks
     with Run(config) as run:
         values = pl.read_parquet(config.paths.processed_dir / system / "series.parquet")
-        windows = _load_windows(config, tables_dir)
+        windows = load_windows(config, tables_dir)
         system_dir = config.paths.data_root / system
         failures = read_failures(system_dir / "record.csv")
         cases, _ = build_cases(read_queries(system_dir / "query.csv"), failures)

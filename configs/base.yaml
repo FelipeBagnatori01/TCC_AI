@@ -69,3 +69,20 @@ baselines:                         # E4 (ADR 0010)
   event_max_delay_minutes: 30      # = normal margin after the onset
   bootstrap: 2000
   bootstrap_block_minutes: 30
+
+lstm:                              # E5 (ADR 0015); CPU, deterministic
+  seeds: [0, 1, 2, 3, 4]           # final configuration: 5 seeds per fold
+  forecaster_grid:                 # search budget: 8 configurations x folds, 1 seed
+    hidden: [64, 128]
+    layers: [1, 2]
+    normalization: [global, local]
+  classifier_hidden: [64, 128]     # classifier search: 2 configurations; its normalization
+  classifier_layers: [1]           # is the one selected for the forecaster
+  dropout: 0.2
+  learning_rate: 0.001
+  batch_size: 128
+  max_epochs: 30
+  patience: 5
+  global_clip: 10.0
+  score_top_k: 10
+  reuse_selection_from: null

@@ -140,6 +140,33 @@ class LstmConfig(_Strict):
     reuse_selection_from: Path | None = None
 
 
+class ExplainConfig(_Strict):
+    """E6 (ADR 0016). Explains the E5 models of the run recorded in lstm_<system>_<lstm_name>."""
+
+    lstm_name: str = Field(min_length=1)  # which E5 table/run to explain (lstm, lstm_sem_isencao)
+    device: Literal["cpu", "mps"]
+    explained_seed: int  # main explanations use this seed's models (offset, as in lstm.seeds)
+    stability_seeds: tuple[int, ...]  # other seeds' models, SHAP only, for stability
+    background_windows: int = Field(gt=0)
+    shap_samples: int = Field(gt=0)
+    lime_samples: int = Field(gt=1)
+    lime_kernel_width: float = Field(gt=0.0)
+    ig_steps: int = Field(gt=1)
+    ig_windows_per_fold: int = Field(ge=0)
+    top_k: int = Field(gt=0)  # agreement/stability/fidelity work on the top-k features
+    deletion_steps: tuple[int, ...] = Field(min_length=1)
+    random_orders: int = Field(gt=0)
+    # window choice, score and alarm of the evidence package (best E5 detector)
+    evidence_detector: Literal["lstm_forecast", "lstm_classifier"]
+    # model whose SHAP/LIME attributions are cited (stable across seeds, ADR 0016)
+    evidence_explained: Literal["lstm_forecast", "lstm_classifier"]
+    evidence_top_components: int = Field(gt=0)
+    evidence_top_kpis: int = Field(gt=0)
+    # Reason -> KPI categories counted as a hit for the suggested category, FIXED BEFORE MEASURING
+    # (2026-11-12), per system.
+    reason_categories: dict[str, dict[str, tuple[str, ...]]]
+
+
 class Config(_Strict):
     experiment: ExperimentConfig
     target_system: Literal["Telecom", "Bank"]
@@ -152,6 +179,7 @@ class Config(_Strict):
     tasks: TasksConfig
     baselines: BaselinesConfig
     lstm: LstmConfig
+    explain: ExplainConfig
 
     def resolved(self) -> dict[str, Any]:
         """JSON-serializable view of the fully resolved configuration."""

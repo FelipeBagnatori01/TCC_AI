@@ -1,0 +1,837 @@
+{
+  "system": "Bank",
+  "localization": {
+    "lstm_forecast/shap/sum": {
+      "n_failures": 120,
+      "hr@1": {
+        "value": 0.3583,
+        "ci_low": 0.275,
+        "ci_high": 0.4417,
+        "n_valid_resamples": 2000
+      },
+      "hr@3": {
+        "value": 0.5,
+        "ci_low": 0.4167,
+        "ci_high": 0.5917,
+        "n_valid_resamples": 2000
+      },
+      "hr@5": {
+        "value": 0.6583,
+        "ci_low": 0.575,
+        "ci_high": 0.7417,
+        "n_valid_resamples": 2000
+      },
+      "mrr": {
+        "value": 0.4967,
+        "ci_low": 0.4295,
+        "ci_high": 0.5662,
+        "n_valid_resamples": 2000
+      },
+      "hr@1_by_reason": {
+        "JVM Out of Memory (OOM) Heap": {
+          "n": 3,
+          "hr@1": 0.3333
+        },
+        "high CPU usage": {
+          "n": 31,
+          "hr@1": 0.2903
+        },
+        "high disk I/O read usage": {
+          "n": 18,
+          "hr@1": 0.7778
+        },
+        "high disk space usage": {
+          "n": 5,
+          "hr@1": 0.4
+        },
+        "high memory usage": {
+          "n": 5,
+          "hr@1": 0.6
+        },
+        "network latency": {
+          "n": 26,
+          "hr@1": 0.1538
+        },
+        "network packet loss": {
+          "n": 32,
+          "hr@1": 0.3125
+        }
+      }
+    },
+    "lstm_forecast/shap/top3": {
+      "n_failures": 120,
+      "hr@1": {
+        "value": 0.35,
+        "ci_low": 0.2667,
+        "ci_high": 0.4333,
+        "n_valid_resamples": 2000
+      },
+      "hr@3": {
+        "value": 0.4917,
+        "ci_low": 0.4,
+        "ci_high": 0.575,
+        "n_valid_resamples": 2000
+      },
+      "hr@5": {
+        "value": 0.6417,
+        "ci_low": 0.5583,
+        "ci_high": 0.725,
+        "n_valid_resamples": 2000
+      },
+      "mrr": {
+        "value": 0.4893,
+        "ci_low": 0.4214,
+        "ci_high": 0.5591,
+        "n_valid_resamples": 2000
+      },
+      "hr@1_by_reason": {
+        "JVM Out of Memory (OOM) Heap": {
+          "n": 3,
+          "hr@1": 0.3333
+        },
+        "high CPU usage": {
+          "n": 31,
+          "hr@1": 0.2903
+        },
+        "high disk I/O read usage": {
+          "n": 18,
+          "hr@1": 0.7222
+        },
+        "high disk space usage": {
+          "n": 5,
+          "hr@1": 0.4
+        },
+        "high memory usage": {
+          "n": 5,
+          "hr@1": 0.6
+        },
+        "network latency": {
+          "n": 26,
+          "hr@1": 0.1538
+        },
+        "network packet loss": {
+          "n": 32,
+          "hr@1": 0.3125
+        }
+      }
+    },
+    "lstm_forecast/lime/sum": {
+      "n_failures": 120,
+      "hr@1": {
+        "value": 0.3,
+        "ci_low": 0.2167,
+        "ci_high": 0.3833,
+        "n_valid_resamples": 2000
+      },
+      "hr@3": {
+        "value": 0.5167,
+        "ci_low": 0.425,
+        "ci_high": 0.6,
+        "n_valid_resamples": 2000
+      },
+      "hr@5": {
+        "value": 0.625,
+        "ci_low": 0.5417,
+        "ci_high": 0.7083,
+        "n_valid_resamples": 2000
+      },
+      "mrr": {
+        "value": 0.4601,
+        "ci_low": 0.397,
+        "ci_high": 0.5246,
+        "n_valid_resamples": 2000
+      },
+      "hr@1_by_reason": {
+        "JVM Out of Memory (OOM) Heap": {
+          "n": 3,
+          "hr@1": 0.3333
+        },
+        "high CPU usage": {
+          "n": 31,
+          "hr@1": 0.1935
+        },
+        "high disk I/O read usage": {
+          "n": 18,
+          "hr@1": 0.7778
+        },
+        "high disk space usage": {
+          "n": 5,
+          "hr@1": 0.4
+        },
+        "high memory usage": {
+          "n": 5,
+          "hr@1": 0.6
+        },
+        "network latency": {
+          "n": 26,
+          "hr@1": 0.1538
+        },
+        "network packet loss": {
+          "n": 32,
+          "hr@1": 0.1875
+        }
+      }
+    },
+    "lstm_forecast/lime/top3": {
+      "n_failures": 120,
+      "hr@1": {
+        "value": 0.3583,
+        "ci_low": 0.275,
+        "ci_high": 0.45,
+        "n_valid_resamples": 2000
+      },
+      "hr@3": {
+        "value": 0.55,
+        "ci_low": 0.4583,
+        "ci_high": 0.6333,
+        "n_valid_resamples": 2000
+      },
+      "hr@5": {
+        "value": 0.6083,
+        "ci_low": 0.525,
+        "ci_high": 0.6917,
+        "n_valid_resamples": 2000
+      },
+      "mrr": {
+        "value": 0.4993,
+        "ci_low": 0.4304,
+        "ci_high": 0.5662,
+        "n_valid_resamples": 2000
+      },
+      "hr@1_by_reason": {
+        "JVM Out of Memory (OOM) Heap": {
+          "n": 3,
+          "hr@1": 0.3333
+        },
+        "high CPU usage": {
+          "n": 31,
+          "hr@1": 0.2903
+        },
+        "high disk I/O read usage": {
+          "n": 18,
+          "hr@1": 0.7222
+        },
+        "high disk space usage": {
+          "n": 5,
+          "hr@1": 0.4
+        },
+        "high memory usage": {
+          "n": 5,
+          "hr@1": 0.6
+        },
+        "network latency": {
+          "n": 26,
+          "hr@1": 0.1538
+        },
+        "network packet loss": {
+          "n": 32,
+          "hr@1": 0.3438
+        }
+      }
+    },
+    "lstm_classifier/shap/sum": {
+      "n_failures": 120,
+      "hr@1": {
+        "value": 0.4417,
+        "ci_low": 0.3583,
+        "ci_high": 0.5333,
+        "n_valid_resamples": 2000
+      },
+      "hr@3": {
+        "value": 0.7333,
+        "ci_low": 0.65,
+        "ci_high": 0.8083,
+        "n_valid_resamples": 2000
+      },
+      "hr@5": {
+        "value": 0.8417,
+        "ci_low": 0.775,
+        "ci_high": 0.9,
+        "n_valid_resamples": 2000
+      },
+      "mrr": {
+        "value": 0.6136,
+        "ci_low": 0.547,
+        "ci_high": 0.6776,
+        "n_valid_resamples": 2000
+      },
+      "hr@1_by_reason": {
+        "JVM Out of Memory (OOM) Heap": {
+          "n": 3,
+          "hr@1": 0.3333
+        },
+        "high CPU usage": {
+          "n": 31,
+          "hr@1": 0.6129
+        },
+        "high disk I/O read usage": {
+          "n": 18,
+          "hr@1": 0.8889
+        },
+        "high disk space usage": {
+          "n": 5,
+          "hr@1": 0.2
+        },
+        "high memory usage": {
+          "n": 5,
+          "hr@1": 0.6
+        },
+        "network latency": {
+          "n": 26,
+          "hr@1": 0.3077
+        },
+        "network packet loss": {
+          "n": 32,
+          "hr@1": 0.1562
+        }
+      }
+    },
+    "lstm_classifier/shap/top3": {
+      "n_failures": 120,
+      "hr@1": {
+        "value": 0.4667,
+        "ci_low": 0.375,
+        "ci_high": 0.5583,
+        "n_valid_resamples": 2000
+      },
+      "hr@3": {
+        "value": 0.7583,
+        "ci_low": 0.675,
+        "ci_high": 0.8333,
+        "n_valid_resamples": 2000
+      },
+      "hr@5": {
+        "value": 0.85,
+        "ci_low": 0.7833,
+        "ci_high": 0.9083,
+        "n_valid_resamples": 2000
+      },
+      "mrr": {
+        "value": 0.6399,
+        "ci_low": 0.5738,
+        "ci_high": 0.6997,
+        "n_valid_resamples": 2000
+      },
+      "hr@1_by_reason": {
+        "JVM Out of Memory (OOM) Heap": {
+          "n": 3,
+          "hr@1": 0.3333
+        },
+        "high CPU usage": {
+          "n": 31,
+          "hr@1": 0.5484
+        },
+        "high disk I/O read usage": {
+          "n": 18,
+          "hr@1": 0.8333
+        },
+        "high disk space usage": {
+          "n": 5,
+          "hr@1": 0.6
+        },
+        "high memory usage": {
+          "n": 5,
+          "hr@1": 0.4
+        },
+        "network latency": {
+          "n": 26,
+          "hr@1": 0.3462
+        },
+        "network packet loss": {
+          "n": 32,
+          "hr@1": 0.2812
+        }
+      }
+    },
+    "lstm_classifier/lime/sum": {
+      "n_failures": 120,
+      "hr@1": {
+        "value": 0.2167,
+        "ci_low": 0.15,
+        "ci_high": 0.2917,
+        "n_valid_resamples": 2000
+      },
+      "hr@3": {
+        "value": 0.5167,
+        "ci_low": 0.425,
+        "ci_high": 0.6,
+        "n_valid_resamples": 2000
+      },
+      "hr@5": {
+        "value": 0.75,
+        "ci_low": 0.6667,
+        "ci_high": 0.825,
+        "n_valid_resamples": 2000
+      },
+      "mrr": {
+        "value": 0.4224,
+        "ci_low": 0.3645,
+        "ci_high": 0.4807,
+        "n_valid_resamples": 2000
+      },
+      "hr@1_by_reason": {
+        "JVM Out of Memory (OOM) Heap": {
+          "n": 3,
+          "hr@1": 0.3333
+        },
+        "high CPU usage": {
+          "n": 31,
+          "hr@1": 0.2903
+        },
+        "high disk I/O read usage": {
+          "n": 18,
+          "hr@1": 0.5556
+        },
+        "high disk space usage": {
+          "n": 5,
+          "hr@1": 0.0
+        },
+        "high memory usage": {
+          "n": 5,
+          "hr@1": 0.2
+        },
+        "network latency": {
+          "n": 26,
+          "hr@1": 0.0769
+        },
+        "network packet loss": {
+          "n": 32,
+          "hr@1": 0.0938
+        }
+      }
+    },
+    "lstm_classifier/lime/top3": {
+      "n_failures": 120,
+      "hr@1": {
+        "value": 0.45,
+        "ci_low": 0.3583,
+        "ci_high": 0.5417,
+        "n_valid_resamples": 2000
+      },
+      "hr@3": {
+        "value": 0.7,
+        "ci_low": 0.6167,
+        "ci_high": 0.7833,
+        "n_valid_resamples": 2000
+      },
+      "hr@5": {
+        "value": 0.8417,
+        "ci_low": 0.7667,
+        "ci_high": 0.9002,
+        "n_valid_resamples": 2000
+      },
+      "mrr": {
+        "value": 0.6117,
+        "ci_low": 0.5445,
+        "ci_high": 0.674,
+        "n_valid_resamples": 2000
+      },
+      "hr@1_by_reason": {
+        "JVM Out of Memory (OOM) Heap": {
+          "n": 3,
+          "hr@1": 0.3333
+        },
+        "high CPU usage": {
+          "n": 31,
+          "hr@1": 0.5484
+        },
+        "high disk I/O read usage": {
+          "n": 18,
+          "hr@1": 0.8333
+        },
+        "high disk space usage": {
+          "n": 5,
+          "hr@1": 0.4
+        },
+        "high memory usage": {
+          "n": 5,
+          "hr@1": 0.4
+        },
+        "network latency": {
+          "n": 26,
+          "hr@1": 0.3462
+        },
+        "network packet loss": {
+          "n": 32,
+          "hr@1": 0.25
+        }
+      }
+    }
+  },
+  "category_hit": {
+    "lstm_forecast/shap": {
+      "value": 0.4333,
+      "ci_low": 0.3417,
+      "ci_high": 0.525,
+      "n_valid_resamples": 2000
+    },
+    "lstm_forecast/lime": {
+      "value": 0.2,
+      "ci_low": 0.1333,
+      "ci_high": 0.2669,
+      "n_valid_resamples": 2000
+    },
+    "lstm_classifier/shap": {
+      "value": 0.325,
+      "ci_low": 0.2417,
+      "ci_high": 0.4083,
+      "n_valid_resamples": 2000
+    },
+    "lstm_classifier/lime": {
+      "value": 0.1917,
+      "ci_low": 0.125,
+      "ci_high": 0.2667,
+      "n_valid_resamples": 2000
+    },
+    "referência/prior_treino": {
+      "value": 0.375,
+      "ci_low": 0.2833,
+      "ci_high": 0.4667,
+      "n_valid_resamples": 2000
+    },
+    "referência/uniforme": {
+      "value": 0.1592,
+      "ci_low": 0.15,
+      "ci_high": 0.1688,
+      "n_valid_resamples": 2000
+    }
+  },
+  "quality": {
+    "lstm_forecast": {
+      "deletion_shap": 0.6533,
+      "deletion_lime": 0.6479,
+      "deletion_random": 0.9941,
+      "insertion_shap": 0.6687,
+      "insertion_lime": 0.6548,
+      "insertion_random": 0.0548,
+      "shap_lime_jaccard": 0.7137,
+      "shap_lime_kendall": 0.6452,
+      "neighbour_jaccard": 0.8571,
+      "ig_shap_jaccard": 0.8564,
+      "ig_shap_kendall": 0.8419,
+      "top_component_agree": 0.7917,
+      "seed_jaccard": 0.822,
+      "seed_kendall": 0.7179
+    },
+    "lstm_classifier": {
+      "deletion_shap": 0.6954,
+      "deletion_lime": 0.7037,
+      "deletion_random": 0.9998,
+      "insertion_shap": 3.4686,
+      "insertion_lime": 4.4945,
+      "insertion_random": 1.4031,
+      "shap_lime_jaccard": 0.4761,
+      "shap_lime_kendall": 0.248,
+      "neighbour_jaccard": 0.5438,
+      "ig_shap_jaccard": 0.5006,
+      "ig_shap_kendall": 0.287,
+      "top_component_agree": 0.55,
+      "seed_jaccard": 0.2621,
+      "seed_kendall": -0.1346
+    }
+  },
+  "paired": [
+    {
+      "xai": "lstm_forecast/shap/sum",
+      "rival": "lstm_nativo_soma",
+      "metric": "hr@1",
+      "comparison": "lstm_forecast/shap - lstm_nativo_soma",
+      "value": 0.0167,
+      "ci_low": -0.0583,
+      "ci_high": 0.0917,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_forecast/shap/sum",
+      "rival": "lstm_nativo_soma",
+      "metric": "mrr",
+      "comparison": "lstm_forecast/shap - lstm_nativo_soma",
+      "value": -0.0206,
+      "ci_low": -0.074,
+      "ci_high": 0.0309,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_forecast/shap/sum",
+      "rival": "zscore_global",
+      "metric": "hr@1",
+      "comparison": "lstm_forecast/shap - zscore_global",
+      "value": 0.0417,
+      "ci_low": -0.0583,
+      "ci_high": 0.1417,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_forecast/shap/sum",
+      "rival": "zscore_global",
+      "metric": "mrr",
+      "comparison": "lstm_forecast/shap - zscore_global",
+      "value": 0.0252,
+      "ci_low": -0.053,
+      "ci_high": 0.1012,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_forecast/shap/sum",
+      "rival": "zscore_local",
+      "metric": "hr@1",
+      "comparison": "lstm_forecast/shap - zscore_local",
+      "value": 0.25,
+      "ci_low": 0.1665,
+      "ci_high": 0.3417,
+      "n_valid_resamples": 2000,
+      "verdict": "superior"
+    },
+    {
+      "xai": "lstm_forecast/shap/sum",
+      "rival": "zscore_local",
+      "metric": "mrr",
+      "comparison": "lstm_forecast/shap - zscore_local",
+      "value": 0.1583,
+      "ci_low": 0.0835,
+      "ci_high": 0.2304,
+      "n_valid_resamples": 2000,
+      "verdict": "superior"
+    },
+    {
+      "xai": "lstm_forecast/lime/sum",
+      "rival": "lstm_nativo_soma",
+      "metric": "hr@1",
+      "comparison": "lstm_forecast/lime - lstm_nativo_soma",
+      "value": -0.0417,
+      "ci_low": -0.1,
+      "ci_high": 0.0167,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_forecast/lime/sum",
+      "rival": "lstm_nativo_soma",
+      "metric": "mrr",
+      "comparison": "lstm_forecast/lime - lstm_nativo_soma",
+      "value": -0.0572,
+      "ci_low": -0.1037,
+      "ci_high": -0.0112,
+      "n_valid_resamples": 2000,
+      "verdict": "inferior"
+    },
+    {
+      "xai": "lstm_forecast/lime/sum",
+      "rival": "zscore_global",
+      "metric": "hr@1",
+      "comparison": "lstm_forecast/lime - zscore_global",
+      "value": -0.0167,
+      "ci_low": -0.125,
+      "ci_high": 0.0917,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_forecast/lime/sum",
+      "rival": "zscore_global",
+      "metric": "mrr",
+      "comparison": "lstm_forecast/lime - zscore_global",
+      "value": -0.0114,
+      "ci_low": -0.0919,
+      "ci_high": 0.0678,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_forecast/lime/sum",
+      "rival": "zscore_local",
+      "metric": "hr@1",
+      "comparison": "lstm_forecast/lime - zscore_local",
+      "value": 0.1917,
+      "ci_low": 0.1083,
+      "ci_high": 0.275,
+      "n_valid_resamples": 2000,
+      "verdict": "superior"
+    },
+    {
+      "xai": "lstm_forecast/lime/sum",
+      "rival": "zscore_local",
+      "metric": "mrr",
+      "comparison": "lstm_forecast/lime - zscore_local",
+      "value": 0.1217,
+      "ci_low": 0.052,
+      "ci_high": 0.1902,
+      "n_valid_resamples": 2000,
+      "verdict": "superior"
+    },
+    {
+      "xai": "lstm_classifier/shap/sum",
+      "rival": "lstm_nativo_soma",
+      "metric": "hr@1",
+      "comparison": "lstm_classifier/shap - lstm_nativo_soma",
+      "value": 0.1,
+      "ci_low": -0.0083,
+      "ci_high": 0.2,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_classifier/shap/sum",
+      "rival": "lstm_nativo_soma",
+      "metric": "mrr",
+      "comparison": "lstm_classifier/shap - lstm_nativo_soma",
+      "value": 0.0963,
+      "ci_low": 0.022,
+      "ci_high": 0.1662,
+      "n_valid_resamples": 2000,
+      "verdict": "superior"
+    },
+    {
+      "xai": "lstm_classifier/shap/sum",
+      "rival": "zscore_global",
+      "metric": "hr@1",
+      "comparison": "lstm_classifier/shap - zscore_global",
+      "value": 0.125,
+      "ci_low": 0.0083,
+      "ci_high": 0.2333,
+      "n_valid_resamples": 2000,
+      "verdict": "superior"
+    },
+    {
+      "xai": "lstm_classifier/shap/sum",
+      "rival": "zscore_global",
+      "metric": "mrr",
+      "comparison": "lstm_classifier/shap - zscore_global",
+      "value": 0.1421,
+      "ci_low": 0.0574,
+      "ci_high": 0.2222,
+      "n_valid_resamples": 2000,
+      "verdict": "superior"
+    },
+    {
+      "xai": "lstm_classifier/shap/sum",
+      "rival": "zscore_local",
+      "metric": "hr@1",
+      "comparison": "lstm_classifier/shap - zscore_local",
+      "value": 0.3333,
+      "ci_low": 0.2333,
+      "ci_high": 0.4333,
+      "n_valid_resamples": 2000,
+      "verdict": "superior"
+    },
+    {
+      "xai": "lstm_classifier/shap/sum",
+      "rival": "zscore_local",
+      "metric": "mrr",
+      "comparison": "lstm_classifier/shap - zscore_local",
+      "value": 0.2752,
+      "ci_low": 0.2077,
+      "ci_high": 0.3373,
+      "n_valid_resamples": 2000,
+      "verdict": "superior"
+    },
+    {
+      "xai": "lstm_classifier/lime/sum",
+      "rival": "lstm_nativo_soma",
+      "metric": "hr@1",
+      "comparison": "lstm_classifier/lime - lstm_nativo_soma",
+      "value": -0.125,
+      "ci_low": -0.2167,
+      "ci_high": -0.0333,
+      "n_valid_resamples": 2000,
+      "verdict": "inferior"
+    },
+    {
+      "xai": "lstm_classifier/lime/sum",
+      "rival": "lstm_nativo_soma",
+      "metric": "mrr",
+      "comparison": "lstm_classifier/lime - lstm_nativo_soma",
+      "value": -0.0949,
+      "ci_low": -0.1638,
+      "ci_high": -0.0279,
+      "n_valid_resamples": 2000,
+      "verdict": "inferior"
+    },
+    {
+      "xai": "lstm_classifier/lime/sum",
+      "rival": "zscore_global",
+      "metric": "hr@1",
+      "comparison": "lstm_classifier/lime - zscore_global",
+      "value": -0.1,
+      "ci_low": -0.2083,
+      "ci_high": 0.0167,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_classifier/lime/sum",
+      "rival": "zscore_global",
+      "metric": "mrr",
+      "comparison": "lstm_classifier/lime - zscore_global",
+      "value": -0.0492,
+      "ci_low": -0.1308,
+      "ci_high": 0.0375,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_classifier/lime/sum",
+      "rival": "zscore_local",
+      "metric": "hr@1",
+      "comparison": "lstm_classifier/lime - zscore_local",
+      "value": 0.1083,
+      "ci_low": 0.025,
+      "ci_high": 0.1917,
+      "n_valid_resamples": 2000,
+      "verdict": "superior"
+    },
+    {
+      "xai": "lstm_classifier/lime/sum",
+      "rival": "zscore_local",
+      "metric": "mrr",
+      "comparison": "lstm_classifier/lime - zscore_local",
+      "value": 0.0839,
+      "ci_low": 0.0175,
+      "ci_high": 0.1478,
+      "n_valid_resamples": 2000,
+      "verdict": "superior"
+    }
+  ],
+  "category_paired": [
+    {
+      "xai": "lstm_forecast/shap",
+      "value": 0.0583,
+      "ci_low": -0.0667,
+      "ci_high": 0.175,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_forecast/lime",
+      "value": -0.175,
+      "ci_low": -0.3,
+      "ci_high": -0.0498,
+      "n_valid_resamples": 2000,
+      "verdict": "inferior"
+    },
+    {
+      "xai": "lstm_classifier/shap",
+      "value": -0.05,
+      "ci_low": -0.1917,
+      "ci_high": 0.0833,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_classifier/lime",
+      "value": -0.1833,
+      "ci_low": -0.3167,
+      "ci_high": -0.05,
+      "n_valid_resamples": 2000,
+      "verdict": "inferior"
+    }
+  ],
+  "seconds": 214.1,
+  "evidence_dir": "data/processed/Bank/evidence/xai",
+  "run_dir": "20261112T154715-xai",
+  "explained_lstm_run": "20261111T231607-lstm"
+}

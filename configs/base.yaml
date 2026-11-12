@@ -86,3 +86,40 @@ lstm:                              # E5 (ADR 0015); CPU, deterministic
   global_clip: 10.0
   score_top_k: 10
   reuse_selection_from: null
+
+explain:                           # E6 (ADR 0016); explains the E5 models, no training
+  lstm_name: lstm                  # reports/tables/lstm_<system>_<lstm_name>.json -> run with the models
+  device: cpu                      # cpu | mps (Apple GPU; not bit-reproducible, see ADR 0016)
+  explained_seed: 0
+  stability_seeds: [1, 2, 3, 4]
+  background_windows: 100          # SHAP GradientExplainer background: normal training windows
+  shap_samples: 200
+  lime_samples: 3000
+  lime_kernel_width: 25.0          # LIME default for text (cosine distance x 100)
+  ig_steps: 32
+  ig_windows_per_fold: 3           # Integrated Gradients cross-check on a sample of windows
+  top_k: 10
+  deletion_steps: [1, 2, 5, 10, 20, 50]
+  random_orders: 5
+  evidence_detector: lstm_classifier  # picks the evidence window, gives score/alarm (E5 best detector)
+  evidence_explained: lstm_forecast  # cited attributions: stable across seeds (ADR 0016, post-test)
+  evidence_top_components: 5
+  evidence_top_kpis: 10
+  # Reason -> KPI categories that count as a correct suggested category. Fixed BEFORE measuring
+  # (2026-11-12) from the reason names only.
+  reason_categories:
+    Telecom:
+      CPU fault: [CPU]
+      network delay: [rede, latência]
+      network loss: [rede, erro]
+      db close: [banco de dados, disponibilidade]
+      db connection limit: [banco de dados, carga]
+    Bank:
+      high CPU usage: [CPU]
+      high JVM CPU load: [CPU]
+      high memory usage: [memória]
+      JVM Out of Memory (OOM) Heap: [memória]
+      high disk I/O read usage: [disco]
+      high disk space usage: [disco]
+      network latency: [rede, latência]
+      network packet loss: [rede, erro]

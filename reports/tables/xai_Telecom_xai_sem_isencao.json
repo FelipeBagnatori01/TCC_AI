@@ -1,0 +1,773 @@
+{
+  "system": "Telecom",
+  "localization": {
+    "lstm_forecast/shap/sum": {
+      "n_failures": 45,
+      "hr@1": {
+        "value": 0.1556,
+        "ci_low": 0.0667,
+        "ci_high": 0.2667,
+        "n_valid_resamples": 2000
+      },
+      "hr@3": {
+        "value": 0.5111,
+        "ci_low": 0.3778,
+        "ci_high": 0.645,
+        "n_valid_resamples": 2000
+      },
+      "hr@5": {
+        "value": 0.6222,
+        "ci_low": 0.4667,
+        "ci_high": 0.7556,
+        "n_valid_resamples": 2000
+      },
+      "mrr": {
+        "value": 0.3599,
+        "ci_low": 0.2682,
+        "ci_high": 0.4501,
+        "n_valid_resamples": 2000
+      },
+      "hr@1_by_reason": {
+        "CPU fault": {
+          "n": 15,
+          "hr@1": 0.0667
+        },
+        "db close": {
+          "n": 4,
+          "hr@1": 0.0
+        },
+        "db connection limit": {
+          "n": 6,
+          "hr@1": 0.1667
+        },
+        "network delay": {
+          "n": 13,
+          "hr@1": 0.3077
+        },
+        "network loss": {
+          "n": 7,
+          "hr@1": 0.1429
+        }
+      }
+    },
+    "lstm_forecast/shap/top3": {
+      "n_failures": 45,
+      "hr@1": {
+        "value": 0.1556,
+        "ci_low": 0.0667,
+        "ci_high": 0.2667,
+        "n_valid_resamples": 2000
+      },
+      "hr@3": {
+        "value": 0.5111,
+        "ci_low": 0.3778,
+        "ci_high": 0.645,
+        "n_valid_resamples": 2000
+      },
+      "hr@5": {
+        "value": 0.6222,
+        "ci_low": 0.4667,
+        "ci_high": 0.7556,
+        "n_valid_resamples": 2000
+      },
+      "mrr": {
+        "value": 0.3608,
+        "ci_low": 0.2693,
+        "ci_high": 0.4513,
+        "n_valid_resamples": 2000
+      },
+      "hr@1_by_reason": {
+        "CPU fault": {
+          "n": 15,
+          "hr@1": 0.0667
+        },
+        "db close": {
+          "n": 4,
+          "hr@1": 0.0
+        },
+        "db connection limit": {
+          "n": 6,
+          "hr@1": 0.1667
+        },
+        "network delay": {
+          "n": 13,
+          "hr@1": 0.3077
+        },
+        "network loss": {
+          "n": 7,
+          "hr@1": 0.1429
+        }
+      }
+    },
+    "lstm_forecast/lime/sum": {
+      "n_failures": 45,
+      "hr@1": {
+        "value": 0.1556,
+        "ci_low": 0.0667,
+        "ci_high": 0.2667,
+        "n_valid_resamples": 2000
+      },
+      "hr@3": {
+        "value": 0.4222,
+        "ci_low": 0.2667,
+        "ci_high": 0.5556,
+        "n_valid_resamples": 2000
+      },
+      "hr@5": {
+        "value": 0.5556,
+        "ci_low": 0.4222,
+        "ci_high": 0.6889,
+        "n_valid_resamples": 2000
+      },
+      "mrr": {
+        "value": 0.3354,
+        "ci_low": 0.2389,
+        "ci_high": 0.4315,
+        "n_valid_resamples": 2000
+      },
+      "hr@1_by_reason": {
+        "CPU fault": {
+          "n": 15,
+          "hr@1": 0.0
+        },
+        "db close": {
+          "n": 4,
+          "hr@1": 0.0
+        },
+        "db connection limit": {
+          "n": 6,
+          "hr@1": 0.1667
+        },
+        "network delay": {
+          "n": 13,
+          "hr@1": 0.3077
+        },
+        "network loss": {
+          "n": 7,
+          "hr@1": 0.2857
+        }
+      }
+    },
+    "lstm_forecast/lime/top3": {
+      "n_failures": 45,
+      "hr@1": {
+        "value": 0.1556,
+        "ci_low": 0.0667,
+        "ci_high": 0.2667,
+        "n_valid_resamples": 2000
+      },
+      "hr@3": {
+        "value": 0.5111,
+        "ci_low": 0.3772,
+        "ci_high": 0.6444,
+        "n_valid_resamples": 2000
+      },
+      "hr@5": {
+        "value": 0.6222,
+        "ci_low": 0.4889,
+        "ci_high": 0.7556,
+        "n_valid_resamples": 2000
+      },
+      "mrr": {
+        "value": 0.3573,
+        "ci_low": 0.2613,
+        "ci_high": 0.4526,
+        "n_valid_resamples": 2000
+      },
+      "hr@1_by_reason": {
+        "CPU fault": {
+          "n": 15,
+          "hr@1": 0.0
+        },
+        "db close": {
+          "n": 4,
+          "hr@1": 0.0
+        },
+        "db connection limit": {
+          "n": 6,
+          "hr@1": 0.1667
+        },
+        "network delay": {
+          "n": 13,
+          "hr@1": 0.3077
+        },
+        "network loss": {
+          "n": 7,
+          "hr@1": 0.2857
+        }
+      }
+    },
+    "lstm_classifier/shap/sum": {
+      "n_failures": 45,
+      "hr@1": {
+        "value": 0.2444,
+        "ci_low": 0.1333,
+        "ci_high": 0.3778,
+        "n_valid_resamples": 2000
+      },
+      "hr@3": {
+        "value": 0.4444,
+        "ci_low": 0.2889,
+        "ci_high": 0.5778,
+        "n_valid_resamples": 2000
+      },
+      "hr@5": {
+        "value": 0.5556,
+        "ci_low": 0.4,
+        "ci_high": 0.6889,
+        "n_valid_resamples": 2000
+      },
+      "mrr": {
+        "value": 0.3885,
+        "ci_low": 0.2767,
+        "ci_high": 0.504,
+        "n_valid_resamples": 2000
+      },
+      "hr@1_by_reason": {
+        "CPU fault": {
+          "n": 15,
+          "hr@1": 0.0667
+        },
+        "db close": {
+          "n": 4,
+          "hr@1": 0.5
+        },
+        "db connection limit": {
+          "n": 6,
+          "hr@1": 0.3333
+        },
+        "network delay": {
+          "n": 13,
+          "hr@1": 0.3077
+        },
+        "network loss": {
+          "n": 7,
+          "hr@1": 0.2857
+        }
+      }
+    },
+    "lstm_classifier/shap/top3": {
+      "n_failures": 45,
+      "hr@1": {
+        "value": 0.2444,
+        "ci_low": 0.1111,
+        "ci_high": 0.3778,
+        "n_valid_resamples": 2000
+      },
+      "hr@3": {
+        "value": 0.4222,
+        "ci_low": 0.2889,
+        "ci_high": 0.5556,
+        "n_valid_resamples": 2000
+      },
+      "hr@5": {
+        "value": 0.5333,
+        "ci_low": 0.3778,
+        "ci_high": 0.6667,
+        "n_valid_resamples": 2000
+      },
+      "mrr": {
+        "value": 0.3881,
+        "ci_low": 0.2867,
+        "ci_high": 0.4977,
+        "n_valid_resamples": 2000
+      },
+      "hr@1_by_reason": {
+        "CPU fault": {
+          "n": 15,
+          "hr@1": 0.3333
+        },
+        "db close": {
+          "n": 4,
+          "hr@1": 0.5
+        },
+        "db connection limit": {
+          "n": 6,
+          "hr@1": 0.0
+        },
+        "network delay": {
+          "n": 13,
+          "hr@1": 0.1538
+        },
+        "network loss": {
+          "n": 7,
+          "hr@1": 0.2857
+        }
+      }
+    },
+    "lstm_classifier/lime/sum": {
+      "n_failures": 45,
+      "hr@1": {
+        "value": 0.1333,
+        "ci_low": 0.0444,
+        "ci_high": 0.2444,
+        "n_valid_resamples": 2000
+      },
+      "hr@3": {
+        "value": 0.3111,
+        "ci_low": 0.1778,
+        "ci_high": 0.4444,
+        "n_valid_resamples": 2000
+      },
+      "hr@5": {
+        "value": 0.4889,
+        "ci_low": 0.3333,
+        "ci_high": 0.6444,
+        "n_valid_resamples": 2000
+      },
+      "mrr": {
+        "value": 0.2897,
+        "ci_low": 0.2001,
+        "ci_high": 0.3856,
+        "n_valid_resamples": 2000
+      },
+      "hr@1_by_reason": {
+        "CPU fault": {
+          "n": 15,
+          "hr@1": 0.0
+        },
+        "db close": {
+          "n": 4,
+          "hr@1": 0.5
+        },
+        "db connection limit": {
+          "n": 6,
+          "hr@1": 0.0
+        },
+        "network delay": {
+          "n": 13,
+          "hr@1": 0.3077
+        },
+        "network loss": {
+          "n": 7,
+          "hr@1": 0.0
+        }
+      }
+    },
+    "lstm_classifier/lime/top3": {
+      "n_failures": 45,
+      "hr@1": {
+        "value": 0.1778,
+        "ci_low": 0.0667,
+        "ci_high": 0.2889,
+        "n_valid_resamples": 2000
+      },
+      "hr@3": {
+        "value": 0.4,
+        "ci_low": 0.2444,
+        "ci_high": 0.5333,
+        "n_valid_resamples": 2000
+      },
+      "hr@5": {
+        "value": 0.4889,
+        "ci_low": 0.3333,
+        "ci_high": 0.6222,
+        "n_valid_resamples": 2000
+      },
+      "mrr": {
+        "value": 0.3478,
+        "ci_low": 0.2519,
+        "ci_high": 0.4503,
+        "n_valid_resamples": 2000
+      },
+      "hr@1_by_reason": {
+        "CPU fault": {
+          "n": 15,
+          "hr@1": 0.3333
+        },
+        "db close": {
+          "n": 4,
+          "hr@1": 0.25
+        },
+        "db connection limit": {
+          "n": 6,
+          "hr@1": 0.0
+        },
+        "network delay": {
+          "n": 13,
+          "hr@1": 0.1538
+        },
+        "network loss": {
+          "n": 7,
+          "hr@1": 0.0
+        }
+      }
+    }
+  },
+  "category_hit": {
+    "lstm_forecast/shap": {
+      "value": 0.1556,
+      "ci_low": 0.0667,
+      "ci_high": 0.2444,
+      "n_valid_resamples": 2000
+    },
+    "lstm_forecast/lime": {
+      "value": 0.0889,
+      "ci_low": 0.0222,
+      "ci_high": 0.1778,
+      "n_valid_resamples": 2000
+    },
+    "lstm_classifier/shap": {
+      "value": 0.3778,
+      "ci_low": 0.2444,
+      "ci_high": 0.5111,
+      "n_valid_resamples": 2000
+    },
+    "lstm_classifier/lime": {
+      "value": 0.2444,
+      "ci_low": 0.1333,
+      "ci_high": 0.3778,
+      "n_valid_resamples": 2000
+    },
+    "referência/prior_treino": {
+      "value": 0.3333,
+      "ci_low": 0.2,
+      "ci_high": 0.4667,
+      "n_valid_resamples": 2000
+    },
+    "referência/uniforme": {
+      "value": 0.1753,
+      "ci_low": 0.1605,
+      "ci_high": 0.1901,
+      "n_valid_resamples": 2000
+    }
+  },
+  "quality": {
+    "lstm_forecast": {
+      "deletion_shap": 0.6388,
+      "deletion_lime": 0.6362,
+      "deletion_random": 0.9947,
+      "insertion_shap": 0.6736,
+      "insertion_lime": 0.6615,
+      "insertion_random": 0.0561,
+      "shap_lime_jaccard": 0.7002,
+      "shap_lime_kendall": 0.6583,
+      "neighbour_jaccard": 0.8937,
+      "ig_shap_jaccard": 0.91,
+      "ig_shap_kendall": 0.8815,
+      "top_component_agree": 0.8222,
+      "seed_jaccard": 0.8373,
+      "seed_kendall": 0.7286
+    },
+    "lstm_classifier": {
+      "deletion_shap": 0.7542,
+      "deletion_lime": 0.7563,
+      "deletion_random": 0.9977,
+      "insertion_shap": 0.7253,
+      "insertion_lime": 0.7598,
+      "insertion_random": 0.3273,
+      "shap_lime_jaccard": 0.4617,
+      "shap_lime_kendall": 0.1914,
+      "neighbour_jaccard": 0.4392,
+      "ig_shap_jaccard": 0.6806,
+      "ig_shap_kendall": 0.5591,
+      "top_component_agree": 0.6,
+      "seed_jaccard": 0.1712,
+      "seed_kendall": -0.3046
+    }
+  },
+  "paired": [
+    {
+      "xai": "lstm_forecast/shap/sum",
+      "rival": "lstm_nativo_soma",
+      "metric": "hr@1",
+      "comparison": "lstm_forecast/shap - lstm_nativo_soma",
+      "value": -0.0444,
+      "ci_low": -0.1778,
+      "ci_high": 0.0889,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_forecast/shap/sum",
+      "rival": "lstm_nativo_soma",
+      "metric": "mrr",
+      "comparison": "lstm_forecast/shap - lstm_nativo_soma",
+      "value": -0.0542,
+      "ci_low": -0.1635,
+      "ci_high": 0.0484,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_forecast/shap/sum",
+      "rival": "zscore_global",
+      "metric": "hr@1",
+      "comparison": "lstm_forecast/shap - zscore_global",
+      "value": 0.0222,
+      "ci_low": -0.0889,
+      "ci_high": 0.1333,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_forecast/shap/sum",
+      "rival": "zscore_global",
+      "metric": "mrr",
+      "comparison": "lstm_forecast/shap - zscore_global",
+      "value": 0.0585,
+      "ci_low": -0.0473,
+      "ci_high": 0.1679,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_forecast/shap/sum",
+      "rival": "zscore_local",
+      "metric": "hr@1",
+      "comparison": "lstm_forecast/shap - zscore_local",
+      "value": 0.0444,
+      "ci_low": -0.0889,
+      "ci_high": 0.1778,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_forecast/shap/sum",
+      "rival": "zscore_local",
+      "metric": "mrr",
+      "comparison": "lstm_forecast/shap - zscore_local",
+      "value": 0.0252,
+      "ci_low": -0.0925,
+      "ci_high": 0.1349,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_forecast/lime/sum",
+      "rival": "lstm_nativo_soma",
+      "metric": "hr@1",
+      "comparison": "lstm_forecast/lime - lstm_nativo_soma",
+      "value": -0.0444,
+      "ci_low": -0.1556,
+      "ci_high": 0.0667,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_forecast/lime/sum",
+      "rival": "lstm_nativo_soma",
+      "metric": "mrr",
+      "comparison": "lstm_forecast/lime - lstm_nativo_soma",
+      "value": -0.0787,
+      "ci_low": -0.1669,
+      "ci_high": 0.0077,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_forecast/lime/sum",
+      "rival": "zscore_global",
+      "metric": "hr@1",
+      "comparison": "lstm_forecast/lime - zscore_global",
+      "value": 0.0222,
+      "ci_low": -0.1111,
+      "ci_high": 0.1556,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_forecast/lime/sum",
+      "rival": "zscore_global",
+      "metric": "mrr",
+      "comparison": "lstm_forecast/lime - zscore_global",
+      "value": 0.034,
+      "ci_low": -0.0869,
+      "ci_high": 0.1568,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_forecast/lime/sum",
+      "rival": "zscore_local",
+      "metric": "hr@1",
+      "comparison": "lstm_forecast/lime - zscore_local",
+      "value": 0.0444,
+      "ci_low": -0.0889,
+      "ci_high": 0.1778,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_forecast/lime/sum",
+      "rival": "zscore_local",
+      "metric": "mrr",
+      "comparison": "lstm_forecast/lime - zscore_local",
+      "value": 0.0008,
+      "ci_low": -0.1096,
+      "ci_high": 0.1127,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_classifier/shap/sum",
+      "rival": "lstm_nativo_soma",
+      "metric": "hr@1",
+      "comparison": "lstm_classifier/shap - lstm_nativo_soma",
+      "value": 0.0444,
+      "ci_low": -0.0889,
+      "ci_high": 0.1778,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_classifier/shap/sum",
+      "rival": "lstm_nativo_soma",
+      "metric": "mrr",
+      "comparison": "lstm_classifier/shap - lstm_nativo_soma",
+      "value": -0.0256,
+      "ci_low": -0.1107,
+      "ci_high": 0.0641,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_classifier/shap/sum",
+      "rival": "zscore_global",
+      "metric": "hr@1",
+      "comparison": "lstm_classifier/shap - zscore_global",
+      "value": 0.1111,
+      "ci_low": -0.0444,
+      "ci_high": 0.2889,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_classifier/shap/sum",
+      "rival": "zscore_global",
+      "metric": "mrr",
+      "comparison": "lstm_classifier/shap - zscore_global",
+      "value": 0.0872,
+      "ci_low": -0.059,
+      "ci_high": 0.2478,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_classifier/shap/sum",
+      "rival": "zscore_local",
+      "metric": "hr@1",
+      "comparison": "lstm_classifier/shap - zscore_local",
+      "value": 0.1333,
+      "ci_low": 0.0222,
+      "ci_high": 0.2667,
+      "n_valid_resamples": 2000,
+      "verdict": "superior"
+    },
+    {
+      "xai": "lstm_classifier/shap/sum",
+      "rival": "zscore_local",
+      "metric": "mrr",
+      "comparison": "lstm_classifier/shap - zscore_local",
+      "value": 0.0539,
+      "ci_low": -0.0472,
+      "ci_high": 0.164,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_classifier/lime/sum",
+      "rival": "lstm_nativo_soma",
+      "metric": "hr@1",
+      "comparison": "lstm_classifier/lime - lstm_nativo_soma",
+      "value": -0.0667,
+      "ci_low": -0.2,
+      "ci_high": 0.0667,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_classifier/lime/sum",
+      "rival": "lstm_nativo_soma",
+      "metric": "mrr",
+      "comparison": "lstm_classifier/lime - lstm_nativo_soma",
+      "value": -0.1244,
+      "ci_low": -0.2126,
+      "ci_high": -0.0312,
+      "n_valid_resamples": 2000,
+      "verdict": "inferior"
+    },
+    {
+      "xai": "lstm_classifier/lime/sum",
+      "rival": "zscore_global",
+      "metric": "hr@1",
+      "comparison": "lstm_classifier/lime - zscore_global",
+      "value": 0.0,
+      "ci_low": -0.1333,
+      "ci_high": 0.1556,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_classifier/lime/sum",
+      "rival": "zscore_global",
+      "metric": "mrr",
+      "comparison": "lstm_classifier/lime - zscore_global",
+      "value": -0.0116,
+      "ci_low": -0.1498,
+      "ci_high": 0.1348,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_classifier/lime/sum",
+      "rival": "zscore_local",
+      "metric": "hr@1",
+      "comparison": "lstm_classifier/lime - zscore_local",
+      "value": 0.0222,
+      "ci_low": -0.0667,
+      "ci_high": 0.1117,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_classifier/lime/sum",
+      "rival": "zscore_local",
+      "metric": "mrr",
+      "comparison": "lstm_classifier/lime - zscore_local",
+      "value": -0.0449,
+      "ci_low": -0.127,
+      "ci_high": 0.0449,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    }
+  ],
+  "category_paired": [
+    {
+      "xai": "lstm_forecast/shap",
+      "value": -0.1778,
+      "ci_low": -0.3778,
+      "ci_high": 0.0,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_forecast/lime",
+      "value": -0.2444,
+      "ci_low": -0.4222,
+      "ci_high": -0.0889,
+      "n_valid_resamples": 2000,
+      "verdict": "inferior"
+    },
+    {
+      "xai": "lstm_classifier/shap",
+      "value": 0.0444,
+      "ci_low": -0.2,
+      "ci_high": 0.2667,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    },
+    {
+      "xai": "lstm_classifier/lime",
+      "value": -0.0889,
+      "ci_low": -0.3111,
+      "ci_high": 0.1111,
+      "n_valid_resamples": 2000,
+      "verdict": "empate"
+    }
+  ],
+  "seconds": 75.4,
+  "evidence_dir": "data/processed/Telecom/evidence/xai_sem_isencao",
+  "run_dir": "20261112T155052-xai_sem_isencao",
+  "explained_lstm_run": "20261111T232711-lstm_sem_isencao"
+}

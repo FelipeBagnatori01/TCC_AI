@@ -70,6 +70,30 @@ Registro incremental das ameaças identificadas ao longo das etapas, para a seç
 - **Efeito esperado:** desempenho que cai com a distância entre treino e teste; baselines com normalização fixa penalizados.
 - **Mitigação:** origem móvel (o treino cresce até o dia anterior ao teste); método local na medição de precursor; a E5 deve tratar a normalização de forma causal.
 
+### 11. Modelo explicado nos pacotes de evidência escolhido depois de medir (E6)
+
+- **O que:** o plano fixava a LSTM classificadora como detector e como modelo explicado. Depois de medir, as atribuições citáveis passaram para a previsora, porque as da classificadora mudam quase todas entre seeds (ADR 0016, decisão 6). A classificadora continua escolhendo a janela.
+- **Tipo:** grau de liberdade do pesquisador (decisão pós-teste). A escolha se apoiou em métricas de qualidade da explicação (estabilidade e concordância), não em métricas do agente, que ainda não existe.
+- **Efeito esperado:** no Bank, a localização sugerida pelos pacotes fica um pouco pior (HR@1 0,36 contra 0,44 da classificadora). As citações do agente ficam mais reprodutíveis.
+- **Mitigação:** a decisão foi tomada antes de qualquer execução do agente e está registrada. As métricas dos dois modelos ficam reportadas na E6.
+
+### 12. Explicações da classificadora instáveis entre seeds (E6)
+
+- **O que:** cinco classificadoras com o mesmo desempenho de detecção apontam KPIs diferentes. O Jaccard dos 10 mais importantes entre seeds fica em 0,20–0,26, e o Kendall é negativo. O efeito Rashomon aparece aqui com clareza.
+- **Efeito esperado:** qualquer conclusão do tipo "a classificadora usa o KPI X" vale para uma seed, não para o modelo.
+- **Mitigação:** os pacotes usam a previsora (item 11). A monografia deve reportar a instabilidade, e não exemplos escolhidos de uma seed.
+
+### 13. Categoria de motivo por soma de atribuições (E6)
+
+- **O que:** a categoria sugerida é a de maior soma de atribuições positivas. Categorias com muitos KPIs, como "disco", acumulam mais peso. A categoria sugerida **não supera** a categoria mais frequente do treino em nenhum caso, e a da previsora fica abaixo dela.
+- **Efeito esperado:** se o agente confiar na categoria sugerida, o diagnóstico de motivo (RQ3) piora.
+- **Mitigação:** a agregação **não** foi trocada depois de ver o resultado (média por categoria, por exemplo), para não ajustar no teste. O pacote mantém os pesos por categoria, mas o agente deve raciocinar sobre os KPIs individuais. O prompt da E7 deve dizer isso.
+
+### 14. Atribuição não é causalidade (E6)
+
+- **O que:** SHAP, LIME e IG dizem a que o modelo reagiu, não o que causou a falha. Um KPI de um componente vizinho, afetado pela falha, pode receber mais atribuição que a causa raiz.
+- **Mitigação:** a monografia separa "o modelo reagiu a este KPI" de "este componente causou a falha", e cita descoberta causal (Ikram et al., 2022) como abordagem complementar. A localização via XAI é medida contra o gabarito, não presumida.
+
 ## Previstas pelo plano (a detalhar na E9)
 
 - Tamanho amostral: 51 casos no Telecom (45 testados; ver item 4).

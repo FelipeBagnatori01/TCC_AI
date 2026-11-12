@@ -15,6 +15,7 @@ from tcc_rca.e2e import run_e2e
 from tcc_rca.evaluation.baselines import run_baselines
 from tcc_rca.evaluation.compare import run_e5_comparison
 from tcc_rca.evaluation.lstm import run_lstm
+from tcc_rca.evaluation.xai import run_xai
 from tcc_rca.ingestion.cases import Case, Failure, build_cases, read_failures, read_queries
 from tcc_rca.ingestion.eda import plot_failure
 from tcc_rca.ingestion.inventory import build_inventory, write_inventory
@@ -188,6 +189,15 @@ def cmd_compare_e5(config: Config, _: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_xai(config: Config, _: argparse.Namespace) -> int:
+    start = time.perf_counter()
+    summary = run_xai(config, TABLES_DIR)
+    for key, value in summary.items():
+        print(f"{key}: {value}")
+    print(f"elapsed_s={time.perf_counter() - start:.1f} peak_rss_mb={_peak_rss_mb():.0f}")
+    return 0
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="tcc-rca")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -213,6 +223,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     add("baselines", "run and evaluate every E4 baseline over the folds (tracked run)")
     add("lstm", "search, train and evaluate the LSTM forecaster and classifier (E5)")
     add("compare-e5", "paired LSTM-vs-baseline differences for an E5 run (bootstrap CIs)")
+    add("xai", "SHAP/LIME/IG explanations, XAI localization and evidence packages (E6)")
     eda = add("eda", "plot KPIs around failures")
     eda.add_argument("-n", type=int, default=10, help="number of failures to plot")
 
@@ -233,6 +244,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         "baselines": cmd_baselines,
         "lstm": cmd_lstm,
         "compare-e5": cmd_compare_e5,
+        "xai": cmd_xai,
     }
     return int(handlers[args.command](config, args))
 

@@ -146,3 +146,95 @@ No Bank, a LSTM supera o z-score local e a referência de frequência em todas a
 - **Custo:**
   - previsora com cerca de 1 milhão de parâmetros, 2,4 s (Telecom) a 8,4 s (Bank) de treino por dobra e seed, 0,26 ms de inferência por janela;
   - execução completa (busca + 5 seeds): 9,5 min no Telecom e 24 min no Bank, em CPU.
+
+## E6 — Explicabilidade (ADR 0016)
+
+SHAP (GradientExplainer), LIME por série `componente::kpi` e IG (captum) sobre as LSTMs da E5, seed 0. A medição usa janelas-oráculo, que terminam 5 min após o início de cada falha testada. Os pacotes de evidência usam a janela de maior pontuação do detector dentro da consulta. IC de 95% por bootstrap sobre falhas; "superior", "inferior" e "empate" vêm da diferença pareada. Tabelas completas: `reports/tables/xai_<sistema>_<nome>.md`.
+
+### Localização via XAI (RQ2), agregação por soma
+
+| Sistema | Explicação | HR@1 | HR@3 | MRR | Vs. nativo da E5 (HR@1 / MRR) | Vs. z global (HR@1) | Vs. z local (HR@1) |
+|---|---|---|---|---|---|---|---|
+| Telecom | previsora / SHAP | 0,33 | 0,62 | 0,49 | inferior / inferior | superior | superior |
+| Telecom | previsora / LIME | 0,38 | 0,60 | 0,51 | empate / inferior | superior | superior |
+| Telecom | classificadora / SHAP | 0,31 | 0,53 | 0,46 | empate / inferior | empate | superior |
+| Telecom | classificadora / LIME | 0,16 | 0,36 | 0,31 | inferior / inferior | empate | empate |
+| Bank | previsora / SHAP | 0,36 | 0,50 | 0,50 | empate / empate | empate | superior |
+| Bank | previsora / LIME | 0,30 | 0,52 | 0,46 | empate / inferior | empate | superior |
+| Bank | **classificadora / SHAP** | **0,44** | **0,73** | **0,61** | empate / **superior** | **superior** | superior |
+| Bank | classificadora / LIME | 0,22 | 0,52 | 0,42 | inferior / inferior | empate | superior |
+
+Valores de referência (seed 0):
+- **Nativo da E5:** HR@1 0,44 no Telecom e cerca de 0,34 no Bank.
+- **Z global:** HR@1 0,13 no Telecom e 0,32 no Bank.
+
+Com a média dos 3 maiores, o LIME da classificadora no Bank sobe para HR@1 0,45; nos demais casos, os números ficam próximos dos da soma.
+
+**Sem a isenção de disponibilidade:**
+- **Telecom:** o SHAP da previsora cai para HR@1 0,16, e 22 das 24 comparações pareadas viram empate. As exceções: classificadora · SHAP continua superior ao z local em HR@1, e classificadora · LIME continua inferior ao nativo em MRR. O ganho da XAI sobre as heurísticas, como o do ranqueamento nativo, depende dos KPIs de disponibilidade (ameaça nº 1).
+- **Bank:** nada muda. O SHAP da classificadora tem HR@1 0,43 e é superior ao nativo também em HR@1.
+
+### Qualidade das explicações (médias por janela; previsora / classificadora)
+
+| Medida | Telecom | Bank |
+|---|---|---|
+| Deleção SHAP (menor = mais fiel) | 0,59 / 0,75 | 0,65 / 0,70 |
+| Deleção LIME | 0,58 / 0,75 | 0,65 / 0,70 |
+| Deleção em ordem aleatória | 1,00 / 1,00 | 0,99 / 1,00 |
+| Inserção SHAP (maior = mais fiel) | 0,70 / 0,79 | 0,67 / — |
+| Inserção LIME | 0,68 / 0,84 | 0,66 / — |
+| Inserção em ordem aleatória | 0,05 / 0,32 | 0,06 / — |
+| SHAP × LIME, Jaccard top-10 | 0,66 / 0,46 | 0,71 / 0,48 |
+| SHAP × LIME, Kendall top-10 | 0,61 / 0,17 | 0,65 / 0,25 |
+| SHAP × LIME, mesmo componente no topo | 0,91 / 0,62 | 0,79 / 0,55 |
+| IG × SHAP, Jaccard top-10 | 0,90 / 0,67 | 0,86 / 0,50 |
+| Janelas vizinhas (±1 min), Jaccard | 0,89 / 0,44 | 0,86 / 0,54 |
+| Entre seeds, Jaccard top-10 | **0,81 / 0,20** | **0,82 / 0,26** |
+| Entre seeds, Kendall top-10 | 0,72 / −0,27 | 0,72 / −0,14 |
+
+- **Fidelidade:** SHAP e LIME apontam atributos que realmente movem a saída. Retirando-os aos poucos (k = 1 a 50), a pontuação fica em média em 58% a 75% da original; retirando o mesmo número em ordem aleatória, ela praticamente não muda (99% a 100%).
+- **Inserção da classificadora no Bank (sem valor na tabela):** a métrica não serve aqui. A classificadora dá à janela de referência "normal" uma probabilidade de 0,43, maior que a de metade das janelas de falha (mediana 0,36). Por isso a curva de inserção, relativa à janela completa, passa de 1 (3,5 a 4,5, e 1,4 em ordem aleatória). No Telecom, a referência tem 0,12 e as janelas de falha têm mediana 0,56, e a métrica funciona. A deleção não tem esse problema.
+- **Estabilidade e concordância:** a previsora tem explicações estáveis entre seeds e entre minutos vizinhos, e SHAP, LIME e IG concordam. A classificadora não: modelos de desempenho igual apontam KPIs diferentes (efeito Rashomon, ameaça nº 12), e SHAP e LIME divergem.
+- **Divergência SHAP × LIME:** é pequena na previsora e grande na classificadora. As causas prováveis:
+  - os dois métodos medem coisas diferentes: o SHAP integra gradientes contra uma distribuição de fundo, enquanto o LIME troca séries inteiras pela referência normal e ajusta um modelo linear;
+  - a probabilidade da classificadora satura e interage entre atributos, o que piora a aproximação linear do LIME;
+  - a referência normal não é neutra para a classificadora no Bank (item anterior).
+
+  O IG, que usa a mesma referência do LIME mas é baseado em gradiente, concorda mais com o SHAP do que o LIME.
+
+### Categoria de motivo sugerida
+
+| Sistema | Previsora SHAP | Previsora LIME | Classificadora SHAP | Classificadora LIME | Prior de treino | Uniforme |
+|---|---|---|---|---|---|---|
+| Telecom | 0,11 | 0,04 | 0,44 | 0,22 | 0,33 | 0,17 |
+| Bank | 0,43 | 0,20 | 0,33 | 0,19 | 0,38 | 0,16 |
+
+Comparação pareada com o prior de treino (diferença no acerto, mesmas falhas):
+
+| Sistema | Previsora SHAP | Previsora LIME | Classificadora SHAP | Classificadora LIME |
+|---|---|---|---|---|
+| Telecom | −0,22, inferior | −0,29, inferior | +0,11, empate | −0,11, empate |
+| Bank | +0,06, empate | −0,18, inferior | −0,05, empate | −0,18, inferior |
+
+Sem a isenção, os vereditos se repetem, com uma exceção: no Telecom, o SHAP da previsora passa de inferior a empate (−0,18).
+
+A soma por categoria favorece categorias com muitos KPIs: a previsora sugere "disco" em 14 das 45 falhas do Telecom e em 51 das 120 do Bank. **A categoria sugerida não deve ser tratada como motivo** (ameaça nº 13). Ela fica no pacote apenas como peso por categoria, e o agente deve raciocinar sobre os KPIs.
+
+### Pacotes de evidência
+
+São 45 pacotes no Telecom e 120 no Bank, um por consulta testada.
+- **Montagem:** a classificadora escolhe a janela e dá pontuação e alarme; a previsora fornece as atribuições citáveis (`C#`, `K#`) e o ranqueamento nativo (`N#`). O alarme dispara em 76% das consultas no Telecom e em 67% no Bank.
+- **Ausência de rótulos:**
+  - nenhum pacote tem campo de causa, motivo ou rótulo: o esquema rejeita campos extras, e há teste de importação;
+  - a janela é escolhida pelo detector, nunca pelo início rotulado.
+- **Rastreabilidade (conferida em um exemplo):** na consulta de 2020-05-22 00:00–00:30, o KPI `db_004::Call_Per_Sec` aparece com valor bruto 264,8 às 00:29 (UTC+8), contra mediana normal de 14,2. Na telemetria convertida, o registro é exatamente esse: 264,8 em 2020-05-21 16:29:37 UTC.
+
+### Leitura
+
+- **RQ2:** a XAI localiza melhor que as heurísticas de z-score nos dois sistemas.
+  - No Telecom, perde para o ranqueamento nativo da previsora, que lê direto o erro de cada KPI.
+  - No Bank, o SHAP da classificadora é a melhor localização medida até agora.
+  - Sem a isenção, a vantagem no Telecom desaparece.
+- **Qualidade:** as explicações são fiéis nos dois modelos, mas só as da previsora são estáveis e consistentes entre métodos. Por isso os pacotes usam a previsora para as atribuições (ADR 0016, ameaça nº 11).
+- **Atribuição não é causalidade:** os pacotes dizem a que o modelo reagiu, não o que causou a falha (ameaça nº 14). A descoberta causal (Ikram et al., 2022) fica como abordagem complementar.
+- **Custo:** cerca de 75 s no Telecom e 200 s no Bank por execução, em CPU, com atribuições idênticas às do MPS.

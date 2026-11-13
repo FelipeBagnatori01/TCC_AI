@@ -5,3 +5,4 @@ Registro de dados, acessos ou definições ausentes (R10). Nenhum dado é invent
 | Data | Etapa | Bloqueio | Status |
 |---|---|---|---|
 | — | — | Nenhum bloqueio registrado até o fim da E0. | — |
+| 2026-11-12 | E7 | Provedor e modelo de LLM a escolher pelo autor (configurações candidatas em `configs/llm/`) e chave de API no `.env`. O piloto e as execuções das variantes dependem disso; a implementação e os testes não. | Pendente |

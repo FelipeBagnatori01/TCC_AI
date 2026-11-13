@@ -1,0 +1,7 @@
+# Alternative explainable models (ADR 0018): LightGBM, Isolation Forest and L1 logistic regression
+# (TreeSHAP / linear SHAP + LIME), compared with the E5 LSTMs, E6 XAI and E4 heuristics.
+#   uv run tcc-rca alt-models --config configs/base.yaml [configs/system/bank.yaml] configs/experiment/alt_tabular.yaml
+experiment:
+  name: alt_tabular
+alt_models:
+  family: tabular

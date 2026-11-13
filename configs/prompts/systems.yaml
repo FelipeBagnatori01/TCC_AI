@@ -1,0 +1,3 @@
+# Short system descriptions used in the agent's system prompt (from the OpenRCA agent prompts).
+Telecom: "um sistema de banco de dados de telecomunicações em microsserviços (nós os_*, contêineres docker_*, bancos db_*, além de serviços e caches)"
+Bank: "um sistema bancário em microsserviços (servidores web apache*, aplicações Tomcat*, gateways MG* e IG*, bancos Mysql* e caches Redis*)"

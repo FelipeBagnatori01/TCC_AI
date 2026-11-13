@@ -2,7 +2,14 @@
 
 from tcc_rca.llm.client import BudgetExceededError, LLMClient, UsageSummary
 from tcc_rca.llm.providers import FakeProvider, LLMProvider, build_provider, register_provider
-from tcc_rca.llm.types import LLMRequest, LLMResponse, Message, ProviderResult
+from tcc_rca.llm.types import (
+    LLMRequest,
+    LLMResponse,
+    Message,
+    ProviderResult,
+    ToolCall,
+    ToolSpec,
+)
 
 __all__ = [
     "BudgetExceededError",
@@ -13,6 +20,8 @@ __all__ = [
     "LLMResponse",
     "Message",
     "ProviderResult",
+    "ToolCall",
+    "ToolSpec",
     "UsageSummary",
     "build_provider",
     "register_provider",

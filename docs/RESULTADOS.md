@@ -238,3 +238,118 @@ São 45 pacotes no Telecom e 120 no Bank, um por consulta testada.
 - **Qualidade:** as explicações são fiéis nos dois modelos, mas só as da previsora são estáveis e consistentes entre métodos. Por isso os pacotes usam a previsora para as atribuições (ADR 0016, ameaça nº 11).
 - **Atribuição não é causalidade:** os pacotes dizem a que o modelo reagiu, não o que causou a falha (ameaça nº 14). A descoberta causal (Ikram et al., 2022) fica como abordagem complementar.
 - **Custo:** cerca de 75 s no Telecom e 200 s no Bank por execução, em CPU, com atribuições idênticas às do MPS.
+
+## Complemento da E5/E6 — modelos alternativos explicáveis (ADR 0018)
+
+**Pergunta:** o resultado vem da LSTM, ou outros modelos explicáveis por SHAP/LIME fariam o mesmo?
+
+**Modelos comparados:**
+- LightGBM e Isolation Forest, com TreeSHAP exato;
+- regressão logística L1, com SHAP linear exato;
+- uma TCN classificadora, com GradientExplainer.
+
+Todos usam também o LIME da E6.
+
+**Protocolo:** o mesmo da E5/E6:
+- mesmas janelas, dobras e janelas-oráculo;
+- 8 configurações por modelo, escolhidas só na validação, com a normalização inclusa;
+- 5 seeds (a logística é determinística e roda com 1);
+- comparações pareadas com as LSTMs da E5/E6 e as heurísticas da E4.
+
+**Fontes:**
+- tabelas: `reports/tables/alt_models_<sistema>_alt_{tabular,tcn}[_sem_isencao].md`;
+- análise e gráficos: `notebooks/analise_modelos_alternativos.ipynb`.
+
+### Detecção (RQ1): AUC-PR, média entre seeds; veredito pareado contra as LSTMs (seeds superior/empate/inferior)
+
+| Sistema | Modelo | AUC-PR | AUC-ROC | Alarmes falsos/h | Vs. LSTM previsora | Vs. LSTM classificadora |
+|---|---|---|---|---|---|---|
+| Telecom | LSTM previsora (E5) | 0,40 | 0,74 | 18,0 | — | — |
+| Telecom | LSTM classificadora (E5) | 0,48 | 0,83 | 9,2 | — | — |
+| Telecom | LightGBM | 0,20 | 0,56 | 20,9 | 0/1/4 | 0/0/5 |
+| Telecom | Isolation Forest | 0,17 | 0,60 | 31,0 | 0/0/5 | 0/0/5 |
+| Telecom | **Logística L1** | **0,51** | 0,78 | 8,9 | empate (+0,11) | **empate (+0,05)** |
+| Telecom | TCN | 0,34 | 0,72 | 16,0 | 0/5/0 | 0/4/1 |
+| Bank | LSTM previsora (E5) | 0,20 | 0,70 | 10,5 | — | — |
+| Bank | LSTM classificadora (E5) | 0,22 | 0,66 | 14,3 | — | — |
+| Bank | LightGBM | 0,18 | 0,50 | 22,9 | 0/5/0 | 0/4/1 |
+| Bank | Isolation Forest | 0,14 | 0,60 | 26,0 | 0/0/5 | 0/0/5 |
+| Bank | Logística L1 | 0,10 | 0,50 | 18,7 | inferior | inferior |
+| Bank | TCN | 0,16 | 0,52 | 18,7 | 0/5/0 | 0/4/1 |
+
+A AUC-PR ao acaso é 0,14 no Telecom e 0,105 no Bank.
+
+- **Telecom:** a regressão logística L1 empata com as duas LSTMs. Com 191 coeficientes não nulos, em média, de cerca de 8 mil estatísticas, chega a AUC-PR de 0,51, com tantos alarmes falsos quanto a classificadora.
+- **Bank:** a logística cai ao acaso. A busca escolheu C = 0,1 no Bank e C = 10 no Telecom.
+- **Árvores:** LightGBM e Isolation Forest perdem para as LSTMs no Telecom. No Bank, o LightGBM empata.
+- **TCN:** empata com a previsora nos dois sistemas e, na maioria das seeds, com a classificadora.
+- **Conclusão:** a vantagem de detecção **não é exclusiva da LSTM**, mas a LSTM é a única família que não perde em nenhum dos dois sistemas.
+
+### Localização via XAI (RQ2): HR@1 (soma por componente, janelas-oráculo, seed 0)
+
+| Modelo | Telecom SHAP / LIME | Bank SHAP / LIME |
+|---|---|---|
+| LSTM previsora (E6) | 0,33 / 0,38 | 0,36 / 0,30 |
+| LSTM classificadora (E6) | 0,31 / 0,16 | **0,44** / 0,22 |
+| LightGBM | 0,07 / 0,02 | 0,12 / 0,02 |
+| Isolation Forest | 0,09 / 0,09 | 0,12 / 0,03 |
+| Logística L1 | 0,13 / 0,09 | 0,15 / 0,08 |
+| TCN | 0,27 / 0,22 | 0,25 / 0,18 |
+
+Referências, nas mesmas falhas:
+
+| Referência | Telecom | Bank |
+|---|---|---|
+| Nativo LSTM (E5) | 0,44 | 0,34 |
+| z global (E4) | 0,13 | 0,32 |
+| z local (E4) | 0,11 | 0,11 |
+
+**Modelos tabulares:** são **inferiores** em HR@1 à XAI da LSTM previsora e ao ranqueamento nativo em todas as 24 comparações. Os demais vereditos:
+- contra a XAI da classificadora LSTM, são inferiores em 10 de 12; os 2 empates são contra o LIME da classificadora no Telecom (0,16);
+- empatam com os z-scores no Telecom;
+- no Bank, são inferiores até ao z global.
+
+As estatísticas da janela diluem o desvio de cada KPI, e esses modelos separam as classes com poucos atributos, sem relação com o componente da falha. Um bom detector não precisa olhar para o componente certo, como mostra a logística no Telecom.
+
+**TCN:** fica perto da LSTM. No Telecom empata com a XAI das duas LSTMs, perde para o nativo e é superior ao z local. No Bank, com SHAP, perde para o SHAP da classificadora LSTM (0,44), empata com a previsora e com o nativo, e é superior ao z local.
+
+**Conclusão:** para localizar com XAI, os modelos sequenciais (LSTM e TCN), que explicam a janela minuto × KPI, são claramente melhores que os tabulares. A LSTM continua com a melhor localização medida.
+
+### Qualidade das explicações (médias por janela; Telecom / Bank)
+
+| Medida | LSTM previsora | LSTM classificadora | LightGBM | Isolation Forest | Logística L1 | TCN |
+|---|---|---|---|---|---|---|
+| Deleção SHAP (menor = mais fiel; aleatório ≈ 1,0) | 0,59 / 0,65 | 0,75 / 0,70 | 0,28 / 0,37 | 0,97 / 0,97 | 0,33 / 0,20 | 0,60 / 0,54 |
+| Entre seeds, Jaccard top-10 | 0,81 / 0,82 | 0,20 / 0,26 | 0,62 / 0,59 | 0,03 / 0,03 | — | 0,33 / 0,26 |
+| SHAP × LIME, Jaccard top-10 | 0,66 / 0,71 | 0,45 / 0,48 | 0,25 / 0,21 | 0,37 / 0,38 | 0,53 / 0,56 | 0,66 / 0,54 |
+| Janelas vizinhas, Jaccard | 0,89 / 0,86 | 0,44 / 0,54 | 0,76 / 0,86 | 0,66 / 0,74 | 0,80 / 0,88 | 0,79 / 0,78 |
+
+- **Fidelidade:** as explicações de LightGBM e logística são as mais fiéis. Esses modelos dependem de poucos atributos, e o SHAP exato os encontra. Mas fidelidade alta não trouxe boa localização.
+- **Isolation Forest:** as explicações quase não são fiéis (deleção 0,97) e são instáveis entre seeds (Jaccard 0,03).
+- **Estabilidade:** a previsora LSTM continua com as explicações mais estáveis entre seeds, o que reforça a escolha dela para os pacotes do agente (ADR 0016).
+- **Inserção:** é relativa à pontuação da janela completa. Quando essa pontuação é quase 0, a razão explode (médias de 10⁵ no Bank para a logística e a TCN). As medianas estão no notebook.
+
+### Sensibilidade à isenção de disponibilidade
+
+Os números dos modelos alternativos quase não mudam sem a isenção.
+- **Telecom:** 13 vereditos passam de "inferior" a "empate". Quem muda é a referência: sem os KPIs de disponibilidade, a LSTM perde a vantagem (E5/E6).
+- **Bank:** os modelos tabulares não mudam. A TCN, retreinada, varia dentro do esperado entre seeds: HR@1 com SHAP vai de 0,25 a 0,33.
+
+### Reprodutibilidade e custo
+
+Duas execuções de fumaça idênticas (Telecom, 2 dobras) deram `metrics.json` iguais byte a byte, tanto no tabular quanto na TCN.
+
+Tempo em CPU (Apple M4 Pro), por execução completa, com busca:
+
+| Execução | Telecom | Bank |
+|---|---|---|
+| Tabular | 25 min | 44 min |
+| TCN | 26 min | 59 min |
+
+O SHAP exato custa de 0,4 s a 4 s por janela explicada, incluindo vizinhas e seeds.
+
+### Leitura
+
+- **RQ1:** a LSTM não é o único detector competitivo. Um modelo linear esparso (Telecom) e o LightGBM ou a TCN (Bank) empatam com ela. O texto da tese deve dizer "a LSTM supera os baselines da E4", não "a LSTM é necessária".
+- **RQ2:** a localização via XAI favorece modelos sequenciais, e entre eles a LSTM. Os modelos tabulares, mesmo detectando bem, não apontam o componente.
+- **Agente (E7):** nada muda. Os pacotes de evidência continuam vindo da LSTM, como decidido antes deste teste (ameaça nº 19). Nenhum alternativo localiza melhor, o que reforça a escolha.

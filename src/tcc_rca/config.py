@@ -36,7 +36,10 @@ class LLMConfig(_Strict):
     max_tokens: int = Field(default=1024, gt=0)
     budget_usd: float = Field(ge=0.0)
     price_input_per_mtok: float = Field(ge=0.0)
-    price_output_per_mtok: float = Field(ge=0.0)
+    price_cached_input_per_mtok: float = Field(ge=0.0)  # cache reads
+    price_cache_write_per_mtok: float = Field(ge=0.0)  # cache writes (= input where free)
+    price_output_per_mtok: float = Field(ge=0.0)  # includes reasoning tokens
+    effort: str | None = None  # reasoning effort (provider-specific values), fixed per study
     cache_dir: Path
 
 
@@ -167,6 +170,51 @@ class ExplainConfig(_Strict):
     reason_categories: dict[str, dict[str, tuple[str, ...]]]
 
 
+class AltModelsConfig(_Strict):
+    """Alternative explainable models compared with the LSTM (ADR 0018).
+
+    Same windows, folds, validation-only search (8 configurations per model, the forecaster's
+    budget), final seeds (``lstm.seeds``) and XAI settings (``explain``) as E5/E6. ``family`` splits
+    the run in two processes: LightGBM's OpenMP runtime must not meet multithreaded torch.
+    """
+
+    family: Literal["tabular", "tcn"]
+    normalization: tuple[Literal["global", "local"], ...] = Field(min_length=1)
+    lightgbm_num_leaves: tuple[int, ...] = Field(min_length=1)
+    lightgbm_estimators: tuple[int, ...] = Field(min_length=1)  # other params: baselines.lightgbm
+    iforest_estimators: tuple[int, ...] = Field(min_length=1)
+    iforest_max_samples: tuple[int, ...] = Field(min_length=1)
+    logistic_c: tuple[float, ...] = Field(min_length=1)
+    logistic_max_iter: int = Field(gt=0)
+    tcn_channels: tuple[int, ...] = Field(min_length=1)
+    tcn_blocks: tuple[int, ...] = Field(min_length=1)
+    tcn_kernel: int = Field(gt=1)  # training recipe (lr, batch, epochs, patience, dropout): lstm
+    # reference runs for the paired comparisons (reports/tables/<kind>_<system>_<name>.json)
+    lstm_name: str = Field(min_length=1)
+    xai_name: str = Field(min_length=1)
+    baselines_name: str = Field(min_length=1)
+    # Control runs reuse the main run's selection: reports/tables/alt_models_{system}_<name>.json
+    reuse_selection_from: Path | None = None
+    max_folds: int | None = Field(default=None, gt=0)  # smoke runs only; None = every fold
+
+
+class AgentConfig(_Strict):
+    """E7 agent (ADR 0017). Model, effort and budget live in ``llm``."""
+
+    variant: Literal["A1", "A2", "A3"]
+    # test = the queries with an E6 evidence package (tested days); pilot = queries before the
+    # first test day (no package): model/prompt choices are made there, never on the test set.
+    case_set: Literal["test", "pilot"]
+    repetitions: int = Field(ge=1)
+    limit: int | None = Field(default=None, ge=1)  # first N cases (pilot runs)
+    max_tool_calls: int = Field(gt=0)
+    max_turns: int = Field(gt=0)
+    max_retries: int = Field(ge=0)
+    anomaly_top_k: int = Field(gt=0)
+    evidence_name: str = Field(min_length=1)
+    prompts_dir: Path
+
+
 class Config(_Strict):
     experiment: ExperimentConfig
     target_system: Literal["Telecom", "Bank"]
@@ -180,6 +228,8 @@ class Config(_Strict):
     baselines: BaselinesConfig
     lstm: LstmConfig
     explain: ExplainConfig
+    alt_models: AltModelsConfig
+    agent: AgentConfig
 
     def resolved(self) -> dict[str, Any]:
         """JSON-serializable view of the fully resolved configuration."""

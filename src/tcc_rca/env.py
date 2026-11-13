@@ -72,3 +72,23 @@ def capture_environment(cwd: Path | None = None) -> dict[str, Any]:
         "mps_available": torch.backends.mps.is_available(),
         "git": git_info(cwd),
     }
+
+
+def load_dotenv(path: Path = Path(".env")) -> list[str]:
+    """Export ``KEY=VALUE`` lines of ``.env`` (API keys) without overriding the environment.
+
+    Returns the names set, never the values; the file is gitignored and never logged.
+    """
+    if not path.is_file():
+        return []
+    names = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        key, value = key.strip().removeprefix("export ").strip(), value.strip().strip("'\"")
+        if key and value and key not in os.environ:
+            os.environ[key] = value
+            names.append(key)
+    return names

@@ -12,6 +12,7 @@ from pathlib import Path
 from tcc_rca.config import Config, load_config
 from tcc_rca.dataset.build import run_tasks
 from tcc_rca.e2e import run_e2e
+from tcc_rca.env import load_dotenv
 from tcc_rca.evaluation.baselines import run_baselines
 from tcc_rca.evaluation.compare import run_e5_comparison
 from tcc_rca.evaluation.lstm import run_lstm
@@ -198,6 +199,28 @@ def cmd_xai(config: Config, _: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_alt_models(config: Config, _: argparse.Namespace) -> int:
+    from tcc_rca.evaluation.alt_models import run_alt_models
+
+    start = time.perf_counter()
+    summary = run_alt_models(config, TABLES_DIR)
+    for key, value in summary.items():
+        print(f"{key}: {value}")
+    print(f"elapsed_s={time.perf_counter() - start:.1f} peak_rss_mb={_peak_rss_mb():.0f}")
+    return 0
+
+
+def cmd_agent(config: Config, _: argparse.Namespace) -> int:
+    from tcc_rca.agent.run import run_agent  # registers the fake_agent provider
+
+    start = time.perf_counter()
+    summary = run_agent(config, TABLES_DIR)
+    for key, value in summary.items():
+        print(f"{key}: {value}")
+    print(f"elapsed_s={time.perf_counter() - start:.1f}")
+    return 0
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="tcc-rca")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -224,10 +247,13 @@ def main(argv: Sequence[str] | None = None) -> int:
     add("lstm", "search, train and evaluate the LSTM forecaster and classifier (E5)")
     add("compare-e5", "paired LSTM-vs-baseline differences for an E5 run (bootstrap CIs)")
     add("xai", "SHAP/LIME/IG explanations, XAI localization and evidence packages (E6)")
+    add("alt-models", "LightGBM/IF/logistic/TCN + SHAP/LIME vs. the LSTM (ADR 0018)")
+    add("agent", "run one agent variant over the test or pilot queries (E7, paid API calls)")
     eda = add("eda", "plot KPIs around failures")
     eda.add_argument("-n", type=int, default=10, help="number of failures to plot")
 
     args = parser.parse_args(argv)
+    load_dotenv()  # provider API keys, if any (.env is gitignored)
     config = load_config(*args.config)
     handlers = {
         "e2e": lambda c, _a: (print(f"run dir: {run_e2e(c)}"), 0)[1],
@@ -245,6 +271,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         "lstm": cmd_lstm,
         "compare-e5": cmd_compare_e5,
         "xai": cmd_xai,
+        "alt-models": cmd_alt_models,
+        "agent": cmd_agent,
     }
     return int(handlers[args.command](config, args))
 

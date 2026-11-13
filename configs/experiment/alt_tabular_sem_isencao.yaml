@@ -1,0 +1,14 @@
+# Sensitivity control (ADR 0005) for alt_tabular: without the availability exemption, reusing the
+# configuration selected by the main run; compared with the E4/E5/E6 control runs.
+#   uv run tcc-rca alt-models --config configs/base.yaml [configs/system/bank.yaml] configs/experiment/alt_tabular_sem_isencao.yaml
+experiment:
+  name: alt_tabular_sem_isencao
+series:
+  selection:
+    constant_exempt_categories: []
+alt_models:
+  family: tabular
+  reuse_selection_from: "reports/tables/alt_models_{system}_alt_tabular.json"
+  lstm_name: lstm_sem_isencao
+  xai_name: xai_sem_isencao
+  baselines_name: baselines_sem_isencao

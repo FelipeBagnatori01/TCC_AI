@@ -94,6 +94,49 @@ Registro incremental das ameaças identificadas ao longo das etapas, para a seç
 - **O que:** SHAP, LIME e IG dizem a que o modelo reagiu, não o que causou a falha. Um KPI de um componente vizinho, afetado pela falha, pode receber mais atribuição que a causa raiz.
 - **Mitigação:** a monografia separa "o modelo reagiu a este KPI" de "este componente causou a falha", e cita descoberta causal (Ikram et al., 2022) como abordagem complementar. A localização via XAI é medida contra o gabarito, não presumida.
 
+### 15. Contaminação do LLM (E7)
+
+- **O que:** o OpenRCA é público. O modelo pode ter visto o artigo, os dados ou respostas do benchmark no treino.
+- **Efeito esperado:** acerto inflado em todas as variantes, sem relação com as evidências.
+- **Mitigação:** a comparação A1 × A3 com o mesmo modelo controla a parte da contaminação comum às variantes. A contaminação continua sendo uma ameaça aos números absolutos.
+
+### 16. Modelos sem temperatura (E7)
+
+- **O que:** os modelos atuais dos dois provedores rejeitam `temperature`, então não há execução determinística; a R6 previa temperatura 0 "quando suportado".
+- **Efeito esperado:** duas execuções novas do mesmo caso podem divergir.
+- **Mitigação:**
+  - a reprodutibilidade vem do cache: uma nova execução sai inteira dele, sem chamada paga (testado);
+  - a variância é medida com 3 repetições independentes por caso no Telecom;
+  - no Bank há 1 repetição (escopo aprovado), sem medida de variância.
+
+### 17. A variante A1 inclui uma varredura heurística (E7)
+
+- **O que:** todas as variantes têm `find_anomalous_kpis`, que ordena os KPIs por desvio local, como o z-score local da E4. A ferramenta foi definida antes de qualquer execução real, para que a A1 não precise consultar às cegas cerca de 2 mil KPIs.
+- **Efeito esperado:** a A1 fica mais forte que um "LLM só com telemetria bruta", então o ganho de A2/A3 é marginal em relação a essa base, e não ao LLM puro.
+- **Mitigação:** a ressalva entra no texto, e a comparação de todas as variantes com A0 continua valendo.
+
+### 18. Modelo e prompt escolhidos num piloto pequeno (E7)
+
+- **O que:** o piloto tem 22 consultas de dias anteriores ao teste (6 do Telecom e 16 do Bank), só com a variante A1.
+- **Efeito esperado:** a escolha pode não ser a melhor para o teste, que tem outra distribuição de motivos e componentes; mas não há *snooping*, porque nenhuma consulta de teste é usada.
+- **Mitigação:** o piloto e o critério de escolha ficam registrados, e o modelo escolhido é fixado para todas as variantes.
+
+### 19. Modelos alternativos medidos depois de ver os resultados da LSTM (complemento E5/E6)
+
+- **O que:** a comparação com LightGBM, Isolation Forest, regressão logística L1 e TCN foi decidida depois dos resultados da E5/E6 no teste (2026-11-13).
+- **Efeito esperado:** nenhum modelo foi ajustado no teste: todos usam o protocolo da E5, com busca só na validação e orçamento de 8 configurações por modelo, fixado antes de rodar. O risco é outro: se um alternativo superar a LSTM, trocar o modelo das evidências do agente seria escolher pelo teste.
+- **Mitigação:** os pacotes de evidência da E7 continuam vindo da LSTM (ADR 0016/0017), qualquer que seja o resultado. Se um alternativo vencer, isso é relatado como achado (a LSTM não é necessária), não usado para reconfigurar o agente.
+
+### 20. Comparação justa entre famílias de modelos (complemento E5/E6)
+
+- **O que:**
+  - as grades têm o mesmo tamanho (8 configurações, com a normalização incluída), mas cobrem eixos de natureza diferente;
+  - a TCN entra só como classificadora, par da `ClassifierLSTM`, e não como previsora;
+  - a logística é determinística e roda com 1 seed, sem medida de estabilidade entre seeds;
+  - os modelos tabulares leem as mesmas janelas normalizadas que a LSTM (ausente = 0), não as estatísticas com escala robusta e ausentes `NaN` do LightGBM da E4, então os números diferem dos da E4.
+- **Efeito esperado:** um modelo pode estar sub ou sobreajustado em relação aos outros.
+- **Mitigação:** a busca completa (AUC-PR de validação de cada configuração) fica no relatório. O LightGBM da E4, sem busca, continua como referência.
+
 ## Previstas pelo plano (a detalhar na E9)
 
 - Tamanho amostral: 51 casos no Telecom (45 testados; ver item 4).

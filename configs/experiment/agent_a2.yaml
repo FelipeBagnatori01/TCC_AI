@@ -1,0 +1,9 @@
+# E7: uv run tcc-rca agent --config configs/base.yaml [configs/system/bank.yaml] configs/experiment/agent_a2.yaml [configs/experiment/agent_1rep.yaml]
+experiment:
+  name: agent_a2
+agent:
+  variant: A2
+  case_set: test
+  repetitions: 3
+llm:
+  budget_usd: 50.0                 # hard cap per run (R7); one call may overshoot

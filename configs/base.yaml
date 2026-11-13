@@ -22,7 +22,10 @@ llm:
   max_tokens: 1024
   budget_usd: 1.0             # hard cap per experiment (R7)
   price_input_per_mtok: 1.0   # USD per million input tokens
-  price_output_per_mtok: 2.0  # USD per million output tokens
+  price_cached_input_per_mtok: 0.1  # USD per million cache-read input tokens
+  price_cache_write_per_mtok: 1.25  # USD per million cache-write input tokens
+  price_output_per_mtok: 2.0  # USD per million output tokens (reasoning included)
+  effort: null                # reasoning effort; fixed for the whole study once chosen (R6)
   cache_dir: experiments/llm_cache
 
 series:
@@ -123,3 +126,33 @@ explain:                           # E6 (ADR 0016); explains the E5 models, no t
       high disk space usage: [disco]
       network latency: [rede, latência]
       network packet loss: [rede, erro]
+
+alt_models:                        # alternative explainable models vs. the LSTM (ADR 0018)
+  family: tabular                  # tabular (LightGBM, Isolation Forest, logistic) | tcn
+  normalization: [global, local]   # searched, as for the LSTM
+  lightgbm_num_leaves: [15, 31]    # 2 x 2 x 2 normalizations = 8 configurations per model
+  lightgbm_estimators: [300, 600]
+  iforest_estimators: [100, 300]
+  iforest_max_samples: [256, 1024]
+  logistic_c: [0.01, 0.1, 1.0, 10.0]
+  logistic_max_iter: 200
+  tcn_channels: [32, 64]
+  tcn_blocks: [2, 3]
+  tcn_kernel: 3
+  lstm_name: lstm                  # E5 run compared against (detection, same seeds)
+  xai_name: xai                    # E6 run compared against (XAI localization)
+  baselines_name: baselines        # E4 run compared against (heuristic localization)
+  reuse_selection_from: null
+  max_folds: null
+
+agent:                             # E7 (ADR 0017); model/effort/budget are in llm
+  variant: A3                      # A1 telemetry only | A2 + LSTM score/native ranking | A3 + SHAP/LIME
+  case_set: test                   # test (45 Telecom / 120 Bank) | pilot (queries before the first test day)
+  repetitions: 1                   # independent samples per case (variance; no temperature on current models)
+  limit: null
+  max_tool_calls: 20               # per case, same in every variant
+  max_turns: 30
+  max_retries: 2                   # invalid answers sent back with the validation errors
+  anomaly_top_k: 15
+  evidence_name: xai               # E6 evidence packages: data/processed/<system>/evidence/<name>/
+  prompts_dir: configs/prompts

@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import copy
 import time
+from collections.abc import Callable
 from dataclasses import dataclass, field
+from typing import TypeVar
 
 import numpy as np
 import numpy.typing as npt
@@ -15,6 +17,7 @@ from tcc_rca.models.lstm.model import ClassifierLSTM, ForecastLSTM
 
 Float32Array = npt.NDArray[np.float32]
 FloatArray = npt.NDArray[np.float64]
+M = TypeVar("M", bound=nn.Module)
 
 
 @dataclass(frozen=True)
@@ -113,12 +116,33 @@ def train_classifier(
     val_labels: npt.NDArray[np.int64],
     s: TrainSettings,
 ) -> tuple[ClassifierLSTM, History]:
-    """Supervised window classifier with class weighting (pos_weight = negatives / positives)."""
+    """Supervised LSTM window classifier with class weighting (pos_weight = neg / pos)."""
+    return fit_window_classifier(
+        lambda: ClassifierLSTM(train_windows.shape[2], s.hidden, s.layers, s.dropout),
+        train_windows,
+        train_labels,
+        val_windows,
+        val_labels,
+        s,
+    )
+
+
+def fit_window_classifier(
+    build: Callable[[], M],
+    train_windows: Float32Array,
+    train_labels: npt.NDArray[np.int64],
+    val_windows: Float32Array,
+    val_labels: npt.NDArray[np.int64],
+    s: TrainSettings,
+) -> tuple[M, History]:
+    """Train any window -> logit module (LSTM, TCN) with the E5 classifier recipe: class
+    weighting, Adam, early stopping on the validation loss. ``build`` is called right after
+    seeding, so the initial weights depend on ``s.seed`` only."""
     pos = int(train_labels.sum())
     if pos == 0 or pos == train_labels.size:
         raise ValueError("the classifier needs positive and negative training windows")
     torch.manual_seed(s.seed)
-    model = ClassifierLSTM(train_windows.shape[2], s.hidden, s.layers, s.dropout)
+    model = build()
     opt = torch.optim.Adam(model.parameters(), lr=s.learning_rate)
     loss_fn = nn.BCEWithLogitsLoss(pos_weight=torch.tensor((train_labels.size - pos) / pos))
     gen = torch.Generator().manual_seed(s.seed)
@@ -220,7 +244,7 @@ def _abs_errors(model: ForecastLSTM, windows: Float32Array, batch: int = 512) ->
     return out
 
 
-def classifier_scores(model: ClassifierLSTM, windows: Float32Array, batch: int = 512) -> FloatArray:
+def classifier_scores(model: nn.Module, windows: Float32Array, batch: int = 512) -> FloatArray:
     model.eval()
     parts = []
     with torch.no_grad():

@@ -1,0 +1,27 @@
+# Candidate root-cause reasons and components for Bank, copied verbatim from the
+# OpenRCA agent prompt external/OpenRCA/rca/baseline/rca_agent/prompt/basic_prompt_Bank.py
+# (public benchmark protocol, not ground truth). tests/test_agent.py checks they still match.
+reasons:
+  - "high CPU usage"
+  - "high memory usage"
+  - "network latency"
+  - "network packet loss"
+  - "high disk I/O read usage"
+  - "high disk space usage"
+  - "high JVM CPU load"
+  - "JVM Out of Memory (OOM) Heap"
+components:
+  - "apache01"
+  - "apache02"
+  - "Tomcat01"
+  - "Tomcat02"
+  - "Tomcat04"
+  - "Tomcat03"
+  - "MG01"
+  - "MG02"
+  - "IG01"
+  - "IG02"
+  - "Mysql01"
+  - "Mysql02"
+  - "Redis01"
+  - "Redis02"

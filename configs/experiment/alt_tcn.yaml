@@ -1,0 +1,7 @@
+# Alternative explainable models (ADR 0018): TCN window classifier (GradientExplainer + LIME).
+# Separate process from alt_tabular: LightGBM's OpenMP runtime must not meet multithreaded torch.
+#   uv run tcc-rca alt-models --config configs/base.yaml [configs/system/bank.yaml] configs/experiment/alt_tcn.yaml
+experiment:
+  name: alt_tcn
+alt_models:
+  family: tcn

@@ -15,10 +15,17 @@ class LLMProvider(Protocol):
 
 
 class FakeProvider:
-    """Deterministic offline provider used by tests and the e2e smoke run."""
+    """Deterministic offline provider used by tests and the e2e smoke run.
 
-    def __init__(self, responder: Callable[[LLMRequest], str] | None = None) -> None:
+    The responder may return plain text or a full ``ProviderResult`` (e.g. with tool calls), so
+    tests can script an agent conversation without any network access.
+    """
+
+    def __init__(
+        self, responder: Callable[[LLMRequest], str | ProviderResult] | None = None
+    ) -> None:
         self.calls = 0
+        self.requests: list[LLMRequest] = []
         self._responder = responder or self._default_responder
 
     @staticmethod
@@ -27,17 +34,36 @@ class FakeProvider:
 
     def complete(self, request: LLMRequest) -> ProviderResult:
         self.calls += 1
-        text = self._responder(request)
+        self.requests.append(request)
+        out = self._responder(request)
+        if isinstance(out, ProviderResult):
+            return out
         prompt_chars = sum(len(m.content) for m in request.messages)
         # Crude token estimate (4 chars/token): enough to exercise cost accounting.
         return ProviderResult(
-            text=text,
+            text=out,
             input_tokens=max(1, prompt_chars // 4),
-            output_tokens=max(1, len(text) // 4),
+            output_tokens=max(1, len(out) // 4),
         )
 
 
-_REGISTRY: dict[str, Callable[[], LLMProvider]] = {"fake": FakeProvider}
+def _anthropic() -> LLMProvider:
+    from tcc_rca.llm.anthropic_provider import AnthropicProvider
+
+    return AnthropicProvider()
+
+
+def _openai() -> LLMProvider:
+    from tcc_rca.llm.openai_provider import OpenAIProvider
+
+    return OpenAIProvider()
+
+
+_REGISTRY: dict[str, Callable[[], LLMProvider]] = {
+    "fake": FakeProvider,
+    "anthropic": _anthropic,
+    "openai": _openai,
+}
 
 
 def register_provider(name: str, factory: Callable[[], LLMProvider]) -> None:

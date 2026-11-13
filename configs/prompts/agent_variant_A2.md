@@ -1,0 +1,1 @@
+- Há também a ferramenta get_evidence, com o resultado de um detector LSTM treinado com o histórico do sistema: a pontuação de anomalia da janela mais suspeita dentro da consulta, o limiar e se houve alarme, e um ranqueamento de componentes pelo erro de previsão (N#). É um indício, não um veredito: confirme na telemetria.

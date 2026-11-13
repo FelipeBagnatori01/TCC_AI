@@ -1,0 +1,3 @@
+# Merge after agent_a*.yaml for one repetition per case (Bank, approved scope).
+agent:
+  repetitions: 1

@@ -1,0 +1,12 @@
+# OpenAI, preços da página oficial consultada em 2026-11-12.
+# Merge AFTER the experiment config: --config configs/base.yaml [bank] <experiment>.yaml configs/llm/openai_gpt_6_1_sol.yaml
+# Needs OPENAI_API_KEY in .env (gitignored).
+llm:
+  provider: openai
+  model: gpt-6.1-sol            # pinned model identifier (R6)
+  max_tokens: 16000                  # per call, reasoning included
+  effort: medium                     # fixed for the whole study (ADR 0017)
+  price_input_per_mtok: 2.0
+  price_cached_input_per_mtok: 0.1
+  price_cache_write_per_mtok: 2.0
+  price_output_per_mtok: 10.0

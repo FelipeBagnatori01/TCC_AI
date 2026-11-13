@@ -1,0 +1,10 @@
+# Model/prompt pilot on the queries BEFORE the first test day (no evidence package, so A1 only).
+# uv run tcc-rca agent --config configs/base.yaml [configs/system/bank.yaml] configs/experiment/agent_piloto.yaml
+experiment:
+  name: agent_piloto
+agent:
+  variant: A1
+  case_set: pilot
+  repetitions: 1
+llm:
+  budget_usd: 10.0                 # hard cap per pilot run (R7)

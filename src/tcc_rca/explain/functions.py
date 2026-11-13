@@ -17,7 +17,7 @@ import numpy.typing as npt
 import torch
 from torch import nn
 
-from tcc_rca.models.lstm.model import ClassifierLSTM, ForecastLSTM
+from tcc_rca.models.lstm.model import ForecastLSTM
 
 Float32Array = npt.NDArray[np.float32]
 
@@ -61,7 +61,9 @@ class ForecastScoreModule(nn.Module):
 
 
 class ClassifierProbModule(nn.Module):
-    def __init__(self, model: ClassifierLSTM) -> None:
+    """Probability of any window -> logit classifier (LSTM in E6, TCN in the alternatives)."""
+
+    def __init__(self, model: nn.Module) -> None:
         super().__init__()
         self.model = model.eval()
 

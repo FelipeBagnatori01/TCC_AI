@@ -29,7 +29,7 @@ from tcc_rca.evaluation.baselines import (
     epoch_minutes,
     evaluate_localization,
     load_windows,
-    row_of,
+    oracle_end_row,
 )
 from tcc_rca.evaluation.metrics import auc_pr, pessimistic_rank
 from tcc_rca.ingestion.cases import Failure, read_failures
@@ -103,6 +103,8 @@ class Experiment:
         }
         self.candidates = sorted({split_feature(f)[0] for f in self.features})
         self.guard = self.t.window_minutes + self.t.horizon_minutes
+        self._column_of = {f: j for j, f in enumerate(self.features)}
+        self._local: Float32Array | None = None
 
     def fold_data(self, fold: Fold) -> FoldData:
         fit_rows = self.normal_min & np.isin(self.day_arr, list(fold.train_days))
@@ -130,8 +132,23 @@ class Experiment:
         )
 
     def inputs(self, fd: FoldData, normalization: Normalization) -> FoldInputs:
-        fit_rows = self.normal_min & np.isin(self.day_arr, list(fd.fold.train_days))
         p, lc = self.t.precursor, self.config.lstm
+        if normalization == "local":
+            # causal and fitting-free: computed once for every feature, then sliced (equal to
+            # ``normalize(..., "local", ...)`` on the kept features, tested)
+            if self._local is None:
+                self._local = normalize(
+                    self.values,
+                    self.features,
+                    self.normal_min,  # unused by "local"
+                    "local",
+                    lc.global_clip,
+                    p.local_window_minutes,
+                    p.local_cap,
+                ).matrix
+            cols = [self._column_of[f] for f in fd.kept]
+            return FoldInputs(list(fd.kept), "local", np.ascontiguousarray(self._local[:, cols]))
+        fit_rows = self.normal_min & np.isin(self.day_arr, list(fd.fold.train_days))
         return normalize(
             self.values,
             fd.kept,
@@ -158,6 +175,16 @@ class Experiment:
             lc.max_epochs,
             lc.patience,
             seed,
+        )
+
+    def oracle_row(self, failure: Failure) -> int:
+        """End row of the failure's localization window (same day, ADR 0019)."""
+        return oracle_end_row(
+            self.minute_to_row,
+            self.day_arr,
+            failure.start_utc,
+            self.t.detection_tolerance_minutes,
+            self.t.window_minutes,
         )
 
     def tested(self, fold: Fold) -> list[Failure]:
@@ -205,7 +232,10 @@ def search(exp: Experiment, log: Callable[[str], None]) -> dict[str, Any]:
                     tr, vn, exp.settings(choice.hidden, choice.layers, seed)
                 )
                 score = _val_auc_pr(
-                    yv, ForecastScorer.fit(model, tr, lc.score_top_k).score_windows(vl)
+                    yv,
+                    ForecastScorer.fit(
+                        model, tr, lc.score_top_k, exp.t.score_minutes
+                    ).score_windows(vl),
                 )
                 f_scores[choice].append(score or 0.0)
                 rows.append(
@@ -301,21 +331,12 @@ def final_runs(
         )
         columns = component_columns(fd.kept)
         failures = exp.tested(fold)
-        fail_rows = np.array(
-            [
-                row_of(
-                    exp.minute_to_row,
-                    f.start_utc.timestamp() / 60.0 + exp.t.detection_tolerance_minutes,
-                )
-                for f in failures
-            ],
-            dtype=np.int64,
-        )
+        fail_rows = np.array([exp.oracle_row(f) for f in failures], dtype=np.int64)
         fail_windows = window_tensor(inputs.matrix, fail_rows, exp.t.window_minutes)
         for offset in lc.seeds:
             seed = base_seed + offset
             model, hist = train_forecaster(tr, vn, exp.settings(fc["hidden"], fc["layers"], seed))
-            scorer = ForecastScorer.fit(model, tr, lc.score_top_k)
+            scorer = ForecastScorer.fit(model, tr, lc.score_top_k, exp.t.score_minutes)
             t0 = time.perf_counter()
             test_scores = scorer.score_windows(te)
             per_window_ms = (time.perf_counter() - t0) * 1000 / max(te.shape[0], 1)
@@ -424,6 +445,7 @@ def evaluate(exp: Experiment, scores: pl.DataFrame, ranks: pl.DataFrame) -> dict
             per_seed.append(detection_metrics(m, onsets, reasons, exp.config))
         keys = (
             "auc_pr",
+            "auc_pr_fold_mean",
             "auc_roc",
             "precision",
             "recall",
@@ -476,6 +498,7 @@ def run_lstm(config: Config, tables_dir: Path) -> dict[str, Any]:
                 "system": system,
                 "folds": len(exp.folds),
                 "seeds": list(config.lstm.seeds),
+                "score_minutes": config.tasks.score_minutes,
                 "selection": {k: selection[k] for k in ("forecaster", "classifier")},
             }
         )
@@ -541,31 +564,39 @@ def write_lstm_markdown(
     path: Path, table: dict[str, Any], baselines: dict[str, Any] | None
 ) -> None:
     sel, n_seeds = table["selection"], len(table["seeds"])
+    span = table.get("score_minutes")
+    span_txt = "a janela inteira" if span is None else f"os últimos {span} minutos da janela"
     lines = [
         f"# LSTM — {table['system']} (E5, ADR 0015)",
         "",
         f"Configuração escolhida na validação: previsora {sel['forecaster']}; classificadora "
         f"{sel['classifier']}. Valores: média ± desvio-padrão entre {n_seeds} seeds; "
         '"IC médio" = média, entre seeds, dos limites do IC de 95% por bootstrap. '
-        "Sem point-adjust.",
+        f"Sem point-adjust. A pontuação da previsora lê {span_txt} (ADR 0019); "
+        '"AUC-PR por dobra" = média das AUC-PR de cada dobra com falha.',
         "",
         "## Detecção (Tarefa A, por janela)",
         "",
-        "| Método | AUC-PR | IC médio | AUC-ROC | Precisão | Revocação | F1 | Alarmes falsos/h |",
-        "|---|---|---|---|---|---|---|---|",
+        "| Método | AUC-PR | IC médio | AUC-PR por dobra | AUC-ROC | Precisão | Revocação | F1 "
+        "| Alarmes falsos/h |",
+        "|---|---|---|---|---|---|---|---|---|",
     ]
     for name, d in table["detection"].items():
         s = d["summary"]
         lines.append(
-            f"| {name} | {_ms(s['auc_pr'])} | {_ci(d['seeds'], 'auc_pr')} | {_ms(s['auc_roc'])} "
+            f"| {name} | {_ms(s['auc_pr'])} | {_ci(d['seeds'], 'auc_pr')} "
+            f"| {_ms(s['auc_pr_fold_mean'])} | {_ms(s['auc_roc'])} "
             f"| {_ms(s['precision'])} | {_ms(s['recall'])} | {_ms(s['f1'])} "
             f"| {_ms(s['false_alarms_per_hour'])} |"
         )
     if baselines is not None:
         for name, d in baselines["detection"].items():
             e = d["auc_pr"]
+            fm = d.get("auc_pr_fold_mean")
+            fm_txt = "—" if fm is None else f"{fm['value']:.2f}"
             lines.append(
                 f"| E4: {name} | {e['value']:.2f} | [{e['ci_low']:.2f}, {e['ci_high']:.2f}] "
+                f"| {fm_txt} "
                 f"| {d['auc_roc']['value']:.2f} | {d['precision']['value']:.2f} "
                 f"| {d['recall']['value']:.2f} | {d['f1']['value']:.2f} "
                 f"| {d['false_alarms_per_hour']['value']:.2f} |"

@@ -13,6 +13,7 @@ import numpy.typing as npt
 import torch
 from torch import nn
 
+from tcc_rca.models.baselines.features import last_steps
 from tcc_rca.models.lstm.model import ClassifierLSTM, ForecastLSTM
 
 Float32Array = npt.NDArray[np.float32]
@@ -191,20 +192,29 @@ class ForecastScorer:
     """Anomaly score of a trained forecaster: prediction error normalized per feature.
 
     ``scale`` is the per-feature median absolute one-step error on the normal TRAINING windows,
-    so "1" means a typical training error. Pure and deterministic: eval mode, no gradient.
+    so "1" means a typical training error. Window score = max over the last ``score_minutes``
+    error steps (ADR 0019; ``None`` = every step) of the mean of the ``top_k`` largest errors.
+    Pure and deterministic: eval mode, no gradient.
     """
 
     model: ForecastLSTM
     scale: npt.NDArray[np.float32]
     top_k: int
+    score_minutes: int | None = None
 
     @classmethod
-    def fit(cls, model: ForecastLSTM, train_windows: Float32Array, top_k: int) -> ForecastScorer:
+    def fit(
+        cls,
+        model: ForecastLSTM,
+        train_windows: Float32Array,
+        top_k: int,
+        score_minutes: int | None = None,
+    ) -> ForecastScorer:
         err = _abs_errors(model, train_windows)  # NaN where the target is missing
         with np.errstate(all="ignore"):
             med = np.nanmedian(err.reshape(-1, err.shape[2]), axis=0)
         med = np.where(np.isfinite(med) & (med > 1e-6), med, 1.0).astype(np.float32)
-        return cls(model, med, top_k)
+        return cls(model, med, top_k, score_minutes)
 
     def normalized_errors(self, windows: Float32Array) -> Float32Array:
         """(n, W - 1, F) |error| / scale; 0 where the target value is missing."""
@@ -216,7 +226,7 @@ class ForecastScorer:
         e = self.normalized_errors(windows)
         k = min(self.top_k, e.shape[2])
         minute = np.partition(e, e.shape[2] - k, axis=2)[:, :, -k:].mean(axis=2)
-        out: FloatArray = minute.max(axis=1).astype(np.float64)
+        out: FloatArray = last_steps(minute, self.score_minutes).max(axis=1).astype(np.float64)
         return out
 
     def score(self, window_tensor: torch.Tensor | Float32Array) -> float:

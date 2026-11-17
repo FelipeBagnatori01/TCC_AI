@@ -2,8 +2,9 @@
 
 * :class:`ForecastScoreModule` reproduces ``ForecastScorer.score_windows`` (E5) in PyTorch:
   |one-step error| / per-feature training scale, mean of the k largest per minute, max over
-  minutes. Missing targets of the explained window are excluded through a fixed mask, exactly as
-  the NumPy scorer does (error 0), so the explained function equals the evaluated one.
+  the last ``score_minutes`` minutes (ADR 0019; all minutes when ``None``). Missing targets of
+  the explained window are excluded through a fixed mask, exactly as the NumPy scorer does
+  (error 0), so the explained function equals the evaluated one.
 * :class:`ClassifierProbModule` is the classifier's failure probability.
 
 Both take NaN-free windows ``(batch, W, F)`` (missing inputs are 0, as in E5) and return
@@ -29,11 +30,13 @@ class ForecastScoreModule(nn.Module):
         scale: Float32Array,
         top_k: int,
         target_mask: Float32Array | None = None,
+        score_minutes: int | None = None,
     ) -> None:
         super().__init__()
         self.model = model.eval()
         self.register_buffer("scale", torch.from_numpy(np.asarray(scale, dtype=np.float32)))
         self.top_k = top_k
+        self.score_minutes = score_minutes
         mask = None if target_mask is None else torch.from_numpy(target_mask.astype(np.float32))
         self.register_buffer("target_mask", mask)
 
@@ -56,6 +59,8 @@ class ForecastScoreModule(nn.Module):
         err = self.normalized_errors(x)
         k = min(self.top_k, err.shape[2])
         minute = torch.topk(err, k, dim=2).values.mean(dim=2)
+        if self.score_minutes is not None:
+            minute = minute[:, -self.score_minutes :]
         out: torch.Tensor = minute.max(dim=1).values.unsqueeze(-1)
         return out
 

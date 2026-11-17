@@ -1,0 +1,7 @@
+# ADR 0019 control: E4 with the window scores reading the WHOLE window (the protocol before
+# ADR 0019). Its detection numbers must equal the pre-ADR-0019 E4 tables.
+#   uv run tcc-rca baselines --config configs/base.yaml [configs/system/bank.yaml] configs/experiment/baselines_janela_inteira.yaml
+experiment:
+  name: baselines_janela_inteira
+tasks:
+  score_minutes: null

@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Any, Literal
 
 import yaml
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 
 class _Strict(BaseModel):
@@ -94,7 +94,18 @@ class TasksConfig(_Strict):
     detection_tolerance_minutes: int = Field(ge=0)  # D: ... or in [t - D, t]
     normal_margin_before_minutes: int = Field(ge=0)
     normal_margin_after_minutes: int = Field(ge=0)
+    # ADR 0019: unsupervised window scores (forecaster error, z-scores) read only the last N
+    # minutes of the window, the span a positive label refers to (D + 1); None = the whole window
+    # (the E4/E5 behaviour before ADR 0019, kept as a control).
+    score_minutes: int | None = Field(gt=0)
     precursor: PrecursorConfig
+
+    @model_validator(mode="after")
+    def _score_span_fits(self) -> TasksConfig:
+        # the forecaster has W - 1 error steps; the score cannot read more than that
+        if self.score_minutes is not None and self.score_minutes > self.window_minutes - 1:
+            raise ValueError("tasks.score_minutes must be at most window_minutes - 1")
+        return self
 
 
 class LightGBMConfig(_Strict):
@@ -118,6 +129,9 @@ class BaselinesConfig(_Strict):
     event_max_delay_minutes: int = Field(gt=0)
     bootstrap: int = Field(gt=0)
     bootstrap_block_minutes: int = Field(gt=0)  # window-level CIs resample blocks of this size
+    # ADR 0019: reference detector from the time of day alone (training windows within this
+    # many minutes of the same minute of the day)
+    time_prior_halfwidth_minutes: int = Field(gt=0, lt=720)
 
 
 class LstmGridConfig(_Strict):

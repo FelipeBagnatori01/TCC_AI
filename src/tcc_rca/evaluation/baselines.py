@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 from collections.abc import Callable, Sequence
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -37,8 +38,15 @@ from tcc_rca.models.baselines.detection import (
     choose_threshold,
     isolation_forest_scores,
     lightgbm_scores,
+    time_of_day_prior_scores,
 )
-from tcc_rca.models.baselines.features import ZScore, window_max_abs, window_rows, window_statistics
+from tcc_rca.models.baselines.features import (
+    ZScore,
+    last_steps,
+    window_max_abs,
+    window_rows,
+    window_statistics,
+)
 from tcc_rca.models.baselines.localization import (
     component_columns,
     local_component_scores,
@@ -52,7 +60,14 @@ from tcc_rca.tracking import Run
 
 FloatArray = npt.NDArray[np.float64]
 IntArray = npt.NDArray[np.int64]
-DETECTORS = ("zscore_3sigma", "zscore_val", "zscore_local", "isolation_forest", "lightgbm")
+DETECTORS = (
+    "zscore_3sigma",
+    "zscore_val",
+    "zscore_local",
+    "isolation_forest",
+    "lightgbm",
+    "prior_horario",
+)
 LOCALIZERS = ("zscore_global", "zscore_local", "prior")
 
 
@@ -94,6 +109,30 @@ def row_of(values_minutes: dict[float, int], instant_minute: float) -> int:
     if instant_minute not in values_minutes:
         raise ValueError(f"minute {instant_minute} not in the matrix")
     return values_minutes[instant_minute]
+
+
+def oracle_end_row(
+    minute_to_row: dict[float, int],
+    day_arr: npt.NDArray[np.str_] | npt.NDArray[np.object_],
+    onset: datetime,
+    tolerance_minutes: int,
+    window: int,
+) -> int:
+    """Matrix row ending the localization ("oracle") window of a failure (ADR 0019).
+
+    The window ends ``tolerance_minutes`` after the onset. When the onset is so early in its
+    day that this window would start on the previous day's rows, the first complete window of
+    the day is used instead (it still contains the onset): windows never cross days.
+    """
+    end = row_of(minute_to_row, onset.timestamp() / 60.0 + tolerance_minutes)
+    day = day_arr[end]
+    if end - (window - 1) >= 0 and day_arr[end - (window - 1)] == day:
+        return end
+    first = int(np.flatnonzero(day_arr == day)[0])
+    shifted = first + window - 1
+    if shifted >= day_arr.size or day_arr[shifted] != day:
+        raise ValueError(f"day {day} is shorter than one window")
+    return shifted
 
 
 def run_folds(
@@ -144,8 +183,10 @@ def run_folds(
         local = local_all[:, [column_of[f] for f in kept]]
         local_minute = minute_scores(local, p.top_k)
         scores: dict[str, FloatArray] = {
-            "zscore_3sigma": window_max_abs(z, end_rows, t.window_minutes),
-            "zscore_local": local_minute[window_rows(end_rows, t.window_minutes)].max(axis=1),
+            "zscore_3sigma": window_max_abs(z, end_rows, t.window_minutes, t.score_minutes),
+            "zscore_local": last_steps(
+                local_minute[window_rows(end_rows, t.window_minutes)], t.score_minutes
+            ).max(axis=1),
             "isolation_forest": isolation_forest_scores(
                 stats[train_norm], stats, b.isolation_forest_estimators, seed + fold.index
             ),
@@ -154,6 +195,13 @@ def run_folds(
             ),
         }
         scores["zscore_val"] = scores["zscore_3sigma"]
+        minute_of_day = roled.select(
+            pl.col("end_utc").dt.hour().cast(pl.Int64) * 60 + pl.col("end_utc").dt.minute()
+        ).to_series()
+        mod = minute_of_day.to_numpy().astype(np.int64)
+        scores["prior_horario"] = time_of_day_prior_scores(
+            mod[train_lab], y[train_lab], mod, b.time_prior_halfwidth_minutes
+        )
         fold_meta: dict[str, Any] = {
             "fold": fold.index,
             "test_day": fold.test_day,
@@ -161,6 +209,7 @@ def run_folds(
             "train_normal_windows": int(train_norm.sum()),
             "train_positive_windows": int((train_lab & (y == 1)).sum()),
             "val_positive_windows": int((val_lab & (y == 1)).sum()),
+            "oracle_windows_shifted": 0,
             "thresholds": {},
         }
         test = role == "test"
@@ -194,8 +243,11 @@ def run_folds(
         for f, d in zip(failures, f_days, strict=True):
             if d != fold.test_day:
                 continue
-            end_minute = f.start_utc.timestamp() / 60.0 + onset_offset
-            end_row = row_of(minute_to_row, end_minute)
+            end_row = oracle_end_row(
+                minute_to_row, day_arr, f.start_utc, onset_offset, t.window_minutes
+            )
+            natural = row_of(minute_to_row, f.start_utc.timestamp() / 60.0 + onset_offset)
+            fold_meta["oracle_windows_shifted"] += int(end_row != natural)
             rows = window_rows(np.array([end_row], dtype=np.int64), t.window_minutes)[0]
             per_method = {
                 "zscore_global": zscore_component_scores(z, rows, columns, candidates),
@@ -218,6 +270,22 @@ def run_folds(
         meta.append(fold_meta)
         log(f"fold {fold.index} ({fold.test_day}): kept={len(kept)} thresholds done")
     return pl.concat(score_parts), pl.DataFrame(rank_rows), meta
+
+
+def failures_without_positive_window(
+    windows: pl.DataFrame, failures: Sequence[Failure], tolerance_minutes: int
+) -> int:
+    """Failures with no complete same-day window labelled positive for them (the onset is so
+    early in its day that every window ending within ``tolerance_minutes`` would cross days).
+    They count in localization (shifted oracle window) but cannot be detected window-wise."""
+    pos = windows.filter(pl.col("label") == 1).select(epoch_minutes("end_utc"))["end_utc"]
+    ends = np.sort(pos.to_numpy())
+    missing = 0
+    for f in failures:
+        onset = f.start_utc.timestamp() / 60.0
+        lo = np.searchsorted(ends, onset, side="left")
+        missing += int(lo >= ends.size or ends[lo] > onset + tolerance_minutes)
+    return missing
 
 
 def _block_labels(frame: pl.DataFrame, block_minutes: int) -> list[str]:
@@ -254,6 +322,18 @@ def detection_metrics(
         "positive_rate": round(float(y.mean()), 4),
         "n_windows": int(y.size),
     }
+    # ADR 0019: pooled AUC-PR mixes folds whose positive rates differ several-fold; the mean of
+    # the per-fold AUC-PR (folds with a positive window) is reported next to it, same blocks.
+    fold = lab["fold"].to_numpy()
+
+    def fold_mean_auc_pr(i: IntArray) -> float:
+        yi, si, fi = y[i], s[i], fold[i]
+        vals = [auc_pr(yi[fi == f], si[fi == f]) for f in np.unique(fi) if yi[fi == f].any()]
+        if not vals:
+            raise ValueError("no fold with a positive window")
+        return float(np.mean(vals))
+
+    result["auc_pr_fold_mean"] = boot(fold_mean_auc_pr, 9)
     neg = lab.filter(pl.col("label") == 0)
     neg_alarm = neg["alarm"].to_numpy().astype(np.bool_)
     neg_clusters = clusters_from_labels(_block_labels(neg, b.bootstrap_block_minutes))
@@ -388,17 +468,28 @@ def write_markdown(path: Path, metrics: dict[str, Any], name: str) -> None:
         f"({metrics['bootstrap']} reamostragens): janelas em blocos de "
         f"{metrics['bootstrap_block_minutes']} min; falhas e consultas individualmente. "
         f"{metrics['n_failures_tested']} falhas e {con['n_queries']} consultas de teste em "
-        f"{metrics['folds']} dobras. Sem point-adjust.",
+        f"{metrics['folds']} dobras. Sem point-adjust. Os z-scores pontuam "
+        + (
+            "a janela inteira"
+            if metrics["score_minutes"] is None
+            else f"os últimos {metrics['score_minutes']} minutos da janela"
+        )
+        + ' (ADR 0019). "AUC-PR por dobra" = média das AUC-PR de cada dobra com falha; '
+        "`prior_horario` = referência sem telemetria (só o horário da janela). "
+        f"Falhas de teste sem janela positiva: {metrics['failures_without_positive_window']}; "
+        "janelas-oráculo deslocadas para não cruzar o dia: "
+        f"{metrics['oracle_windows_shifted']}.",
         "",
         "## Detecção (Tarefa A, por janela e por evento)",
         "",
-        "| Método | AUC-PR | AUC-ROC | Precisão | Revocação | F1 | Revocação por evento "
-        "| ao acaso | Atraso mediano (min) | Alarmes falsos/h |",
-        "|---|---|---|---|---|---|---|---|---|---|",
+        "| Método | AUC-PR | AUC-PR por dobra | AUC-ROC | Precisão | Revocação | F1 "
+        "| Revocação por evento | ao acaso | Atraso mediano (min) | Alarmes falsos/h |",
+        "|---|---|---|---|---|---|---|---|---|---|---|",
     ]
     for method, r in det.items():
         lines.append(
-            f"| {method} | {_fmt(r['auc_pr'])} | {_fmt(r['auc_roc'])} | {_fmt(r['precision'])} "
+            f"| {method} | {_fmt(r['auc_pr'])} | {_fmt(r['auc_pr_fold_mean'])} "
+            f"| {_fmt(r['auc_roc'])} | {_fmt(r['precision'])} "
             f"| {_fmt(r['recall'])} | {_fmt(r['f1'])} | {_fmt(r['event_recall'])} "
             f"| {r['event_recall_by_chance']:.2f} "
             f"| {_fmt(r['median_delay_minutes'])} | {_fmt(r['false_alarms_per_hour'])} |"
@@ -497,6 +588,11 @@ def run_baselines(config: Config, tables_dir: Path) -> dict[str, Any]:
             "bootstrap": config.baselines.bootstrap,
             "bootstrap_block_minutes": config.baselines.bootstrap_block_minutes,
             "constant_exempt_categories": list(config.series.selection.constant_exempt_categories),
+            "score_minutes": t.score_minutes,
+            "oracle_windows_shifted": sum(m["oracle_windows_shifted"] for m in meta),
+            "failures_without_positive_window": failures_without_positive_window(
+                windows, tested, t.detection_tolerance_minutes
+            ),
             "detection": evaluate_detection(scores, tested, config),
             "localization": evaluate_localization(
                 ranks.filter(pl.col("method") == "zscore_global"), config

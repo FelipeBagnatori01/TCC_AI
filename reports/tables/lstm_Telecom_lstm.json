@@ -4,137 +4,67 @@
       "seeds": [
         {
           "auc_pr": {
-            "value": 0.3953,
-            "ci_low": 0.2669,
-            "ci_high": 0.5432,
+            "value": 0.5066,
+            "ci_low": 0.3657,
+            "ci_high": 0.6429,
             "n_valid_resamples": 2000
           },
           "auc_roc": {
-            "value": 0.7247,
-            "ci_low": 0.6299,
-            "ci_high": 0.8107,
+            "value": 0.807,
+            "ci_low": 0.7383,
+            "ci_high": 0.8647,
             "n_valid_resamples": 2000
           },
           "precision": {
-            "value": 0.1751,
-            "ci_low": 0.1007,
-            "ci_high": 0.2809,
+            "value": 0.3128,
+            "ci_low": 0.2004,
+            "ci_high": 0.4625,
             "n_valid_resamples": 2000
           },
           "recall": {
-            "value": 0.3968,
-            "ci_low": 0.2567,
-            "ci_high": 0.5374,
+            "value": 0.504,
+            "ci_low": 0.3605,
+            "ci_high": 0.64,
             "n_valid_resamples": 2000
           },
           "f1": {
-            "value": 0.243,
-            "ci_low": 0.148,
-            "ci_high": 0.3537,
+            "value": 0.386,
+            "ci_low": 0.268,
+            "ci_high": 0.5121,
             "n_valid_resamples": 2000
           },
           "positive_rate": 0.1409,
           "n_windows": 1788,
+          "auc_pr_fold_mean": {
+            "value": 0.5491,
+            "ci_low": 0.463,
+            "ci_high": 0.7168,
+            "n_valid_resamples": 2000
+          },
           "false_alarms_per_hour": {
-            "value": 18.3984,
-            "ci_low": 12.3305,
-            "ci_high": 24.6041,
+            "value": 10.8984,
+            "ci_low": 6.9447,
+            "ci_high": 15.2138,
             "n_valid_resamples": 2000
           },
           "event_recall": {
-            "value": 0.5333,
-            "ci_low": 0.4,
-            "ci_high": 0.6889,
+            "value": 0.6444,
+            "ci_low": 0.5111,
+            "ci_high": 0.7778,
             "n_valid_resamples": 2000
           },
           "median_delay_minutes": {
-            "value": 0.5,
-            "ci_low": -2.0,
+            "value": 1.0,
+            "ci_low": 0.0,
             "ci_high": 1.0,
             "n_valid_resamples": 2000
           },
-          "failures_detected": 24,
-          "event_recall_by_chance": 1.0,
+          "failures_detected": 29,
+          "event_recall_by_chance": 0.9993,
           "event_recall_by_reason": {
             "CPU fault": {
               "n": 15,
-              "detected": 9
-            },
-            "db close": {
-              "n": 4,
-              "detected": 2
-            },
-            "db connection limit": {
-              "n": 6,
-              "detected": 2
-            },
-            "network delay": {
-              "n": 13,
-              "detected": 7
-            },
-            "network loss": {
-              "n": 7,
-              "detected": 4
-            }
-          }
-        },
-        {
-          "auc_pr": {
-            "value": 0.3854,
-            "ci_low": 0.2554,
-            "ci_high": 0.5413,
-            "n_valid_resamples": 2000
-          },
-          "auc_roc": {
-            "value": 0.7313,
-            "ci_low": 0.6387,
-            "ci_high": 0.8173,
-            "n_valid_resamples": 2000
-          },
-          "precision": {
-            "value": 0.1837,
-            "ci_low": 0.1107,
-            "ci_high": 0.2917,
-            "n_valid_resamples": 2000
-          },
-          "recall": {
-            "value": 0.4484,
-            "ci_low": 0.308,
-            "ci_high": 0.5947,
-            "n_valid_resamples": 2000
-          },
-          "f1": {
-            "value": 0.2607,
-            "ci_low": 0.1694,
-            "ci_high": 0.3717,
-            "n_valid_resamples": 2000
-          },
-          "positive_rate": 0.1409,
-          "n_windows": 1788,
-          "false_alarms_per_hour": {
-            "value": 19.6094,
-            "ci_low": 13.6579,
-            "ci_high": 25.9309,
-            "n_valid_resamples": 2000
-          },
-          "event_recall": {
-            "value": 0.6,
-            "ci_low": 0.4444,
-            "ci_high": 0.7333,
-            "n_valid_resamples": 2000
-          },
-          "median_delay_minutes": {
-            "value": 0.0,
-            "ci_low": -2.0,
-            "ci_high": 1.0,
-            "n_valid_resamples": 2000
-          },
-          "failures_detected": 27,
-          "event_recall_by_chance": 1.0,
-          "event_recall_by_reason": {
-            "CPU fault": {
-              "n": 15,
-              "detected": 10
+              "detected": 8
             },
             "db close": {
               "n": 4,
@@ -142,11 +72,11 @@
             },
             "db connection limit": {
               "n": 6,
-              "detected": 2
+              "detected": 4
             },
             "network delay": {
               "n": 13,
-              "detected": 8
+              "detected": 10
             },
             "network loss": {
               "n": 7,
@@ -156,73 +86,79 @@
         },
         {
           "auc_pr": {
-            "value": 0.4243,
-            "ci_low": 0.282,
-            "ci_high": 0.6068,
+            "value": 0.5138,
+            "ci_low": 0.3706,
+            "ci_high": 0.655,
             "n_valid_resamples": 2000
           },
           "auc_roc": {
-            "value": 0.7534,
-            "ci_low": 0.6593,
-            "ci_high": 0.8348,
+            "value": 0.8099,
+            "ci_low": 0.7438,
+            "ci_high": 0.8673,
             "n_valid_resamples": 2000
           },
           "precision": {
-            "value": 0.2406,
-            "ci_low": 0.1371,
-            "ci_high": 0.3833,
+            "value": 0.3086,
+            "ci_low": 0.1982,
+            "ci_high": 0.4453,
             "n_valid_resamples": 2000
           },
           "recall": {
-            "value": 0.381,
-            "ci_low": 0.2393,
-            "ci_high": 0.5257,
+            "value": 0.5278,
+            "ci_low": 0.3788,
+            "ci_high": 0.6633,
             "n_valid_resamples": 2000
           },
           "f1": {
-            "value": 0.2949,
-            "ci_low": 0.1874,
-            "ci_high": 0.4201,
+            "value": 0.3895,
+            "ci_low": 0.2749,
+            "ci_high": 0.5109,
             "n_valid_resamples": 2000
           },
           "positive_rate": 0.1409,
           "n_windows": 1788,
+          "auc_pr_fold_mean": {
+            "value": 0.569,
+            "ci_low": 0.4716,
+            "ci_high": 0.7348,
+            "n_valid_resamples": 2000
+          },
           "false_alarms_per_hour": {
-            "value": 11.8359,
-            "ci_low": 7.5772,
-            "ci_high": 16.4667,
+            "value": 11.6406,
+            "ci_low": 7.8494,
+            "ci_high": 15.9328,
             "n_valid_resamples": 2000
           },
           "event_recall": {
-            "value": 0.5556,
-            "ci_low": 0.4222,
-            "ci_high": 0.6889,
+            "value": 0.7111,
+            "ci_low": 0.5778,
+            "ci_high": 0.8228,
             "n_valid_resamples": 2000
           },
           "median_delay_minutes": {
-            "value": 0.0,
-            "ci_low": -1.0,
+            "value": 1.0,
+            "ci_low": 0.0,
             "ci_high": 1.0,
             "n_valid_resamples": 2000
           },
-          "failures_detected": 25,
+          "failures_detected": 32,
           "event_recall_by_chance": 0.9996,
           "event_recall_by_reason": {
             "CPU fault": {
               "n": 15,
-              "detected": 9
+              "detected": 8
             },
             "db close": {
               "n": 4,
-              "detected": 2
+              "detected": 3
             },
             "db connection limit": {
               "n": 6,
-              "detected": 3
+              "detected": 5
             },
             "network delay": {
               "n": 13,
-              "detected": 7
+              "detected": 12
             },
             "network loss": {
               "n": 7,
@@ -232,41 +168,129 @@
         },
         {
           "auc_pr": {
-            "value": 0.4118,
-            "ci_low": 0.2713,
-            "ci_high": 0.5793,
+            "value": 0.5408,
+            "ci_low": 0.396,
+            "ci_high": 0.6816,
             "n_valid_resamples": 2000
           },
           "auc_roc": {
-            "value": 0.7477,
-            "ci_low": 0.6575,
-            "ci_high": 0.8308,
+            "value": 0.8188,
+            "ci_low": 0.7553,
+            "ci_high": 0.8743,
             "n_valid_resamples": 2000
           },
           "precision": {
-            "value": 0.181,
-            "ci_low": 0.1075,
-            "ci_high": 0.2818,
+            "value": 0.3235,
+            "ci_low": 0.2016,
+            "ci_high": 0.4817,
             "n_valid_resamples": 2000
           },
           "recall": {
-            "value": 0.4762,
+            "value": 0.4802,
             "ci_low": 0.3333,
-            "ci_high": 0.6126,
+            "ci_high": 0.6111,
             "n_valid_resamples": 2000
           },
           "f1": {
-            "value": 0.2623,
-            "ci_low": 0.1689,
-            "ci_high": 0.3676,
+            "value": 0.3866,
+            "ci_low": 0.2697,
+            "ci_high": 0.5128,
             "n_valid_resamples": 2000
           },
           "positive_rate": 0.1409,
           "n_windows": 1788,
+          "auc_pr_fold_mean": {
+            "value": 0.566,
+            "ci_low": 0.4817,
+            "ci_high": 0.7307,
+            "n_valid_resamples": 2000
+          },
           "false_alarms_per_hour": {
-            "value": 21.2109,
-            "ci_low": 15.0907,
-            "ci_high": 27.4139,
+            "value": 9.8828,
+            "ci_low": 5.9406,
+            "ci_high": 14.1973,
+            "n_valid_resamples": 2000
+          },
+          "event_recall": {
+            "value": 0.6667,
+            "ci_low": 0.5333,
+            "ci_high": 0.8,
+            "n_valid_resamples": 2000
+          },
+          "median_delay_minutes": {
+            "value": 1.0,
+            "ci_low": 0.0,
+            "ci_high": 1.0,
+            "n_valid_resamples": 2000
+          },
+          "failures_detected": 30,
+          "event_recall_by_chance": 0.9985,
+          "event_recall_by_reason": {
+            "CPU fault": {
+              "n": 15,
+              "detected": 7
+            },
+            "db close": {
+              "n": 4,
+              "detected": 2
+            },
+            "db connection limit": {
+              "n": 6,
+              "detected": 5
+            },
+            "network delay": {
+              "n": 13,
+              "detected": 12
+            },
+            "network loss": {
+              "n": 7,
+              "detected": 4
+            }
+          }
+        },
+        {
+          "auc_pr": {
+            "value": 0.5195,
+            "ci_low": 0.3754,
+            "ci_high": 0.6662,
+            "n_valid_resamples": 2000
+          },
+          "auc_roc": {
+            "value": 0.8211,
+            "ci_low": 0.7601,
+            "ci_high": 0.8754,
+            "n_valid_resamples": 2000
+          },
+          "precision": {
+            "value": 0.2841,
+            "ci_low": 0.1745,
+            "ci_high": 0.4277,
+            "n_valid_resamples": 2000
+          },
+          "recall": {
+            "value": 0.504,
+            "ci_low": 0.3619,
+            "ci_high": 0.6364,
+            "n_valid_resamples": 2000
+          },
+          "f1": {
+            "value": 0.3634,
+            "ci_low": 0.2496,
+            "ci_high": 0.483,
+            "n_valid_resamples": 2000
+          },
+          "positive_rate": 0.1409,
+          "n_windows": 1788,
+          "auc_pr_fold_mean": {
+            "value": 0.5596,
+            "ci_low": 0.4819,
+            "ci_high": 0.7189,
+            "n_valid_resamples": 2000
+          },
+          "false_alarms_per_hour": {
+            "value": 12.5,
+            "ci_low": 8.097,
+            "ci_high": 17.2239,
             "n_valid_resamples": 2000
           },
           "event_recall": {
@@ -276,17 +300,17 @@
             "n_valid_resamples": 2000
           },
           "median_delay_minutes": {
-            "value": 0.0,
-            "ci_low": -4.0,
+            "value": 1.0,
+            "ci_low": 0.0,
             "ci_high": 1.0,
             "n_valid_resamples": 2000
           },
           "failures_detected": 28,
-          "event_recall_by_chance": 1.0,
+          "event_recall_by_chance": 0.9998,
           "event_recall_by_reason": {
             "CPU fault": {
               "n": 15,
-              "detected": 9
+              "detected": 6
             },
             "db close": {
               "n": 4,
@@ -298,7 +322,7 @@
             },
             "network delay": {
               "n": 13,
-              "detected": 9
+              "detected": 12
             },
             "network loss": {
               "n": 7,
@@ -308,61 +332,67 @@
         },
         {
           "auc_pr": {
-            "value": 0.3661,
-            "ci_low": 0.2401,
-            "ci_high": 0.5484,
+            "value": 0.5009,
+            "ci_low": 0.3533,
+            "ci_high": 0.6532,
             "n_valid_resamples": 2000
           },
           "auc_roc": {
-            "value": 0.7403,
-            "ci_low": 0.6458,
-            "ci_high": 0.8253,
+            "value": 0.8089,
+            "ci_low": 0.7409,
+            "ci_high": 0.8688,
             "n_valid_resamples": 2000
           },
           "precision": {
-            "value": 0.1795,
-            "ci_low": 0.1045,
-            "ci_high": 0.2886,
+            "value": 0.3113,
+            "ci_low": 0.1952,
+            "ci_high": 0.4586,
             "n_valid_resamples": 2000
           },
           "recall": {
-            "value": 0.4246,
-            "ci_low": 0.2851,
-            "ci_high": 0.5641,
+            "value": 0.5238,
+            "ci_low": 0.3874,
+            "ci_high": 0.6535,
             "n_valid_resamples": 2000
           },
           "f1": {
-            "value": 0.2524,
-            "ci_low": 0.157,
-            "ci_high": 0.363,
+            "value": 0.3905,
+            "ci_low": 0.273,
+            "ci_high": 0.512,
             "n_valid_resamples": 2000
           },
           "positive_rate": 0.1409,
           "n_windows": 1788,
+          "auc_pr_fold_mean": {
+            "value": 0.5502,
+            "ci_low": 0.4718,
+            "ci_high": 0.7144,
+            "n_valid_resamples": 2000
+          },
           "false_alarms_per_hour": {
-            "value": 19.1016,
-            "ci_low": 12.9973,
-            "ci_high": 25.4135,
+            "value": 11.4062,
+            "ci_low": 7.1887,
+            "ci_high": 15.7656,
             "n_valid_resamples": 2000
           },
           "event_recall": {
-            "value": 0.5556,
-            "ci_low": 0.4222,
-            "ci_high": 0.6889,
+            "value": 0.6667,
+            "ci_low": 0.5333,
+            "ci_high": 0.8,
             "n_valid_resamples": 2000
           },
           "median_delay_minutes": {
-            "value": 0.0,
-            "ci_low": -5.0,
+            "value": 1.0,
+            "ci_low": 0.0,
             "ci_high": 1.0,
             "n_valid_resamples": 2000
           },
-          "failures_detected": 25,
-          "event_recall_by_chance": 1.0,
+          "failures_detected": 30,
+          "event_recall_by_chance": 0.9995,
           "event_recall_by_reason": {
             "CPU fault": {
               "n": 15,
-              "detected": 9
+              "detected": 8
             },
             "db close": {
               "n": 4,
@@ -370,11 +400,11 @@
             },
             "db connection limit": {
               "n": 6,
-              "detected": 3
+              "detected": 4
             },
             "network delay": {
               "n": 13,
-              "detected": 7
+              "detected": 12
             },
             "network loss": {
               "n": 7,
@@ -385,46 +415,52 @@
       ],
       "summary": {
         "auc_pr": {
-          "mean": 0.3966,
-          "sd": 0.0227,
-          "min": 0.3661,
-          "max": 0.4243
+          "mean": 0.5163,
+          "sd": 0.0154,
+          "min": 0.5009,
+          "max": 0.5408
+        },
+        "auc_pr_fold_mean": {
+          "mean": 0.5588,
+          "sd": 0.009,
+          "min": 0.5491,
+          "max": 0.569
         },
         "auc_roc": {
-          "mean": 0.7395,
-          "sd": 0.0117,
-          "min": 0.7247,
-          "max": 0.7534
+          "mean": 0.8131,
+          "sd": 0.0064,
+          "min": 0.807,
+          "max": 0.8211
         },
         "precision": {
-          "mean": 0.192,
-          "sd": 0.0274,
-          "min": 0.1751,
-          "max": 0.2406
+          "mean": 0.3081,
+          "sd": 0.0145,
+          "min": 0.2841,
+          "max": 0.3235
         },
         "recall": {
-          "mean": 0.4254,
-          "sd": 0.0384,
-          "min": 0.381,
-          "max": 0.4762
+          "mean": 0.508,
+          "sd": 0.019,
+          "min": 0.4802,
+          "max": 0.5278
         },
         "f1": {
-          "mean": 0.2627,
-          "sd": 0.0196,
-          "min": 0.243,
-          "max": 0.2949
+          "mean": 0.3832,
+          "sd": 0.0112,
+          "min": 0.3634,
+          "max": 0.3905
         },
         "false_alarms_per_hour": {
-          "mean": 18.0312,
-          "sd": 3.6147,
-          "min": 11.8359,
-          "max": 21.2109
+          "mean": 11.2656,
+          "sd": 0.9658,
+          "min": 9.8828,
+          "max": 12.5
         },
         "event_recall": {
-          "mean": 0.5733,
-          "sd": 0.0365,
-          "min": 0.5333,
-          "max": 0.6222
+          "mean": 0.6622,
+          "sd": 0.033,
+          "min": 0.6222,
+          "max": 0.7111
         }
       }
     },
@@ -463,6 +499,12 @@
           },
           "positive_rate": 0.1409,
           "n_windows": 1788,
+          "auc_pr_fold_mean": {
+            "value": 0.5938,
+            "ci_low": 0.5189,
+            "ci_high": 0.7558,
+            "n_valid_resamples": 2000
+          },
           "false_alarms_per_hour": {
             "value": 9.4531,
             "ci_low": 6.1598,
@@ -539,6 +581,12 @@
           },
           "positive_rate": 0.1409,
           "n_windows": 1788,
+          "auc_pr_fold_mean": {
+            "value": 0.5975,
+            "ci_low": 0.5102,
+            "ci_high": 0.7447,
+            "n_valid_resamples": 2000
+          },
           "false_alarms_per_hour": {
             "value": 9.4922,
             "ci_low": 6.1424,
@@ -615,6 +663,12 @@
           },
           "positive_rate": 0.1409,
           "n_windows": 1788,
+          "auc_pr_fold_mean": {
+            "value": 0.6224,
+            "ci_low": 0.5417,
+            "ci_high": 0.7567,
+            "n_valid_resamples": 2000
+          },
           "false_alarms_per_hour": {
             "value": 6.9531,
             "ci_low": 4.409,
@@ -691,6 +745,12 @@
           },
           "positive_rate": 0.1409,
           "n_windows": 1788,
+          "auc_pr_fold_mean": {
+            "value": 0.6014,
+            "ci_low": 0.5123,
+            "ci_high": 0.7498,
+            "n_valid_resamples": 2000
+          },
           "false_alarms_per_hour": {
             "value": 10.1562,
             "ci_low": 7.0067,
@@ -767,6 +827,12 @@
           },
           "positive_rate": 0.1409,
           "n_windows": 1788,
+          "auc_pr_fold_mean": {
+            "value": 0.5967,
+            "ci_low": 0.5221,
+            "ci_high": 0.7492,
+            "n_valid_resamples": 2000
+          },
           "false_alarms_per_hour": {
             "value": 9.9219,
             "ci_low": 5.9395,
@@ -818,6 +884,12 @@
           "min": 0.4545,
           "max": 0.5156
         },
+        "auc_pr_fold_mean": {
+          "mean": 0.6024,
+          "sd": 0.0115,
+          "min": 0.5938,
+          "max": 0.6224
+        },
         "auc_roc": {
           "mean": 0.8288,
           "sd": 0.0113,
@@ -863,9 +935,9 @@
         {
           "n_failures": 45,
           "hr@1": {
-            "value": 0.4444,
-            "ci_low": 0.3111,
-            "ci_high": 0.6,
+            "value": 0.4222,
+            "ci_low": 0.2889,
+            "ci_high": 0.5778,
             "n_valid_resamples": 2000
           },
           "hr@3": {
@@ -881,9 +953,9 @@
             "n_valid_resamples": 2000
           },
           "mrr": {
-            "value": 0.5754,
-            "ci_low": 0.455,
-            "ci_high": 0.6867,
+            "value": 0.5643,
+            "ci_low": 0.4475,
+            "ci_high": 0.6756,
             "n_valid_resamples": 2000
           },
           "hr@1_by_reason": {
@@ -893,7 +965,7 @@
             },
             "db close": {
               "n": 4,
-              "hr@1": 1.0
+              "hr@1": 0.75
             },
             "db connection limit": {
               "n": 6,
@@ -912,9 +984,9 @@
         {
           "n_failures": 45,
           "hr@1": {
-            "value": 0.4,
-            "ci_low": 0.2667,
-            "ci_high": 0.5556,
+            "value": 0.3778,
+            "ci_low": 0.2444,
+            "ci_high": 0.5333,
             "n_valid_resamples": 2000
           },
           "hr@3": {
@@ -930,9 +1002,9 @@
             "n_valid_resamples": 2000
           },
           "mrr": {
-            "value": 0.5468,
-            "ci_low": 0.4339,
-            "ci_high": 0.6622,
+            "value": 0.5357,
+            "ci_low": 0.4237,
+            "ci_high": 0.647,
             "n_valid_resamples": 2000
           },
           "hr@1_by_reason": {
@@ -942,7 +1014,7 @@
             },
             "db close": {
               "n": 4,
-              "hr@1": 1.0
+              "hr@1": 0.75
             },
             "db connection limit": {
               "n": 6,
@@ -961,9 +1033,9 @@
         {
           "n_failures": 45,
           "hr@1": {
-            "value": 0.4444,
-            "ci_low": 0.3111,
-            "ci_high": 0.6,
+            "value": 0.4222,
+            "ci_low": 0.2889,
+            "ci_high": 0.5778,
             "n_valid_resamples": 2000
           },
           "hr@3": {
@@ -979,9 +1051,9 @@
             "n_valid_resamples": 2000
           },
           "mrr": {
-            "value": 0.5726,
-            "ci_low": 0.4501,
-            "ci_high": 0.6903,
+            "value": 0.5578,
+            "ci_low": 0.4388,
+            "ci_high": 0.6733,
             "n_valid_resamples": 2000
           },
           "hr@1_by_reason": {
@@ -991,7 +1063,7 @@
             },
             "db close": {
               "n": 4,
-              "hr@1": 1.0
+              "hr@1": 0.75
             },
             "db connection limit": {
               "n": 6,
@@ -1059,9 +1131,9 @@
         {
           "n_failures": 45,
           "hr@1": {
-            "value": 0.4222,
-            "ci_low": 0.2889,
-            "ci_high": 0.5778,
+            "value": 0.4,
+            "ci_low": 0.2667,
+            "ci_high": 0.5556,
             "n_valid_resamples": 2000
           },
           "hr@3": {
@@ -1077,9 +1149,9 @@
             "n_valid_resamples": 2000
           },
           "mrr": {
-            "value": 0.5599,
-            "ci_low": 0.4395,
-            "ci_high": 0.6726,
+            "value": 0.5487,
+            "ci_low": 0.4279,
+            "ci_high": 0.6614,
             "n_valid_resamples": 2000
           },
           "hr@1_by_reason": {
@@ -1089,7 +1161,7 @@
             },
             "db close": {
               "n": 4,
-              "hr@1": 1.0
+              "hr@1": 0.75
             },
             "db connection limit": {
               "n": 6,
@@ -1108,9 +1180,9 @@
       ],
       "summary": {
         "hr@1": {
-          "mean": 0.44,
-          "sd": 0.033,
-          "min": 0.4,
+          "mean": 0.4222,
+          "sd": 0.0416,
+          "min": 0.3778,
           "max": 0.4889
         },
         "hr@3": {
@@ -1126,9 +1198,9 @@
           "max": 0.7333
         },
         "mrr": {
-          "mean": 0.5699,
-          "sd": 0.0179,
-          "min": 0.5468,
+          "mean": 0.5602,
+          "sd": 0.0221,
+          "min": 0.5357,
           "max": 0.5947
         }
       }
@@ -1138,9 +1210,9 @@
         {
           "n_failures": 45,
           "hr@1": {
-            "value": 0.4,
-            "ci_low": 0.2667,
-            "ci_high": 0.5556,
+            "value": 0.3778,
+            "ci_low": 0.2444,
+            "ci_high": 0.5111,
             "n_valid_resamples": 2000
           },
           "hr@3": {
@@ -1156,9 +1228,9 @@
             "n_valid_resamples": 2000
           },
           "mrr": {
-            "value": 0.573,
-            "ci_low": 0.4614,
-            "ci_high": 0.678,
+            "value": 0.5617,
+            "ci_low": 0.4514,
+            "ci_high": 0.6658,
             "n_valid_resamples": 2000
           },
           "hr@1_by_reason": {
@@ -1168,7 +1240,7 @@
             },
             "db close": {
               "n": 4,
-              "hr@1": 0.75
+              "hr@1": 0.5
             },
             "db connection limit": {
               "n": 6,
@@ -1187,9 +1259,9 @@
         {
           "n_failures": 45,
           "hr@1": {
-            "value": 0.3556,
-            "ci_low": 0.2222,
-            "ci_high": 0.5111,
+            "value": 0.3333,
+            "ci_low": 0.2,
+            "ci_high": 0.4667,
             "n_valid_resamples": 2000
           },
           "hr@3": {
@@ -1205,9 +1277,9 @@
             "n_valid_resamples": 2000
           },
           "mrr": {
-            "value": 0.5534,
-            "ci_low": 0.4472,
-            "ci_high": 0.6589,
+            "value": 0.5422,
+            "ci_low": 0.4375,
+            "ci_high": 0.645,
             "n_valid_resamples": 2000
           },
           "hr@1_by_reason": {
@@ -1217,7 +1289,7 @@
             },
             "db close": {
               "n": 4,
-              "hr@1": 1.0
+              "hr@1": 0.75
             },
             "db connection limit": {
               "n": 6,
@@ -1236,15 +1308,15 @@
         {
           "n_failures": 45,
           "hr@1": {
-            "value": 0.3556,
-            "ci_low": 0.2222,
-            "ci_high": 0.4889,
+            "value": 0.3333,
+            "ci_low": 0.2,
+            "ci_high": 0.4667,
             "n_valid_resamples": 2000
           },
           "hr@3": {
-            "value": 0.7111,
-            "ci_low": 0.5778,
-            "ci_high": 0.8444,
+            "value": 0.6889,
+            "ci_low": 0.5556,
+            "ci_high": 0.8222,
             "n_valid_resamples": 2000
           },
           "hr@5": {
@@ -1254,9 +1326,9 @@
             "n_valid_resamples": 2000
           },
           "mrr": {
-            "value": 0.551,
-            "ci_low": 0.4425,
-            "ci_high": 0.6576,
+            "value": 0.5341,
+            "ci_low": 0.428,
+            "ci_high": 0.6381,
             "n_valid_resamples": 2000
           },
           "hr@1_by_reason": {
@@ -1266,7 +1338,7 @@
             },
             "db close": {
               "n": 4,
-              "hr@1": 0.5
+              "hr@1": 0.25
             },
             "db connection limit": {
               "n": 6,
@@ -1285,9 +1357,9 @@
         {
           "n_failures": 45,
           "hr@1": {
-            "value": 0.3778,
-            "ci_low": 0.2444,
-            "ci_high": 0.5333,
+            "value": 0.3556,
+            "ci_low": 0.2222,
+            "ci_high": 0.4894,
             "n_valid_resamples": 2000
           },
           "hr@3": {
@@ -1303,9 +1375,9 @@
             "n_valid_resamples": 2000
           },
           "mrr": {
-            "value": 0.5633,
-            "ci_low": 0.4532,
-            "ci_high": 0.6715,
+            "value": 0.5521,
+            "ci_low": 0.4451,
+            "ci_high": 0.6578,
             "n_valid_resamples": 2000
           },
           "hr@1_by_reason": {
@@ -1315,7 +1387,7 @@
             },
             "db close": {
               "n": 4,
-              "hr@1": 0.5
+              "hr@1": 0.25
             },
             "db connection limit": {
               "n": 6,
@@ -1334,14 +1406,14 @@
         {
           "n_failures": 45,
           "hr@1": {
-            "value": 0.3333,
-            "ci_low": 0.2,
-            "ci_high": 0.4667,
+            "value": 0.3111,
+            "ci_low": 0.1778,
+            "ci_high": 0.4444,
             "n_valid_resamples": 2000
           },
           "hr@3": {
-            "value": 0.7333,
-            "ci_low": 0.6,
+            "value": 0.7111,
+            "ci_low": 0.5778,
             "ci_high": 0.8444,
             "n_valid_resamples": 2000
           },
@@ -1352,9 +1424,9 @@
             "n_valid_resamples": 2000
           },
           "mrr": {
-            "value": 0.5423,
-            "ci_low": 0.438,
-            "ci_high": 0.6417,
+            "value": 0.5254,
+            "ci_low": 0.4224,
+            "ci_high": 0.6267,
             "n_valid_resamples": 2000
           },
           "hr@1_by_reason": {
@@ -1364,7 +1436,7 @@
             },
             "db close": {
               "n": 4,
-              "hr@1": 0.5
+              "hr@1": 0.25
             },
             "db connection limit": {
               "n": 6,
@@ -1383,13 +1455,13 @@
       ],
       "summary": {
         "hr@1": {
-          "mean": 0.3645,
-          "sd": 0.0253,
-          "min": 0.3333,
-          "max": 0.4
+          "mean": 0.3422,
+          "sd": 0.0254,
+          "min": 0.3111,
+          "max": 0.3778
         },
         "hr@3": {
-          "mean": 0.7155,
+          "mean": 0.7067,
           "sd": 0.0186,
           "min": 0.6889,
           "max": 0.7333
@@ -1401,10 +1473,10 @@
           "max": 0.8
         },
         "mrr": {
-          "mean": 0.5566,
-          "sd": 0.0118,
-          "min": 0.5423,
-          "max": 0.573
+          "mean": 0.5431,
+          "sd": 0.0143,
+          "min": 0.5254,
+          "max": 0.5617
         }
       }
     }
@@ -1418,6 +1490,7 @@
     3,
     4
   ],
+  "score_minutes": 6,
   "selection": {
     "forecaster": {
       "hidden": 128,
@@ -1433,19 +1506,19 @@
   "cost": {
     "lstm_forecast": {
       "params": 989600,
-      "train_seconds_mean": 2.38,
-      "train_seconds_total": 119.0,
+      "train_seconds_mean": 2.37,
+      "train_seconds_total": 118.3,
       "epochs_mean": 16.0,
-      "inference_ms_per_window": 0.2693
+      "inference_ms_per_window": 0.2677
     },
     "lstm_classifier": {
       "params": 803969,
       "train_seconds_mean": 1.21,
-      "train_seconds_total": 60.6,
+      "train_seconds_total": 60.7,
       "epochs_mean": 8.3
     }
   },
-  "run_dir": "20261111T230624-lstm",
+  "run_dir": "20261117T022802-lstm",
   "search": {
     "forecaster": {
       "hidden": 128,
@@ -1458,14 +1531,14 @@
       "layers": 1
     },
     "forecaster_val_auc_pr": {
-      "global/h64/l1": 0.4224,
-      "global/h64/l2": 0.3912,
-      "global/h128/l1": 0.3966,
-      "global/h128/l2": 0.3392,
-      "local/h64/l1": 0.3606,
-      "local/h64/l2": 0.391,
-      "local/h128/l1": 0.4465,
-      "local/h128/l2": 0.3755
+      "global/h64/l1": 0.4957,
+      "global/h64/l2": 0.4264,
+      "global/h128/l1": 0.438,
+      "global/h128/l2": 0.4363,
+      "local/h64/l1": 0.4623,
+      "local/h64/l2": 0.4777,
+      "local/h128/l1": 0.5497,
+      "local/h128/l2": 0.4661
     },
     "classifier_val_auc_pr": {
       "global/h64/l1": 0.6328,
@@ -1474,6 +1547,6 @@
       "local/h128/l1": 0.7049
     },
     "trainings": 108,
-    "search_seconds": 343.3
+    "search_seconds": 335.0
   }
 }

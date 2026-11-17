@@ -24,7 +24,7 @@ import torch
 
 from tcc_rca.config import Config
 from tcc_rca.dataset.split import Fold, day_of
-from tcc_rca.evaluation.baselines import evaluate_localization, row_of
+from tcc_rca.evaluation.baselines import evaluate_localization
 from tcc_rca.evaluation.bootstrap import Estimate, cluster_bootstrap
 from tcc_rca.evaluation.compare import as_row, paired_rank_difference, verdict
 from tcc_rca.evaluation.lstm import Experiment, FoldData, _masks
@@ -73,6 +73,7 @@ class FoldModels:
         table: dict[str, Any],
         device: str,
         top_k: int,
+        score_minutes: int | None,  # required: must equal the E5 run's tasks.score_minutes
     ) -> None:
         target = models_dir / f"fold{fold}" / f"seed{seed}"
         meta = json.loads((target / "features.json").read_text(encoding="utf-8"))
@@ -84,9 +85,11 @@ class FoldModels:
         classifier = ClassifierLSTM(n, cc["hidden"], cc["layers"], dropout)
         classifier.load_state_dict(torch.load(target / "classifier.pt", weights_only=True))
         scale = np.load(target / "forecast_error_scale.npy")
-        self.scorer = ForecastScorer(forecaster.eval(), scale, top_k)
+        self.scorer = ForecastScorer(forecaster.eval(), scale, top_k, score_minutes)
         self.modules: dict[str, torch.nn.Module] = {
-            "lstm_forecast": ForecastScoreModule(forecaster, scale, top_k).to(device),
+            "lstm_forecast": ForecastScoreModule(
+                forecaster, scale, top_k, score_minutes=score_minutes
+            ).to(device),
             "lstm_classifier": ClassifierProbModule(classifier).to(device),
         }
 
@@ -211,6 +214,7 @@ class _FoldContext:
             lstm_table,
             c.device,
             config.lstm.score_top_k,
+            config.tasks.score_minutes,
         )
         if main.features != fd.kept:
             raise ValueError(f"fold {fold.index}: features differ from the E5 models'")
@@ -324,6 +328,13 @@ def _e5_artifacts(
     lstm_table = json.loads(
         (tables_dir / f"lstm_{system}_{c.lstm_name}.json").read_text(encoding="utf-8")
     )
+    # runs before ADR 0019 have no key: they scored the whole window
+    trained_span = lstm_table.get("score_minutes")
+    if trained_span != config.tasks.score_minutes:
+        raise ValueError(
+            f"E5 run {lstm_table['run_dir']} scored the last {trained_span} minutes, this config "
+            f"{config.tasks.score_minutes}: explain the run with the same tasks.score_minutes"
+        )
     models_dir = Path("experiments") / lstm_table["run_dir"] / "artifacts" / "models"
     runs = json.loads(
         (Path("experiments") / lstm_table["run_dir"] / "artifacts" / "runs.json").read_text(
@@ -430,16 +441,7 @@ def run_xai(config: Config, tables_dir: Path) -> dict[str, Any]:
             prior_cat = prior_category(train_reasons, reason_map)
 
             tested = exp.tested(fold)
-            ends = np.array(
-                [
-                    row_of(
-                        exp.minute_to_row,
-                        f.start_utc.timestamp() / 60.0 + exp.t.detection_tolerance_minutes,
-                    )
-                    for f in tested
-                ],
-                dtype=np.int64,
-            )
+            ends = np.array([exp.oracle_row(f) for f in tested], dtype=np.int64)
             oracle = window_tensor(inputs.matrix, ends, exp.t.window_minutes)
             for i, f in enumerate(tested):
                 win = oracle[i]
@@ -551,7 +553,13 @@ def run_xai(config: Config, tables_dir: Path) -> dict[str, Any]:
                     quality.append(row)
             for s in c.stability_seeds:
                 other = FoldModels(
-                    models_dir, fold.index, s, lstm_table, c.device, config.lstm.score_top_k
+                    models_dir,
+                    fold.index,
+                    s,
+                    lstm_table,
+                    c.device,
+                    config.lstm.score_top_k,
+                    config.tasks.score_minutes,
                 )
                 for i in range(len(tested)):
                     for model_name, module in other.modules.items():

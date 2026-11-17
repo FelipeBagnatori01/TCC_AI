@@ -60,3 +60,9 @@ Seleção de atributos, z clássico (média e desvio) e escala robusta são ajus
 - Um comando por configuração, com execução registrada (`experiments/…-baselines`). Duas execuções com o mesmo código geraram `metrics.json` idênticos byte a byte.
 - Controle de sensibilidade (ADR 0005): `configs/experiment/baselines_sem_isencao.yaml`.
 - `scikit-learn` não traz tipos: o mypy ignora só a importação de `sklearn.*` (`pyproject.toml`); o modo estrito continua no restante.
+
+## Adendo (2026-11-17, ADR 0019)
+
+- Os z-scores (3σ, limiar da validação e local) passam a pontuar só os últimos D + 1 = 6 minutos da janela. O protocolo anterior continua como controle `baselines_janela_inteira`.
+- A janela-oráculo da localização nunca cruza o dia: se cruzaria, usa-se a primeira janela completa do dia (3 falhas no Telecom, 2 no Bank).
+- Novos itens nas tabelas: o detector de referência `prior_horario` (só o horário) e a AUC-PR média por dobra.

@@ -51,6 +51,7 @@ tasks:
   window_minutes: 20               # W (ADR 0007): below the 30 min minimum gap between onsets
   horizon_minutes: 0               # H (ADR 0007): set from the precursor measurement
   detection_tolerance_minutes: 5   # D (ADR 0007)
+  score_minutes: 6                 # ADR 0019: unsupervised scores read the last D + 1 minutes; null = whole window
   normal_margin_before_minutes: 5  # LSTM normal mask excludes windows touching
   normal_margin_after_minutes: 30  # [onset - before, onset + after]; no failure end is labelled
   precursor:
@@ -74,6 +75,7 @@ baselines:                         # E4 (ADR 0010)
   event_max_delay_minutes: 30      # = normal margin after the onset
   bootstrap: 2000
   bootstrap_block_minutes: 30
+  time_prior_halfwidth_minutes: 30   # ADR 0019: time-of-day reference detector (no telemetry)
 
 lstm:                              # E5 (ADR 0015); CPU, deterministic
   seeds: [0, 1, 2, 3, 4]           # final configuration: 5 seeds per fold

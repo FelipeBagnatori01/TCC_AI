@@ -105,3 +105,10 @@ Os pacotes de evidência da E7 continuam vindo da LSTM (ADR 0016/0017). Escolher
 
 - A RQ1 e a RQ2 passam a ter comparação com modelos explicáveis de outras famílias, com as mesmas métricas e testes pareados.
 - **Custo:** as execuções completas são longas (busca de 8 configurações × dobras por modelo, mais 5 seeds e XAI) e são iniciadas pelo autor. O tempo por modelo fica na tabela de custo.
+
+## Adendo (2026-11-17, ADR 0019)
+
+- Os modelos alternativos não mudam de pontuação.
+- As janelas-oráculo não cruzam o dia, e as tabelas trazem a AUC-PR média por dobra.
+- As execuções são refeitas porque as referências pareadas (E4, E5, E6) mudam.
+- **Comparação com a E4 (pedido do autor, 2026-11-17):** a detecção de cada alternativo passa a ser pareada também com os baselines da E4, além das duas LSTMs: `zscore_3sigma` (mesma pontuação do `zscore_val`), `zscore_local`, Isolation Forest, LightGBM e `prior_horario`. A localização passa a ser pareada também com a referência de frequência no treino (`prior`), além dos z-scores. As tabelas listam lado a lado os alternativos, as LSTMs da E5 e da E6 e os baselines da E4, nas mesmas janelas e falhas. Isso responde se a escolha da LSTM se sustenta contra **todos** os candidatos, não só contra os alternativos. A ameaça nº 19 continua valendo: o resultado é relatado como achado e não muda o modelo das evidências do agente.

@@ -9,8 +9,8 @@ Registro incremental das ameaças identificadas ao longo das etapas, para a seç
 - **O que:** a categoria "disponibilidade" (`ICMP_ping`, `Agent_ping`, `On_Off_State`, `Hang`, `redis_ping`) é isenta do descarte por constância. A isenção foi proposta depois de constatar, com todos os dias e os rótulos, que esses KPIs mudam em até 17 das 51 falhas (`db close`, `db connection limit`, `network delay/loss`).
 - **Tipo:** *data snooping* (grau de liberdade do pesquisador). O código não vaza dados: o seletor é ajustado só no treino. O vazamento está na decisão humana.
 - **Efeito esperado:** otimismo nas métricas de detecção e de causa raiz dessas falhas, e menor garantia de generalização para um sistema novo e sem rótulos.
-- **Efeito medido (E5):** confirmado no Telecom, em parte. A isenção responde por cerca de metade do HR@1 da LSTM (0,44 contra 0,22) e pela vantagem da previsora; a classificadora não depende dela. No Bank, efeito nulo.
-- **Mitigação:** regra aplicada à categoria inteira, com justificativa de domínio (indicadores de disponibilidade são constantes por definição em operação normal); análise de sensibilidade obrigatória com `configs/experiment/sensitivity_sem_isencao.yaml`, reportada ao lado de cada métrica principal (na E4, nenhuma conclusão muda; **na E5 do Telecom, muda**: sem a isenção, o HR@1 da localização da LSTM cai de 0,44 para 0,22 e a previsora deixa de superar os baselines; só a classificadora mantém a vantagem; ver `docs/RESULTADOS.md`); cronologia e auditoria dos 78 atributos afetados no ADR 0005.
+- **Efeito medido (E5):** confirmado no Telecom, em parte. A isenção responde por cerca de metade do HR@1 da LSTM e pela vantagem da previsora; a classificadora não depende dela. No Bank, efeito nulo. Com o ADR 0019 (2026-11-17), os números passaram a ser: HR@1 de 0,42 com isenção contra 0,20 sem ela; a previsora vai de superior ao z-score local (4/5 seeds) a empate.
+- **Mitigação:** regra aplicada à categoria inteira, com justificativa de domínio (indicadores de disponibilidade são constantes por definição em operação normal); análise de sensibilidade obrigatória com `configs/experiment/sensitivity_sem_isencao.yaml`, reportada ao lado de cada métrica principal (na E4, nenhuma conclusão muda; **na E5 do Telecom, muda**: sem a isenção, o HR@1 da localização da LSTM cai de 0,42 para 0,20 e a previsora deixa de superar o z-score local; ver `docs/RESULTADOS.md`); cronologia e auditoria dos 78 atributos afetados no ADR 0005.
 
 ### 2. Dias quase duplicados no Telecom (E1, resolvido na E3)
 
@@ -46,7 +46,7 @@ Registro incremental das ameaças identificadas ao longo das etapas, para a seç
 
 - **O que:** AUC-PR e AUC-ROC juntam (*pooled*) pontuações de modelos diferentes, um por dobra, cujas escalas podem diferir. Os hiperparâmetros do LightGBM e do Isolation Forest foram fixados sem busca (ADR 0010).
 - **Efeito esperado:** a junção pode subestimar a separabilidade dentro de cada dobra. Baselines sem busca podem ficar abaixo do seu melhor possível, o que favoreceria a LSTM.
-- **Mitigação:** os limiares são escolhidos por dobra, na validação. A E5 fará a busca da LSTM com orçamento registrado; se a LSTM for comparada a um baseline ajustado, este terá o mesmo orçamento.
+- **Mitigação:** os limiares são escolhidos por dobra, na validação. Desde o ADR 0019, toda tabela de detecção traz também a AUC-PR média por dobra, com IC. A E5 fará a busca da LSTM com orçamento registrado; se a LSTM for comparada a um baseline ajustado, este terá o mesmo orçamento.
 
 ### 8. Método local de precursor acrescentado depois de ver o Bank (E3 do Bank)
 
@@ -75,6 +75,7 @@ Registro incremental das ameaças identificadas ao longo das etapas, para a seç
 - **O que:** o plano fixava a LSTM classificadora como detector e como modelo explicado. Depois de medir, as atribuições citáveis passaram para a previsora, porque as da classificadora mudam quase todas entre seeds (ADR 0016, decisão 6). A classificadora continua escolhendo a janela.
 - **Tipo:** grau de liberdade do pesquisador (decisão pós-teste). A escolha se apoiou em métricas de qualidade da explicação (estabilidade e concordância), não em métricas do agente, que ainda não existe.
 - **Efeito esperado:** no Bank, a localização sugerida pelos pacotes fica um pouco pior (HR@1 0,36 contra 0,44 da classificadora). As citações do agente ficam mais reprodutíveis.
+- **Efeito medido após o ADR 0019:** a desvantagem desapareceu. Com a pontuação nos últimos minutos, a previsora passou a localizar melhor que a classificadora no Bank (HR@1 0,48 contra 0,44 com SHAP) e igual ou melhor no Telecom (0,42 contra 0,27).
 - **Mitigação:** a decisão foi tomada antes de qualquer execução do agente e está registrada. As métricas dos dois modelos ficam reportadas na E6.
 
 ### 12. Explicações da classificadora instáveis entre seeds (E6)
@@ -85,9 +86,9 @@ Registro incremental das ameaças identificadas ao longo das etapas, para a seç
 
 ### 13. Categoria de motivo por soma de atribuições (E6)
 
-- **O que:** a categoria sugerida é a de maior soma de atribuições positivas. Categorias com muitos KPIs, como "disco", acumulam mais peso. A categoria sugerida **não supera** a categoria mais frequente do treino em nenhum caso, e a da previsora fica abaixo dela.
+- **O que:** a categoria sugerida é a de maior soma de atribuições positivas. Categorias com muitos KPIs, como "disco", acumulam mais peso. Até o ADR 0019, a categoria sugerida **não superava** a categoria mais frequente do treino em nenhum caso. Depois dele, a do SHAP da previsora passou a superá-la no Bank (+0,17), mas continua inferior no Telecom (−0,24).
 - **Efeito esperado:** se o agente confiar na categoria sugerida, o diagnóstico de motivo (RQ3) piora.
-- **Mitigação:** a agregação **não** foi trocada depois de ver o resultado (média por categoria, por exemplo), para não ajustar no teste. O pacote mantém os pesos por categoria, mas o agente deve raciocinar sobre os KPIs individuais. O prompt da E7 deve dizer isso.
+- **Mitigação:** a agregação **não** foi trocada depois de ver o resultado (média por categoria, por exemplo), para não ajustar no teste. O pacote mantém os pesos por categoria, mas o agente deve raciocinar sobre os KPIs individuais. O prompt da E7 deve dizer isso. O resultado do Bank pós-ADR 0019 não muda essa decisão: ele não se repete no Telecom, e a categoria foi retirada do que o agente vê antes do teste (ADR 0017).
 
 ### 14. Atribuição não é causalidade (E6)
 
@@ -136,6 +137,25 @@ Registro incremental das ameaças identificadas ao longo das etapas, para a seç
   - os modelos tabulares leem as mesmas janelas normalizadas que a LSTM (ausente = 0), não as estatísticas com escala robusta e ausentes `NaN` do LightGBM da E4, então os números diferem dos da E4.
 - **Efeito esperado:** um modelo pode estar sub ou sobreajustado em relação aos outros.
 - **Mitigação:** a busca completa (AUC-PR de validação de cada configuração) fica no relatório. O LightGBM da E4, sem busca, continua como referência.
+
+### 21. Pontuação de janela mudada depois de ver o teste (ADR 0019)
+
+- **O que:** a previsora LSTM e os z-scores passaram a pontuar só os últimos D + 1 = 6 minutos da janela, em vez da janela inteira. A ideia surgiu numa revisão que leu os resultados de teste da E5 (2026-11-16).
+- **Tipo:** grau de liberdade do pesquisador (decisão pós-teste).
+- **Efeito esperado:** otimismo na detecção dos métodos afetados. O ganho foi grande também na validação (por exemplo, previsora no Telecom de 0,45 para 0,55), então não é ajuste ao teste.
+- **Efeito medido (reexecução de 2026-11-17):** previsora LSTM de 0,40 para 0,52 (Telecom) e de 0,20 para 0,35 (Bank); z-score local de 0,24 para 0,39 e de 0,19 para 0,33. Os controles `*_janela_inteira` reproduzem exatamente as tabelas anteriores. A conclusão da RQ1 ficou **menos** favorável à LSTM: no Bank, nenhuma LSTM supera o z-score local, e a classificadora passa a perder para ele.
+- **Mitigação:**
+  - o valor 6 não foi buscado: vem da definição do rótulo (ADR 0007);
+  - a mudança vale para todos os métodos não supervisionados ao mesmo tempo, baselines e LSTM, o que favorece os rivais da LSTM tanto quanto ela;
+  - o protocolo anterior é reportado como controle (`*_janela_inteira`);
+  - a mudança foi feita antes de qualquer execução de teste do agente;
+  - o ranqueamento nativo e as heurísticas de localização não mudaram.
+
+### 22. Possível atalho pelo horário no Bank (ADR 0019)
+
+- **O que:** as falhas do Bank se concentram entre 14h e 20h (UTC+8). Uma referência só de horário, sem telemetria, separa um pouco as janelas (AUC-PR 0,16 contra 0,105 do acaso, no diagnóstico), e a classificadora LSTM tem AUROC 0,59 nos 5 minutos antes do início, onde a E3 não achou sinal.
+- **Efeito esperado:** parte do desempenho dos detectores supervisionados pode vir do horário (por KPIs com ciclo diário), não da falha.
+- **Mitigação:** o detector de referência `prior_horario` é reportado na E4 ao lado dos demais; um detector que não o supera não demonstra uso da telemetria. A monografia discute o atalho como limitação.
 
 ## Previstas pelo plano (a detalhar na E9)
 

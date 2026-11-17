@@ -7,18 +7,21 @@
   "constant_exempt_categories": [
     "disponibilidade"
   ],
+  "score_minutes": 6,
+  "oracle_windows_shifted": 2,
+  "failures_without_positive_window": 2,
   "detection": {
     "zscore_3sigma": {
       "auc_pr": {
-        "value": 0.0998,
-        "ci_low": 0.0803,
-        "ci_high": 0.1327,
+        "value": 0.0996,
+        "ci_low": 0.0802,
+        "ci_high": 0.1326,
         "n_valid_resamples": 2000
       },
       "auc_roc": {
-        "value": 0.4835,
-        "ci_low": 0.4208,
-        "ci_high": 0.5447,
+        "value": 0.4819,
+        "ci_low": 0.4194,
+        "ci_high": 0.5433,
         "n_valid_resamples": 2000
       },
       "precision": {
@@ -41,6 +44,12 @@
       },
       "positive_rate": 0.1052,
       "n_windows": 6733,
+      "auc_pr_fold_mean": {
+        "value": 0.3058,
+        "ci_low": 0.2558,
+        "ci_high": 0.3716,
+        "n_valid_resamples": 2000
+      },
       "false_alarms_per_hour": {
         "value": 60.0,
         "ci_low": 60.0,
@@ -94,41 +103,47 @@
     },
     "zscore_val": {
       "auc_pr": {
-        "value": 0.0998,
-        "ci_low": 0.0803,
-        "ci_high": 0.1327,
+        "value": 0.0996,
+        "ci_low": 0.0802,
+        "ci_high": 0.1326,
         "n_valid_resamples": 2000
       },
       "auc_roc": {
-        "value": 0.4835,
-        "ci_low": 0.4208,
-        "ci_high": 0.5447,
+        "value": 0.4819,
+        "ci_low": 0.4194,
+        "ci_high": 0.5433,
         "n_valid_resamples": 2000
       },
       "precision": {
-        "value": 0.1187,
-        "ci_low": 0.0919,
-        "ci_high": 0.1485,
+        "value": 0.1202,
+        "ci_low": 0.0934,
+        "ci_high": 0.1505,
         "n_valid_resamples": 2000
       },
       "recall": {
-        "value": 0.6836,
-        "ci_low": 0.601,
-        "ci_high": 0.764,
+        "value": 0.6794,
+        "ci_low": 0.5976,
+        "ci_high": 0.7581,
         "n_valid_resamples": 2000
       },
       "f1": {
-        "value": 0.2022,
-        "ci_low": 0.1608,
-        "ci_high": 0.2473,
+        "value": 0.2042,
+        "ci_low": 0.1621,
+        "ci_high": 0.2498,
         "n_valid_resamples": 2000
       },
       "positive_rate": 0.1052,
       "n_windows": 6733,
+      "auc_pr_fold_mean": {
+        "value": 0.3058,
+        "ci_low": 0.2558,
+        "ci_high": 0.3716,
+        "n_valid_resamples": 2000
+      },
       "false_alarms_per_hour": {
-        "value": 35.8008,
-        "ci_low": 31.984,
-        "ci_high": 39.5001,
+        "value": 35.0639,
+        "ci_low": 31.164,
+        "ci_high": 38.8931,
         "n_valid_resamples": 2000
       },
       "event_recall": {
@@ -152,11 +167,11 @@
         },
         "high CPU usage": {
           "n": 31,
-          "detected": 24
+          "detected": 23
         },
         "high disk I/O read usage": {
           "n": 18,
-          "detected": 16
+          "detected": 17
         },
         "high disk space usage": {
           "n": 5,
@@ -178,69 +193,75 @@
     },
     "zscore_local": {
       "auc_pr": {
-        "value": 0.1876,
-        "ci_low": 0.1467,
-        "ci_high": 0.2443,
+        "value": 0.3269,
+        "ci_low": 0.2601,
+        "ci_high": 0.4087,
         "n_valid_resamples": 2000
       },
       "auc_roc": {
-        "value": 0.6888,
-        "ci_low": 0.6382,
-        "ci_high": 0.7341,
+        "value": 0.7904,
+        "ci_low": 0.7471,
+        "ci_high": 0.8278,
         "n_valid_resamples": 2000
       },
       "precision": {
-        "value": 0.1891,
-        "ci_low": 0.1401,
-        "ci_high": 0.2454,
+        "value": 0.3714,
+        "ci_low": 0.2888,
+        "ci_high": 0.4548,
         "n_valid_resamples": 2000
       },
       "recall": {
-        "value": 0.4322,
-        "ci_low": 0.3514,
-        "ci_high": 0.5164,
+        "value": 0.3997,
+        "ci_low": 0.3161,
+        "ci_high": 0.4811,
         "n_valid_resamples": 2000
       },
       "f1": {
-        "value": 0.2631,
-        "ci_low": 0.2058,
-        "ci_high": 0.3292,
+        "value": 0.385,
+        "ci_low": 0.3091,
+        "ci_high": 0.4619,
         "n_valid_resamples": 2000
       },
       "positive_rate": 0.1052,
       "n_windows": 6733,
+      "auc_pr_fold_mean": {
+        "value": 0.3484,
+        "ci_low": 0.2959,
+        "ci_high": 0.4458,
+        "n_valid_resamples": 2000
+      },
       "false_alarms_per_hour": {
-        "value": 13.0656,
-        "ci_low": 10.6983,
-        "ci_high": 15.5025,
+        "value": 4.7701,
+        "ci_low": 3.8494,
+        "ci_high": 5.7892,
         "n_valid_resamples": 2000
       },
       "event_recall": {
-        "value": 0.65,
-        "ci_low": 0.5667,
-        "ci_high": 0.7333,
+        "value": 0.6583,
+        "ci_low": 0.575,
+        "ci_high": 0.7417,
         "n_valid_resamples": 2000
       },
       "median_delay_minutes": {
         "value": 0.0,
         "ci_low": 0.0,
-        "ci_high": 0.0,
+        "ci_high": 2.0,
         "n_valid_resamples": 2000
       },
-      "failures_detected": 78,
-      "event_recall_by_chance": 0.9999,
+      "failures_detected": 79,
+      "event_recall_by_chance": 0.9493,
       "event_recall_by_reason": {
         "JVM Out of Memory (OOM) Heap": {
           "n": 3,
-          "detected": 2
+          "detected": 3
         },
         "high CPU usage": {
           "n": 31,
-          "detected": 16
+          "detected": 19
         },
         "high disk I/O read usage": {
           "n": 18,
-          "detected": 14
+          "detected": 15
         },
         "high disk space usage": {
           "n": 5,
@@ -248,7 +269,7 @@
         },
         "high memory usage": {
           "n": 5,
-          "detected": 4
+          "detected": 3
         },
         "network latency": {
           "n": 26,
@@ -256,7 +277,7 @@
         },
         "network packet loss": {
           "n": 32,
-          "detected": 24
+          "detected": 21
         }
       }
     },
@@ -293,6 +314,12 @@
       },
       "positive_rate": 0.1052,
       "n_windows": 6733,
+      "auc_pr_fold_mean": {
+        "value": 0.2065,
+        "ci_low": 0.1668,
+        "ci_high": 0.2997,
+        "n_valid_resamples": 2000
+      },
       "false_alarms_per_hour": {
         "value": 26.868,
         "ci_low": 23.2784,
@@ -377,6 +404,12 @@
       },
       "positive_rate": 0.1052,
       "n_windows": 6733,
+      "auc_pr_fold_mean": {
+        "value": 0.2702,
+        "ci_low": 0.2124,
+        "ci_high": 0.3529,
+        "n_valid_resamples": 2000
+      },
       "false_alarms_per_hour": {
         "value": 13.3444,
         "ci_low": 10.5534,
@@ -427,6 +460,96 @@
           "detected": 22
         }
       }
+    },
+    "prior_horario": {
+      "auc_pr": {
+        "value": 0.1247,
+        "ci_low": 0.0981,
+        "ci_high": 0.1621,
+        "n_valid_resamples": 2000
+      },
+      "auc_roc": {
+        "value": 0.546,
+        "ci_low": 0.4853,
+        "ci_high": 0.6083,
+        "n_valid_resamples": 2000
+      },
+      "precision": {
+        "value": 0.1494,
+        "ci_low": 0.1102,
+        "ci_high": 0.1961,
+        "n_valid_resamples": 2000
+      },
+      "recall": {
+        "value": 0.4393,
+        "ci_low": 0.3515,
+        "ci_high": 0.5347,
+        "n_valid_resamples": 2000
+      },
+      "f1": {
+        "value": 0.223,
+        "ci_low": 0.1719,
+        "ci_high": 0.2806,
+        "n_valid_resamples": 2000
+      },
+      "positive_rate": 0.1052,
+      "n_windows": 6733,
+      "auc_pr_fold_mean": {
+        "value": 0.1814,
+        "ci_low": 0.1509,
+        "ci_high": 0.2709,
+        "n_valid_resamples": 2000
+      },
+      "false_alarms_per_hour": {
+        "value": 17.6266,
+        "ci_low": 14.4177,
+        "ci_high": 21.2276,
+        "n_valid_resamples": 2000
+      },
+      "event_recall": {
+        "value": 0.5583,
+        "ci_low": 0.475,
+        "ci_high": 0.65,
+        "n_valid_resamples": 2000
+      },
+      "median_delay_minutes": {
+        "value": -5.0,
+        "ci_low": -5.0,
+        "ci_high": -5.0,
+        "n_valid_resamples": 2000
+      },
+      "failures_detected": 67,
+      "event_recall_by_chance": 1.0,
+      "event_recall_by_reason": {
+        "JVM Out of Memory (OOM) Heap": {
+          "n": 3,
+          "detected": 2
+        },
+        "high CPU usage": {
+          "n": 31,
+          "detected": 19
+        },
+        "high disk I/O read usage": {
+          "n": 18,
+          "detected": 9
+        },
+        "high disk space usage": {
+          "n": 5,
+          "detected": 4
+        },
+        "high memory usage": {
+          "n": 5,
+          "detected": 2
+        },
+        "network latency": {
+          "n": 26,
+          "detected": 17
+        },
+        "network packet loss": {
+          "n": 32,
+          "detected": 14
+        }
+      }
     }
   },
   "localization": {
@@ -450,8 +573,8 @@
       "n_valid_resamples": 2000
     },
     "mrr": {
-      "value": 0.4716,
-      "ci_low": 0.405,
+      "value": 0.4717,
+      "ci_low": 0.4052,
       "ci_high": 0.543,
       "n_valid_resamples": 2000
     },
@@ -495,21 +618,21 @@
       "n_valid_resamples": 2000
     },
     "hr@3": {
-      "value": 0.4583,
-      "ci_low": 0.3667,
-      "ci_high": 0.55,
+      "value": 0.4667,
+      "ci_low": 0.375,
+      "ci_high": 0.5583,
       "n_valid_resamples": 2000
     },
     "hr@5": {
-      "value": 0.65,
-      "ci_low": 0.5667,
-      "ci_high": 0.7333,
+      "value": 0.6583,
+      "ci_low": 0.575,
+      "ci_high": 0.7417,
       "n_valid_resamples": 2000
     },
     "mrr": {
-      "value": 0.3384,
-      "ci_low": 0.2911,
-      "ci_high": 0.3873,
+      "value": 0.3418,
+      "ci_low": 0.2947,
+      "ci_high": 0.391,
       "n_valid_resamples": 2000
     },
     "hr@1_by_reason": {
@@ -660,13 +783,14 @@
       "train_normal_windows": 711,
       "train_positive_windows": 96,
       "val_positive_windows": 0,
+      "oracle_windows_shifted": 0,
       "thresholds": {
         "zscore_3sigma": {
           "value": 3.0,
           "rule": "fixed_3sigma"
         },
         "zscore_val": {
-          "value": 10498553.835361606,
+          "value": 131682.97226287817,
           "rule": "q0.99_val_normal"
         },
         "zscore_local": {
@@ -680,6 +804,10 @@
         "lightgbm": {
           "value": 0.9440636757161848,
           "rule": "q0.99_val_normal"
+        },
+        "prior_horario": {
+          "value": 1.0,
+          "rule": "q0.99_val_normal"
         }
       }
     },
@@ -690,6 +818,7 @@
       "train_normal_windows": 2132,
       "train_positive_windows": 96,
       "val_positive_windows": 64,
+      "oracle_windows_shifted": 0,
       "thresholds": {
         "zscore_3sigma": {
           "value": 3.0,
@@ -700,7 +829,7 @@
           "rule": "best_f1_val"
         },
         "zscore_local": {
-          "value": 50.0,
+          "value": 44.589737244528195,
           "rule": "best_f1_val"
         },
         "isolation_forest": {
@@ -709,6 +838,10 @@
         },
         "lightgbm": {
           "value": 1.8717398618503668e-07,
+          "rule": "best_f1_val"
+        },
+        "prior_horario": {
+          "value": 0.07058823529411765,
           "rule": "best_f1_val"
         }
       }
@@ -720,6 +853,7 @@
       "train_normal_windows": 3033,
       "train_positive_windows": 162,
       "val_positive_windows": 96,
+      "oracle_windows_shifted": 0,
       "thresholds": {
         "zscore_3sigma": {
           "value": 3.0,
@@ -740,6 +874,10 @@
         "lightgbm": {
           "value": 0.0002001538490954111,
           "rule": "best_f1_val"
+        },
+        "prior_horario": {
+          "value": 0.0,
+          "rule": "best_f1_val"
         }
       }
     },
@@ -750,17 +888,18 @@
       "train_normal_windows": 3669,
       "train_positive_windows": 258,
       "val_positive_windows": 120,
+      "oracle_windows_shifted": 0,
       "thresholds": {
         "zscore_3sigma": {
           "value": 3.0,
           "rule": "fixed_3sigma"
         },
         "zscore_val": {
-          "value": 23.264366434882223,
+          "value": 23.169188459514043,
           "rule": "best_f1_val"
         },
         "zscore_local": {
-          "value": 32.213150696528594,
+          "value": 32.499048080942984,
           "rule": "best_f1_val"
         },
         "isolation_forest": {
@@ -769,6 +908,10 @@
         },
         "lightgbm": {
           "value": 9.828542002273721e-05,
+          "rule": "best_f1_val"
+        },
+        "prior_horario": {
+          "value": 0.029556650246305417,
           "rule": "best_f1_val"
         }
       }
@@ -780,13 +923,14 @@
       "train_normal_windows": 4197,
       "train_positive_windows": 384,
       "val_positive_windows": 96,
+      "oracle_windows_shifted": 0,
       "thresholds": {
         "zscore_3sigma": {
           "value": 3.0,
           "rule": "fixed_3sigma"
         },
         "zscore_val": {
-          "value": 88.16140713331124,
+          "value": 56.98937114486057,
           "rule": "best_f1_val"
         },
         "zscore_local": {
@@ -800,6 +944,10 @@
         "lightgbm": {
           "value": 0.19468601796319968,
           "rule": "best_f1_val"
+        },
+        "prior_horario": {
+          "value": 0.1643835616438356,
+          "rule": "best_f1_val"
         }
       }
     },
@@ -810,6 +958,7 @@
       "train_normal_windows": 4866,
       "train_positive_windows": 480,
       "val_positive_windows": 78,
+      "oracle_windows_shifted": 1,
       "thresholds": {
         "zscore_3sigma": {
           "value": 3.0,
@@ -820,7 +969,7 @@
           "rule": "best_f1_val"
         },
         "zscore_local": {
-          "value": 29.453956381336987,
+          "value": 31.38798049017073,
           "rule": "best_f1_val"
         },
         "isolation_forest": {
@@ -829,6 +978,10 @@
         },
         "lightgbm": {
           "value": 0.7389276370473212,
+          "rule": "best_f1_val"
+        },
+        "prior_horario": {
+          "value": 0.2441860465116279,
           "rule": "best_f1_val"
         }
       }
@@ -840,6 +993,7 @@
       "train_normal_windows": 5759,
       "train_positive_windows": 558,
       "val_positive_windows": 78,
+      "oracle_windows_shifted": 0,
       "thresholds": {
         "zscore_3sigma": {
           "value": 3.0,
@@ -860,6 +1014,10 @@
         "lightgbm": {
           "value": 0.011436361227750826,
           "rule": "best_f1_val"
+        },
+        "prior_horario": {
+          "value": 0.11836734693877551,
+          "rule": "best_f1_val"
         }
       }
     },
@@ -870,6 +1028,7 @@
       "train_normal_windows": 6573,
       "train_positive_windows": 636,
       "val_positive_windows": 60,
+      "oracle_windows_shifted": 1,
       "thresholds": {
         "zscore_3sigma": {
           "value": 3.0,
@@ -880,7 +1039,7 @@
           "rule": "best_f1_val"
         },
         "zscore_local": {
-          "value": 50.0,
+          "value": 33.739275263602686,
           "rule": "best_f1_val"
         },
         "isolation_forest": {
@@ -890,9 +1049,13 @@
         "lightgbm": {
           "value": 0.8293061344091563,
           "rule": "best_f1_val"
+        },
+        "prior_horario": {
+          "value": 0.1746031746031746,
+          "rule": "best_f1_val"
         }
       }
     }
   ],
-  "run_dir": "20261111T222647-baselines"
+  "run_dir": "20261117T040943-baselines"
 }

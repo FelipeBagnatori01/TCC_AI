@@ -26,54 +26,65 @@ Análise visual completa, com gráficos e tabelas: `notebooks/analise_telecom_e1
 | **Deriva entre dias** | Pontuação global nos minutos normais: de 85 (03/04) a 760 milhões (03/24) | Régua global satura; método local (ADR 0013) |
 | Não há precursor; o sinal surge no início | AUROC local: 0,81 [0,76; 0,85] no início; antes do início, todos os ICs incluem 0,5 | Tarefa A = detecção precoce também no Bank |
 
-## E4 — Baselines (ADR 0010 e 0014)
+## E4 — Baselines (ADR 0010, 0014 e 0019)
 
-Configuração principal (isenção de disponibilidade, ADR 0005). Tabelas completas, com resultados por tipo de tarefa e por motivo: `reports/tables/baselines_<sistema>_baselines.md`; controle sem isenção em `baselines_<sistema>_baselines_sem_isencao.md`. O `zscore_local` e a referência de frequência na localização foram acrescentados depois da E3 do Bank (ADR 0014); os números dos demais métodos não mudaram.
+Configuração principal (isenção de disponibilidade, ADR 0005). Tabelas completas, com resultados por motivo: `reports/tables/baselines_<sistema>_baselines.md`. Controles:
+- `baselines_<sistema>_baselines_sem_isencao.md`: sem a isenção;
+- `baselines_<sistema>_baselines_janela_inteira.md`: pontuação na janela inteira, o protocolo anterior ao ADR 0019. Seus números de detecção são idênticos aos das tabelas anteriores (verificado nos dois sistemas).
+
+O que mudou com o ADR 0019:
+- **Pontuação:** os z-scores pontuam só os últimos D + 1 = 6 minutos da janela, o trecho a que o rótulo se refere.
+- **Janelas-oráculo:** a janela da localização não cruza mais o dia. Ela foi deslocada para a primeira janela completa do dia em 3 falhas do Telecom e 2 do Bank. Essas mesmas falhas não têm nenhuma janela positiva, então contam na localização, mas não podem ser detectadas por janela.
+- **Referência nova:** `prior_horario`, um detector sem telemetria que pontua a janela pela fração de positivos no mesmo horário dos dias de treino.
 
 ### Detecção (RQ1) — por janela
 
-Na AUC-PR, o valor ao acaso é a taxa de positivos: **0,14 no Telecom** e **0,105 no Bank**.
+O valor ao acaso é a taxa de positivos: **0,14 no Telecom** e **0,105 no Bank** na AUC-PR agrupada. Na média por dobra, o acaso é a média das taxas por dobra: 0,16 no Telecom e 0,11 no Bank.
 
-| Sistema | Método | AUC-PR | AUC-ROC | Precisão | Revocação | F1 | Alarmes falsos/h |
-|---|---|---|---|---|---|---|---|
-| Telecom | z-score, 3σ fixo | 0,21 [0,14; 0,36] | 0,65 [0,55; 0,75] | 0,14 [0,10; 0,19] | 1,00 [1,00; 1,00] | 0,25 [0,18; 0,31] | 60,0 [60,0; 60,0] |
-| Telecom | z-score, limiar da validação | 0,21 [0,14; 0,36] | 0,65 [0,55; 0,75] | 0,19 [0,12; 0,28] | 0,71 [0,58; 0,85] | 0,30 [0,21; 0,40] | 29,8 [23,2; 36,7] |
-| Telecom | z-score local | 0,24 [0,15; 0,37] | 0,67 [0,58; 0,76] | 0,18 [0,11; 0,28] | 0,44 [0,30; 0,58] | 0,26 [0,16; 0,36] | 19,3 [14,0; 25,1] |
-| Telecom | Isolation Forest | 0,16 [0,11; 0,26] | 0,60 [0,50; 0,70] | 0,17 [0,11; 0,24] | 0,62 [0,48; 0,75] | 0,26 [0,18; 0,35] | 30,4 [23,8; 37,2] |
-| Telecom | LightGBM | 0,25 [0,15; 0,41] | 0,59 [0,48; 0,68] | 0,22 [0,14; 0,33] | 0,50 [0,37; 0,64] | 0,31 [0,21; 0,41] | 17,5 [12,2; 23,2] |
-| Bank | z-score, 3σ fixo | 0,10 [0,08; 0,13] | 0,48 [0,42; 0,54] | 0,11 [0,09; 0,13] | 1,00 [1,00; 1,00] | 0,19 [0,16; 0,23] | 60,0 [60,0; 60,0] |
-| Bank | z-score, limiar da validação | 0,10 [0,08; 0,13] | 0,48 [0,42; 0,54] | 0,12 [0,09; 0,15] | 0,68 [0,60; 0,76] | 0,20 [0,16; 0,25] | 35,8 [32,0; 39,5] |
-| Bank | **z-score local** | **0,19 [0,15; 0,24]** | **0,69 [0,64; 0,73]** | 0,19 [0,14; 0,25] | 0,43 [0,35; 0,52] | 0,26 [0,21; 0,33] | **13,1 [10,7; 15,5]** |
-| Bank | Isolation Forest | 0,14 [0,11; 0,21] | 0,57 [0,51; 0,63] | 0,14 [0,11; 0,18] | 0,62 [0,54; 0,71] | 0,23 [0,18; 0,28] | 26,9 [23,3; 30,6] |
-| Bank | LightGBM | 0,19 [0,13; 0,27] | 0,51 [0,45; 0,58] | 0,15 [0,10; 0,20] | 0,33 [0,25; 0,41] | 0,20 [0,15; 0,26] | 13,3 [10,6; 16,5] |
+| Sistema | Método | AUC-PR | AUC-PR por dobra | AUC-ROC | Precisão | Revocação | F1 | Alarmes falsos/h |
+|---|---|---|---|---|---|---|---|---|
+| Telecom | z-score, 3σ fixo | 0,24 [0,16; 0,38] | 0,43 [0,38; 0,60] | 0,70 [0,61; 0,79] | 0,14 | 1,00 | 0,25 | 60,0 |
+| Telecom | z-score, limiar da validação | 0,24 [0,16; 0,38] | 0,43 [0,38; 0,60] | 0,70 [0,61; 0,79] | 0,26 | 0,65 | 0,37 | 18,2 [12,3; 24,2] |
+| Telecom | **z-score local** | **0,39 [0,27; 0,54]** | 0,49 [0,42; 0,69] | **0,76 [0,68; 0,83]** | 0,30 | 0,41 | 0,35 | **9,3 [6,6; 12,4]** |
+| Telecom | Isolation Forest | 0,16 [0,11; 0,26] | 0,36 [0,29; 0,54] | 0,60 [0,50; 0,70] | 0,17 | 0,62 | 0,26 | 30,4 [23,8; 37,2] |
+| Telecom | LightGBM | 0,25 [0,15; 0,41] | 0,56 [0,50; 0,70] | 0,59 [0,48; 0,68] | 0,22 | 0,50 | 0,31 | 17,5 [12,2; 23,2] |
+| Telecom | referência: só horário | 0,15 [0,09; 0,27] | 0,28 [0,21; 0,47] | 0,44 [0,34; 0,55] | 0,15 | 0,48 | 0,22 | 27,2 [20,7; 33,6] |
+| Bank | z-score, 3σ fixo | 0,10 [0,08; 0,13] | 0,31 [0,26; 0,37] | 0,48 [0,42; 0,54] | 0,11 | 1,00 | 0,19 | 60,0 |
+| Bank | z-score, limiar da validação | 0,10 [0,08; 0,13] | 0,31 [0,26; 0,37] | 0,48 [0,42; 0,54] | 0,12 | 0,68 | 0,20 | 35,1 [31,2; 38,9] |
+| Bank | **z-score local** | **0,33 [0,26; 0,41]** | **0,35 [0,30; 0,45]** | **0,79 [0,75; 0,83]** | 0,37 | 0,40 | 0,39 | **4,8 [3,9; 5,8]** |
+| Bank | Isolation Forest | 0,14 [0,11; 0,21] | 0,21 [0,17; 0,30] | 0,57 [0,51; 0,63] | 0,14 | 0,62 | 0,23 | 26,9 [23,3; 30,6] |
+| Bank | LightGBM | 0,19 [0,13; 0,27] | 0,27 [0,21; 0,35] | 0,51 [0,45; 0,58] | 0,15 | 0,33 | 0,20 | 13,3 [10,6; 16,5] |
+| Bank | referência: só horário | 0,12 [0,10; 0,16] | 0,18 [0,15; 0,27] | 0,55 [0,49; 0,61] | 0,15 | 0,44 | 0,22 | 17,6 [14,4; 21,2] |
 
 **Leitura:**
-- **Telecom:** todos os baselines ficam pouco acima do acaso; o LightGBM (0,25) e o z-score local (0,24) são os únicos com IC da AUC-PR inteiro acima de 0,14.
-- **Bank:** o z-score global fica **no acaso** (AUROC 0,48), como a E3 previu: a distribuição deriva entre dias e o escalonamento fixo envelhece (ADR 0013). O **z-score local** é o melhor baseline: AUC-PR 0,19 (quase o dobro do acaso), AUROC 0,69 e o menor número de alarmes falsos.
-- **Revocação por evento** (de 49% a 100% nos dois sistemas): sem valor informativo, porque o nível do acaso para a mesma taxa de alarmes é 1,00 em todos os métodos. O atraso de detecção também não é interpretável.
-- **O piso que a LSTM precisa superar:** AUC-PR de 0,25 no Telecom e 0,19 no Bank, sem passar dos alarmes falsos dos melhores baselines (17,5 por hora no Telecom e 13 no Bank).
+- **z-score local:** com a pontuação alinhada ao rótulo, é o melhor baseline nos dois sistemas. No Telecom, a AUC-PR sobe de 0,24 para 0,39; no Bank, de 0,19 para 0,33. Os alarmes falsos caem pela metade ou mais.
+- **z-score global:** no Bank continua no acaso pela AUC-PR agrupada (AUROC 0,48): a distribuição deriva entre dias e o escalonamento fixo envelhece (ADR 0013).
+- **AUC-PR agrupada × por dobra:** a média por dobra (0,31) fica bem acima da agrupada (0,10) para o z-score global no Bank. A escala dele muda de dobra para dobra, e juntar as pontuações mistura essas escalas (ameaça nº 7). Por isso as duas medidas são relatadas lado a lado.
+- **Referência só de horário:** no Telecom fica no acaso. No Bank fica um pouco acima dele (0,12 contra 0,105 na AUC-PR; AUROC 0,55), o que indica um atalho modesto pelo horário (ameaça nº 22). O Isolation Forest da E4 fica no mesmo nível dela nos dois sistemas.
+- **Revocação por evento:** sem valor informativo, porque o acaso para a mesma taxa de alarmes fica entre 0,95 e 1,00 em todos os métodos.
+- **O piso que a LSTM precisa superar:** o z-score local, com AUC-PR 0,39 no Telecom e 0,33 no Bank, e 9 e 5 alarmes falsos por hora.
 
 ### Localização (RQ2)
 
-Candidatos: 56 componentes no Telecom e 29 no Bank (inclui os 11 serviços). A referência "frequência no treino" ranqueia pelo número de vezes que cada componente foi causa raiz nas falhas de treino e validação da dobra, sem ler telemetria.
+Candidatos: 56 componentes no Telecom e 29 no Bank (inclui os 11 serviços). A referência "frequência no treino" ranqueia pelo número de vezes que cada componente foi causa raiz nas falhas de treino e validação da dobra, sem ler telemetria. As heurísticas de localização não mudaram com o ADR 0019; só as janelas-oráculo foram corrigidas.
 
 | Sistema | Heurística | HR@1 | HR@3 | HR@5 | MRR |
 |---|---|---|---|---|---|
 | Telecom | referência: frequência no treino | 0,09 [0,02; 0,18] | 0,18 [0,09; 0,29] | 0,27 [0,13; 0,40] | 0,19 [0,12; 0,29] |
-| Telecom | z-score global (máximo) | 0,13 [0,04; 0,24] | 0,33 [0,20; 0,47] | 0,53 [0,38; 0,69] | 0,30 [0,22; 0,40] |
-| Telecom | z-score local (média dos 3 maiores) | 0,11 [0,02; 0,20] | 0,49 [0,33; 0,62] | 0,60 [0,44; 0,73] | 0,34 [0,26; 0,42] |
+| Telecom | z-score global (máximo) | 0,13 [0,04; 0,24] | 0,38 [0,24; 0,51] | 0,56 [0,40; 0,71] | 0,31 [0,22; 0,41] |
+| Telecom | z-score local (média dos 3 maiores) | 0,09 [0,02; 0,18] | 0,49 [0,33; 0,62] | 0,60 [0,44; 0,73] | 0,33 [0,26; 0,41] |
 | Bank | referência: frequência no treino | 0,11 [0,06; 0,17] | 0,27 [0,18; 0,35] | 0,38 [0,30; 0,47] | 0,26 [0,21; 0,31] |
 | Bank | **z-score global (máximo)** | **0,32 [0,23; 0,40]** | 0,48 [0,39; 0,57] | **0,68 [0,59; 0,76]** | **0,47 [0,41; 0,54]** |
-| Bank | z-score local (média dos 3 maiores) | 0,11 [0,06; 0,17] | 0,46 [0,37; 0,55] | 0,65 [0,57; 0,73] | 0,34 [0,29; 0,39] |
+| Bank | z-score local (média dos 3 maiores) | 0,11 [0,06; 0,17] | 0,47 [0,38; 0,56] | 0,66 [0,57; 0,74] | 0,34 [0,29; 0,39] |
 
 **Leitura:**
-- **Telecom:** as heurísticas superam a referência sobretudo em HR@3 e HR@5. A variante local acerta `db close` em 3 de 4 casos (HR@1 0,75), contra 0 da global: o `On_Off_State` só vira sinal quando comparado ao passado recente (ADR 0010).
+- **Telecom:** as heurísticas superam a referência sobretudo em HR@3 e HR@5. A variante local acerta `db close` em 2 de 4 casos, contra 0 da global: o `On_Off_State` só vira sinal quando comparado ao passado recente (ADR 0010).
 - **Bank:** aqui o z-score **global** é o melhor, apesar da deriva.
   - Em 50 das 120 falhas ele aponta Mysql01/02 (contadores em deriva) e erra todas.
-  - Fora disso, acerta bem (Tomcat01 10/19, apache02 7/8).
+  - Fora disso, acerta bem (Tomcat01 10/19, apache02 7/10).
   - O z-score local concentra-se em MG01 e IG02, componentes com muitos KPIs voláteis, e não passa da referência em HR@1.
-  
-  Detecção e localização pedem normalizações diferentes no Bank, o que é relevante para o XAI (E6).
+
+  Detecção e localização pedem normalizações diferentes no Bank.
 
 ### Diagnóstico (RQ3) — A0 constante, script oficial do OpenRCA
 
@@ -89,157 +100,170 @@ Candidatos: 56 componentes no Telecom e 29 no Bank (inclui os 11 serviços). A r
 
 | Sistema | Métrica | Com isenção | Sem isenção |
 |---|---|---|---|
-| Telecom | AUC-PR, z-score / local / IF / LightGBM | 0,21 / 0,24 / 0,16 / 0,25 | 0,21 / 0,24 / 0,18 / 0,26 |
-| Telecom | HR@1, z-score global / local | 0,13 / 0,11 | 0,13 / 0,11 |
-| Bank | AUC-PR, z-score / local / IF / LightGBM | 0,10 / 0,19 / 0,14 / 0,19 | 0,10 / 0,19 / 0,14 / 0,18 |
+| Telecom | AUC-PR, z-score / local / IF / LightGBM | 0,24 / 0,39 / 0,16 / 0,25 | 0,24 / 0,38 / 0,18 / 0,26 |
+| Telecom | HR@1, z-score global / local | 0,13 / 0,09 | 0,13 / 0,09 |
+| Bank | AUC-PR, z-score / local / IF / LightGBM | 0,10 / 0,33 / 0,14 / 0,19 | 0,10 / 0,33 / 0,14 / 0,18 |
 | Bank | HR@1, z-score global / local | 0,32 / 0,11 | 0,32 / 0,11 |
 
-Nenhuma conclusão muda em nenhum dos dois sistemas: as diferenças ficam dentro dos ICs (tabelas completas com IC nos arquivos de controle).
+Nenhuma conclusão muda em nenhum dos dois sistemas: as diferenças ficam dentro dos ICs.
 
 ### Reavaliação do Plano B (ADR 0009)
 
-Com 120 falhas, os ICs do Bank são cerca de metade da largura dos do Telecom. Exemplos: AUC-PR do melhor baseline com largura de 0,09 contra 0,22–0,26; HR@1 de 0,17 contra 0,20. A comparação da LSTM com os baselines (RQ1 e RQ2) passa a ter poder estatístico razoável no Bank; no Telecom, só diferenças grandes serão significativas.
+Com 120 falhas, os ICs do Bank são cerca de metade da largura dos do Telecom. Exemplos: AUC-PR do melhor baseline com largura de 0,15 contra 0,27; HR@1 de 0,17 contra 0,20. A comparação da LSTM com os baselines (RQ1 e RQ2) tem poder estatístico razoável no Bank; no Telecom, só diferenças grandes são significativas.
 
-## E5 — LSTM (ADR 0015)
+## E5 — LSTM (ADR 0015 e 0019)
 
-Configurações escolhidas na validação; 5 seeds por dobra; média ± desvio-padrão entre seeds. A comparação com os baselines é **pareada**: diferença na mesma janela ou falha, com IC por bootstrap em cada seed. "Superior" significa IC da diferença inteiro acima de 0. Tabelas completas: `reports/tables/lstm_<sistema>_<nome>.md` e `lstm_vs_baselines_<sistema>_<nome>.md`; curvas de treino em `reports/figures/lstm_curves_<sistema>_<nome>.png`.
+Configurações escolhidas na validação; 5 seeds por dobra; média ± desvio-padrão entre seeds. A comparação com os baselines é **pareada**: diferença na mesma janela ou falha, com IC por bootstrap em cada seed. "Superior" significa IC da diferença inteiro acima de 0; a contagem é de seeds (superior / empate / inferior). As cinco seeds compartilham as mesmas janelas de teste, então "5/5" mostra que o resultado não depende da seed, e não equivale a cinco confirmações independentes.
+
+Tabelas completas: `reports/tables/lstm_<sistema>_<nome>.md` e `lstm_vs_baselines_<sistema>_<nome>.md`. Curvas de treino: `reports/figures/lstm_curves_<sistema>_<nome>.png`.
+
+Com o ADR 0019, a previsora pontua só os últimos 6 passos de erro, e a busca foi refeita.
+- **Telecom:** escolheu a mesma configuração (local, 128 unidades, 1 camada).
+- **Bank:** passou de 2 camadas para 1.
+- **Classificadora:** é a mesma de antes, em configuração e números.
 
 ### Detecção (RQ1)
 
-| Sistema | Modelo | AUC-PR | AUC-ROC | Alarmes falsos/h | Vs. z-score local (E4) | Vs. LightGBM (E4) |
-|---|---|---|---|---|---|---|
-| Telecom | LSTM previsora | 0,40 ± 0,02 | 0,74 ± 0,01 | 18,0 ± 3,6 | +0,16, superior 5/5 | +0,15, empate 4/5 |
-| Telecom | **LSTM classificadora** | **0,48 ± 0,02** | **0,83 ± 0,01** | **9,2 ± 1,3** | **+0,24, superior 5/5** | **+0,24, superior 5/5** |
-| Bank | LSTM previsora | 0,20 ± 0,00 | 0,70 ± 0,00 | 10,5 ± 1,7 | +0,01, empate 5/5 | +0,01, empate 5/5 |
-| Bank | LSTM classificadora | 0,22 ± 0,01 | 0,66 ± 0,01 | 14,3 ± 0,6 | +0,03, empate 5/5 | +0,03, empate 5/5 |
+| Sistema | Modelo | AUC-PR | AUC-PR por dobra | AUC-ROC | Alarmes falsos/h | Vs. z-score local (E4) | Vs. LightGBM (E4) |
+|---|---|---|---|---|---|---|---|
+| Telecom | **LSTM previsora** | **0,52 ± 0,02** | 0,56 ± 0,01 | 0,81 ± 0,01 | 11,3 ± 1,0 | **+0,13, superior 4/5** | +0,27, superior 5/5 |
+| Telecom | LSTM classificadora | 0,48 ± 0,02 | **0,60 ± 0,01** | **0,83 ± 0,01** | **9,2 ± 1,3** | +0,09, empate 5/5 | +0,24, superior 5/5 |
+| Bank | **LSTM previsora** | **0,35 ± 0,00** | **0,38 ± 0,01** | 0,78 ± 0,00 | 5,7 ± 0,4 | +0,02, empate 5/5 | +0,16, superior 5/5 |
+| Bank | LSTM classificadora | 0,22 ± 0,01 | 0,26 ± 0,01 | 0,66 ± 0,01 | 14,3 ± 0,6 | **−0,11, inferior 5/5** | +0,03, empate 5/5 |
 
-AUC-PR ao acaso: 0,14 (Telecom), 0,105 (Bank). Melhores baselines da E4: 0,25 (Telecom, LightGBM) e 0,19 (Bank, z-score local).
+AUC-PR ao acaso: 0,14 (Telecom), 0,105 (Bank). Melhor baseline da E4 nos dois sistemas: z-score local (0,39 e 0,33).
+
+**Antes do ADR 0019** (controle `lstm_janela_inteira`), a previsora tinha AUC-PR 0,40 no Telecom e 0,20 no Bank. Nessa versão, a classificadora parecia superior ao z-score local no Telecom (+0,24, 5/5), mas só porque o z-score local também pontuava a janela inteira.
 
 ### Localização (RQ2): ranqueamento nativo da LSTM
 
-| Sistema | Ranqueamento | HR@1 | HR@3 | HR@5 | MRR | HR@1 vs. melhor heurística da E4 |
+| Sistema | Ranqueamento | HR@1 | HR@3 | HR@5 | MRR | HR@1 vs. heurísticas da E4 |
 |---|---|---|---|---|---|---|
-| Telecom | soma dos erros | **0,44 ± 0,03** | 0,67 ± 0,02 | 0,73 ± 0,01 | 0,57 ± 0,02 | +0,31 sobre o z global, superior 5/5 |
-| Telecom | média dos 3 maiores | 0,36 ± 0,03 | 0,72 ± 0,02 | 0,80 ± 0,00 | 0,56 ± 0,01 | +0,23, superior 5/5 |
-| Bank | soma dos erros | 0,33 ± 0,01 | 0,60 ± 0,01 | 0,79 ± 0,01 | 0,51 ± 0,00 | +0,01 sobre o z global, empate 5/5 |
-| Bank | média dos 3 maiores | 0,33 ± 0,02 | 0,58 ± 0,01 | 0,72 ± 0,01 | 0,49 ± 0,01 | +0,01, empate 5/5 |
+| Telecom | soma dos erros | **0,42 ± 0,04** | 0,67 ± 0,02 | 0,73 ± 0,01 | 0,56 ± 0,02 | superior 5/5 às três (+0,29 a +0,33) |
+| Telecom | média dos 3 maiores | 0,34 ± 0,03 | 0,71 ± 0,02 | 0,80 ± 0,00 | 0,54 ± 0,01 | superior 5/5 às três |
+| Bank | soma dos erros | 0,33 ± 0,01 | 0,58 ± 0,01 | 0,80 ± 0,01 | 0,51 ± 0,00 | empate com o z global; +0,22, superior 5/5 ao z local e à referência |
+| Bank | média dos 3 maiores | 0,34 ± 0,01 | 0,57 ± 0,01 | 0,74 ± 0,01 | 0,50 ± 0,01 | idem |
 
-No Bank, a LSTM supera o z-score local e a referência de frequência em todas as seeds (HR@1 +0,22), e empata com o z-score global.
+O ranqueamento nativo não mudou com o ADR 0019. A pequena queda no Telecom (HR@1 de 0,44 para 0,42) vem das 3 janelas-oráculo corrigidas.
 
 ### Sensibilidade à isenção de disponibilidade
 
 | Sistema | Métrica | Com isenção | Sem isenção |
 |---|---|---|---|
-| Telecom | Previsora, AUC-PR | 0,40 ± 0,02 | 0,31 ± 0,02 (empate com os baselines) |
-| Telecom | Classificadora, AUC-PR | 0,48 ± 0,02 | 0,49 ± 0,02 (continua superior 5/5) |
-| Telecom | Localização (soma), HR@1 | 0,44 ± 0,03 | **0,22 ± 0,02** (empate com as heurísticas) |
-| Bank | Previsora / classificadora, AUC-PR | 0,20 / 0,22 | 0,20 / 0,21 |
-| Bank | Localização (soma), HR@1 | 0,33 | 0,32 |
+| Telecom | Previsora, AUC-PR | 0,52 ± 0,02 | 0,43 ± 0,02 (empate com o z-score local 5/5) |
+| Telecom | Classificadora, AUC-PR | 0,48 ± 0,02 | 0,49 ± 0,02 (empate com o z-score local em 4/5) |
+| Telecom | Localização (soma), HR@1 | 0,42 ± 0,04 | **0,20 ± 0,02** (empate com as heurísticas em HR@1 na maioria das seeds; MRR ainda superior à referência de frequência) |
+| Bank | Previsora / classificadora, AUC-PR | 0,35 / 0,22 | 0,34 / 0,21 |
+| Bank | Localização (soma), HR@1 | 0,33 | 0,33 |
 
-**No Telecom, a isenção muda conclusões da LSTM** (ameaça nº 1). A vantagem da classificadora na detecção se mantém sem ela. Já a vantagem da previsora e a da localização dependem dos KPIs de disponibilidade (`On_Off_State`, `ICMP_ping`), que a isenção mantém: sem eles, o HR@1 cai pela metade e vira empate. No Bank, a isenção não faz diferença.
+**No Telecom, a isenção muda conclusões da LSTM** (ameaça nº 1): sem os KPIs de disponibilidade, a vantagem da previsora na detecção e a da localização desaparecem. No Bank, a isenção não faz diferença.
 
 ### Leitura
 
-- **Telecom:** a LSTM é claramente melhor que os baselines. A classificadora supervisionada é o melhor detector, com AUC-PR 0,48 e metade dos alarmes falsos do melhor baseline. A localização nativa triplica o HR@1, mas esse ganho depende da isenção.
-- **Bank:** a LSTM empata com o melhor baseline na detecção e na localização (HR@1), e só ganha em profundidade (HR@5 0,79 contra 0,68). A deriva entre dias e a maior heterogeneidade limitam o ganho. Note que a normalização local venceu com folga na busca do Bank (0,28 contra 0,19 na validação).
+- **Telecom:** a previsora LSTM é o único detector que supera o melhor baseline (z-score local), e só em 4 das 5 seeds, por +0,13. A classificadora empata com ele. A localização nativa da LSTM triplica o HR@1 das heurísticas, mas esse ganho depende da isenção.
+- **Bank:** as LSTMs **não** superam o z-score local na detecção: a previsora empata e a classificadora perde. Na localização, a LSTM empata com o z-score global em HR@1 e ganha em profundidade (HR@5 0,80 contra 0,68).
+- **Previsora × classificadora:** com a pontuação alinhada ao rótulo, a previsora, treinada só com janelas normais, passa a ser o melhor detector LSTM nos dois sistemas pela AUC-PR agrupada. A classificadora continua à frente pela média por dobra e pelos alarmes falsos no Telecom.
 - **Variância entre seeds:** pequena (dp ≤ 0,04).
-- **Custo:**
-  - previsora com cerca de 1 milhão de parâmetros, 2,4 s (Telecom) a 8,4 s (Bank) de treino por dobra e seed, 0,26 ms de inferência por janela;
-  - execução completa (busca + 5 seeds): 9,5 min no Telecom e 24 min no Bank, em CPU.
+- **Custo** (CPU, Apple M4 Pro):
+  - previsora com 0,9 a 1 milhão de parâmetros: 2,4 s (Telecom) a 5,6 s (Bank) de treino por dobra e seed; 0,23 a 0,27 ms de inferência por janela;
+  - execução completa (busca + 5 seeds): cerca de 10 min no Telecom e 22 min no Bank.
 
-## E6 — Explicabilidade (ADR 0016)
+## E6 — Explicabilidade (ADR 0016 e 0019)
 
-SHAP (GradientExplainer), LIME por série `componente::kpi` e IG (captum) sobre as LSTMs da E5, seed 0. A medição usa janelas-oráculo, que terminam 5 min após o início de cada falha testada. Os pacotes de evidência usam a janela de maior pontuação do detector dentro da consulta. IC de 95% por bootstrap sobre falhas; "superior", "inferior" e "empate" vêm da diferença pareada. Tabelas completas: `reports/tables/xai_<sistema>_<nome>.md`.
+SHAP (GradientExplainer), LIME por série `componente::kpi` e IG (captum) sobre as LSTMs da E5, seed 0.
+- **Medição:** usa janelas-oráculo, que terminam 5 min após o início de cada falha testada, ou são a primeira janela completa do dia quando a falha começa no início do dia (ADR 0019).
+- **Pacotes de evidência:** usam a janela de maior pontuação do detector dentro da consulta.
+- **IC e vereditos:** IC de 95% por bootstrap sobre falhas; "superior", "inferior" e "empate" vêm da diferença pareada.
+- **O que mudou com o ADR 0019:** a função explicada da previsora passou a ler só os últimos 6 minutos. Isso concentrou as atribuições no trecho da falha.
+
+Tabelas completas: `reports/tables/xai_<sistema>_<nome>.md`.
 
 ### Localização via XAI (RQ2), agregação por soma
 
 | Sistema | Explicação | HR@1 | HR@3 | MRR | Vs. nativo da E5 (HR@1 / MRR) | Vs. z global (HR@1) | Vs. z local (HR@1) |
 |---|---|---|---|---|---|---|---|
-| Telecom | previsora / SHAP | 0,33 | 0,62 | 0,49 | inferior / inferior | superior | superior |
-| Telecom | previsora / LIME | 0,38 | 0,60 | 0,51 | empate / inferior | superior | superior |
-| Telecom | classificadora / SHAP | 0,31 | 0,53 | 0,46 | empate / inferior | empate | superior |
-| Telecom | classificadora / LIME | 0,16 | 0,36 | 0,31 | inferior / inferior | empate | empate |
-| Bank | previsora / SHAP | 0,36 | 0,50 | 0,50 | empate / empate | empate | superior |
-| Bank | previsora / LIME | 0,30 | 0,52 | 0,46 | empate / inferior | empate | superior |
-| Bank | **classificadora / SHAP** | **0,44** | **0,73** | **0,61** | empate / **superior** | **superior** | superior |
+| Telecom | **previsora / SHAP** | **0,42** | **0,78** | **0,61** | empate / empate | superior | superior |
+| Telecom | **previsora / LIME** | **0,44** | 0,76 | 0,60 | empate / empate | superior | superior |
+| Telecom | classificadora / SHAP | 0,27 | 0,51 | 0,42 | empate / inferior | empate | superior |
+| Telecom | classificadora / LIME | 0,13 | 0,33 | 0,29 | inferior / inferior | empate | empate |
+| Bank | **previsora / SHAP** | **0,48** | 0,66 | **0,61** | **superior / superior** | **superior** | superior |
+| Bank | **previsora / LIME** | **0,45** | 0,64 | 0,59 | **superior / superior** | **superior** | superior |
+| Bank | classificadora / SHAP | 0,44 | 0,73 | 0,61 | empate / superior | superior | superior |
 | Bank | classificadora / LIME | 0,22 | 0,52 | 0,42 | inferior / inferior | empate | superior |
 
-Valores de referência (seed 0):
-- **Nativo da E5:** HR@1 0,44 no Telecom e cerca de 0,34 no Bank.
-- **Z global:** HR@1 0,13 no Telecom e 0,32 no Bank.
+Valores de referência (seed 0): nativo da E5, HR@1 0,42 no Telecom e 0,34 no Bank; z global, 0,13 e 0,32.
 
-Com a média dos 3 maiores, o LIME da classificadora no Bank sobe para HR@1 0,45; nos demais casos, os números ficam próximos dos da soma.
+Antes do ADR 0019, a previsora tinha HR@1 0,33 (SHAP) e 0,38 (LIME) no Telecom, e 0,36 e 0,30 no Bank. A mudança veio da função explicada: ao ler só o fim da janela, ela deixa de atribuir peso a desvios anteriores à falha.
 
 **Sem a isenção de disponibilidade:**
-- **Telecom:** o SHAP da previsora cai para HR@1 0,16, e 22 das 24 comparações pareadas viram empate. As exceções: classificadora · SHAP continua superior ao z local em HR@1, e classificadora · LIME continua inferior ao nativo em MRR. O ganho da XAI sobre as heurísticas, como o do ranqueamento nativo, depende dos KPIs de disponibilidade (ameaça nº 1).
-- **Bank:** nada muda. O SHAP da classificadora tem HR@1 0,43 e é superior ao nativo também em HR@1.
+- **Telecom:** a previsora cai para HR@1 0,24 (SHAP) e 0,22 (LIME). Ela ainda é superior ao z local em HR@1 com SHAP, e superior em MRR ao z global (SHAP) e ao z local (SHAP e LIME). Ganho menor, mas não desaparece (ameaça nº 1).
+- **Bank:** nada muda. A previsora com SHAP tem HR@1 0,50 e continua superior a todas as referências.
 
 ### Qualidade das explicações (médias por janela; previsora / classificadora)
 
 | Medida | Telecom | Bank |
 |---|---|---|
-| Deleção SHAP (menor = mais fiel) | 0,59 / 0,75 | 0,65 / 0,70 |
-| Deleção LIME | 0,58 / 0,75 | 0,65 / 0,70 |
-| Deleção em ordem aleatória | 1,00 / 1,00 | 0,99 / 1,00 |
-| Inserção SHAP (maior = mais fiel) | 0,70 / 0,79 | 0,67 / — |
-| Inserção LIME | 0,68 / 0,84 | 0,66 / — |
-| Inserção em ordem aleatória | 0,05 / 0,32 | 0,06 / — |
-| SHAP × LIME, Jaccard top-10 | 0,66 / 0,46 | 0,71 / 0,48 |
-| SHAP × LIME, Kendall top-10 | 0,61 / 0,17 | 0,65 / 0,25 |
-| SHAP × LIME, mesmo componente no topo | 0,91 / 0,62 | 0,79 / 0,55 |
-| IG × SHAP, Jaccard top-10 | 0,90 / 0,67 | 0,86 / 0,50 |
-| Janelas vizinhas (±1 min), Jaccard | 0,89 / 0,44 | 0,86 / 0,54 |
-| Entre seeds, Jaccard top-10 | **0,81 / 0,20** | **0,82 / 0,26** |
-| Entre seeds, Kendall top-10 | 0,72 / −0,27 | 0,72 / −0,14 |
+| Deleção SHAP (menor = mais fiel) | 0,54 / 0,76 | 0,62 / 0,70 |
+| Deleção LIME | 0,53 / 0,76 | 0,62 / 0,71 |
+| Deleção em ordem aleatória | 0,99 / 1,00 | 0,99 / 1,00 |
+| Inserção SHAP (maior = mais fiel) | 0,69 / 0,81 | 0,66 / — |
+| Inserção LIME | 0,67 / 0,87 | 0,65 / — |
+| Inserção em ordem aleatória | 0,04 / 0,33 | 0,06 / — |
+| SHAP × LIME, Jaccard top-10 | 0,73 / 0,45 | 0,76 / 0,48 |
+| SHAP × LIME, Kendall top-10 | 0,74 / 0,17 | 0,71 / 0,25 |
+| SHAP × LIME, mesmo componente no topo | 0,98 / 0,58 | 0,79 / 0,56 |
+| IG × SHAP, Jaccard top-10 | 0,90 / 0,64 | 0,83 / 0,51 |
+| Janelas vizinhas (±1 min), Jaccard | 0,75 / 0,45 | 0,70 / 0,54 |
+| Entre seeds, Jaccard top-10 | **0,85 / 0,20** | **0,86 / 0,26** |
+| Entre seeds, Kendall top-10 | 0,79 / −0,26 | 0,80 / −0,14 |
 
-- **Fidelidade:** SHAP e LIME apontam atributos que realmente movem a saída. Retirando-os aos poucos (k = 1 a 50), a pontuação fica em média em 58% a 75% da original; retirando o mesmo número em ordem aleatória, ela praticamente não muda (99% a 100%).
-- **Inserção da classificadora no Bank (sem valor na tabela):** a métrica não serve aqui. A classificadora dá à janela de referência "normal" uma probabilidade de 0,43, maior que a de metade das janelas de falha (mediana 0,36). Por isso a curva de inserção, relativa à janela completa, passa de 1 (3,5 a 4,5, e 1,4 em ordem aleatória). No Telecom, a referência tem 0,12 e as janelas de falha têm mediana 0,56, e a métrica funciona. A deleção não tem esse problema.
-- **Estabilidade e concordância:** a previsora tem explicações estáveis entre seeds e entre minutos vizinhos, e SHAP, LIME e IG concordam. A classificadora não: modelos de desempenho igual apontam KPIs diferentes (efeito Rashomon, ameaça nº 12), e SHAP e LIME divergem.
-- **Divergência SHAP × LIME:** é pequena na previsora e grande na classificadora. As causas prováveis:
-  - os dois métodos medem coisas diferentes: o SHAP integra gradientes contra uma distribuição de fundo, enquanto o LIME troca séries inteiras pela referência normal e ajusta um modelo linear;
-  - a probabilidade da classificadora satura e interage entre atributos, o que piora a aproximação linear do LIME;
-  - a referência normal não é neutra para a classificadora no Bank (item anterior).
-
-  O IG, que usa a mesma referência do LIME mas é baseado em gradiente, concorda mais com o SHAP do que o LIME.
+- **Fidelidade:** SHAP e LIME apontam atributos que realmente movem a saída. Retirando-os aos poucos (k = 1 a 50), a pontuação fica em média em 53% a 76% da original; em ordem aleatória, praticamente não muda (99% a 100%).
+- **Inserção da classificadora no Bank (sem valor na tabela):** a métrica não serve aqui. A classificadora dá à janela de referência "normal" uma probabilidade maior que a de metade das janelas de falha, e a curva de inserção, relativa à janela completa, passa de 1. A deleção não tem esse problema.
+- **Estabilidade e concordância:** as explicações da previsora ficaram ainda mais estáveis entre seeds (Jaccard de 0,81–0,82 para 0,85–0,86) e mais concordantes entre SHAP e LIME. A estabilidade entre minutos vizinhos caiu um pouco (0,86–0,89 para 0,70–0,75): ao ler só os últimos minutos, a explicação acompanha mais o que muda de um minuto para o outro. A classificadora segue instável entre seeds (efeito Rashomon, ameaça nº 12), e nela SHAP e LIME divergem.
+- **Divergência SHAP × LIME:** pequena na previsora e grande na classificadora. As causas prováveis:
+  - os dois métodos medem coisas diferentes (gradientes contra um fundo, no SHAP; troca de séries inteiras pela referência e ajuste linear, no LIME);
+  - a probabilidade da classificadora satura e interage entre atributos;
+  - a referência normal não é neutra para a classificadora no Bank.
 
 ### Categoria de motivo sugerida
 
 | Sistema | Previsora SHAP | Previsora LIME | Classificadora SHAP | Classificadora LIME | Prior de treino | Uniforme |
 |---|---|---|---|---|---|---|
-| Telecom | 0,11 | 0,04 | 0,44 | 0,22 | 0,33 | 0,17 |
-| Bank | 0,43 | 0,20 | 0,33 | 0,19 | 0,38 | 0,16 |
+| Telecom | 0,09 | 0,07 | 0,44 | 0,22 | 0,33 | 0,17 |
+| Bank | **0,54** | 0,26 | 0,33 | 0,19 | 0,38 | 0,16 |
 
 Comparação pareada com o prior de treino (diferença no acerto, mesmas falhas):
 
 | Sistema | Previsora SHAP | Previsora LIME | Classificadora SHAP | Classificadora LIME |
 |---|---|---|---|---|
-| Telecom | −0,22, inferior | −0,29, inferior | +0,11, empate | −0,11, empate |
-| Bank | +0,06, empate | −0,18, inferior | −0,05, empate | −0,18, inferior |
+| Telecom | −0,24, inferior | −0,27, inferior | +0,11, empate | −0,11, empate |
+| Bank | **+0,17, superior** | −0,12, empate | −0,05, empate | −0,18, inferior |
 
-Sem a isenção, os vereditos se repetem, com uma exceção: no Telecom, o SHAP da previsora passa de inferior a empate (−0,18).
+- **Bank:** com a pontuação nos últimos minutos, a categoria sugerida pelo SHAP da previsora passa a superar o prior de treino. É o primeiro caso em que isso acontece.
+- **Telecom:** a mesma sugestão continua inferior ao prior.
 
-A soma por categoria favorece categorias com muitos KPIs: a previsora sugere "disco" em 14 das 45 falhas do Telecom e em 51 das 120 do Bank. **A categoria sugerida não deve ser tratada como motivo** (ameaça nº 13). Ela fica no pacote apenas como peso por categoria, e o agente deve raciocinar sobre os KPIs.
+A soma por categoria favorece categorias com muitos KPIs (ameaça nº 13). Como o resultado não se repete no Telecom, a categoria sugerida continua fora do que o agente vê (ADR 0017). O agente deve raciocinar sobre os KPIs.
 
 ### Pacotes de evidência
 
-São 45 pacotes no Telecom e 120 no Bank, um por consulta testada.
-- **Montagem:** a classificadora escolhe a janela e dá pontuação e alarme; a previsora fornece as atribuições citáveis (`C#`, `K#`) e o ranqueamento nativo (`N#`). O alarme dispara em 76% das consultas no Telecom e em 67% no Bank.
+São 45 pacotes no Telecom e 120 no Bank, um por consulta testada, regerados com o ADR 0019.
+- **Montagem:** a classificadora escolhe a janela e dá pontuação e alarme; a previsora fornece as atribuições citáveis (`C#`, `K#`) e o ranqueamento nativo (`N#`). O alarme dispara em 76% das consultas no Telecom (34/45) e em 67% no Bank (80/120), como antes: a classificadora não mudou.
 - **Ausência de rótulos:**
   - nenhum pacote tem campo de causa, motivo ou rótulo: o esquema rejeita campos extras, e há teste de importação;
   - a janela é escolhida pelo detector, nunca pelo início rotulado.
-- **Rastreabilidade (conferida em um exemplo):** na consulta de 2020-05-22 00:00–00:30, o KPI `db_004::Call_Per_Sec` aparece com valor bruto 264,8 às 00:29 (UTC+8), contra mediana normal de 14,2. Na telemetria convertida, o registro é exatamente esse: 264,8 em 2020-05-21 16:29:37 UTC.
+- **Rastreabilidade (conferida em um exemplo):** na consulta de 2020-05-22 00:00–00:30, o KPI `db_004::Call_Per_Sec` tem valor bruto 264,8 às 00:29 (UTC+8), contra mediana normal de 14,2. Na telemetria convertida, o registro é exatamente esse: 264,8 em 2020-05-21 16:29:37 UTC.
 
 ### Leitura
 
-- **RQ2:** a XAI localiza melhor que as heurísticas de z-score nos dois sistemas.
-  - No Telecom, perde para o ranqueamento nativo da previsora, que lê direto o erro de cada KPI.
-  - No Bank, o SHAP da classificadora é a melhor localização medida até agora.
-  - Sem a isenção, a vantagem no Telecom desaparece.
-- **Qualidade:** as explicações são fiéis nos dois modelos, mas só as da previsora são estáveis e consistentes entre métodos. Por isso os pacotes usam a previsora para as atribuições (ADR 0016, ameaça nº 11).
-- **Atribuição não é causalidade:** os pacotes dizem a que o modelo reagiu, não o que causou a falha (ameaça nº 14). A descoberta causal (Ikram et al., 2022) fica como abordagem complementar.
-- **Custo:** cerca de 75 s no Telecom e 200 s no Bank por execução, em CPU, com atribuições idênticas às do MPS.
+- **RQ2:** a XAI da previsora LSTM é agora a melhor localização medida nos dois sistemas.
+  - **Telecom:** empata com o ranqueamento nativo e supera as heurísticas.
+  - **Bank:** supera o ranqueamento nativo, o z global e o z local, em HR@1 e MRR.
+  - **Sem a isenção:** a vantagem diminui no Telecom e não muda no Bank.
+- **Qualidade:** as explicações da previsora são fiéis, estáveis entre seeds e consistentes entre métodos. A escolha dela para os pacotes do agente (ADR 0016, ameaça nº 11) sai reforçada: além de mais estável, agora ela também localiza melhor que a classificadora no Bank.
+- **Atribuição não é causalidade:** os pacotes dizem a que o modelo reagiu, não o que causou a falha (ameaça nº 14).
+- **Custo:** cerca de 75 s no Telecom e 175 s no Bank por execução, em CPU.
 
-## Complemento da E5/E6 — modelos alternativos explicáveis (ADR 0018)
+## Complemento da E5/E6 — modelos alternativos explicáveis (ADR 0018 e 0019)
 
 **Pergunta:** o resultado vem da LSTM, ou outros modelos explicáveis por SHAP/LIME fariam o mesmo?
 
@@ -254,86 +278,73 @@ Todos usam também o LIME da E6.
 - mesmas janelas, dobras e janelas-oráculo;
 - 8 configurações por modelo, escolhidas só na validação, com a normalização inclusa;
 - 5 seeds (a logística é determinística e roda com 1);
-- comparações pareadas com as LSTMs da E5/E6 e as heurísticas da E4.
+- comparações pareadas com as LSTMs da E5/E6 e, desde o ADR 0019, com **todos** os baselines da E4 na detecção e na localização.
+
+A pontuação dos modelos alternativos não mudou com o ADR 0019, porque já leem a janela inteira como entrada de um modelo supervisionado. Os números mudam só onde as referências mudaram e nas janelas-oráculo corrigidas.
 
 **Fontes:**
 - tabelas: `reports/tables/alt_models_<sistema>_alt_{tabular,tcn}[_sem_isencao].md`;
 - análise e gráficos: `notebooks/analise_modelos_alternativos.ipynb`.
 
-### Detecção (RQ1): AUC-PR, média entre seeds; veredito pareado contra as LSTMs (seeds superior/empate/inferior)
+### Detecção (RQ1): AUC-PR, média entre seeds; veredito pareado (seeds superior/empate/inferior)
 
-| Sistema | Modelo | AUC-PR | AUC-ROC | Alarmes falsos/h | Vs. LSTM previsora | Vs. LSTM classificadora |
-|---|---|---|---|---|---|---|
-| Telecom | LSTM previsora (E5) | 0,40 | 0,74 | 18,0 | — | — |
-| Telecom | LSTM classificadora (E5) | 0,48 | 0,83 | 9,2 | — | — |
-| Telecom | LightGBM | 0,20 | 0,56 | 20,9 | 0/1/4 | 0/0/5 |
-| Telecom | Isolation Forest | 0,17 | 0,60 | 31,0 | 0/0/5 | 0/0/5 |
-| Telecom | **Logística L1** | **0,51** | 0,78 | 8,9 | empate (+0,11) | **empate (+0,05)** |
-| Telecom | TCN | 0,34 | 0,72 | 16,0 | 0/5/0 | 0/4/1 |
-| Bank | LSTM previsora (E5) | 0,20 | 0,70 | 10,5 | — | — |
-| Bank | LSTM classificadora (E5) | 0,22 | 0,66 | 14,3 | — | — |
-| Bank | LightGBM | 0,18 | 0,50 | 22,9 | 0/5/0 | 0/4/1 |
-| Bank | Isolation Forest | 0,14 | 0,60 | 26,0 | 0/0/5 | 0/0/5 |
-| Bank | Logística L1 | 0,10 | 0,50 | 18,7 | inferior | inferior |
-| Bank | TCN | 0,16 | 0,52 | 18,7 | 0/5/0 | 0/4/1 |
+| Sistema | Modelo | AUC-PR | AUC-PR por dobra | Alarmes falsos/h | Vs. LSTM previsora | Vs. LSTM classificadora | Vs. z-score local | Vs. só horário |
+|---|---|---|---|---|---|---|---|---|
+| Telecom | LightGBM | 0,20 | 0,55 | 20,9 | 0/0/5 | 0/0/5 | 0/0/5 | 0/5/0 |
+| Telecom | Isolation Forest | 0,17 | 0,35 | 31,0 | 0/0/5 | 0/0/5 | 0/0/5 | 0/5/0 |
+| Telecom | **Logística L1** | **0,51** | **0,64** | 8,9 | empate | empate | empate | superior |
+| Telecom | TCN | 0,34 | 0,53 | 16,0 | 0/5/0 | 0/4/1 | 0/5/0 | 5/0/0 |
+| Bank | LightGBM | 0,18 | 0,22 | 22,9 | 0/0/5 | 0/4/1 | 0/0/5 | 2/3/0 |
+| Bank | Isolation Forest | 0,14 | 0,22 | 26,0 | 0/0/5 | 0/0/5 | 0/0/5 | 0/5/0 |
+| Bank | Logística L1 | 0,10 | 0,19 | 18,7 | inferior | inferior | inferior | empate |
+| Bank | TCN | 0,16 | 0,20 | 18,7 | 0/0/5 | 0/4/1 | 0/0/5 | 0/5/0 |
 
-A AUC-PR ao acaso é 0,14 no Telecom e 0,105 no Bank.
-
-- **Telecom:** a regressão logística L1 empata com as duas LSTMs. Com 191 coeficientes não nulos, em média, de cerca de 8 mil estatísticas, chega a AUC-PR de 0,51, com tantos alarmes falsos quanto a classificadora.
-- **Bank:** a logística cai ao acaso. A busca escolheu C = 0,1 no Bank e C = 10 no Telecom.
-- **Árvores:** LightGBM e Isolation Forest perdem para as LSTMs no Telecom. No Bank, o LightGBM empata.
-- **TCN:** empata com a previsora nos dois sistemas e, na maioria das seeds, com a classificadora.
-- **Conclusão:** a vantagem de detecção **não é exclusiva da LSTM**, mas a LSTM é a única família que não perde em nenhum dos dois sistemas.
+- **Telecom:** a regressão logística L1 empata com as duas LSTMs e com o z-score local. A TCN empata com a previsora e com o z-score local. LightGBM e Isolation Forest perdem para as duas LSTMs e para o z-score local, e não superam a referência só de horário.
+- **Bank:** nenhum alternativo é competitivo. Todos perdem para a previsora LSTM e para o z-score local, e só o LightGBM supera a referência só de horário, em 2 das 5 seeds. A logística fica no acaso (a busca escolheu C = 0,1 no Bank e C = 10 no Telecom).
 
 ### Localização via XAI (RQ2): HR@1 (soma por componente, janelas-oráculo, seed 0)
 
 | Modelo | Telecom SHAP / LIME | Bank SHAP / LIME |
 |---|---|---|
-| LSTM previsora (E6) | 0,33 / 0,38 | 0,36 / 0,30 |
-| LSTM classificadora (E6) | 0,31 / 0,16 | **0,44** / 0,22 |
-| LightGBM | 0,07 / 0,02 | 0,12 / 0,02 |
-| Isolation Forest | 0,09 / 0,09 | 0,12 / 0,03 |
-| Logística L1 | 0,13 / 0,09 | 0,15 / 0,08 |
+| LSTM previsora (E6) | **0,42 / 0,44** | **0,48 / 0,45** |
+| LSTM classificadora (E6) | 0,27 / 0,13 | 0,44 / 0,22 |
+| LightGBM | 0,04 / 0,00 | 0,12 / 0,02 |
+| Isolation Forest | 0,11 / 0,09 | 0,12 / 0,03 |
+| Logística L1 | 0,13 / 0,07 | 0,15 / 0,08 |
 | TCN | 0,27 / 0,22 | 0,25 / 0,18 |
-
-Referências, nas mesmas falhas:
 
 | Referência | Telecom | Bank |
 |---|---|---|
-| Nativo LSTM (E5) | 0,44 | 0,34 |
+| Nativo LSTM (E5) | 0,42 | 0,34 |
 | z global (E4) | 0,13 | 0,32 |
-| z local (E4) | 0,11 | 0,11 |
+| z local (E4) | 0,09 | 0,11 |
+| Frequência no treino (E4) | 0,09 | 0,11 |
 
-**Modelos tabulares:** são **inferiores** em HR@1 à XAI da LSTM previsora e ao ranqueamento nativo em todas as 24 comparações. Os demais vereditos:
-- contra a XAI da classificadora LSTM, são inferiores em 10 de 12; os 2 empates são contra o LIME da classificadora no Telecom (0,16);
-- empatam com os z-scores no Telecom;
-- no Bank, são inferiores até ao z global.
-
-As estatísticas da janela diluem o desvio de cada KPI, e esses modelos separam as classes com poucos atributos, sem relação com o componente da falha. Um bom detector não precisa olhar para o componente certo, como mostra a logística no Telecom.
-
-**TCN:** fica perto da LSTM. No Telecom empata com a XAI das duas LSTMs, perde para o nativo e é superior ao z local. No Bank, com SHAP, perde para o SHAP da classificadora LSTM (0,44), empata com a previsora e com o nativo, e é superior ao z local.
-
-**Conclusão:** para localizar com XAI, os modelos sequenciais (LSTM e TCN), que explicam a janela minuto × KPI, são claramente melhores que os tabulares. A LSTM continua com a melhor localização medida.
+- **Modelos tabulares:** são **inferiores** em HR@1 à XAI da LSTM previsora e ao ranqueamento nativo em todas as comparações, nos dois sistemas. No Telecom empatam com as heurísticas da E4, exceto o LIME do LightGBM, que perde até para elas. No Bank perdem até para o z global e empatam com a referência de frequência, que não lê telemetria, ou perdem para ela (LIME do LightGBM e do Isolation Forest). As estatísticas da janela diluem o desvio de cada KPI, e um bom detector não precisa olhar para o componente da falha, como mostra a logística no Telecom.
+- **TCN:**
+  - **Telecom:** com SHAP, empata com a XAI da previsora LSTM e com o nativo; com LIME, perde para os dois. É superior ao z local e à referência de frequência com SHAP.
+  - **Bank:** perde para a XAI das duas LSTMs com SHAP e é superior ao z local.
 
 ### Qualidade das explicações (médias por janela; Telecom / Bank)
 
 | Medida | LSTM previsora | LSTM classificadora | LightGBM | Isolation Forest | Logística L1 | TCN |
 |---|---|---|---|---|---|---|
-| Deleção SHAP (menor = mais fiel; aleatório ≈ 1,0) | 0,59 / 0,65 | 0,75 / 0,70 | 0,28 / 0,37 | 0,97 / 0,97 | 0,33 / 0,20 | 0,60 / 0,54 |
-| Entre seeds, Jaccard top-10 | 0,81 / 0,82 | 0,20 / 0,26 | 0,62 / 0,59 | 0,03 / 0,03 | — | 0,33 / 0,26 |
-| SHAP × LIME, Jaccard top-10 | 0,66 / 0,71 | 0,45 / 0,48 | 0,25 / 0,21 | 0,37 / 0,38 | 0,53 / 0,56 | 0,66 / 0,54 |
-| Janelas vizinhas, Jaccard | 0,89 / 0,86 | 0,44 / 0,54 | 0,76 / 0,86 | 0,66 / 0,74 | 0,80 / 0,88 | 0,79 / 0,78 |
+| Deleção SHAP (menor = mais fiel; aleatório ≈ 1,0) | 0,54 / 0,62 | 0,76 / 0,70 | 0,28 / 0,37 | 0,97 / 0,97 | 0,32 / 0,20 | 0,59 / 0,54 |
+| Entre seeds, Jaccard top-10 | **0,85 / 0,86** | 0,20 / 0,26 | 0,62 / 0,59 | 0,03 / 0,03 | — | 0,33 / 0,26 |
+| SHAP × LIME, Jaccard top-10 | 0,73 / 0,76 | 0,45 / 0,48 | 0,25 / 0,20 | 0,37 / 0,38 | 0,52 / 0,56 | 0,66 / 0,54 |
+| Janelas vizinhas, Jaccard | 0,75 / 0,70 | 0,45 / 0,54 | 0,77 / 0,86 | 0,67 / 0,73 | 0,81 / 0,88 | 0,80 / 0,78 |
 
 - **Fidelidade:** as explicações de LightGBM e logística são as mais fiéis. Esses modelos dependem de poucos atributos, e o SHAP exato os encontra. Mas fidelidade alta não trouxe boa localização.
 - **Isolation Forest:** as explicações quase não são fiéis (deleção 0,97) e são instáveis entre seeds (Jaccard 0,03).
-- **Estabilidade:** a previsora LSTM continua com as explicações mais estáveis entre seeds, o que reforça a escolha dela para os pacotes do agente (ADR 0016).
-- **Inserção:** é relativa à pontuação da janela completa. Quando essa pontuação é quase 0, a razão explode (médias de 10⁵ no Bank para a logística e a TCN). As medianas estão no notebook.
+- **Estabilidade:** a previsora LSTM tem as explicações mais estáveis entre seeds.
 
 ### Sensibilidade à isenção de disponibilidade
 
-Os números dos modelos alternativos quase não mudam sem a isenção.
-- **Telecom:** 13 vereditos passam de "inferior" a "empate". Quem muda é a referência: sem os KPIs de disponibilidade, a LSTM perde a vantagem (E5/E6).
-- **Bank:** os modelos tabulares não mudam. A TCN, retreinada, varia dentro do esperado entre seeds: HR@1 com SHAP vai de 0,25 a 0,33.
+Os modelos alternativos quase não mudam sem a isenção:
+- **Telecom:** logística 0,50; TCN 0,37; LightGBM 0,21; Isolation Forest 0,17.
+- **Bank:** iguais aos da configuração principal até a segunda casa, exceto a TCN, retreinada, cujo HR@1 com SHAP vai de 0,25 a 0,33, dentro da variação entre seeds.
+
+Quem muda é a referência: sem os KPIs de disponibilidade, a LSTM perde a vantagem no Telecom (E5/E6).
 
 ### Reprodutibilidade e custo
 
@@ -343,13 +354,54 @@ Tempo em CPU (Apple M4 Pro), por execução completa, com busca:
 
 | Execução | Telecom | Bank |
 |---|---|---|
-| Tabular | 25 min | 44 min |
-| TCN | 26 min | 59 min |
+| Tabular | 24 min | 40 min |
+| TCN | 24 min | 52 min |
 
 O SHAP exato custa de 0,4 s a 4 s por janela explicada, incluindo vizinhas e seeds.
 
-### Leitura
+## Comparação de todos os candidatos (ADR 0018 e 0019)
 
-- **RQ1:** a LSTM não é o único detector competitivo. Um modelo linear esparso (Telecom) e o LightGBM ou a TCN (Bank) empatam com ela. O texto da tese deve dizer "a LSTM supera os baselines da E4", não "a LSTM é necessária".
-- **RQ2:** a localização via XAI favorece modelos sequenciais, e entre eles a LSTM. Os modelos tabulares, mesmo detectando bem, não apontam o componente.
-- **Agente (E7):** nada muda. Os pacotes de evidência continuam vindo da LSTM, como decidido antes deste teste (ameaça nº 19). Nenhum alternativo localiza melhor, o que reforça a escolha.
+Uma visão única, nas mesmas janelas e falhas de teste, dos modelos anteriores ao agente: baselines da E4, LSTMs da E5/E6 e alternativos do ADR 0018. Valores da configuração principal; os vereditos vêm das comparações pareadas acima.
+
+### Detecção (AUC-PR agrupada; entre parênteses, a média por dobra)
+
+| Candidato | Telecom | Bank | Leitura |
+|---|---|---|---|
+| **LSTM previsora** | **0,52 (0,56)** | **0,35 (0,38)** | Melhor ou empatada com a melhor nos dois sistemas; supera o z-score local só no Telecom (4/5 seeds) |
+| Logística L1 | 0,51 (0,64) | 0,10 (0,19) | Empata com as LSTMs no Telecom; acaso no Bank |
+| LSTM classificadora | 0,48 (0,60) | 0,22 (0,26) | Empata com o z-score local no Telecom; perde para ele no Bank |
+| z-score local (E4) | 0,39 (0,49) | 0,33 (0,35) | Melhor baseline; empata com a previsora no Bank |
+| TCN | 0,34 (0,53) | 0,16 (0,20) | Empata no Telecom; perde no Bank |
+| LightGBM (busca, ADR 0018) | 0,20 (0,55) | 0,18 (0,22) | Não supera a referência só de horário no Telecom |
+| Isolation Forest (busca, ADR 0018) | 0,17 (0,35) | 0,14 (0,22) | Idem |
+| Referência só de horário | 0,15 (0,28) | 0,12 (0,18) | Piso sem telemetria |
+
+### Localização (HR@1; janelas-oráculo)
+
+| Candidato | Telecom | Bank |
+|---|---|---|
+| **LSTM previsora + SHAP** | **0,42** | **0,48** |
+| **LSTM previsora + LIME** | **0,44** | 0,45 |
+| LSTM classificadora + SHAP | 0,27 | 0,44 |
+| Ranqueamento nativo da LSTM (seed 0) | 0,42 | 0,34 |
+| TCN + SHAP | 0,27 | 0,25 |
+| z-score global (E4) | 0,13 | 0,32 |
+| Logística / LightGBM / Isolation Forest + SHAP | 0,13 / 0,04 / 0,11 | 0,15 / 0,12 / 0,12 |
+| z-score local (E4) | 0,09 | 0,11 |
+| Frequência no treino (E4) | 0,09 | 0,11 |
+
+### Conclusão
+
+- **A LSTM previsora é a única família que fica entre as melhores nos dois sistemas e nas duas tarefas.**
+  - **Detecção:** tem a maior AUC-PR agrupada nos dois sistemas e nunca é inferior a outro candidato. Supera o melhor baseline só no Telecom; no Bank empata com o z-score local.
+  - **Localização via XAI:** é a melhor nos dois sistemas e supera, no Bank, até o ranqueamento nativo.
+- **A LSTM não é necessária para detectar:**
+  - no Telecom, a logística L1 e a classificadora empatam com ela;
+  - no Bank, o z-score local, sem aprendizado, empata.
+
+  A tese deve dizer "a LSTM previsora detecta tão bem quanto o melhor candidato em cada sistema e localiza melhor que todos", não "a LSTM supera os baselines na detecção".
+- **A localização via XAI favorece modelos sequenciais.** Os modelos tabulares, mesmo quando detectam bem, não apontam o componente da falha.
+- **Ressalvas:**
+  - no Telecom, as vantagens da LSTM dependem da isenção de disponibilidade (ameaça nº 1);
+  - a pontuação nos últimos minutos foi decidida depois de ver o teste (ameaça nº 21), embora fixada pela definição do rótulo e aplicada igualmente aos baselines;
+  - nada disso muda o agente: os pacotes de evidência continuam vindo da LSTM, como decidido antes destas comparações (ameaça nº 19).

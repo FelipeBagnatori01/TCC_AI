@@ -25,7 +25,7 @@ import polars as pl
 
 from tcc_rca.config import Config
 from tcc_rca.dataset.split import Fold
-from tcc_rca.evaluation.baselines import detection_metrics, evaluate_localization, row_of
+from tcc_rca.evaluation.baselines import detection_metrics, evaluate_localization
 from tcc_rca.evaluation.compare import as_row, paired_rank_difference, paired_window_difference
 from tcc_rca.evaluation.lstm import Experiment, FoldData, _masks, _summary, _val_auc_pr
 from tcc_rca.evaluation.metrics import pessimistic_rank
@@ -64,6 +64,10 @@ DETERMINISTIC = frozenset({"logistic"})  # liblinear: same fit for every seed ->
 EXPLAINERS = ("shap", "lime")
 AGGS = ("sum", "top3")
 LSTM_MODELS = ("lstm_forecast", "lstm_classifier")
+# E4 detectors every alternative is also paired against. ``zscore_val`` is left out: it has the
+# same window scores as ``zscore_3sigma`` (only the threshold differs), hence the same AUC-PR.
+E4_DETECTORS = ("zscore_3sigma", "zscore_local", "isolation_forest", "lightgbm", "prior_horario")
+E4_LOCALIZERS = ("prior", "zscore_global", "zscore_local")
 
 
 # ----------------------------------------------------------------------------------- grid
@@ -365,16 +369,7 @@ def explain_fold(
     reference = np.median(train_normal, axis=0).astype(np.float32)
     del train_normal
     columns = component_columns(view.fd.kept)
-    ends = np.array(
-        [
-            row_of(
-                exp.minute_to_row,
-                f.start_utc.timestamp() / 60.0 + exp.t.detection_tolerance_minutes,
-            )
-            for f in tested
-        ],
-        dtype=np.int64,
-    )
+    ends = np.array([exp.oracle_row(f) for f in tested], dtype=np.int64)
     oracle = view.tensors(ends)
     main = fitted_by_seed[c.explained_seed]
     shap_main = main.shap(oracle, background, seed)
@@ -523,6 +518,7 @@ def final_runs(
 # ---------------------------------------------------------------------------- evaluation
 DETECTION_KEYS = (
     "auc_pr",
+    "auc_pr_fold_mean",
     "auc_roc",
     "precision",
     "recall",
@@ -602,6 +598,23 @@ def _table(tables_dir: Path, kind: str, system: str, name: str) -> dict[str, Any
     return data
 
 
+def detection_rivals(
+    e5_scores: pl.DataFrame, e4_scores: pl.DataFrame, seed: int
+) -> dict[str, pl.DataFrame]:
+    """Reference test-window scores for one alternative seed: the two LSTMs of the SAME seed
+    (E5) and every E4 detector (deterministic, one run). Raises if a reference is missing."""
+    rivals = {
+        m: e5_scores.filter((pl.col("method") == m) & (pl.col("seed") == seed)) for m in LSTM_MODELS
+    }
+    rivals.update({m: e4_scores.filter(pl.col("method") == m) for m in E4_DETECTORS})
+    missing = [m for m, frame in rivals.items() if frame.is_empty()]
+    if missing:
+        raise ValueError(
+            f"no test scores for {missing} (seed {seed}): rerun the reference stages (ADR 0019)"
+        )
+    return rivals
+
+
 def paired(
     config: Config,
     models: Sequence[str],
@@ -618,6 +631,9 @@ def paired(
     base_t = _table(tables_dir, "baselines", system, a.baselines_name)
     e5_dir, e6_dir = runs / lstm_t["run_dir"] / "artifacts", runs / xai_t["run_dir"] / "artifacts"
     e5_scores = pl.read_parquet(e5_dir / "test_window_scores.parquet")
+    e4_scores = pl.read_parquet(
+        runs / base_t["run_dir"] / "artifacts" / "test_window_scores.parquet"
+    )
     e6_ranks = pl.read_csv(e6_dir / "xai_ranks.csv")
 
     def keyed(path: Path) -> pl.DataFrame:
@@ -628,15 +644,11 @@ def paired(
     e4_ranks = keyed(runs / base_t["run_dir"] / "artifacts" / "localization_ranks.csv")
     out: list[dict[str, Any]] = []
     for model in models:
-        for rival in LSTM_MODELS:
-            for s in _seeds(config, model):
+        for s in _seeds(config, model):
+            mine = scores.filter((pl.col("method") == model) & (pl.col("seed") == s))
+            for rival, frame in detection_rivals(e5_scores, e4_scores, s).items():
                 e = paired_window_difference(
-                    scores.filter((pl.col("method") == model) & (pl.col("seed") == s)),
-                    e5_scores.filter((pl.col("method") == rival) & (pl.col("seed") == s)),
-                    "auc_pr",
-                    b.bootstrap_block_minutes,
-                    b.bootstrap,
-                    seed + s,
+                    mine, frame, "auc_pr", b.bootstrap_block_minutes, b.bootstrap, seed + s
                 )
                 out.append(
                     {
@@ -668,8 +680,8 @@ def paired(
             rivals["lstm_nativo_soma"] = e5_ranks.filter(
                 (pl.col("method") == "lstm_sum") & (pl.col("seed") == explained)
             )
-            rivals["zscore_global"] = e4_ranks.filter(pl.col("method") == "zscore_global")
-            rivals["zscore_local"] = e4_ranks.filter(pl.col("method") == "zscore_local")
+            for method in E4_LOCALIZERS:
+                rivals[method] = e4_ranks.filter(pl.col("method") == method)
             for rival, frame in rivals.items():
                 joined = mine.join(
                     frame.select(*keys, pl.col("rank").alias("rb")), on=keys, how="inner"
@@ -796,8 +808,13 @@ def run_alt_models(config: Config, tables_dir: Path) -> dict[str, Any]:
         out.with_suffix(".json").write_text(
             json.dumps(table, indent=2, ensure_ascii=False, default=str) + "\n", encoding="utf-8"
         )
-        lstm_table = _table(tables_dir, "lstm", system, a.lstm_name)
-        write_markdown(out.with_suffix(".md"), table, lstm_table)
+        write_markdown(
+            out.with_suffix(".md"),
+            table,
+            _table(tables_dir, "lstm", system, a.lstm_name),
+            _table(tables_dir, "baselines", system, a.baselines_name),
+            _table(tables_dir, "xai", system, a.xai_name),
+        )
         return {"run_dir": str(run.dir), "table": str(out.with_suffix(".md"))}
 
 
@@ -810,26 +827,46 @@ def _f(e: dict[str, Any]) -> str:
     return f"{e['value']:.2f} [{e['ci_low']:.2f}, {e['ci_high']:.2f}]"
 
 
-def write_markdown(path: Path, t: dict[str, Any], lstm: dict[str, Any]) -> None:
+def write_markdown(
+    path: Path,
+    t: dict[str, Any],
+    lstm: dict[str, Any],
+    baselines: dict[str, Any],
+    xai: dict[str, Any],
+) -> None:
     lines = [
         f"# Modelos alternativos explicáveis — {t['system']} (família `{t['family']}`, ADR 0018)",
         "",
         f"Mesmas janelas, dobras ({t['folds']}) e protocolo da E5/E6. Seleção na validação: "
         + "; ".join(f"{m} {json.dumps(s, ensure_ascii=False)}" for m, s in t["selection"].items())
-        + ". Detecção: média ± desvio-padrão entre seeds (a logística é determinística: 1 seed).",
+        + ". Detecção: média ± desvio-padrão entre seeds (a logística é determinística: 1 seed); "
+        "as linhas `E4:` são execuções únicas, com IC de 95% por bootstrap. Todos os candidatos "
+        "(alternativos, LSTMs da E5 e baselines da E4) são avaliados nas mesmas janelas e falhas.",
         "",
         "## Detecção (por janela)",
         "",
-        "| Modelo | AUC-PR | AUC-ROC | Precisão | Revocação | F1 | Alarmes falsos/h |",
-        "|---|---|---|---|---|---|---|",
+        "| Modelo | AUC-PR | AUC-PR por dobra | AUC-ROC | Precisão | Revocação | F1 "
+        "| Alarmes falsos/h |",
+        "|---|---|---|---|---|---|---|---|",
     ]
-    for source in (t["detection"], lstm["detection"]):
+    for prefix, source in (("", t["detection"]), ("E5: ", lstm["detection"])):
         for model, d in source.items():
             s = d["summary"]
+            fold_mean = _ms(s["auc_pr_fold_mean"]) if "auc_pr_fold_mean" in s else "—"
             lines.append(
-                f"| {model} | {_ms(s['auc_pr'])} | {_ms(s['auc_roc'])} | {_ms(s['precision'])} "
+                f"| {prefix}{model} | {_ms(s['auc_pr'])} | {fold_mean} | {_ms(s['auc_roc'])} "
+                f"| {_ms(s['precision'])} "
                 f"| {_ms(s['recall'])} | {_ms(s['f1'])} | {_ms(s['false_alarms_per_hour'])} |"
             )
+    for model, d in baselines["detection"].items():
+        if model not in E4_DETECTORS:
+            continue
+        fold_mean = _f(d["auc_pr_fold_mean"]) if "auc_pr_fold_mean" in d else "—"
+        lines.append(
+            f"| E4: {model} | {_f(d['auc_pr'])} | {fold_mean} | {_f(d['auc_roc'])} "
+            f"| {_f(d['precision'])} | {_f(d['recall'])} | {_f(d['f1'])} "
+            f"| {_f(d['false_alarms_per_hour'])} |"
+        )
     lines += [
         "",
         "## Localização via XAI (janelas-oráculo, seed explicada)",
@@ -837,11 +874,27 @@ def write_markdown(path: Path, t: dict[str, Any], lstm: dict[str, Any]) -> None:
         "| Modelo / explicador / agregação | HR@1 | HR@3 | HR@5 | MRR |",
         "|---|---|---|---|---|",
     ]
-    for key, loc in t["localization"].items():
+    references = {
+        **{f"E6: {k}": v for k, v in xai["localization"].items() if k.endswith("/sum")},
+        **{
+            f"E4: {name}": baselines[key]
+            for name, key in (
+                ("prior", "localization_prior"),
+                ("zscore_global", "localization"),
+                ("zscore_local", "localization_local"),
+            )
+        },
+    }
+    for key, loc in {**t["localization"], **references}.items():
         lines.append(
             f"| {key} | {_f(loc['hr@1'])} | {_f(loc['hr@3'])} | {_f(loc['hr@5'])} "
             f"| {_f(loc['mrr'])} |"
         )
+    lines += [
+        "",
+        "O ranqueamento nativo da LSTM (E5, sem XAI) está nas comparações pareadas abaixo "
+        "(`lstm_nativo_soma`) e em `lstm_<sistema>_<nome>.md`.",
+    ]
     lines += [
         "",
         "## Comparações pareadas (diferença = alternativo menos referência)",

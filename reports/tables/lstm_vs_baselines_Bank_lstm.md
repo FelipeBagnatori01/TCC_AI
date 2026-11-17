@@ -4,25 +4,25 @@ Diferença = LSTM menos rival, nas mesmas janelas de teste (detecção) ou nas m
 
 | Tarefa | Métrica | LSTM | Rival | Diferença média | IC médio | Superior / empate / inferior |
 |---|---|---|---|---|---|---|
-| detecção | auc_pr | lstm_forecast | zscore_local | +0.014 | [-0.016, +0.069] | 0 / 5 / 0 |
-| detecção | auc_pr | lstm_forecast | lightgbm | +0.012 | [-0.063, +0.100] | 0 / 5 / 0 |
-| detecção | auc_pr | lstm_classifier | zscore_local | +0.032 | [-0.034, +0.108] | 0 / 5 / 0 |
+| detecção | auc_pr | lstm_forecast | zscore_local | +0.021 | [-0.024, +0.074] | 0 / 5 / 0 |
+| detecção | auc_pr | lstm_forecast | lightgbm | +0.157 | [+0.063, +0.256] | 5 / 0 / 0 |
+| detecção | auc_pr | lstm_classifier | zscore_local | -0.107 | [-0.190, -0.021] | 0 / 0 / 5 |
 | detecção | auc_pr | lstm_classifier | lightgbm | +0.030 | [-0.045, +0.105] | 0 / 5 / 0 |
-| localização | hr@1 | lstm_sum | zscore_global | +0.012 | [-0.095, +0.122] | 0 / 5 / 0 |
-| localização | hr@3 | lstm_sum | zscore_global | +0.117 | [+0.013, +0.223] | 5 / 0 / 0 |
-| localização | mrr | lstm_sum | zscore_global | +0.041 | [-0.038, +0.119] | 0 / 5 / 0 |
-| localização | hr@1 | lstm_sum | zscore_local | +0.220 | [+0.133, +0.310] | 5 / 0 / 0 |
-| localização | hr@3 | lstm_sum | zscore_local | +0.142 | [+0.052, +0.233] | 5 / 0 / 0 |
-| localização | mrr | lstm_sum | zscore_local | +0.174 | [+0.112, +0.237] | 5 / 0 / 0 |
-| localização | hr@1 | lstm_sum | prior | +0.220 | [+0.120, +0.322] | 5 / 0 / 0 |
-| localização | hr@3 | lstm_sum | prior | +0.333 | [+0.217, +0.447] | 5 / 0 / 0 |
-| localização | mrr | lstm_sum | prior | +0.253 | [+0.174, +0.334] | 5 / 0 / 0 |
-| localização | hr@1 | lstm_top3 | zscore_global | +0.008 | [-0.103, +0.118] | 0 / 5 / 0 |
-| localização | hr@3 | lstm_top3 | zscore_global | +0.093 | [-0.002, +0.188] | 2 / 3 / 0 |
-| localização | mrr | lstm_top3 | zscore_global | +0.023 | [-0.056, +0.102] | 0 / 5 / 0 |
-| localização | hr@1 | lstm_top3 | zscore_local | +0.217 | [+0.130, +0.305] | 5 / 0 / 0 |
-| localização | hr@3 | lstm_top3 | zscore_local | +0.118 | [+0.013, +0.223] | 5 / 0 / 0 |
-| localização | mrr | lstm_top3 | zscore_local | +0.156 | [+0.091, +0.223] | 5 / 0 / 0 |
-| localização | hr@1 | lstm_top3 | prior | +0.217 | [+0.120, +0.313] | 5 / 0 / 0 |
-| localização | hr@3 | lstm_top3 | prior | +0.310 | [+0.190, +0.428] | 5 / 0 / 0 |
-| localização | mrr | lstm_top3 | prior | +0.235 | [+0.156, +0.315] | 5 / 0 / 0 |
+| localização | hr@1 | lstm_sum | zscore_global | +0.015 | [-0.093, +0.127] | 0 / 5 / 0 |
+| localização | hr@3 | lstm_sum | zscore_global | +0.097 | [-0.012, +0.205] | 1 / 4 / 0 |
+| localização | mrr | lstm_sum | zscore_global | +0.041 | [-0.040, +0.121] | 0 / 5 / 0 |
+| localização | hr@1 | lstm_sum | zscore_local | +0.223 | [+0.137, +0.310] | 5 / 0 / 0 |
+| localização | hr@3 | lstm_sum | zscore_local | +0.113 | [+0.023, +0.205] | 5 / 0 / 0 |
+| localização | mrr | lstm_sum | zscore_local | +0.171 | [+0.111, +0.231] | 5 / 0 / 0 |
+| localização | hr@1 | lstm_sum | prior | +0.223 | [+0.123, +0.325] | 5 / 0 / 0 |
+| localização | hr@3 | lstm_sum | prior | +0.313 | [+0.193, +0.430] | 5 / 0 / 0 |
+| localização | mrr | lstm_sum | prior | +0.254 | [+0.172, +0.335] | 5 / 0 / 0 |
+| localização | hr@1 | lstm_top3 | zscore_global | +0.027 | [-0.080, +0.137] | 0 / 5 / 0 |
+| localização | hr@3 | lstm_top3 | zscore_global | +0.090 | [-0.008, +0.190] | 1 / 4 / 0 |
+| localização | mrr | lstm_top3 | zscore_global | +0.033 | [-0.046, +0.112] | 0 / 5 / 0 |
+| localização | hr@1 | lstm_top3 | zscore_local | +0.235 | [+0.150, +0.320] | 5 / 0 / 0 |
+| localização | hr@3 | lstm_top3 | zscore_local | +0.107 | [+0.005, +0.210] | 3 / 2 / 0 |
+| localização | mrr | lstm_top3 | zscore_local | +0.163 | [+0.098, +0.229] | 5 / 0 / 0 |
+| localização | hr@1 | lstm_top3 | prior | +0.235 | [+0.137, +0.335] | 5 / 0 / 0 |
+| localização | hr@3 | lstm_top3 | prior | +0.307 | [+0.185, +0.423] | 5 / 0 / 0 |
+| localização | mrr | lstm_top3 | prior | +0.246 | [+0.164, +0.328] | 5 / 0 / 0 |

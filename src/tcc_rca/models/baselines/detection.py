@@ -63,6 +63,30 @@ def lightgbm_scores(
     return out
 
 
+def time_of_day_prior_scores(
+    train_minute: npt.NDArray[np.int64],
+    train_labels: npt.NDArray[np.int_],
+    minute: npt.NDArray[np.int64],
+    halfwidth: int,
+) -> FloatArray:
+    """Reference detector without telemetry (ADR 0019): the share of positive windows among the
+    labelled TRAINING windows whose end minute of the day lies within ``halfwidth`` minutes
+    (circular) of each window's end minute. Measures how much a detector could gain from the
+    time of day alone; 0 where no training window is that close."""
+    if np.any((train_minute < 0) | (train_minute >= 1440)) or np.any(
+        (minute < 0) | (minute >= 1440)
+    ):
+        raise ValueError("minutes of the day must lie in [0, 1440)")
+    pos = np.bincount(train_minute, weights=train_labels.astype(np.float64), minlength=1440)
+    tot = np.bincount(train_minute, minlength=1440).astype(np.float64)
+    offsets = np.arange(-halfwidth, halfwidth + 1)
+    pos_k = sum(np.roll(pos, int(o)) for o in offsets)
+    tot_k = sum(np.roll(tot, int(o)) for o in offsets)
+    rate = np.divide(pos_k, tot_k, out=np.zeros(1440), where=tot_k > 0)
+    out: FloatArray = rate[minute]
+    return out
+
+
 def choose_threshold(
     val_labels: npt.NDArray[np.int_], val_scores: FloatArray, fallback_quantile: float
 ) -> tuple[float, str]:

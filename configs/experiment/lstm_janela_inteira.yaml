@@ -1,0 +1,8 @@
+# ADR 0019 control: E5 with the forecaster score reading the WHOLE window (the protocol before
+# ADR 0019), with its own validation search. Its detection numbers must equal the pre-ADR-0019
+# E5 tables; compare-e5 pairs it with baselines_janela_inteira.
+#   uv run tcc-rca lstm --config configs/base.yaml [configs/system/bank.yaml] configs/experiment/lstm_janela_inteira.yaml
+experiment:
+  name: lstm_janela_inteira
+tasks:
+  score_minutes: null

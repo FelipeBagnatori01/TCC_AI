@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import warnings
 from dataclasses import dataclass
+from typing import TypeVar
 
 import numpy as np
 import numpy.typing as npt
@@ -18,6 +19,7 @@ IntArray = npt.NDArray[np.int64]
 BoolArray = npt.NDArray[np.bool_]
 
 STATS = ("mean", "std", "min", "max", "last")
+A = TypeVar("A", FloatArray, npt.NDArray[np.float32])
 
 
 @dataclass(frozen=True)
@@ -56,10 +58,29 @@ def window_rows(end_rows: IntArray, window: int) -> IntArray:
     return rows
 
 
-def window_max_abs(z: FloatArray, end_rows: IntArray, window: int) -> FloatArray:
-    """max over the window's minutes and over features of |z| (missing counts as 0)."""
+def last_steps(per_step: A, n: int | None) -> A:
+    """The last ``n`` steps (axis 1) of ``(windows, steps)`` scores; ``None`` keeps them all.
+
+    ADR 0019: a positive window means "an onset in the last D minutes", so the unsupervised
+    window scores read only the last D + 1 minutes; ``None`` is the whole-window control.
+    """
+    if n is None:
+        return per_step
+    if n > per_step.shape[1]:
+        raise ValueError(f"cannot score the last {n} steps of {per_step.shape[1]}")
+    out: A = per_step[:, -n:]
+    return out
+
+
+def window_max_abs(
+    z: FloatArray, end_rows: IntArray, window: int, score_minutes: int | None = None
+) -> FloatArray:
+    """max over the window's last ``score_minutes`` minutes (all when ``None``) and over
+    features of |z| (missing counts as 0)."""
     per_minute = np.nan_to_num(np.abs(z), nan=0.0).max(axis=1)
-    out: FloatArray = per_minute[window_rows(end_rows, window)].max(axis=1)
+    out: FloatArray = last_steps(per_minute[window_rows(end_rows, window)], score_minutes).max(
+        axis=1
+    )
     return out
 
 

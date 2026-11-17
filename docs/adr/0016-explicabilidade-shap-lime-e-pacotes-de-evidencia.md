@@ -115,3 +115,10 @@ Os números estão em `docs/RESULTADOS.md` (seção E6) e em `reports/tables/xai
 - **E7:** o agente recebe os pacotes com as evidências identificadas (`C#`, `K#`, `N#`) e deve citá-las. A categoria sugerida **não** é confiável como motivo: o agente deve raciocinar sobre os KPIs, e o texto deve dizer isso.
 - **Atribuição não é causalidade:** os pacotes dizem a que o modelo reagiu, não o que causou a falha. Descoberta causal (Ikram et al., 2022) fica como abordagem complementar, citada na monografia.
 - **Controle sem isenção:** toda tabela da E6 tem a versão `xai_sem_isencao`.
+
+## Adendo (2026-11-17, ADR 0019)
+
+- A função explicada da previsora (`ForecastScoreModule`) segue a nova pontuação nos últimos D + 1 minutos e continua igual ao `ForecastScorer` (testado). A E6 recusa explicar uma execução da E5 com outro `tasks.score_minutes`.
+- As janelas-oráculo não cruzam o dia.
+- **Resultado da reexecução:** a XAI da previsora melhorou: HR@1 com SHAP de 0,33 para 0,42 no Telecom (empate com o nativo) e de 0,36 para 0,48 no Bank (superior ao nativo e à classificadora). A estabilidade entre seeds subiu para 0,85–0,86. A categoria sugerida pelo SHAP da previsora passou a superar o prior no Bank (+0,17), mas não no Telecom. Os números acima neste ADR são os anteriores; os atuais estão em `docs/RESULTADOS.md`.
+- Os pacotes de evidência são regerados, porque as atribuições citadas vêm da previsora. A escolha da janela pelo detector (classificadora) não muda.

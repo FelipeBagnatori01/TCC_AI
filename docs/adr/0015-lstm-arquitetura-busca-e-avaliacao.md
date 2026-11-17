@@ -89,3 +89,10 @@ Os ausentes entram como 0, o centro da normalização.
 - A E6 explica `ForecastScorer.score`. Os modelos ficam salvos por dobra e seed em `experiments/<run>/artifacts/models/`: pesos, escala dos erros, atributos e normalização.
 - Como a classificadora é o melhor detector, a E6 pode explicar também `classifier_scores`, por exemplo com SHAP. A decisão fica para o plano da E6.
 - A comparação pareada já está pronta para a E8.
+
+## Adendo (2026-11-17, ADR 0019)
+
+- A pontuação da previsora passa a ler só os últimos D + 1 = 6 passos de erro (`tasks.score_minutes`, gravado no `metrics.json`). A busca é refeita, porque o critério de validação depende dela. O protocolo anterior continua como controle `lstm_janela_inteira`.
+- A classificadora e o ranqueamento nativo não mudam.
+- As janelas-oráculo do ranqueamento nativo não cruzam o dia (`Experiment.oracle_row`).
+- A normalização local é calculada uma vez por execução (resultado idêntico, testado).

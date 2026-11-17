@@ -6,11 +6,20 @@ from types import SimpleNamespace
 from typing import Any
 
 import numpy as np
+import polars as pl
 import pytest
 import torch
 
 from tcc_rca.config import Config
-from tcc_rca.evaluation.alt_models import Candidate, TabularFitted, TcnFitted, fit, grid
+from tcc_rca.evaluation.alt_models import (
+    E4_DETECTORS,
+    Candidate,
+    TabularFitted,
+    TcnFitted,
+    detection_rivals,
+    fit,
+    grid,
+)
 from tcc_rca.explain.attributions import lime_groups
 from tcc_rca.explain.tabular import shap_series, shap_values_stats
 from tcc_rca.models.baselines.features import window_statistics
@@ -215,3 +224,26 @@ def test_tcn_is_causal() -> None:
     x[0, :, -1] = 5.0  # change only the last step
     changed = model.blocks(x)
     torch.testing.assert_close(changed[..., :-1], conv_out[..., :-1])  # earlier steps unaffected
+
+
+def _scores(methods: list[str], seeds: list[int] | None) -> pl.DataFrame:
+    rows = [
+        {"method": m, "row": r, "score": float(r), **({"seed": s} if seeds is not None else {})}
+        for m in methods
+        for s in (seeds or [0])
+        for r in range(3)
+    ]
+    return pl.DataFrame(rows)
+
+
+def test_alternatives_are_paired_with_the_lstms_and_every_e4_detector() -> None:
+    e5 = _scores(["lstm_forecast", "lstm_classifier"], seeds=[0, 1])
+    e4 = _scores([*E4_DETECTORS, "zscore_val"], seeds=None)  # E4 has no seed column
+    rivals = detection_rivals(e5, e4, seed=1)
+    assert list(rivals) == ["lstm_forecast", "lstm_classifier", *E4_DETECTORS]
+    assert "zscore_val" not in rivals  # same scores as zscore_3sigma, same AUC-PR
+    assert rivals["lstm_forecast"]["seed"].unique().to_list() == [1]  # same seed as the model
+    assert rivals["prior_horario"].height == 3
+    old_e4 = e4.filter(pl.col("method") != "prior_horario")  # a table from before ADR 0019
+    with pytest.raises(ValueError, match="prior_horario"):
+        detection_rivals(e5, old_e4, seed=0)

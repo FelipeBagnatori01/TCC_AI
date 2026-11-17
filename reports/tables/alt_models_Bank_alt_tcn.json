@@ -35,6 +35,12 @@
           },
           "positive_rate": 0.1052,
           "n_windows": 6733,
+          "auc_pr_fold_mean": {
+            "value": 0.2113,
+            "ci_low": 0.1619,
+            "ci_high": 0.3019,
+            "n_valid_resamples": 2000
+          },
           "false_alarms_per_hour": {
             "value": 17.0988,
             "ci_low": 13.9103,
@@ -119,6 +125,12 @@
           },
           "positive_rate": 0.1052,
           "n_windows": 6733,
+          "auc_pr_fold_mean": {
+            "value": 0.2231,
+            "ci_low": 0.1666,
+            "ci_high": 0.3087,
+            "n_valid_resamples": 2000
+          },
           "false_alarms_per_hour": {
             "value": 17.8058,
             "ci_low": 14.5988,
@@ -203,6 +215,12 @@
           },
           "positive_rate": 0.1052,
           "n_windows": 6733,
+          "auc_pr_fold_mean": {
+            "value": 0.1848,
+            "ci_low": 0.1461,
+            "ci_high": 0.2692,
+            "n_valid_resamples": 2000
+          },
           "false_alarms_per_hour": {
             "value": 16.9992,
             "ci_low": 13.8926,
@@ -287,6 +305,12 @@
           },
           "positive_rate": 0.1052,
           "n_windows": 6733,
+          "auc_pr_fold_mean": {
+            "value": 0.1942,
+            "ci_low": 0.1515,
+            "ci_high": 0.2836,
+            "n_valid_resamples": 2000
+          },
           "false_alarms_per_hour": {
             "value": 20.5444,
             "ci_low": 17.2248,
@@ -371,6 +395,12 @@
           },
           "positive_rate": 0.1052,
           "n_windows": 6733,
+          "auc_pr_fold_mean": {
+            "value": 0.1811,
+            "ci_low": 0.1444,
+            "ci_high": 0.2668,
+            "n_valid_resamples": 2000
+          },
           "false_alarms_per_hour": {
             "value": 21.2116,
             "ci_low": 17.947,
@@ -430,6 +460,12 @@
           "min": 0.1558,
           "max": 0.1703
         },
+        "auc_pr_fold_mean": {
+          "mean": 0.1989,
+          "sd": 0.0179,
+          "min": 0.1811,
+          "max": 0.2231
+        },
         "auc_roc": {
           "mean": 0.5249,
           "sd": 0.0154,
@@ -485,15 +521,15 @@
         "n_valid_resamples": 2000
       },
       "hr@5": {
-        "value": 0.65,
-        "ci_low": 0.5667,
-        "ci_high": 0.7333,
+        "value": 0.6583,
+        "ci_low": 0.575,
+        "ci_high": 0.7417,
         "n_valid_resamples": 2000
       },
       "mrr": {
-        "value": 0.4173,
-        "ci_low": 0.3545,
-        "ci_high": 0.4811,
+        "value": 0.4189,
+        "ci_low": 0.3567,
+        "ci_high": 0.4823,
         "n_valid_resamples": 2000
       },
       "hr@1_by_reason": {
@@ -536,21 +572,21 @@
         "n_valid_resamples": 2000
       },
       "hr@3": {
-        "value": 0.5583,
-        "ci_low": 0.4667,
-        "ci_high": 0.65,
+        "value": 0.5667,
+        "ci_low": 0.475,
+        "ci_high": 0.6583,
         "n_valid_resamples": 2000
       },
       "hr@5": {
-        "value": 0.6083,
-        "ci_low": 0.5167,
-        "ci_high": 0.6917,
+        "value": 0.625,
+        "ci_low": 0.5333,
+        "ci_high": 0.7083,
         "n_valid_resamples": 2000
       },
       "mrr": {
-        "value": 0.5274,
-        "ci_low": 0.4546,
-        "ci_high": 0.5981,
+        "value": 0.5321,
+        "ci_low": 0.4594,
+        "ci_high": 0.6026,
         "n_valid_resamples": 2000
       },
       "hr@1_by_reason": {
@@ -605,9 +641,9 @@
         "n_valid_resamples": 2000
       },
       "mrr": {
-        "value": 0.3589,
+        "value": 0.359,
         "ci_low": 0.3016,
-        "ci_high": 0.4181,
+        "ci_high": 0.4182,
         "n_valid_resamples": 2000
       },
       "hr@1_by_reason": {
@@ -662,9 +698,9 @@
         "n_valid_resamples": 2000
       },
       "mrr": {
-        "value": 0.5142,
-        "ci_low": 0.4453,
-        "ci_high": 0.5851,
+        "value": 0.5145,
+        "ci_low": 0.4459,
+        "ci_high": 0.5852,
         "n_valid_resamples": 2000
       },
       "hr@1_by_reason": {
@@ -701,18 +737,18 @@
   },
   "quality": {
     "tcn": {
-      "deletion_shap": 0.5373,
-      "deletion_lime": 0.5548,
-      "deletion_random": 1.037,
-      "insertion_shap": 149957.7288,
-      "insertion_lime": 132146.9561,
-      "insertion_random": 122013.7124,
-      "shap_lime_jaccard": 0.5429,
-      "shap_lime_kendall": 0.358,
-      "neighbour_jaccard": 0.7836,
-      "top_component_agree": 0.65,
-      "seed_jaccard": 0.2591,
-      "seed_kendall": -0.1951
+      "deletion_shap": 0.5397,
+      "deletion_lime": 0.5573,
+      "deletion_random": 1.0379,
+      "insertion_shap": 149958.045,
+      "insertion_lime": 132147.2646,
+      "insertion_random": 122013.8947,
+      "shap_lime_jaccard": 0.5406,
+      "shap_lime_kendall": 0.3554,
+      "neighbour_jaccard": 0.7789,
+      "top_component_agree": 0.6417,
+      "seed_jaccard": 0.2608,
+      "seed_kendall": -0.1922
     }
   },
   "system": "Bank",
@@ -743,12 +779,12 @@
       "rival": "lstm_forecast",
       "metric": "auc_pr",
       "seeds": 5,
-      "diff_mean": -0.0409,
-      "ci_low_mean": -0.1016,
-      "ci_high_mean": 0.0265,
+      "diff_mean": -0.1862,
+      "ci_low_mean": -0.2551,
+      "ci_high_mean": -0.1112,
       "superior": 0,
-      "empate": 5,
-      "inferior": 0
+      "empate": 0,
+      "inferior": 5
     },
     {
       "task": "detecção",
@@ -764,17 +800,82 @@
       "inferior": 1
     },
     {
+      "task": "detecção",
+      "model": "tcn",
+      "rival": "zscore_3sigma",
+      "metric": "auc_pr",
+      "seeds": 5,
+      "diff_mean": 0.0615,
+      "ci_low_mean": 0.0142,
+      "ci_high_mean": 0.1396,
+      "superior": 5,
+      "empate": 0,
+      "inferior": 0
+    },
+    {
+      "task": "detecção",
+      "model": "tcn",
+      "rival": "zscore_local",
+      "metric": "auc_pr",
+      "seeds": 5,
+      "diff_mean": -0.1658,
+      "ci_low_mean": -0.2364,
+      "ci_high_mean": -0.0804,
+      "superior": 0,
+      "empate": 0,
+      "inferior": 5
+    },
+    {
+      "task": "detecção",
+      "model": "tcn",
+      "rival": "isolation_forest",
+      "metric": "auc_pr",
+      "seeds": 5,
+      "diff_mean": 0.0196,
+      "ci_low_mean": -0.0514,
+      "ci_high_mean": 0.1034,
+      "superior": 0,
+      "empate": 5,
+      "inferior": 0
+    },
+    {
+      "task": "detecção",
+      "model": "tcn",
+      "rival": "lightgbm",
+      "metric": "auc_pr",
+      "seeds": 5,
+      "diff_mean": -0.0289,
+      "ci_low_mean": -0.0981,
+      "ci_high_mean": 0.0568,
+      "superior": 0,
+      "empate": 5,
+      "inferior": 0
+    },
+    {
+      "task": "detecção",
+      "model": "tcn",
+      "rival": "prior_horario",
+      "metric": "auc_pr",
+      "seeds": 5,
+      "diff_mean": 0.0364,
+      "ci_low_mean": -0.0147,
+      "ci_high_mean": 0.1178,
+      "superior": 0,
+      "empate": 5,
+      "inferior": 0
+    },
+    {
       "task": "localização",
       "model": "tcn/shap/sum",
       "rival": "lstm_forecast/shap",
       "metric": "hr@1",
       "seeds": 1,
-      "diff_mean": -0.1083,
-      "ci_low_mean": -0.2083,
-      "ci_high_mean": 0.0,
+      "diff_mean": -0.2333,
+      "ci_low_mean": -0.3333,
+      "ci_high_mean": -0.125,
       "superior": 0,
-      "empate": 1,
-      "inferior": 0
+      "empate": 0,
+      "inferior": 1
     },
     {
       "task": "localização",
@@ -782,12 +883,12 @@
       "rival": "lstm_forecast/shap",
       "metric": "mrr",
       "seeds": 1,
-      "diff_mean": -0.0794,
-      "ci_low_mean": -0.1555,
-      "ci_high_mean": 0.0042,
+      "diff_mean": -0.1952,
+      "ci_low_mean": -0.2744,
+      "ci_high_mean": -0.1163,
       "superior": 0,
-      "empate": 1,
-      "inferior": 0
+      "empate": 0,
+      "inferior": 1
     },
     {
       "task": "localização",
@@ -808,9 +909,9 @@
       "rival": "lstm_classifier/shap",
       "metric": "mrr",
       "seeds": 1,
-      "diff_mean": -0.1963,
-      "ci_low_mean": -0.2591,
-      "ci_high_mean": -0.1285,
+      "diff_mean": -0.1949,
+      "ci_low_mean": -0.258,
+      "ci_high_mean": -0.1258,
       "superior": 0,
       "empate": 0,
       "inferior": 1
@@ -834,12 +935,38 @@
       "rival": "lstm_nativo_soma",
       "metric": "mrr",
       "seeds": 1,
-      "diff_mean": -0.1,
-      "ci_low_mean": -0.1751,
-      "ci_high_mean": -0.0238,
+      "diff_mean": -0.0999,
+      "ci_low_mean": -0.1702,
+      "ci_high_mean": -0.0268,
       "superior": 0,
       "empate": 0,
       "inferior": 1
+    },
+    {
+      "task": "localização",
+      "model": "tcn/shap/sum",
+      "rival": "prior",
+      "metric": "hr@1",
+      "seeds": 1,
+      "diff_mean": 0.1417,
+      "ci_low_mean": 0.0583,
+      "ci_high_mean": 0.225,
+      "superior": 1,
+      "empate": 0,
+      "inferior": 0
+    },
+    {
+      "task": "localização",
+      "model": "tcn/shap/sum",
+      "rival": "prior",
+      "metric": "mrr",
+      "seeds": 1,
+      "diff_mean": 0.16,
+      "ci_low_mean": 0.0915,
+      "ci_high_mean": 0.2317,
+      "superior": 1,
+      "empate": 0,
+      "inferior": 0
     },
     {
       "task": "localização",
@@ -860,9 +987,9 @@
       "rival": "zscore_global",
       "metric": "mrr",
       "seeds": 1,
-      "diff_mean": -0.0542,
-      "ci_low_mean": -0.1309,
-      "ci_high_mean": 0.0242,
+      "diff_mean": -0.0528,
+      "ci_low_mean": -0.1306,
+      "ci_high_mean": 0.026,
       "superior": 0,
       "empate": 1,
       "inferior": 0
@@ -886,9 +1013,9 @@
       "rival": "zscore_local",
       "metric": "mrr",
       "seeds": 1,
-      "diff_mean": 0.0789,
-      "ci_low_mean": 0.0198,
-      "ci_high_mean": 0.144,
+      "diff_mean": 0.0772,
+      "ci_low_mean": 0.0186,
+      "ci_high_mean": 0.1417,
       "superior": 1,
       "empate": 0,
       "inferior": 0
@@ -899,9 +1026,9 @@
       "rival": "lstm_forecast/lime",
       "metric": "hr@1",
       "seeds": 1,
-      "diff_mean": -0.1167,
-      "ci_low_mean": -0.2083,
-      "ci_high_mean": -0.0167,
+      "diff_mean": -0.2667,
+      "ci_low_mean": -0.3585,
+      "ci_high_mean": -0.1667,
       "superior": 0,
       "empate": 0,
       "inferior": 1
@@ -912,9 +1039,9 @@
       "rival": "lstm_forecast/lime",
       "metric": "mrr",
       "seeds": 1,
-      "diff_mean": -0.1012,
-      "ci_low_mean": -0.1758,
-      "ci_high_mean": -0.0234,
+      "diff_mean": -0.2264,
+      "ci_low_mean": -0.3006,
+      "ci_high_mean": -0.1495,
       "superior": 0,
       "empate": 0,
       "inferior": 1
@@ -938,9 +1065,9 @@
       "rival": "lstm_classifier/lime",
       "metric": "mrr",
       "seeds": 1,
-      "diff_mean": -0.0635,
-      "ci_low_mean": -0.1162,
-      "ci_high_mean": -0.0101,
+      "diff_mean": -0.0641,
+      "ci_low_mean": -0.1172,
+      "ci_high_mean": -0.0112,
       "superior": 0,
       "empate": 0,
       "inferior": 1
@@ -964,12 +1091,38 @@
       "rival": "lstm_nativo_soma",
       "metric": "mrr",
       "seeds": 1,
-      "diff_mean": -0.1584,
-      "ci_low_mean": -0.2282,
-      "ci_high_mean": -0.0863,
+      "diff_mean": -0.1599,
+      "ci_low_mean": -0.2278,
+      "ci_high_mean": -0.0896,
       "superior": 0,
       "empate": 0,
       "inferior": 1
+    },
+    {
+      "task": "localização",
+      "model": "tcn/lime/sum",
+      "rival": "prior",
+      "metric": "hr@1",
+      "seeds": 1,
+      "diff_mean": 0.075,
+      "ci_low_mean": -0.0083,
+      "ci_high_mean": 0.1583,
+      "superior": 0,
+      "empate": 1,
+      "inferior": 0
+    },
+    {
+      "task": "localização",
+      "model": "tcn/lime/sum",
+      "rival": "prior",
+      "metric": "mrr",
+      "seeds": 1,
+      "diff_mean": 0.1,
+      "ci_low_mean": 0.0329,
+      "ci_high_mean": 0.1712,
+      "superior": 1,
+      "empate": 0,
+      "inferior": 0
     },
     {
       "task": "localização",
@@ -990,9 +1143,9 @@
       "rival": "zscore_global",
       "metric": "mrr",
       "seeds": 1,
-      "diff_mean": -0.1126,
-      "ci_low_mean": -0.1922,
-      "ci_high_mean": -0.0297,
+      "diff_mean": -0.1127,
+      "ci_low_mean": -0.1923,
+      "ci_high_mean": -0.0299,
       "superior": 0,
       "empate": 0,
       "inferior": 1
@@ -1016,9 +1169,9 @@
       "rival": "zscore_local",
       "metric": "mrr",
       "seeds": 1,
-      "diff_mean": 0.0205,
-      "ci_low_mean": -0.0356,
-      "ci_high_mean": 0.0817,
+      "diff_mean": 0.0172,
+      "ci_low_mean": -0.0396,
+      "ci_high_mean": 0.0788,
       "superior": 0,
       "empate": 1,
       "inferior": 0
@@ -1026,15 +1179,15 @@
   ],
   "cost": {
     "tcn": {
-      "train_seconds_mean": 28.28,
-      "inference_ms_per_window": 0.6008,
-      "xai_seconds_per_window": 3.58,
+      "train_seconds_mean": 24.18,
+      "inference_ms_per_window": 0.4844,
+      "xai_seconds_per_window": 2.98,
       "params_mean": 181041.0,
       "epochs_mean": 6.6
     }
   },
-  "final_seconds": 1669.8,
-  "run_dir": "20261113T183835-alt_tcn",
+  "final_seconds": 1516.1,
+  "run_dir": "20261117T060155-alt_tcn",
   "search": {
     "selection": {
       "tcn": {
@@ -1058,7 +1211,7 @@
       }
     },
     "trainings": 56,
-    "search_seconds": 1883.6
+    "search_seconds": 1618.0
   },
   "references": {
     "lstm": "lstm",

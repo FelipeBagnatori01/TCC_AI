@@ -1,0 +1,1059 @@
+{
+  "system": "Telecom",
+  "folds": 10,
+  "n_failures_tested": 45,
+  "bootstrap": 2000,
+  "bootstrap_block_minutes": 30,
+  "constant_exempt_categories": [
+    "disponibilidade"
+  ],
+  "score_minutes": null,
+  "oracle_windows_shifted": 3,
+  "failures_without_positive_window": 3,
+  "detection": {
+    "zscore_3sigma": {
+      "auc_pr": {
+        "value": 0.2134,
+        "ci_low": 0.1404,
+        "ci_high": 0.3562,
+        "n_valid_resamples": 2000
+      },
+      "auc_roc": {
+        "value": 0.6547,
+        "ci_low": 0.5532,
+        "ci_high": 0.7493,
+        "n_valid_resamples": 2000
+      },
+      "precision": {
+        "value": 0.1409,
+        "ci_low": 0.0995,
+        "ci_high": 0.1909,
+        "n_valid_resamples": 2000
+      },
+      "recall": {
+        "value": 1.0,
+        "ci_low": 1.0,
+        "ci_high": 1.0,
+        "n_valid_resamples": 2000
+      },
+      "f1": {
+        "value": 0.2471,
+        "ci_low": 0.1839,
+        "ci_high": 0.3134,
+        "n_valid_resamples": 2000
+      },
+      "positive_rate": 0.1409,
+      "n_windows": 1788,
+      "auc_pr_fold_mean": {
+        "value": 0.3869,
+        "ci_low": 0.3357,
+        "ci_high": 0.5721,
+        "n_valid_resamples": 2000
+      },
+      "false_alarms_per_hour": {
+        "value": 60.0,
+        "ci_low": 60.0,
+        "ci_high": 60.0,
+        "n_valid_resamples": 2000
+      },
+      "event_recall": {
+        "value": 1.0,
+        "ci_low": 1.0,
+        "ci_high": 1.0,
+        "n_valid_resamples": 2000
+      },
+      "median_delay_minutes": {
+        "value": -5.0,
+        "ci_low": -5.0,
+        "ci_high": -5.0,
+        "n_valid_resamples": 2000
+      },
+      "failures_detected": 45,
+      "event_recall_by_chance": 1.0,
+      "event_recall_by_reason": {
+        "CPU fault": {
+          "n": 15,
+          "detected": 15
+        },
+        "db close": {
+          "n": 4,
+          "detected": 4
+        },
+        "db connection limit": {
+          "n": 6,
+          "detected": 6
+        },
+        "network delay": {
+          "n": 13,
+          "detected": 13
+        },
+        "network loss": {
+          "n": 7,
+          "detected": 7
+        }
+      }
+    },
+    "zscore_val": {
+      "auc_pr": {
+        "value": 0.2134,
+        "ci_low": 0.1404,
+        "ci_high": 0.3562,
+        "n_valid_resamples": 2000
+      },
+      "auc_roc": {
+        "value": 0.6547,
+        "ci_low": 0.5532,
+        "ci_high": 0.7493,
+        "n_valid_resamples": 2000
+      },
+      "precision": {
+        "value": 0.1911,
+        "ci_low": 0.1233,
+        "ci_high": 0.2787,
+        "n_valid_resamples": 2000
+      },
+      "recall": {
+        "value": 0.7143,
+        "ci_low": 0.5833,
+        "ci_high": 0.85,
+        "n_valid_resamples": 2000
+      },
+      "f1": {
+        "value": 0.3015,
+        "ci_low": 0.2124,
+        "ci_high": 0.4045,
+        "n_valid_resamples": 2000
+      },
+      "positive_rate": 0.1409,
+      "n_windows": 1788,
+      "auc_pr_fold_mean": {
+        "value": 0.3869,
+        "ci_low": 0.3357,
+        "ci_high": 0.5721,
+        "n_valid_resamples": 2000
+      },
+      "false_alarms_per_hour": {
+        "value": 29.7656,
+        "ci_low": 23.2046,
+        "ci_high": 36.7142,
+        "n_valid_resamples": 2000
+      },
+      "event_recall": {
+        "value": 0.7778,
+        "ci_low": 0.6444,
+        "ci_high": 0.8889,
+        "n_valid_resamples": 2000
+      },
+      "median_delay_minutes": {
+        "value": -5.0,
+        "ci_low": -5.0,
+        "ci_high": -2.0,
+        "n_valid_resamples": 2000
+      },
+      "failures_detected": 35,
+      "event_recall_by_chance": 1.0,
+      "event_recall_by_reason": {
+        "CPU fault": {
+          "n": 15,
+          "detected": 11
+        },
+        "db close": {
+          "n": 4,
+          "detected": 4
+        },
+        "db connection limit": {
+          "n": 6,
+          "detected": 5
+        },
+        "network delay": {
+          "n": 13,
+          "detected": 11
+        },
+        "network loss": {
+          "n": 7,
+          "detected": 4
+        }
+      }
+    },
+    "zscore_local": {
+      "auc_pr": {
+        "value": 0.2381,
+        "ci_low": 0.1532,
+        "ci_high": 0.3705,
+        "n_valid_resamples": 2000
+      },
+      "auc_roc": {
+        "value": 0.674,
+        "ci_low": 0.5792,
+        "ci_high": 0.7613,
+        "n_valid_resamples": 2000
+      },
+      "precision": {
+        "value": 0.1832,
+        "ci_low": 0.1095,
+        "ci_high": 0.2767,
+        "n_valid_resamples": 2000
+      },
+      "recall": {
+        "value": 0.4405,
+        "ci_low": 0.2958,
+        "ci_high": 0.5833,
+        "n_valid_resamples": 2000
+      },
+      "f1": {
+        "value": 0.2587,
+        "ci_low": 0.1638,
+        "ci_high": 0.3625,
+        "n_valid_resamples": 2000
+      },
+      "positive_rate": 0.1409,
+      "n_windows": 1788,
+      "auc_pr_fold_mean": {
+        "value": 0.3647,
+        "ci_low": 0.318,
+        "ci_high": 0.5944,
+        "n_valid_resamples": 2000
+      },
+      "false_alarms_per_hour": {
+        "value": 19.3359,
+        "ci_low": 14.0028,
+        "ci_high": 25.1037,
+        "n_valid_resamples": 2000
+      },
+      "event_recall": {
+        "value": 0.6444,
+        "ci_low": 0.5111,
+        "ci_high": 0.7778,
+        "n_valid_resamples": 2000
+      },
+      "median_delay_minutes": {
+        "value": 0.0,
+        "ci_low": -5.0,
+        "ci_high": 1.0,
+        "n_valid_resamples": 2000
+      },
+      "failures_detected": 29,
+      "event_recall_by_chance": 1.0,
+      "event_recall_by_reason": {
+        "CPU fault": {
+          "n": 15,
+          "detected": 8
+        },
+        "db close": {
+          "n": 4,
+          "detected": 3
+        },
+        "db connection limit": {
+          "n": 6,
+          "detected": 4
+        },
+        "network delay": {
+          "n": 13,
+          "detected": 8
+        },
+        "network loss": {
+          "n": 7,
+          "detected": 6
+        }
+      }
+    },
+    "isolation_forest": {
+      "auc_pr": {
+        "value": 0.163,
+        "ci_low": 0.1083,
+        "ci_high": 0.2613,
+        "n_valid_resamples": 2000
+      },
+      "auc_roc": {
+        "value": 0.601,
+        "ci_low": 0.4964,
+        "ci_high": 0.6996,
+        "n_valid_resamples": 2000
+      },
+      "precision": {
+        "value": 0.1663,
+        "ci_low": 0.1072,
+        "ci_high": 0.245,
+        "n_valid_resamples": 2000
+      },
+      "recall": {
+        "value": 0.6151,
+        "ci_low": 0.4768,
+        "ci_high": 0.7458,
+        "n_valid_resamples": 2000
+      },
+      "f1": {
+        "value": 0.2618,
+        "ci_low": 0.1782,
+        "ci_high": 0.3524,
+        "n_valid_resamples": 2000
+      },
+      "positive_rate": 0.1409,
+      "n_windows": 1788,
+      "auc_pr_fold_mean": {
+        "value": 0.3596,
+        "ci_low": 0.2934,
+        "ci_high": 0.5369,
+        "n_valid_resamples": 2000
+      },
+      "false_alarms_per_hour": {
+        "value": 30.3516,
+        "ci_low": 23.75,
+        "ci_high": 37.1553,
+        "n_valid_resamples": 2000
+      },
+      "event_recall": {
+        "value": 0.7778,
+        "ci_low": 0.6444,
+        "ci_high": 0.8889,
+        "n_valid_resamples": 2000
+      },
+      "median_delay_minutes": {
+        "value": -5.0,
+        "ci_low": -5.0,
+        "ci_high": -1.0,
+        "n_valid_resamples": 2000
+      },
+      "failures_detected": 35,
+      "event_recall_by_chance": 1.0,
+      "event_recall_by_reason": {
+        "CPU fault": {
+          "n": 15,
+          "detected": 12
+        },
+        "db close": {
+          "n": 4,
+          "detected": 3
+        },
+        "db connection limit": {
+          "n": 6,
+          "detected": 5
+        },
+        "network delay": {
+          "n": 13,
+          "detected": 13
+        },
+        "network loss": {
+          "n": 7,
+          "detected": 2
+        }
+      }
+    },
+    "lightgbm": {
+      "auc_pr": {
+        "value": 0.2475,
+        "ci_low": 0.146,
+        "ci_high": 0.4109,
+        "n_valid_resamples": 2000
+      },
+      "auc_roc": {
+        "value": 0.5889,
+        "ci_low": 0.4799,
+        "ci_high": 0.6845,
+        "n_valid_resamples": 2000
+      },
+      "precision": {
+        "value": 0.2209,
+        "ci_low": 0.1426,
+        "ci_high": 0.3276,
+        "n_valid_resamples": 2000
+      },
+      "recall": {
+        "value": 0.504,
+        "ci_low": 0.3695,
+        "ci_high": 0.6357,
+        "n_valid_resamples": 2000
+      },
+      "f1": {
+        "value": 0.3071,
+        "ci_low": 0.2129,
+        "ci_high": 0.4125,
+        "n_valid_resamples": 2000
+      },
+      "positive_rate": 0.1409,
+      "n_windows": 1788,
+      "auc_pr_fold_mean": {
+        "value": 0.5582,
+        "ci_low": 0.4967,
+        "ci_high": 0.6969,
+        "n_valid_resamples": 2000
+      },
+      "false_alarms_per_hour": {
+        "value": 17.5,
+        "ci_low": 12.1741,
+        "ci_high": 23.1736,
+        "n_valid_resamples": 2000
+      },
+      "event_recall": {
+        "value": 0.6444,
+        "ci_low": 0.4889,
+        "ci_high": 0.7778,
+        "n_valid_resamples": 2000
+      },
+      "median_delay_minutes": {
+        "value": 1.0,
+        "ci_low": -1.0,
+        "ci_high": 1.0,
+        "n_valid_resamples": 2000
+      },
+      "failures_detected": 29,
+      "event_recall_by_chance": 1.0,
+      "event_recall_by_reason": {
+        "CPU fault": {
+          "n": 15,
+          "detected": 9
+        },
+        "db close": {
+          "n": 4,
+          "detected": 3
+        },
+        "db connection limit": {
+          "n": 6,
+          "detected": 4
+        },
+        "network delay": {
+          "n": 13,
+          "detected": 8
+        },
+        "network loss": {
+          "n": 7,
+          "detected": 5
+        }
+      }
+    },
+    "prior_horario": {
+      "auc_pr": {
+        "value": 0.1532,
+        "ci_low": 0.0922,
+        "ci_high": 0.2661,
+        "n_valid_resamples": 2000
+      },
+      "auc_roc": {
+        "value": 0.4383,
+        "ci_low": 0.3365,
+        "ci_high": 0.5458,
+        "n_valid_resamples": 2000
+      },
+      "precision": {
+        "value": 0.1472,
+        "ci_low": 0.088,
+        "ci_high": 0.2249,
+        "n_valid_resamples": 2000
+      },
+      "recall": {
+        "value": 0.4762,
+        "ci_low": 0.3254,
+        "ci_high": 0.6279,
+        "n_valid_resamples": 2000
+      },
+      "f1": {
+        "value": 0.2249,
+        "ci_low": 0.1426,
+        "ci_high": 0.311,
+        "n_valid_resamples": 2000
+      },
+      "positive_rate": 0.1409,
+      "n_windows": 1788,
+      "auc_pr_fold_mean": {
+        "value": 0.2771,
+        "ci_low": 0.2087,
+        "ci_high": 0.4671,
+        "n_valid_resamples": 2000
+      },
+      "false_alarms_per_hour": {
+        "value": 27.1484,
+        "ci_low": 20.7342,
+        "ci_high": 33.568,
+        "n_valid_resamples": 2000
+      },
+      "event_recall": {
+        "value": 0.4889,
+        "ci_low": 0.3556,
+        "ci_high": 0.6444,
+        "n_valid_resamples": 2000
+      },
+      "median_delay_minutes": {
+        "value": -5.0,
+        "ci_low": -5.0,
+        "ci_high": -5.0,
+        "n_valid_resamples": 2000
+      },
+      "failures_detected": 22,
+      "event_recall_by_chance": 1.0,
+      "event_recall_by_reason": {
+        "CPU fault": {
+          "n": 15,
+          "detected": 7
+        },
+        "db close": {
+          "n": 4,
+          "detected": 2
+        },
+        "db connection limit": {
+          "n": 6,
+          "detected": 5
+        },
+        "network delay": {
+          "n": 13,
+          "detected": 6
+        },
+        "network loss": {
+          "n": 7,
+          "detected": 2
+        }
+      }
+    }
+  },
+  "localization": {
+    "n_failures": 45,
+    "hr@1": {
+      "value": 0.1333,
+      "ci_low": 0.0444,
+      "ci_high": 0.2444,
+      "n_valid_resamples": 2000
+    },
+    "hr@3": {
+      "value": 0.3778,
+      "ci_low": 0.2444,
+      "ci_high": 0.5117,
+      "n_valid_resamples": 2000
+    },
+    "hr@5": {
+      "value": 0.5556,
+      "ci_low": 0.4,
+      "ci_high": 0.7111,
+      "n_valid_resamples": 2000
+    },
+    "mrr": {
+      "value": 0.3124,
+      "ci_low": 0.2249,
+      "ci_high": 0.4091,
+      "n_valid_resamples": 2000
+    },
+    "hr@1_by_reason": {
+      "CPU fault": {
+        "n": 15,
+        "hr@1": 0.1333
+      },
+      "db close": {
+        "n": 4,
+        "hr@1": 0.0
+      },
+      "db connection limit": {
+        "n": 6,
+        "hr@1": 0.3333
+      },
+      "network delay": {
+        "n": 13,
+        "hr@1": 0.1538
+      },
+      "network loss": {
+        "n": 7,
+        "hr@1": 0.0
+      }
+    }
+  },
+  "localization_local": {
+    "n_failures": 45,
+    "hr@1": {
+      "value": 0.0889,
+      "ci_low": 0.0222,
+      "ci_high": 0.1778,
+      "n_valid_resamples": 2000
+    },
+    "hr@3": {
+      "value": 0.4889,
+      "ci_low": 0.3333,
+      "ci_high": 0.6222,
+      "n_valid_resamples": 2000
+    },
+    "hr@5": {
+      "value": 0.6,
+      "ci_low": 0.4444,
+      "ci_high": 0.7333,
+      "n_valid_resamples": 2000
+    },
+    "mrr": {
+      "value": 0.327,
+      "ci_low": 0.2575,
+      "ci_high": 0.4058,
+      "n_valid_resamples": 2000
+    },
+    "hr@1_by_reason": {
+      "CPU fault": {
+        "n": 15,
+        "hr@1": 0.0
+      },
+      "db close": {
+        "n": 4,
+        "hr@1": 0.5
+      },
+      "db connection limit": {
+        "n": 6,
+        "hr@1": 0.0
+      },
+      "network delay": {
+        "n": 13,
+        "hr@1": 0.0769
+      },
+      "network loss": {
+        "n": 7,
+        "hr@1": 0.1429
+      }
+    }
+  },
+  "localization_prior": {
+    "n_failures": 45,
+    "hr@1": {
+      "value": 0.0889,
+      "ci_low": 0.0222,
+      "ci_high": 0.1778,
+      "n_valid_resamples": 2000
+    },
+    "hr@3": {
+      "value": 0.1778,
+      "ci_low": 0.0889,
+      "ci_high": 0.2889,
+      "n_valid_resamples": 2000
+    },
+    "hr@5": {
+      "value": 0.2667,
+      "ci_low": 0.1333,
+      "ci_high": 0.4,
+      "n_valid_resamples": 2000
+    },
+    "mrr": {
+      "value": 0.194,
+      "ci_low": 0.1233,
+      "ci_high": 0.2861,
+      "n_valid_resamples": 2000
+    },
+    "hr@1_by_reason": {
+      "CPU fault": {
+        "n": 15,
+        "hr@1": 0.0
+      },
+      "db close": {
+        "n": 4,
+        "hr@1": 0.25
+      },
+      "db connection limit": {
+        "n": 6,
+        "hr@1": 0.5
+      },
+      "network delay": {
+        "n": 13,
+        "hr@1": 0.0
+      },
+      "network loss": {
+        "n": 7,
+        "hr@1": 0.0
+      }
+    }
+  },
+  "diagnosis_constant": {
+    "n_queries": 45,
+    "strict_accuracy": {
+      "value": 0.1111,
+      "ci_low": 0.0222,
+      "ci_high": 0.2222,
+      "n_valid_resamples": 2000
+    },
+    "partial_score": {
+      "value": 0.1849,
+      "ci_low": 0.096,
+      "ci_high": 0.2849,
+      "n_valid_resamples": 2000
+    },
+    "by_task": {
+      "task_1": {
+        "n": 9,
+        "strict_correct": 0,
+        "partial_mean": 0.0
+      },
+      "task_2": {
+        "n": 7,
+        "strict_correct": 4,
+        "partial_mean": 0.5714
+      },
+      "task_3": {
+        "n": 4,
+        "strict_correct": 1,
+        "partial_mean": 0.25
+      },
+      "task_4": {
+        "n": 7,
+        "strict_correct": 0,
+        "partial_mean": 0.0714
+      },
+      "task_5": {
+        "n": 4,
+        "strict_correct": 0,
+        "partial_mean": 0.0
+      },
+      "task_6": {
+        "n": 6,
+        "strict_correct": 0,
+        "partial_mean": 0.25
+      },
+      "task_7": {
+        "n": 8,
+        "strict_correct": 0,
+        "partial_mean": 0.165
+      }
+    }
+  },
+  "folds_detail": [
+    {
+      "fold": 0,
+      "test_day": "2020_05_22",
+      "kept_features": 1440,
+      "train_normal_windows": 105,
+      "train_positive_windows": 30,
+      "val_positive_windows": 0,
+      "oracle_windows_shifted": 1,
+      "thresholds": {
+        "zscore_3sigma": {
+          "value": 3.0,
+          "rule": "fixed_3sigma"
+        },
+        "zscore_val": {
+          "value": 316861.4969608172,
+          "rule": "q0.99_val_normal"
+        },
+        "zscore_local": {
+          "value": 50.0,
+          "rule": "q0.99_val_normal"
+        },
+        "isolation_forest": {
+          "value": 0.6001260252541352,
+          "rule": "q0.99_val_normal"
+        },
+        "lightgbm": {
+          "value": 0.9862197839277373,
+          "rule": "q0.99_val_normal"
+        },
+        "prior_horario": {
+          "value": 1.0,
+          "rule": "q0.99_val_normal"
+        }
+      }
+    },
+    {
+      "fold": 1,
+      "test_day": "2020_05_23",
+      "kept_features": 1534,
+      "train_normal_windows": 446,
+      "train_positive_windows": 30,
+      "val_positive_windows": 18,
+      "oracle_windows_shifted": 1,
+      "thresholds": {
+        "zscore_3sigma": {
+          "value": 3.0,
+          "rule": "fixed_3sigma"
+        },
+        "zscore_val": {
+          "value": 4494.5206395105415,
+          "rule": "best_f1_val"
+        },
+        "zscore_local": {
+          "value": 34.240873846802806,
+          "rule": "best_f1_val"
+        },
+        "isolation_forest": {
+          "value": 0.550076922459987,
+          "rule": "best_f1_val"
+        },
+        "lightgbm": {
+          "value": 2.3575769324471746e-05,
+          "rule": "best_f1_val"
+        },
+        "prior_horario": {
+          "value": 0.11363636363636363,
+          "rule": "best_f1_val"
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "test_day": "2020_05_24",
+      "kept_features": 1565,
+      "train_normal_windows": 623,
+      "train_positive_windows": 48,
+      "val_positive_windows": 30,
+      "oracle_windows_shifted": 0,
+      "thresholds": {
+        "zscore_3sigma": {
+          "value": 3.0,
+          "rule": "fixed_3sigma"
+        },
+        "zscore_val": {
+          "value": 42.6297730962871,
+          "rule": "best_f1_val"
+        },
+        "zscore_local": {
+          "value": 47.527809689214855,
+          "rule": "best_f1_val"
+        },
+        "isolation_forest": {
+          "value": 0.513963189076171,
+          "rule": "best_f1_val"
+        },
+        "lightgbm": {
+          "value": 3.8250776245931094e-05,
+          "rule": "best_f1_val"
+        },
+        "prior_horario": {
+          "value": 0.07142857142857142,
+          "rule": "best_f1_val"
+        }
+      }
+    },
+    {
+      "fold": 3,
+      "test_day": "2020_05_25",
+      "kept_features": 1575,
+      "train_normal_windows": 711,
+      "train_positive_windows": 78,
+      "val_positive_windows": 18,
+      "oracle_windows_shifted": 0,
+      "thresholds": {
+        "zscore_3sigma": {
+          "value": 3.0,
+          "rule": "fixed_3sigma"
+        },
+        "zscore_val": {
+          "value": 746.6295579125174,
+          "rule": "best_f1_val"
+        },
+        "zscore_local": {
+          "value": 47.96424176412453,
+          "rule": "best_f1_val"
+        },
+        "isolation_forest": {
+          "value": 0.5367163364621194,
+          "rule": "best_f1_val"
+        },
+        "lightgbm": {
+          "value": 0.011735881878277366,
+          "rule": "best_f1_val"
+        },
+        "prior_horario": {
+          "value": 0.23636363636363636,
+          "rule": "best_f1_val"
+        }
+      }
+    },
+    {
+      "fold": 4,
+      "test_day": "2020_05_26",
+      "kept_features": 1589,
+      "train_normal_windows": 887,
+      "train_positive_windows": 96,
+      "val_positive_windows": 18,
+      "oracle_windows_shifted": 0,
+      "thresholds": {
+        "zscore_3sigma": {
+          "value": 3.0,
+          "rule": "fixed_3sigma"
+        },
+        "zscore_val": {
+          "value": 985.2996656073357,
+          "rule": "best_f1_val"
+        },
+        "zscore_local": {
+          "value": 50.0,
+          "rule": "best_f1_val"
+        },
+        "isolation_forest": {
+          "value": 0.5010760242271189,
+          "rule": "best_f1_val"
+        },
+        "lightgbm": {
+          "value": 0.01707340788799542,
+          "rule": "best_f1_val"
+        },
+        "prior_horario": {
+          "value": 0.22695035460992907,
+          "rule": "best_f1_val"
+        }
+      }
+    },
+    {
+      "fold": 5,
+      "test_day": "2020_05_27",
+      "kept_features": 1595,
+      "train_normal_windows": 1063,
+      "train_positive_windows": 114,
+      "val_positive_windows": 42,
+      "oracle_windows_shifted": 0,
+      "thresholds": {
+        "zscore_3sigma": {
+          "value": 3.0,
+          "rule": "fixed_3sigma"
+        },
+        "zscore_val": {
+          "value": 147.38373531303776,
+          "rule": "best_f1_val"
+        },
+        "zscore_local": {
+          "value": 29.806590545034304,
+          "rule": "best_f1_val"
+        },
+        "isolation_forest": {
+          "value": 0.5265559037764225,
+          "rule": "best_f1_val"
+        },
+        "lightgbm": {
+          "value": 4.2820631997576295e-05,
+          "rule": "best_f1_val"
+        },
+        "prior_horario": {
+          "value": 0.05555555555555555,
+          "rule": "best_f1_val"
+        }
+      }
+    },
+    {
+      "fold": 6,
+      "test_day": "2020_05_28",
+      "kept_features": 1599,
+      "train_normal_windows": 1168,
+      "train_positive_windows": 156,
+      "val_positive_windows": 48,
+      "oracle_windows_shifted": 0,
+      "thresholds": {
+        "zscore_3sigma": {
+          "value": 3.0,
+          "rule": "fixed_3sigma"
+        },
+        "zscore_val": {
+          "value": 545.7335248328336,
+          "rule": "best_f1_val"
+        },
+        "zscore_local": {
+          "value": 19.68165358261139,
+          "rule": "best_f1_val"
+        },
+        "isolation_forest": {
+          "value": 0.5191790969646696,
+          "rule": "best_f1_val"
+        },
+        "lightgbm": {
+          "value": 7.752754487926679e-05,
+          "rule": "best_f1_val"
+        },
+        "prior_horario": {
+          "value": 0.05429864253393665,
+          "rule": "best_f1_val"
+        }
+      }
+    },
+    {
+      "fold": 7,
+      "test_day": "2020_05_29",
+      "kept_features": 1605,
+      "train_normal_windows": 1249,
+      "train_positive_windows": 204,
+      "val_positive_windows": 12,
+      "oracle_windows_shifted": 0,
+      "thresholds": {
+        "zscore_3sigma": {
+          "value": 3.0,
+          "rule": "fixed_3sigma"
+        },
+        "zscore_val": {
+          "value": 259.26921212133914,
+          "rule": "best_f1_val"
+        },
+        "zscore_local": {
+          "value": 47.72278701186618,
+          "rule": "best_f1_val"
+        },
+        "isolation_forest": {
+          "value": 0.4811442430515417,
+          "rule": "best_f1_val"
+        },
+        "lightgbm": {
+          "value": 0.42900322013816744,
+          "rule": "best_f1_val"
+        },
+        "prior_horario": {
+          "value": 0.0912280701754386,
+          "rule": "best_f1_val"
+        }
+      }
+    },
+    {
+      "fold": 8,
+      "test_day": "2020_05_30",
+      "kept_features": 1611,
+      "train_normal_windows": 1480,
+      "train_positive_windows": 216,
+      "val_positive_windows": 18,
+      "oracle_windows_shifted": 1,
+      "thresholds": {
+        "zscore_3sigma": {
+          "value": 3.0,
+          "rule": "fixed_3sigma"
+        },
+        "zscore_val": {
+          "value": 448.0130155383801,
+          "rule": "best_f1_val"
+        },
+        "zscore_local": {
+          "value": 24.91807343774621,
+          "rule": "best_f1_val"
+        },
+        "isolation_forest": {
+          "value": 0.4754085668785525,
+          "rule": "best_f1_val"
+        },
+        "lightgbm": {
+          "value": 0.9895767378039788,
+          "rule": "best_f1_val"
+        },
+        "prior_horario": {
+          "value": 0.26666666666666666,
+          "rule": "best_f1_val"
+        }
+      }
+    },
+    {
+      "fold": 9,
+      "test_day": "2020_05_31",
+      "kept_features": 1609,
+      "train_normal_windows": 1681,
+      "train_positive_windows": 234,
+      "val_positive_windows": 24,
+      "oracle_windows_shifted": 0,
+      "thresholds": {
+        "zscore_3sigma": {
+          "value": 3.0,
+          "rule": "fixed_3sigma"
+        },
+        "zscore_val": {
+          "value": 348.3410593775586,
+          "rule": "best_f1_val"
+        },
+        "zscore_local": {
+          "value": 50.0,
+          "rule": "best_f1_val"
+        },
+        "isolation_forest": {
+          "value": 0.4609564077761499,
+          "rule": "best_f1_val"
+        },
+        "lightgbm": {
+          "value": 0.20958411879855565,
+          "rule": "best_f1_val"
+        },
+        "prior_horario": {
+          "value": 0.09973045822102426,
+          "rule": "best_f1_val"
+        }
+      }
+    }
+  ],
+  "run_dir": "20261117T022434-baselines_janela_inteira"
+}

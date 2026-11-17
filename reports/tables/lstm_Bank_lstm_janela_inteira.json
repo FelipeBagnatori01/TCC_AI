@@ -1,0 +1,1712 @@
+{
+  "detection": {
+    "lstm_forecast": {
+      "seeds": [
+        {
+          "auc_pr": {
+            "value": 0.1975,
+            "ci_low": 0.1538,
+            "ci_high": 0.2726,
+            "n_valid_resamples": 2000
+          },
+          "auc_roc": {
+            "value": 0.6987,
+            "ci_low": 0.6488,
+            "ci_high": 0.7456,
+            "n_valid_resamples": 2000
+          },
+          "precision": {
+            "value": 0.2013,
+            "ci_low": 0.1455,
+            "ci_high": 0.2638,
+            "n_valid_resamples": 2000
+          },
+          "recall": {
+            "value": 0.4068,
+            "ci_low": 0.3225,
+            "ci_high": 0.493,
+            "n_valid_resamples": 2000
+          },
+          "f1": {
+            "value": 0.2693,
+            "ci_low": 0.2085,
+            "ci_high": 0.3376,
+            "n_valid_resamples": 2000
+          },
+          "positive_rate": 0.1052,
+          "n_windows": 6733,
+          "auc_pr_fold_mean": {
+            "value": 0.2722,
+            "ci_low": 0.227,
+            "ci_high": 0.3763,
+            "n_valid_resamples": 2000
+          },
+          "false_alarms_per_hour": {
+            "value": 11.3826,
+            "ci_low": 8.9477,
+            "ci_high": 13.8973,
+            "n_valid_resamples": 2000
+          },
+          "event_recall": {
+            "value": 0.5917,
+            "ci_low": 0.5,
+            "ci_high": 0.6833,
+            "n_valid_resamples": 2000
+          },
+          "median_delay_minutes": {
+            "value": 0.0,
+            "ci_low": -5.0,
+            "ci_high": 0.0,
+            "n_valid_resamples": 2000
+          },
+          "failures_detected": 71,
+          "event_recall_by_chance": 0.9995,
+          "event_recall_by_reason": {
+            "JVM Out of Memory (OOM) Heap": {
+              "n": 3,
+              "detected": 1
+            },
+            "high CPU usage": {
+              "n": 31,
+              "detected": 14
+            },
+            "high disk I/O read usage": {
+              "n": 18,
+              "detected": 14
+            },
+            "high disk space usage": {
+              "n": 5,
+              "detected": 3
+            },
+            "high memory usage": {
+              "n": 5,
+              "detected": 3
+            },
+            "network latency": {
+              "n": 26,
+              "detected": 12
+            },
+            "network packet loss": {
+              "n": 32,
+              "detected": 24
+            }
+          }
+        },
+        {
+          "auc_pr": {
+            "value": 0.2053,
+            "ci_low": 0.1595,
+            "ci_high": 0.2859,
+            "n_valid_resamples": 2000
+          },
+          "auc_roc": {
+            "value": 0.699,
+            "ci_low": 0.6502,
+            "ci_high": 0.745,
+            "n_valid_resamples": 2000
+          },
+          "precision": {
+            "value": 0.1939,
+            "ci_low": 0.1442,
+            "ci_high": 0.2522,
+            "n_valid_resamples": 2000
+          },
+          "recall": {
+            "value": 0.4209,
+            "ci_low": 0.3405,
+            "ci_high": 0.507,
+            "n_valid_resamples": 2000
+          },
+          "f1": {
+            "value": 0.2655,
+            "ci_low": 0.2052,
+            "ci_high": 0.3296,
+            "n_valid_resamples": 2000
+          },
+          "positive_rate": 0.1052,
+          "n_windows": 6733,
+          "auc_pr_fold_mean": {
+            "value": 0.2777,
+            "ci_low": 0.2269,
+            "ci_high": 0.389,
+            "n_valid_resamples": 2000
+          },
+          "false_alarms_per_hour": {
+            "value": 12.3386,
+            "ci_low": 10.0344,
+            "ci_high": 14.8593,
+            "n_valid_resamples": 2000
+          },
+          "event_recall": {
+            "value": 0.6333,
+            "ci_low": 0.55,
+            "ci_high": 0.7167,
+            "n_valid_resamples": 2000
+          },
+          "median_delay_minutes": {
+            "value": 0.0,
+            "ci_low": -5.0,
+            "ci_high": 0.0,
+            "n_valid_resamples": 2000
+          },
+          "failures_detected": 76,
+          "event_recall_by_chance": 0.9997,
+          "event_recall_by_reason": {
+            "JVM Out of Memory (OOM) Heap": {
+              "n": 3,
+              "detected": 2
+            },
+            "high CPU usage": {
+              "n": 31,
+              "detected": 16
+            },
+            "high disk I/O read usage": {
+              "n": 18,
+              "detected": 15
+            },
+            "high disk space usage": {
+              "n": 5,
+              "detected": 3
+            },
+            "high memory usage": {
+              "n": 5,
+              "detected": 4
+            },
+            "network latency": {
+              "n": 26,
+              "detected": 13
+            },
+            "network packet loss": {
+              "n": 32,
+              "detected": 23
+            }
+          }
+        },
+        {
+          "auc_pr": {
+            "value": 0.1975,
+            "ci_low": 0.1527,
+            "ci_high": 0.2742,
+            "n_valid_resamples": 2000
+          },
+          "auc_roc": {
+            "value": 0.6935,
+            "ci_low": 0.6438,
+            "ci_high": 0.7406,
+            "n_valid_resamples": 2000
+          },
+          "precision": {
+            "value": 0.2005,
+            "ci_low": 0.1495,
+            "ci_high": 0.2598,
+            "n_valid_resamples": 2000
+          },
+          "recall": {
+            "value": 0.4124,
+            "ci_low": 0.3338,
+            "ci_high": 0.4966,
+            "n_valid_resamples": 2000
+          },
+          "f1": {
+            "value": 0.2699,
+            "ci_low": 0.2094,
+            "ci_high": 0.3351,
+            "n_valid_resamples": 2000
+          },
+          "positive_rate": 0.1052,
+          "n_windows": 6733,
+          "auc_pr_fold_mean": {
+            "value": 0.2711,
+            "ci_low": 0.2251,
+            "ci_high": 0.3794,
+            "n_valid_resamples": 2000
+          },
+          "false_alarms_per_hour": {
+            "value": 11.5917,
+            "ci_low": 9.2853,
+            "ci_high": 14.0641,
+            "n_valid_resamples": 2000
+          },
+          "event_recall": {
+            "value": 0.6167,
+            "ci_low": 0.5333,
+            "ci_high": 0.7,
+            "n_valid_resamples": 2000
+          },
+          "median_delay_minutes": {
+            "value": 0.0,
+            "ci_low": -2.0,
+            "ci_high": 0.0,
+            "n_valid_resamples": 2000
+          },
+          "failures_detected": 74,
+          "event_recall_by_chance": 0.9996,
+          "event_recall_by_reason": {
+            "JVM Out of Memory (OOM) Heap": {
+              "n": 3,
+              "detected": 2
+            },
+            "high CPU usage": {
+              "n": 31,
+              "detected": 14
+            },
+            "high disk I/O read usage": {
+              "n": 18,
+              "detected": 14
+            },
+            "high disk space usage": {
+              "n": 5,
+              "detected": 3
+            },
+            "high memory usage": {
+              "n": 5,
+              "detected": 4
+            },
+            "network latency": {
+              "n": 26,
+              "detected": 14
+            },
+            "network packet loss": {
+              "n": 32,
+              "detected": 23
+            }
+          }
+        },
+        {
+          "auc_pr": {
+            "value": 0.2063,
+            "ci_low": 0.1579,
+            "ci_high": 0.2889,
+            "n_valid_resamples": 2000
+          },
+          "auc_roc": {
+            "value": 0.6954,
+            "ci_low": 0.645,
+            "ci_high": 0.7426,
+            "n_valid_resamples": 2000
+          },
+          "precision": {
+            "value": 0.2091,
+            "ci_low": 0.147,
+            "ci_high": 0.2828,
+            "n_valid_resamples": 2000
+          },
+          "recall": {
+            "value": 0.3192,
+            "ci_low": 0.2401,
+            "ci_high": 0.3997,
+            "n_valid_resamples": 2000
+          },
+          "f1": {
+            "value": 0.2527,
+            "ci_low": 0.1879,
+            "ci_high": 0.3214,
+            "n_valid_resamples": 2000
+          },
+          "positive_rate": 0.1052,
+          "n_windows": 6733,
+          "auc_pr_fold_mean": {
+            "value": 0.2786,
+            "ci_low": 0.2306,
+            "ci_high": 0.3932,
+            "n_valid_resamples": 2000
+          },
+          "false_alarms_per_hour": {
+            "value": 8.5145,
+            "ci_low": 6.4429,
+            "ci_high": 10.836,
+            "n_valid_resamples": 2000
+          },
+          "event_recall": {
+            "value": 0.5,
+            "ci_low": 0.4083,
+            "ci_high": 0.5833,
+            "n_valid_resamples": 2000
+          },
+          "median_delay_minutes": {
+            "value": 0.0,
+            "ci_low": -1.0,
+            "ci_high": 0.0,
+            "n_valid_resamples": 2000
+          },
+          "failures_detected": 60,
+          "event_recall_by_chance": 0.996,
+          "event_recall_by_reason": {
+            "JVM Out of Memory (OOM) Heap": {
+              "n": 3,
+              "detected": 1
+            },
+            "high CPU usage": {
+              "n": 31,
+              "detected": 11
+            },
+            "high disk I/O read usage": {
+              "n": 18,
+              "detected": 12
+            },
+            "high disk space usage": {
+              "n": 5,
+              "detected": 3
+            },
+            "high memory usage": {
+              "n": 5,
+              "detected": 2
+            },
+            "network latency": {
+              "n": 26,
+              "detected": 10
+            },
+            "network packet loss": {
+              "n": 32,
+              "detected": 21
+            }
+          }
+        },
+        {
+          "auc_pr": {
+            "value": 0.2035,
+            "ci_low": 0.1586,
+            "ci_high": 0.2809,
+            "n_valid_resamples": 2000
+          },
+          "auc_roc": {
+            "value": 0.7036,
+            "ci_low": 0.6545,
+            "ci_high": 0.7507,
+            "n_valid_resamples": 2000
+          },
+          "precision": {
+            "value": 0.2328,
+            "ci_low": 0.1693,
+            "ci_high": 0.3064,
+            "n_valid_resamples": 2000
+          },
+          "recall": {
+            "value": 0.3814,
+            "ci_low": 0.297,
+            "ci_high": 0.4658,
+            "n_valid_resamples": 2000
+          },
+          "f1": {
+            "value": 0.2891,
+            "ci_low": 0.2216,
+            "ci_high": 0.362,
+            "n_valid_resamples": 2000
+          },
+          "positive_rate": 0.1052,
+          "n_windows": 6733,
+          "auc_pr_fold_mean": {
+            "value": 0.2724,
+            "ci_low": 0.2294,
+            "ci_high": 0.3785,
+            "n_valid_resamples": 2000
+          },
+          "false_alarms_per_hour": {
+            "value": 8.8631,
+            "ci_low": 6.7195,
+            "ci_high": 11.1899,
+            "n_valid_resamples": 2000
+          },
+          "event_recall": {
+            "value": 0.575,
+            "ci_low": 0.4833,
+            "ci_high": 0.6583,
+            "n_valid_resamples": 2000
+          },
+          "median_delay_minutes": {
+            "value": 0.0,
+            "ci_low": -5.0,
+            "ci_high": 0.0,
+            "n_valid_resamples": 2000
+          },
+          "failures_detected": 69,
+          "event_recall_by_chance": 0.9968,
+          "event_recall_by_reason": {
+            "JVM Out of Memory (OOM) Heap": {
+              "n": 3,
+              "detected": 2
+            },
+            "high CPU usage": {
+              "n": 31,
+              "detected": 15
+            },
+            "high disk I/O read usage": {
+              "n": 18,
+              "detected": 13
+            },
+            "high disk space usage": {
+              "n": 5,
+              "detected": 3
+            },
+            "high memory usage": {
+              "n": 5,
+              "detected": 3
+            },
+            "network latency": {
+              "n": 26,
+              "detected": 11
+            },
+            "network packet loss": {
+              "n": 32,
+              "detected": 22
+            }
+          }
+        }
+      ],
+      "summary": {
+        "auc_pr": {
+          "mean": 0.202,
+          "sd": 0.0042,
+          "min": 0.1975,
+          "max": 0.2063
+        },
+        "auc_pr_fold_mean": {
+          "mean": 0.2744,
+          "sd": 0.0035,
+          "min": 0.2711,
+          "max": 0.2786
+        },
+        "auc_roc": {
+          "mean": 0.698,
+          "sd": 0.0039,
+          "min": 0.6935,
+          "max": 0.7036
+        },
+        "precision": {
+          "mean": 0.2075,
+          "sd": 0.0151,
+          "min": 0.1939,
+          "max": 0.2328
+        },
+        "recall": {
+          "mean": 0.3881,
+          "sd": 0.0413,
+          "min": 0.3192,
+          "max": 0.4209
+        },
+        "f1": {
+          "mean": 0.2693,
+          "sd": 0.0131,
+          "min": 0.2527,
+          "max": 0.2891
+        },
+        "false_alarms_per_hour": {
+          "mean": 10.5381,
+          "sd": 1.7296,
+          "min": 8.5145,
+          "max": 12.3386
+        },
+        "event_recall": {
+          "mean": 0.5833,
+          "sd": 0.0517,
+          "min": 0.5,
+          "max": 0.6333
+        }
+      }
+    },
+    "lstm_classifier": {
+      "seeds": [
+        {
+          "auc_pr": {
+            "value": 0.2234,
+            "ci_low": 0.1625,
+            "ci_high": 0.3004,
+            "n_valid_resamples": 2000
+          },
+          "auc_roc": {
+            "value": 0.655,
+            "ci_low": 0.5983,
+            "ci_high": 0.7072,
+            "n_valid_resamples": 2000
+          },
+          "precision": {
+            "value": 0.172,
+            "ci_low": 0.1282,
+            "ci_high": 0.2223,
+            "n_valid_resamples": 2000
+          },
+          "recall": {
+            "value": 0.4336,
+            "ci_low": 0.356,
+            "ci_high": 0.5134,
+            "n_valid_resamples": 2000
+          },
+          "f1": {
+            "value": 0.2463,
+            "ci_low": 0.1904,
+            "ci_high": 0.301,
+            "n_valid_resamples": 2000
+          },
+          "positive_rate": 0.1052,
+          "n_windows": 6733,
+          "auc_pr_fold_mean": {
+            "value": 0.2575,
+            "ci_low": 0.2068,
+            "ci_high": 0.3394,
+            "n_valid_resamples": 2000
+          },
+          "false_alarms_per_hour": {
+            "value": 14.7187,
+            "ci_low": 12.1567,
+            "ci_high": 17.5259,
+            "n_valid_resamples": 2000
+          },
+          "event_recall": {
+            "value": 0.675,
+            "ci_low": 0.5917,
+            "ci_high": 0.7502,
+            "n_valid_resamples": 2000
+          },
+          "median_delay_minutes": {
+            "value": -4.0,
+            "ci_low": -5.0,
+            "ci_high": -1.0,
+            "n_valid_resamples": 2000
+          },
+          "failures_detected": 81,
+          "event_recall_by_chance": 1.0,
+          "event_recall_by_reason": {
+            "JVM Out of Memory (OOM) Heap": {
+              "n": 3,
+              "detected": 3
+            },
+            "high CPU usage": {
+              "n": 31,
+              "detected": 20
+            },
+            "high disk I/O read usage": {
+              "n": 18,
+              "detected": 11
+            },
+            "high disk space usage": {
+              "n": 5,
+              "detected": 4
+            },
+            "high memory usage": {
+              "n": 5,
+              "detected": 3
+            },
+            "network latency": {
+              "n": 26,
+              "detected": 15
+            },
+            "network packet loss": {
+              "n": 32,
+              "detected": 25
+            }
+          }
+        },
+        {
+          "auc_pr": {
+            "value": 0.2347,
+            "ci_low": 0.166,
+            "ci_high": 0.3131,
+            "n_valid_resamples": 2000
+          },
+          "auc_roc": {
+            "value": 0.6507,
+            "ci_low": 0.5953,
+            "ci_high": 0.7056,
+            "n_valid_resamples": 2000
+          },
+          "precision": {
+            "value": 0.1783,
+            "ci_low": 0.1317,
+            "ci_high": 0.2327,
+            "n_valid_resamples": 2000
+          },
+          "recall": {
+            "value": 0.4153,
+            "ci_low": 0.3393,
+            "ci_high": 0.4971,
+            "n_valid_resamples": 2000
+          },
+          "f1": {
+            "value": 0.2495,
+            "ci_low": 0.195,
+            "ci_high": 0.3081,
+            "n_valid_resamples": 2000
+          },
+          "positive_rate": 0.1052,
+          "n_windows": 6733,
+          "auc_pr_fold_mean": {
+            "value": 0.2648,
+            "ci_low": 0.2101,
+            "ci_high": 0.3443,
+            "n_valid_resamples": 2000
+          },
+          "false_alarms_per_hour": {
+            "value": 13.4938,
+            "ci_low": 10.961,
+            "ci_high": 16.1737,
+            "n_valid_resamples": 2000
+          },
+          "event_recall": {
+            "value": 0.6583,
+            "ci_low": 0.575,
+            "ci_high": 0.7417,
+            "n_valid_resamples": 2000
+          },
+          "median_delay_minutes": {
+            "value": -4.0,
+            "ci_low": -4.5,
+            "ci_high": -0.4875,
+            "n_valid_resamples": 2000
+          },
+          "failures_detected": 79,
+          "event_recall_by_chance": 0.9999,
+          "event_recall_by_reason": {
+            "JVM Out of Memory (OOM) Heap": {
+              "n": 3,
+              "detected": 3
+            },
+            "high CPU usage": {
+              "n": 31,
+              "detected": 21
+            },
+            "high disk I/O read usage": {
+              "n": 18,
+              "detected": 11
+            },
+            "high disk space usage": {
+              "n": 5,
+              "detected": 4
+            },
+            "high memory usage": {
+              "n": 5,
+              "detected": 3
+            },
+            "network latency": {
+              "n": 26,
+              "detected": 16
+            },
+            "network packet loss": {
+              "n": 32,
+              "detected": 21
+            }
+          }
+        },
+        {
+          "auc_pr": {
+            "value": 0.218,
+            "ci_low": 0.1579,
+            "ci_high": 0.2993,
+            "n_valid_resamples": 2000
+          },
+          "auc_roc": {
+            "value": 0.6661,
+            "ci_low": 0.6119,
+            "ci_high": 0.7175,
+            "n_valid_resamples": 2000
+          },
+          "precision": {
+            "value": 0.1746,
+            "ci_low": 0.1317,
+            "ci_high": 0.2264,
+            "n_valid_resamples": 2000
+          },
+          "recall": {
+            "value": 0.4266,
+            "ci_low": 0.3517,
+            "ci_high": 0.5094,
+            "n_valid_resamples": 2000
+          },
+          "f1": {
+            "value": 0.2477,
+            "ci_low": 0.1943,
+            "ci_high": 0.3014,
+            "n_valid_resamples": 2000
+          },
+          "positive_rate": 0.1052,
+          "n_windows": 6733,
+          "auc_pr_fold_mean": {
+            "value": 0.2637,
+            "ci_low": 0.2103,
+            "ci_high": 0.3455,
+            "n_valid_resamples": 2000
+          },
+          "false_alarms_per_hour": {
+            "value": 14.2207,
+            "ci_low": 11.5492,
+            "ci_high": 16.9576,
+            "n_valid_resamples": 2000
+          },
+          "event_recall": {
+            "value": 0.725,
+            "ci_low": 0.6417,
+            "ci_high": 0.8,
+            "n_valid_resamples": 2000
+          },
+          "median_delay_minutes": {
+            "value": -3.0,
+            "ci_low": -5.0,
+            "ci_high": 0.0,
+            "n_valid_resamples": 2000
+          },
+          "failures_detected": 87,
+          "event_recall_by_chance": 0.9999,
+          "event_recall_by_reason": {
+            "JVM Out of Memory (OOM) Heap": {
+              "n": 3,
+              "detected": 3
+            },
+            "high CPU usage": {
+              "n": 31,
+              "detected": 20
+            },
+            "high disk I/O read usage": {
+              "n": 18,
+              "detected": 11
+            },
+            "high disk space usage": {
+              "n": 5,
+              "detected": 4
+            },
+            "high memory usage": {
+              "n": 5,
+              "detected": 3
+            },
+            "network latency": {
+              "n": 26,
+              "detected": 19
+            },
+            "network packet loss": {
+              "n": 32,
+              "detected": 27
+            }
+          }
+        },
+        {
+          "auc_pr": {
+            "value": 0.2246,
+            "ci_low": 0.1613,
+            "ci_high": 0.3099,
+            "n_valid_resamples": 2000
+          },
+          "auc_roc": {
+            "value": 0.6632,
+            "ci_low": 0.607,
+            "ci_high": 0.7155,
+            "n_valid_resamples": 2000
+          },
+          "precision": {
+            "value": 0.164,
+            "ci_low": 0.1222,
+            "ci_high": 0.2103,
+            "n_valid_resamples": 2000
+          },
+          "recall": {
+            "value": 0.3955,
+            "ci_low": 0.3253,
+            "ci_high": 0.4715,
+            "n_valid_resamples": 2000
+          },
+          "f1": {
+            "value": 0.2319,
+            "ci_low": 0.181,
+            "ci_high": 0.2844,
+            "n_valid_resamples": 2000
+          },
+          "positive_rate": 0.1052,
+          "n_windows": 6733,
+          "auc_pr_fold_mean": {
+            "value": 0.2597,
+            "ci_low": 0.2048,
+            "ci_high": 0.3469,
+            "n_valid_resamples": 2000
+          },
+          "false_alarms_per_hour": {
+            "value": 14.2108,
+            "ci_low": 11.7928,
+            "ci_high": 16.8081,
+            "n_valid_resamples": 2000
+          },
+          "event_recall": {
+            "value": 0.725,
+            "ci_low": 0.6417,
+            "ci_high": 0.8,
+            "n_valid_resamples": 2000
+          },
+          "median_delay_minutes": {
+            "value": -3.0,
+            "ci_low": -5.0,
+            "ci_high": 0.0,
+            "n_valid_resamples": 2000
+          },
+          "failures_detected": 87,
+          "event_recall_by_chance": 0.9999,
+          "event_recall_by_reason": {
+            "JVM Out of Memory (OOM) Heap": {
+              "n": 3,
+              "detected": 3
+            },
+            "high CPU usage": {
+              "n": 31,
+              "detected": 20
+            },
+            "high disk I/O read usage": {
+              "n": 18,
+              "detected": 13
+            },
+            "high disk space usage": {
+              "n": 5,
+              "detected": 4
+            },
+            "high memory usage": {
+              "n": 5,
+              "detected": 3
+            },
+            "network latency": {
+              "n": 26,
+              "detected": 18
+            },
+            "network packet loss": {
+              "n": 32,
+              "detected": 26
+            }
+          }
+        },
+        {
+          "auc_pr": {
+            "value": 0.1975,
+            "ci_low": 0.1425,
+            "ci_high": 0.2725,
+            "n_valid_resamples": 2000
+          },
+          "auc_roc": {
+            "value": 0.641,
+            "ci_low": 0.5844,
+            "ci_high": 0.693,
+            "n_valid_resamples": 2000
+          },
+          "precision": {
+            "value": 0.1466,
+            "ci_low": 0.107,
+            "ci_high": 0.1916,
+            "n_valid_resamples": 2000
+          },
+          "recall": {
+            "value": 0.3644,
+            "ci_low": 0.2886,
+            "ci_high": 0.4399,
+            "n_valid_resamples": 2000
+          },
+          "f1": {
+            "value": 0.2091,
+            "ci_low": 0.1586,
+            "ci_high": 0.2632,
+            "n_valid_resamples": 2000
+          },
+          "positive_rate": 0.1052,
+          "n_windows": 6733,
+          "auc_pr_fold_mean": {
+            "value": 0.2303,
+            "ci_low": 0.1815,
+            "ci_high": 0.3078,
+            "n_valid_resamples": 2000
+          },
+          "false_alarms_per_hour": {
+            "value": 14.9577,
+            "ci_low": 12.3477,
+            "ci_high": 17.5913,
+            "n_valid_resamples": 2000
+          },
+          "event_recall": {
+            "value": 0.6417,
+            "ci_low": 0.5583,
+            "ci_high": 0.725,
+            "n_valid_resamples": 2000
+          },
+          "median_delay_minutes": {
+            "value": -2.0,
+            "ci_low": -4.5,
+            "ci_high": 0.0,
+            "n_valid_resamples": 2000
+          },
+          "failures_detected": 77,
+          "event_recall_by_chance": 1.0,
+          "event_recall_by_reason": {
+            "JVM Out of Memory (OOM) Heap": {
+              "n": 3,
+              "detected": 2
+            },
+            "high CPU usage": {
+              "n": 31,
+              "detected": 20
+            },
+            "high disk I/O read usage": {
+              "n": 18,
+              "detected": 11
+            },
+            "high disk space usage": {
+              "n": 5,
+              "detected": 4
+            },
+            "high memory usage": {
+              "n": 5,
+              "detected": 3
+            },
+            "network latency": {
+              "n": 26,
+              "detected": 16
+            },
+            "network packet loss": {
+              "n": 32,
+              "detected": 21
+            }
+          }
+        }
+      ],
+      "summary": {
+        "auc_pr": {
+          "mean": 0.2196,
+          "sd": 0.0138,
+          "min": 0.1975,
+          "max": 0.2347
+        },
+        "auc_pr_fold_mean": {
+          "mean": 0.2552,
+          "sd": 0.0142,
+          "min": 0.2303,
+          "max": 0.2648
+        },
+        "auc_roc": {
+          "mean": 0.6552,
+          "sd": 0.0101,
+          "min": 0.641,
+          "max": 0.6661
+        },
+        "precision": {
+          "mean": 0.1671,
+          "sd": 0.0126,
+          "min": 0.1466,
+          "max": 0.1783
+        },
+        "recall": {
+          "mean": 0.4071,
+          "sd": 0.0279,
+          "min": 0.3644,
+          "max": 0.4336
+        },
+        "f1": {
+          "mean": 0.2369,
+          "sd": 0.017,
+          "min": 0.2091,
+          "max": 0.2495
+        },
+        "false_alarms_per_hour": {
+          "mean": 14.3203,
+          "sd": 0.5635,
+          "min": 13.4938,
+          "max": 14.9577
+        },
+        "event_recall": {
+          "mean": 0.685,
+          "sd": 0.0384,
+          "min": 0.6417,
+          "max": 0.725
+        }
+      }
+    }
+  },
+  "localization": {
+    "lstm_sum": {
+      "seeds": [
+        {
+          "n_failures": 120,
+          "hr@1": {
+            "value": 0.3417,
+            "ci_low": 0.2583,
+            "ci_high": 0.425,
+            "n_valid_resamples": 2000
+          },
+          "hr@3": {
+            "value": 0.5917,
+            "ci_low": 0.5,
+            "ci_high": 0.6833,
+            "n_valid_resamples": 2000
+          },
+          "hr@5": {
+            "value": 0.7917,
+            "ci_low": 0.7167,
+            "ci_high": 0.8583,
+            "n_valid_resamples": 2000
+          },
+          "mrr": {
+            "value": 0.518,
+            "ci_low": 0.4538,
+            "ci_high": 0.581,
+            "n_valid_resamples": 2000
+          },
+          "hr@1_by_reason": {
+            "JVM Out of Memory (OOM) Heap": {
+              "n": 3,
+              "hr@1": 0.3333
+            },
+            "high CPU usage": {
+              "n": 31,
+              "hr@1": 0.2903
+            },
+            "high disk I/O read usage": {
+              "n": 18,
+              "hr@1": 0.7778
+            },
+            "high disk space usage": {
+              "n": 5,
+              "hr@1": 0.8
+            },
+            "high memory usage": {
+              "n": 5,
+              "hr@1": 0.6
+            },
+            "network latency": {
+              "n": 26,
+              "hr@1": 0.1538
+            },
+            "network packet loss": {
+              "n": 32,
+              "hr@1": 0.1875
+            }
+          }
+        },
+        {
+          "n_failures": 120,
+          "hr@1": {
+            "value": 0.3167,
+            "ci_low": 0.2333,
+            "ci_high": 0.4,
+            "n_valid_resamples": 2000
+          },
+          "hr@3": {
+            "value": 0.6,
+            "ci_low": 0.5083,
+            "ci_high": 0.6917,
+            "n_valid_resamples": 2000
+          },
+          "hr@5": {
+            "value": 0.8,
+            "ci_low": 0.725,
+            "ci_high": 0.8667,
+            "n_valid_resamples": 2000
+          },
+          "mrr": {
+            "value": 0.5062,
+            "ci_low": 0.4434,
+            "ci_high": 0.568,
+            "n_valid_resamples": 2000
+          },
+          "hr@1_by_reason": {
+            "JVM Out of Memory (OOM) Heap": {
+              "n": 3,
+              "hr@1": 0.3333
+            },
+            "high CPU usage": {
+              "n": 31,
+              "hr@1": 0.2581
+            },
+            "high disk I/O read usage": {
+              "n": 18,
+              "hr@1": 0.7778
+            },
+            "high disk space usage": {
+              "n": 5,
+              "hr@1": 1.0
+            },
+            "high memory usage": {
+              "n": 5,
+              "hr@1": 0.6
+            },
+            "network latency": {
+              "n": 26,
+              "hr@1": 0.1538
+            },
+            "network packet loss": {
+              "n": 32,
+              "hr@1": 0.0938
+            }
+          }
+        },
+        {
+          "n_failures": 120,
+          "hr@1": {
+            "value": 0.325,
+            "ci_low": 0.2417,
+            "ci_high": 0.4083,
+            "n_valid_resamples": 2000
+          },
+          "hr@3": {
+            "value": 0.6083,
+            "ci_low": 0.5167,
+            "ci_high": 0.6919,
+            "n_valid_resamples": 2000
+          },
+          "hr@5": {
+            "value": 0.7917,
+            "ci_low": 0.7167,
+            "ci_high": 0.8583,
+            "n_valid_resamples": 2000
+          },
+          "mrr": {
+            "value": 0.5121,
+            "ci_low": 0.4491,
+            "ci_high": 0.5748,
+            "n_valid_resamples": 2000
+          },
+          "hr@1_by_reason": {
+            "JVM Out of Memory (OOM) Heap": {
+              "n": 3,
+              "hr@1": 0.3333
+            },
+            "high CPU usage": {
+              "n": 31,
+              "hr@1": 0.2903
+            },
+            "high disk I/O read usage": {
+              "n": 18,
+              "hr@1": 0.8333
+            },
+            "high disk space usage": {
+              "n": 5,
+              "hr@1": 0.8
+            },
+            "high memory usage": {
+              "n": 5,
+              "hr@1": 0.6
+            },
+            "network latency": {
+              "n": 26,
+              "hr@1": 0.1154
+            },
+            "network packet loss": {
+              "n": 32,
+              "hr@1": 0.125
+            }
+          }
+        },
+        {
+          "n_failures": 120,
+          "hr@1": {
+            "value": 0.325,
+            "ci_low": 0.2417,
+            "ci_high": 0.4083,
+            "n_valid_resamples": 2000
+          },
+          "hr@3": {
+            "value": 0.6,
+            "ci_low": 0.5083,
+            "ci_high": 0.6917,
+            "n_valid_resamples": 2000
+          },
+          "hr@5": {
+            "value": 0.7917,
+            "ci_low": 0.7167,
+            "ci_high": 0.8583,
+            "n_valid_resamples": 2000
+          },
+          "mrr": {
+            "value": 0.5132,
+            "ci_low": 0.451,
+            "ci_high": 0.5759,
+            "n_valid_resamples": 2000
+          },
+          "hr@1_by_reason": {
+            "JVM Out of Memory (OOM) Heap": {
+              "n": 3,
+              "hr@1": 0.3333
+            },
+            "high CPU usage": {
+              "n": 31,
+              "hr@1": 0.2903
+            },
+            "high disk I/O read usage": {
+              "n": 18,
+              "hr@1": 0.7778
+            },
+            "high disk space usage": {
+              "n": 5,
+              "hr@1": 1.0
+            },
+            "high memory usage": {
+              "n": 5,
+              "hr@1": 0.6
+            },
+            "network latency": {
+              "n": 26,
+              "hr@1": 0.1154
+            },
+            "network packet loss": {
+              "n": 32,
+              "hr@1": 0.125
+            }
+          }
+        },
+        {
+          "n_failures": 120,
+          "hr@1": {
+            "value": 0.3333,
+            "ci_low": 0.25,
+            "ci_high": 0.4167,
+            "n_valid_resamples": 2000
+          },
+          "hr@3": {
+            "value": 0.6,
+            "ci_low": 0.5083,
+            "ci_high": 0.6917,
+            "n_valid_resamples": 2000
+          },
+          "hr@5": {
+            "value": 0.8083,
+            "ci_low": 0.7333,
+            "ci_high": 0.875,
+            "n_valid_resamples": 2000
+          },
+          "mrr": {
+            "value": 0.5165,
+            "ci_low": 0.4521,
+            "ci_high": 0.5793,
+            "n_valid_resamples": 2000
+          },
+          "hr@1_by_reason": {
+            "JVM Out of Memory (OOM) Heap": {
+              "n": 3,
+              "hr@1": 0.3333
+            },
+            "high CPU usage": {
+              "n": 31,
+              "hr@1": 0.2903
+            },
+            "high disk I/O read usage": {
+              "n": 18,
+              "hr@1": 0.7778
+            },
+            "high disk space usage": {
+              "n": 5,
+              "hr@1": 1.0
+            },
+            "high memory usage": {
+              "n": 5,
+              "hr@1": 0.6
+            },
+            "network latency": {
+              "n": 26,
+              "hr@1": 0.1154
+            },
+            "network packet loss": {
+              "n": 32,
+              "hr@1": 0.1562
+            }
+          }
+        }
+      ],
+      "summary": {
+        "hr@1": {
+          "mean": 0.3283,
+          "sd": 0.0095,
+          "min": 0.3167,
+          "max": 0.3417
+        },
+        "hr@3": {
+          "mean": 0.6,
+          "sd": 0.0059,
+          "min": 0.5917,
+          "max": 0.6083
+        },
+        "hr@5": {
+          "mean": 0.7967,
+          "sd": 0.0074,
+          "min": 0.7917,
+          "max": 0.8083
+        },
+        "mrr": {
+          "mean": 0.5132,
+          "sd": 0.0046,
+          "min": 0.5062,
+          "max": 0.518
+        }
+      }
+    },
+    "lstm_top3": {
+      "seeds": [
+        {
+          "n_failures": 120,
+          "hr@1": {
+            "value": 0.3167,
+            "ci_low": 0.2333,
+            "ci_high": 0.4,
+            "n_valid_resamples": 2000
+          },
+          "hr@3": {
+            "value": 0.575,
+            "ci_low": 0.4833,
+            "ci_high": 0.6667,
+            "n_valid_resamples": 2000
+          },
+          "hr@5": {
+            "value": 0.7333,
+            "ci_low": 0.65,
+            "ci_high": 0.8083,
+            "n_valid_resamples": 2000
+          },
+          "mrr": {
+            "value": 0.4898,
+            "ci_low": 0.4253,
+            "ci_high": 0.5526,
+            "n_valid_resamples": 2000
+          },
+          "hr@1_by_reason": {
+            "JVM Out of Memory (OOM) Heap": {
+              "n": 3,
+              "hr@1": 0.3333
+            },
+            "high CPU usage": {
+              "n": 31,
+              "hr@1": 0.0968
+            },
+            "high disk I/O read usage": {
+              "n": 18,
+              "hr@1": 0.7778
+            },
+            "high disk space usage": {
+              "n": 5,
+              "hr@1": 0.8
+            },
+            "high memory usage": {
+              "n": 5,
+              "hr@1": 0.6
+            },
+            "network latency": {
+              "n": 26,
+              "hr@1": 0.1154
+            },
+            "network packet loss": {
+              "n": 32,
+              "hr@1": 0.3125
+            }
+          }
+        },
+        {
+          "n_failures": 120,
+          "hr@1": {
+            "value": 0.325,
+            "ci_low": 0.2417,
+            "ci_high": 0.4083,
+            "n_valid_resamples": 2000
+          },
+          "hr@3": {
+            "value": 0.575,
+            "ci_low": 0.4833,
+            "ci_high": 0.6667,
+            "n_valid_resamples": 2000
+          },
+          "hr@5": {
+            "value": 0.7417,
+            "ci_low": 0.6667,
+            "ci_high": 0.8167,
+            "n_valid_resamples": 2000
+          },
+          "mrr": {
+            "value": 0.4951,
+            "ci_low": 0.4308,
+            "ci_high": 0.5583,
+            "n_valid_resamples": 2000
+          },
+          "hr@1_by_reason": {
+            "JVM Out of Memory (OOM) Heap": {
+              "n": 3,
+              "hr@1": 0.3333
+            },
+            "high CPU usage": {
+              "n": 31,
+              "hr@1": 0.0968
+            },
+            "high disk I/O read usage": {
+              "n": 18,
+              "hr@1": 0.7778
+            },
+            "high disk space usage": {
+              "n": 5,
+              "hr@1": 1.0
+            },
+            "high memory usage": {
+              "n": 5,
+              "hr@1": 0.6
+            },
+            "network latency": {
+              "n": 26,
+              "hr@1": 0.0769
+            },
+            "network packet loss": {
+              "n": 32,
+              "hr@1": 0.3438
+            }
+          }
+        },
+        {
+          "n_failures": 120,
+          "hr@1": {
+            "value": 0.3583,
+            "ci_low": 0.275,
+            "ci_high": 0.4417,
+            "n_valid_resamples": 2000
+          },
+          "hr@3": {
+            "value": 0.5667,
+            "ci_low": 0.475,
+            "ci_high": 0.6583,
+            "n_valid_resamples": 2000
+          },
+          "hr@5": {
+            "value": 0.7333,
+            "ci_low": 0.65,
+            "ci_high": 0.8083,
+            "n_valid_resamples": 2000
+          },
+          "mrr": {
+            "value": 0.512,
+            "ci_low": 0.4446,
+            "ci_high": 0.5772,
+            "n_valid_resamples": 2000
+          },
+          "hr@1_by_reason": {
+            "JVM Out of Memory (OOM) Heap": {
+              "n": 3,
+              "hr@1": 0.3333
+            },
+            "high CPU usage": {
+              "n": 31,
+              "hr@1": 0.1613
+            },
+            "high disk I/O read usage": {
+              "n": 18,
+              "hr@1": 0.8889
+            },
+            "high disk space usage": {
+              "n": 5,
+              "hr@1": 1.0
+            },
+            "high memory usage": {
+              "n": 5,
+              "hr@1": 0.6
+            },
+            "network latency": {
+              "n": 26,
+              "hr@1": 0.1154
+            },
+            "network packet loss": {
+              "n": 32,
+              "hr@1": 0.3125
+            }
+          }
+        },
+        {
+          "n_failures": 120,
+          "hr@1": {
+            "value": 0.3083,
+            "ci_low": 0.225,
+            "ci_high": 0.3917,
+            "n_valid_resamples": 2000
+          },
+          "hr@3": {
+            "value": 0.5833,
+            "ci_low": 0.4917,
+            "ci_high": 0.675,
+            "n_valid_resamples": 2000
+          },
+          "hr@5": {
+            "value": 0.7333,
+            "ci_low": 0.6583,
+            "ci_high": 0.8083,
+            "n_valid_resamples": 2000
+          },
+          "mrr": {
+            "value": 0.4877,
+            "ci_low": 0.4247,
+            "ci_high": 0.5513,
+            "n_valid_resamples": 2000
+          },
+          "hr@1_by_reason": {
+            "JVM Out of Memory (OOM) Heap": {
+              "n": 3,
+              "hr@1": 0.3333
+            },
+            "high CPU usage": {
+              "n": 31,
+              "hr@1": 0.129
+            },
+            "high disk I/O read usage": {
+              "n": 18,
+              "hr@1": 0.6667
+            },
+            "high disk space usage": {
+              "n": 5,
+              "hr@1": 1.0
+            },
+            "high memory usage": {
+              "n": 5,
+              "hr@1": 0.6
+            },
+            "network latency": {
+              "n": 26,
+              "hr@1": 0.0769
+            },
+            "network packet loss": {
+              "n": 32,
+              "hr@1": 0.3125
+            }
+          }
+        },
+        {
+          "n_failures": 120,
+          "hr@1": {
+            "value": 0.3167,
+            "ci_low": 0.2333,
+            "ci_high": 0.4,
+            "n_valid_resamples": 2000
+          },
+          "hr@3": {
+            "value": 0.5833,
+            "ci_low": 0.4917,
+            "ci_high": 0.675,
+            "n_valid_resamples": 2000
+          },
+          "hr@5": {
+            "value": 0.7167,
+            "ci_low": 0.6333,
+            "ci_high": 0.8,
+            "n_valid_resamples": 2000
+          },
+          "mrr": {
+            "value": 0.489,
+            "ci_low": 0.425,
+            "ci_high": 0.5543,
+            "n_valid_resamples": 2000
+          },
+          "hr@1_by_reason": {
+            "JVM Out of Memory (OOM) Heap": {
+              "n": 3,
+              "hr@1": 0.3333
+            },
+            "high CPU usage": {
+              "n": 31,
+              "hr@1": 0.129
+            },
+            "high disk I/O read usage": {
+              "n": 18,
+              "hr@1": 0.6667
+            },
+            "high disk space usage": {
+              "n": 5,
+              "hr@1": 1.0
+            },
+            "high memory usage": {
+              "n": 5,
+              "hr@1": 0.6
+            },
+            "network latency": {
+              "n": 26,
+              "hr@1": 0.0769
+            },
+            "network packet loss": {
+              "n": 32,
+              "hr@1": 0.3438
+            }
+          }
+        }
+      ],
+      "summary": {
+        "hr@1": {
+          "mean": 0.325,
+          "sd": 0.0195,
+          "min": 0.3083,
+          "max": 0.3583
+        },
+        "hr@3": {
+          "mean": 0.5767,
+          "sd": 0.0069,
+          "min": 0.5667,
+          "max": 0.5833
+        },
+        "hr@5": {
+          "mean": 0.7317,
+          "sd": 0.0091,
+          "min": 0.7167,
+          "max": 0.7417
+        },
+        "mrr": {
+          "mean": 0.4947,
+          "sd": 0.0101,
+          "min": 0.4877,
+          "max": 0.512
+        }
+      }
+    }
+  },
+  "system": "Bank",
+  "folds": 8,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "score_minutes": null,
+  "selection": {
+    "forecaster": {
+      "hidden": 128,
+      "layers": 2,
+      "normalization": "local"
+    },
+    "classifier": {
+      "normalization": "local",
+      "hidden": 128,
+      "layers": 1
+    }
+  },
+  "cost": {
+    "lstm_forecast": {
+      "params": 1025546,
+      "train_seconds_mean": 8.11,
+      "train_seconds_total": 324.2,
+      "epochs_mean": 9.5,
+      "inference_ms_per_window": 0.2534
+    },
+    "lstm_classifier": {
+      "params": 727169,
+      "train_seconds_mean": 3.25,
+      "train_seconds_total": 130.1,
+      "epochs_mean": 6.6
+    }
+  },
+  "run_dir": "20261117T044116-lstm_janela_inteira",
+  "search": {
+    "forecaster": {
+      "hidden": 128,
+      "layers": 2,
+      "normalization": "local"
+    },
+    "classifier": {
+      "normalization": "local",
+      "hidden": 128,
+      "layers": 1
+    },
+    "forecaster_val_auc_pr": {
+      "global/h64/l1": 0.1918,
+      "global/h64/l2": 0.1873,
+      "global/h128/l1": 0.1785,
+      "global/h128/l2": 0.1729,
+      "local/h64/l1": 0.2777,
+      "local/h64/l2": 0.2678,
+      "local/h128/l1": 0.2734,
+      "local/h128/l2": 0.2795
+    },
+    "classifier_val_auc_pr": {
+      "global/h64/l1": 0.1446,
+      "global/h128/l1": 0.1776,
+      "local/h64/l1": 0.2277,
+      "local/h128/l1": 0.28
+    },
+    "trainings": 84,
+    "search_seconds": 809.6
+  }
+}

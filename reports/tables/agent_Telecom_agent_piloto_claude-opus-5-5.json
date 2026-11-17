@@ -1,0 +1,35 @@
+{
+  "system": "Telecom",
+  "variant": "A1",
+  "case_set": "pilot",
+  "cases": 6,
+  "repetitions": 1,
+  "case_runs": 6,
+  "status": {
+    "valid": 6
+  },
+  "valid_rate": 1.0,
+  "valid_after_retry": 0,
+  "mean_turns": 8.167,
+  "mean_tool_calls": 12.333,
+  "budget_stopped": false,
+  "provider": "anthropic",
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "budget_usd": 10.0,
+  "cost_usd": 1.090027,
+  "cost_per_case_run_usd": 0.181671,
+  "max_case_cost_usd": 0.260893,
+  "usage": {
+    "calls": 49,
+    "cache_hits": 0,
+    "paid_calls": 49,
+    "input_tokens": 110,
+    "cached_input_tokens": 540637,
+    "cache_write_tokens": 126176,
+    "output_tokens": 17529,
+    "cost_usd": 1.0900274,
+    "latency_s": 225.610666
+  },
+  "run_dir": "20261116T210459-agent_piloto"
+}

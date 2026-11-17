@@ -1,6 +1,6 @@
 # ADR 0017 — Agente de LLM: ferramentas fixas, isolamento, variantes e reprodutibilidade (E7)
 
-- **Status:** proposto (implementação pronta; provedor e modelo a escolher pelo autor)
+- **Status:** proposto (implementação pronta; Claude Opus 5.5 escolhido no piloto em 2026-11-16; execuções do teste pendentes)
 - **Data:** 2026-11-12
 - **Etapa:** E7 (Telecom e Bank)
 
@@ -42,6 +42,7 @@ Todas são somente leitura, devolvem um resumo em JSON (nunca a série bruta int
 - **Referência local:** é causal e não usa rótulo — os 60 min anteriores ao início no mesmo dia. Se houver menos de 20 minutos antes (os dias do Telecom começam às 00:00), usa os 60 min seguintes ao fim, e o resultado diz qual das duas foi usada.
 - **Desvio:** (valor − mediana) / escala robusta (IQR/1,349, com piso relativo), limitado a 50, o mesmo teto do z local da E3/E5. No ensaio, sem o limite, KPIs com referência toda zero chegavam a 10⁹ e dominavam o ranking. Entre empates no teto, vem primeiro o que desviou mais cedo.
 - **`find_anomalous_kpis` vai além das quatro ferramentas do plano.** Sem ela, a A1 teria de consultar às cegas cerca de 2 mil KPIs com 20 chamadas, e a comparação A1 × A3 exageraria o valor das evidências. Com ela, a A1 é "LLM + telemetria + varredura heurística", equivalente ao z-score local da E4. A2 e A3 medem o ganho marginal da LSTM e da XAI sobre essa base (ameaça nº 17).
+- **Ajuste do piloto (2026-11-16):** no primeiro piloto do Telecom, 188 KPIs batiam no teto de desvio 50 e o desempate pelo primeiro instante punha no topo picos de um minuto no início da janela (Haiku e Sonnet: 0/6). A ordenação passou a ser pelo **desvio acumulado** (soma de |desvio| no intervalo); cada KPI ganhou `minutos_acima_de_3` e `desvio_acumulado`; componente vazio passou a valer "todos". É uma regra geral, decidida no piloto e válida para todas as variantes (testada com dados sintéticos). Foi desenhada depois de olhar um caso do piloto do Telecom; o piloto do Bank não tinha sido visto.
 - **Identificadores citáveis:** cada resultado recebe um id `T<n>`. Os itens do pacote mantêm `C#`, `K#` e `N#`.
 
 ### 3. Isolamento (R3)
@@ -109,12 +110,18 @@ Todas são somente leitura, devolvem um resumo em JSON (nunca a série bruta int
   - `store=False`, com reenvio dos itens de raciocínio;
   - tokens em cache separados da entrada.
 - **Testes:** a tradução é feita por funções puras, testadas sem rede.
-- **Configurações candidatas** em `configs/llm/`: Claude Opus 5.5, Claude Sonnet 5.5, gpt-5.6-sol (preço promocional até 2026-11-30) e gpt-6.1-sol.
+- **Configurações candidatas** em `configs/llm/`: Claude Opus 5.5, Claude Sonnet 5.5, Claude Haiku 5.5 (adicionada em 2026-11-16 para o piloto contra o Sonnet), gpt-5.6-sol (preço promocional até 2026-11-30) e gpt-6.1-sol.
+- **Preço por tamanho do prompt:** o Claude Haiku 5.5 cobra 5 × todos os preços quando o prompt de uma chamada (entrada cheia + leituras + escritas de cache) passa de 100 mil tokens. O cálculo de custo aplica isso por chamada (`llm.long_prompt_threshold_tokens` e `llm.long_prompt_price_multiplier`, testado à mão); nos demais modelos o preço é fixo.
 - **Chaves:** ficam no `.env`, que fica fora do git e é carregado pelo `tcc-rca` sem sobrescrever variáveis já exportadas.
 
 ### 8. Conjuntos de casos
 - **Teste:** as consultas com pacote da E6 — 45 no Telecom e 120 no Bank.
-- **Piloto:** as consultas antes do primeiro dia de teste — 6 no Telecom (2020-04-11) e 16 no Bank (2021-03-04). Como não têm pacote, usam só a variante A1.
+- **Piloto:** as consultas antes do primeiro dia de teste — 6 no Telecom (2020-04-11) e 16 no Bank (2021-03-04). A escolha do modelo usa só a variante A1, porque esses dias não têm pacote fora da amostra.
+- **Checagem da A3 no piloto (2026-11-16):** `tcc-rca pilot-evidence` gera pacotes das consultas do piloto com os modelos da primeira dobra, que **treinaram** nesses dias. Os pacotes ficam em `evidence/<nome>_piloto_insample/` e servem só para conferir o funcionamento da A2/A3 (chamada de `get_evidence`, citação de C#/K#/N#, respostas válidas). O acerto nessa checagem é otimista por construção e nunca é resultado. Travas testadas:
+  - a função recusa dias do piloto fora do treino/validação da dobra;
+  - o conjunto de teste recusa esse diretório;
+  - A2/A3 no piloto recusam o diretório comum da E6.
+  - A refatoração da E6 para reaproveitar o código foi conferida: os pacotes de teste da primeira dobra do Telecom saem idênticos byte a byte.
 - **Escolhas no piloto:** a escolha do modelo e qualquer ajuste de prompt acontecem no piloto, nunca no teste.
 
 ### 9. Prompts (`configs/prompts/`)
@@ -136,9 +143,25 @@ Todas são somente leitura, devolvem um resumo em JSON (nunca a série bruta int
   - `cost.json`.
 - **Ensaio offline:** o provedor `fake_agent` é determinístico e sem valor científico. Ele roda o pipeline inteiro offline e é usado nos testes e nos ensaios. Nos dados reais, as 135 execuções do Telecom, as 120 do Bank e as 22 do piloto foram todas válidas.
 
+## Piloto e escolha do modelo (2026-11-16)
+
+Todas as respostas foram válidas. Acerto pelo script oficial do OpenRCA (calculado fora do pacote do agente; a pontuação automática das execuções fica para a E8). Tudo na A1, `effort: medium`, 1 repetição, mesmas ferramentas e prompt (após o ajuste da `find_anomalous_kpis`):
+
+| Modelo | Telecom (6), estrito | Bank (16), estrito | Componente (Bank) | Respondeu o início da janela | US$ por caso |
+|---|---|---|---|---|---|
+| Claude Haiku 5.5 | 0/6 | 2/16 | 1/7 | 10/14 | 0,006 |
+| Claude Sonnet 5.5 | 0/6 | 3/16 | 1/7 | 9/14 | 0,035 |
+| Claude Opus 5.5 | 5/6 | 5/16 | 6/7 | 1/14 | 0,18–0,24 |
+
+- **Escolha do autor:** Claude Opus 5.5 (`configs/llm/claude_opus_5_5.yaml`), **1 repetição** por caso (`agent_1rep.yaml`); custo estimado das três variantes nos dois sistemas: cerca de US$ 100. As repetições extras, que medem a variância entre execuções, ficam para depois, se houver orçamento.
+- **Viés do instante:** Haiku e Sonnet respondem quase sempre o início da janela; o Opus, não, com as mesmas ferramentas. Por isso ferramentas e prompt ficam congelados como estão: mais ajustes nos mesmos 22 casos virariam ajuste sob medida.
+- **Rodada anterior ao ajuste da ferramenta:** Haiku e Sonnet, 0/6 no Telecom.
+- **Checagem da A3 com o Opus (pacotes dentro da amostra):** `get_evidence` chamada em 22/22 casos e C#/K#/N# citados em 22/22 respostas, com 1 nova tentativa e US$ 0,16–0,19 por caso. No Bank, o componente respondido foi o C1 do pacote em 5 de 7 causas: o modelo tende a seguir o primeiro componente das evidências. É uma observação de funcionamento, não um resultado.
+- **Gasto do piloto:** cerca de US$ 10 no total (Haiku, Sonnet, Opus e a checagem da A3).
+- **Contaminação possível:** o OpenRCA é público. Os modelos podem ter visto o benchmark no treino. Vale igualmente para todas as variantes, e a comparação entre elas usa o mesmo modelo.
+
 ## Pendências
-- Escolha do provedor e do modelo pelo autor, com o piloto, e a chave de API no `.env` (`docs/BLOQUEIOS.md`).
-- Execução do piloto e das variantes, iniciadas pelo autor.
+- Execução das variantes A1, A2 e A3 no teste com o Opus 5.5 e 1 repetição, iniciada com autorização do autor.
 
 ## Consequências
 - A E8 avalia `predictions_s<k>.csv` com o script oficial e compara as variantes por caso (McNemar, bootstrap). A fidelidade das explicações (RQ4) usa as citações, que já são validadas contra os ids que existiram.

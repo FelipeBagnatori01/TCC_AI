@@ -1,0 +1,17 @@
+# Anthropic, preços de 2026-11-16 (platform.claude.com/docs/en/about-claude/pricing);
+# escrita em cache = 1,25 x entrada (TTL 5 min), leitura = 0,1 x entrada.
+# Preço por tamanho do prompt: acima de 100 mil tokens (entrada + leituras + escritas de cache)
+# a chamada inteira paga 5 x (US$ 0,50 / 0,625 / 0,05 / 2,50 por MTok).
+# Merge AFTER the experiment config: --config configs/base.yaml [bank] <experiment>.yaml configs/llm/claude_haiku_5_5.yaml
+# Needs ANTHROPIC_API_KEY in .env (gitignored).
+llm:
+  provider: anthropic
+  model: claude-haiku-5-5             # pinned model identifier (R6)
+  max_tokens: 16000                  # per call, reasoning included
+  effort: medium                     # fixed for the whole study (ADR 0017); same as Sonnet
+  price_input_per_mtok: 0.1
+  price_cached_input_per_mtok: 0.01
+  price_cache_write_per_mtok: 0.125
+  price_output_per_mtok: 0.5
+  long_prompt_threshold_tokens: 100000
+  long_prompt_price_multiplier: 5.0

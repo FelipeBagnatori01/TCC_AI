@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import csv
 import json
+import shutil
 import sys
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
@@ -246,6 +247,34 @@ def test_query_kpi_hand_computed(world: dict[str, Path]) -> None:
     assert out["primeiro_desvio_acima_de_3"] == _local(70)  # the step starts at 01:10
     assert out["desvio_maximo"] == 50.0  # capped like the local z of E3/E5
     assert out["medianas_5min"][2]["mediana"] == 60.0  # 01:10-01:14
+
+
+def test_anomaly_ranking_prefers_a_sustained_fault_over_a_one_minute_blip(
+    world: dict[str, Path],
+) -> None:
+    """Pilot finding: hundreds of KPIs saturate at the cap, and ranking by the peak (ties broken
+    by the earliest deviation) put one-minute blips at the window start above real faults. The
+    10-minute CPU step must outrank a 1-minute spike at 01:00 that also hits the cap."""
+    path = world["processed"] / SYSTEM / "series.parquet"
+    frame = pl.read_parquet(path)
+    spike = frame["Mysql01::cpu"].to_numpy().copy()
+    spike[60] = 500.0  # 01:00 local, the first minute of the query window
+    frame.with_columns(pl.Series("Mysql01::cpu", spike)).write_parquet(path)
+    box = Toolbox(_store(world), _task(), "A1", 20, 3)
+    window = {"start": _local(60), "end": _local(90)}
+    for component in (None, "", "  "):  # empty is read as "all components"
+        content, error = box.call("find_anomalous_kpis", {**window, "component": component})
+        assert not error
+        kpis = json.loads(content)["kpis"]
+        assert [k["feature"] for k in kpis[:2]] == ["Tomcat01::cpu", "Mysql01::cpu"]
+        step, blip = kpis[0], kpis[1]
+        assert step["desvio_maximo"] == blip["desvio_maximo"] == 50.0  # both saturate
+        assert blip["primeiro_desvio_acima_de_3"] < step["primeiro_desvio_acima_de_3"]
+        assert step["minutos_acima_de_3"] == 10
+        assert blip["minutos_acima_de_3"] == 1
+        assert step["desvio_acumulado"] > 9 * 50.0
+    single = json.loads(box.call("query_kpi", {"component": "Tomcat01", "kpi": "cpu", **window})[0])
+    assert single["minutos_acima_de_3"] == 10
 
 
 def test_anomaly_ranking_and_tool_errors(world: dict[str, Path]) -> None:
@@ -547,3 +576,47 @@ def test_list_kpis_summarizes_large_components(
     assert [k["kpi"] for k in one["kpis"]] == ["cpu"]
     _, error = box.call("list_kpis", {"component": "Tomcat01", "category": "disco"})
     assert error
+
+
+def test_pilot_evidence_is_in_sample_only_and_never_reaches_the_test_set(
+    world: dict[str, Path], tmp_path: Path, repo_root: Path
+) -> None:
+    """The A3 mechanics check runs on the pilot queries with IN-SAMPLE packages
+    (evidence/<name>_piloto_insample). Guards: the test set refuses that dir, and a pilot A2/A3
+    refuses the ordinary E6 dir (pilot queries have no out-of-sample package)."""
+    from tcc_rca.agent.run import select_cases
+    from tcc_rca.explain.evidence import PILOT_EVIDENCE_SUFFIX
+
+    evidence = world["processed"] / SYSTEM / "evidence"
+    shutil.copytree(evidence / "xai", evidence / f"xai{PILOT_EVIDENCE_SUFFIX}")
+
+    def cfg(case_set: str, variant: str, evidence_name: str) -> Config:
+        return load_config(
+            repo_root / "configs/base.yaml",
+            repo_root / "configs/system/bank.yaml",
+            overrides={
+                "paths": {"data_root": str(world["raw"]), "processed_dir": str(world["processed"])},
+                # the query day (2021_03_06) becomes a pilot day
+                "tasks": {"first_test_day": "2021_03_07"},
+                "agent": {
+                    "case_set": case_set,
+                    "variant": variant,
+                    "evidence_name": evidence_name,
+                },
+            },
+        )
+
+    def cases(c: Config) -> list[int]:
+        store = TelemetryStore(world["processed"], world["tables"], SYSTEM, c.agent.evidence_name)
+        return [t.query_row for t in select_cases(c, store)]
+
+    insample = f"xai{PILOT_EVIDENCE_SUFFIX}"
+    assert cases(cfg("pilot", "A3", insample)) == [0]
+    assert cases(cfg("pilot", "A1", "xai")) == [0]  # A1 needs no package
+    with pytest.raises(ValueError, match="in-sample pilot packages"):
+        cases(cfg("pilot", "A3", "xai"))
+    with pytest.raises(ValueError, match="test set needs the E6 test packages"):
+        cases(cfg("test", "A3", insample))
+    (evidence / insample / "query_000.json").unlink()
+    with pytest.raises(ValueError, match="missing rows: \\[0\\]"):
+        cases(cfg("pilot", "A3", insample))

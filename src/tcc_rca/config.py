@@ -39,6 +39,10 @@ class LLMConfig(_Strict):
     price_cached_input_per_mtok: float = Field(ge=0.0)  # cache reads
     price_cache_write_per_mtok: float = Field(ge=0.0)  # cache writes (= input where free)
     price_output_per_mtok: float = Field(ge=0.0)  # includes reasoning tokens
+    # Prompt-length pricing (e.g. Claude Haiku 5.5): a call whose prompt (full input + cache reads
+    # + cache writes) exceeds the threshold pays every price times the multiplier. None = flat.
+    long_prompt_threshold_tokens: int | None = Field(default=None, gt=0)
+    long_prompt_price_multiplier: float = Field(default=1.0, ge=1.0)
     effort: str | None = None  # reasoning effort (provider-specific values), fixed per study
     cache_dir: Path
 

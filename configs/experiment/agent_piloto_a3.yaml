@@ -1,0 +1,14 @@
+# A3 MECHANICS CHECK on the pilot queries (ADR 0017): in-sample evidence packages built by
+# `tcc-rca pilot-evidence` from the first fold's models, which TRAINED on these days. Checks that
+# the model calls get_evidence, cites C#/K#/N# and still answers validly; its accuracy is
+# optimistic by construction and is never reported as a result.
+# uv run tcc-rca agent --config configs/base.yaml [configs/system/bank.yaml] configs/experiment/agent_piloto_a3.yaml configs/llm/<model>.yaml
+experiment:
+  name: agent_piloto_a3
+agent:
+  variant: A3
+  case_set: pilot
+  repetitions: 1
+  evidence_name: xai_piloto_insample
+llm:
+  budget_usd: 10.0                 # hard cap per run (R7)

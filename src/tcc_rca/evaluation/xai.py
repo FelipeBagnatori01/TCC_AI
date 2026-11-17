@@ -13,6 +13,7 @@ from __future__ import annotations
 import json
 import time
 from collections.abc import Callable, Mapping, Sequence
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
@@ -22,11 +23,11 @@ import polars as pl
 import torch
 
 from tcc_rca.config import Config
-from tcc_rca.dataset.split import day_of
+from tcc_rca.dataset.split import Fold, day_of
 from tcc_rca.evaluation.baselines import evaluate_localization, row_of
 from tcc_rca.evaluation.bootstrap import Estimate, cluster_bootstrap
 from tcc_rca.evaluation.compare import as_row, paired_rank_difference, verdict
-from tcc_rca.evaluation.lstm import Experiment, _masks
+from tcc_rca.evaluation.lstm import Experiment, FoldData, _masks
 from tcc_rca.evaluation.metrics import pessimistic_rank
 from tcc_rca.explain.aggregate import (
     category_scores,
@@ -39,7 +40,7 @@ from tcc_rca.explain.aggregate import (
     top_category,
 )
 from tcc_rca.explain.attributions import integrated_gradients, lime_groups, shap_gradient
-from tcc_rca.explain.evidence import build_package, candidate_end_rows
+from tcc_rca.explain.evidence import PILOT_EVIDENCE_SUFFIX, build_package, candidate_end_rows
 from tcc_rca.explain.functions import (
     ClassifierProbModule,
     ForecastScoreModule,
@@ -48,7 +49,7 @@ from tcc_rca.explain.functions import (
 )
 from tcc_rca.ingestion.cases import read_queries
 from tcc_rca.models.baselines.localization import component_columns
-from tcc_rca.models.lstm.data import window_tensor
+from tcc_rca.models.lstm.data import FoldInputs, window_tensor
 from tcc_rca.models.lstm.model import ClassifierLSTM, ForecastLSTM
 from tcc_rca.models.lstm.train import ForecastScorer
 from tcc_rca.tracking import Run
@@ -173,9 +174,153 @@ def uniform_category_hit(
     return len(set(reason_map.get(reason, ())) & present) / len(present) if present else 0.0
 
 
-def run_xai(config: Config, tables_dir: Path) -> dict[str, Any]:
-    system, name, c = config.target_system, config.experiment.name, config.explain
-    torch.set_num_threads(torch.get_num_threads())
+@dataclass
+class _FoldContext:
+    """One fold's E5 models (explained seed), inputs and explainer: shared by the E6 run and by
+    the in-sample pilot packages (``build_pilot_evidence``)."""
+
+    config: Config
+    exp: Experiment
+    fold: Fold
+    fd: FoldData
+    main: FoldModels
+    inputs: FoldInputs
+    xp: Explainer
+    columns: dict[str, IntArray]
+    categories: list[str]
+    catalog: dict[str, dict[str, str]]
+    seed: int
+    rng: np.random.Generator
+
+    @classmethod
+    def build(
+        cls,
+        config: Config,
+        exp: Experiment,
+        fold: Fold,
+        models_dir: Path,
+        lstm_table: dict[str, Any],
+        catalog: dict[str, dict[str, str]],
+    ) -> _FoldContext:
+        c = config.explain
+        fd = exp.fold_data(fold)
+        main = FoldModels(
+            models_dir,
+            fold.index,
+            c.explained_seed,
+            lstm_table,
+            c.device,
+            config.lstm.score_top_k,
+        )
+        if main.features != fd.kept:
+            raise ValueError(f"fold {fold.index}: features differ from the E5 models'")
+        m = _masks(fd)
+        norm = lstm_table["selection"]["forecaster"]["normalization"]
+        inputs = exp.inputs(fd, norm)
+        train_normal = exp.tensors(fd, inputs, m["train_normal"])
+        rng = np.random.default_rng(config.experiment.seed + fold.index)
+        pick = rng.choice(
+            train_normal.shape[0],
+            size=min(c.background_windows, train_normal.shape[0]),
+            replace=False,
+        )
+        background = _filled(train_normal[np.sort(pick)])
+        reference = np.median(_filled(train_normal), axis=0).astype(np.float32)
+        return cls(
+            config=config,
+            exp=exp,
+            fold=fold,
+            fd=fd,
+            main=main,
+            inputs=inputs,
+            xp=Explainer(config, background, reference),
+            columns=component_columns(fd.kept),
+            categories=[catalog[f]["category"] for f in fd.kept],
+            catalog=catalog,
+            seed=config.experiment.seed + fold.index,
+            rng=rng,
+        )
+
+    def write_packages(
+        self,
+        queries: Sequence[Any],
+        evidence_dir: Path,
+        index: pl.DataFrame,
+        times: Sequence[Any],
+        thresholds: Mapping[tuple[int, int, str], float],
+    ) -> None:
+        """One evidence package per query: window picked by the detector inside the query
+        window (agent-visible data only, R3), explained by the evidence model."""
+        config, exp, fold, fd = self.config, self.exp, self.fold, self.fd
+        main, inputs, xp, seed = self.main, self.inputs, self.xp, self.seed
+        columns, categories, catalog = self.columns, self.categories, self.catalog
+        c, system = config.explain, config.target_system
+        fit_rows = exp.normal_min & np.isin(exp.day_arr, list(fold.train_days))
+        medians = exp.values.filter(pl.Series(fit_rows)).select(fd.kept).median().row(0, named=True)
+        for q in queries:
+            rows = candidate_end_rows(
+                index, q.window_start_utc, q.window_end_utc, exp.t.window_minutes
+            )
+            cand = window_tensor(inputs.matrix, rows, exp.t.window_minutes)
+            if c.evidence_detector == "lstm_forecast":
+                scores = main.scorer.score_windows(cand)
+            else:
+                scores = evaluate(main.modules["lstm_classifier"], _filled(cand))
+            best = int(np.argmax(scores))
+            end_row, win = int(rows[best]), cand[best]
+            module = main.modules[c.evidence_explained]
+            shap_attr = xp.shap(module, win, seed)
+            lime_w = xp.lime(module, win, seed)
+            shap_comp = component_scores(feature_importance(shap_attr), columns, exp.candidates)[
+                "sum"
+            ]
+            lime_comp = component_scores(lime_w, columns, exp.candidates)["sum"]
+            cats = category_scores(feature_importance(shap_attr), categories)
+            errors = main.scorer.normalized_errors(win[None])[0].max(axis=0)
+            native = {comp: float(errors[cols].sum()) for comp, cols in columns.items()}
+            raw = (
+                exp.values.select(fd.kept)[end_row - exp.t.window_minutes + 1 : end_row + 1]
+                .to_numpy()
+                .astype(np.float64)
+            )
+            package = build_package(
+                system=system,
+                query_row=q.row,
+                task_index=q.task_index,
+                query_window_utc=(q.window_start_utc, q.window_end_utc),
+                detector=c.evidence_detector,
+                end_row=end_row,
+                times_utc=times,
+                detector_score=float(scores[best]),
+                detector_threshold=float(
+                    thresholds[(fold.index, c.explained_seed, c.evidence_detector)]
+                ),
+                explained_model=c.evidence_explained,
+                features=fd.kept,
+                catalog=catalog,
+                shap_attr=shap_attr,
+                lime_weights=lime_w,
+                component_shap=shap_comp,
+                component_lime=lime_comp,
+                category_weights=cats,
+                suggested_category=top_category(cats),
+                raw_window=raw,
+                normal_median={k: v for k, v in medians.items() if v is not None},
+                normalized_window=win,
+                native_scores=native,
+                top_components=c.evidence_top_components,
+                top_kpis=c.evidence_top_kpis,
+            )
+            (evidence_dir / f"query_{q.row:03d}.json").write_text(
+                package.model_dump_json(indent=2), encoding="utf-8"
+            )
+
+
+def _e5_artifacts(
+    config: Config, tables_dir: Path
+) -> tuple[dict[str, Any], Path, dict[tuple[int, int, str], float], dict[str, dict[str, str]]]:
+    """E5 table, models dir, validation thresholds per (fold, seed, model) and KPI catalog."""
+    system, c = config.target_system, config.explain
     lstm_table = json.loads(
         (tables_dir / f"lstm_{system}_{c.lstm_name}.json").read_text(encoding="utf-8")
     )
@@ -195,6 +340,69 @@ def run_xai(config: Config, tables_dir: Path) -> dict[str, Any]:
         }
         for r in catalog_df.iter_rows(named=True)
     }
+    return lstm_table, models_dir, thresholds, catalog
+
+
+def pilot_query_indices(
+    q_days: Sequence[str | None], first_test_day: str, excluded: Sequence[str], fold: Fold
+) -> list[int]:
+    """Queries of the E7 pilot set (day before the first test day, not excluded).
+
+    Their packages come from ``fold``'s models, which TRAINED on those days: they are in-sample
+    by construction and only check the agent mechanics with evidence (A2/A3), never accuracy.
+    Raises if a pilot day is not a training/validation day of ``fold`` (it would then be a
+    tested day, and the packages would leak into the test protocol)."""
+    picked = [
+        i
+        for i, d in enumerate(q_days)
+        if d is not None and d < first_test_day and d not in excluded
+    ]
+    days = {q_days[i] for i in picked}
+    outside = sorted(d for d in days if d is not None and fold.role(d) not in ("train", "val"))
+    if outside:
+        raise ValueError(f"pilot days outside fold {fold.index} train/val: {outside}")
+    return picked
+
+
+def build_pilot_evidence(config: Config, tables_dir: Path) -> dict[str, Any]:
+    """In-sample evidence packages for the pilot queries (A3 mechanics check, ADR 0017).
+
+    Uses the FIRST fold (whose training block holds the pilot days), the explained seed and the
+    same window choice/explainers as the E6 packages. Written to
+    ``evidence/<name>_piloto_insample/``, never mixed with the test packages."""
+    system, name = config.target_system, config.experiment.name
+    lstm_table, models_dir, thresholds, catalog = _e5_artifacts(config, tables_dir)
+    with Run(config) as run:
+        exp = Experiment(config, tables_dir)
+        index = exp.values.select("day", "time_utc")
+        times = exp.values["time_utc"].to_list()
+        queries = read_queries(config.paths.data_root / system / "query.csv")
+        q_days = [day_of(q.window_start_utc, index) for q in queries]
+        fold = exp.folds[0]
+        picked = pilot_query_indices(
+            q_days, config.tasks.first_test_day, config.tasks.excluded_days, fold
+        )
+        evidence_dir = (
+            config.paths.processed_dir / system / "evidence" / f"{name}{PILOT_EVIDENCE_SUFFIX}"
+        )
+        evidence_dir.mkdir(parents=True, exist_ok=True)
+        ctx = _FoldContext.build(config, exp, fold, models_dir, lstm_table, catalog)
+        ctx.write_packages([queries[i] for i in picked], evidence_dir, index, times, thresholds)
+        metrics = {
+            "in_sample": True,
+            "fold": fold.index,
+            "pilot_days": sorted({str(q_days[i]) for i in picked}),
+            "packages": len(picked),
+            "explained_lstm_run": lstm_table["run_dir"],
+        }
+        run.log_metrics(metrics)
+        return {**metrics, "evidence_dir": str(evidence_dir), "run_dir": str(run.dir)}
+
+
+def run_xai(config: Config, tables_dir: Path) -> dict[str, Any]:
+    system, name, c = config.target_system, config.experiment.name, config.explain
+    torch.set_num_threads(torch.get_num_threads())
+    lstm_table, models_dir, thresholds, catalog = _e5_artifacts(config, tables_dir)
     reason_map = c.reason_categories.get(system, {})
 
     with Run(config) as run:
@@ -211,33 +419,9 @@ def run_xai(config: Config, tables_dir: Path) -> dict[str, Any]:
         quality: list[dict[str, Any]] = []
         started = time.perf_counter()
         for fold in exp.folds:
-            fd = exp.fold_data(fold)
-            main = FoldModels(
-                models_dir,
-                fold.index,
-                c.explained_seed,
-                lstm_table,
-                c.device,
-                config.lstm.score_top_k,
-            )
-            if main.features != fd.kept:
-                raise ValueError(f"fold {fold.index}: features differ from the E5 models'")
-            m = _masks(fd)
-            norm = lstm_table["selection"]["forecaster"]["normalization"]
-            inputs = exp.inputs(fd, norm)
-            train_normal = exp.tensors(fd, inputs, m["train_normal"])
-            rng = np.random.default_rng(config.experiment.seed + fold.index)
-            pick = rng.choice(
-                train_normal.shape[0],
-                size=min(c.background_windows, train_normal.shape[0]),
-                replace=False,
-            )
-            background = _filled(train_normal[np.sort(pick)])
-            reference = np.median(_filled(train_normal), axis=0).astype(np.float32)
-            xp = Explainer(config, background, reference)
-            columns = component_columns(fd.kept)
-            categories = [catalog[f]["category"] for f in fd.kept]
-            seed = config.experiment.seed + fold.index
+            ctx = _FoldContext.build(config, exp, fold, models_dir, lstm_table, catalog)
+            fd, main, inputs, xp = ctx.fd, ctx.main, ctx.inputs, ctx.xp
+            columns, categories, seed, rng = ctx.columns, ctx.categories, ctx.seed, ctx.rng
             train_reasons = [
                 f.reason
                 for f, d in zip(exp.failures, exp.f_days, strict=True)
@@ -391,67 +575,7 @@ def run_xai(config: Config, tables_dir: Path) -> dict[str, Any]:
                         )
 
             fold_queries = [q for q, d in zip(queries, q_days, strict=True) if d == fold.test_day]
-            fit_rows = exp.normal_min & np.isin(exp.day_arr, list(fold.train_days))
-            medians = (
-                exp.values.filter(pl.Series(fit_rows)).select(fd.kept).median().row(0, named=True)
-            )
-            for q in fold_queries:
-                rows = candidate_end_rows(
-                    index, q.window_start_utc, q.window_end_utc, exp.t.window_minutes
-                )
-                cand = window_tensor(inputs.matrix, rows, exp.t.window_minutes)
-                if c.evidence_detector == "lstm_forecast":
-                    scores = main.scorer.score_windows(cand)
-                else:
-                    scores = evaluate(main.modules["lstm_classifier"], _filled(cand))
-                best = int(np.argmax(scores))
-                end_row, win = int(rows[best]), cand[best]
-                module = main.modules[c.evidence_explained]
-                shap_attr = xp.shap(module, win, seed)
-                lime_w = xp.lime(module, win, seed)
-                shap_comp = component_scores(
-                    feature_importance(shap_attr), columns, exp.candidates
-                )["sum"]
-                lime_comp = component_scores(lime_w, columns, exp.candidates)["sum"]
-                cats = category_scores(feature_importance(shap_attr), categories)
-                errors = main.scorer.normalized_errors(win[None])[0].max(axis=0)
-                native = {comp: float(errors[cols].sum()) for comp, cols in columns.items()}
-                raw = (
-                    exp.values.select(fd.kept)[end_row - exp.t.window_minutes + 1 : end_row + 1]
-                    .to_numpy()
-                    .astype(np.float64)
-                )
-                package = build_package(
-                    system=system,
-                    query_row=q.row,
-                    task_index=q.task_index,
-                    query_window_utc=(q.window_start_utc, q.window_end_utc),
-                    detector=c.evidence_detector,
-                    end_row=end_row,
-                    times_utc=times,
-                    detector_score=float(scores[best]),
-                    detector_threshold=float(
-                        thresholds[(fold.index, c.explained_seed, c.evidence_detector)]
-                    ),
-                    explained_model=c.evidence_explained,
-                    features=fd.kept,
-                    catalog=catalog,
-                    shap_attr=shap_attr,
-                    lime_weights=lime_w,
-                    component_shap=shap_comp,
-                    component_lime=lime_comp,
-                    category_weights=cats,
-                    suggested_category=top_category(cats),
-                    raw_window=raw,
-                    normal_median={k: v for k, v in medians.items() if v is not None},
-                    normalized_window=win,
-                    native_scores=native,
-                    top_components=c.evidence_top_components,
-                    top_kpis=c.evidence_top_kpis,
-                )
-                (evidence_dir / f"query_{q.row:03d}.json").write_text(
-                    package.model_dump_json(indent=2), encoding="utf-8"
-                )
+            ctx.write_packages(fold_queries, evidence_dir, index, times, thresholds)
             run.logger.info(
                 "fold %d done (%.0fs so far)", fold.index, time.perf_counter() - started
             )

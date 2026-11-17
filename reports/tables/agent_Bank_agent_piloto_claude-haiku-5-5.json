@@ -1,0 +1,35 @@
+{
+  "system": "Bank",
+  "variant": "A1",
+  "case_set": "pilot",
+  "cases": 16,
+  "repetitions": 1,
+  "case_runs": 16,
+  "status": {
+    "valid": 16
+  },
+  "valid_rate": 1.0,
+  "valid_after_retry": 1,
+  "mean_turns": 6.562,
+  "mean_tool_calls": 16.875,
+  "budget_stopped": false,
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "budget_usd": 10.0,
+  "cost_usd": 0.101442,
+  "cost_per_case_run_usd": 0.00634,
+  "max_case_cost_usd": 0.009724,
+  "usage": {
+    "calls": 105,
+    "cache_hits": 0,
+    "paid_calls": 105,
+    "input_tokens": 244,
+    "cached_input_tokens": 1008582,
+    "cache_write_tokens": 398448,
+    "output_tokens": 83051,
+    "cost_usd": 0.10144172,
+    "latency_s": 472.905389
+  },
+  "run_dir": "20261116T202752-agent_piloto"
+}

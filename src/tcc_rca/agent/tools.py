@@ -79,7 +79,7 @@ class _ComponentRangeArgs(_RangeArgs):
 
 class _AnomalyArgs(_RangeArgs):
     component: str | None = Field(
-        default=None, description="restringe a um componente (opcional; null = todos)"
+        default=None, description="restringe a um componente (opcional; null ou vazio = todos)"
     )
 
 
@@ -169,16 +169,18 @@ class Toolbox:
                 "consulta: n, mínimo, máximo, média, mediana, primeiro e último valor, medianas "
                 "a cada 5 minutos, referência local (60 min antes do início, ou depois do fim "
                 "quando não há dados antes), maior desvio em relação a ela com o instante do pico "
-                "e o primeiro instante em que o desvio passa de 3 (desvio = (valor - mediana) / "
-                "escala robusta da referência, limitado a 50).",
+                "o primeiro instante e o número de minutos em que o desvio passa de 3, e o desvio "
+                "acumulado (soma de |desvio| no intervalo); desvio = (valor - mediana) / escala "
+                "robusta da referência, limitado a 50.",
             ),
             "find_anomalous_kpis": (
                 _AnomalyArgs,
                 self._find_anomalous,
-                "Ordena os KPIs (de todos os componentes, ou de um) pelo maior desvio no "
-                "intervalo em relação à referência local, como em query_kpi (desvio limitado a "
-                "50; empates no limite vêm pelo primeiro instante de desvio). Retorna os "
-                f"{anomaly_top_k} primeiros com instante do pico e primeiro instante de desvio.",
+                "Ordena os KPIs (de todos os componentes, ou de um) pelo desvio acumulado no "
+                "intervalo em relação à referência local, como em query_kpi: um desvio que dura "
+                "vários minutos vem antes de um pico isolado de um minuto. Retorna os "
+                f"{anomaly_top_k} primeiros com desvio máximo, instante do pico, primeiro "
+                "instante e minutos com desvio acima de 3.",
             ),
             "get_trace_summary": (
                 _ComponentRangeArgs,
@@ -345,12 +347,15 @@ class Toolbox:
             d = dev[:, j]
             if not np.isfinite(d).any():
                 peak = first = None
-                max_dev = float("nan")
+                max_dev = area = float("nan")
+                minutes_over = 0
             else:
                 k = int(np.nanargmax(np.abs(d)))
                 max_dev, peak = float(d[k]), k
                 over = np.flatnonzero(np.abs(np.nan_to_num(d)) > DEVIATION_THRESHOLD)
                 first = int(over[0]) if over.size else None
+                minutes_over = int(over.size)
+                area = float(np.nansum(np.abs(d)))
             out.append(
                 {
                     "feature": feature,
@@ -361,6 +366,8 @@ class Toolbox:
                     "primeiro_desvio_acima_de_3": _local(times[first])
                     if first is not None
                     else None,
+                    "minutos_acima_de_3": minutes_over,
+                    "desvio_acumulado": _num(area),
                 }
             )
         return out, ref_kind
@@ -413,14 +420,17 @@ class Toolbox:
     def _find_anomalous(self, args: _AnomalyArgs) -> dict[str, Any]:
         t0, t1 = self._range(args.start, args.end)
         cat = self.store.catalog
-        if args.component is not None:
-            cat = cat.filter(pl.col("component") == self._component(args.component))
+        if args.component and args.component.strip():  # "" is read as "all", like null
+            cat = cat.filter(pl.col("component") == self._component(args.component.strip()))
         rows, ref_kind = self._deviations(cat["feature"].to_list(), t0, t1)
         categories = dict(zip(cat["feature"].to_list(), cat["category"].to_list(), strict=True))
-        # saturated deviations tie at the cap: the one that deviated first comes first
+        # Ranked by SUSTAINED deviation (sum of capped |deviation| over the interval), not by the
+        # peak: hundreds of KPIs saturate at the cap, and a one-minute blip at the window start
+        # must not outrank a fault that lasts minutes (pilot finding, ADR 0017 addendum).
         ranked = sorted(
-            (r for r in rows if r["desvio_maximo"] is not None),
+            (r for r in rows if r["desvio_acumulado"] is not None),
             key=lambda r: (
+                -r["desvio_acumulado"],
                 -abs(r["desvio_maximo"]),
                 r["primeiro_desvio_acima_de_3"] or "9999",
                 r["feature"],

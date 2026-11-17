@@ -60,12 +60,21 @@ class LLMClient:
 
     def _cost(self, result: ProviderResult) -> float:
         c = self.config
+        prompt = result.input_tokens + result.cached_input_tokens + result.cache_write_tokens
+        long_prompt = (
+            c.long_prompt_threshold_tokens is not None and prompt > c.long_prompt_threshold_tokens
+        )
+        multiplier = c.long_prompt_price_multiplier if long_prompt else 1.0
         return (
-            result.input_tokens * c.price_input_per_mtok
-            + result.cached_input_tokens * c.price_cached_input_per_mtok
-            + result.cache_write_tokens * c.price_cache_write_per_mtok
-            + result.output_tokens * c.price_output_per_mtok
-        ) / 1_000_000
+            multiplier
+            * (
+                result.input_tokens * c.price_input_per_mtok
+                + result.cached_input_tokens * c.price_cached_input_per_mtok
+                + result.cache_write_tokens * c.price_cache_write_per_mtok
+                + result.output_tokens * c.price_output_per_mtok
+            )
+            / 1_000_000
+        )
 
     def build_request(
         self,

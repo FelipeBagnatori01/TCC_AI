@@ -16,7 +16,7 @@ from tcc_rca.env import load_dotenv
 from tcc_rca.evaluation.baselines import run_baselines
 from tcc_rca.evaluation.compare import run_e5_comparison
 from tcc_rca.evaluation.lstm import run_lstm
-from tcc_rca.evaluation.xai import run_xai
+from tcc_rca.evaluation.xai import build_pilot_evidence, run_xai
 from tcc_rca.ingestion.cases import Case, Failure, build_cases, read_failures, read_queries
 from tcc_rca.ingestion.eda import plot_failure
 from tcc_rca.ingestion.inventory import build_inventory, write_inventory
@@ -199,6 +199,12 @@ def cmd_xai(config: Config, _: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_pilot_evidence(config: Config, _: argparse.Namespace) -> int:
+    for key, value in build_pilot_evidence(config, TABLES_DIR).items():
+        print(f"{key}: {value}")
+    return 0
+
+
 def cmd_alt_models(config: Config, _: argparse.Namespace) -> int:
     from tcc_rca.evaluation.alt_models import run_alt_models
 
@@ -247,6 +253,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     add("lstm", "search, train and evaluate the LSTM forecaster and classifier (E5)")
     add("compare-e5", "paired LSTM-vs-baseline differences for an E5 run (bootstrap CIs)")
     add("xai", "SHAP/LIME/IG explanations, XAI localization and evidence packages (E6)")
+    add("pilot-evidence", "in-sample evidence packages for the E7 pilot queries (A3 check)")
     add("alt-models", "LightGBM/IF/logistic/TCN + SHAP/LIME vs. the LSTM (ADR 0018)")
     add("agent", "run one agent variant over the test or pilot queries (E7, paid API calls)")
     eda = add("eda", "plot KPIs around failures")
@@ -271,6 +278,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         "lstm": cmd_lstm,
         "compare-e5": cmd_compare_e5,
         "xai": cmd_xai,
+        "pilot-evidence": cmd_pilot_evidence,
         "alt-models": cmd_alt_models,
         "agent": cmd_agent,
     }

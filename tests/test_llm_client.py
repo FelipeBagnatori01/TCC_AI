@@ -10,7 +10,9 @@ from tcc_rca.llm import (
     BudgetExceededError,
     FakeProvider,
     LLMClient,
+    LLMRequest,
     Message,
+    ProviderResult,
     build_provider,
     register_provider,
 )
@@ -110,3 +112,60 @@ def test_provider_is_chosen_by_config_name(config: Config, repo_root: Path) -> N
 def test_unknown_provider_fails_with_clear_message() -> None:
     with pytest.raises(ValueError, match="Unknown LLM provider"):
         build_provider("does-not-exist")
+
+
+def test_long_prompt_pricing_applies_the_multiplier_to_the_whole_call(
+    config: Config, repo_root: Path
+) -> None:
+    """Haiku 5.5 style: the prompt is full input + cache reads + cache writes; a call OVER the
+    threshold pays every price times the multiplier, at or below it the flat prices (by hand)."""
+    tiered = load_config(
+        repo_root / "configs/base.yaml",
+        overrides={
+            "llm": {
+                "cache_dir": str(config.llm.cache_dir),
+                "budget_usd": 100.0,
+                "price_input_per_mtok": 1.0,
+                "price_cached_input_per_mtok": 0.1,
+                "price_cache_write_per_mtok": 1.25,
+                "price_output_per_mtok": 2.0,
+                "long_prompt_threshold_tokens": 100,
+                "long_prompt_price_multiplier": 5.0,
+            }
+        },
+    )
+    full_input = {"below": 30, "at": 50, "over": 51}  # + 40 cache reads + 10 cache writes
+
+    def responder(request: LLMRequest) -> ProviderResult:
+        n = full_input[request.messages[-1].content]
+        return ProviderResult(
+            text="ok",
+            input_tokens=n,
+            cached_input_tokens=40,
+            cache_write_tokens=10,
+            output_tokens=20,
+        )
+
+    client = LLMClient(tiered.llm, provider=FakeProvider(responder))
+
+    def flat(n: int) -> float:
+        return (n * 1.0 + 40 * 0.1 + 10 * 1.25 + 20 * 2.0) / 1e6
+
+    assert client.complete(_msgs("below")).cost_usd == pytest.approx(flat(30))  # prompt 80
+    assert client.complete(_msgs("at")).cost_usd == pytest.approx(flat(50))  # prompt 100
+    assert client.complete(_msgs("over")).cost_usd == pytest.approx(5.0 * flat(51))  # 101
+
+
+def test_haiku_config_matches_the_published_long_prompt_prices(repo_root: Path) -> None:
+    cfg = load_config(
+        repo_root / "configs/base.yaml", repo_root / "configs/llm/claude_haiku_5_5.yaml"
+    )
+    m = cfg.llm.long_prompt_price_multiplier
+    assert cfg.llm.long_prompt_threshold_tokens == 100_000
+    long_prices = (
+        cfg.llm.price_input_per_mtok * m,
+        cfg.llm.price_cache_write_per_mtok * m,
+        cfg.llm.price_cached_input_per_mtok * m,
+        cfg.llm.price_output_per_mtok * m,
+    )
+    assert long_prices == pytest.approx((0.5, 0.625, 0.05, 2.5))

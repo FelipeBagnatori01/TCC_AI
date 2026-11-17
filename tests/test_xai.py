@@ -15,6 +15,7 @@ from pydantic import ValidationError
 from tcc_rca.evaluation.xai import (
     category_vs_prior,
     insertion_area,
+    pilot_query_indices,
     prior_category,
     uniform_category_hit,
 )
@@ -258,3 +259,15 @@ def test_package_is_traceable_to_raw_values_and_rejects_extra_fields() -> None:
     data["root_cause_component"] = "db_1"
     with pytest.raises(ValidationError):
         EvidencePackage.model_validate(data)
+
+
+def test_pilot_queries_must_be_training_days_of_the_fold() -> None:
+    """In-sample pilot packages come from the first fold's models: every pilot day must be one
+    of its training/validation days, never its test day (that would leak into the protocol)."""
+    from tcc_rca.dataset.split import Fold
+
+    fold = Fold(index=0, train_days=("d1",), val_days=("d2",), test_day="d3")
+    q_days = ["d1", "d3", None, "d1", "dx", "d2"]
+    assert pilot_query_indices(q_days, "d3", ["dx"], fold) == [0, 3, 5]
+    with pytest.raises(ValueError, match="outside fold 0"):
+        pilot_query_indices(q_days, "d4", [], fold)  # d3 (the fold's test day) would be pilot

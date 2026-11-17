@@ -20,6 +20,9 @@ from pydantic import BaseModel, ConfigDict, Field
 from tcc_rca.ingestion.timeutil import utc_to_local_str
 
 SCHEMA_VERSION: Literal["1.0"] = "1.0"
+# In-sample packages of the E7 pilot queries (built from models that trained on those days):
+# they live in evidence/<name>_piloto_insample/ and only check the A2/A3 mechanics.
+PILOT_EVIDENCE_SUFFIX = "_piloto_insample"
 FloatArray = npt.NDArray[np.float64]
 Float32Array = npt.NDArray[np.float32]
 IntArray = npt.NDArray[np.int64]

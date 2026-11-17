@@ -1,0 +1,35 @@
+{
+  "system": "Bank",
+  "variant": "A1",
+  "case_set": "pilot",
+  "cases": 16,
+  "repetitions": 1,
+  "case_runs": 16,
+  "status": {
+    "valid": 16
+  },
+  "valid_rate": 1.0,
+  "valid_after_retry": 0,
+  "mean_turns": 4.312,
+  "mean_tool_calls": 3.5,
+  "budget_stopped": false,
+  "provider": "anthropic",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "budget_usd": 10.0,
+  "cost_usd": 0.571832,
+  "cost_per_case_run_usd": 0.035739,
+  "max_case_cost_usd": 0.059619,
+  "usage": {
+    "calls": 69,
+    "cache_hits": 0,
+    "paid_calls": 69,
+    "input_tokens": 170,
+    "cached_input_tokens": 367594,
+    "cache_write_tokens": 140485,
+    "output_tokens": 18352,
+    "cost_usd": 0.5718319,
+    "latency_s": 204.538932
+  },
+  "run_dir": "20261116T203556-agent_piloto"
+}

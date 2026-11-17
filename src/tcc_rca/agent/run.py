@@ -27,6 +27,7 @@ from tcc_rca.agent.store import TelemetryStore
 from tcc_rca.agent.tasks import TaskSpec, load_candidates, task_spec
 from tcc_rca.agent.tools import Toolbox
 from tcc_rca.config import Config
+from tcc_rca.explain.evidence import PILOT_EVIDENCE_SUFFIX
 from tcc_rca.ingestion.cases import read_queries
 from tcc_rca.llm.client import BudgetExceededError, LLMClient
 from tcc_rca.llm.providers import register_provider
@@ -36,22 +37,31 @@ register_provider("fake_agent", FakeAgentProvider)
 
 
 def select_cases(config: Config, store: TelemetryStore) -> list[TaskSpec]:
-    """Test set = queries with an E6 package; pilot = queries before the first test day."""
+    """Test set = queries with an E6 package; pilot = queries before the first test day (they
+    have a package only in the in-sample pilot evidence dir, used to check A2/A3 mechanics)."""
     system = config.target_system
     tasks = [
         task_spec(system, q.row, q.task_index, q.instruction, q.window_start_utc, q.window_end_utc)
         for q in read_queries(config.paths.data_root / system / "query.csv")
     ]
+    in_sample = config.agent.evidence_name.endswith(PILOT_EVIDENCE_SUFFIX)
     if config.agent.case_set == "test":
+        if in_sample:
+            raise ValueError(
+                "the test set needs the E6 test packages, not the in-sample pilot ones"
+            )
         chosen = [t for t in tasks if store.evidence(t.query_row) is not None]
     else:
         first = config.tasks.first_test_day
         excluded = set(config.tasks.excluded_days)
-        chosen = [
-            t
-            for t in tasks
-            if t.day < first and t.day not in excluded and store.evidence(t.query_row) is None
-        ]
+        chosen = [t for t in tasks if t.day < first and t.day not in excluded]
+        missing = [t.query_row for t in chosen if store.evidence(t.query_row) is None]
+        if config.agent.variant != "A1" and (not in_sample or missing):
+            raise ValueError(
+                "pilot A2/A3 needs the in-sample pilot packages for every pilot query "
+                f"(tcc-rca pilot-evidence; evidence_name=<name>{PILOT_EVIDENCE_SUFFIX}); "
+                f"missing rows: {missing}"
+            )
     chosen.sort(key=lambda t: t.query_row)
     return chosen[: config.agent.limit] if config.agent.limit else chosen
 

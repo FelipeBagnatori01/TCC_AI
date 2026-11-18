@@ -405,3 +405,96 @@ Uma visão única, nas mesmas janelas e falhas de teste, dos modelos anteriores 
   - no Telecom, as vantagens da LSTM dependem da isenção de disponibilidade (ameaça nº 1);
   - a pontuação nos últimos minutos foi decidida depois de ver o teste (ameaça nº 21), embora fixada pela definição do rótulo e aplicada igualmente aos baselines;
   - nada disso muda o agente: os pacotes de evidência continuam vindo da LSTM, como decidido antes destas comparações (ameaça nº 19).
+
+## Evidência do agente por seleção prequencial (ADR 0020)
+
+Pergunta: qual cadeia, sem LLM, devolve o instante, o componente e o motivo mais precisos para o agente?
+- **Candidatos:** lista fechada antes de medir (5 de instante, 9 de componente, 4 de motivo; ADR 0020).
+- **Seletor:** em cada dobra, escolhe o método de cada etapa pelo acerto nas consultas dos dias **anteriores** ao teste.
+- **Rivais:**
+  - o "pacote atual": o que os pacotes da E6 sugerem hoje, ou seja, pico do K1, componente C1 e motivo pela categoria sugerida;
+  - o A0 constante da E4.
+
+  A nota do A0 reproduz exatamente a da E4 nos dois sistemas.
+- **Execução:** 26 s (Telecom) e 60 s (Bank), em CPU (execuções `20261118T210915` e `20261118T210943`).
+
+### Resultado principal (teste; IC de 95% por bootstrap sobre consultas)
+
+| Sistema | Cadeia | Instante (≤ 60 s) | Componente | Motivo | Nota oficial parcial | Acerto estrito |
+|---|---|---|---|---|---|---|
+| Telecom | seletor prequencial | 0,44 | 0,24 | 0,33 | 0,35 [0,24; 0,47] | 0,20 |
+| Telecom | **pacote atual** | **0,76** | **0,33** | 0,29 | **0,50 [0,38; 0,62]** | **0,36** |
+| Telecom | A0 constante | 0,00 | — | — | 0,18 | 0,11 |
+| Bank | **seletor prequencial** | **0,38** | **0,34** | 0,29 | **0,34 [0,27; 0,41]** | **0,23** |
+| Bank | pacote atual | 0,28 | 0,20 | 0,31 | 0,28 [0,21; 0,35] | 0,16 |
+| Bank | A0 constante | 0,06 | — | — | 0,14 | 0,08 |
+
+Comparação pareada, seletor menos pacote atual:
+
+| Sistema | Nota parcial | Instante | Componente | Motivo |
+|---|---|---|---|---|
+| Telecom | −0,15, **inferior** | −0,31, **inferior** | −0,09, empate | +0,04, empate |
+| Bank | +0,07, empate | +0,10, **superior** | +0,13, **superior** | −0,02, empate |
+
+Contra o A0, o seletor é superior na nota parcial nos dois sistemas (+0,17 no Telecom, +0,20 no Bank).
+
+### Escolhas do seletor
+
+| Sistema | Instante | Componente | Motivo |
+|---|---|---|---|
+| Telecom | BOCPD sobre o z local nas dobras 0–1; depois, 1º minuto acima do limiar da previsora LSTM (T1) | z global (0–2), fusão (3), nativo da previsora (4–9) | R0 em 6 dobras; R1 ou R3 nas outras |
+| Bank | início da janela (0), BOCPD (1–3), 1º minuto acima do limiar do z local (4–7) | PageRank (0), fusão por posto de SHAP + z global + BARO (1–7) | regra categoria → motivo (1–6), logística (7) |
+
+- As primeiras dobras têm de 6 a 27 consultas passadas e escolhem mal: é o custo de aprender só com o passado.
+- No Bank, a escolha estabiliza cedo na fusão por posto. No Telecom, estabiliza na previsora LSTM: limiar para o instante, ranqueamento nativo para o componente.
+
+### Cada método no teste (descritivo, não usado para escolher)
+
+| Etapa | Telecom | Bank |
+|---|---|---|
+| Instante: melhor candidato da lista | T1 previsora 0,51 | T2 z local 0,46 |
+| Instante: pico do K1 do pacote (fora da lista) | **0,76** | 0,30 |
+| Componente, instante rotulado: previsora SHAP / fusão / BARO | 0,42 / 0,29 / 0,11 | 0,49 / 0,46 / 0,32 |
+| Componente, instante do seletor: melhor | nativo da previsora 0,33 | fusão 0,33 |
+| Motivo: R0 / R2 / R3 | 0,33 / 0,31 / **0,44** | 0,18 / 0,28 / **0,35** |
+
+- **Coerência com a E6:** com o instante rotulado, a previsora SHAP reproduz o HR@1 da E6 (0,42 no Telecom; 0,49 contra 0,48 no Bank, pela lista de candidatos menor).
+- **BARO, N-Sigma, sazonal e PageRank:** sozinhos, nenhum supera a previsora SHAP em nenhum sistema. A fusão por posto chega perto dela no Bank.
+- **Motivo:** a logística (R3) é a melhor nos dois sistemas no descritivo, mas raramente foi escolhida no Telecom, onde o passado é pequeno.
+
+### Diagnóstico do instante no Telecom
+
+Erros com sinal, em minutos (estimado menos rotulado; ≤ −6 = seis minutos ou mais cedo):
+
+| Método | Acerto (±1 min) | Cedo demais (≤ −6) | Tarde demais (≥ +6) |
+|---|---|---|---|
+| T1: 1º minuto acima do limiar da previsora | 0,51 | 9 de 45 | 7 |
+| T2: 1º minuto acima do limiar do z local | 0,44 | 13 | 4 |
+| T3/T4: BOCPD | 0,36 / 0,38 | 15 / 14 | 5 / 7 |
+| Pico do K1 do pacote | **0,76** | **2** | 4 |
+
+Os métodos de "primeiro minuto acima do limiar" são enganados por alarmes anteriores dentro da janela da consulta. O pico do KPI mais atribuído, dentro da janela escolhida pela classificadora, raramente adianta.
+
+No Bank isso não se repete: o pico do K1 acerta 0,30, contra 0,46 do z local, e erra cedo tanto quanto os outros.
+
+Esse estimador já existia nos pacotes antes do ADR 0020, mas **não entrou na lista de candidatos**. Foi uma omissão do plano.
+
+### Sensibilidade à isenção de disponibilidade
+
+| Sistema | Seletor: componente | Pacote atual: componente | Seletor menos pacote (nota parcial) |
+|---|---|---|---|
+| Telecom | 0,24 → **0,04** | 0,33 → 0,16 | empate (−0,13) |
+| Bank | 0,34 → 0,25 | 0,20 → 0,26 | empate (−0,01) |
+
+- **Telecom:** sem a isenção, a localização desaba, mais uma vez (ameaça nº 1).
+- **Bank:** no controle, a vantagem do seletor no componente desaparece.
+
+### Leitura
+
+- **Não há um vencedor único.**
+  - **Bank:** o seletor dá uma evidência melhor que a dos pacotes atuais (instante +0,10 e componente +0,13, superiores; nota parcial com empate a favor).
+  - **Telecom:** dá uma evidência pior (nota parcial −0,15, inferior), por causa do instante.
+- **Métodos clássicos de RCA:** BARO, N-Sigma, PageRank e desvio sazonal não superam a previsora LSTM na localização. A combinação deles com a LSTM (fusão por posto) é a escolha estável no Bank.
+- **Motivo:** a logística sobre o perfil de anomalia por categoria supera o prior nos dois sistemas. É o primeiro sinal de que a telemetria ajuda a acertar o motivo.
+- **Decisão (autor, 2026-11-18):** os pacotes do agente **não mudam** (ADR 0020, opção 3), porque seguir o seletor pioraria a evidência do Telecom.
+- **Referência para o agente (E8):** a cadeia do pacote atual, sem LLM, tem nota oficial parcial de 0,50 no Telecom e 0,28 no Bank, contra 0,18 e 0,14 do A0. As variantes A2/A3, que recebem esse pacote, precisam superá-la para mostrar que o LLM acrescenta algo à evidência.

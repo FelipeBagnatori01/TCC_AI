@@ -1,0 +1,4 @@
+# ADR 0020: uv run tcc-rca evidence-select --config configs/base.yaml [configs/system/bank.yaml] configs/experiment/evidence_select.yaml
+# Uses the E5 models of explain.lstm_name (lstm) and compares with the E6 packages (xai).
+experiment:
+  name: evidence_select

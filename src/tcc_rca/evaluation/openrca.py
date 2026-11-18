@@ -18,6 +18,7 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
+from typing import Protocol
 
 import polars as pl
 
@@ -46,8 +47,38 @@ class Prediction:
         return json.dumps(payload, ensure_ascii=False)
 
 
+class OfficialPrediction(Protocol):
+    @property
+    def query_row(self) -> int: ...
+
+    def as_official_json(self) -> str: ...
+
+
+@dataclass(frozen=True)
+class MultiPrediction:
+    """Several root causes for one query (queries reporting more than one failure).
+
+    One cause is written exactly like :class:`Prediction`; several are written as numbered
+    objects (``{"1": {...}, "2": {...}}``), the format the official regex reads (it matches each
+    inner object) and that the agent's answers use.
+    """
+
+    query_row: int
+    causes: tuple[Prediction, ...]
+
+    def as_official_json(self) -> str:
+        if not self.causes:
+            raise ValueError("a prediction needs at least one cause")
+        if any(c.query_row != self.query_row for c in self.causes):
+            raise ValueError("every cause must belong to the same query row")
+        if len(self.causes) == 1:
+            return self.causes[0].as_official_json()
+        payload = {str(i): json.loads(c.as_official_json()) for i, c in enumerate(self.causes, 1)}
+        return json.dumps(payload, ensure_ascii=False)
+
+
 def write_subset(
-    predictions: Sequence[Prediction], query_csv: Path, out_dir: Path
+    predictions: Sequence[OfficialPrediction], query_csv: Path, out_dir: Path
 ) -> tuple[Path, Path]:
     """Prediction CSV and the matching filtered query CSV, both in query-row order."""
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -74,7 +105,7 @@ def write_subset(
 
 
 def score_with_official_script(
-    predictions: Sequence[Prediction], query_csv: Path, openrca_repo: Path, out_dir: Path
+    predictions: Sequence[OfficialPrediction], query_csv: Path, openrca_repo: Path, out_dir: Path
 ) -> pl.DataFrame:
     """Per-query official scores: ``query_row``, ``task_index``, ``score`` (0..1), ``strict``."""
     p_path, q_path = write_subset(predictions, query_csv, out_dir)

@@ -108,7 +108,8 @@ explain:                           # E6 (ADR 0016); explains the E5 models, no t
   top_k: 10
   deletion_steps: [1, 2, 5, 10, 20, 50]
   random_orders: 5
-  evidence_detector: lstm_classifier  # picks the evidence window, gives score/alarm (E5 best detector)
+  evidence_detector: lstm_classifier  # picks the evidence window, gives score/alarm (fixed before
+                                      # test; kept after ADR 0019/0020, threat 11)
   evidence_explained: lstm_forecast  # cited attributions: stable across seeds (ADR 0016, post-test)
   evidence_top_components: 5
   evidence_top_kpis: 10
@@ -147,6 +148,19 @@ alt_models:                        # alternative explainable models vs. the LSTM
   xai_name: xai                    # E6 run compared against (XAI localization)
   baselines_name: baselines        # E4 run compared against (heuristic localization)
   reuse_selection_from: null
+  max_folds: null
+
+evidence_select:                   # ADR 0020; constants fixed before measuring (2026-11-18)
+  hazard_minutes: 30               # BOCPD: one change expected per 30-minute query window
+  reference_minutes: 60            # pre-onset reference of the robust scorer and BOCPD lead-in
+  min_reference_minutes: 10        # fewer same-day minutes -> fold's normal training minutes
+  min_onset_separation_minutes: 20 # second failure of a query: at least W minutes away
+  pagerank_damping: 0.85
+  pagerank_backward_weight: 0.2
+  pagerank_relations: [calls, hosted_on, member_of, runs_in]
+  rrf_k: 60
+  reason_logistic_c: 1.0
+  package_name: xai                # data/processed/<system>/evidence/<name>/ (current packages)
   max_folds: null
 
 agent:                             # E7 (ADR 0017); model/effort/budget are in llm

@@ -75,6 +75,7 @@ Registro incremental das ameaças identificadas ao longo das etapas, para a seç
 - **O que:** o plano fixava a LSTM classificadora como detector e como modelo explicado. Depois de medir, as atribuições citáveis passaram para a previsora, porque as da classificadora mudam quase todas entre seeds (ADR 0016, decisão 6). A classificadora continua escolhendo a janela.
 - **Tipo:** grau de liberdade do pesquisador (decisão pós-teste). A escolha se apoiou em métricas de qualidade da explicação (estabilidade e concordância), não em métricas do agente, que ainda não existe.
 - **Efeito esperado:** no Bank, a localização sugerida pelos pacotes fica um pouco pior (HR@1 0,36 contra 0,44 da classificadora). As citações do agente ficam mais reprodutíveis.
+- **Janela escolhida pela classificadora:** depois do ADR 0019, a classificadora perde para o z-score local na detecção do Bank (5/5 seeds), mas continua escolhendo a janela dos pacotes, porque essa foi a configuração fixada antes do teste. O ADR 0020 mostrou que essa cadeia dá o melhor instante no Telecom (pico do K1: 0,76) e não no Bank (0,30 contra 0,46 do z local). A configuração foi mantida (decisão do autor, 2026-11-18).
 - **Efeito medido após o ADR 0019:** a desvantagem desapareceu. Com a pontuação nos últimos minutos, a previsora passou a localizar melhor que a classificadora no Bank (HR@1 0,48 contra 0,44 com SHAP) e igual ou melhor no Telecom (0,42 contra 0,27).
 - **Mitigação:** a decisão foi tomada antes de qualquer execução do agente e está registrada. As métricas dos dois modelos ficam reportadas na E6.
 
@@ -156,6 +157,32 @@ Registro incremental das ameaças identificadas ao longo das etapas, para a seç
 - **O que:** as falhas do Bank se concentram entre 14h e 20h (UTC+8). Uma referência só de horário, sem telemetria, separa um pouco as janelas (AUC-PR 0,16 contra 0,105 do acaso, no diagnóstico), e a classificadora LSTM tem AUROC 0,59 nos 5 minutos antes do início, onde a E3 não achou sinal.
 - **Efeito esperado:** parte do desempenho dos detectores supervisionados pode vir do horário (por KPIs com ciclo diário), não da falha.
 - **Mitigação:** o detector de referência `prior_horario` é reportado na E4 ao lado dos demais; um detector que não o supera não demonstra uso da telemetria. A monografia discute o atalho como limitação.
+
+### 23. Dias de validação que são dias de teste de outras dobras (E5, ADR 0018)
+
+- **O que:** nas dobras rolling-origin, o dia de validação da dobra k é o dia de teste da dobra k − 1 (Telecom: 2020_05_22 a 05_30; Bank: 2021_03_06 a 03_24). As buscas de hiperparâmetros da E5 e do ADR 0018 escolheram **uma** configuração para todas as dobras pela AUC-PR média de validação. Essa média inclui falhas que são de teste em outras dobras, pontuadas por modelos treinados com menos dias. Encontrada na preparação do ADR 0020 (2026-11-18).
+- **Tipo:** seleção com informação do teste (leve).
+- **Efeito esperado:** otimismo pequeno nos números de teste da configuração escolhida. Os modelos que pontuaram aquelas falhas na validação não são os do teste, e a escolha é entre poucas configurações (8 por modelo), mas os dias são os mesmos. Para métodos sem treino (z-score, BARO), a nota de "validação" de um dia **é** a nota de teste desse dia.
+- **Mitigação:**
+  - a busca completa fica no relatório, e as diferenças entre configurações na validação são pequenas em relação às diferenças entre famílias;
+  - a escolha da evidência do agente (ADR 0020) usa seleção prequencial: em cada dobra, só os dias anteriores ao teste;
+  - a monografia declara a limitação; uma busca aninhada (por dobra, só com dias anteriores) ficaria como trabalho futuro.
+
+### 24. Exploração de métodos de evidência depois de ver o teste (ADR 0020)
+
+- **O que:** a busca por uma evidência mais precisa para o agente (instante, componente, motivo) foi decidida depois de ver os resultados de teste da E4–E6 e do ADR 0018.
+- **Tipo:** grau de liberdade do pesquisador.
+- **Efeito esperado:** com muitos candidatos, o melhor no teste tende a ser otimista.
+- **Mitigação:**
+  - lista fechada de candidatos e regras fixadas antes de qualquer medição (ADR 0020);
+  - o resultado relatado é o do **seletor prequencial**, que escolhe em cada dobra só com os dias anteriores; as notas de teste por candidato são descritivas;
+  - a regra que leva o resultado aos pacotes do agente também foi fixada antes de medir.
+- **Efeito medido (2026-11-18):**
+  - o seletor foi melhor que os pacotes atuais no Bank (instante e componente superiores; nota parcial empatada) e pior no Telecom (nota parcial −0,15, inferior);
+  - a lista de candidatos omitiu o estimador de instante dos próprios pacotes (pico do K1), o melhor do Telecom;
+  - depois de ver o teste, o autor decidiu **não aplicar** a regra e manter os pacotes atuais (ADR 0020, opção 3).
+
+  O abandono da regra é uma decisão pós-teste. A entrada do agente, porém, continua a fixada antes do ADR 0020, sem nenhum ajuste aos resultados de teste.
 
 ## Previstas pelo plano (a detalhar na E9)
 

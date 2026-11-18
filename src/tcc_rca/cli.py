@@ -216,6 +216,17 @@ def cmd_alt_models(config: Config, _: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_evidence_select(config: Config, _: argparse.Namespace) -> int:
+    from tcc_rca.evaluation.evidence_select import run_evidence_select
+
+    start = time.perf_counter()
+    summary = run_evidence_select(config, TABLES_DIR)
+    for key, value in summary.items():
+        print(f"{key}: {value}")
+    print(f"elapsed_s={time.perf_counter() - start:.1f} peak_rss_mb={_peak_rss_mb():.0f}")
+    return 0
+
+
 def cmd_agent(config: Config, _: argparse.Namespace) -> int:
     from tcc_rca.agent.run import run_agent  # registers the fake_agent provider
 
@@ -255,6 +266,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     add("xai", "SHAP/LIME/IG explanations, XAI localization and evidence packages (E6)")
     add("pilot-evidence", "in-sample evidence packages for the E7 pilot queries (A3 check)")
     add("alt-models", "LightGBM/IF/logistic/TCN + SHAP/LIME vs. the LSTM (ADR 0018)")
+    add("evidence-select", "onset/component/reason evidence by prequential selection (ADR 0020)")
     add("agent", "run one agent variant over the test or pilot queries (E7, paid API calls)")
     eda = add("eda", "plot KPIs around failures")
     eda.add_argument("-n", type=int, default=10, help="number of failures to plot")
@@ -280,6 +292,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         "xai": cmd_xai,
         "pilot-evidence": cmd_pilot_evidence,
         "alt-models": cmd_alt_models,
+        "evidence-select": cmd_evidence_select,
         "agent": cmd_agent,
     }
     return int(handlers[args.command](config, args))

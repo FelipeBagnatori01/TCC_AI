@@ -216,6 +216,27 @@ class AltModelsConfig(_Strict):
     max_folds: int | None = Field(default=None, gt=0)  # smoke runs only; None = every fold
 
 
+class EvidenceSelectConfig(_Strict):
+    """Evidence chosen by prequential selection: onset, component and reason (ADR 0020).
+
+    The candidate lists are fixed in code (``evaluation.evidence_select``); only the constants
+    fixed before measuring live here. Models come from the E5 run explained by ``explain``.
+    """
+
+    hazard_minutes: int = Field(gt=1)  # BOCPD constant hazard = 1 / hazard_minutes
+    reference_minutes: int = Field(gt=0)  # pre-onset reference (C4/C5) and BOCPD lead-in
+    min_reference_minutes: int = Field(gt=0)  # fewer -> the fold's normal training minutes
+    min_onset_separation_minutes: int = Field(gt=0)  # second failure of a query
+    pagerank_damping: float = Field(gt=0.0, lt=1.0)
+    pagerank_backward_weight: float = Field(ge=0.0)
+    pagerank_relations: tuple[str, ...] = Field(min_length=1)
+    rrf_k: int = Field(gt=0)
+    reason_logistic_c: float = Field(gt=0.0)
+    # E6 packages the agent would receive today (the "current package" chain compared against)
+    package_name: str = Field(min_length=1)
+    max_folds: int | None = Field(default=None, gt=0)  # smoke runs only; None = every fold
+
+
 class AgentConfig(_Strict):
     """E7 agent (ADR 0017). Model, effort and budget live in ``llm``."""
 
@@ -247,6 +268,7 @@ class Config(_Strict):
     lstm: LstmConfig
     explain: ExplainConfig
     alt_models: AltModelsConfig
+    evidence_select: EvidenceSelectConfig
     agent: AgentConfig
 
     def resolved(self) -> dict[str, Any]:

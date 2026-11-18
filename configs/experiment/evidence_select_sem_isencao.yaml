@@ -1,0 +1,11 @@
+# ADR 0020 sensitivity control (ADR 0005): E5 models trained without the availability exemption.
+#   uv run tcc-rca evidence-select --config configs/base.yaml [configs/system/bank.yaml] configs/experiment/evidence_select_sem_isencao.yaml
+experiment:
+  name: evidence_select_sem_isencao
+series:
+  selection:
+    constant_exempt_categories: []
+explain:
+  lstm_name: lstm_sem_isencao
+evidence_select:
+  package_name: xai_sem_isencao

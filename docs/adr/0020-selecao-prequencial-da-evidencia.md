@@ -1,6 +1,6 @@
 # ADR 0020 — Escolha da evidência do agente por seleção prequencial (instante, componente, motivo)
 
-- **Status:** aceito e executado (2026-11-18). Decisão final do autor: os pacotes do agente **não mudam** (opção 3; a decisão 4 não é aplicada)
+- **Status:** aceito e executado (2026-11-18). Decisão final do autor: os pacotes do agente **não mudam** (opção 3; a decisão 4 não é aplicada). Em 2026-11-19, o ADR 0021 trocou o detector dos pacotes para a previsora; as notas da cadeia sem LLM citadas aqui (0,50 / 0,28) são as dos pacotes com a classificadora
 - **Data:** 2026-11-18
 - **Etapa:** complemento da E4–E6, antes das execuções de teste da E7
 

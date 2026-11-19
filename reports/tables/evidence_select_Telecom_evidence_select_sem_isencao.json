@@ -78,9 +78,9 @@
   "current_package": {
     "fields": {
       "occurrence_datetime": {
-        "value": 0.7111,
-        "ci_low": 0.5778,
-        "ci_high": 0.8444,
+        "value": 0.5333,
+        "ci_low": 0.3778,
+        "ci_high": 0.6667,
         "n_valid_resamples": 2000
       },
       "component": {
@@ -90,51 +90,51 @@
         "n_valid_resamples": 2000
       },
       "reason": {
-        "value": 0.3111,
-        "ci_low": 0.1778,
-        "ci_high": 0.4444,
+        "value": 0.3333,
+        "ci_low": 0.2,
+        "ci_high": 0.4667,
         "n_valid_resamples": 2000
       }
     },
     "official": {
       "n_queries": 45,
       "partial_score": {
-        "value": 0.4184,
-        "ci_low": 0.2924,
-        "ci_high": 0.548,
+        "value": 0.3478,
+        "ci_low": 0.2293,
+        "ci_high": 0.4702,
         "n_valid_resamples": 2000
       },
       "strict_accuracy": {
-        "value": 0.3111,
-        "ci_low": 0.1778,
-        "ci_high": 0.4444,
+        "value": 0.2444,
+        "ci_low": 0.1111,
+        "ci_high": 0.3778,
         "n_valid_resamples": 2000
       },
       "by_task": {
         "task_1": {
           "n": 9,
-          "strict_correct": 7,
-          "partial_mean": 0.7778
+          "strict_correct": 4,
+          "partial_mean": 0.4444
         },
         "task_2": {
           "n": 7,
-          "strict_correct": 1,
-          "partial_mean": 0.1429
+          "strict_correct": 3,
+          "partial_mean": 0.4286
         },
         "task_3": {
           "n": 4,
-          "strict_correct": 3,
-          "partial_mean": 0.75
+          "strict_correct": 1,
+          "partial_mean": 0.25
         },
         "task_4": {
           "n": 7,
-          "strict_correct": 3,
-          "partial_mean": 0.5714
+          "strict_correct": 2,
+          "partial_mean": 0.3571
         },
         "task_5": {
           "n": 4,
-          "strict_correct": 0,
-          "partial_mean": 0.25
+          "strict_correct": 1,
+          "partial_mean": 0.5
         },
         "task_6": {
           "n": 6,
@@ -144,7 +144,7 @@
         "task_7": {
           "n": 8,
           "strict_correct": 0,
-          "partial_mean": 0.2912
+          "partial_mean": 0.3313
         }
       }
     }
@@ -239,20 +239,20 @@
     {
       "rival": "current_package",
       "metric": "nota parcial",
-      "value": -0.1333,
-      "ci_low": -0.2818,
-      "ci_high": 0.0111,
+      "value": -0.0627,
+      "ci_low": -0.1996,
+      "ci_high": 0.0631,
       "n_valid_resamples": 2000,
       "verdict": "empate"
     },
     {
       "rival": "current_package",
       "metric": "acerto estrito",
-      "value": -0.1556,
-      "ci_low": -0.3111,
-      "ci_high": -0.0222,
+      "value": -0.0889,
+      "ci_low": -0.2222,
+      "ci_high": 0.0222,
       "n_valid_resamples": 2000,
-      "verdict": "inferior"
+      "verdict": "empate"
     },
     {
       "rival": "constant_a0",
@@ -275,9 +275,9 @@
     {
       "rival": "current_package",
       "metric": "campo occurrence_datetime",
-      "value": -0.2889,
-      "ci_low": -0.4444,
-      "ci_high": -0.1556,
+      "value": -0.1111,
+      "ci_low": -0.2222,
+      "ci_high": -0.0222,
       "n_valid_resamples": 2000,
       "verdict": "inferior"
     },
@@ -286,16 +286,16 @@
       "metric": "campo component",
       "value": -0.1111,
       "ci_low": -0.2444,
-      "ci_high": 0.0,
+      "ci_high": 0.0222,
       "n_valid_resamples": 2000,
       "verdict": "empate"
     },
     {
       "rival": "current_package",
       "metric": "campo reason",
-      "value": -0.0222,
-      "ci_low": -0.2,
-      "ci_high": 0.1556,
+      "value": -0.0444,
+      "ci_low": -0.2444,
+      "ci_high": 0.1333,
       "n_valid_resamples": 2000,
       "verdict": "empate"
     }
@@ -635,7 +635,7 @@
       }
     }
   },
-  "run_dir": "20261118T211045-evidence_select_sem_isencao",
+  "run_dir": "20261119T170440-evidence_select_sem_isencao",
   "labels": {
     "T0": "início da janela da consulta",
     "T1": "previsora LSTM: 1º minuto acima do limiar",
@@ -656,5 +656,5 @@
     "R2": "regra categoria do KPI → motivo",
     "R3": "regressão logística"
   },
-  "seconds": 24.8
+  "seconds": 25.3
 }

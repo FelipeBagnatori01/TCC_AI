@@ -830,8 +830,8 @@
       "verdict": "inferior"
     }
   ],
-  "seconds": 171.5,
+  "seconds": 172.3,
   "evidence_dir": "data/processed/Bank/evidence/xai_sem_isencao",
-  "run_dir": "20261117T051842-xai_sem_isencao",
+  "run_dir": "20261119T170105-xai_sem_isencao",
   "explained_lstm_run": "20261117T050609-lstm_sem_isencao"
 }

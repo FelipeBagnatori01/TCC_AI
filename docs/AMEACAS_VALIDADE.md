@@ -76,6 +76,12 @@ Registro incremental das ameaças identificadas ao longo das etapas, para a seç
 - **Tipo:** grau de liberdade do pesquisador (decisão pós-teste). A escolha se apoiou em métricas de qualidade da explicação (estabilidade e concordância), não em métricas do agente, que ainda não existe.
 - **Efeito esperado:** no Bank, a localização sugerida pelos pacotes fica um pouco pior (HR@1 0,36 contra 0,44 da classificadora). As citações do agente ficam mais reprodutíveis.
 - **Janela escolhida pela classificadora:** depois do ADR 0019, a classificadora perde para o z-score local na detecção do Bank (5/5 seeds), mas continua escolhendo a janela dos pacotes, porque essa foi a configuração fixada antes do teste. O ADR 0020 mostrou que essa cadeia dá o melhor instante no Telecom (pico do K1: 0,76) e não no Bank (0,30 contra 0,46 do z local). A configuração foi mantida (decisão do autor, 2026-11-18).
+- **Troca do detector (ADR 0021, 2026-11-19):** depois de ver os resultados de teste da E5 posteriores ao ADR 0019, o autor passou a escolha da janela, a pontuação e o alarme para a previsora. Isso desfaz o argumento da opção 3 do ADR 0020, de que a entrada do agente era exatamente a fixada antes do teste. Atenuantes:
+  - a regra do plano (o melhor detector LSTM escolhe a janela) não mudou, só o modelo que a cumpre;
+  - o pacote passa a vir de um único modelo;
+  - a troca foi fixada antes de medir a nota dos novos pacotes e não será revertida pelo resultado;
+  - nenhuma execução de teste do agente existia.
+- **Efeito medido da troca (2026-11-19):** a nota parcial da cadeia sem LLM caiu no Telecom (0,50 → 0,41; empate pareado) e subiu no Bank (0,28 → 0,35; empate no limite). A troca foi mantida, como fixado antes de medir.
 - **Efeito medido após o ADR 0019:** a desvantagem desapareceu. Com a pontuação nos últimos minutos, a previsora passou a localizar melhor que a classificadora no Bank (HR@1 0,48 contra 0,44 com SHAP) e igual ou melhor no Telecom (0,42 contra 0,27).
 - **Mitigação:** a decisão foi tomada antes de qualquer execução do agente e está registrada. As métricas dos dois modelos ficam reportadas na E6.
 

@@ -830,8 +830,8 @@
       "verdict": "inferior"
     }
   ],
-  "seconds": 173.6,
+  "seconds": 178.4,
   "evidence_dir": "data/processed/Bank/evidence/xai",
-  "run_dir": "20261117T051545-xai",
+  "run_dir": "20261119T165803-xai",
   "explained_lstm_run": "20261117T041757-lstm"
 }

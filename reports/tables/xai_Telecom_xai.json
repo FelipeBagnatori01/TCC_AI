@@ -766,8 +766,8 @@
       "verdict": "empate"
     }
   ],
-  "seconds": 74.4,
+  "seconds": 75.3,
   "evidence_dir": "data/processed/Telecom/evidence/xai",
-  "run_dir": "20261117T025449-xai",
+  "run_dir": "20261119T165528-xai",
   "explained_lstm_run": "20261117T022802-lstm"
 }

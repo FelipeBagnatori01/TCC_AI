@@ -177,7 +177,7 @@ class ExplainConfig(_Strict):
     top_k: int = Field(gt=0)  # agreement/stability/fidelity work on the top-k features
     deletion_steps: tuple[int, ...] = Field(min_length=1)
     random_orders: int = Field(gt=0)
-    # window choice, score and alarm of the evidence package (best E5 detector)
+    # window choice, score and alarm of the evidence package (best E5 detector, ADR 0021)
     evidence_detector: Literal["lstm_forecast", "lstm_classifier"]
     # model whose SHAP/LIME attributions are cited (stable across seeds, ADR 0016)
     evidence_explained: Literal["lstm_forecast", "lstm_classifier"]

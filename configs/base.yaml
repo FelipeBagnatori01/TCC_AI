@@ -108,8 +108,8 @@ explain:                           # E6 (ADR 0016); explains the E5 models, no t
   top_k: 10
   deletion_steps: [1, 2, 5, 10, 20, 50]
   random_orders: 5
-  evidence_detector: lstm_classifier  # picks the evidence window, gives score/alarm (fixed before
-                                      # test; kept after ADR 0019/0020, threat 11)
+  evidence_detector: lstm_forecast  # picks the evidence window, gives score/alarm (classifier until
+                                    # ADR 0021; post-test switch, threat 11)
   evidence_explained: lstm_forecast  # cited attributions: stable across seeds (ADR 0016, post-test)
   evidence_top_components: 5
   evidence_top_kpis: 10

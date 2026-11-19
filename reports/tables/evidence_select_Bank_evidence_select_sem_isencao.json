@@ -78,73 +78,73 @@
   "current_package": {
     "fields": {
       "occurrence_datetime": {
-        "value": 0.3134,
-        "ci_low": 0.2366,
-        "ci_high": 0.3885,
+        "value": 0.4104,
+        "ci_low": 0.3357,
+        "ci_high": 0.4887,
         "n_valid_resamples": 2000
       },
       "component": {
-        "value": 0.2612,
-        "ci_low": 0.1955,
-        "ci_high": 0.3286,
+        "value": 0.291,
+        "ci_low": 0.218,
+        "ci_high": 0.3657,
         "n_valid_resamples": 2000
       },
       "reason": {
-        "value": 0.3209,
-        "ci_low": 0.2406,
-        "ci_high": 0.403,
+        "value": 0.3507,
+        "ci_low": 0.2748,
+        "ci_high": 0.4275,
         "n_valid_resamples": 2000
       }
     },
     "official": {
       "n_queries": 120,
       "partial_score": {
-        "value": 0.2951,
-        "ci_low": 0.2285,
-        "ci_high": 0.3702,
+        "value": 0.3598,
+        "ci_low": 0.291,
+        "ci_high": 0.4334,
         "n_valid_resamples": 2000
       },
       "strict_accuracy": {
-        "value": 0.1917,
-        "ci_low": 0.125,
-        "ci_high": 0.2667,
+        "value": 0.2417,
+        "ci_low": 0.1667,
+        "ci_high": 0.3167,
         "n_valid_resamples": 2000
       },
       "by_task": {
         "task_1": {
           "n": 20,
-          "strict_correct": 4,
-          "partial_mean": 0.2
+          "strict_correct": 8,
+          "partial_mean": 0.425
         },
         "task_2": {
           "n": 17,
-          "strict_correct": 7,
-          "partial_mean": 0.4118
+          "strict_correct": 8,
+          "partial_mean": 0.4706
         },
         "task_3": {
           "n": 14,
-          "strict_correct": 2,
-          "partial_mean": 0.1429
+          "strict_correct": 4,
+          "partial_mean": 0.2857
         },
         "task_4": {
           "n": 17,
-          "strict_correct": 3,
-          "partial_mean": 0.25
+          "strict_correct": 5,
+          "partial_mean": 0.4265
         },
         "task_5": {
           "n": 16,
-          "strict_correct": 3,
-          "partial_mean": 0.375
+          "strict_correct": 0,
+          "partial_mean": 0.3281
         },
         "task_6": {
           "n": 19,
           "strict_correct": 2,
-          "partial_mean": 0.2895
+          "partial_mean": 0.2368
         },
         "task_7": {
           "n": 17,
           "strict_correct": 2,
-          "partial_mean": 0.3918
+          "partial_mean": 0.3335
         }
       }
     }
@@ -239,20 +239,20 @@
     {
       "rival": "current_package",
       "metric": "nota parcial",
-      "value": -0.0097,
-      "ci_low": -0.0965,
-      "ci_high": 0.073,
+      "value": -0.0743,
+      "ci_low": -0.1494,
+      "ci_high": -0.0014,
       "n_valid_resamples": 2000,
-      "verdict": "empate"
+      "verdict": "inferior"
     },
     {
       "rival": "current_package",
       "metric": "acerto estrito",
-      "value": -0.025,
-      "ci_low": -0.1083,
-      "ci_high": 0.05,
+      "value": -0.075,
+      "ci_low": -0.15,
+      "ci_high": -0.0083,
       "n_valid_resamples": 2000,
-      "verdict": "empate"
+      "verdict": "inferior"
     },
     {
       "rival": "constant_a0",
@@ -275,27 +275,27 @@
     {
       "rival": "current_package",
       "metric": "campo occurrence_datetime",
-      "value": 0.0672,
-      "ci_low": -0.0154,
-      "ci_high": 0.1533,
+      "value": -0.0299,
+      "ci_low": -0.0963,
+      "ci_high": 0.0376,
       "n_valid_resamples": 2000,
       "verdict": "empate"
     },
     {
       "rival": "current_package",
       "metric": "campo component",
-      "value": -0.0075,
-      "ci_low": -0.0945,
-      "ci_high": 0.0803,
+      "value": -0.0373,
+      "ci_low": -0.116,
+      "ci_high": 0.0435,
       "n_valid_resamples": 2000,
       "verdict": "empate"
     },
     {
       "rival": "current_package",
       "metric": "campo reason",
-      "value": -0.0373,
-      "ci_low": -0.1407,
-      "ci_high": 0.0667,
+      "value": -0.0672,
+      "ci_low": -0.1642,
+      "ci_high": 0.0286,
       "n_valid_resamples": 2000,
       "verdict": "empate"
     }
@@ -577,7 +577,7 @@
       }
     }
   },
-  "run_dir": "20261118T211113-evidence_select_sem_isencao",
+  "run_dir": "20261119T170610-evidence_select_sem_isencao",
   "labels": {
     "T0": "início da janela da consulta",
     "T1": "previsora LSTM: 1º minuto acima do limiar",
@@ -598,5 +598,5 @@
     "R2": "regra categoria do KPI → motivo",
     "R3": "regressão logística"
   },
-  "seconds": 57.7
+  "seconds": 58.6
 }

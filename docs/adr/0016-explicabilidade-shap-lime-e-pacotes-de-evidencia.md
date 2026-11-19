@@ -1,6 +1,6 @@
 # ADR 0016 — Explicabilidade (SHAP, LIME, IG), medição das explicações e pacotes de evidência (E6)
 
-- **Status:** aceito (E6 aprovada em 2026-11-12)
+- **Status:** aceito (E6 aprovada em 2026-11-12). A escolha da janela pela classificadora (decisão 6) foi substituída pela previsora no ADR 0021 (2026-11-19)
 - **Data:** 2026-11-12
 - **Etapa:** E6 (Telecom e Bank)
 

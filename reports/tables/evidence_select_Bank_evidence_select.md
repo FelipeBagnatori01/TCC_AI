@@ -20,27 +20,27 @@
 | Cadeia | instante (≤ 60 s) | componente | motivo |
 |---|---|---|---|
 | seletor prequencial | 0.38 [0.30; 0.46] | 0.34 [0.26; 0.41] | 0.29 [0.22; 0.36] |
-| pacote atual | 0.28 [0.21; 0.36] | 0.20 [0.13; 0.27] | 0.31 [0.23; 0.39] |
+| pacote atual | 0.40 [0.33; 0.48] | 0.28 [0.21; 0.36] | 0.35 [0.27; 0.43] |
 
 ## Nota oficial do OpenRCA (só os campos pedidos por consulta)
 
 | Cadeia | Nota parcial | Acerto estrito |
 |---|---|---|
 | seletor prequencial | 0.34 [0.27; 0.41] | 0.23 [0.15; 0.30] |
-| pacote atual | 0.28 [0.21; 0.35] | 0.16 [0.09; 0.23] |
+| pacote atual | 0.35 [0.28; 0.42] | 0.23 [0.16; 0.31] |
 | A0 constante (E4) | 0.14 [0.09; 0.20] | 0.08 [0.03; 0.13] |
 
 ## Comparações pareadas (seletor menos rival, mesmas consultas)
 
 | Rival | Métrica | Diferença | Veredito |
 |---|---|---|---|
-| current_package | nota parcial | +0.066 [-0.019; +0.147] | empate |
-| current_package | acerto estrito | +0.067 [-0.009; +0.150] | empate |
+| current_package | nota parcial | -0.011 [-0.085; +0.063] | empate |
+| current_package | acerto estrito | -0.008 [-0.092; +0.067] | empate |
 | constant_a0 | nota parcial | +0.203 [+0.124; +0.285] | superior |
 | constant_a0 | acerto estrito | +0.142 [+0.067; +0.225] | superior |
-| current_package | campo occurrence_datetime | +0.097 [+0.007; +0.182] | superior |
-| current_package | campo component | +0.134 [+0.037; +0.232] | superior |
-| current_package | campo reason | -0.015 [-0.106; +0.077] | empate |
+| current_package | campo occurrence_datetime | -0.022 [-0.112; +0.065] | empate |
+| current_package | campo component | +0.052 [-0.023; +0.128] | empate |
+| current_package | campo reason | -0.060 [-0.152; +0.030] | empate |
 
 ## Descritivo: cada método no teste (não usado para escolher)
 

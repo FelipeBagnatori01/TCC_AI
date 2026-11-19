@@ -247,7 +247,7 @@ A soma por categoria favorece categorias com muitos KPIs (ameaça nº 13). Como 
 ### Pacotes de evidência
 
 São 45 pacotes no Telecom e 120 no Bank, um por consulta testada, regerados com o ADR 0019.
-- **Montagem:** a classificadora escolhe a janela e dá pontuação e alarme; a previsora fornece as atribuições citáveis (`C#`, `K#`) e o ranqueamento nativo (`N#`). O alarme dispara em 76% das consultas no Telecom (34/45) e em 67% no Bank (80/120), como antes: a classificadora não mudou.
+- **Montagem (desde o ADR 0021, 2026-11-19):** a previsora escolhe a janela (maior pontuação dentro da consulta), dá pontuação e alarme e fornece as atribuições citáveis (`C#`, `K#`) e o ranqueamento nativo (`N#`). O alarme dispara em 64% das consultas no Telecom (29/45) e em 52% no Bank (62/120). Conferido: em todos os 165 pacotes, a pontuação é a da E5 (seed 0) e é a maior entre as janelas candidatas da consulta. Até o ADR 0021, a classificadora escolhia a janela e dava o alarme (76% e 67% das consultas).
 - **Ausência de rótulos:**
   - nenhum pacote tem campo de causa, motivo ou rótulo: o esquema rejeita campos extras, e há teste de importação;
   - a janela é escolhida pelo detector, nunca pelo início rotulado.
@@ -412,7 +412,7 @@ Pergunta: qual cadeia, sem LLM, devolve o instante, o componente e o motivo mais
 - **Candidatos:** lista fechada antes de medir (5 de instante, 9 de componente, 4 de motivo; ADR 0020).
 - **Seletor:** em cada dobra, escolhe o método de cada etapa pelo acerto nas consultas dos dias **anteriores** ao teste.
 - **Rivais:**
-  - o "pacote atual": o que os pacotes da E6 sugerem hoje, ou seja, pico do K1, componente C1 e motivo pela categoria sugerida;
+  - o "pacote atual": o que os pacotes da E6 sugerem, ou seja, pico do K1, componente C1 e motivo pela categoria sugerida. As tabelas desta seção são as dos pacotes **com a classificadora** escolhendo a janela; com a previsora (ADR 0021), veja a seção seguinte;
   - o A0 constante da E4.
 
   A nota do A0 reproduz exatamente a da E4 nos dois sistemas.
@@ -497,4 +497,43 @@ Esse estimador já existia nos pacotes antes do ADR 0020, mas **não entrou na l
 - **Métodos clássicos de RCA:** BARO, N-Sigma, PageRank e desvio sazonal não superam a previsora LSTM na localização. A combinação deles com a LSTM (fusão por posto) é a escolha estável no Bank.
 - **Motivo:** a logística sobre o perfil de anomalia por categoria supera o prior nos dois sistemas. É o primeiro sinal de que a telemetria ajuda a acertar o motivo.
 - **Decisão (autor, 2026-11-18):** os pacotes do agente **não mudam** (ADR 0020, opção 3), porque seguir o seletor pioraria a evidência do Telecom.
-- **Referência para o agente (E8):** a cadeia do pacote atual, sem LLM, tem nota oficial parcial de 0,50 no Telecom e 0,28 no Bank, contra 0,18 e 0,14 do A0. As variantes A2/A3, que recebem esse pacote, precisam superá-la para mostrar que o LLM acrescenta algo à evidência.
+- **Referência para o agente (E8):** com os pacotes desta seção (classificadora), a cadeia sem LLM tinha nota oficial parcial de 0,50 no Telecom e 0,28 no Bank. Com os pacotes atuais (ADR 0021), a referência passa a ser 0,41 e 0,35 (seção seguinte).
+
+## Pacotes com a previsora escolhendo a janela (ADR 0021)
+
+Em 2026-11-19, a previsora LSTM passou a escolher a janela dos pacotes e a dar a pontuação e o alarme. A troca foi fixada antes de medir e não seria revertida pelo resultado. Os pacotes foram regerados (`xai`); as métricas da E6 saíram idênticas. Depois, o `evidence-select` foi reexecutado (execuções `20261119T170412` e `20261119T170508`). O seletor não depende dos pacotes, e suas notas não mudaram.
+
+### Cadeia do pacote, sem LLM (teste; IC de 95% por bootstrap sobre consultas)
+
+| Sistema | Detector dos pacotes | Instante (≤ 60 s) | Componente | Motivo | Nota oficial parcial | Acerto estrito |
+|---|---|---|---|---|---|---|
+| Telecom | classificadora (até o ADR 0021) | 0,76 | 0,33 | 0,29 | 0,50 [0,38; 0,62] | 0,36 |
+| Telecom | **previsora** | 0,56 | 0,33 | 0,29 | **0,41 [0,29; 0,54]** | 0,29 |
+| Bank | classificadora (até o ADR 0021) | 0,28 | 0,20 | 0,31 | 0,28 [0,21; 0,35] | 0,16 |
+| Bank | **previsora** | 0,40 | 0,28 | 0,35 | **0,35 [0,28; 0,42]** | 0,23 |
+
+Diferença pareada da nota parcial (previsora menos classificadora, mesma consulta; bootstrap sobre consultas):
+- **Telecom:** −0,09 [−0,19; +0,01], empate; 6 consultas pioram, 2 melhoram e 37 não mudam;
+- **Bank:** +0,08 [0,00; +0,15], empate no limite; 26 melhoram, 13 pioram e 81 não mudam.
+
+Seletor menos pacote: no Telecom, −0,06, empate (antes −0,15, inferior); no Bank, −0,01, empate (antes +0,07).
+
+### Por que o instante muda
+
+- **Telecom:** o pico do K1 passa a cair seis minutos ou mais antes do início rotulado em 10 das 45 consultas (antes, 2). A janela de maior pontuação da previsora é às vezes a de um desvio anterior dentro da consulta, o mesmo defeito dos métodos de "primeiro minuto acima do limiar" (T1, 9 de 45).
+- **Bank:** o pico do K1 acerta 0,40 (antes 0,30), perto do melhor candidato do ADR 0020 (T2, z local: 0,46).
+
+### Sensibilidade à isenção de disponibilidade
+
+| Sistema | Nota parcial com a classificadora | Com a previsora |
+|---|---|---|
+| Telecom | 0,42 | 0,35 |
+| Bank | 0,30 | 0,36 |
+
+Sem a isenção, o sentido das mudanças é o mesmo. No Bank, o seletor passa a ser inferior ao pacote (−0,07).
+
+### Leitura
+
+- A troca **não melhora a evidência em geral**. Ela piora o instante no cenário principal (Telecom, −0,20 no campo; nota parcial −0,09, empate) e melhora o Bank (+0,08, empate no limite). Nenhuma das duas diferenças é significativa.
+- O pacote ganha coerência: pontuação, alarme e explicações passam a vir do mesmo modelo, como o prompt da A3 descreve.
+- **Referência para o agente (E8):** a cadeia do pacote, sem LLM, tem nota oficial parcial de **0,41 no Telecom e 0,35 no Bank**, contra 0,18 e 0,14 do A0. As variantes A2/A3 precisam superá-la para mostrar que o LLM acrescenta algo à evidência.

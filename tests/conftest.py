@@ -25,5 +25,6 @@ def config(tmp_path: Path) -> Config:
                 "manifest": str(tmp_path / "MANIFEST.csv"),
             },
             "llm": {"cache_dir": str(tmp_path / "llm_cache")},
+            "agent_eval": {"audit_dir": str(tmp_path / "audit")},
         },
     )

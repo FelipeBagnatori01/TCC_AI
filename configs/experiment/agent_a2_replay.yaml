@@ -1,0 +1,6 @@
+# E8: replays the E7 test run of agent_a2 from the LLM cache (merge LAST, after the llm config).
+# A zero budget makes any cache miss stop instead of paying; predictions must equal the original run.
+experiment:
+  name: agent_a2_replay
+llm:
+  budget_usd: 0.0

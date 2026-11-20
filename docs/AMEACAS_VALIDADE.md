@@ -107,6 +107,7 @@ Registro incremental das ameaças identificadas ao longo das etapas, para a seç
 - **O que:** o OpenRCA é público. O modelo pode ter visto o artigo, os dados ou respostas do benchmark no treino.
 - **Efeito esperado:** acerto inflado em todas as variantes, sem relação com as evidências.
 - **Mitigação:** a comparação A1 × A3 com o mesmo modelo controla a parte da contaminação comum às variantes. A contaminação continua sendo uma ameaça aos números absolutos.
+- **Efeito medido (E8, 2026-11-20):** o agente sem evidência (A1) já chega a 0,60 de nota parcial no Telecom e a 0,43 no Bank, contra 0,41 e 0,35 do pacote sem LLM. Parte desse ganho pode vir de conhecimento prévio do benchmark; não há como separar. A conclusão central (A3 empata com a A1) não depende disso, porque as duas variantes usam o mesmo modelo.
 
 ### 16. Modelos sem temperatura (E7)
 
@@ -114,14 +115,14 @@ Registro incremental das ameaças identificadas ao longo das etapas, para a seç
 - **Efeito esperado:** duas execuções novas do mesmo caso podem divergir.
 - **Mitigação:**
   - a reprodutibilidade vem do cache: uma nova execução sai inteira dele, sem chamada paga (testado);
-  - a variância é medida com 3 repetições independentes por caso no Telecom;
-  - no Bank há 1 repetição (escopo aprovado), sem medida de variância.
+  - o plano previa 3 repetições por caso no Telecom; depois do piloto, o teste foi feito com 1 repetição nos dois sistemas, e a variância não foi medida (ameaça nº 25).
 
 ### 17. A variante A1 inclui uma varredura heurística (E7)
 
 - **O que:** todas as variantes têm `find_anomalous_kpis`, que ordena os KPIs por desvio local, como o z-score local da E4. A ferramenta foi definida antes de qualquer execução real, para que a A1 não precise consultar às cegas cerca de 2 mil KPIs.
 - **Efeito esperado:** a A1 fica mais forte que um "LLM só com telemetria bruta", então o ganho de A2/A3 é marginal em relação a essa base, e não ao LLM puro.
 - **Mitigação:** a ressalva entra no texto, e a comparação de todas as variantes com A0 continua valendo.
+- **Efeito medido (E8, 2026-11-20):** as três variantes chamaram `find_anomalous_kpis` em 100% das consultas, nos dois sistemas, inclusive a A2 e a A3, que também chamaram `get_evidence` em todas. A comparação A3 × A1 mede, portanto, o que a evidência LSTM/XAI acrescenta a um agente que já tem um detector heurístico, não a um LLM sem detector.
 
 ### 18. Modelo e prompt escolhidos num piloto pequeno (E7)
 
@@ -189,6 +190,50 @@ Registro incremental das ameaças identificadas ao longo das etapas, para a seç
   - depois de ver o teste, o autor decidiu **não aplicar** a regra e manter os pacotes atuais (ADR 0020, opção 3).
 
   O abandono da regra é uma decisão pós-teste. A entrada do agente, porém, continua a fixada antes do ADR 0020, sem nenhum ajuste aos resultados de teste.
+
+### 25. Uma repetição do LLM e poder estatístico limitado (E7/E8)
+
+- **O que:**
+  - cada consulta foi respondida uma única vez por variante; a variância entre execuções do LLM não foi medida (decisão do autor, 2026-11-20, para não gastar cerca de US$ 32 em repetições);
+  - com 45 consultas no Telecom, o IC de 95% da diferença pareada de nota parcial tem meia-largura perto de 0,11–0,14; com 120 no Bank, perto de 0,08;
+  - a E8 faz várias comparações por sistema (3 entre variantes e 6 contra referências).
+- **Tipo:** precisão e generalização.
+- **Efeito esperado:**
+  - "empate" entre variantes não prova equivalência: efeitos de até cerca de 0,13 (Telecom) ou 0,08 (Bank) passariam por empate;
+  - outra execução das mesmas variantes pode trocar a ordem entre elas, sobretudo quando as diferenças são pequenas (A3 > A1 > A2 no Bank).
+- **Mitigação:**
+  - a comparação principal (A3 × A1) foi fixada no plano;
+  - o McNemar entre variantes usa a correção de Holm;
+  - a diferença com IC é sempre relatada ao lado do p-valor;
+  - o texto da monografia trata os empates como "nenhum efeito detectável com esta amostra", não como ausência de efeito.
+
+### 26. Auditoria manual por uma pessoa, com cegamento parcial (E8)
+
+- **O que:** as 120 afirmações da amostra de fidelidade são classificadas só pelo autor.
+  - Não há segundo avaliador nem medida de concordância entre avaliadores.
+  - A planilha esconde a variante, mas os IDs `C#`/`K#`/`N#` citados nas afirmações podem revelá-la.
+- **Tipo:** confiabilidade da medida.
+- **Efeito esperado:** viés do avaliador a favor da variante que ele espera que funcione melhor (A3).
+- **Mitigação:**
+  - rubrica com rótulos e regras de desempate escritas antes de auditar (`docs/AUDITORIA_FIDELIDADE.md`);
+  - amostra sorteada com semente fixa;
+  - chave da variante num arquivo separado;
+  - verificação automática de IDs, nomes e números em 100% das explicações, que não depende do avaliador.
+
+### 27. Comparação com um modelo mais barato decidida depois de ver o teste (ADR 0023)
+
+- **O que:** a pergunta "o Haiku com as evidências iguala o Opus?" surgiu em 2026-11-20, depois de ver os resultados da E7/E8 (A3 empatou com A1 no Opus).
+  - Ferramentas e prompts foram ajustados no piloto com o Opus em vista. O ajuste da `find_anomalous_kpis` veio de um caso em que Haiku e Sonnet falharam, mas a escolha final do modelo foi pelo Opus.
+  - O critério de "igualar" (não inferioridade a todas as variantes do Opus, margem 0,10) tem pouco poder no Telecom: nem o Opus o satisfaz contra si mesmo ali.
+- **Tipo:** validade de conclusão (análise post hoc) e poder.
+- **Efeito esperado:** a comparação é marcada como exploratória.
+  - Um resultado favorável ao Haiku seria uma hipótese a confirmar, não uma conclusão.
+  - Um "inconclusivo" no Telecom não indica que o Haiku seja pior.
+- **Mitigação:**
+  - hipóteses, margem, comparações e diagnósticos fixados no ADR 0023 antes de rodar o Haiku no teste;
+  - nenhum ajuste de prompt ou ferramenta para o Haiku;
+  - a calibração do critério com o Opus contra si mesmo foi registrada antes das execuções;
+  - a concordância com o pacote é relatada para separar raciocínio de cópia.
 
 ## Previstas pelo plano (a detalhar na E9)
 

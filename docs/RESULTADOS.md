@@ -537,3 +537,112 @@ Sem a isenção, o sentido das mudanças é o mesmo. No Bank, o seletor passa a 
 - A troca **não melhora a evidência em geral**. Ela piora o instante no cenário principal (Telecom, −0,20 no campo; nota parcial −0,09, empate) e melhora o Bank (+0,08, empate no limite). Nenhuma das duas diferenças é significativa.
 - O pacote ganha coerência: pontuação, alarme e explicações passam a vir do mesmo modelo, como o prompt da A3 descreve.
 - **Referência para o agente (E8):** a cadeia do pacote, sem LLM, tem nota oficial parcial de **0,41 no Telecom e 0,35 no Bank**, contra 0,18 e 0,14 do A0. As variantes A2/A3 precisam superá-la para mostrar que o LLM acrescenta algo à evidência.
+
+## E7 e E8 — Agente de LLM no teste (ADR 0017, 0021 e 0022)
+
+- **Execuções da E7 (2026-11-19):** Claude Opus 5.5, esforço `medium`, 1 repetição, todas as consultas testadas (45 no Telecom e 120 no Bank), pacotes de evidência do ADR 0021.
+  - 100% das respostas válidas no esquema; de 1 a 15 consultas por execução precisaram de nova tentativa.
+  - Custo total de US$ 103,88, com teto de US$ 50 por execução.
+- **Avaliação da E8 (2026-11-20):** `evaluate-agent`, com a nota do script oficial do OpenRCA, IC por bootstrap sobre consultas e diferenças pareadas.
+  - **Tabelas:** `reports/tables/agent_eval_<sistema>.{json,md}`.
+  - **Notebook:** `notebooks/analise_e7_agente.ipynb`.
+
+### Diagnóstico (RQ3): nota oficial
+
+| Cadeia | Telecom: parcial | Telecom: estrito | Bank: parcial | Bank: estrito |
+|---|---|---|---|---|
+| A0 constante | 0,18 [0,10; 0,29] | 0,11 | 0,14 [0,09; 0,19] | 0,08 |
+| pacote sem LLM (ADR 0021) | 0,41 [0,29; 0,54] | 0,29 | 0,35 [0,28; 0,43] | 0,23 |
+| A1: telemetria | 0,60 [0,46; 0,72] | 0,51 | 0,43 [0,35; 0,51] | 0,36 |
+| A2: + pontuação e ranqueamento LSTM | 0,60 [0,48; 0,73] | 0,49 | 0,40 [0,33; 0,49] | 0,31 |
+| A3: + SHAP/LIME | 0,58 [0,44; 0,71] | 0,49 | 0,46 [0,38; 0,54] | 0,37 |
+
+**Comparações pareadas da nota parcial.** As colunas de McNemar valem para o acerto estrito: b = só a primeira cadeia acerta, c = só a segunda. O p entre variantes é corrigido por Holm.
+
+| Comparação | Telecom | Bank |
+|---|---|---|
+| **A3 − A1 (principal)** | −0,02 [−0,13; +0,09], empate; b/c 4/5, p = 1,0 | +0,03 [−0,05; +0,10], empate; b/c 13/12, p = 1,0 |
+| A2 − A1 | +0,01, empate; p = 1,0 | −0,02, empate; p (Holm) = 0,69 |
+| A3 − A2 | −0,03, empate; p = 1,0 | +0,05, empate; p (Holm) = 0,69 |
+| A1 / A2 / A3 − A0 | +0,41 / +0,42 / +0,39, superiores | +0,29 / +0,27 / +0,32, superiores |
+| A1 / A2 / A3 − pacote | +0,18 / +0,19 / +0,16, superiores | +0,08 / +0,05 empates; **A3 +0,11, superior** |
+
+**Acerto por campo** (aproximado; cada critério do gabarito lido separadamente):
+
+| Cadeia | Telecom: instante / componente / motivo | Bank: instante / componente / motivo |
+|---|---|---|
+| pacote | 0,50 / 0,41 / 0,32 | 0,41 / 0,26 / 0,34 |
+| A1 | 0,71 / 0,68 / 0,46 | 0,37 / 0,54 / 0,44 |
+| A2 | 0,64 / 0,73 / 0,43 | 0,43 / 0,50 / 0,45 |
+| A3 | 0,68 / 0,73 / 0,43 | 0,46 / 0,54 / 0,49 |
+
+### Localização pelo agente (RQ2)
+
+Esta tabela usa as consultas de uma falha que pedem componente (22 no Telecom e 56 no Bank). Ela compara o componente respondido com o C1 do pacote, nas mesmas consultas.
+
+| Cadeia | Telecom: HR@1 | Menos o C1 | Bank: HR@1 | Menos o C1 |
+|---|---|---|---|---|
+| pacote (C1) | 0,41 | — | 0,25 | — |
+| A1 | 0,68 | +0,27, empate (b/c 10/4) | 0,55 | +0,30, **superior** (20/3) |
+| A2 | 0,73 | +0,32, **superior** (8/1) | 0,45 | +0,20, **superior** (14/3) |
+| A3 | 0,73 | +0,32, **superior** (8/1) | 0,50 | +0,25, **superior** (16/2) |
+
+Quando o agente e o C1 discordam, quem acerta é quase sempre o agente. O HR@1 da E6 (0,42 e 0,48) foi medido nas janelas-oráculo, com o início rotulado. Aqui a janela é a escolhida pelo detector dentro da consulta, e os números não são diretamente comparáveis.
+
+### Fidelidade (RQ4)
+
+**Verificação automática** de todas as explicações, contra as saídas das ferramentas da própria transcrição, sem gabarito:
+
+| Checagem | Telecom (A1 / A2 / A3) | Bank (A1 / A2 / A3) |
+|---|---|---|
+| IDs citados no texto e não emitidos | 0 / 0 / 0 | 0 / 0 / 0 |
+| Componentes inexistentes | 0 / 0 / 0 | 0 / 0 / 0 |
+| Identificadores de KPI desconhecidos | 0 / 0 / 0 | 0 / 0 / 0 |
+| Números sem correspondência | 1,4% / 0,2% / 1,0% | 0,9% / 0,9% / 0,6% |
+| Controle de acaso (números × 1,37 com correspondência) | 27% / 21% / 22% | 27% / 25% / 22% |
+
+- **Regra dos números:** correspondência até uma unidade da última casa escrita, ou 5% quando o texto marca aproximação.
+- **O que entra na taxa:** números derivados (diferenças, razões) também contam, então a taxa é um teto para valores inventados.
+- **O controle:** mostra que a regra discrimina. Por coincidência, ela aceitaria cerca de 1 em cada 4 números; os números reais passam em cerca de 99%.
+
+**Auditoria manual:** 120 afirmações de 30 explicações (5 por sistema × variante), com variante oculta, classificadas pelo autor (`docs/AUDITORIA_FIDELIDADE.md`). **Pendente:** os números entram aqui depois do preenchimento.
+
+### Custo (RQ4)
+
+| Variante | Telecom: US$/consulta | Telecom: latência (s) | Telecom: ferramentas | Bank: US$/consulta | Bank: latência (s) | Bank: ferramentas |
+|---|---|---|---|---|---|---|
+| A1 | 0,193 ± 0,061 | 34,0 ± 9,6 | 13,2 ± 4,5 | 0,232 ± 0,114 | 36,4 ± 14,0 | 12,4 ± 6,6 |
+| A2 | 0,168 ± 0,079 | 29,0 ± 11,5 | 10,8 ± 5,8 | 0,217 ± 0,111 | 35,5 ± 14,4 | 12,1 ± 6,4 |
+| A3 | 0,162 ± 0,071 | 28,3 ± 10,7 | 9,8 ± 5,3 | 0,221 ± 0,107 | 36,2 ± 14,9 | 12,0 ± 6,4 |
+
+### Análise de erros (descritiva, grupos pequenos)
+
+- **Rede é o ponto fraco.**
+  - **Bank:** latência de rede tem acerto de motivo de 0 a 0,14 em todas as cadeias (14 critérios); perda de pacotes fica entre 0,12 e 0,33, abaixo do pacote (0,50; 24 critérios).
+  - **Telecom:** perda de rede fica entre 0 e 0,2.
+- **CPU é o ponto forte.** No Bank, "high CPU usage" tem acerto de 0,89 a 0,95 no agente, contra 0,37 do pacote.
+- **Componentes:**
+  - **Telecom:** o agente acerta os contêineres (`docker`, 0,8 a 1,0), onde o C1 do pacote erra todos.
+  - **Bank:** os gateways `IG` vão de 0,1 (pacote) a 0,7 a 1,0 (agente).
+
+### Reprodução (critério da E7)
+
+As seis execuções foram refeitas a partir do cache com teto de US$ 0 (`configs/experiment/agent_a*_replay.yaml`): 0 chamadas pagas, `predictions_s0.csv` e `metrics.json` idênticos byte a byte aos originais. Duas execuções seguidas do `evaluate-agent` produzem o mesmo `metrics.json`.
+
+### Detecção (RQ1): curvas PR e ROC
+
+`reports/figures/rq1_curvas_pr_roc.png` (`rq1-curves`) mostra as curvas dos detectores no teste: LSTMs na seed 0, z-score local, LightGBM e referência só de horário da E4. As AUCs recalculadas batem com as tabelas da E4 e da E5.
+
+### Leitura
+
+- **RQ3:** o agente com LLM acerta muito mais que o A0 e, no geral, mais que a evidência sozinha (pacote sem LLM). Mas a **evidência LSTM/XAI não melhora o agente de forma detectável**: A3 × A1 empata nos dois sistemas, pela diferença pareada e pelo McNemar.
+- **Por quê, provavelmente:**
+  - todas as variantes têm a varredura heurística `find_anomalous_kpis`, usada em 100% das consultas (ameaça nº 17);
+  - o agente usa a evidência (a A3 cita `C#`/`K#` em quase todas as respostas), mas, quando ela aponta o componente errado, ele a corrige com a telemetria.
+- **RQ2:** como localizador, o agente supera o C1 do pacote em 5 das 6 comparações. A localização da E6 continua sendo a melhor entre os métodos sem LLM.
+- **RQ4:** a verificação automática não acha IDs, componentes ou KPIs inventados, e só cerca de 1% de números sem correspondência; a auditoria manual vai completar a medida. O custo fica entre US$ 0,16 e 0,23 por consulta, e a evidência não o aumenta.
+- **Ameaças:**
+  - contaminação (nº 15);
+  - varredura heurística (nº 17);
+  - uma repetição e poder limitado (nº 25): com 45 consultas, efeitos de até cerca de 0,13 passam por empate;
+  - auditoria por uma pessoa (nº 26).

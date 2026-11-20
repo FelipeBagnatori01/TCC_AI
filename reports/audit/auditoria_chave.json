@@ -1,0 +1,152 @@
+{
+  "E01": {
+    "system": "Telecom",
+    "variant": "A1",
+    "query_row": 27
+  },
+  "E02": {
+    "system": "Telecom",
+    "variant": "A3",
+    "query_row": 28
+  },
+  "E03": {
+    "system": "Telecom",
+    "variant": "A3",
+    "query_row": 45
+  },
+  "E04": {
+    "system": "Telecom",
+    "variant": "A2",
+    "query_row": 28
+  },
+  "E05": {
+    "system": "Telecom",
+    "variant": "A3",
+    "query_row": 36
+  },
+  "E06": {
+    "system": "Telecom",
+    "variant": "A1",
+    "query_row": 40
+  },
+  "E07": {
+    "system": "Telecom",
+    "variant": "A1",
+    "query_row": 19
+  },
+  "E08": {
+    "system": "Telecom",
+    "variant": "A1",
+    "query_row": 17
+  },
+  "E09": {
+    "system": "Telecom",
+    "variant": "A2",
+    "query_row": 45
+  },
+  "E10": {
+    "system": "Telecom",
+    "variant": "A3",
+    "query_row": 17
+  },
+  "E11": {
+    "system": "Telecom",
+    "variant": "A3",
+    "query_row": 41
+  },
+  "E12": {
+    "system": "Telecom",
+    "variant": "A2",
+    "query_row": 33
+  },
+  "E13": {
+    "system": "Telecom",
+    "variant": "A2",
+    "query_row": 39
+  },
+  "E14": {
+    "system": "Telecom",
+    "variant": "A2",
+    "query_row": 50
+  },
+  "E15": {
+    "system": "Telecom",
+    "variant": "A1",
+    "query_row": 32
+  },
+  "E16": {
+    "system": "Bank",
+    "variant": "A1",
+    "query_row": 73
+  },
+  "E17": {
+    "system": "Bank",
+    "variant": "A3",
+    "query_row": 77
+  },
+  "E18": {
+    "system": "Bank",
+    "variant": "A3",
+    "query_row": 122
+  },
+  "E19": {
+    "system": "Bank",
+    "variant": "A2",
+    "query_row": 72
+  },
+  "E20": {
+    "system": "Bank",
+    "variant": "A3",
+    "query_row": 93
+  },
+  "E21": {
+    "system": "Bank",
+    "variant": "A1",
+    "query_row": 111
+  },
+  "E22": {
+    "system": "Bank",
+    "variant": "A1",
+    "query_row": 39
+  },
+  "E23": {
+    "system": "Bank",
+    "variant": "A1",
+    "query_row": 35
+  },
+  "E24": {
+    "system": "Bank",
+    "variant": "A2",
+    "query_row": 107
+  },
+  "E25": {
+    "system": "Bank",
+    "variant": "A3",
+    "query_row": 35
+  },
+  "E26": {
+    "system": "Bank",
+    "variant": "A3",
+    "query_row": 110
+  },
+  "E27": {
+    "system": "Bank",
+    "variant": "A2",
+    "query_row": 85
+  },
+  "E28": {
+    "system": "Bank",
+    "variant": "A2",
+    "query_row": 88
+  },
+  "E29": {
+    "system": "Bank",
+    "variant": "A2",
+    "query_row": 120
+  },
+  "E30": {
+    "system": "Bank",
+    "variant": "A1",
+    "query_row": 87
+  }
+}

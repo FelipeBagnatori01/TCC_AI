@@ -227,6 +227,35 @@ def cmd_evidence_select(config: Config, _: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_evaluate_agent(config: Config, _: argparse.Namespace) -> int:
+    from tcc_rca.evaluation.agent_eval import run_agent_eval
+
+    start = time.perf_counter()
+    summary = run_agent_eval(config, TABLES_DIR)
+    for key, value in summary.items():
+        print(f"{key}: {value}")
+    print(f"elapsed_s={time.perf_counter() - start:.1f} peak_rss_mb={_peak_rss_mb():.0f}")
+    return 0
+
+
+def cmd_compare_models(config: Config, _: argparse.Namespace) -> int:
+    from tcc_rca.evaluation.model_compare import run_model_compare
+
+    summary = run_model_compare(config, TABLES_DIR)
+    for key, value in summary.items():
+        print(f"{key}: {value}")
+    return 0
+
+
+def cmd_rq1_curves(config: Config, _: argparse.Namespace) -> int:
+    from tcc_rca.evaluation.curves import write_pr_roc_figure
+
+    summary = write_pr_roc_figure(config, TABLES_DIR, Path("reports/figures"))
+    for key, value in summary.items():
+        print(f"{key}: {value}")
+    return 0
+
+
 def cmd_agent(config: Config, _: argparse.Namespace) -> int:
     from tcc_rca.agent.run import run_agent  # registers the fake_agent provider
 
@@ -268,6 +297,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     add("alt-models", "LightGBM/IF/logistic/TCN + SHAP/LIME vs. the LSTM (ADR 0018)")
     add("evidence-select", "onset/component/reason evidence by prequential selection (ADR 0020)")
     add("agent", "run one agent variant over the test or pilot queries (E7, paid API calls)")
+    add("evaluate-agent", "official scores, paired tests, fidelity and cost of the E7 runs (E8)")
+    add("compare-models", "cheaper model vs. the E8 model on the same agent runs (ADR 0023)")
+    add("rq1-curves", "PR and ROC curves of the E4/E5 detectors on the test windows (E8)")
     eda = add("eda", "plot KPIs around failures")
     eda.add_argument("-n", type=int, default=10, help="number of failures to plot")
 
@@ -294,6 +326,9 @@ def main(argv: Sequence[str] | None = None) -> int:
         "alt-models": cmd_alt_models,
         "evidence-select": cmd_evidence_select,
         "agent": cmd_agent,
+        "evaluate-agent": cmd_evaluate_agent,
+        "compare-models": cmd_compare_models,
+        "rq1-curves": cmd_rq1_curves,
     }
     return int(handlers[args.command](config, args))
 

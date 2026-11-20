@@ -1,0 +1,35 @@
+{
+  "system": "Bank",
+  "variant": "A2",
+  "case_set": "test",
+  "cases": 120,
+  "repetitions": 1,
+  "case_runs": 120,
+  "status": {
+    "valid": 120
+  },
+  "valid_rate": 1.0,
+  "valid_after_retry": 11,
+  "mean_turns": 7.625,
+  "mean_tool_calls": 12.075,
+  "budget_stopped": false,
+  "provider": "anthropic",
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "budget_usd": 50.0,
+  "cost_usd": 26.024981,
+  "cost_per_case_run_usd": 0.216875,
+  "max_case_cost_usd": 0.435803,
+  "usage": {
+    "calls": 915,
+    "cache_hits": 0,
+    "paid_calls": 915,
+    "input_tokens": 2092,
+    "cached_input_tokens": 12880064,
+    "cache_write_tokens": 3033980,
+    "output_tokens": 413535,
+    "cost_usd": 26.0249808,
+    "latency_s": 4265.390883
+  },
+  "run_dir": "20261119T221049-agent_a2"
+}

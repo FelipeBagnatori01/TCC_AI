@@ -1,0 +1,35 @@
+{
+  "system": "Telecom",
+  "variant": "A1",
+  "case_set": "test",
+  "cases": 45,
+  "repetitions": 1,
+  "case_runs": 45,
+  "status": {
+    "valid": 45
+  },
+  "valid_rate": 1.0,
+  "valid_after_retry": 5,
+  "mean_turns": 8.178,
+  "mean_tool_calls": 13.178,
+  "budget_stopped": false,
+  "provider": "anthropic",
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "budget_usd": 50.0,
+  "cost_usd": 8.687553,
+  "cost_per_case_run_usd": 0.193057,
+  "max_case_cost_usd": 0.32059,
+  "usage": {
+    "calls": 368,
+    "cache_hits": 0,
+    "paid_calls": 368,
+    "input_tokens": 836,
+    "cached_input_tokens": 4169071,
+    "cache_write_tokens": 999095,
+    "output_tokens": 142746,
+    "cost_usd": 8.6875532,
+    "latency_s": 1528.447082
+  },
+  "run_dir": "20261119T194655-agent_a1"
+}

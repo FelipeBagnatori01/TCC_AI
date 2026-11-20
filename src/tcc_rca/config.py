@@ -254,6 +254,55 @@ class AgentConfig(_Strict):
     prompts_dir: Path
 
 
+class AgentEvalConfig(_Strict):
+    """E8 evaluation of the E7 agent runs (ADR 0022). Scores come from the official script."""
+
+    variants: tuple[Literal["A1", "A2", "A3"], ...] = Field(min_length=1)
+    run_names: tuple[str, ...] = Field(min_length=1)  # experiment.name of each variant's run
+    model_slug: str = Field(min_length=1)  # agent table suffix (agent_<system>_<name>_<slug>)
+    replay_suffix: str = Field(min_length=1)  # cache-replay runs: <name><suffix>
+    evidence_select_name: str = Field(min_length=1)  # A0 and package chain official reports
+    primary_comparison: tuple[str, str]  # fixed by the plan (RQ3): A3 vs. A1
+    variant_comparisons: tuple[tuple[str, str], ...] = Field(min_length=1)  # Holm family
+    bootstrap: int = Field(gt=0)
+    value_rel_tolerance: float = Field(ge=0.0, lt=1.0)  # number grounding ('cerca de')
+    min_integer: float = Field(ge=0.0)  # smaller integers are not checked (counts, minutes)
+    audit_per_stratum: int = Field(gt=0)  # explanations per (system, variant)
+    audit_claims: int = Field(gt=0)  # sampled claims per explanation
+    audit_seed: int
+    audit_dir: Path  # versioned sheet + key (filled by the author)
+
+    @model_validator(mode="after")
+    def _consistent(self) -> AgentEvalConfig:
+        if len(self.variants) != len(self.run_names):
+            raise ValueError("agent_eval.variants and run_names must have the same length")
+        names = set(self.variants)
+        pairs = (self.primary_comparison, *self.variant_comparisons)
+        if any(a not in names or b not in names for a, b in pairs):
+            raise ValueError("agent_eval comparisons must name listed variants")
+        if self.primary_comparison not in self.variant_comparisons:
+            raise ValueError("agent_eval.primary_comparison must be in variant_comparisons")
+        return self
+
+
+class ModelCompareConfig(_Strict):
+    """ADR 0023 (exploratory, fixed before the runs): a cheaper model with the same tools and
+    evidence vs. the E8 model. The E8 model is ``agent_eval.model_slug``; runs share
+    ``agent_eval.run_names``, so the tables differ only by the model slug."""
+
+    reference_label: str = Field(min_length=1)  # "Opus"
+    candidate_label: str = Field(min_length=1)  # "Haiku"
+    candidate_slug: str = Field(min_length=1)  # agent table suffix of the candidate runs
+    margin: float = Field(gt=0.0, lt=1.0)  # non-inferiority margin on the official partial score
+    claim_variants: tuple[Literal["A1", "A2", "A3"], ...] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def _distinct(self) -> ModelCompareConfig:
+        if self.reference_label == self.candidate_label:
+            raise ValueError("model_compare labels must differ")
+        return self
+
+
 class Config(_Strict):
     experiment: ExperimentConfig
     target_system: Literal["Telecom", "Bank"]
@@ -270,6 +319,8 @@ class Config(_Strict):
     alt_models: AltModelsConfig
     evidence_select: EvidenceSelectConfig
     agent: AgentConfig
+    agent_eval: AgentEvalConfig
+    model_compare: ModelCompareConfig
 
     def resolved(self) -> dict[str, Any]:
         """JSON-serializable view of the fully resolved configuration."""

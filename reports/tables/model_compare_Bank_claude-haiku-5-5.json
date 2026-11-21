@@ -1,0 +1,1027 @@
+{
+  "system": "Bank",
+  "queries": 120,
+  "reference": {
+    "label": "Opus",
+    "model": "claude-opus-5-5",
+    "e8_run": "20261120T071429-agent_eval"
+  },
+  "candidate": {
+    "label": "Haiku",
+    "model": "claude-haiku-5-5",
+    "runs": {
+      "A1": "20261120T170250-agent_a1",
+      "A2": "20261120T180501-agent_a2",
+      "A3": "20261120T190157-agent_a3"
+    }
+  },
+  "margin": 0.1,
+  "summary": {
+    "A0": {
+      "partial_score": {
+        "value": 0.1374,
+        "ci_low": 0.0861,
+        "ci_high": 0.193,
+        "n_valid_resamples": 10000
+      },
+      "strict_accuracy": {
+        "value": 0.0833,
+        "ci_low": 0.0417,
+        "ci_high": 0.1333,
+        "n_valid_resamples": 10000
+      }
+    },
+    "pacote": {
+      "partial_score": {
+        "value": 0.3514,
+        "ci_low": 0.2778,
+        "ci_high": 0.4271,
+        "n_valid_resamples": 10000
+      },
+      "strict_accuracy": {
+        "value": 0.2333,
+        "ci_low": 0.1583,
+        "ci_high": 0.3083,
+        "n_valid_resamples": 10000
+      }
+    },
+    "Opus A1": {
+      "partial_score": {
+        "value": 0.4285,
+        "ci_low": 0.3473,
+        "ci_high": 0.5118,
+        "n_valid_resamples": 10000
+      },
+      "strict_accuracy": {
+        "value": 0.3583,
+        "ci_low": 0.275,
+        "ci_high": 0.45,
+        "n_valid_resamples": 10000
+      }
+    },
+    "Opus A2": {
+      "partial_score": {
+        "value": 0.4047,
+        "ci_low": 0.3263,
+        "ci_high": 0.486,
+        "n_valid_resamples": 10000
+      },
+      "strict_accuracy": {
+        "value": 0.3083,
+        "ci_low": 0.225,
+        "ci_high": 0.3917,
+        "n_valid_resamples": 10000
+      }
+    },
+    "Opus A3": {
+      "partial_score": {
+        "value": 0.457,
+        "ci_low": 0.3771,
+        "ci_high": 0.5383,
+        "n_valid_resamples": 10000
+      },
+      "strict_accuracy": {
+        "value": 0.3667,
+        "ci_low": 0.2833,
+        "ci_high": 0.45,
+        "n_valid_resamples": 10000
+      }
+    },
+    "Haiku A1": {
+      "partial_score": {
+        "value": 0.1576,
+        "ci_low": 0.1076,
+        "ci_high": 0.2117,
+        "n_valid_resamples": 10000
+      },
+      "strict_accuracy": {
+        "value": 0.0667,
+        "ci_low": 0.025,
+        "ci_high": 0.1167,
+        "n_valid_resamples": 10000
+      }
+    },
+    "Haiku A2": {
+      "partial_score": {
+        "value": 0.1867,
+        "ci_low": 0.1298,
+        "ci_high": 0.2471,
+        "n_valid_resamples": 10000
+      },
+      "strict_accuracy": {
+        "value": 0.1,
+        "ci_low": 0.05,
+        "ci_high": 0.1583,
+        "n_valid_resamples": 10000
+      }
+    },
+    "Haiku A3": {
+      "partial_score": {
+        "value": 0.2882,
+        "ci_low": 0.2194,
+        "ci_high": 0.3589,
+        "n_valid_resamples": 10000
+      },
+      "strict_accuracy": {
+        "value": 0.1667,
+        "ci_low": 0.1,
+        "ci_high": 0.2333,
+        "n_valid_resamples": 10000
+      }
+    }
+  },
+  "within_candidate": [
+    {
+      "comparison": "Haiku A3 - Haiku A1",
+      "partial_difference": {
+        "value": 0.1306,
+        "ci_low": 0.0695,
+        "ci_high": 0.1944,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "superior",
+      "queries_better": 26,
+      "queries_worse": 5,
+      "mcnemar_only_first": 13,
+      "mcnemar_only_second": 1,
+      "mcnemar_p": 0.001831,
+      "mcnemar_p_holm": 0.005493,
+      "role": "primary"
+    },
+    {
+      "comparison": "Haiku A2 - Haiku A1",
+      "partial_difference": {
+        "value": 0.0291,
+        "ci_low": -0.0112,
+        "ci_high": 0.0735,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "empate",
+      "queries_better": 9,
+      "queries_worse": 6,
+      "mcnemar_only_first": 5,
+      "mcnemar_only_second": 1,
+      "mcnemar_p": 0.21875,
+      "mcnemar_p_holm": 0.21875,
+      "role": "secondary"
+    },
+    {
+      "comparison": "Haiku A3 - Haiku A2",
+      "partial_difference": {
+        "value": 0.1015,
+        "ci_low": 0.0411,
+        "ci_high": 0.1633,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "superior",
+      "queries_better": 20,
+      "queries_worse": 6,
+      "mcnemar_only_first": 12,
+      "mcnemar_only_second": 4,
+      "mcnemar_p": 0.076813,
+      "mcnemar_p_holm": 0.153626,
+      "role": "secondary"
+    }
+  ],
+  "versus_reference": [
+    {
+      "comparison": "Haiku A1 - Opus A1",
+      "partial_difference": {
+        "value": -0.2709,
+        "ci_low": -0.3538,
+        "ci_high": -0.1856,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 7,
+      "queries_worse": 46,
+      "mcnemar_only_first": 2,
+      "mcnemar_only_second": 37,
+      "mcnemar_p": 0.0,
+      "noninferiority": "inferior"
+    },
+    {
+      "comparison": "Haiku A1 - Opus A2",
+      "partial_difference": {
+        "value": -0.2472,
+        "ci_low": -0.3249,
+        "ci_high": -0.1736,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 6,
+      "queries_worse": 45,
+      "mcnemar_only_first": 1,
+      "mcnemar_only_second": 30,
+      "mcnemar_p": 0.0,
+      "noninferiority": "inferior"
+    },
+    {
+      "comparison": "Haiku A1 - Opus A3",
+      "partial_difference": {
+        "value": -0.2994,
+        "ci_low": -0.3814,
+        "ci_high": -0.2162,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 5,
+      "queries_worse": 53,
+      "mcnemar_only_first": 2,
+      "mcnemar_only_second": 38,
+      "mcnemar_p": 0.0,
+      "noninferiority": "inferior"
+    },
+    {
+      "comparison": "Haiku A2 - Opus A1",
+      "partial_difference": {
+        "value": -0.2418,
+        "ci_low": -0.3237,
+        "ci_high": -0.1598,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 8,
+      "queries_worse": 43,
+      "mcnemar_only_first": 3,
+      "mcnemar_only_second": 34,
+      "mcnemar_p": 0.0,
+      "noninferiority": "inferior"
+    },
+    {
+      "comparison": "Haiku A2 - Opus A2",
+      "partial_difference": {
+        "value": -0.2181,
+        "ci_low": -0.2931,
+        "ci_high": -0.1432,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 7,
+      "queries_worse": 41,
+      "mcnemar_only_first": 3,
+      "mcnemar_only_second": 28,
+      "mcnemar_p": 5e-06,
+      "noninferiority": "inferior"
+    },
+    {
+      "comparison": "Haiku A2 - Opus A3",
+      "partial_difference": {
+        "value": -0.2703,
+        "ci_low": -0.3502,
+        "ci_high": -0.1891,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 6,
+      "queries_worse": 49,
+      "mcnemar_only_first": 4,
+      "mcnemar_only_second": 36,
+      "mcnemar_p": 0.0,
+      "noninferiority": "inferior"
+    },
+    {
+      "comparison": "Haiku A3 - Opus A1",
+      "partial_difference": {
+        "value": -0.1403,
+        "ci_low": -0.2251,
+        "ci_high": -0.0557,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 13,
+      "queries_worse": 35,
+      "mcnemar_only_first": 6,
+      "mcnemar_only_second": 29,
+      "mcnemar_p": 0.000117,
+      "noninferiority": "inconclusivo"
+    },
+    {
+      "comparison": "Haiku A3 - Opus A2",
+      "partial_difference": {
+        "value": -0.1166,
+        "ci_low": -0.1873,
+        "ci_high": -0.0483,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 11,
+      "queries_worse": 32,
+      "mcnemar_only_first": 4,
+      "mcnemar_only_second": 21,
+      "mcnemar_p": 0.000911,
+      "noninferiority": "inconclusivo"
+    },
+    {
+      "comparison": "Haiku A3 - Opus A3",
+      "partial_difference": {
+        "value": -0.1688,
+        "ci_low": -0.2431,
+        "ci_high": -0.096,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 6,
+      "queries_worse": 34,
+      "mcnemar_only_first": 4,
+      "mcnemar_only_second": 28,
+      "mcnemar_p": 1.9e-05,
+      "noninferiority": "inconclusivo"
+    }
+  ],
+  "matches_reference": {
+    "A1": {
+      "claim": false,
+      "matches_reference": false
+    },
+    "A2": {
+      "claim": true,
+      "matches_reference": false
+    },
+    "A3": {
+      "claim": true,
+      "matches_reference": false
+    }
+  },
+  "references": [
+    {
+      "comparison": "Haiku A1 - A0",
+      "partial_difference": {
+        "value": 0.0202,
+        "ci_low": -0.0479,
+        "ci_high": 0.0875,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "empate",
+      "queries_better": 24,
+      "queries_worse": 16,
+      "mcnemar_only_first": 5,
+      "mcnemar_only_second": 7,
+      "mcnemar_p": 0.774414,
+      "role": "reference"
+    },
+    {
+      "comparison": "Haiku A1 - pacote",
+      "partial_difference": {
+        "value": -0.1938,
+        "ci_low": -0.2772,
+        "ci_high": -0.1113,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 15,
+      "queries_worse": 45,
+      "mcnemar_only_first": 3,
+      "mcnemar_only_second": 23,
+      "mcnemar_p": 8.8e-05,
+      "role": "reference"
+    },
+    {
+      "comparison": "Haiku A2 - A0",
+      "partial_difference": {
+        "value": 0.0493,
+        "ci_low": -0.0222,
+        "ci_high": 0.1229,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "empate",
+      "queries_better": 27,
+      "queries_worse": 15,
+      "mcnemar_only_first": 9,
+      "mcnemar_only_second": 7,
+      "mcnemar_p": 0.803619,
+      "role": "reference"
+    },
+    {
+      "comparison": "Haiku A2 - pacote",
+      "partial_difference": {
+        "value": -0.1648,
+        "ci_low": -0.2523,
+        "ci_high": -0.0758,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 19,
+      "queries_worse": 42,
+      "mcnemar_only_first": 7,
+      "mcnemar_only_second": 23,
+      "mcnemar_p": 0.005223,
+      "role": "reference"
+    },
+    {
+      "comparison": "Haiku A3 - A0",
+      "partial_difference": {
+        "value": 0.1507,
+        "ci_low": 0.0647,
+        "ci_high": 0.2348,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "superior",
+      "queries_better": 38,
+      "queries_worse": 12,
+      "mcnemar_only_first": 17,
+      "mcnemar_only_second": 7,
+      "mcnemar_p": 0.063915,
+      "role": "reference"
+    },
+    {
+      "comparison": "Haiku A3 - pacote",
+      "partial_difference": {
+        "value": -0.0633,
+        "ci_low": -0.15,
+        "ci_high": 0.0233,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "empate",
+      "queries_better": 23,
+      "queries_worse": 28,
+      "mcnemar_only_first": 10,
+      "mcnemar_only_second": 18,
+      "mcnemar_p": 0.184933,
+      "role": "reference"
+    }
+  ],
+  "localization": {
+    "queries": 56,
+    "pacote": {
+      "value": 0.25,
+      "ci_low": 0.1429,
+      "ci_high": 0.375,
+      "n_valid_resamples": 10000
+    },
+    "Opus A1": {
+      "value": 0.5536,
+      "ci_low": 0.4286,
+      "ci_high": 0.6786,
+      "n_valid_resamples": 10000
+    },
+    "Opus A2": {
+      "value": 0.4464,
+      "ci_low": 0.3214,
+      "ci_high": 0.5714,
+      "n_valid_resamples": 10000
+    },
+    "Opus A3": {
+      "value": 0.5,
+      "ci_low": 0.375,
+      "ci_high": 0.625,
+      "n_valid_resamples": 10000
+    },
+    "Haiku A1": {
+      "value": 0.2143,
+      "ci_low": 0.1071,
+      "ci_high": 0.3214,
+      "n_valid_resamples": 10000
+    },
+    "Haiku A2": {
+      "value": 0.2143,
+      "ci_low": 0.1071,
+      "ci_high": 0.3214,
+      "n_valid_resamples": 10000
+    },
+    "Haiku A3": {
+      "value": 0.3036,
+      "ci_low": 0.1786,
+      "ci_high": 0.4286,
+      "n_valid_resamples": 10000
+    }
+  },
+  "package_agreement": {
+    "Opus A1": {
+      "instante": {
+        "value": 0.1897,
+        "ci_low": 0.0862,
+        "ci_high": 0.2931,
+        "n_valid_resamples": 10000,
+        "n": 58
+      },
+      "componente": {
+        "value": 0.25,
+        "ci_low": 0.1429,
+        "ci_high": 0.375,
+        "n_valid_resamples": 10000,
+        "n": 56
+      },
+      "motivo": {
+        "value": 0.3016,
+        "ci_low": 0.1905,
+        "ci_high": 0.4127,
+        "n_valid_resamples": 10000,
+        "n": 63
+      }
+    },
+    "Opus A2": {
+      "instante": {
+        "value": 0.1897,
+        "ci_low": 0.0862,
+        "ci_high": 0.2931,
+        "n_valid_resamples": 10000,
+        "n": 58
+      },
+      "componente": {
+        "value": 0.2143,
+        "ci_low": 0.1071,
+        "ci_high": 0.3214,
+        "n_valid_resamples": 10000,
+        "n": 56
+      },
+      "motivo": {
+        "value": 0.254,
+        "ci_low": 0.1429,
+        "ci_high": 0.3651,
+        "n_valid_resamples": 10000,
+        "n": 63
+      }
+    },
+    "Opus A3": {
+      "instante": {
+        "value": 0.3103,
+        "ci_low": 0.1897,
+        "ci_high": 0.431,
+        "n_valid_resamples": 10000,
+        "n": 58
+      },
+      "componente": {
+        "value": 0.2857,
+        "ci_low": 0.1786,
+        "ci_high": 0.4107,
+        "n_valid_resamples": 10000,
+        "n": 56
+      },
+      "motivo": {
+        "value": 0.2698,
+        "ci_low": 0.1587,
+        "ci_high": 0.381,
+        "n_valid_resamples": 10000,
+        "n": 63
+      }
+    },
+    "Haiku A1": {
+      "instante": {
+        "value": 0.1207,
+        "ci_low": 0.0517,
+        "ci_high": 0.2069,
+        "n_valid_resamples": 10000,
+        "n": 58
+      },
+      "componente": {
+        "value": 0.1964,
+        "ci_low": 0.0893,
+        "ci_high": 0.3036,
+        "n_valid_resamples": 10000,
+        "n": 56
+      },
+      "motivo": {
+        "value": 0.2222,
+        "ci_low": 0.127,
+        "ci_high": 0.3333,
+        "n_valid_resamples": 10000,
+        "n": 63
+      }
+    },
+    "Haiku A2": {
+      "instante": {
+        "value": 0.1034,
+        "ci_low": 0.0345,
+        "ci_high": 0.1897,
+        "n_valid_resamples": 10000,
+        "n": 58
+      },
+      "componente": {
+        "value": 0.2143,
+        "ci_low": 0.1071,
+        "ci_high": 0.3214,
+        "n_valid_resamples": 10000,
+        "n": 56
+      },
+      "motivo": {
+        "value": 0.1905,
+        "ci_low": 0.0952,
+        "ci_high": 0.2857,
+        "n_valid_resamples": 10000,
+        "n": 63
+      }
+    },
+    "Haiku A3": {
+      "instante": {
+        "value": 0.2759,
+        "ci_low": 0.1724,
+        "ci_high": 0.3966,
+        "n_valid_resamples": 10000,
+        "n": 58
+      },
+      "componente": {
+        "value": 0.3393,
+        "ci_low": 0.2143,
+        "ci_high": 0.4643,
+        "n_valid_resamples": 10000,
+        "n": 56
+      },
+      "motivo": {
+        "value": 0.3333,
+        "ci_low": 0.2222,
+        "ci_high": 0.4444,
+        "n_valid_resamples": 10000,
+        "n": 63
+      }
+    }
+  },
+  "window_start": {
+    "Opus A1": {
+      "value": 0.2561,
+      "ci_low": 0.1667,
+      "ci_high": 0.3506,
+      "n_valid_resamples": 10000,
+      "onsets": 82
+    },
+    "Opus A2": {
+      "value": 0.2073,
+      "ci_low": 0.1264,
+      "ci_high": 0.2987,
+      "n_valid_resamples": 10000,
+      "onsets": 82
+    },
+    "Opus A3": {
+      "value": 0.1829,
+      "ci_low": 0.1053,
+      "ci_high": 0.2651,
+      "n_valid_resamples": 10000,
+      "onsets": 82
+    },
+    "Haiku A1": {
+      "value": 0.6829,
+      "ci_low": 0.5854,
+      "ci_high": 0.7778,
+      "n_valid_resamples": 10000,
+      "onsets": 82
+    },
+    "Haiku A2": {
+      "value": 0.6951,
+      "ci_low": 0.5999,
+      "ci_high": 0.7922,
+      "n_valid_resamples": 10000,
+      "onsets": 82
+    },
+    "Haiku A3": {
+      "value": 0.622,
+      "ci_low": 0.5238,
+      "ci_high": 0.7229,
+      "n_valid_resamples": 10000,
+      "onsets": 82
+    },
+    "pacote": {
+      "value": 0.0854,
+      "ci_low": 0.0341,
+      "ci_high": 0.1538,
+      "n_valid_resamples": 10000,
+      "onsets": 82
+    }
+  },
+  "errors": {
+    "by_reason": {
+      "JVM Out of Memory (OOM) Heap": {
+        "n": 1,
+        "A0": 0.0,
+        "pacote": 0.0,
+        "Opus A1": 0.0,
+        "Opus A2": 0.0,
+        "Opus A3": 0.0,
+        "Haiku A1": 0.0,
+        "Haiku A2": 0.0,
+        "Haiku A3": 0.0
+      },
+      "high CPU usage": {
+        "n": 19,
+        "A0": 0.3158,
+        "pacote": 0.3684,
+        "Opus A1": 0.8947,
+        "Opus A2": 0.8947,
+        "Opus A3": 0.9474,
+        "Haiku A1": 0.8421,
+        "Haiku A2": 0.8947,
+        "Haiku A3": 0.9474
+      },
+      "high disk I/O read usage": {
+        "n": 12,
+        "A0": 0.0,
+        "pacote": 0.5833,
+        "Opus A1": 0.5,
+        "Opus A2": 0.5,
+        "Opus A3": 0.5,
+        "Haiku A1": 0.3333,
+        "Haiku A2": 0.5833,
+        "Haiku A3": 0.75
+      },
+      "high disk space usage": {
+        "n": 5,
+        "A0": 0.0,
+        "pacote": 0.0,
+        "Opus A1": 0.4,
+        "Opus A2": 1.0,
+        "Opus A3": 0.6,
+        "Haiku A1": 0.0,
+        "Haiku A2": 0.0,
+        "Haiku A3": 0.6
+      },
+      "high memory usage": {
+        "n": 2,
+        "A0": 1.0,
+        "pacote": 0.0,
+        "Opus A1": 1.0,
+        "Opus A2": 1.0,
+        "Opus A3": 1.0,
+        "Haiku A1": 0.0,
+        "Haiku A2": 0.0,
+        "Haiku A3": 0.0
+      },
+      "network latency": {
+        "n": 14,
+        "A0": 0.0,
+        "pacote": 0.0,
+        "Opus A1": 0.0,
+        "Opus A2": 0.1429,
+        "Opus A3": 0.0714,
+        "Haiku A1": 0.0,
+        "Haiku A2": 0.0714,
+        "Haiku A3": 0.0
+      },
+      "network packet loss": {
+        "n": 24,
+        "A0": 0.1667,
+        "pacote": 0.5,
+        "Opus A1": 0.2917,
+        "Opus A2": 0.125,
+        "Opus A3": 0.3333,
+        "Haiku A1": 0.0,
+        "Haiku A2": 0.0,
+        "Haiku A3": 0.0833
+      }
+    },
+    "by_component_type": {
+      "IG": {
+        "n": 10,
+        "A0": 0.0,
+        "pacote": 0.1,
+        "Opus A1": 1.0,
+        "Opus A2": 0.8,
+        "Opus A3": 0.7,
+        "Haiku A1": 0.3,
+        "Haiku A2": 0.3,
+        "Haiku A3": 0.3
+      },
+      "MG": {
+        "n": 16,
+        "A0": 0.0,
+        "pacote": 0.125,
+        "Opus A1": 0.5,
+        "Opus A2": 0.375,
+        "Opus A3": 0.375,
+        "Haiku A1": 0.0625,
+        "Haiku A2": 0.125,
+        "Haiku A3": 0.1875
+      },
+      "Mysql": {
+        "n": 4,
+        "A0": 0.0,
+        "pacote": 0.25,
+        "Opus A1": 0.25,
+        "Opus A2": 0.5,
+        "Opus A3": 0.75,
+        "Haiku A1": 0.25,
+        "Haiku A2": 0.25,
+        "Haiku A3": 0.25
+      },
+      "Redis": {
+        "n": 1,
+        "A0": 0.0,
+        "pacote": 0.0,
+        "Opus A1": 0.0,
+        "Opus A2": 0.0,
+        "Opus A3": 0.0,
+        "Haiku A1": 0.0,
+        "Haiku A2": 0.0,
+        "Haiku A3": 0.0
+      },
+      "Tomcat": {
+        "n": 33,
+        "A0": 0.303,
+        "pacote": 0.3636,
+        "Opus A1": 0.5758,
+        "Opus A2": 0.4545,
+        "Opus A3": 0.6667,
+        "Haiku A1": 0.3333,
+        "Haiku A2": 0.303,
+        "Haiku A3": 0.4545
+      },
+      "apache": {
+        "n": 12,
+        "A0": 0.0,
+        "pacote": 0.3333,
+        "Opus A1": 0.25,
+        "Opus A2": 0.5833,
+        "Opus A3": 0.25,
+        "Haiku A1": 0.0,
+        "Haiku A2": 0.0833,
+        "Haiku A3": 0.1667
+      }
+    }
+  },
+  "fidelity": {
+    "Haiku A1": {
+      "explanations": 120,
+      "ids": {
+        "checked": 1260,
+        "flagged": 0,
+        "explanations_flagged": 0,
+        "flagged_rate": {
+          "value": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_valid_resamples": 10000
+        }
+      },
+      "components": {
+        "checked": 790,
+        "flagged": 0,
+        "explanations_flagged": 0,
+        "flagged_rate": {
+          "value": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_valid_resamples": 10000
+        }
+      },
+      "identifiers": {
+        "checked": 116,
+        "flagged": 5,
+        "explanations_flagged": 5,
+        "flagged_rate": {
+          "value": 0.0431,
+          "ci_low": 0.0088,
+          "ci_high": 0.0834,
+          "n_valid_resamples": 10000
+        }
+      },
+      "numbers": {
+        "checked": 581,
+        "flagged": 6,
+        "explanations_flagged": 5,
+        "flagged_rate": {
+          "value": 0.0103,
+          "ci_low": 0.0018,
+          "ci_high": 0.0208,
+          "n_valid_resamples": 10000
+        },
+        "control_grounded_rate": 0.3305
+      }
+    },
+    "Haiku A2": {
+      "explanations": 120,
+      "ids": {
+        "checked": 1347,
+        "flagged": 0,
+        "explanations_flagged": 0,
+        "flagged_rate": {
+          "value": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_valid_resamples": 10000
+        }
+      },
+      "components": {
+        "checked": 796,
+        "flagged": 0,
+        "explanations_flagged": 0,
+        "flagged_rate": {
+          "value": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_valid_resamples": 10000
+        }
+      },
+      "identifiers": {
+        "checked": 75,
+        "flagged": 0,
+        "explanations_flagged": 0,
+        "flagged_rate": {
+          "value": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_valid_resamples": 10000
+        }
+      },
+      "numbers": {
+        "checked": 622,
+        "flagged": 2,
+        "explanations_flagged": 2,
+        "flagged_rate": {
+          "value": 0.0032,
+          "ci_low": 0.0,
+          "ci_high": 0.0082,
+          "n_valid_resamples": 10000
+        },
+        "control_grounded_rate": 0.2492
+      }
+    },
+    "Haiku A3": {
+      "explanations": 120,
+      "ids": {
+        "checked": 1423,
+        "flagged": 0,
+        "explanations_flagged": 0,
+        "flagged_rate": {
+          "value": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_valid_resamples": 10000
+        }
+      },
+      "components": {
+        "checked": 780,
+        "flagged": 0,
+        "explanations_flagged": 0,
+        "flagged_rate": {
+          "value": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_valid_resamples": 10000
+        }
+      },
+      "identifiers": {
+        "checked": 93,
+        "flagged": 1,
+        "explanations_flagged": 1,
+        "flagged_rate": {
+          "value": 0.0108,
+          "ci_low": 0.0,
+          "ci_high": 0.037,
+          "n_valid_resamples": 10000
+        }
+      },
+      "numbers": {
+        "checked": 775,
+        "flagged": 4,
+        "explanations_flagged": 3,
+        "flagged_rate": {
+          "value": 0.0052,
+          "ci_low": 0.0,
+          "ci_high": 0.0124,
+          "n_valid_resamples": 10000
+        },
+        "control_grounded_rate": 0.2697
+      }
+    }
+  },
+  "cost": {
+    "Haiku A1": {
+      "cost_usd": 0.9009,
+      "cost_usd_mean": 0.00751,
+      "cost_usd_sd": 0.00163,
+      "paid_calls": 895,
+      "valid_rate": 1.0,
+      "valid_after_retry": 25,
+      "tool_calls_mean": 19.01,
+      "evidence_tool_use": 0
+    },
+    "Opus A1": {
+      "cost_usd": 27.8282,
+      "cost_usd_mean": 0.2319,
+      "cost_usd_sd": 0.1141,
+      "valid_rate": 1.0
+    },
+    "Haiku A2": {
+      "cost_usd": 0.8408,
+      "cost_usd_mean": 0.00701,
+      "cost_usd_sd": 0.00175,
+      "paid_calls": 863,
+      "valid_rate": 1.0,
+      "valid_after_retry": 28,
+      "tool_calls_mean": 18.24,
+      "evidence_tool_use": 120
+    },
+    "Opus A2": {
+      "cost_usd": 26.025,
+      "cost_usd_mean": 0.2169,
+      "cost_usd_sd": 0.1106,
+      "valid_rate": 1.0
+    },
+    "Haiku A3": {
+      "cost_usd": 0.78,
+      "cost_usd_mean": 0.0065,
+      "cost_usd_sd": 0.00173,
+      "paid_calls": 762,
+      "valid_rate": 1.0,
+      "valid_after_retry": 20,
+      "tool_calls_mean": 16.12,
+      "evidence_tool_use": 120
+    },
+    "Opus A3": {
+      "cost_usd": 26.487,
+      "cost_usd_mean": 0.2207,
+      "cost_usd_sd": 0.1074,
+      "valid_rate": 1.0
+    }
+  },
+  "replay": {},
+  "run_dir": "20261120T195649-model_compare"
+}

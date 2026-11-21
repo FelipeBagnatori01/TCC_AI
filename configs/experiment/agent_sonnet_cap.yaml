@@ -1,0 +1,4 @@
+# ADR 0023 (adendo Sonnet): budget cap for the Sonnet test runs (merge LAST, after configs/llm/claude_sonnet_5_5.yaml).
+# Pilot x (test/pilot ratio of the Opus and Haiku runs, ~7): ~US$ 1.5 per Telecom run, ~US$ 4 per Bank run.
+llm:
+  budget_usd: 15.0                 # hard cap per run (R7); one call may overshoot

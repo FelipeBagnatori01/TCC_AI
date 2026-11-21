@@ -646,3 +646,49 @@ As seis execuções foram refeitas a partir do cache com teto de US$ 0 (`configs
   - varredura heurística (nº 17);
   - uma repetição e poder limitado (nº 25): com 45 consultas, efeitos de até cerca de 0,13 passam por empate;
   - auditoria por uma pessoa (nº 26).
+
+## Modelo mais barato com as mesmas ferramentas: Haiku 5.5 × Opus 5.5 (ADR 0023, exploratório)
+
+Esta pergunta surgiu depois de ver a E8 (ameaça nº 27). O plano foi fixado antes de rodar o Haiku: mesmas variantes, prompts e ferramentas; 1 repetição; margem de não inferioridade de 0,10.
+
+Execuções em 2026-11-20: 100% de respostas válidas, US$ 3,35 no total.
+
+**Tabelas:** `reports/tables/model_compare_<sistema>_claude-haiku-5-5.{json,md}`.
+
+| Cadeia (nota parcial) | Telecom | Bank |
+|---|---|---|
+| A0 / pacote sem LLM | 0,18 / 0,41 | 0,14 / 0,35 |
+| Opus A1 / A2 / A3 | 0,60 / 0,60 / 0,58 | 0,43 / 0,40 / 0,46 |
+| Haiku A1 / A2 / A3 | 0,14 / 0,26 / 0,34 | 0,16 / 0,19 / 0,29 |
+| Haiku A3 − Haiku A1 | +0,20 [0,04; 0,36], superior (McNemar Holm p = 0,105) | +0,13 [0,07; 0,19], superior (p = 0,005) |
+| Instante no início da janela (Haiku A1 → A3; Opus) | 0,75 → 0,50; Opus de 0,07 a 0,11 | 0,68 → 0,62; Opus de 0,18 a 0,26 |
+| Localização (Haiku A1 → A3; Opus A3) | 0,09 → 0,55; 0,73 | 0,21 → 0,30; 0,50 |
+| Custo por consulta | US$ 0,006 (Opus: 0,16 a 0,19) | US$ 0,006 a 0,008 (Opus: 0,22 a 0,23) |
+
+- **A evidência ajuda o modelo mais fraco.** O Haiku A3 supera o Haiku A1 nos dois sistemas, sobretudo porque acerta mais o componente. No Opus, A3 × A1 empatou.
+- **O Haiku não iguala o Opus.**
+  - Todas as variantes do Haiku são inferiores a todas as do Opus pelo veredito pareado, com diferenças de −0,12 a −0,47.
+  - Nenhuma é não inferior com margem de 0,10: o Haiku A3 fica `inconclusivo` ou `inferior`, com estimativas pontuais já além da margem.
+- **O Haiku A3 empata com a cadeia do pacote sem LLM** nos dois sistemas. Ou seja, com estas ferramentas, o modelo barato não acrescenta nada detectável à evidência lida diretamente.
+- **A falha típica do Haiku continua:** de 50% a 75% dos instantes respondidos ficam no início da janela.
+- **Fidelidade automática:** sem IDs inventados; de 0,3% a 3,9% de números sem correspondência.
+- **Detalhes e leitura completa:** ADR 0023.
+
+### Adendo: Sonnet 5.5 (mesmo protocolo; 2026-11-20)
+
+| Nota parcial | Telecom | Bank |
+|---|---|---|
+| Sonnet A1 / A2 / A3 | 0,17 / 0,24 / 0,31 | 0,16 / 0,23 / 0,32 |
+| Sonnet A3 − Sonnet A1 | +0,14 [−0,01; 0,29], empate | +0,16 [0,10; 0,23], superior (McNemar Holm p < 0,001) |
+| Custo por consulta | US$ 0,035 a 0,047 | US$ 0,038 a 0,054 |
+
+- **Contra o Opus:** o Sonnet não o iguala.
+  - **Telecom:** inferior em tudo.
+  - **Bank:** o Sonnet A3 fica `inconclusivo` contra as três variantes do Opus (−0,08 a −0,13), mas inferior pelo veredito pareado.
+- **Contra o pacote sem LLM:** o Sonnet A3 empata nos dois sistemas.
+- **Custo:** US$ 21,48 no total. O Bank A3 foi interrompido por falta de crédito e refeito; o cache reaproveitou as 50 consultas já feitas.
+- **Leitura conjunta, descritiva:**
+  - os dois modelos mais baratos ficam no nível da cadeia do pacote;
+  - a evidência melhora os dois (A3 × A1 superior em 3 dos 4 casos), sem chegar ao Opus;
+  - no Opus, a evidência não teve efeito detectável.
+- **Detalhes:** ADR 0023, adendo.

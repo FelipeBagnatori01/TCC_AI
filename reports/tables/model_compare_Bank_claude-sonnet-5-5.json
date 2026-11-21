@@ -1,0 +1,1027 @@
+{
+  "system": "Bank",
+  "queries": 120,
+  "reference": {
+    "label": "Opus",
+    "model": "claude-opus-5-5",
+    "e8_run": "20261120T071429-agent_eval"
+  },
+  "candidate": {
+    "label": "Sonnet",
+    "model": "claude-sonnet-5-5",
+    "runs": {
+      "A1": "20261120T203920-agent_a1",
+      "A2": "20261120T210725-agent_a2",
+      "A3": "20261121T015443-agent_a3"
+    }
+  },
+  "margin": 0.1,
+  "summary": {
+    "A0": {
+      "partial_score": {
+        "value": 0.1374,
+        "ci_low": 0.0861,
+        "ci_high": 0.193,
+        "n_valid_resamples": 10000
+      },
+      "strict_accuracy": {
+        "value": 0.0833,
+        "ci_low": 0.0417,
+        "ci_high": 0.1333,
+        "n_valid_resamples": 10000
+      }
+    },
+    "pacote": {
+      "partial_score": {
+        "value": 0.3514,
+        "ci_low": 0.2778,
+        "ci_high": 0.4271,
+        "n_valid_resamples": 10000
+      },
+      "strict_accuracy": {
+        "value": 0.2333,
+        "ci_low": 0.1583,
+        "ci_high": 0.3083,
+        "n_valid_resamples": 10000
+      }
+    },
+    "Opus A1": {
+      "partial_score": {
+        "value": 0.4285,
+        "ci_low": 0.3473,
+        "ci_high": 0.5118,
+        "n_valid_resamples": 10000
+      },
+      "strict_accuracy": {
+        "value": 0.3583,
+        "ci_low": 0.275,
+        "ci_high": 0.45,
+        "n_valid_resamples": 10000
+      }
+    },
+    "Opus A2": {
+      "partial_score": {
+        "value": 0.4047,
+        "ci_low": 0.3263,
+        "ci_high": 0.486,
+        "n_valid_resamples": 10000
+      },
+      "strict_accuracy": {
+        "value": 0.3083,
+        "ci_low": 0.225,
+        "ci_high": 0.3917,
+        "n_valid_resamples": 10000
+      }
+    },
+    "Opus A3": {
+      "partial_score": {
+        "value": 0.457,
+        "ci_low": 0.3771,
+        "ci_high": 0.5383,
+        "n_valid_resamples": 10000
+      },
+      "strict_accuracy": {
+        "value": 0.3667,
+        "ci_low": 0.2833,
+        "ci_high": 0.45,
+        "n_valid_resamples": 10000
+      }
+    },
+    "Sonnet A1": {
+      "partial_score": {
+        "value": 0.1631,
+        "ci_low": 0.1131,
+        "ci_high": 0.2179,
+        "n_valid_resamples": 10000
+      },
+      "strict_accuracy": {
+        "value": 0.0667,
+        "ci_low": 0.025,
+        "ci_high": 0.1167,
+        "n_valid_resamples": 10000
+      }
+    },
+    "Sonnet A2": {
+      "partial_score": {
+        "value": 0.2326,
+        "ci_low": 0.1695,
+        "ci_high": 0.2978,
+        "n_valid_resamples": 10000
+      },
+      "strict_accuracy": {
+        "value": 0.1333,
+        "ci_low": 0.075,
+        "ci_high": 0.2,
+        "n_valid_resamples": 10000
+      }
+    },
+    "Sonnet A3": {
+      "partial_score": {
+        "value": 0.3242,
+        "ci_low": 0.2514,
+        "ci_high": 0.3992,
+        "n_valid_resamples": 10000
+      },
+      "strict_accuracy": {
+        "value": 0.2167,
+        "ci_low": 0.1417,
+        "ci_high": 0.2917,
+        "n_valid_resamples": 10000
+      }
+    }
+  },
+  "within_candidate": [
+    {
+      "comparison": "Sonnet A3 - Sonnet A1",
+      "partial_difference": {
+        "value": 0.1612,
+        "ci_low": 0.0973,
+        "ci_high": 0.2284,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "superior",
+      "queries_better": 30,
+      "queries_worse": 4,
+      "mcnemar_only_first": 19,
+      "mcnemar_only_second": 1,
+      "mcnemar_p": 4e-05,
+      "mcnemar_p_holm": 0.00012,
+      "role": "primary"
+    },
+    {
+      "comparison": "Sonnet A2 - Sonnet A1",
+      "partial_difference": {
+        "value": 0.0695,
+        "ci_low": 0.025,
+        "ci_high": 0.1208,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "superior",
+      "queries_better": 14,
+      "queries_worse": 2,
+      "mcnemar_only_first": 9,
+      "mcnemar_only_second": 1,
+      "mcnemar_p": 0.021484,
+      "mcnemar_p_holm": 0.025878,
+      "role": "secondary"
+    },
+    {
+      "comparison": "Sonnet A3 - Sonnet A2",
+      "partial_difference": {
+        "value": 0.0917,
+        "ci_low": 0.0353,
+        "ci_high": 0.1487,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "superior",
+      "queries_better": 18,
+      "queries_worse": 5,
+      "mcnemar_only_first": 12,
+      "mcnemar_only_second": 2,
+      "mcnemar_p": 0.012939,
+      "mcnemar_p_holm": 0.025878,
+      "role": "secondary"
+    }
+  ],
+  "versus_reference": [
+    {
+      "comparison": "Sonnet A1 - Opus A1",
+      "partial_difference": {
+        "value": -0.2654,
+        "ci_low": -0.3488,
+        "ci_high": -0.1836,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 6,
+      "queries_worse": 47,
+      "mcnemar_only_first": 3,
+      "mcnemar_only_second": 38,
+      "mcnemar_p": 0.0,
+      "noninferiority": "inferior"
+    },
+    {
+      "comparison": "Sonnet A1 - Opus A2",
+      "partial_difference": {
+        "value": -0.2417,
+        "ci_low": -0.3182,
+        "ci_high": -0.1687,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 6,
+      "queries_worse": 48,
+      "mcnemar_only_first": 2,
+      "mcnemar_only_second": 31,
+      "mcnemar_p": 0.0,
+      "noninferiority": "inferior"
+    },
+    {
+      "comparison": "Sonnet A1 - Opus A3",
+      "partial_difference": {
+        "value": -0.2939,
+        "ci_low": -0.3752,
+        "ci_high": -0.2126,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 6,
+      "queries_worse": 55,
+      "mcnemar_only_first": 3,
+      "mcnemar_only_second": 39,
+      "mcnemar_p": 0.0,
+      "noninferiority": "inferior"
+    },
+    {
+      "comparison": "Sonnet A2 - Opus A1",
+      "partial_difference": {
+        "value": -0.1959,
+        "ci_low": -0.2743,
+        "ci_high": -0.1162,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 7,
+      "queries_worse": 38,
+      "mcnemar_only_first": 3,
+      "mcnemar_only_second": 30,
+      "mcnemar_p": 1e-06,
+      "noninferiority": "inferior"
+    },
+    {
+      "comparison": "Sonnet A2 - Opus A2",
+      "partial_difference": {
+        "value": -0.1722,
+        "ci_low": -0.2445,
+        "ci_high": -0.0999,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 9,
+      "queries_worse": 39,
+      "mcnemar_only_first": 3,
+      "mcnemar_only_second": 24,
+      "mcnemar_p": 4.9e-05,
+      "noninferiority": "inconclusivo"
+    },
+    {
+      "comparison": "Sonnet A2 - Opus A3",
+      "partial_difference": {
+        "value": -0.2244,
+        "ci_low": -0.3042,
+        "ci_high": -0.1417,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 6,
+      "queries_worse": 44,
+      "mcnemar_only_first": 4,
+      "mcnemar_only_second": 32,
+      "mcnemar_p": 2e-06,
+      "noninferiority": "inferior"
+    },
+    {
+      "comparison": "Sonnet A3 - Opus A1",
+      "partial_difference": {
+        "value": -0.1042,
+        "ci_low": -0.1897,
+        "ci_high": -0.0196,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 14,
+      "queries_worse": 30,
+      "mcnemar_only_first": 8,
+      "mcnemar_only_second": 25,
+      "mcnemar_p": 0.004551,
+      "noninferiority": "inconclusivo"
+    },
+    {
+      "comparison": "Sonnet A3 - Opus A2",
+      "partial_difference": {
+        "value": -0.0805,
+        "ci_low": -0.1527,
+        "ci_high": -0.0069,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 13,
+      "queries_worse": 32,
+      "mcnemar_only_first": 7,
+      "mcnemar_only_second": 18,
+      "mcnemar_p": 0.043285,
+      "noninferiority": "inconclusivo"
+    },
+    {
+      "comparison": "Sonnet A3 - Opus A3",
+      "partial_difference": {
+        "value": -0.1328,
+        "ci_low": -0.2036,
+        "ci_high": -0.0612,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 6,
+      "queries_worse": 31,
+      "mcnemar_only_first": 4,
+      "mcnemar_only_second": 22,
+      "mcnemar_p": 0.000534,
+      "noninferiority": "inconclusivo"
+    }
+  ],
+  "matches_reference": {
+    "A1": {
+      "claim": false,
+      "matches_reference": false
+    },
+    "A2": {
+      "claim": true,
+      "matches_reference": false
+    },
+    "A3": {
+      "claim": true,
+      "matches_reference": false
+    }
+  },
+  "references": [
+    {
+      "comparison": "Sonnet A1 - A0",
+      "partial_difference": {
+        "value": 0.0257,
+        "ci_low": -0.0417,
+        "ci_high": 0.0916,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "empate",
+      "queries_better": 25,
+      "queries_worse": 15,
+      "mcnemar_only_first": 4,
+      "mcnemar_only_second": 6,
+      "mcnemar_p": 0.753906,
+      "role": "reference"
+    },
+    {
+      "comparison": "Sonnet A1 - pacote",
+      "partial_difference": {
+        "value": -0.1883,
+        "ci_low": -0.2766,
+        "ci_high": -0.1022,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 17,
+      "queries_worse": 45,
+      "mcnemar_only_first": 4,
+      "mcnemar_only_second": 24,
+      "mcnemar_p": 0.00018,
+      "role": "reference"
+    },
+    {
+      "comparison": "Sonnet A2 - A0",
+      "partial_difference": {
+        "value": 0.0952,
+        "ci_low": 0.0188,
+        "ci_high": 0.1728,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "superior",
+      "queries_better": 30,
+      "queries_worse": 13,
+      "mcnemar_only_first": 12,
+      "mcnemar_only_second": 6,
+      "mcnemar_p": 0.237885,
+      "role": "reference"
+    },
+    {
+      "comparison": "Sonnet A2 - pacote",
+      "partial_difference": {
+        "value": -0.1188,
+        "ci_low": -0.2027,
+        "ci_high": -0.0349,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "inferior",
+      "queries_better": 19,
+      "queries_worse": 35,
+      "mcnemar_only_first": 7,
+      "mcnemar_only_second": 19,
+      "mcnemar_p": 0.028959,
+      "role": "reference"
+    },
+    {
+      "comparison": "Sonnet A3 - A0",
+      "partial_difference": {
+        "value": 0.1868,
+        "ci_low": 0.1007,
+        "ci_high": 0.273,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "superior",
+      "queries_better": 39,
+      "queries_worse": 9,
+      "mcnemar_only_first": 22,
+      "mcnemar_only_second": 6,
+      "mcnemar_p": 0.003719,
+      "role": "reference"
+    },
+    {
+      "comparison": "Sonnet A3 - pacote",
+      "partial_difference": {
+        "value": -0.0272,
+        "ci_low": -0.1068,
+        "ci_high": 0.0485,
+        "n_valid_resamples": 10000
+      },
+      "verdict": "empate",
+      "queries_better": 23,
+      "queries_worse": 23,
+      "mcnemar_only_first": 10,
+      "mcnemar_only_second": 12,
+      "mcnemar_p": 0.831812,
+      "role": "reference"
+    }
+  ],
+  "localization": {
+    "queries": 56,
+    "pacote": {
+      "value": 0.25,
+      "ci_low": 0.1429,
+      "ci_high": 0.375,
+      "n_valid_resamples": 10000
+    },
+    "Opus A1": {
+      "value": 0.5536,
+      "ci_low": 0.4286,
+      "ci_high": 0.6786,
+      "n_valid_resamples": 10000
+    },
+    "Opus A2": {
+      "value": 0.4464,
+      "ci_low": 0.3214,
+      "ci_high": 0.5714,
+      "n_valid_resamples": 10000
+    },
+    "Opus A3": {
+      "value": 0.5,
+      "ci_low": 0.375,
+      "ci_high": 0.625,
+      "n_valid_resamples": 10000
+    },
+    "Sonnet A1": {
+      "value": 0.1607,
+      "ci_low": 0.0714,
+      "ci_high": 0.2679,
+      "n_valid_resamples": 10000
+    },
+    "Sonnet A2": {
+      "value": 0.25,
+      "ci_low": 0.1429,
+      "ci_high": 0.375,
+      "n_valid_resamples": 10000
+    },
+    "Sonnet A3": {
+      "value": 0.3214,
+      "ci_low": 0.1964,
+      "ci_high": 0.4464,
+      "n_valid_resamples": 10000
+    }
+  },
+  "package_agreement": {
+    "Opus A1": {
+      "instante": {
+        "value": 0.1897,
+        "ci_low": 0.0862,
+        "ci_high": 0.2931,
+        "n_valid_resamples": 10000,
+        "n": 58
+      },
+      "componente": {
+        "value": 0.25,
+        "ci_low": 0.1429,
+        "ci_high": 0.375,
+        "n_valid_resamples": 10000,
+        "n": 56
+      },
+      "motivo": {
+        "value": 0.3016,
+        "ci_low": 0.1905,
+        "ci_high": 0.4127,
+        "n_valid_resamples": 10000,
+        "n": 63
+      }
+    },
+    "Opus A2": {
+      "instante": {
+        "value": 0.1897,
+        "ci_low": 0.0862,
+        "ci_high": 0.2931,
+        "n_valid_resamples": 10000,
+        "n": 58
+      },
+      "componente": {
+        "value": 0.2143,
+        "ci_low": 0.1071,
+        "ci_high": 0.3214,
+        "n_valid_resamples": 10000,
+        "n": 56
+      },
+      "motivo": {
+        "value": 0.254,
+        "ci_low": 0.1429,
+        "ci_high": 0.3651,
+        "n_valid_resamples": 10000,
+        "n": 63
+      }
+    },
+    "Opus A3": {
+      "instante": {
+        "value": 0.3103,
+        "ci_low": 0.1897,
+        "ci_high": 0.431,
+        "n_valid_resamples": 10000,
+        "n": 58
+      },
+      "componente": {
+        "value": 0.2857,
+        "ci_low": 0.1786,
+        "ci_high": 0.4107,
+        "n_valid_resamples": 10000,
+        "n": 56
+      },
+      "motivo": {
+        "value": 0.2698,
+        "ci_low": 0.1587,
+        "ci_high": 0.381,
+        "n_valid_resamples": 10000,
+        "n": 63
+      }
+    },
+    "Sonnet A1": {
+      "instante": {
+        "value": 0.069,
+        "ci_low": 0.0172,
+        "ci_high": 0.1379,
+        "n_valid_resamples": 10000,
+        "n": 58
+      },
+      "componente": {
+        "value": 0.0536,
+        "ci_low": 0.0,
+        "ci_high": 0.125,
+        "n_valid_resamples": 10000,
+        "n": 56
+      },
+      "motivo": {
+        "value": 0.2063,
+        "ci_low": 0.1111,
+        "ci_high": 0.3175,
+        "n_valid_resamples": 10000,
+        "n": 63
+      }
+    },
+    "Sonnet A2": {
+      "instante": {
+        "value": 0.1379,
+        "ci_low": 0.0517,
+        "ci_high": 0.2414,
+        "n_valid_resamples": 10000,
+        "n": 58
+      },
+      "componente": {
+        "value": 0.25,
+        "ci_low": 0.1429,
+        "ci_high": 0.375,
+        "n_valid_resamples": 10000,
+        "n": 56
+      },
+      "motivo": {
+        "value": 0.2857,
+        "ci_low": 0.1746,
+        "ci_high": 0.3968,
+        "n_valid_resamples": 10000,
+        "n": 63
+      }
+    },
+    "Sonnet A3": {
+      "instante": {
+        "value": 0.3621,
+        "ci_low": 0.2414,
+        "ci_high": 0.4828,
+        "n_valid_resamples": 10000,
+        "n": 58
+      },
+      "componente": {
+        "value": 0.4107,
+        "ci_low": 0.2857,
+        "ci_high": 0.5357,
+        "n_valid_resamples": 10000,
+        "n": 56
+      },
+      "motivo": {
+        "value": 0.3333,
+        "ci_low": 0.2222,
+        "ci_high": 0.4444,
+        "n_valid_resamples": 10000,
+        "n": 63
+      }
+    }
+  },
+  "window_start": {
+    "Opus A1": {
+      "value": 0.2561,
+      "ci_low": 0.1667,
+      "ci_high": 0.3506,
+      "n_valid_resamples": 10000,
+      "onsets": 82
+    },
+    "Opus A2": {
+      "value": 0.2073,
+      "ci_low": 0.1264,
+      "ci_high": 0.2987,
+      "n_valid_resamples": 10000,
+      "onsets": 82
+    },
+    "Opus A3": {
+      "value": 0.1829,
+      "ci_low": 0.1053,
+      "ci_high": 0.2651,
+      "n_valid_resamples": 10000,
+      "onsets": 82
+    },
+    "Sonnet A1": {
+      "value": 0.5488,
+      "ci_low": 0.4368,
+      "ci_high": 0.6625,
+      "n_valid_resamples": 10000,
+      "onsets": 82
+    },
+    "Sonnet A2": {
+      "value": 0.4512,
+      "ci_low": 0.3462,
+      "ci_high": 0.557,
+      "n_valid_resamples": 10000,
+      "onsets": 82
+    },
+    "Sonnet A3": {
+      "value": 0.3902,
+      "ci_low": 0.2963,
+      "ci_high": 0.4875,
+      "n_valid_resamples": 10000,
+      "onsets": 82
+    },
+    "pacote": {
+      "value": 0.0854,
+      "ci_low": 0.0341,
+      "ci_high": 0.1538,
+      "n_valid_resamples": 10000,
+      "onsets": 82
+    }
+  },
+  "errors": {
+    "by_reason": {
+      "JVM Out of Memory (OOM) Heap": {
+        "n": 1,
+        "A0": 0.0,
+        "pacote": 0.0,
+        "Opus A1": 0.0,
+        "Opus A2": 0.0,
+        "Opus A3": 0.0,
+        "Sonnet A1": 0.0,
+        "Sonnet A2": 0.0,
+        "Sonnet A3": 0.0
+      },
+      "high CPU usage": {
+        "n": 19,
+        "A0": 0.3158,
+        "pacote": 0.3684,
+        "Opus A1": 0.8947,
+        "Opus A2": 0.8947,
+        "Opus A3": 0.9474,
+        "Sonnet A1": 1.0,
+        "Sonnet A2": 1.0,
+        "Sonnet A3": 0.9474
+      },
+      "high disk I/O read usage": {
+        "n": 12,
+        "A0": 0.0,
+        "pacote": 0.5833,
+        "Opus A1": 0.5,
+        "Opus A2": 0.5,
+        "Opus A3": 0.5,
+        "Sonnet A1": 0.25,
+        "Sonnet A2": 0.4167,
+        "Sonnet A3": 0.4167
+      },
+      "high disk space usage": {
+        "n": 5,
+        "A0": 0.0,
+        "pacote": 0.0,
+        "Opus A1": 0.4,
+        "Opus A2": 1.0,
+        "Opus A3": 0.6,
+        "Sonnet A1": 0.0,
+        "Sonnet A2": 0.4,
+        "Sonnet A3": 0.6
+      },
+      "high memory usage": {
+        "n": 2,
+        "A0": 1.0,
+        "pacote": 0.0,
+        "Opus A1": 1.0,
+        "Opus A2": 1.0,
+        "Opus A3": 1.0,
+        "Sonnet A1": 0.0,
+        "Sonnet A2": 0.0,
+        "Sonnet A3": 0.5
+      },
+      "network latency": {
+        "n": 14,
+        "A0": 0.0,
+        "pacote": 0.0,
+        "Opus A1": 0.0,
+        "Opus A2": 0.1429,
+        "Opus A3": 0.0714,
+        "Sonnet A1": 0.0,
+        "Sonnet A2": 0.0,
+        "Sonnet A3": 0.0
+      },
+      "network packet loss": {
+        "n": 24,
+        "A0": 0.1667,
+        "pacote": 0.5,
+        "Opus A1": 0.2917,
+        "Opus A2": 0.125,
+        "Opus A3": 0.3333,
+        "Sonnet A1": 0.0,
+        "Sonnet A2": 0.0417,
+        "Sonnet A3": 0.0833
+      }
+    },
+    "by_component_type": {
+      "IG": {
+        "n": 10,
+        "A0": 0.0,
+        "pacote": 0.1,
+        "Opus A1": 1.0,
+        "Opus A2": 0.8,
+        "Opus A3": 0.7,
+        "Sonnet A1": 0.5,
+        "Sonnet A2": 0.5,
+        "Sonnet A3": 0.5
+      },
+      "MG": {
+        "n": 16,
+        "A0": 0.0,
+        "pacote": 0.125,
+        "Opus A1": 0.5,
+        "Opus A2": 0.375,
+        "Opus A3": 0.375,
+        "Sonnet A1": 0.0625,
+        "Sonnet A2": 0.125,
+        "Sonnet A3": 0.125
+      },
+      "Mysql": {
+        "n": 4,
+        "A0": 0.0,
+        "pacote": 0.25,
+        "Opus A1": 0.25,
+        "Opus A2": 0.5,
+        "Opus A3": 0.75,
+        "Sonnet A1": 0.0,
+        "Sonnet A2": 0.25,
+        "Sonnet A3": 0.25
+      },
+      "Redis": {
+        "n": 1,
+        "A0": 0.0,
+        "pacote": 0.0,
+        "Opus A1": 0.0,
+        "Opus A2": 0.0,
+        "Opus A3": 0.0,
+        "Sonnet A1": 0.0,
+        "Sonnet A2": 0.0,
+        "Sonnet A3": 0.0
+      },
+      "Tomcat": {
+        "n": 33,
+        "A0": 0.303,
+        "pacote": 0.3636,
+        "Opus A1": 0.5758,
+        "Opus A2": 0.4545,
+        "Opus A3": 0.6667,
+        "Sonnet A1": 0.2727,
+        "Sonnet A2": 0.3939,
+        "Sonnet A3": 0.4848
+      },
+      "apache": {
+        "n": 12,
+        "A0": 0.0,
+        "pacote": 0.3333,
+        "Opus A1": 0.25,
+        "Opus A2": 0.5833,
+        "Opus A3": 0.25,
+        "Sonnet A1": 0.0,
+        "Sonnet A2": 0.0,
+        "Sonnet A3": 0.25
+      }
+    }
+  },
+  "fidelity": {
+    "Sonnet A1": {
+      "explanations": 120,
+      "ids": {
+        "checked": 385,
+        "flagged": 0,
+        "explanations_flagged": 0,
+        "flagged_rate": {
+          "value": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_valid_resamples": 10000
+        }
+      },
+      "components": {
+        "checked": 505,
+        "flagged": 0,
+        "explanations_flagged": 0,
+        "flagged_rate": {
+          "value": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_valid_resamples": 10000
+        }
+      },
+      "identifiers": {
+        "checked": 45,
+        "flagged": 0,
+        "explanations_flagged": 0,
+        "flagged_rate": {
+          "value": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_valid_resamples": 10000
+        }
+      },
+      "numbers": {
+        "checked": 413,
+        "flagged": 2,
+        "explanations_flagged": 2,
+        "flagged_rate": {
+          "value": 0.0048,
+          "ci_low": 0.0,
+          "ci_high": 0.0123,
+          "n_valid_resamples": 10000
+        },
+        "control_grounded_rate": 0.1453
+      }
+    },
+    "Sonnet A2": {
+      "explanations": 120,
+      "ids": {
+        "checked": 553,
+        "flagged": 0,
+        "explanations_flagged": 0,
+        "flagged_rate": {
+          "value": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_valid_resamples": 10000
+        }
+      },
+      "components": {
+        "checked": 565,
+        "flagged": 0,
+        "explanations_flagged": 0,
+        "flagged_rate": {
+          "value": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_valid_resamples": 10000
+        }
+      },
+      "identifiers": {
+        "checked": 24,
+        "flagged": 0,
+        "explanations_flagged": 0,
+        "flagged_rate": {
+          "value": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_valid_resamples": 10000
+        }
+      },
+      "numbers": {
+        "checked": 577,
+        "flagged": 4,
+        "explanations_flagged": 2,
+        "flagged_rate": {
+          "value": 0.0069,
+          "ci_low": 0.0,
+          "ci_high": 0.0174,
+          "n_valid_resamples": 10000
+        },
+        "control_grounded_rate": 0.1057
+      }
+    },
+    "Sonnet A3": {
+      "explanations": 120,
+      "ids": {
+        "checked": 1082,
+        "flagged": 0,
+        "explanations_flagged": 0,
+        "flagged_rate": {
+          "value": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_valid_resamples": 10000
+        }
+      },
+      "components": {
+        "checked": 541,
+        "flagged": 0,
+        "explanations_flagged": 0,
+        "flagged_rate": {
+          "value": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_valid_resamples": 10000
+        }
+      },
+      "identifiers": {
+        "checked": 45,
+        "flagged": 0,
+        "explanations_flagged": 0,
+        "flagged_rate": {
+          "value": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_valid_resamples": 10000
+        }
+      },
+      "numbers": {
+        "checked": 637,
+        "flagged": 5,
+        "explanations_flagged": 5,
+        "flagged_rate": {
+          "value": 0.0078,
+          "ci_low": 0.0016,
+          "ci_high": 0.0152,
+          "n_valid_resamples": 10000
+        },
+        "control_grounded_rate": 0.1146
+      }
+    }
+  },
+  "cost": {
+    "Sonnet A1": {
+      "cost_usd": 4.8509,
+      "cost_usd_mean": 0.04042,
+      "cost_usd_sd": 0.01771,
+      "paid_calls": 610,
+      "valid_rate": 1.0,
+      "valid_after_retry": 9,
+      "tool_calls_mean": 4.33,
+      "evidence_tool_use": 0
+    },
+    "Opus A1": {
+      "cost_usd": 27.8282,
+      "cost_usd_mean": 0.2319,
+      "cost_usd_sd": 0.1141,
+      "valid_rate": 1.0
+    },
+    "Sonnet A2": {
+      "cost_usd": 4.5527,
+      "cost_usd_mean": 0.03794,
+      "cost_usd_sd": 0.01355,
+      "paid_calls": 503,
+      "valid_rate": 1.0,
+      "valid_after_retry": 5,
+      "tool_calls_mean": 4.32,
+      "evidence_tool_use": 120
+    },
+    "Opus A2": {
+      "cost_usd": 26.025,
+      "cost_usd_mean": 0.2169,
+      "cost_usd_sd": 0.1106,
+      "valid_rate": 1.0
+    },
+    "Sonnet A3": {
+      "cost_usd": 3.7292,
+      "cost_usd_mean": 0.03108,
+      "cost_usd_sd": 0.03235,
+      "paid_calls": 373,
+      "valid_rate": 1.0,
+      "valid_after_retry": 4,
+      "tool_calls_mean": 5.58,
+      "evidence_tool_use": 120
+    },
+    "Opus A3": {
+      "cost_usd": 26.487,
+      "cost_usd_mean": 0.2207,
+      "cost_usd_sd": 0.1074,
+      "valid_rate": 1.0
+    }
+  },
+  "replay": {},
+  "run_dir": "20261121T021326-model_compare"
+}

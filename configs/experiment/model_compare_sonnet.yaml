@@ -1,0 +1,7 @@
+# ADR 0023 (adendo Sonnet): uv run tcc-rca compare-models --config configs/base.yaml [configs/system/bank.yaml] configs/experiment/model_compare_sonnet.yaml
+# Same criteria as the Haiku comparison; only the candidate changes.
+experiment:
+  name: model_compare
+model_compare:
+  candidate_label: Sonnet
+  candidate_slug: claude-sonnet-5-5

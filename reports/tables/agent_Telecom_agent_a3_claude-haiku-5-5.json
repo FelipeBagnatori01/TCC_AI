@@ -1,0 +1,35 @@
+{
+  "system": "Telecom",
+  "variant": "A3",
+  "case_set": "test",
+  "cases": 45,
+  "repetitions": 1,
+  "case_runs": 45,
+  "status": {
+    "valid": 45
+  },
+  "valid_rate": 1.0,
+  "valid_after_retry": 10,
+  "mean_turns": 6.222,
+  "mean_tool_calls": 15.956,
+  "budget_stopped": false,
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "budget_usd": 5.0,
+  "cost_usd": 0.261382,
+  "cost_per_case_run_usd": 0.005808,
+  "max_case_cost_usd": 0.00845,
+  "usage": {
+    "calls": 280,
+    "cache_hits": 0,
+    "paid_calls": 280,
+    "input_tokens": 670,
+    "cached_input_tokens": 3056219,
+    "cache_write_tokens": 1019502,
+    "output_tokens": 206630,
+    "cost_usd": 0.26138194,
+    "latency_s": 1088.890728
+  },
+  "run_dir": "20261120T164414-agent_a3"
+}

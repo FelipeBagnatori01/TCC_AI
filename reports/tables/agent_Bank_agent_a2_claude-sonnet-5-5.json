@@ -1,0 +1,35 @@
+{
+  "system": "Bank",
+  "variant": "A2",
+  "case_set": "test",
+  "cases": 120,
+  "repetitions": 1,
+  "case_runs": 120,
+  "status": {
+    "valid": 120
+  },
+  "valid_rate": 1.0,
+  "valid_after_retry": 5,
+  "mean_turns": 4.192,
+  "mean_tool_calls": 4.317,
+  "budget_stopped": false,
+  "provider": "anthropic",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "budget_usd": 15.0,
+  "cost_usd": 4.552749,
+  "cost_per_case_run_usd": 0.03794,
+  "max_case_cost_usd": 0.099211,
+  "usage": {
+    "calls": 503,
+    "cache_hits": 0,
+    "paid_calls": 503,
+    "input_tokens": 1256,
+    "cached_input_tokens": 2903023,
+    "cache_write_tokens": 1146886,
+    "output_tokens": 139272,
+    "cost_usd": 4.5527493,
+    "latency_s": 1479.961756
+  },
+  "run_dir": "20261120T210725-agent_a2"
+}

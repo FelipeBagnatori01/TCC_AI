@@ -234,6 +234,11 @@ Registro incremental das ameaças identificadas ao longo das etapas, para a seç
   - nenhum ajuste de prompt ou ferramenta para o Haiku;
   - a calibração do critério com o Opus contra si mesmo foi registrada antes das execuções;
   - a concordância com o pacote é relatada para separar raciocínio de cópia.
+- **Resultado (2026-11-20):**
+  - o Haiku não iguala o Opus: é inferior pelo veredito pareado em todas as comparações;
+  - a evidência melhora o Haiku (A3 × A1 superior nos dois sistemas).
+  - Por ser exploratório, esse efeito é uma hipótese, não uma conclusão principal.
+- **Adendo Sonnet (2026-11-20):** foi pedido depois de ver o resultado do Haiku, com o protocolo idêntico fixado antes de rodar. O Sonnet também não iguala o Opus, e a evidência o melhora no Bank (empate no Telecom). A comparação Sonnet × Haiku é só descritiva.
 
 ## Previstas pelo plano (a detalhar na E9)
 

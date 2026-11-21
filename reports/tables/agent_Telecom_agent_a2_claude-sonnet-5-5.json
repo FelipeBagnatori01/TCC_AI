@@ -1,0 +1,35 @@
+{
+  "system": "Telecom",
+  "variant": "A2",
+  "case_set": "test",
+  "cases": 45,
+  "repetitions": 1,
+  "case_runs": 45,
+  "status": {
+    "valid": 45
+  },
+  "valid_rate": 1.0,
+  "valid_after_retry": 0,
+  "mean_turns": 3.733,
+  "mean_tool_calls": 3.978,
+  "budget_stopped": false,
+  "provider": "anthropic",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "budget_usd": 15.0,
+  "cost_usd": 1.559532,
+  "cost_per_case_run_usd": 0.034656,
+  "max_case_cost_usd": 0.057862,
+  "usage": {
+    "calls": 168,
+    "cache_hits": 0,
+    "paid_calls": 168,
+    "input_tokens": 426,
+    "cached_input_tokens": 810030,
+    "cache_write_tokens": 416135,
+    "output_tokens": 43734,
+    "cost_usd": 1.5595325,
+    "latency_s": 480.85349
+  },
+  "run_dir": "20261120T202053-agent_a2"
+}

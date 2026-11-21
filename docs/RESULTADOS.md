@@ -653,7 +653,9 @@ Esta pergunta surgiu depois de ver a E8 (ameaça nº 27). O plano foi fixado ant
 
 Execuções em 2026-11-20: 100% de respostas válidas, US$ 3,35 no total.
 
-**Tabelas:** `reports/tables/model_compare_<sistema>_claude-haiku-5-5.{json,md}`.
+**Tabelas:** `reports/tables/model_compare_<sistema>_<modelo>.{json,md}`.
+
+**Notebook:** `notebooks/analise_modelos_llm.ipynb` (Haiku, Sonnet e Opus juntos).
 
 | Cadeia (nota parcial) | Telecom | Bank |
 |---|---|---|

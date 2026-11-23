@@ -33,3 +33,11 @@ A auditoria mede quantas afirmações das explicações do agente são **sustent
 ## Depois de preencher
 
 Rode `uv run tcc-rca evaluate-agent --config configs/base.yaml [configs/system/bank.yaml] configs/experiment/agent_eval.yaml`. A seção `audit` de `reports/tables/agent_eval_<sistema>.json` passa a trazer a fração de cada rótulo por variante, com IC por bootstrap sobre explicações. A planilha nunca é reescrita.
+
+## Auditoria oficial: feita por LLM (adendo do ADR 0022, 2026-11-23)
+
+Por decisão do autor, a classificação oficial é a do Claude Opus 5.5, em `reports/audit/auditoria_fidelidade_llm.csv`. Ela usa esta mesma rubrica e traz em `observacao` o dado conferido.
+
+- **Sem validação humana:** os resultados são relatados como "auditoria por LLM" (ameaça nº 28).
+- **Planilha do autor:** `auditoria_fidelidade.csv` fica vazia, como modelo.
+- **Uso pelo `evaluate-agent`:** o comando lê a planilha indicada em `agent_eval.audit_labels_sheet`.

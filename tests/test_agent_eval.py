@@ -213,6 +213,8 @@ def test_summarize_audit_hand_computed(tmp_path: Path) -> None:
     assert a1["sustentada"]["value"] == pytest.approx(0.75)  # 3 of 4 claims
     assert a1["nao_sustentada"]["value"] == pytest.approx(0.25)
     assert "A3" not in out["by_variant"]
+    assert summarize_audit(sheet, key, 200, 0, system="Telecom")["claims"] == 0  # per system
+    assert summarize_audit(sheet, key, 200, 0, system="Bank")["classified"] == 4
 
 
 def test_summarize_audit_rejects_unknown_labels(tmp_path: Path) -> None:

@@ -57,6 +57,12 @@ Campos: acerto por critério do gabarito (aproximado em consultas com duas falha
 - A2: 20261120T070533-agent_a2_replay, 0 chamadas pagas, 915 do cache, previsões iguais: True, metrics.json igual: True
 - A3: 20261120T070632-agent_a3_replay, 0 chamadas pagas, 889 do cache, previsões iguais: True, metrics.json igual: True
 
-## Auditoria manual
+## Auditoria de fidelidade
 
-0 de 60 afirmações deste sistema classificadas.
+Classificada por: Claude Opus 5.5 (LLM, mesmo modelo do agente; sem validação humana) (`auditoria_fidelidade_llm.csv`). 60 de 60 afirmações deste sistema classificadas.
+
+| Variante | Explicações | Afirmações | sustentada | parcial | nao_sustentada | nao_verificavel |
+|---|---|---|---|---|---|---|
+| A1 | 5 | 20 | 0.75 [0.60; 0.90] | 0.05 [0.00; 0.15] | 0.00 [0.00; 0.00] | 0.20 [0.10; 0.25] |
+| A2 | 5 | 20 | 0.90 [0.70; 1.00] | 0.05 [0.00; 0.15] | 0.00 [0.00; 0.00] | 0.05 [0.00; 0.15] |
+| A3 | 5 | 20 | 0.90 [0.80; 1.00] | 0.05 [0.00; 0.15] | 0.00 [0.00; 0.00] | 0.05 [0.00; 0.15] |

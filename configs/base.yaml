@@ -190,6 +190,8 @@ agent_eval:                        # E8 (ADR 0022): evaluation of the E7 test ru
   audit_claims: 4                  # sampled factual sentences per explanation
   audit_seed: 0
   audit_dir: reports/audit
+  audit_labels_sheet: auditoria_fidelidade_llm.csv   # official labels (author's decision, 2026-11-23)
+  audit_rater: "Claude Opus 5.5 (LLM, mesmo modelo do agente; sem validação humana)"
 
 model_compare:                     # ADR 0023 (exploratory, fixed 2026-11-20 before the runs)
   reference_label: Opus            # agent_eval.model_slug runs (E7/E8)

@@ -780,11 +780,96 @@
     }
   },
   "audit": {
-    "claims": 120,
-    "classified": 0,
-    "by_variant": {},
+    "by_variant": {
+      "A1": {
+        "explanations": 5,
+        "claims": 20,
+        "sustentada": {
+          "value": 0.65,
+          "ci_low": 0.55,
+          "ci_high": 0.75,
+          "n_valid_resamples": 10000
+        },
+        "parcial": {
+          "value": 0.1,
+          "ci_low": 0.0,
+          "ci_high": 0.2,
+          "n_valid_resamples": 10000
+        },
+        "nao_sustentada": {
+          "value": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_valid_resamples": 10000
+        },
+        "nao_verificavel": {
+          "value": 0.25,
+          "ci_low": 0.05,
+          "ci_high": 0.45,
+          "n_valid_resamples": 10000
+        }
+      },
+      "A2": {
+        "explanations": 5,
+        "claims": 20,
+        "sustentada": {
+          "value": 0.8,
+          "ci_low": 0.5,
+          "ci_high": 1.0,
+          "n_valid_resamples": 10000
+        },
+        "parcial": {
+          "value": 0.15,
+          "ci_low": 0.0,
+          "ci_high": 0.45,
+          "n_valid_resamples": 10000
+        },
+        "nao_sustentada": {
+          "value": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_valid_resamples": 10000
+        },
+        "nao_verificavel": {
+          "value": 0.05,
+          "ci_low": 0.0,
+          "ci_high": 0.15,
+          "n_valid_resamples": 10000
+        }
+      },
+      "A3": {
+        "explanations": 5,
+        "claims": 20,
+        "sustentada": {
+          "value": 0.8,
+          "ci_low": 0.75,
+          "ci_high": 0.9,
+          "n_valid_resamples": 10000
+        },
+        "parcial": {
+          "value": 0.1,
+          "ci_low": 0.0,
+          "ci_high": 0.2,
+          "n_valid_resamples": 10000
+        },
+        "nao_sustentada": {
+          "value": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n_valid_resamples": 10000
+        },
+        "nao_verificavel": {
+          "value": 0.1,
+          "ci_low": 0.0,
+          "ci_high": 0.2,
+          "n_valid_resamples": 10000
+        }
+      }
+    },
+    "rater": "Claude Opus 5.5 (LLM, mesmo modelo do agente; sem validação humana)",
+    "labels_sheet": "auditoria_fidelidade_llm.csv",
     "system_claims": 60,
-    "system_classified": 0
+    "system_classified": 60
   },
-  "run_dir": "20261120T071423-agent_eval"
+  "run_dir": "20261123T191629-agent_eval"
 }

@@ -209,6 +209,8 @@ Registro incremental das ameaças identificadas ao longo das etapas, para a seç
 
 ### 26. Auditoria manual por uma pessoa, com cegamento parcial (E8)
 
+- **Atualização (2026-11-23):** a auditoria passou a ser feita por LLM (ameaça nº 28). Desta ameaça, continua valendo o cegamento parcial.
+
 - **O que:** as 120 afirmações da amostra de fidelidade são classificadas só pelo autor.
   - Não há segundo avaliador nem medida de concordância entre avaliadores.
   - A planilha esconde a variante, mas os IDs `C#`/`K#`/`N#` citados nas afirmações podem revelá-la.
@@ -239,6 +241,18 @@ Registro incremental das ameaças identificadas ao longo das etapas, para a seç
   - a evidência melhora o Haiku (A3 × A1 superior nos dois sistemas).
   - Por ser exploratório, esse efeito é uma hipótese, não uma conclusão principal.
 - **Adendo Sonnet (2026-11-20):** foi pedido depois de ver o resultado do Haiku, com o protocolo idêntico fixado antes de rodar. O Sonnet também não iguala o Opus, e a evidência o melhora no Bank (empate no Telecom). A comparação Sonnet × Haiku é só descritiva.
+
+### 28. Auditoria de fidelidade feita pelo mesmo modelo do agente (E8, adendo do ADR 0022)
+
+- **O que:** por decisão do autor, as 120 afirmações foram auditadas pelo Claude Opus 5.5, o mesmo modelo que as escreveu. Essa auditoria é a oficial, sem validação humana; a amostra de concordância proposta foi dispensada.
+- **Tipo:** confiabilidade e validade da medida (autoavaliação).
+- **Efeito esperado:** leniência com os erros típicos do próprio modelo. A fração de `sustentada` (91% entre as afirmações com dado) pode estar superestimada.
+- **Mitigação:**
+  - mesma rubrica e regras de desempate escritas antes;
+  - o dado conferido está registrado em cada linha, o que permite reauditar;
+  - a verificação automática de IDs, nomes e números cobre 100% das explicações e não depende de avaliador;
+  - os números são sempre relatados como "auditoria por LLM".
+- **Não mitigado:** sem segundo avaliador, não há medida de concordância.
 
 ## Previstas pelo plano (a detalhar na E9)
 

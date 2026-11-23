@@ -605,7 +605,25 @@ Quando o agente e o C1 discordam, quem acerta é quase sempre o agente. O HR@1 d
 - **O que entra na taxa:** números derivados (diferenças, razões) também contam, então a taxa é um teto para valores inventados.
 - **O controle:** mostra que a regra discrimina. Por coincidência, ela aceitaria cerca de 1 em cada 4 números; os números reais passam em cerca de 99%.
 
-**Auditoria manual:** 120 afirmações de 30 explicações (5 por sistema × variante), com variante oculta, classificadas pelo autor (`docs/AUDITORIA_FIDELIDADE.md`). **Pendente:** os números entram aqui depois do preenchimento.
+**Auditoria por LLM (adendo do ADR 0022):** 120 afirmações de 30 explicações, 5 por sistema e variante.
+- **Quem classificou:** o Claude Opus 5.5, por decisão do autor, com a rubrica de `docs/AUDITORIA_FIDELIDADE.md`.
+- **Sem validação humana:** o auditor é o mesmo modelo do agente (ameaça nº 28). Os números são de uma auditoria por LLM, não manual.
+- **Formato da tabela:** fração das afirmações de cada rótulo, com IC por bootstrap sobre explicações; 20 afirmações por célula.
+
+| Rótulo | Telecom A1 / A2 / A3 | Bank A1 / A2 / A3 |
+|---|---|---|
+| sustentada | 0,65 / 0,80 / 0,80 | 0,75 / 0,90 / 0,90 |
+| parcial | 0,10 / 0,15 / 0,10 | 0,05 / 0,05 / 0,05 |
+| não sustentada | 0 / 0 / 0 | 0 / 0 / 0 |
+| não verificável | 0,25 / 0,05 / 0,10 | 0,20 / 0,05 / 0,05 |
+
+- **Nenhuma afirmação contradiz as saídas ou inventa dado.** Das 106 que trazem dado, 96 são sustentadas (91%) e 10 parciais.
+- **Tipos de parcial:**
+  - generalização além do dado ("em cada caso", "sinais fracos");
+  - um ID trocado;
+  - atribuição de ranking errada;
+  - horário inexato.
+- **A1 tem mais "não verificável"** (títulos, conclusões, "não consultei X") e menos "sustentada". Com 5 explicações por célula, é descritivo, sem teste.
 
 ### Custo (RQ4)
 
@@ -640,12 +658,12 @@ As seis execuções foram refeitas a partir do cache com teto de US$ 0 (`configs
   - todas as variantes têm a varredura heurística `find_anomalous_kpis`, usada em 100% das consultas (ameaça nº 17);
   - o agente usa a evidência (a A3 cita `C#`/`K#` em quase todas as respostas), mas, quando ela aponta o componente errado, ele a corrige com a telemetria.
 - **RQ2:** como localizador, o agente supera o C1 do pacote em 5 das 6 comparações. A localização da E6 continua sendo a melhor entre os métodos sem LLM.
-- **RQ4:** a verificação automática não acha IDs, componentes ou KPIs inventados, e só cerca de 1% de números sem correspondência; a auditoria manual vai completar a medida. O custo fica entre US$ 0,16 e 0,23 por consulta, e a evidência não o aumenta.
+- **RQ4:** a verificação automática não acha IDs, componentes ou KPIs inventados, e só cerca de 1% de números sem correspondência; na auditoria por LLM das 120 afirmações amostradas (sem validação humana), nenhuma contradiz as saídas, 91% das que trazem dado são sustentadas e 9% parciais. O custo fica entre US$ 0,16 e 0,23 por consulta, e a evidência não o aumenta.
 - **Ameaças:**
   - contaminação (nº 15);
   - varredura heurística (nº 17);
   - uma repetição e poder limitado (nº 25): com 45 consultas, efeitos de até cerca de 0,13 passam por empate;
-  - auditoria por uma pessoa (nº 26).
+  - auditoria feita pelo mesmo modelo do agente, sem validação humana (nº 28).
 
 ## Modelo mais barato com as mesmas ferramentas: Haiku 5.5 × Opus 5.5 (ADR 0023, exploratório)
 

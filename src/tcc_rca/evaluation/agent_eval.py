@@ -459,10 +459,15 @@ def audit_sample(
     return [picked[i] for i in order]
 
 
-def summarize_audit(sheet: Path, key: Path, n_resamples: int, seed: int) -> dict[str, Any]:
-    """Share of audited claims per label and variant (CI over explanations) once filled."""
+def summarize_audit(
+    sheet: Path, key: Path, n_resamples: int, seed: int, system: str | None = None
+) -> dict[str, Any]:
+    """Share of audited claims per label and variant (CI over explanations) once filled;
+    ``system`` keeps only that system's explanations (default: both)."""
     rows = list(csv.DictReader(sheet.open(encoding="utf-8", newline="")))
     mapping = json.loads(key.read_text(encoding="utf-8"))
+    if system is not None:
+        rows = [r for r in rows if mapping[r["explicacao"]]["system"] == system]
     filled = [r for r in rows if r["classificacao"].strip()]
     bad = sorted({r["classificacao"] for r in filled} - set(AUDIT_LABELS))
     if bad:
@@ -742,7 +747,7 @@ def run_agent_eval(config: Config, tables_dir: Path) -> dict[str, Any]:
         "run_dir": str(run.dir),
         "primary": next(r for r in comparisons if r["role"] == "primary"),
         "replay_ok": all(r["ok"] for r in replay.values()) if replay else None,
-        "audit": {k: audit[k] for k in ("claims", "classified") if k in audit},
+        "audit": {k: audit[k] for k in ("system_claims", "system_classified", "rater")},
     }
 
 
@@ -779,7 +784,9 @@ def _audit(
     seed: int,
 ) -> dict[str, Any]:
     """Writes this system's part of the blinded audit sheet the first time; afterwards only
-    reads it. The sheet holds both systems, so the second system appends its items once."""
+    reads it. The sheet holds both systems, so the second system appends its items once.
+    The summary reads ``audit_labels_sheet`` (same rows; the LLM audit since 2026-11-23, by the
+    author's decision) for this system only, and records who classified it."""
     c = config.agent_eval
     sheet, key = c.audit_dir / "auditoria_fidelidade.csv", c.audit_dir / "auditoria_chave.json"
     evidence_dir = config.paths.experiments_dir / "auditoria_fidelidade"
@@ -821,13 +828,22 @@ def _audit(
                 writer.writeheader()
             writer.writerows(new_rows)
         key.write_text(json.dumps(mapping, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    summary = summarize_audit(sheet, key, nb, seed)
-    codes = {k for k, m in mapping.items() if m["system"] == system}
-    rows = list(csv.DictReader(sheet.open(encoding="utf-8", newline="")))
-    mine = [r for r in rows if r["explicacao"] in codes]
-    summary["system_claims"] = len(mine)
-    summary["system_classified"] = sum(bool(r["classificacao"].strip()) for r in mine)
+    labels = c.audit_dir / c.audit_labels_sheet
+    if not labels.exists():
+        labels = sheet
+    template = [(r["explicacao"], r["afirmacao"], r["texto"]) for r in _rows(sheet)]
+    if [(r["explicacao"], r["afirmacao"], r["texto"]) for r in _rows(labels)] != template:
+        raise ValueError(f"{labels} does not hold the same claims as {sheet}")
+    summary = summarize_audit(labels, key, nb, seed, system)
+    summary["rater"] = c.audit_rater
+    summary["labels_sheet"] = labels.name
+    summary["system_claims"] = summary.pop("claims")
+    summary["system_classified"] = summary.pop("classified")
     return summary
+
+
+def _rows(path: Path) -> list[dict[str, str]]:
+    return list(csv.DictReader(path.open(encoding="utf-8", newline="")))
 
 
 def _write_audit_evidence(
@@ -956,8 +972,18 @@ def write_markdown(path: Path, t: Mapping[str, Any]) -> None:
     a = t["audit"]
     lines += [
         "",
-        "## Auditoria manual",
+        "## Auditoria de fidelidade",
         "",
+        f"Classificada por: {a['rater']} (`{a['labels_sheet']}`). "
         f"{a['system_classified']} de {a['system_claims']} afirmações deste sistema classificadas.",
     ]
+    if a["by_variant"]:
+        lines += [
+            "",
+            "| Variante | Explicações | Afirmações | " + " | ".join(AUDIT_LABELS) + " |",
+            "|---|---|---|" + "---|" * len(AUDIT_LABELS),
+        ]
+        for v, r in a["by_variant"].items():
+            shares = " | ".join(_ci(r[lab]) for lab in AUDIT_LABELS)
+            lines.append(f"| {v} | {r['explanations']} | {r['claims']} | {shares} |")
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")

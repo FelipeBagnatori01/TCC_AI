@@ -271,6 +271,8 @@ class AgentEvalConfig(_Strict):
     audit_claims: int = Field(gt=0)  # sampled claims per explanation
     audit_seed: int
     audit_dir: Path  # versioned sheet + key (filled by the author)
+    audit_labels_sheet: str = Field(min_length=1)  # file in audit_dir whose labels are summarized
+    audit_rater: str = Field(min_length=1)  # who classified it (reported with the numbers)
 
     @model_validator(mode="after")
     def _consistent(self) -> AgentEvalConfig:

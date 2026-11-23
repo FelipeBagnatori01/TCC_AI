@@ -79,3 +79,31 @@ A comparação principal (A3 × A1) e o McNemar vêm do plano original (RQ3), an
 - **Reprodução:** 0 chamadas pagas nas seis execuções, com previsões e `metrics.json` idênticos.
 - **Custo:** de US$ 0,16 a 0,23 por consulta.
 - **Detalhes:** `docs/RESULTADOS.md`.
+
+## Adendo: auditoria de fidelidade feita por LLM (2026-11-23)
+
+- **Decisão do autor:** a auditoria manual foi substituída por uma auditoria feita pelo Claude Opus 5.5, adotada como oficial. Motivo: o volume e a complexidade das evidências (30 transcrições com milhares de linhas de saída de ferramentas).
+  - A validação por uma amostra rotulada pelo autor foi proposta e dispensada pelo autor.
+  - **Não há validação humana.**
+- **Como foi feita:** a mesma amostra (30 explicações, 120 afirmações), a mesma rubrica e as mesmas regras de desempate de `docs/AUDITORIA_FIDELIDADE.md`.
+  - Cada afirmação foi conferida contra as saídas das ferramentas daquela transcrição, e a coluna `observacao` registra o dado conferido e onde ele está.
+  - **Regras usadas nos casos de fronteira:**
+    - frase de conclusão que traz um dado: classifica-se o dado;
+    - frase sobre o que o agente não consultou, títulos e juízos: `nao_verificavel`;
+    - qualificadores como "pouco" ou "pequeno": aceitos quando os valores mostrados os justificam.
+- **Arquivos:**
+  - `reports/audit/auditoria_fidelidade_llm.csv` é a planilha oficial, apontada por `agent_eval.audit_labels_sheet`.
+  - A planilha original do autor, `auditoria_fidelidade.csv`, fica vazia como modelo.
+  - O `evaluate-agent` confere que as duas têm as mesmas afirmações, resume por sistema e variante e registra quem classificou (`agent_eval.audit_rater`) nas tabelas.
+- **Limitações:**
+  - **Autoavaliação (ameaça nº 28):** o auditor é o mesmo modelo que escreveu as explicações e pode ser leniente com os próprios tipos de erro.
+  - **Cegamento:** a ferramenta `get_evidence` aparece nas transcrições e revela A2/A3. A chave só foi aberta depois de rotular tudo.
+  - **Como relatar:** os números devem ser lidos como "auditoria por LLM", nunca como auditoria manual.
+- **Resultado (120 afirmações):**
+  - 96 sustentadas, 10 parciais, 0 não sustentadas e 14 não verificáveis, ou seja, 91% sustentadas entre as que trazem dado.
+  - **Parciais:**
+    - generalizações além do dado ("em cada caso", "sinais fracos", "sem tempo ocioso");
+    - um ID trocado;
+    - atribuições de ranking erradas;
+    - horários inexatos.
+  - **Por sistema e variante:** em `reports/tables/agent_eval_<sistema>.{json,md}` e em `docs/RESULTADOS.md`.

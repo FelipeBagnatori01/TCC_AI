@@ -42,6 +42,10 @@ Fonte: `reports/tables/precursor_Telecom.csv`, que também traz o resultado por 
 - O sinal aparece 1 a 2 minutos **depois** do início rotulado, e é coerente com amostras de 60 s que só registram a falha no minuto seguinte.
 - Por motivo, a pontuação simples enxerga bem `db close` (0,94 em −1), `network delay` (0,86) e `CPU fault` (0,72). Não enxerga `db connection limit` nem `network loss`: os ICs incluem 0,5 em todas as antecedências. Esses dois motivos são o alvo de melhoria da LSTM em relação ao baseline.
 
+**Consequência para o título (2026-11-23, decisão do autor):** sem sinal precursor, o trabalho detecta o início da falha e não a antecipa. O título deixou de ser "Predição e explicação automática..." e passou a ser **"Detecção precoce e explicação automática de causas raiz de falhas em sistemas de telecomunicações a partir de dados multimodais de observabilidade"**.
+- "Precoce" quer dizer detectar nos primeiros minutos depois do início: a janela positiva vai até D = 5 min e a pontuação lê os últimos D + 1 minutos (ADR 0019).
+- A monografia não deve usar "predição" para o que a LSTM faz. A palavra "previsora" continua só como nome do modelo, porque ele prevê o próximo minuto dos KPIs para medir o erro.
+
 ## Tarefa B — localização (LSTM + XAI)
 
 Para cada falha testada, produzir uma ordenação de todos os **componentes candidatos**: os 56 componentes que têm pelo menos um atributo na matriz. Os 15 componentes-gabarito do Telecom estão todos entre os candidatos (verificado por `tcc-rca tasks`). As métricas são HR@1, HR@3, HR@5 e MRR do componente-gabarito, calculadas nas 45 falhas testadas.

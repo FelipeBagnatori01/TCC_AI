@@ -1,10 +1,12 @@
-# Predição e explicação automática de causas raiz de falhas em telecomunicações (OpenRCA)
+# Detecção precoce e explicação automática de causas raiz de falhas em sistemas de telecomunicações a partir de dados multimodais de observabilidade
 
 Trabalho de conclusão de curso (UNIFESP). O sistema tem três partes:
 
 1. **Detecção:** uma rede **LSTM** detecta falhas a partir de séries de KPIs de observabilidade (métricas e agregados de traces).
 2. **Explicabilidade:** **SHAP** e **LIME** explicam cada detecção por componente e por KPI.
 3. **Diagnóstico:** um **agente de LLM** (Claude Opus 5.5), com ferramentas de leitura da telemetria e essas evidências, aponta a causa raiz: instante, componente e motivo.
+
+**Por que "detecção precoce" e não "predição":** não há sinal precursor das falhas nos KPIs (E3, ADR 0007). A tarefa é detectar o início da falha nos primeiros minutos, não antecipá-la.
 
 A avaliação usa o benchmark público **OpenRCA** (XU et al., ICLR 2025). O subconjunto Telecom é o cenário principal e o Bank, o segundo sistema.
 

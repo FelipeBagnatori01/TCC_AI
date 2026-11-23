@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Undergraduate thesis (UNIFESP): LSTM failure detection/prediction on telecom observability KPIs, SHAP/LIME explainability, and an LLM agent that explains the root cause (timestamp, component, reason) — evaluated on the public OpenRCA benchmark (Telecom subset is the main scenario).
+Undergraduate thesis (UNIFESP), title "Detecção precoce e explicação automática de causas raiz de falhas em sistemas de telecomunicações a partir de dados multimodais de observabilidade" (changed from "Predição..." on 2026-11-23: no precursor signal, ADR 0007, so the task is early detection, never call it prediction): LSTM early failure detection on telecom observability KPIs, SHAP/LIME explainability, and an LLM agent that explains the root cause (timestamp, component, reason) — evaluated on the public OpenRCA benchmark (Telecom subset is the main scenario).
 
 The full spec lives **outside** this repo: `../instrucoes_implementacao_tcc.md` (Portuguese; stages E0–E9, research questions, invariant rules R1–R11). Read it before starting a stage. Progress notes: `../acompanhamento_etapas_tcc_1.md`.
 

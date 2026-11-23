@@ -53,9 +53,9 @@ Campos: acerto por critério do gabarito (aproximado em consultas com duas falha
 
 ## Reprodução a partir do cache
 
-- A1: 20261120T070431-agent_a1_replay, 0 chamadas pagas, 931 do cache, previsões iguais: True, metrics.json igual: True
-- A2: 20261120T070533-agent_a2_replay, 0 chamadas pagas, 915 do cache, previsões iguais: True, metrics.json igual: True
-- A3: 20261120T070632-agent_a3_replay, 0 chamadas pagas, 889 do cache, previsões iguais: True, metrics.json igual: True
+- A1: 20261123T200600-agent_a1_replay, 0 chamadas pagas, 931 do cache, previsões iguais: True, metrics.json igual: True
+- A2: 20261123T200703-agent_a2_replay, 0 chamadas pagas, 915 do cache, previsões iguais: True, metrics.json igual: True
+- A3: 20261123T200803-agent_a3_replay, 0 chamadas pagas, 889 do cache, previsões iguais: True, metrics.json igual: True
 
 ## Auditoria de fidelidade
 

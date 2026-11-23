@@ -29,7 +29,7 @@
     "cache_write_tokens": 884113,
     "output_tokens": 122501,
     "cost_usd": 0.0,
-    "latency_s": 0.133676
+    "latency_s": 0.106779
   },
-  "run_dir": "20261120T070349-agent_a2_replay"
+  "run_dir": "20261123T200253-agent_a2_replay"
 }

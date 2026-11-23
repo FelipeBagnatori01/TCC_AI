@@ -1,6 +1,6 @@
 # ADR 0022 — Avaliação integrada do agente (E8): nota oficial, testes pareados, fidelidade e custo
 
-- **Status:** aceito (2026-11-20). Executado, menos a auditoria manual, que o autor ainda vai preencher
+- **Status:** aceito (2026-11-20) e executado. A auditoria de fidelidade foi feita por LLM e adotada pelo autor em 2026-11-23 (adendo abaixo)
 - **Data:** 2026-11-20
 - **Etapa:** E8
 

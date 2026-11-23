@@ -254,9 +254,87 @@ Registro incremental das ameaças identificadas ao longo das etapas, para a seç
   - os números são sempre relatados como "auditoria por LLM".
 - **Não mitigado:** sem segundo avaliador, não há medida de concordância.
 
-## Previstas pelo plano (a detalhar na E9)
+### 29. Dependência de um provedor e de um modelo de LLM (E7/E8)
 
-- Tamanho amostral: 51 casos no Telecom (45 testados; ver item 4).
-- Contaminação do LLM: o modelo pode ter visto o artigo ou dados do OpenRCA no treino (comparação A1 × A3 com o mesmo modelo controla parte disso).
-- Dependência de um único modelo de LLM.
-- Diferença entre o benchmark e ambientes de produção.
+- **O que:** o agente da tese usa um único modelo (Claude Opus 5.5) de um único fornecedor.
+  - **Testado:** dois modelos menores do mesmo fornecedor (Haiku e Sonnet 5.5, ameaça nº 27).
+  - **Não testado:** modelos de outros fornecedores e de pesos abertos.
+- **Tipo:** validade externa.
+- **Efeito esperado:** os números do agente (nota, efeito da evidência, custo) valem para este modelo nesta versão. Com outro modelo, a conclusão sobre a evidência muda: os modelos menores se beneficiam dela, o Opus não.
+- **Mitigação:**
+  - o provedor fica atrás de uma camada própria, e trocar de modelo é uma mudança de configuração (`configs/llm/`);
+  - o modelo é fixado por identificador de versão;
+  - toda chamada fica em cache para reprodução (ADR 0024);
+  - a comparação com Haiku e Sonnet mostra a direção da dependência.
+- **Não mitigado:** outros fornecedores e modelos locais não foram avaliados.
+
+### 30. Distância entre o benchmark e um ambiente de produção
+
+- **O que:** o OpenRCA tem falhas injetadas e rotuladas, poucos dias de telemetria (15 no Telecom, 10 no Bank), sistemas de porte médio e consultas com janela de 30 minutos que já sabem que houve falha.
+  - **Em produção há:**
+    - falhas reais e raras;
+    - muito mais componentes;
+    - deriva de longo prazo e mudanças de topologia;
+    - rótulos incompletos;
+    - a necessidade de decidir quando investigar.
+- **Tipo:** validade externa.
+- **Efeitos esperados:**
+  - **Alarmes falsos:** de 6 a 14 por hora no limiar escolhido, inviáveis sem agregação.
+  - **Generalização do agente:** a nota mede acerto num formato de consulta do benchmark, não o tempo de diagnóstico de um engenheiro.
+  - **Custo:** por consulta, escala com o número de incidentes investigados.
+- **Mitigação:**
+  - **Dois sistemas,** com resultados relatados por sistema.
+  - **Protocolo temporal rigoroso,** sem vazamento.
+  - **Recomendações de adaptação:** dados, integração, custos e riscos estão em `docs/RECOMENDACOES_INDUSTRIA.md`.
+- **Não mitigado:** a validação em ambiente real fica como trabalho futuro.
+
+## Itens previstos pelo plano (consolidados na E9)
+
+| Item do plano | Onde está |
+|---|---|
+| Tamanho amostral (51 casos no Telecom) | nº 3 (45 testados), nº 4 (amostra e dobras), nº 25 (poder estatístico do agente) |
+| Contaminação do LLM | nº 15; a comparação A1 × A3 com o mesmo modelo controla a parte que não depende da evidência |
+| Dependência de um único modelo de LLM | nº 29 (e nº 27, Haiku e Sonnet) |
+| Diferença entre o benchmark e a produção | nº 30 |
+
+## Visão geral
+
+**Tipos** (classificação usual em engenharia de software experimental):
+- **interna:** decisões ou dados que podem enviesar o efeito medido;
+- **construção:** a medida pode não capturar o conceito;
+- **conclusão:** poder e inferência estatística;
+- **externa:** generalização;
+- **confiabilidade:** repetibilidade da medida.
+
+| Nº | Ameaça | Tipo | Perguntas | Situação |
+|---|---|---|---|---|
+| 1 | Isenção de disponibilidade escolhida após ver os rótulos | interna | RQ1–RQ3 | controle sem isenção relatado em toda a tese |
+| 2 | Dias quase duplicados no Telecom | interna | RQ1, RQ2 | resolvida: dias excluídos |
+| 3 | Só 45 das 51 falhas testadas | externa | todas | declarada |
+| 4 | Amostra pequena e dobras desiguais | conclusão | todas | IC por bootstrap e testes pareados |
+| 5 | Tarefa decidida com as falhas de teste | interna | RQ1 | declarada; nenhum hiperparâmetro vem do teste |
+| 6 | Fim das falhas desconhecido | construção | RQ1 | rótulo nulo perto da falha; margem configurável |
+| 7 | Métricas somadas entre dobras; baselines sem busca | conclusão | RQ1 | média por dobra relatada; busca nos alternativos |
+| 8 | Precursor local acrescentado após ver o Bank | interna | RQ1 | os dois métodos relatados |
+| 9 | Janela de 20 min com falhas próximas no Bank | construção | RQ1 | rótulos usam todos os inícios |
+| 10 | Deriva no Bank | externa | RQ1 | origem móvel |
+| 11 | Modelo explicado nos pacotes escolhido após medir | interna | RQ3 | decidido antes do agente |
+| 12 | Explicações da classificadora instáveis | confiabilidade | RQ2 | pacotes usam a previsora |
+| 13 | Categoria de motivo por soma de atribuições | construção | RQ2 | oculta do agente |
+| 14 | Atribuição não é causalidade | construção | RQ2, RQ3 | declarada no texto |
+| 15 | Contaminação do LLM | interna, externa | RQ3 | parcial: comparação dentro do mesmo modelo |
+| 16 | Modelos sem temperatura | confiabilidade | RQ3, RQ4 | cache e reprodução sem custo |
+| 17 | Varredura heurística em todas as variantes | construção | RQ3 | declarada |
+| 18 | Modelo e prompt escolhidos num piloto pequeno | externa | RQ3 | piloto registrado; nada escolhido no teste |
+| 19 | Alternativos medidos após ver a LSTM | interna | RQ1, RQ2 | agente não muda |
+| 20 | Comparação justa entre famílias | conclusão | RQ1, RQ2 | mesmo orçamento de busca |
+| 21 | Pontuação de janela mudada após ver o teste | interna | RQ1, RQ2 | controle de janela inteira relatado |
+| 22 | Atalho pelo horário no Bank | construção | RQ1 | referência só de horário relatada |
+| 23 | Validação em dias de teste de outras dobras | interna | RQ1 | declarada (efeito leve) |
+| 24 | Métodos de evidência explorados após o teste | interna | RQ3 | pacotes não mudaram |
+| 25 | Uma repetição do LLM e poder limitado | conclusão | RQ3, RQ4 | aberta: efeitos de até cerca de 0,13 passam por empate |
+| 26 | Auditoria por uma pessoa | confiabilidade | RQ4 | substituída pela nº 28 |
+| 27 | Modelo mais barato decidido após o teste | conclusão | RQ3 | relatado como exploratório |
+| 28 | Auditoria de fidelidade pelo mesmo modelo do agente | confiabilidade | RQ4 | aberta: sem validação humana |
+| 29 | Um provedor e um modelo de LLM | externa | RQ3, RQ4 | parcial: Haiku e Sonnet testados |
+| 30 | Benchmark × produção | externa | todas | aberta: trabalho futuro |

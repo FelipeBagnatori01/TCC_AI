@@ -1,0 +1,27 @@
+﻿id;descricao;valor;arquivo;chave
+auc_pr_previsora_telecom;AUC-PR agrupada da LSTM previsora, Telecom (média das sementes);0,5163;reports/tables/lstm_Telecom_lstm.json;detection/lstm_forecast/summary/auc_pr/mean
+auc_pr_previsora_bank;AUC-PR agrupada da LSTM previsora, Bank (média das sementes);0,3474;reports/tables/lstm_Bank_lstm.json;detection/lstm_forecast/summary/auc_pr/mean
+auc_pr_zscore_local_telecom;AUC-PR do z-score local, Telecom;0,3911;reports/tables/baselines_Telecom_baselines.json;detection/zscore_local/auc_pr/value
+auc_pr_zscore_local_bank;AUC-PR do z-score local, Bank;0,3269;reports/tables/baselines_Bank_baselines.json;detection/zscore_local/auc_pr/value
+hr1_shap_telecom;HR@1 da LSTM previsora + SHAP, Telecom;0,4222;reports/tables/xai_Telecom_xai.json;localization/lstm_forecast/shap/sum/hr@1/value
+hr1_shap_bank;HR@1 da LSTM previsora + SHAP, Bank;0,4833;reports/tables/xai_Bank_xai.json;localization/lstm_forecast/shap/sum/hr@1/value
+nota_parcial_a0_telecom;Nota parcial oficial, A0, Telecom;0,1849;reports/tables/agent_eval_Telecom.json;summary/A0/partial_score/value
+nota_parcial_pacote_telecom;Nota parcial oficial, pacote, Telecom;0,4147;reports/tables/agent_eval_Telecom.json;summary/pacote/partial_score/value
+nota_parcial_a1_telecom;Nota parcial oficial, A1, Telecom;0,5962;reports/tables/agent_eval_Telecom.json;summary/A1/partial_score/value
+nota_parcial_a2_telecom;Nota parcial oficial, A2, Telecom;0,6038;reports/tables/agent_eval_Telecom.json;summary/A2/partial_score/value
+nota_parcial_a3_telecom;Nota parcial oficial, A3, Telecom;0,5780;reports/tables/agent_eval_Telecom.json;summary/A3/partial_score/value
+a3_menos_a1_telecom;Diferença pareada A3 − A1, Telecom;−0,0182;reports/tables/agent_eval_Telecom.json;comparisons/0/partial_difference/value
+a3_menos_a1_ic_inf_telecom;IC 95% inferior de A3 − A1, Telecom;−0,1293;reports/tables/agent_eval_Telecom.json;comparisons/0/partial_difference/ci_low
+a3_menos_a1_ic_sup_telecom;IC 95% superior de A3 − A1, Telecom;0,0931;reports/tables/agent_eval_Telecom.json;comparisons/0/partial_difference/ci_high
+nota_parcial_haiku_a3_telecom;Nota parcial oficial, Haiku A3, Telecom;0,3404;reports/tables/model_compare_Telecom_claude-haiku-5-5.json;summary/Haiku A3/partial_score/value
+nota_parcial_sonnet_a3_telecom;Nota parcial oficial, Sonnet A3, Telecom;0,3149;reports/tables/model_compare_Telecom_claude-sonnet-5-5.json;summary/Sonnet A3/partial_score/value
+nota_parcial_a0_bank;Nota parcial oficial, A0, Bank;0,1374;reports/tables/agent_eval_Bank.json;summary/A0/partial_score/value
+nota_parcial_pacote_bank;Nota parcial oficial, pacote, Bank;0,3514;reports/tables/agent_eval_Bank.json;summary/pacote/partial_score/value
+nota_parcial_a1_bank;Nota parcial oficial, A1, Bank;0,4285;reports/tables/agent_eval_Bank.json;summary/A1/partial_score/value
+nota_parcial_a2_bank;Nota parcial oficial, A2, Bank;0,4047;reports/tables/agent_eval_Bank.json;summary/A2/partial_score/value
+nota_parcial_a3_bank;Nota parcial oficial, A3, Bank;0,4570;reports/tables/agent_eval_Bank.json;summary/A3/partial_score/value
+a3_menos_a1_bank;Diferença pareada A3 − A1, Bank;0,0285;reports/tables/agent_eval_Bank.json;comparisons/0/partial_difference/value
+a3_menos_a1_ic_inf_bank;IC 95% inferior de A3 − A1, Bank;−0,0486;reports/tables/agent_eval_Bank.json;comparisons/0/partial_difference/ci_low
+a3_menos_a1_ic_sup_bank;IC 95% superior de A3 − A1, Bank;0,1042;reports/tables/agent_eval_Bank.json;comparisons/0/partial_difference/ci_high
+nota_parcial_haiku_a3_bank;Nota parcial oficial, Haiku A3, Bank;0,2882;reports/tables/model_compare_Bank_claude-haiku-5-5.json;summary/Haiku A3/partial_score/value
+nota_parcial_sonnet_a3_bank;Nota parcial oficial, Sonnet A3, Bank;0,3242;reports/tables/model_compare_Bank_claude-sonnet-5-5.json;summary/Sonnet A3/partial_score/value

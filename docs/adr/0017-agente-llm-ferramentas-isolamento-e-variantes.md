@@ -1,6 +1,6 @@
 # ADR 0017 — Agente de LLM: ferramentas fixas, isolamento, variantes e reprodutibilidade (E7)
 
-- **Status:** proposto (implementação pronta; Claude Opus 5.5 escolhido no piloto em 2026-11-16; execuções do teste pendentes)
+- **Status:** aceito. Claude Opus 5.5 escolhido no piloto em 2026-11-16; execuções de teste feitas em 2026-11-19 (avaliadas no ADR 0022). Atualizado na consolidação da E9 (2026-11-23)
 - **Data:** 2026-11-12
 - **Etapa:** E7 (Telecom e Bank)
 

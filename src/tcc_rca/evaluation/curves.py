@@ -83,12 +83,20 @@ def detector_curves(config: Config, tables_dir: Path, system: str) -> dict[str, 
     return out
 
 
+def _comma(x: float) -> str:
+    """Two decimals with a decimal comma (the figure goes into a Portuguese text, ABNT)."""
+    return f"{x:.2f}".replace(".", ",")
+
+
 def write_pr_roc_figure(config: Config, tables_dir: Path, figures_dir: Path) -> dict[str, Any]:
     """One figure, both systems: PR (left) and ROC (right) per system (row)."""
     import matplotlib
 
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
+    from matplotlib.ticker import FuncFormatter
+
+    comma_axis = FuncFormatter(lambda v, _: f"{v:g}".replace(".", ","))
 
     systems = ("Telecom", "Bank")
     fig, axes = plt.subplots(2, 2, figsize=(10, 8.4))
@@ -105,12 +113,12 @@ def write_pr_roc_figure(config: Config, tables_dir: Path, figures_dir: Path) -> 
             dashed = method == "prior_horario"
             style = {"color": color, "lw": 1.6 if dashed else 2.0, "ls": "--" if dashed else "-"}
             ax_pr.step(
-                c.recall, c.precision, where="post", label=f"{label}: {c.auc_pr:.2f}", **style
+                c.recall, c.precision, where="post", label=f"{label}: {_comma(c.auc_pr)}", **style
             )
-            ax_roc.plot(c.fpr, c.tpr, label=f"{label}: {c.auc_roc:.2f}", **style)
+            ax_roc.plot(c.fpr, c.tpr, label=f"{label}: {_comma(c.auc_roc)}", **style)
         chance = next(iter(cur.values())).positive_rate
         ax_pr.axhline(chance, color="#c3c2b7", lw=1)
-        ax_pr.text(0.99, chance + 0.015, f"acaso {chance:.2f}", ha="right", fontsize=8)
+        ax_pr.text(0.99, chance + 0.015, f"acaso {_comma(chance)}", ha="right", fontsize=8)
         ax_roc.plot([0, 1], [0, 1], color="#c3c2b7", lw=1)
         ax_pr.set(xlim=(0, 1), ylim=(0, 1.02), xlabel="revocação", ylabel="precisão")
         ax_roc.set(xlim=(0, 1), ylim=(0, 1.02), xlabel="taxa de falsos positivos")
@@ -121,6 +129,8 @@ def write_pr_roc_figure(config: Config, tables_dir: Path, figures_dir: Path) -> 
         ax_roc.legend(fontsize=8, frameon=False, loc="lower right")
         for ax in (ax_pr, ax_roc):
             ax.grid(color="#e1e0d9", lw=0.6)
+            ax.xaxis.set_major_formatter(comma_axis)
+            ax.yaxis.set_major_formatter(comma_axis)
             ax.spines[["top", "right"]].set_visible(False)
     fig.suptitle(
         "Detecção por janela no teste (LSTMs: seed 0; janelas de rótulo nulo fora)",
@@ -132,6 +142,6 @@ def write_pr_roc_figure(config: Config, tables_dir: Path, figures_dir: Path) -> 
     fig.tight_layout()
     figures_dir.mkdir(parents=True, exist_ok=True)
     path = figures_dir / "rq1_curvas_pr_roc.png"
-    fig.savefig(path, dpi=130)
+    fig.savefig(path, dpi=300)
     plt.close(fig)
     return {"figure": str(path), "auc": summary}

@@ -4,7 +4,7 @@
   "reference": {
     "label": "Opus",
     "model": "claude-opus-5-5",
-    "e8_run": "20261120T071429-agent_eval"
+    "e8_run": "20261123T201336-agent_eval"
   },
   "candidate": {
     "label": "Haiku",
@@ -1022,6 +1022,31 @@
       "valid_rate": 1.0
     }
   },
-  "replay": {},
-  "run_dir": "20261120T195649-model_compare"
+  "replay": {
+    "A1": {
+      "replay_run": "20261123T200905-agent_a1_replay",
+      "paid_calls": 0,
+      "cache_hits": 895,
+      "same_predictions": true,
+      "same_metrics": true,
+      "ok": true
+    },
+    "A2": {
+      "replay_run": "20261123T201004-agent_a2_replay",
+      "paid_calls": 0,
+      "cache_hits": 863,
+      "same_predictions": true,
+      "same_metrics": true,
+      "ok": true
+    },
+    "A3": {
+      "replay_run": "20261123T201100-agent_a3_replay",
+      "paid_calls": 0,
+      "cache_hits": 762,
+      "same_predictions": true,
+      "same_metrics": true,
+      "ok": true
+    }
+  },
+  "run_dir": "20261123T201346-model_compare"
 }

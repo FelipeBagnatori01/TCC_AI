@@ -37,3 +37,6 @@ build/
 dist/
 mlruns/
 .DS_Store
+
+# Local machine settings (E9): e.g. paths.data_root of a third party's OpenRCA copy
+configs/local.yaml

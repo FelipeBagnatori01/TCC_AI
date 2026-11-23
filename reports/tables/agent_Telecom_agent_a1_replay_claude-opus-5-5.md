@@ -1,6 +1,6 @@
 # Agente (E7) — Telecom, variante A1 (test)
 
-Modelo: `anthropic` / `claude-opus-5-5` (esforço: medium). 45 consultas x 1 repetição(ões). Execução: `20261120T070324-agent_a1_replay`.
+Modelo: `anthropic` / `claude-opus-5-5` (esforço: medium). 45 consultas x 1 repetição(ões). Execução: `20261123T200227-agent_a1_replay`.
 
 | Medida | Valor |
 |---|---|

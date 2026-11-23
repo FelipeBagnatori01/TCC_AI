@@ -1,0 +1,35 @@
+{
+  "system": "Telecom",
+  "variant": "A2",
+  "case_set": "test",
+  "cases": 45,
+  "repetitions": 1,
+  "case_runs": 45,
+  "status": {
+    "valid": 45
+  },
+  "valid_rate": 1.0,
+  "valid_after_retry": 0,
+  "mean_turns": 3.733,
+  "mean_tool_calls": 3.978,
+  "budget_stopped": false,
+  "provider": "anthropic",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "budget_usd": 0.0,
+  "cost_usd": 0.0,
+  "cost_per_case_run_usd": 0.0,
+  "max_case_cost_usd": 0.0,
+  "usage": {
+    "calls": 168,
+    "cache_hits": 168,
+    "paid_calls": 0,
+    "input_tokens": 426,
+    "cached_input_tokens": 810030,
+    "cache_write_tokens": 416135,
+    "output_tokens": 43734,
+    "cost_usd": 0.0,
+    "latency_s": 0.068033
+  },
+  "run_dir": "20261123T200505-agent_a2_replay"
+}

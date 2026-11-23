@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import resource
 import sys
 import time
@@ -267,6 +268,73 @@ def cmd_agent(config: Config, _: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_reproduce(_: Config, args: argparse.Namespace) -> int:
+    from tcc_rca.reproduce import run
+
+    files = [str(p) for p in args.config]
+    out = run(
+        args.level, files[:1], files[1:], args.systems, Path("experiments/reproduce"), args.dry_run
+    )
+    print(f"reproduce dir: {out}")
+    return 0
+
+
+def cmd_reproduce_check(config: Config, args: argparse.Namespace) -> int:
+    from tcc_rca.bundle import REFERENCE, compare_evidence
+    from tcc_rca.evaluation.reproduce_check import check, write_markdown
+
+    root = config.paths.experiments_dir / "reproduce"
+    run_dir = args.run or max(p for p in root.iterdir() if (p / "manifest.json").exists())
+    started = json.loads((run_dir / "manifest.json").read_text(encoding="utf-8"))["started_at"]
+    result = check(TABLES_DIR, started, args.ref, args.rtol, args.atol)
+    reference = root / "pacote" / REFERENCE
+    if reference.is_dir():
+        result["evidence"] = compare_evidence(config, reference)
+    (run_dir / "verificacao.json").write_text(
+        json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
+    write_markdown(result, run_dir / "verificacao.md")
+    print(f"counts: {result['counts']}")
+    print(f"ok: {result['ok']} (report: {run_dir / 'verificacao.md'})")
+    return 0 if result["ok"] else 1
+
+
+def cmd_cache_bundle(config: Config, args: argparse.Namespace) -> int:
+    from tcc_rca.bundle import make_bundle
+
+    for key, value in make_bundle(config, TABLES_DIR, args.out).items():
+        print(f"{key}: {value}")
+    return 0
+
+
+def cmd_cache_restore(config: Config, args: argparse.Namespace) -> int:
+    from tcc_rca.bundle import restore_bundle
+
+    for key, value in restore_bundle(config, args.bundle, args.use_reference_evidence).items():
+        print(f"{key}: {value}")
+    return 0
+
+
+def cmd_repo_audit(_: Config, args: argparse.Namespace) -> int:
+    from tcc_rca.repo_audit import scan, write_report
+
+    result = scan(args.max_mb)
+    write_report(result, args.out)
+    print(
+        f"commits: {result['commits']} blobs: {result['blobs']} findings: {len(result['findings'])}"
+    )
+    print(f"report: {args.out}")
+    return 0 if result["ok"] else 1
+
+
+def cmd_thesis_assets(_: Config, args: argparse.Namespace) -> int:
+    from tcc_rca.thesis_assets import build
+
+    for key, value in build(TABLES_DIR, Path("reports/figures"), args.out).items():
+        print(f"{key}: {value}")
+    return 0
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="tcc-rca")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -299,6 +367,31 @@ def main(argv: Sequence[str] | None = None) -> int:
     add("agent", "run one agent variant over the test or pilot queries (E7, paid API calls)")
     add("evaluate-agent", "official scores, paired tests, fidelity and cost of the E7 runs (E8)")
     add("compare-models", "cheaper model vs. the E8 model on the same agent runs (ADR 0023)")
+    rep = add(
+        "reproduce", "run the thesis pipeline end to end (E9): principal|agente-cache|completo"
+    )
+    rep.add_argument("--level", required=True, choices=["principal", "agente-cache", "completo"])
+    rep.add_argument("--systems", nargs="+", default=["Telecom", "Bank"])
+    rep.add_argument("--dry-run", action="store_true", help="print the commands only")
+    chk = add("reproduce-check", "compare regenerated tables with the committed ones (E9)")
+    chk.add_argument("--run", type=Path, help="reproduce dir (default: the latest)")
+    chk.add_argument("--ref", default="HEAD", help="git revision holding the reference tables")
+    chk.add_argument("--rtol", type=float, default=0.0)
+    chk.add_argument("--atol", type=float, default=0.0)
+    bun = add("cache-bundle", "pack the LLM cache and agent runs for a GitHub Release (E9)")
+    bun.add_argument("--out", type=Path, default=Path("experiments/tcc_rca_cache_llm.tar.gz"))
+    res = add("cache-restore", "unpack the release bundle into experiments/ (checksums verified)")
+    res.add_argument("--bundle", type=Path, required=True)
+    res.add_argument(
+        "--use-reference-evidence",
+        action="store_true",
+        help="replace regenerated evidence packages that differ by the ones the agent saw",
+    )
+    aud = add("repo-audit", "scan every commit for API keys, telemetry and large files (E9)")
+    aud.add_argument("--max-mb", type=float, default=5.0)
+    aud.add_argument("--out", type=Path, default=Path("reports/auditoria_git.md"))
+    ta = add("thesis-assets", "ABNT tables (docx + csv) and figures for the monograph (E9)")
+    ta.add_argument("--out", type=Path, default=Path("reports/monografia"))
     add("rq1-curves", "PR and ROC curves of the E4/E5 detectors on the test windows (E8)")
     eda = add("eda", "plot KPIs around failures")
     eda.add_argument("-n", type=int, default=10, help="number of failures to plot")
@@ -328,6 +421,12 @@ def main(argv: Sequence[str] | None = None) -> int:
         "agent": cmd_agent,
         "evaluate-agent": cmd_evaluate_agent,
         "compare-models": cmd_compare_models,
+        "reproduce": cmd_reproduce,
+        "reproduce-check": cmd_reproduce_check,
+        "cache-bundle": cmd_cache_bundle,
+        "cache-restore": cmd_cache_restore,
+        "repo-audit": cmd_repo_audit,
+        "thesis-assets": cmd_thesis_assets,
         "rq1-curves": cmd_rq1_curves,
     }
     return int(handlers[args.command](config, args))

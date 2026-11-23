@@ -1,0 +1,35 @@
+{
+  "system": "Bank",
+  "variant": "A1",
+  "case_set": "test",
+  "cases": 120,
+  "repetitions": 1,
+  "case_runs": 120,
+  "status": {
+    "valid": 120
+  },
+  "valid_rate": 1.0,
+  "valid_after_retry": 25,
+  "mean_turns": 7.458,
+  "mean_tool_calls": 19.008,
+  "budget_stopped": false,
+  "provider": "anthropic",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "budget_usd": 0.0,
+  "cost_usd": 0.0,
+  "cost_per_case_run_usd": 0.0,
+  "max_case_cost_usd": 0.0,
+  "usage": {
+    "calls": 895,
+    "cache_hits": 895,
+    "paid_calls": 0,
+    "input_tokens": 2080,
+    "cached_input_tokens": 10633172,
+    "cache_write_tokens": 3486301,
+    "output_tokens": 717089,
+    "cost_usd": 0.0,
+    "latency_s": 0.412201
+  },
+  "run_dir": "20261123T200905-agent_a1_replay"
+}

@@ -712,3 +712,12 @@ Execuções em 2026-11-20: 100% de respostas válidas, US$ 3,35 no total.
   - a evidência melhora os dois (A3 × A1 superior em 3 dos 4 casos), sem chegar ao Opus;
   - no Opus, a evidência não teve efeito detectável.
 - **Detalhes:** ADR 0023, adendo.
+
+## E9 — Reprodutibilidade e insumos da monografia (ADR 0024)
+
+- **Agente a partir do cache:**
+  - as 18 execuções de teste (Opus, Haiku e Sonnet × A1–A3 × 2 sistemas) foram refeitas do cache, com 0 chamadas pagas e sem chave de API;
+  - previsões e `metrics.json` idênticos aos originais em todas.
+- **Pacote do cache:** publicado na Release `cache-llm-2026-11-23` (92 MB). A restauração numa pasta vazia confere checksums e pacotes de evidência.
+- **Histórico do Git:** nenhuma chave de API, telemetria ou arquivo grande em 24 commits (`reports/auditoria_git.md`).
+- **Tabelas e figuras da monografia:** em `reports/monografia/`, no padrão ABNT, geradas só a partir de `reports/tables`. A origem de cada item está em `MANIFEST.csv` e a de cada número citado, em `numeros.csv` (`docs/RASTREABILIDADE.md`).

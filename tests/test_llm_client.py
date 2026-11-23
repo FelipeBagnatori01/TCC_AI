@@ -169,3 +169,34 @@ def test_haiku_config_matches_the_published_long_prompt_prices(repo_root: Path) 
         cfg.llm.price_output_per_mtok * m,
     )
     assert long_prices == pytest.approx((0.5, 0.625, 0.05, 2.5))
+
+
+def test_cache_replay_needs_no_api_key(
+    config: Config, repo_root: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """E9: a third party replays the agent runs from the shared cache without any API key."""
+    paid = load_config(
+        repo_root / "configs/base.yaml",
+        overrides={
+            "llm": {"provider": "anthropic", "cache_dir": str(config.llm.cache_dir)},
+        },
+    )
+    LLMClient(paid.llm, provider=FakeProvider()).complete(_msgs("replay me"))  # fills the cache
+    for var in ("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN"):
+        monkeypatch.delenv(var, raising=False)
+    replay = load_config(
+        repo_root / "configs/base.yaml",
+        overrides={
+            "llm": {
+                "provider": "anthropic",
+                "cache_dir": str(config.llm.cache_dir),
+                "budget_usd": 0.0,
+            }
+        },
+    )
+    client = LLMClient(replay.llm)  # the real Anthropic adapter, built with no key
+    response = client.complete(_msgs("replay me"))
+    assert response.cached
+    assert response.cost_usd == 0.0
+    with pytest.raises(BudgetExceededError):  # a miss stops before any request is attempted
+        client.complete(_msgs("not cached"))

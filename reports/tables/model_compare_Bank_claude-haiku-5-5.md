@@ -96,3 +96,9 @@ Iguala o Opus (não inferior a todas as variantes dele):
 | Haiku A1 | 0/1260 | 0/790 | 5/116 | 6/581 | 0.33 |
 | Haiku A2 | 0/1347 | 0/796 | 0/75 | 2/622 | 0.25 |
 | Haiku A3 | 0/1423 | 0/780 | 1/93 | 4/775 | 0.27 |
+
+## Reprodução a partir do cache
+
+- Haiku A1: ok (0 pagas)
+- Haiku A2: ok (0 pagas)
+- Haiku A3: ok (0 pagas)

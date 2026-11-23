@@ -1,0 +1,19 @@
+﻿Sistema;Comparação;Diferença [IC 95%];Veredito;b/c;p (Holm)
+Telecom;A3 − A1;"−0,02 [−0,13; 0,09]";empate;4/5;1,000
+Telecom;A2 − A1;"0,01 [−0,13; 0,15]";empate;6/7;1,000
+Telecom;A3 − A2;"−0,03 [−0,14; 0,09]";empate;4/4;1,000
+Telecom;A1 − A0;"0,41 [0,24; 0,57]";superior;21/3;—
+Telecom;A1 − pacote;"0,18 [0,02; 0,34]";superior;14/4;—
+Telecom;A2 − A0;"0,42 [0,26; 0,57]";superior;19/2;—
+Telecom;A2 − pacote;"0,19 [0,04; 0,34]";superior;11/2;—
+Telecom;A3 − A0;"0,39 [0,22; 0,56]";superior;20/3;—
+Telecom;A3 − pacote;"0,16 [0,02; 0,30]";superior;11/2;—
+Bank;A3 − A1;"0,03 [−0,05; 0,10]";empate;13/12;1,000
+Bank;A2 − A1;"−0,02 [−0,09; 0,05]";empate;8/14;0,689
+Bank;A3 − A2;"0,05 [−0,02; 0,13]";empate;16/9;0,689
+Bank;A1 − A0;"0,29 [0,19; 0,39]";superior;38/5;—
+Bank;A1 − pacote;"0,08 [−0,03; 0,19]";empate;31/16;—
+Bank;A2 − A0;"0,27 [0,18; 0,36]";superior;32/5;—
+Bank;A2 − pacote;"0,05 [−0,05; 0,16]";empate;26/17;—
+Bank;A3 − A0;"0,32 [0,23; 0,41]";superior;40/6;—
+Bank;A3 − pacote;"0,11 [0,01; 0,20]";superior;29/13;—

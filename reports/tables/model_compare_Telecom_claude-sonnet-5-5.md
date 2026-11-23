@@ -96,3 +96,9 @@ Iguala o Opus (não inferior a todas as variantes dele):
 | Sonnet A1 | 0/173 | 0/181 | 0/196 | 12/131 | 0.24 |
 | Sonnet A2 | 0/172 | 0/191 | 0/178 | 1/187 | 0.12 |
 | Sonnet A3 | 0/398 | 0/226 | 0/175 | 4/210 | 0.17 |
+
+## Reprodução a partir do cache
+
+- Sonnet A1: ok (0 pagas)
+- Sonnet A2: ok (0 pagas)
+- Sonnet A3: ok (0 pagas)

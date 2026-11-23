@@ -1,6 +1,6 @@
 # Agente (E7) — Bank, variante A1 (test)
 
-Modelo: `anthropic` / `claude-opus-5-5` (esforço: medium). 120 consultas x 1 repetição(ões). Execução: `20261120T070431-agent_a1_replay`.
+Modelo: `anthropic` / `claude-opus-5-5` (esforço: medium). 120 consultas x 1 repetição(ões). Execução: `20261123T200600-agent_a1_replay`.
 
 | Medida | Valor |
 |---|---|

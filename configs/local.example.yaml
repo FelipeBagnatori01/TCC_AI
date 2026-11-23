@@ -1,0 +1,6 @@
+# E9 (ADR 0024): copy to configs/local.yaml (gitignored) and pass it LAST, e.g.
+#   make reproduce CONFIG="configs/base.yaml configs/local.yaml"
+# data_root must hold Telecom/, Bank/ and AppTelecomDeploymentList.xlsx as downloaded from the
+# OpenRCA Google Drive (see README.md). The default, data/raw/openrca, expects symlinks there.
+paths:
+  data_root: /caminho/para/openrca

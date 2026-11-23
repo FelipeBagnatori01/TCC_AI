@@ -1,0 +1,7 @@
+﻿Sistema;Variante;IDs não emitidos;Componentes inexistentes;Números sem correspondência;Sustentadas;Parciais;Custo por consulta;Latência média
+Telecom;A1;0/519;0/347;5/361;0,65;0,10;US$ 0,193;34 s
+Telecom;A2;0/531;0/344;1/419;0,80;0,15;US$ 0,168;29 s
+Telecom;A3;0/774;0/332;5/483;0,80;0,10;US$ 0,162;28 s
+Bank;A1;0/1221;0/920;11/1203;0,75;0,05;US$ 0,232;36 s
+Bank;A2;0/1519;0/901;13/1449;0,90;0,05;US$ 0,217;36 s
+Bank;A3;0/2018;0/830;9/1522;0,90;0,05;US$ 0,221;36 s

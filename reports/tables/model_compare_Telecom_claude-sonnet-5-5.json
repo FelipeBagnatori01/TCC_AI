@@ -4,7 +4,7 @@
   "reference": {
     "label": "Opus",
     "model": "claude-opus-5-5",
-    "e8_run": "20261120T071423-agent_eval"
+    "e8_run": "20261123T200535-agent_eval"
   },
   "candidate": {
     "label": "Sonnet",
@@ -967,6 +967,31 @@
       "valid_rate": 1.0
     }
   },
-  "replay": {},
-  "run_dir": "20261120T214639-model_compare"
+  "replay": {
+    "A1": {
+      "replay_run": "20261123T200448-agent_a1_replay",
+      "paid_calls": 0,
+      "cache_hits": 273,
+      "same_predictions": true,
+      "same_metrics": true,
+      "ok": true
+    },
+    "A2": {
+      "replay_run": "20261123T200505-agent_a2_replay",
+      "paid_calls": 0,
+      "cache_hits": 168,
+      "same_predictions": true,
+      "same_metrics": true,
+      "ok": true
+    },
+    "A3": {
+      "replay_run": "20261123T200520-agent_a3_replay",
+      "paid_calls": 0,
+      "cache_hits": 218,
+      "same_predictions": true,
+      "same_metrics": true,
+      "ok": true
+    }
+  },
+  "run_dir": "20261123T200551-model_compare"
 }

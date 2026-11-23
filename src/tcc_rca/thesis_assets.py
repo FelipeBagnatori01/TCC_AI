@@ -20,8 +20,10 @@ import csv
 import json
 import shutil
 import subprocess
+import zipfile
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass, field
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -517,10 +519,27 @@ def _source(doc: Any, note: str) -> None:
 
 def _new_doc() -> Any:
     doc = Document()
+    fixed = datetime(2026, 1, 1, tzinfo=UTC)  # fixed metadata: same input, same bytes
+    doc.core_properties.created = fixed
+    doc.core_properties.modified = fixed
+    doc.core_properties.last_printed = fixed
+    doc.core_properties.author = "tcc-rca thesis-assets"
+    doc.core_properties.last_modified_by = "tcc-rca thesis-assets"
     style = doc.styles["Normal"]
     style.font.name = "Arial"
     style.font.size = Pt(11)
     return doc
+
+
+def _save(doc: Any, path: Path) -> None:
+    """Saves a .docx with fixed zip timestamps, so the same input gives the same bytes."""
+    doc.save(str(path))
+    with zipfile.ZipFile(path) as src:
+        entries = [(i.filename, src.read(i.filename)) for i in src.infolist()]
+    with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as dst:
+        for name, data in entries:
+            dst.writestr(zipfile.ZipInfo(name, date_time=(2026, 1, 1, 0, 0, 0)), data,
+                         compress_type=zipfile.ZIP_DEFLATED)  # fmt: skip
 
 
 def write_tables(tables: Sequence[TableAsset], out_dir: Path) -> None:
@@ -546,7 +565,7 @@ def write_tables(tables: Sequence[TableAsset], out_dir: Path) -> None:
             w = csv.writer(handle, delimiter=";", lineterminator="\n")
             w.writerow(t.header)
             w.writerows(t.rows)
-    doc.save(str(out_dir / "tabelas.docx"))
+    _save(doc, out_dir / "tabelas.docx")
 
 
 def write_figures(figures: Sequence[FigureAsset], s: Source, out_dir: Path) -> None:
@@ -566,7 +585,7 @@ def write_figures(figures: Sequence[FigureAsset], s: Source, out_dir: Path) -> N
         doc.add_picture(str(path), width=Cm(16))
         doc.paragraphs[-1].alignment = WD_ALIGN_PARAGRAPH.CENTER
         _source(doc, f.note)
-    doc.save(str(out_dir / "figuras.docx"))
+    _save(doc, out_dir / "figuras.docx")
 
 
 def _commit() -> str:

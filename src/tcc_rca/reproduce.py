@@ -138,9 +138,19 @@ def plan(level: str, systems: Sequence[str] = SYSTEMS) -> list[Step]:
     return [*steps, Step("rq1-curves")]
 
 
-def preflight(config: Config, systems: Sequence[str]) -> list[str]:
+RELEASE = "cache-llm-2026-11-23"
+
+
+def preflight(
+    config: Config,
+    systems: Sequence[str],
+    level: str = "principal",
+    tables_dir: Path = Path("reports/tables"),
+) -> list[str]:
     """What is missing before any step runs, each with the fix (messages in Portuguese, like the
-    README they point to). Empty when the data and the OpenRCA scorer are in place."""
+    README they point to). Empty when the data and the OpenRCA scorer are in place and, for
+    ``agente-cache``, when the cache bundle has been restored: without it every replay would
+    stop at its first call and write empty tables over the committed ones."""
     problems = []
     root = config.paths.data_root
     for system in systems:
@@ -162,6 +172,26 @@ def preflight(config: Config, systems: Sequence[str]) -> list[str]:
             f"submódulo do OpenRCA vazio ({config.paths.openrca_repo}): rode "
             "git submodule update --init (o clone precisa de --recurse-submodules)"
         )
+    if level == "agente-cache":
+        from tcc_rca.bundle import agent_runs
+
+        exp = config.paths.experiments_dir
+        cache = config.llm.cache_dir
+        missing = [
+            r for r in agent_runs(tables_dir) if not (exp / Path(r).name / "artifacts").is_dir()
+        ]
+        if not cache.is_dir() or not any(cache.iterdir()) or missing:
+            problems.append(
+                f"pacote do cache não restaurado (cache em {cache}"
+                + (
+                    f"; faltam {len(missing)} execuções originais do agente em {exp}"
+                    if missing
+                    else ""
+                )
+                + f"): baixe tcc_rca_cache_llm.tar.gz da Release {RELEASE} e rode "
+                "uv run tcc-rca cache-restore --config <as mesmas configs> "
+                "--bundle /caminho/para/tcc_rca_cache_llm.tar.gz (README, seção Reprodução)"
+            )
     return problems
 
 
@@ -177,7 +207,7 @@ def run(
     and the OpenRCA submodule first, so a missing link fails at once with the fix."""
     steps = plan(level, systems)
     if not dry_run:
-        problems = preflight(load_config(*base, *extra), systems)
+        problems = preflight(load_config(*base, *extra), systems, level)
         if problems:
             raise SystemExit("Antes de reproduzir:\n- " + "\n- ".join(problems))
     stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%S")
@@ -214,6 +244,17 @@ def run(
         if rc != 0:
             raise RuntimeError(f"step {i} failed ({step.label()}); see {out}/step_{i:02d}.log")
     return out
+
+
+def latest_runs(root: Path) -> list[Path]:
+    """The latest reproduce dir of each level (``principal`` and ``agente-cache`` are separate
+    runs, so checking only the newest would count the other level's tables as not regenerated)."""
+    latest: dict[str, Path] = {}
+    for d in sorted(p for p in root.iterdir() if (p / "manifest.json").is_file()):
+        latest[json.loads((d / "manifest.json").read_text(encoding="utf-8"))["level"]] = d
+    if not latest:
+        raise SystemExit(f"nenhuma reprodução em {root}: rode make reproduce antes")
+    return sorted(latest.values())
 
 
 def _commit() -> str:

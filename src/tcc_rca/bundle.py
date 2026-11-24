@@ -37,7 +37,7 @@ Conteúdo:
   Sonnet 5.5), com previsões, transcrições e registro de chamadas;
 - referencia/evidence/: os pacotes de evidência LSTM/XAI que o agente recebeu.
 
-Uso: tcc-rca cache-restore --config configs/base.yaml <este arquivo>; depois
+Uso: tcc-rca cache-restore --bundle <este arquivo>; depois
 tcc-rca reproduce --level agente-cache (ver README.md do repositório). Nenhuma chave de API é
 necessária: as chamadas vêm do cache, com teto de custo zero.
 
@@ -122,6 +122,11 @@ def restore_bundle(config: Config, bundle: Path, use_reference_evidence: bool) -
     """Extracts into the experiments dir after checking every checksum; never overwrites a
     different existing file. ``use_reference_evidence`` copies the bundled evidence packages over
     the regenerated ones (the regenerated ones are kept under ``<name>_regenerado``)."""
+    if not bundle.is_file():
+        raise FileNotFoundError(
+            f"bundle not found: {bundle} (download tcc_rca_cache_llm.tar.gz from the release and "
+            "pass its full path to --bundle)"
+        )
     exp = config.paths.experiments_dir
     staging = exp / "reproduce" / "pacote"
     if staging.exists():

@@ -282,11 +282,16 @@ def cmd_reproduce(_: Config, args: argparse.Namespace) -> int:
 def cmd_reproduce_check(config: Config, args: argparse.Namespace) -> int:
     from tcc_rca.bundle import REFERENCE, compare_evidence
     from tcc_rca.evaluation.reproduce_check import check, write_markdown
+    from tcc_rca.reproduce import latest_runs
 
     root = config.paths.experiments_dir / "reproduce"
-    run_dir = args.run or max(p for p in root.iterdir() if (p / "manifest.json").exists())
-    started = json.loads((run_dir / "manifest.json").read_text(encoding="utf-8"))["started_at"]
-    result = check(TABLES_DIR, started, args.ref, args.rtol, args.atol)
+    runs = [args.run] if args.run else latest_runs(root)
+    run_dir = max(runs)
+    manifests = [json.loads((r / "manifest.json").read_text(encoding="utf-8")) for r in runs]
+    result = check(
+        TABLES_DIR, min(m["started_at"] for m in manifests), args.ref, args.rtol, args.atol
+    )
+    result["runs"] = [str(r) for r in runs]
     reference = root / "pacote" / REFERENCE
     if reference.is_dir():
         result["evidence"] = compare_evidence(config, reference)
@@ -374,7 +379,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     rep.add_argument("--systems", nargs="+", default=["Telecom", "Bank"])
     rep.add_argument("--dry-run", action="store_true", help="print the commands only")
     chk = add("reproduce-check", "compare regenerated tables with the committed ones (E9)")
-    chk.add_argument("--run", type=Path, help="reproduce dir (default: the latest)")
+    chk.add_argument("--run", type=Path, help="reproduce dir (default: the latest of each level)")
     chk.add_argument("--ref", default="HEAD", help="git revision holding the reference tables")
     chk.add_argument("--rtol", type=float, default=0.0)
     chk.add_argument("--atol", type=float, default=0.0)

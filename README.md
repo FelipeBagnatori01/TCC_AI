@@ -76,12 +76,13 @@ A telemetria do OpenRCA é licenciada sob **CC BY-NC 4.0** (uso não comercial, 
 
 1. Rode `make reproduce` primeiro: as ferramentas do agente leem as séries e os pacotes regenerados.
 2. Baixe o anexo `tcc_rca_cache_llm.tar.gz` da Release [`cache-llm-2026-11-23`](https://github.com/FelipeBagnatori01/TCC_AI/releases/tag/cache-llm-2026-11-23). SHA-256: `028962e5e38e8cc217a9a3ccdbdae3cea21ca8c6e92268649947126dfaff502b`.
-3. Restaure o pacote:
+3. Restaure o pacote, com o caminho completo do arquivo baixado (e as mesmas configurações do `make reproduce`, se usou `configs/local.yaml`):
    ```bash
-   uv run tcc-rca cache-restore --bundle tcc_rca_cache_llm.tar.gz
-   make reproduce-agent
-   make reproduce-check
+   uv run tcc-rca cache-restore --config configs/base.yaml configs/local.yaml --bundle ~/Downloads/tcc_rca_cache_llm.tar.gz
+   make reproduce-agent CONFIG="configs/base.yaml configs/local.yaml"
+   make reproduce-check CONFIG="configs/base.yaml configs/local.yaml"
    ```
+   O `make reproduce-agent` não começa se o pacote não estiver restaurado. O `reproduce-check` considera a última execução de cada nível (`principal` e `agente-cache`).
 
 **Como funciona:**
 - **Restauração:** o `cache-restore` confere o SHA-256 de cada arquivo e informa se os pacotes de evidência regenerados são idênticos aos que o agente viu.

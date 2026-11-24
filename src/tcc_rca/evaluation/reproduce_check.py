@@ -134,6 +134,11 @@ def write_markdown(result: dict[str, Any], path: Path) -> None:
         "",
         f"Referência: `{result['ref']}`; tolerância rtol = {result['rtol']}, "
         f"atol = {result['atol']}.",
+        *(
+            ["", "Reproduções consideradas: " + ", ".join(f"`{r}`" for r in result["runs"]) + "."]
+            if result.get("runs")
+            else []
+        ),
         "",
         "| Situação | Arquivos |",
         "|---|---|",

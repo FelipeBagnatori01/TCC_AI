@@ -202,3 +202,67 @@ def test_preflight_names_missing_data_and_submodule(tmp_path: Path, repo_root: P
     (tmp_path / "OpenRCA" / "main").mkdir(parents=True)
     (tmp_path / "OpenRCA" / "main" / "evaluate.py").write_text("", encoding="utf-8")
     assert preflight(cfg, SYSTEMS) == []
+
+
+def test_preflight_requires_the_restored_cache_for_agent_replays(
+    tmp_path: Path, repo_root: Path
+) -> None:
+    from tcc_rca.reproduce import preflight
+
+    tables = tmp_path / "tables"
+    tables.mkdir()
+    run = "experiments/20261119T194655-agent_a1"
+    (tables / "agent_Telecom_agent_a1_claude-opus-5-5.json").write_text(
+        json.dumps({"run_dir": run}), encoding="utf-8"
+    )
+    cfg = load_config(
+        repo_root / "configs/base.yaml",
+        overrides={
+            "paths": {"experiments_dir": str(tmp_path / "exp"), "openrca_repo": str(repo_root)},
+            "llm": {"cache_dir": str(tmp_path / "exp" / "llm_cache")},
+        },
+    )
+
+    def cache_problems() -> list[str]:
+        return [p for p in preflight(cfg, [], "agente-cache", tables) if "cache-restore" in p]
+
+    assert not [p for p in preflight(cfg, [], "principal", tables) if "cache-restore" in p]
+    assert len(cache_problems()) == 1
+    (tmp_path / "exp" / "llm_cache").mkdir(parents=True)
+    (tmp_path / "exp" / "llm_cache" / "x.json").write_text("{}", encoding="utf-8")
+    assert "faltam 1" in cache_problems()[0]
+    (tmp_path / "exp" / Path(run).name / "artifacts").mkdir(parents=True)
+    assert cache_problems() == []
+
+
+def test_restore_refuses_a_missing_bundle_without_touching_experiments(
+    tmp_path: Path, repo_root: Path
+) -> None:
+    from tcc_rca.bundle import restore_bundle
+
+    cfg = load_config(
+        repo_root / "configs/base.yaml",
+        overrides={"paths": {"experiments_dir": str(tmp_path / "exp")}},
+    )
+    with pytest.raises(FileNotFoundError, match="bundle not found"):
+        restore_bundle(cfg, tmp_path / "nope.tar.gz", use_reference_evidence=False)
+    assert not (tmp_path / "exp").exists()
+
+
+def test_latest_runs_takes_one_dir_per_level(tmp_path: Path) -> None:
+    from tcc_rca.reproduce import latest_runs
+
+    for stamp, level in [
+        ("20261123T1-principal", "principal"),
+        ("20261123T2-principal", "principal"),
+        ("20261124T1-agente-cache", "agente-cache"),
+    ]:
+        (tmp_path / stamp).mkdir()
+        (tmp_path / stamp / "manifest.json").write_text(
+            json.dumps({"level": level}), encoding="utf-8"
+        )
+    (tmp_path / "pacote").mkdir()
+    assert [p.name for p in latest_runs(tmp_path)] == [
+        "20261123T2-principal",
+        "20261124T1-agente-cache",
+    ]

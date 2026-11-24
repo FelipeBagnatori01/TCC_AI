@@ -29,6 +29,8 @@ from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
 
+from tcc_rca.config import Config, load_config
+
 LEVELS = ("principal", "agente-cache", "completo")
 SYSTEMS = ("Telecom", "Bank")
 SYSTEM_CONFIG = {"Telecom": None, "Bank": "configs/system/bank.yaml"}
@@ -136,6 +138,33 @@ def plan(level: str, systems: Sequence[str] = SYSTEMS) -> list[Step]:
     return [*steps, Step("rq1-curves")]
 
 
+def preflight(config: Config, systems: Sequence[str]) -> list[str]:
+    """What is missing before any step runs, each with the fix (messages in Portuguese, like the
+    README they point to). Empty when the data and the OpenRCA scorer are in place."""
+    problems = []
+    root = config.paths.data_root
+    for system in systems:
+        if not (root / system / "query.csv").is_file():
+            problems.append(
+                f"dados do {system} não encontrados em {root / system}: crie a pasta e os links "
+                f"(mkdir -p {root}; ln -s /caminho/{system} {root / system}) ou aponte "
+                "paths.data_root em configs/local.yaml (README, seção Dados)"
+            )
+    if "Telecom" in systems and config.series.deployment_list is not None:
+        deployment = root / config.series.deployment_list
+        if not deployment.is_file():
+            problems.append(
+                f"{deployment} não encontrado: ligue AppTelecomDeploymentList.xlsx em {root}"
+            )
+    scorer = config.paths.openrca_repo / "main" / "evaluate.py"
+    if not scorer.is_file():
+        problems.append(
+            f"submódulo do OpenRCA vazio ({config.paths.openrca_repo}): rode "
+            "git submodule update --init (o clone precisa de --recurse-submodules)"
+        )
+    return problems
+
+
 def run(
     level: str,
     base: Sequence[str],
@@ -144,8 +173,13 @@ def run(
     out_root: Path,
     dry_run: bool = False,
 ) -> Path:
-    """Runs the steps in order (separate processes); stops at the first failure."""
+    """Runs the steps in order (separate processes); stops at the first failure. Checks the data
+    and the OpenRCA submodule first, so a missing link fails at once with the fix."""
     steps = plan(level, systems)
+    if not dry_run:
+        problems = preflight(load_config(*base, *extra), systems)
+        if problems:
+            raise SystemExit("Antes de reproduzir:\n- " + "\n- ".join(problems))
     stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%S")
     out = out_root / f"{stamp}-{level}"
     out.mkdir(parents=True, exist_ok=False)

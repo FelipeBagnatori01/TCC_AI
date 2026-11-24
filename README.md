@@ -40,7 +40,7 @@ make setup   # uv sync, cria .env a partir de .env.example e instala o pre-commi
 make test    # testes (dados sintéticos; não precisam do OpenRCA)
 ```
 
-O OpenRCA entra como submódulo em `external/OpenRCA`, no commit fixado no ADR 0003, porque o script oficial de avaliação vem de lá.
+O OpenRCA entra como submódulo em `external/OpenRCA`, no commit fixado no ADR 0003, porque o script oficial de avaliação vem de lá. **Se o clone foi feito sem `--recurse-submodules`,** rode `git submodule update --init` antes de reproduzir; sem isso, o script oficial não existe e a avaliação falha.
 
 ## Dados
 
@@ -48,14 +48,18 @@ O OpenRCA entra como submódulo em `external/OpenRCA`, no commit fixado no ADR 0
    - as pastas `Telecom/` e `Bank/`, cada uma com `record.csv`, `query.csv` e `telemetry/`;
    - o arquivo `AppTelecomDeploymentList.xlsx`.
 2. **Aponte o projeto para eles,** por um destes caminhos:
-   - **links simbólicos** em `data/raw/openrca/`, que é o padrão:
+   - **links simbólicos** em `data/raw/openrca/`, que é o padrão. A pasta não existe num clone novo, então crie-a antes:
      ```bash
+     mkdir -p data/raw/openrca
      ln -s /caminho/Telecom data/raw/openrca/Telecom
      ln -s /caminho/Bank data/raw/openrca/Bank
      ln -s /caminho/AppTelecomDeploymentList.xlsx data/raw/openrca/
      ```
-   - **ou** copie `configs/local.example.yaml` para `configs/local.yaml` (fora do Git), ajuste `paths.data_root` e acrescente `configs/local.yaml` ao fim de `CONFIG` nos comandos abaixo.
-3. **Confira** com `uv run tcc-rca verify` (tamanhos e checksums contra `data/MANIFEST.csv`).
+   - **ou,** se `Telecom/`, `Bank/` e o `.xlsx` já estão juntos numa pasta: copie `configs/local.example.yaml` para `configs/local.yaml` (fora do Git), aponte `paths.data_root` para essa pasta e rode os comandos com `CONFIG`. Por exemplo:
+     ```bash
+     make reproduce CONFIG="configs/base.yaml configs/local.yaml"
+     ```
+3. **Confira:** o `make reproduce` checa primeiro se os dados e o submódulo estão no lugar e, se faltar algo, diz o que fazer. A conferência completa é com `uv run tcc-rca verify` (tamanhos e checksums contra `data/MANIFEST.csv`).
 
 A telemetria do OpenRCA é licenciada sob **CC BY-NC 4.0** (uso não comercial, com citação) e **nunca é versionada** neste repositório.
 

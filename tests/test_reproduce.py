@@ -177,3 +177,28 @@ def test_repo_audit_rules() -> None:
     assert KEY.search(b"ANTHROPIC_API_KEY=" + b"x" * 20)
     assert KEY.search(b"sk-ant-api03-" + b"a" * 30)
     assert not KEY.search(b"# ANTHROPIC_API_KEY=\n")  # the empty template line
+
+
+def test_preflight_names_missing_data_and_submodule(tmp_path: Path, repo_root: Path) -> None:
+    from tcc_rca.reproduce import preflight
+
+    cfg = load_config(
+        repo_root / "configs/base.yaml",
+        overrides={
+            "paths": {
+                "data_root": str(tmp_path / "openrca"),
+                "openrca_repo": str(tmp_path / "OpenRCA"),
+            }
+        },
+    )
+    problems = preflight(cfg, SYSTEMS)
+    assert len(problems) == 4  # Telecom, Bank, deployment list, empty submodule
+    assert any("git submodule update --init" in p for p in problems)
+    for system in SYSTEMS:
+        (tmp_path / "openrca" / system).mkdir(parents=True)
+        (tmp_path / "openrca" / system / "query.csv").write_text("", encoding="utf-8")
+    assert cfg.series.deployment_list is not None
+    (tmp_path / "openrca" / cfg.series.deployment_list).write_bytes(b"")
+    (tmp_path / "OpenRCA" / "main").mkdir(parents=True)
+    (tmp_path / "OpenRCA" / "main" / "evaluate.py").write_text("", encoding="utf-8")
+    assert preflight(cfg, SYSTEMS) == []

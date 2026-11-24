@@ -120,3 +120,13 @@ Para ver os comandos de cada nível sem executar: `uv run tcc-rca reproduce --le
 ## Citação dos dados
 
 XU, J. et al. OpenRCA: Can Large Language Models Locate the Root Cause of Software Failures? In: International Conference on Learning Representations (ICLR), 2025. Repositório: https://github.com/microsoft/OpenRCA (código MIT; telemetria CC BY-NC 4.0).
+
+## Licença
+
+| Conteúdo | Licença |
+|---|---|
+| Código (`src/`, `tests/`, `configs/`, `Makefile`, `notebooks/`) | [MIT](LICENSE) |
+| Textos (`README.md`, `docs/`, incluindo os ADRs) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| Resultados derivados da telemetria do OpenRCA (`reports/`) e o anexo da Release `cache-llm-2026-11-23` | [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/), a licença dos dados de origem |
+
+Os trechos copiados dos prompts do agente do OpenRCA (`configs/prompts/candidates_*.yaml` e `systems.yaml`) seguem a licença MIT do código do OpenRCA (Microsoft). Os avisos estão em [`NOTICE`](NOTICE).

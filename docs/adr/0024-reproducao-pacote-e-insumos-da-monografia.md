@@ -39,7 +39,8 @@ Até a E8, o pipeline exigia cerca de 20 comandos manuais. O cache do LLM (47 MB
    - A geração recusa qualquer arquivo com padrão de chave de API.
    - A restauração confere os checksums e não sobrescreve arquivo diferente.
    - **Se os pacotes de evidência regenerados diferirem dos originais** (o que faria o cache errar, porque as saídas das ferramentas entram na chave), a diferença é relatada. A opção `--use-reference-evidence` usa os originais e guarda os regenerados em `<nome>_regenerado`.
-4. **Repositório privado:** o repositório está privado em 2026-11-23, e uma Release de repositório privado só é acessível a quem tem acesso a ele. Para o critério "um terceiro reproduz", o repositório precisa ficar público (ou o terceiro ser convidado) antes da defesa. **Decisão do autor**, registrada em `docs/BLOQUEIOS.md`.
+4. **Repositório privado:** o repositório está privado em 2026-11-23, e uma Release de repositório privado só é acessível a quem tem acesso a ele. Para o critério "um terceiro reproduz", o repositório precisa ficar público (ou o terceiro ser convidado) antes da defesa. **Decisão do autor**, registrada em `docs/BLOQUEIOS.md`. **Resolvido em 2026-11-24:** o repositório é público e o anexo da Release baixa sem autenticação.
+   - **Licenças** (decisão do autor, 2026-11-24): MIT no código; CC BY 4.0 nos textos; CC BY-NC 4.0 nos resultados derivados da telemetria (`reports/`) e no anexo da Release, porque não podem ter licença mais aberta que a dos dados. Os trechos copiados dos prompts do OpenRCA seguem a MIT do código dele (`NOTICE`).
 5. **Insumos da monografia** (`tcc-rca thesis-assets`, `src/tcc_rca/thesis_assets.py`), gerados só a partir de `reports/tables`. **Formato: Word (`.docx`) e `.csv`**, por decisão do autor.
    - **Arquivos em `reports/monografia/`:**
      - `tabelas.docx` e `figuras.docx`, com título acima ("Tabela N – Título") e fonte abaixo, conforme a ABNT NBR 14724; tabelas só com fios horizontais, conforme as normas de apresentação tabular do IBGE;
@@ -92,6 +93,4 @@ Até a E8, o pipeline exigia cerca de 20 comandos manuais. O cache do LLM (47 MB
     - checagem prévia dos dados, do submódulo e do pacote restaurado, porque sem o cache os replays gravavam tabelas vazias;
     - a verificação considera a última execução de cada nível;
     - os tempos de relógio (`seconds`, `train_seconds`, `inference_ms_per_window` e agregados) são ignorados, porque eram as únicas diferenças.
-- **Pendente com o autor:**
-  - a reprodução em outra máquina (critério com `--atol 0.01`), se houver uma disponível;
-  - **tornar o repositório público** (bloqueio registrado).
+- **Pendente com o autor:** a reprodução em outra máquina (critério com `--atol 0.01`), se houver uma disponível.

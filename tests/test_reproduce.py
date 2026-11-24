@@ -67,6 +67,11 @@ def test_diff_ignores_run_dirs_and_wall_clock_but_not_values() -> None:
     assert list(diff_values(ref, {**same, "n": 4}, 1.0, 0.0)) != []  # 3 vs 4 is 33%: outside
     assert list(diff_values([["x", "1.0"]], [["x", "1.00"]], 0.0, 0.0)) == []  # CSV numbers
     assert list(diff_values({"a": 1}, {"b": 1}, 0.0, 0.0))  # missing key
+    clock = {"seconds": 1.0, "cost": {"train_seconds_mean": 2.0, "inference_ms_per_window": 0.2}}
+    slower = {"seconds": 1.5, "cost": {"train_seconds_mean": 2.5, "inference_ms_per_window": 0.3}}
+    assert list(diff_values(clock, slower, 0.0, 0.0)) == []
+    data = {"modal_step_ms": 60000, "gc_pause_s_mean": 0.1}  # data quantities, not wall clock
+    assert len(list(diff_values(data, {"modal_step_ms": 1000, "gc_pause_s_mean": 0.2}, 0, 0))) == 2
 
 
 def _git(cwd: Path, *args: str) -> None:
@@ -261,7 +266,8 @@ def test_latest_runs_takes_one_dir_per_level(tmp_path: Path) -> None:
         (tmp_path / stamp / "manifest.json").write_text(
             json.dumps({"level": level}), encoding="utf-8"
         )
-    (tmp_path / "pacote").mkdir()
+    (tmp_path / "pacote").mkdir()  # restored bundle: its MANIFEST.json has no level
+    (tmp_path / "pacote" / "MANIFEST.json").write_text(json.dumps({"a": "b"}), encoding="utf-8")
     assert [p.name for p in latest_runs(tmp_path)] == [
         "20261123T2-principal",
         "20261124T1-agente-cache",

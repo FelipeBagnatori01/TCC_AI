@@ -251,7 +251,10 @@ def latest_runs(root: Path) -> list[Path]:
     runs, so checking only the newest would count the other level's tables as not regenerated)."""
     latest: dict[str, Path] = {}
     for d in sorted(p for p in root.iterdir() if (p / "manifest.json").is_file()):
-        latest[json.loads((d / "manifest.json").read_text(encoding="utf-8"))["level"]] = d
+        # the restored bundle's MANIFEST.json matches on case-insensitive file systems (macOS)
+        level = json.loads((d / "manifest.json").read_text(encoding="utf-8")).get("level")
+        if level in LEVELS:
+            latest[level] = d
     if not latest:
         raise SystemExit(f"nenhuma reprodução em {root}: rode make reproduce antes")
     return sorted(latest.values())

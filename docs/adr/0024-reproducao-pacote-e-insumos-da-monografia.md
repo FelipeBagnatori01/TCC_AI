@@ -83,6 +83,15 @@ Até a E8, o pipeline exigia cerca de 20 comandos manuais. O cache do LLM (47 MB
   - **Publicação:** Release [`cache-llm-2026-11-23`](https://github.com/FelipeBagnatori01/TCC_AI/releases/tag/cache-llm-2026-11-23); o SHA-256 calculado pelo GitHub confere.
 - **Histórico do Git:** 24 commits e 666 arquivos verificados, nenhum achado (`reports/auditoria_git.md`).
 - **Insumos da monografia:** 7 tabelas, 4 figuras e 26 números rastreados (`reports/monografia/`). Os valores conferem com `docs/RESULTADOS.md`.
+- **Reprodução num clone limpo** (2026-11-23/24, mesma máquina, dados ligados por `configs/local.yaml`):
+  - `make reproduce`: os 18 passos sem erro.
+  - `cache-restore` do anexo da Release: SHA-256 conferido, e os pacotes de evidência regenerados no clone são idênticos aos que o agente viu (45 no Telecom, 120 no Bank).
+  - `make reproduce-agent`: os 24 passos sem erro; as 18 execuções saíram do cache com 0 chamadas pagas, previsões e `metrics.json` iguais aos originais.
+  - `make reproduce-check` com tolerância zero: **49 tabelas iguais e nenhuma diferente**. As 56 não regeneradas são as execuções originais do agente e do piloto (os replays gravam tabelas `_replay` à parte) e as do nível `completo` (relatórios da E1, controles e modelos alternativos).
+  - **Correções feitas no caminho:**
+    - checagem prévia dos dados, do submódulo e do pacote restaurado, porque sem o cache os replays gravavam tabelas vazias;
+    - a verificação considera a última execução de cada nível;
+    - os tempos de relógio (`seconds`, `train_seconds`, `inference_ms_per_window` e agregados) são ignorados, porque eram as únicas diferenças.
 - **Pendente com o autor:**
-  - **`make reproduce`** (treina as LSTMs, de 1 a 1,5 h) num clone limpo, idealmente em outra máquina, seguido de `make reproduce-agent` e `make reproduce-check`;
+  - a reprodução em outra máquina (critério com `--atol 0.01`), se houver uma disponível;
   - **tornar o repositório público** (bloqueio registrado).

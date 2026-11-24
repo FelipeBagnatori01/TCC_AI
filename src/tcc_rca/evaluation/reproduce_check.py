@@ -19,7 +19,34 @@ from pathlib import Path
 from typing import Any
 
 RUN_DIR = re.compile(r"\d{8}T\d{6}-[A-Za-z0-9_.-]+")
-IGNORED_KEYS = frozenset({"elapsed_s", "peak_rss_mb", "started_at", "latency_s", "latency_mean_s"})
+# Wall clock and memory of the machine, never results. Data quantities with time units
+# (``modal_step_ms``, ``gc_pause_s``, KPI means) are results and are compared.
+IGNORED_KEYS = frozenset(
+    {
+        "elapsed_s",
+        "peak_rss_mb",
+        "started_at",
+        "latency_s",
+        "latency_mean_s",
+        "seconds",
+        "search_seconds",
+        "final_seconds",
+        "train_seconds",
+        "xai_seconds",
+        "inference_ms_per_window",
+    }
+)
+AGGREGATE_SUFFIXES = ("_mean", "_total", "_std")
+
+
+def _ignored(key: str) -> bool:
+    """A wall-clock key or an aggregate of one (``train_seconds_mean``)."""
+    return key in IGNORED_KEYS or any(
+        key.endswith(suffix) and key.removesuffix(suffix) in IGNORED_KEYS
+        for suffix in AGGREGATE_SUFFIXES
+    )
+
+
 MAX_LISTED = 20
 
 
@@ -50,7 +77,7 @@ def diff_values(ref: Any, new: Any, rtol: float, atol: float, path: str = "") ->
     """Paths where ``new`` departs from ``ref`` (JSON-like values)."""
     if isinstance(ref, dict) and isinstance(new, dict):
         for key in sorted(set(ref) | set(new)):
-            if key in IGNORED_KEYS:
+            if _ignored(key):
                 continue
             if key not in ref or key not in new:
                 yield f"{path}/{key}: present in only one side"
